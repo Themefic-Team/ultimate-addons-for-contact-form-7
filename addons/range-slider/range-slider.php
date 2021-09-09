@@ -208,8 +208,8 @@ class UACF7_range_Slider {
         <h2><?php echo esc_html__( 'Range Slider Styles', 'ultimate-addons-cf7' ); ?></h2>
         <p><?php echo esc_html__( 'This feature will help you to edit the Styles of Range Slider of your form. Note that, all below fields are optional. If any field is not needed, leave them blank.', 'ultimate-addons-cf7' ); ?></p>
         <fieldset>
-            <div class="range-slider-style-wrapper">
-                <div class="range-slider-color col">
+            <div class="uacf7-range-slider-style-wrapper">
+                <div class="uacf7-range-slider-color col">
                     <h4><?php echo esc_html__( "Slider Selection Color", "ultimate-addons-cf7" ); ?></h4>
                     <input type="text" id="uacf7-selection-color" name="uacf7_range_selection_color" class="uacf7-color-picker" value="<?php echo esc_attr( $selection_color ); ?>" placeholder="<?php echo esc_html__( 'Selection Color', 'ultimate-addons-cf7' ); ?>">
                 </div>
