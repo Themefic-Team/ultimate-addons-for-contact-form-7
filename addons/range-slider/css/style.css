@@ -1,9 +1,9 @@
-.slidecontainer {
+.uacf7-slidecontainer {
     width: 100%;
     position: relative;
   }
   
-.slider {
+.uacf7-slider {
   -webkit-appearance: none;
   width: 100%;
   height: 25px;
@@ -13,7 +13,7 @@
   transition: opacity .2s;
 }
 
-.slidecontainer::-webkit-slider-thumb {
+.uacf7-slidecontainer::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 25px;
@@ -22,13 +22,13 @@
   cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
+.uacf7-slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
   background: #3498db;
   cursor: pointer;
 }
-span#value {
+span#uacf7-value {
   float: right;
 }
 div#slider-range {
@@ -37,14 +37,14 @@ div#slider-range {
 input[type="range"]{
   padding: unset !important;
 }
-.range-slider-style-wrapper {
+.uacf7-range-slider-style-wrapper {
   background: #fff;
   padding: 5px 30px 15px;
   margin: 15px auto;
   border: 1px solid #ccc;
   overflow: hidden;
 }
-.range-slider-style-wrapper .col{
+.uacf7-range-slider-style-wrapper .col{
   width: 25%;
   float: left;
 }
@@ -52,7 +52,7 @@ input[type="range"]{
   top: -.2em;
   margin-left: -.6em;
 }
-span.amount {
+span.uacf7-amount {
   float: right;
 }
 .ui-state-focus,.ui-widget-content .ui-state-focus{

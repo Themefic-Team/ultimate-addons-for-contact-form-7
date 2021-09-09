@@ -70,9 +70,9 @@ class UACF7_range_Slider {
             <?php
             }
             ?>
-                <span id="value"></span>
-                <span class="wpcf7-form-control-wrap slidecontainer uacf7-slider-handle" data-handle="<?php echo esc_attr( $handle ); ?>" data-min="<?php echo esc_attr( $min ); ?>" data-max="<?php echo esc_attr( $max ); ?>" data-default="<?php echo esc_attr( $default ); ?>">
-                    <input name="<?php echo esc_attr( $tag->name ); ?>" type="range" min="<?php echo esc_attr( $min ); ?>" max="<?php echo esc_attr( $max ); ?>" value="<?php echo esc_attr( $default ); ?>" class="slider" id="range">
+                <span id="uacf7-value"></span>
+                <span class="wpcf7-form-control-wrap uacf7-slidecontainer uacf7-slider-handle" data-handle="<?php echo esc_attr( $handle ); ?>" data-min="<?php echo esc_attr( $min ); ?>" data-max="<?php echo esc_attr( $max ); ?>" data-default="<?php echo esc_attr( $default ); ?>">
+                    <input name="<?php echo esc_attr( $tag->name ); ?>" type="range" min="<?php echo esc_attr( $min ); ?>" max="<?php echo esc_attr( $max ); ?>" value="<?php echo esc_attr( $default ); ?>" class="uacf7-slider" id="uacf7-range">
                 </span>  
 
                 <?php
@@ -83,10 +83,10 @@ class UACF7_range_Slider {
             <?php
             }
             ?>
-                <span class="wpcf7-form-control-wrap"><span class="amount"><?php echo esc_attr( $min . "-" . $max ); ?></span>
+                <span class="wpcf7-form-control-wrap"><span class="uacf7-amount"><?php echo esc_attr( $min . "-" . $max ); ?></span>
                 <span class="uacf7-slider-handle"  data-handle="<?php echo esc_attr( $handle ); ?>" data-min="<?php echo esc_attr( $min ); ?>" data-max="<?php echo esc_attr( $max ); ?>" data-default="<?php echo esc_attr( $default ); ?>">
-                    <input name="<?php echo esc_attr( $tag->name ) ?>" type="hidden" id="amount" readonly>                       
-                    <div id="slider-range"></div>
+                    <input name="<?php echo esc_attr( $tag->name ) ?>" type="hidden" id="uacf7-amount" readonly>                       
+                    <div id="uacf7-slider-range"></div>
                 </span>
                 </span>
                 <?php
@@ -307,7 +307,7 @@ class UACF7_range_Slider {
                 .uacf7-form-<?php echo esc_attr( $cf->id() ); ?> .ui-slider-horizontal{
                     height: <?php echo esc_attr( $range_slider_height ) . "px"; ?>;
                 }
-                .uacf7-form-<?php echo esc_attr( $cf->id() ); ?> .slider::-webkit-slider-thumb {
+                .uacf7-form-<?php echo esc_attr( $cf->id() ); ?> .uacf7-slider::-webkit-slider-thumb {
                     -webkit-appearance: none;
                     appearance: none;
                     width: <?php echo esc_attr( $handle_width ) . "px"; ?>;
@@ -317,7 +317,7 @@ class UACF7_range_Slider {
                     cursor: pointer;
                 }
 
-                .uacf7-form-<?php echo esc_attr( $cf->id() ); ?> .slider::-moz-range-thumb {
+                .uacf7-form-<?php echo esc_attr( $cf->id() ); ?> .uacf7-slider::-moz-range-thumb {
                     width: <?php echo esc_attr( $handle_width ) . "px"; ?>;
                     height: <?php echo esc_attr( $handle_height ) . "px"; ?>;
                     background: <?php echo esc_attr( $handle_color ); ?>;
