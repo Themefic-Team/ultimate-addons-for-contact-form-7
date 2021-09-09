@@ -25,7 +25,7 @@
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #79807d;
+  background: #3498db;
   cursor: pointer;
 }
 span#value {
@@ -52,12 +52,14 @@ input[type="range"]{
   top: -.2em;
   margin-left: -.6em;
 }
-p.slider-handle span.amount {
+span.amount {
   float: right;
 }
 .ui-state-focus,.ui-widget-content .ui-state-focus{
   color: unset !important;
   border: none !important;
-  background-color: red;
   outline: unset;
+}
+.uacf7-slider-label{
+  display: inline-block;
 }

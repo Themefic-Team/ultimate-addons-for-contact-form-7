@@ -55,39 +55,41 @@ class UACF7_range_Slider {
 
         $atts = wpcf7_format_atts( $atts );
 
-        $label = !empty( $tag->get_option( 'label', '', true ) ) ? $tag->get_option( 'label', '', true ) : 'Range Slider';
+        $show_value = !empty( $tag->get_option( 'show_value', '', true ) ) ? $tag->get_option( 'show_value', '', true ) : 'on';
         $handle = !empty( $tag->get_option( 'handle', '', true ) ) ? $tag->get_option( 'handle', '', true ) : '1';
         $min = !empty( $tag->get_option( 'min', '', true ) ) ? $tag->get_option( 'min', '', true ) : 0;
         $max = !empty( $tag->get_option( 'max', '', true ) ) ? $tag->get_option( 'max', '', true ) : 100;
-        $default = !empty( $tag->get_option( 'default', '', true ) ) ? $tag->get_option( 'default', '', true ) : 0;
+        $default = !empty( $tag->get_option( 'default', '', true ) ) ? $tag->get_option( 'default', '', true ) : 100;
 
         ob_start();
 
         if ( $handle == 1 ) {
+            if( $show_value == 'on'){
+                ?>
+                <label class="uacf7-slider-label">( Min: <?php echo esc_html( $min ); ?> Max: <?php echo esc_html( $max ) ?>)</label>
+            <?php
+            }
             ?>
-                <p class="slidecontainer slider-handle" data-handle="<?php echo esc_attr( $handle ); ?>" data-min="<?php echo esc_attr( $min ); ?>" data-max="<?php echo esc_attr( $max ); ?>" data-default="<?php echo esc_attr( $default ); ?>">
-                    <label><?php echo esc_html__( $label, 'ultimate-addons-cf7' ) ?> ( Min: <?php echo esc_html( $min ); ?> Max: <?php echo esc_html( $max ) ?>)<span id="value"></span>
-                    <span class="wpcf7-form-control-wrap">
-                        <input name="<?php echo esc_attr( $tag->name ); ?>" type="range" min="<?php echo esc_attr( $min ); ?>" max="<?php echo esc_attr( $max ); ?>" value="<?php echo esc_attr( $default ); ?>" class="slider" id="range">
-                    </span>    
-                    </label>
-                </p>
+                <span id="value"></span>
+                <span class="wpcf7-form-control-wrap slidecontainer uacf7-slider-handle" data-handle="<?php echo esc_attr( $handle ); ?>" data-min="<?php echo esc_attr( $min ); ?>" data-max="<?php echo esc_attr( $max ); ?>" data-default="<?php echo esc_attr( $default ); ?>">
+                    <input name="<?php echo esc_attr( $tag->name ); ?>" type="range" min="<?php echo esc_attr( $min ); ?>" max="<?php echo esc_attr( $max ); ?>" value="<?php echo esc_attr( $default ); ?>" class="slider" id="range">
+                </span>  
 
                 <?php
         } elseif ( $handle == 2 ) {
+            if( $show_value == 'on'){
+                ?>
+                <label class="uacf7-slider-label">( Min: <?php echo esc_html( $min ); ?> Max: <?php echo esc_html( $max ) ?>)</label>
+            <?php
+            }
             ?>
-                <p class="slider-handle"  data-handle="<?php echo esc_attr( $handle ); ?>" data-min="<?php echo esc_attr( $min ); ?>" data-max="<?php echo esc_attr( $max ); ?>" data-default="<?php echo esc_attr( $default ); ?>">
-                    <label for="amount"><?php echo esc_html__( $label, 'ultimate-addons-cf7' ); ?>
-                        <span class="wpcf7-form-control-wrap">
-                            <input name="<?php echo esc_attr( $tag->name ) ?>" type="hidden" id="amount" readonly>
-                            <span class="amount"></span>
-                    
-                            <div id="slider-range"></div>
-                        </span>
-                    </label>
-                </p>
+                <span class="wpcf7-form-control-wrap"><span class="amount"><?php echo esc_attr( $min . "-" . $max ); ?></span>
+                <span class="uacf7-slider-handle"  data-handle="<?php echo esc_attr( $handle ); ?>" data-min="<?php echo esc_attr( $min ); ?>" data-max="<?php echo esc_attr( $max ); ?>" data-default="<?php echo esc_attr( $default ); ?>">
+                    <input name="<?php echo esc_attr( $tag->name ) ?>" type="hidden" id="amount" readonly>                       
+                    <div id="slider-range"></div>
+                </span>
+                </span>
                 <?php
-
         }
 
         ?>
@@ -111,7 +113,7 @@ class UACF7_range_Slider {
             'uacf7_range_slider',
             __( 'Range Slider', 'ultimate-addons-cf7' ),
             'uacf7-tg-pane-range-slider',
-            array( $this, 'tg_panel_range_slider' ),
+            array( $this, 'tg_panel_range_slider' )
         );
 
     }
@@ -139,8 +141,11 @@ class UACF7_range_Slider {
                         <td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr( $args['content'] . '-name' ); ?>" /></td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="tag-generator-panel-text-label"><?php echo esc_html__( 'Label', 'ultimate-addons-cf7' ); ?></label></th>
-                        <td><input type="text" name="label" class="tg-min oneline option" id="tag-generator-panel-text-label"  placeholder="Range"/></td>
+                        <th scope="row"><label for="tag-generator-panel-text-handle"><?php echo esc_html__( 'Show Values', 'ultimate-addons-cf7' ); ?></label></th>
+                        <td>
+                            <label for="show_value_on"><input type="radio" name="show_value" class="option" id="show_value_on" value="on"/> <?php echo esc_html( 'On' ); ?></label>
+                            <label for="show_value_off"><input type="radio" name="show_value" class="option" id="show_value_off" value="off"/> <?php echo esc_html( 'Off' ); ?></label>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row"><label for="tag-generator-panel-text-handle"><?php echo esc_html__( 'Slider Type', 'ultimate-addons-cf7' ); ?></label></th>
@@ -195,7 +200,7 @@ class UACF7_range_Slider {
         $selection_color = ! empty( get_post_meta( $post->id(), 'uacf7_range_selection_color', true )) ? get_post_meta( $post->id(), 'uacf7_range_selection_color', true ) : "#1e90ff" ;
         $handle_width = get_post_meta( $post->id(), 'uacf7_range_handle_width', true );
         $handle_height = get_post_meta( $post->id(), 'uacf7_range_handle_height', true );
-        $handle_color = ! empty( get_post_meta( $post->id(), 'uacf7_range_handle_color', true )) ? get_post_meta( $post->id(), 'uacf7_range_handle_color', true ) : "#3742fa";
+        $handle_color = ! empty( get_post_meta( $post->id(), 'uacf7_range_handle_color', true )) ? get_post_meta( $post->id(), 'uacf7_range_handle_color', true ) : "#3498db";
         $border_radius = get_post_meta( $post->id(), 'uacf7_range_handle_border_radius', true );
         $range_slider_height = get_post_meta( $post->id(), 'uacf7_range_slider_height', true );
         ?>
@@ -206,28 +211,28 @@ class UACF7_range_Slider {
             <div class="range-slider-style-wrapper">
                 <div class="range-slider-color col">
                     <h4><?php echo esc_html__( "Slider Selection Color", "ultimate-addons-cf7" ); ?></h4>
-                    <input type="text" id="uacf7-selection-color" name="uacf7_range_selection_color" class="uacf7-color-picker" value="<?php echo esc_attr_e( $selection_color ); ?>" placeholder="<?php echo esc_html__( 'Selection Color', 'ultimate-addons-cf7' ); ?>">
+                    <input type="text" id="uacf7-selection-color" name="uacf7_range_selection_color" class="uacf7-color-picker" value="<?php echo esc_attr( $selection_color ); ?>" placeholder="<?php echo esc_html__( 'Selection Color', 'ultimate-addons-cf7' ); ?>">
                 </div>
                 <div class="range-slider-handle-color col">
                     <h4><?php echo esc_html__( "Slider Handle Color", "ultimate-addons-cf7" ); ?></h4>
-                    <input type="text" id="uacf7-handle-color" name="uacf7_range_handle_color" class="uacf7-color-picker" value="<?php echo esc_attr_e( $handle_color ); ?>" placeholder="<?php echo esc_html__( 'Handle Color', 'ultimate-addons-cf7' ); ?>">
+                    <input type="text" id="uacf7-handle-color" name="uacf7_range_handle_color" class="uacf7-color-picker" value="<?php echo esc_attr( $handle_color ); ?>" placeholder="<?php echo esc_html__( 'Handle Color', 'ultimate-addons-cf7' ); ?>">
                 </div>
                 <div class="range-slider-handle-width col">
                     <h4><?php echo esc_html__( "Slider Handle Width (px)", "ultimate-addons-cf7" ); ?></h4>
-                    <input type="number" id="uacf7-handle-width" name="uacf7_range_handle_width" class="uacf7-handle-width" value="<?php echo esc_attr_e( $handle_width ); ?>" placeholder="<?php echo esc_html__( 'Handle Width', 'ultimate-addons-cf7' ); ?>">
+                    <input type="number" id="uacf7-handle-width" name="uacf7_range_handle_width" class="uacf7-handle-width" value="<?php echo esc_attr( $handle_width ); ?>" placeholder="<?php echo esc_html__( 'Handle Width', 'ultimate-addons-cf7' ); ?>">
                 </div>
                 <div class="range-slider-handle-height col">
                     <h4><?php echo esc_html__( "Slider Handle Height (px)", "ultimate-addons-cf7" ); ?></h4>
-                    <input type="number" id="uacf7-handle-height" name="uacf7_range_handle_height" class="uacf7-handle-height" value="<?php echo esc_attr_e( $handle_height ); ?>" placeholder="<?php echo esc_html__( 'Handle Height', 'ultimate-addons-cf7' ); ?>">
+                    <input type="number" id="uacf7-handle-height" name="uacf7_range_handle_height" class="uacf7-handle-height" value="<?php echo esc_attr( $handle_height ); ?>" placeholder="<?php echo esc_html__( 'Handle Height', 'ultimate-addons-cf7' ); ?>">
                 </div>
                 <div class="clear"></div>
                 <div class="range-slider-handle-border-radius col">
                     <h4><?php echo esc_html__( "Handle Border Radius (px)", "ultimate-addons-cf7" ); ?></h4>
-                    <input type="text" id="uacf7-handle-border-radius" name="uacf7_range_handle_border_radius" class="uacf7-handle-border-radius" value="<?php echo esc_attr_e( $border_radius ); ?>" placeholder="<?php echo esc_html__( 'Border Radius', 'ultimate-addons-cf7' ); ?>">
+                    <input type="text" id="uacf7-handle-border-radius" name="uacf7_range_handle_border_radius" class="uacf7-handle-border-radius" value="<?php echo esc_attr( $border_radius ); ?>" placeholder="<?php echo esc_html__( 'Border Radius', 'ultimate-addons-cf7' ); ?>">
                 </div>
                 <div class="range-slider-height col">
                     <h4><?php echo esc_html__( "Slider Height  (px)", "ultimate-addons-cf7" ); ?></h4>
-                    <input type="number" id="uacf7-handle-height" name="uacf7_range_slider_height" class="uacf7-slider-height" value="<?php echo esc_attr_e( $range_slider_height ); ?>" placeholder="<?php echo esc_html__( 'Slider Height', 'ultimate-addons-cf7' ); ?>">
+                    <input type="number" id="uacf7-handle-height" name="uacf7_range_slider_height" class="uacf7-slider-height" value="<?php echo esc_attr( $range_slider_height ); ?>" placeholder="<?php echo esc_html__( 'Slider Height', 'ultimate-addons-cf7' ); ?>">
                 </div>
             </div>
         </fieldset>
@@ -249,12 +254,12 @@ class UACF7_range_Slider {
             return;
         }
 
-        update_post_meta( $form->id(), 'uacf7_range_selection_color', $_POST['uacf7_range_selection_color'] );
-        update_post_meta( $form->id(), 'uacf7_range_handle_color', $_POST['uacf7_range_handle_color'] );
-        update_post_meta( $form->id(), 'uacf7_range_handle_width', $_POST['uacf7_range_handle_width'] );
-        update_post_meta( $form->id(), 'uacf7_range_handle_height', $_POST['uacf7_range_handle_height'] );
-        update_post_meta( $form->id(), 'uacf7_range_handle_border_radius', $_POST['uacf7_range_handle_border_radius'] );
-        update_post_meta( $form->id(), 'uacf7_range_slider_height', $_POST['uacf7_range_slider_height'] );
+        update_post_meta( $form->id(), 'uacf7_range_selection_color', sanitize_text_field( $_POST['uacf7_range_selection_color'] ));
+        update_post_meta( $form->id(), 'uacf7_range_handle_color', sanitize_text_field($_POST['uacf7_range_handle_color'] ));
+        update_post_meta( $form->id(), 'uacf7_range_handle_width', sanitize_text_field($_POST['uacf7_range_handle_width'] ));
+        update_post_meta( $form->id(), 'uacf7_range_handle_height', sanitize_text_field($_POST['uacf7_range_handle_height'] ));
+        update_post_meta( $form->id(), 'uacf7_range_handle_border_radius', sanitize_text_field($_POST['uacf7_range_handle_border_radius'] ));
+        update_post_meta( $form->id(), 'uacf7_range_slider_height', sanitize_text_field($_POST['uacf7_range_slider_height'] ));
     }
 
     /**
@@ -267,12 +272,12 @@ class UACF7_range_Slider {
             ob_start();
 
             $selection_color = !empty( get_post_meta( $cf->id(), 'uacf7_range_selection_color', true ) ) ? get_post_meta( $cf->id(), 'uacf7_range_selection_color', true ) : "#1e90ff";
-            $handle_width = !empty( get_post_meta( $cf->id(), 'uacf7_range_handle_width', true ) ) ? get_post_meta( $cf->id(), 'uacf7_range_handle_width', true ) : '25';
-            $handle_height = !empty( get_post_meta( $cf->id(), 'uacf7_range_handle_height', true ) ) ? get_post_meta( $cf->id(), 'uacf7_range_handle_height', true ) : '18';
-            $handle_border_radius = !empty( get_post_meta( $cf->id(), 'uacf7_range_handle_border_radius', true ) ) ? get_post_meta( $cf->id(), 'uacf7_range_handle_border_radius', true ) : '5';
-            $handle_color = !empty( get_post_meta( $cf->id(), 'uacf7_range_handle_color', true ) ) ? get_post_meta( $cf->id(), 'uacf7_range_handle_color', true ) : '#3742fa';
+            $handle_width = !empty( get_post_meta( $cf->id(), 'uacf7_range_handle_width', true ) ) ? get_post_meta( $cf->id(), 'uacf7_range_handle_width', true ) : '24';
+            $handle_height = !empty( get_post_meta( $cf->id(), 'uacf7_range_handle_height', true ) ) ? get_post_meta( $cf->id(), 'uacf7_range_handle_height', true ) : '24';
+            $handle_border_radius = !empty( get_post_meta( $cf->id(), 'uacf7_range_handle_border_radius', true ) ) ? get_post_meta( $cf->id(), 'uacf7_range_handle_border_radius', true ) : '24';
+            $handle_color = !empty( get_post_meta( $cf->id(), 'uacf7_range_handle_color', true ) ) ? get_post_meta( $cf->id(), 'uacf7_range_handle_color', true ) : '#3498db';
             $range_slider_height = !empty( get_post_meta( $cf->id(), 'uacf7_range_slider_height', true ) ) ? get_post_meta( $cf->id(), 'uacf7_range_slider_height', true ) : 9;
-            $handle_dynamic_position = ( $handle_height / 2 - $range_slider_height / 2 );
+            $handle_dynamic_position = ( $handle_height / 2 - $range_slider_height / 2 ) + 1;
             ?>
             <style>
                 .uacf7-form-<?php echo esc_attr( $cf->id() ); ?> .ui-slider-horizontal .ui-slider-range {
@@ -281,6 +286,7 @@ class UACF7_range_Slider {
                 }
                 .uacf7-form-<?php echo esc_attr( $cf->id() ); ?> .ui-widget.ui-widget-content {
                     height: <?php echo esc_attr( $range_slider_height ) . "px"; ?>;
+                    border: 1px solid <?php echo esc_attr( $selection_color ); ?>;
                 }
                 .uacf7-form-<?php echo esc_attr( $cf->id() ); ?> .ui-state-default, .ui-widget-content .ui-state-default{
                     background-color: <?php echo esc_attr( $handle_color ); ?>;
@@ -288,6 +294,7 @@ class UACF7_range_Slider {
                     height: <?php echo esc_attr( $handle_height ) . "px"; ?>;
                     border-radius: <?php echo esc_attr( $handle_border_radius ) . "px"; ?>;
                     cursor: pointer;
+                    border: none !important;
                 }
                 .uacf7-form-<?php echo esc_attr( $cf->id() ); ?> .ui-slider-horizontal .ui-slider-handle {
                     top: -<?php echo esc_attr( $handle_dynamic_position ) ?>px;

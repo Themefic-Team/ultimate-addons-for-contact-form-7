@@ -2,10 +2,10 @@
   'use strict';
   $(document).ready(function () {
 
-    var handle = $(".slider-handle").data("handle");
-    var min = $(".slider-handle").data("min");
-    var max = $(".slider-handle").data("max");
-    var def = $(".slider-handle").data("default");
+    var handle = $(".uacf7-slider-handle").data("handle");
+    var min = $(".uacf7-slider-handle").data("min");
+    var max = $(".uacf7-slider-handle").data("max");
+    var def = $(".uacf7-slider-handle").data("default");
 
     if (handle == 1) {
 
