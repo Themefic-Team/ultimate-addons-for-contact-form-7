@@ -11,7 +11,14 @@
                 
                 var cr_enable = uacf7_redirect_enable[event.detail.contactFormId];
                 
-                var uacf7RedirectType = uacf7_redirect_type[event.detail.contactFormId];
+                if(typeof uacf7_redirect_type !== 'undefined') {
+                
+                    var uacf7RedirectType = uacf7_redirect_type[event.detail.contactFormId];
+                
+                }else {
+                    
+                    var uacf7RedirectType = '';
+                }
                 
                 if( cr_enable == 'yes' && uacf7RedirectType != 'yes' ) {
                     // Set redirect URL

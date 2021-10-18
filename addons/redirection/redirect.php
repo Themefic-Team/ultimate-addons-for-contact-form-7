@@ -130,17 +130,6 @@ class UACF7_Redirection {
            	</label><br>
            </p>
            
-           <?php ob_start(); ?>
-           <p>
-           	<label for="uacf7_redirect_type">
-           		<input class="uacf7_redirect_type" id="uacf7_redirect_type" name="" type="checkbox" value="yes"> <?php echo esc_html__('Cinditional Redirect'); ?> <span style="color:red">Pro</span>
-           	</label><br>
-           </p>
-           <?php 
-           $uacf7_redirect_type_html = ob_get_clean();
-           echo apply_filters( 'uacf7_redirect_type_field', $uacf7_redirect_type_html, $post );
-           ?>
-           
 		   <div class="uacf7_default_redirect_wraper" style="margin: 20px;">
                <p>
                	<label for="uacf7_redirect_to_page">
@@ -180,12 +169,13 @@ class UACF7_Redirection {
                 </p>
             
             </div>
+            
             <?php ob_start(); ?>
             
             <!--Start Conditional redirect-->
             <div class="uacf7_conditional_redirect_wraper" style="margin: 20px;">
             	<div class="uacf7_conditional_redirect_add_btn">
-            		<a href="#" class="button-primary uacf7_cr_btn">+ Add Condition</a> <span style="color:red">Pro</span>
+            		<a href="#" class="button-primary uacf7_cr_btn">+ Add Condition</a> <a style="color:red" target="_blank" href="https://cf7addons.com/">(Pro)</a>
             		
             		<!--Start New row-->
             		<div style="display:none" class="uacf7_cr_copy">
@@ -277,6 +267,17 @@ class UACF7_Redirection {
             $uacf7_cr_pro_fields = ob_get_clean();
             
             echo apply_filters( 'uacf7_cr_pro_fields', $uacf7_cr_pro_fields, $post );
+            ?>
+            
+            <?php ob_start(); ?>
+            <p>
+           	    <label for="uacf7_redirect_type">
+           		    <input class="uacf7_redirect_type" id="uacf7_redirect_type" name="" type="checkbox" value="yes"> <?php echo esc_html__('Conditional Redirect'); ?>
+           	    </label> <a style="color:red" target="_blank" href="https://cf7addons.com/">(Pro)</a><br>
+            </p>
+            <?php 
+            $uacf7_redirect_type_html = ob_get_clean();
+            echo apply_filters( 'uacf7_redirect_type_field', $uacf7_redirect_type_html, $post );
             ?>
             
             <p>
