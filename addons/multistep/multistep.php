@@ -375,20 +375,21 @@ class UACF7_MULTISTEP {
             
             if ( 'file' != $type && 'file*' != $type ) {
 				
-				/*$fdir = $_REQUEST[$tag->name];
+                $result = apply_filters("wpcf7_validate_{$type}", $result, $tag);
+                
+			}elseif( 'file*' === $type ){
+			    
+			    $fdir = $_REQUEST[$tag->name];
 
 				if ( $fdir ) {
 					$_FILES[ $tag->name ] = array(
 						'name' => wp_basename( $fdir ),
 						'tmp_name' => $fdir,
 					);
-				}*/
-				
-                $result = apply_filters("wpcf7_validate_{$type}", $result, $tag);
-                
-			}elseif( 'file*' === $type ){
+				}
 			    
 			    $file = $_FILES[$tag->name];
+			    //$file = $_REQUEST[$tag->name];
 
     			$args = array(
     				'tag' => $tag,
@@ -400,7 +401,10 @@ class UACF7_MULTISTEP {
     
     			$new_files = wpcf7_unship_uploaded_file( $file, $args );
 			    
+			    update_option('file_errors', $new_files);
+			    
 			    $result = apply_filters("wpcf7_validate_{$type}", $result, $tag, array( 'uploaded_files' => $new_files, ) );
+			    
 			}
             
         }
