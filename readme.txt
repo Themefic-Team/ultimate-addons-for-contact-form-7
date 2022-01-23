@@ -1,10 +1,10 @@
 ﻿=== Ultimate Addons for Contact Form 7 ===
 Contributors: themefic, raihan143, hasanet
-Tags: contact form 7, contact form 7 addons, contact form 7 addon, contact form 7 booking form, contact form 7 appointment form, contact form 7 placeholder, contact form 7 conditional fields, redirection for contact form 7, contact form 7 thank you page, contact form 7 columns, contact form 7 style, contact form 7 woocommerce, contact form 7 woocommerce product, multi step contact form 7, multi-step contact form, multi step form, post submission contact form 7, form to post contact form 7, contact form 7 to post, custom post contact form 7, contact form 7 custom post type, contact form 7 post submit, caldera forms, Star Rating, Star Rating contact form 7, range slider, range slider contact form 7, contact form 7 conditional redirect, contact form 7 column width, contact form 7 repeater, contact form 7 repeatable fields
+Tags: contact form 7, contact form 7 addons, contact form 7 addon, contact form 7 placeholder, contact form 7 conditional fields, redirection for contact form 7, contact form 7 thank you page, contact form 7 columns, contact form 7 style, contact form 7 woocommerce, contact form 7 woocommerce product, multi step contact form 7, multi-step contact form, multi step form, post submission contact form 7, form to post contact form 7, contact form 7 to post, custom post contact form 7, contact form 7 custom post type, contact form 7 post submit, caldera forms, Star Rating, Star Rating contact form 7, range slider, range slider contact form 7, contact form 7 conditional redirect, contact form 7 column width, contact form 7 repeater, contact form 7 repeatable fields
 Requires at least: 4.2
 Tested up to: 5.8
 Requires PHP: 5.4
-Stable tag: 1.8.1
+Stable tag: 1.7.3
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -58,38 +58,38 @@ Here are the most important features of Ultimate Addons For Contact Form 7:
 
 = Contact Form 7 Conditional Fields = 
 
-Add conditional logic to Contact Form 7. With this feature, you can show or hide form fields depending on Contact form 7 Conditional Logic. <a href="https://cf7addons.com/preview/conditional-field/">Click Here</a> to check live preview.
+Add conditional logic to Contact Form 7. With this feature, you can show or hide form fields depending on Contact form 7 Conditional Logic. <a href="https://live.themefic.com/ultimate-cf7/conditional-field/">Click Here</a> to check live preview.
 
 = Contact Form 7 Placeholder = 
 
-With this feature, you can edit contact form 7 placeholder text color, placeholder text background color, placeholder text font size, font family, font style and font weight. In short, you can edit the style of your form's placeholder without writing any css code. <a href="https://cf7addons.com/preview/placeholder-styling/">Click Here</a> to check live preview.
+With this feature, you can edit contact form 7 placeholder text color, placeholder text background color, placeholder text font size, font family, font style and font weight. In short, you can edit the style of your form's placeholder without writing any css code. <a href="https://live.themefic.com/ultimate-cf7/placeholder-styling/">Click Here</a> to check live preview.
 
 = Contact Form 7 Columns / Grid Layout =
-You can easily create two columns, three Columns; even Four columns form with Contact form 7 using this feature. Fully responsive. <a href="https://cf7addons.com/preview/columns-grid-layout/">Click Here</a> to check live preview.
+You can easily create two columns, three Columns; even Four columns form with Contact form 7 using this feature. Fully responsive. <a href="https://live.themefic.com/ultimate-cf7/columns-grid-layout/">Click Here</a> to check live preview.
 
 = Multi step contact form 7 = 
 
-You can easily create multistep form with Contact form 7 using this feature. Fully responsive. <a href="https://cf7addons.com/preview/multi-step-form/">Click Here</a> to check live preview.
+You can easily create multistep form with Contact form 7 using this feature. Fully responsive. <a href="https://live.themefic.com/ultimate-cf7/multi-step-form/">Click Here</a> to check live preview.
 
 = Redirection for Contact Form 7 = 
 
-This features will help you to redirect contact form 7 after submission. You can Redirect users to a Thank you page or external page after user fills up Form. Rredirect user to any page you choose after mail sent successfully. <a href="https://cf7addons.com/preview/redirection/">Click Here</a> to check live preview.
+This features will help you to redirect contact form 7 after submission. You can Redirect users to a Thank you page or external page after user fills up Form. Rredirect user to any page you choose after mail sent successfully. <a href="https://live.themefic.com/ultimate-cf7/redirection/">Click Here</a> to check live preview.
 
 = Contact Form 7 Star Rating Field = 
 
-Add Star Rating fields to Contact Form 7. Star rating is the easiest and efficient way to get feedback from your customers on how good your product or service is. Good news! Now you can easily add a star rating to your Contact form 7, using Ultimate Addons for Contact form 7, within minutes. <a href="https://cf7addons.com/preview/star-rating/">Click Here</a> to check live preview.
+Add Star Rating fields to Contact Form 7. Star rating is the easiest and efficient way to get feedback from your customers on how good your product or service is. Good news! Now you can easily add a star rating to your Contact form 7, using Ultimate Addons for Contact form 7, within minutes. <a href="https://live.themefic.com/ultimate-cf7/star-rating/">Click Here</a> to check live preview.
 
 = Contact Form 7 Range Slider = 
 
-Add Range slider fields to Contact Form 7. Ultimate Addon's Range Slider for Contact form 7 helps you to easily setup field range in your contact form 7 for your WordPress site. <a href="https://cf7addons.com/preview/range-slider/">Click Here</a> to check live preview.
+Add Range slider fields to Contact Form 7. Ultimate Addon's Range Slider for Contact form 7 helps you to easily setup field range in your contact form 7 for your WordPress site. <a href="https://live.themefic.com/ultimate-cf7/range-slider/">Click Here</a> to check live preview.
 
 = Contact form 7 WooCommerce Product = 
 
-This features will help you to add WooCommerce Product Dropdown field on Contact Form 7. You can add all your product as a dropdown on your form, when user submits, you will get the data on your email. With this, your customer can easily do WooCommerce Product Enquiry with contact form 7. Note that, with free version you can add all products. If you need to add specific products and other options, check the features on Pro. <a href="https://cf7addons.com/preview/woocommerce/">Click Here</a> to check live preview.
+This features will help you to add WooCommerce Product Dropdown field on Contact Form 7. You can add all your product as a dropdown on your form, when user submits, you will get the data on your email. With this, your customer can easily do WooCommerce Product Enquiry with contact form 7. Note that, with free version you can add all products. If you need to add specific products and other options, check the features on Pro. <a href="https://live.themefic.com/ultimate-cf7/woocommerce/">Click Here</a> to check live preview.
 
 = Contact form 7 Style = 
 
-This features will help you to edit the following: Contact form 7 label color, label Background color, label font style, label font size, label font weight, label  font family, label padding, label margin; Contact Form 7 Input Color, Input Background Color, Input Font Style, Input Font Weight, Input Font Size, Input Font Family, Input Height, Input Padding, Input Margin; Contact form 7 button style, Contact form 7 button color, button background color, button font size, button font weight, button width, button border styles, button padding, button margin, Contact form 7 font size etc. <a href="https://cf7addons.com/preview/form-styling/">Click Here</a> to check live preview.
+This features will help you to edit the following: Contact form 7 label color, label Background color, label font style, label font size, label font weight, label  font family, label padding, label margin; Contact Form 7 Input Color, Input Background Color, Input Font Style, Input Font Weight, Input Font Size, Input Font Family, Input Height, Input Padding, Input Margin; Contact form 7 button style, Contact form 7 button color, button background color, button font size, button font weight, button width, button border styles, button padding, button margin, Contact form 7 font size etc. <a href="https://live.themefic.com/ultimate-cf7/form-styling/">Click Here</a> to check live preview.
 
 = Contact form 7 Custom css = 
 
@@ -113,47 +113,43 @@ The Pro version includes all the free features.
 
 = Conditional Redirection for Contact Form 7 = 
 
-This features will help you to redirect user to a specific page after submission based on condition. For example, if an user selects "Yes" from dropdown, they will be redirected to a Specific page, if they select "No", they will be redirected to another page. In short this is the Ultimate Conditional Redirect for Contact Form 7. <a href="https://cf7addons.com/preview/conditional-redirect/">Click Here</a> to check live preview.
+This features will help you to redirect user to a specific page after submission based on condition. For example, if an user selects "Yes" from dropdown, they will be redirected to a Specific page, if they select "No", they will be redirected to another page. In short this is the Ultimate Conditional Redirect for Contact Form 7. <a href="https://live.themefic.com/ultimate-cf7/conditional-redirect/">Click Here</a> to check live preview.
 
 = Custom Column Width for Contact Form 7 = 
 
-This features will help you to set the column of your form at your desired width. You can set any size of column. For example, you can create two columns form with one column width of 12% and other 88% and so on. <a href="https://cf7addons.com/preview/custom-columns-grid-layout/">Click Here</a> to check live preview.
+This features will help you to set the column of your form at your desired width. You can set any size of column. For example, you can create two columns form with one column width of 12% and other 88% and so on. <a href="https://live.themefic.com/ultimate-cf7/custom-columns-grid-layout/">Click Here</a> to check live preview.
 
 = Contact form 7 Repeater = 
 
-This features will help you to add Repeatable Fields to Contact Form 7. You can add all kinds of fields from text, files, checkboxes, radio buttons, textarea etc. <a href="https://cf7addons.com/preview/repeater-field/">Click Here</a> to check live preview.
-
-= Contact Form 7 Booking Form / Appointment Form = 
-
-This features will help you to create a booking form / Appointment Form using Contact Form 7. You can insert Calendar, Time on the form and manage your booking. <a href="https://cf7addons.com/preview/booking-form/">Click Here</a> to check live preview.
+This features will help you to add Repeatable Fields to Contact Form 7. You can add all kinds of fields from text, files, checkboxes, radio buttons, textarea etc. <a href="https://live.themefic.com/ultimate-cf7/repeater-field/">Click Here</a> to check live preview.
 
 = Contact form 7 WooCommerce Checkout =
 
-Ultimate Addons for Contact form 7 Pro version gives you the power to add WooCommerce Checkout to your Contact form 7 forms. Once customer choose your product and submits the form, they will be redirected to the cart page with the product added to the cart. They can then proceed to checkout and complete WooCommerce Payment. However, note that, this option is not applicable to variable and grouped product (We are looking for a solution to add this in future versions). <a href="https://cf7addons.com/preview/woocommerce-checkout/">Click Here</a> to check live preview.
+Ultimate Addons for Contact form 7 Pro version gives you the power to add WooCommerce Checkout to your Contact form 7 forms. Once customer choose your product and submits the form, they will be redirected to the cart page with the product added to the cart. They can then proceed to checkout and complete WooCommerce Payment. However, note that, this option is not applicable to variable and grouped product (We are looking for a solution to add this in future versions). <a href="https://live.themefic.com/ultimate-cf7/woocommerce-checkout/">Click Here</a> to check live preview.
 
 = Contact form 7 Frontend Post Submission =
 
-Create a post submission form with Contact Form 7. Each forms submitted from your website will be published as a new post which you can manage in your dashboard and display on the front end. You can add title, description, category, featured image by default. With the power of "Custom Field", you can connect with any custom field with this form. <a href="https://cf7addons.com/preview/post-submission/">Click Here</a> to check live preview.
+Create a post submission form with Contact Form 7. Each forms submitted from your website will be published as a new post which you can manage in your dashboard and display on the front end. You can add title, description, category, featured image by default. With the power of "Custom Field", you can connect with any custom field with this form. <a href="https://live.themefic.com/ultimate-cf7/post-submission/">Click Here</a> to check live preview.
 
 = Contact form 7 to custom post type =
 
-Easily process a contact form from contact form 7 into a custom post type. <a href="https://cf7addons.com/preview/post-submission/">Click Here</a> to check live preview.
+Easily process a contact form from contact form 7 into a custom post type. <a href="https://live.themefic.com/ultimate-cf7/post-submission/">Click Here</a> to check live preview.
 
 = Contact Form 7 Star Rating Field (Pro) =
 
-While the free version has 1 Star Field, with Pro, you will get 5 Built in Rating Styles. If you don't like them, no worries. The pro version gives you the ability to add any icon from Font Awesome and add them. <a href="https://cf7addons.com/preview/star-rating-pro/">Click Here</a> to check live preview.
+While the free version has 1 Star Field, with Pro, you will get 5 Built in Rating Styles. If you don't like them, no worries. The pro version gives you the ability to add any icon from Font Awesome and add them. <a href="https://live.themefic.com/ultimate-cf7/star-rating-pro/">Click Here</a> to check live preview.
 
 = Choose Specific WooCommerce Product =
 
-The pro version gives you the ability to add specific WooCommerce Product Dropdown on your Contact Form 7 forms. You can add the Products based on Product ID. <a href="https://cf7addons.com/preview/woocommerce-product-dropdown/">Click Here</a> to check live preview.
+The pro version gives you the ability to add specific WooCommerce Product Dropdown on your Contact Form 7 forms. You can add the Products based on Product ID. <a href="https://live.themefic.com/ultimate-cf7/woocommerce-product-dropdown/">Click Here</a> to check live preview.
 
 = Choose Multiple WooCommerce Product =
 
-Want the ability to let your customer choose Multiple WooCommerce Product on your Contact Form 7 forms? Good news, this is also available on our Pro version. <a href="https://cf7addons.com/preview/multiple-product/">Click Here</a> to check live preview.
+Want the ability to let your customer choose Multiple WooCommerce Product on your Contact Form 7 forms? Good news, this is also available on our Pro version. <a href="https://live.themefic.com/ultimate-cf7/multiple-product/">Click Here</a> to check live preview.
 
 = Contact form 7 Categorize WooCommerce Product =
 
-With Pro, you can also show product based on WooCommerce Category. <a href="https://cf7addons.com/preview/categorized-product/">Click Here</a> to check live preview.
+With Pro, you can also show product based on WooCommerce Category. <a href="https://live.themefic.com/ultimate-cf7/categorized-product/">Click Here</a> to check live preview.
 
 = Multi-step Button Editing =
 
@@ -246,6 +242,7 @@ Just install our Plugin. It will only take 5 mins to create such a form.</a>.
 
 =  =
 
+
 == Screenshots ==
 
 1. Settings Panel
@@ -262,21 +259,6 @@ Just install our Plugin. It will only take 5 mins to create such a form.</a>.
 12. Multi-Step Form Backend (Pro)
 
 == Changelog ==
-
-= 1.8.1 - 7/1/2022 =
-
-– Updated: Preview URL of the Plugin
-– Compatiblity Check: WordPress 5.8.3
-
-= 1.8.0 - 5/1/2022 =
-
-– Fixed: CF7 Addon Dashboard Major Bug (Updated recommend)
-– Introducing: New Pro Addon - Booking/Appointment Form
-
-= 1.7.4 - 2/1/2022 =
-
-– WooCommerce 6.0 Compatiblity Check
-– Contact Form 7 5.5.3 Compatiblity Check
 
 = 1.7.3 - 13/12/2021 =
 

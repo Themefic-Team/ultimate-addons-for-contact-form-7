@@ -5,12 +5,14 @@
             allWells = $('.uacf7-step'),
             allNextBtn = $('.uacf7-next'),
             allPrevBtn = $('.uacf7-prev');
+            allStepTitle = $('.step-title');
 
         allWells.hide();
 
         navListItems.click(function (e) {
             e.preventDefault();
             var $target = $($(this).attr('href')),
+                title = $($(this).attr('title-id')),
                 $item = $(this);
 
             if (!$item.hasClass('disabled')) {
@@ -18,6 +20,8 @@
                 $item.addClass('uacf7-btn-active');
                 allWells.hide();
                 $target.show();
+                allStepTitle.hide();
+                title.show();
                 $target.find('input:eq(0)').focus();
             }
         });
