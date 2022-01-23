@@ -133,14 +133,6 @@ class UACF7_Admin_Menu {
 			'ultimate-addons-admin', // page
 			'uacf7_setting_section' // section
 		);
-		
-		add_settings_field(
-			'uacf7_enable_booking_form', // id
-			__( 'Enable Booking/Appointment Form', 'ultimate-addons-cf7' ), // title
-			array( $this, 'uacf7_enable_booking_form_callback' ), // callback
-			'ultimate-addons-admin', // page
-			'uacf7_setting_section' // section
-		);
         
         add_settings_field(
 			'uacf7_enable_post_submission', // id
@@ -239,14 +231,6 @@ class UACF7_Admin_Menu {
         if ( isset( $input['uacf7_enable_multistep'] ) ) {
 			$sanitary_values['uacf7_enable_multistep'] = $input['uacf7_enable_multistep'];
 		}
-		
-		if ( isset( $input['uacf7_enable_booking_form'] ) ) {
-			$sanitary_values['uacf7_enable_booking_form'] = $input['uacf7_enable_booking_form'];
-		}
-		
-		if ( isset( $input['uacf7_enable_post_submission'] ) ) {
-			$sanitary_values['uacf7_enable_post_submission'] = $input['uacf7_enable_post_submission'];
-		}
         
         if ( isset( $input['uacf7_enable_product_dropdown'] ) ) {
 			$sanitary_values['uacf7_enable_product_dropdown'] = $input['uacf7_enable_product_dropdown'];
@@ -334,22 +318,13 @@ class UACF7_Admin_Menu {
 			'<input type="checkbox" name="uacf7_option_name[uacf7_enable_multistep]" id="uacf7_enable_multistep" %s>', uacf7_checked('uacf7_enable_multistep')
 		);
 	}
-	
-	/*
-    * Field - Enable Booking/Appointment Form
-    */
-    public function uacf7_enable_booking_form_callback() {
-		printf(
-			'<input type="checkbox" name="uacf7_option_name[uacf7_enable_booking_form]" id="uacf7_enable_booking_form" %s> <span class="uacf7-post-sub-pro-link"><a style="color:red" target="_blank" href="https://cf7addons.com/preview/booking-form">(Pro)</a></span>', uacf7_checked('uacf7_enable_booking_form')
-		);
-	}
     
     /*
     * Field - Enable post submission
     */
     public function uacf7_enable_post_submission_callback() {
 		printf(
-			'<input type="checkbox" name="uacf7_option_name[uacf7_enable_post_submission]" id="uacf7_enable_post_submission" %s> <span class="uacf7-post-sub-pro-link"><a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a></span>', uacf7_checked('uacf7_enable_post_submission')
+			'<input type="checkbox" name="uacf7_option_name[uacf7_enable_post_submission]" id="uacf7_enable_post_submission" %s> <span class="uacf7-post-sub-pro-link"><a style="color:red" target="_blank" href="https://live.themefic.com/ultimate-cf7/pro">(Pro)</a></span>', uacf7_checked('uacf7_enable_post_submission')
 		);
 	}
     
@@ -376,7 +351,7 @@ class UACF7_Admin_Menu {
     */
     public function uacf7_enable_product_auto_cart_callback(){
         printf(
-			'<input type="checkbox" name="uacf7_option_name[uacf7_enable_product_auto_cart]" id="uacf7_enable_product_auto_cart" %s> <span class="uacf7-pro-link"><a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a></span>', uacf7_checked('uacf7_enable_product_auto_cart')
+			'<input type="checkbox" name="uacf7_option_name[uacf7_enable_product_auto_cart]" id="uacf7_enable_product_auto_cart" %s> <span class="uacf7-pro-link"><a style="color:red" target="_blank" href="https://live.themefic.com/ultimate-cf7/pro">(Pro)</a></span>', uacf7_checked('uacf7_enable_product_auto_cart')
 		);
     }
 
@@ -394,7 +369,7 @@ class UACF7_Admin_Menu {
 	 */
 	public function uacf7_repeater_field_callback(){
 		printf(
-			'<input type="checkbox" name="uacf7_option_name[uacf7_enable_repeater_field]" id="uacf7_enable_repeater_field" %s> <span class="uacf7-repeater-field"><a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a></span>', uacf7_checked('uacf7_enable_repeater_field')
+			'<input type="checkbox" name="uacf7_option_name[uacf7_enable_repeater_field]" id="uacf7_enable_repeater_field" %s> <span class="uacf7-repeater-field"><a style="color:red" target="_blank" href="https://live.themefic.com/ultimate-cf7/pro">(Pro)</a></span>', uacf7_checked('uacf7_enable_repeater_field')
 		);
 	}
 

@@ -34,7 +34,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ){
     $step_count = 1;
     foreach( $all_steps as $step ) {
         ?>
-        <h3><strong>Step <?php echo $step_count; ?> <a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a></strong></h3>
+        <h3><strong>Step <?php echo $step_count; ?> <a style="color:red" target="_blank" href="https://live.themefic.com/ultimate-cf7/pro">(Pro)</a></strong></h3>
         <?php
         if( $step_count == 1 ){
             ?>
@@ -176,16 +176,4 @@ function uacf7_tg_pane_repeater_pro( $contact_form, $args = '' ) {
     <?php
 }
 
-//Add wrapper to contact form 7
-add_filter( 'wpcf7_contact_form_properties', 'uacf7_add_wrapper_to_cf7_form', 10, 2 );
-function uacf7_add_wrapper_to_cf7_form($properties, $cfform) {
-    if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) {
-    
-        $form = $properties['form'];
-        ob_start();
-        echo '<div class="uacf7-form-'.$cfform->id().'">'.$form.'</div>';
-        $properties['form'] = ob_get_clean();
-        
-    }
-	return $properties;
-}
+

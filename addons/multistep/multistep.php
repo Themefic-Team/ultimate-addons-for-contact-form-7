@@ -164,7 +164,7 @@ class UACF7_MULTISTEP {
                            <input id="uacf7_multistep_is_multistep" type="checkbox" name="uacf7_multistep_is_multistep" <?php checked( 'on', $uacf7_is_multistep ); ?>> Yes
                        </label>
                    </div>
-                   <?php if( !empty(array_filter($all_steps)) ) { ?>
+                   <?php if( empty(array_filter($all_steps)) ) return; ?>
                    
                    <div class="multistep_fields_row">
                        <h3>Multistep Progressbar</h3>
@@ -231,7 +231,6 @@ class UACF7_MULTISTEP {
                    
                    <?php                    
                     echo do_action( 'uacf7_multistep_pro_features', $all_steps, $post->id() );
-	}
                    ?>
                    
                </div>
@@ -329,7 +328,7 @@ class UACF7_MULTISTEP {
                     foreach ($all_steps as $step) {
                         $content = $step;
                         ?>
-                        <div class="steps-step"><a href="#step-<?php echo esc_attr($step_id); ?>" type="button" class="btn <?php if( $step_id == 1 ) { echo esc_attr('uacf7-btn-active'); }else{ echo esc_attr('uacf7-btn-default'); } ?> btn-circle"><?php 
+                        <div class="steps-step"><a href="#step-<?php echo esc_attr($step_id); ?>" type="button" class="btn <?php if( $step_id == 1 ) { echo esc_attr('uacf7-btn-active'); }else{ echo esc_attr('uacf7-btn-default'); } ?> btn-circle" title-id="step-<?php echo esc_attr($step_id); ?>"><?php 
 						if(is_array($step_name)) {
 							do_action( 'uacf7_progressbar_image', $step_name[$step_count] );
 						}

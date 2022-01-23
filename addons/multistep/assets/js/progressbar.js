@@ -11,6 +11,7 @@
         navListItems.click(function (e) {
             e.preventDefault();
             var $target = $($(this).attr('href')),
+            var title = $($(this).attr('title-id')),
                 $item = $(this);
 
             if (!$item.hasClass('disabled')) {
@@ -18,6 +19,7 @@
                 $item.addClass('uacf7-btn-active');
                 allWells.hide();
                 $target.show();
+                title.show();
                 $target.find('input:eq(0)').focus();
             }
         });
