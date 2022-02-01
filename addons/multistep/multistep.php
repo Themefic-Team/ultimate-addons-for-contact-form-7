@@ -49,7 +49,7 @@ class UACF7_MULTISTEP {
         <p>
         	<button class="uacf7-prev"><?php echo esc_html__('Previous', 'ultimate-addons-cf7'); ?></button>
 			<button class="uacf7-next"><?php echo esc_html__('Next', 'ultimate-addons-cf7'); ?></button>
-			<span class="ajax-loader uacf7-ajax-loader"></span>
+			<span class="wpcf7-spinner uacf7-ajax-loader"></span>
         </p>
         </div>
         <?php
@@ -71,7 +71,7 @@ class UACF7_MULTISTEP {
 				$step_name = get_post_meta( $form_current->id(), 'uacf7_multistep_steps_names', true );
 				
 				$uacf7_multistep_use_step_labels = !empty(get_post_meta( $form_current->id(), 'uacf7_multistep_use_step_labels', true )) ? get_post_meta( $form_current->id(), 'uacf7_multistep_use_step_labels', true ) : ''; 
-		
+		        
 				foreach ($all_steps as $step) {
 					$content = $step;
 					?>
@@ -217,7 +217,12 @@ class UACF7_MULTISTEP {
                        <select name="uacf7_progressbar_style" id="uacf7_progressbar_style">
                        		<option value="default" <?php selected( $uacf7_progressbar_style, 'default', true ); ?>>Default</option>
                        		<option value="style-1" <?php selected( $uacf7_progressbar_style, 'style-1', true ); ?>>Style 1</option>
-                       		<option value="style-2" <?php selected( $uacf7_progressbar_style, 'style-2', true ); ?>>Style 2</option>
+                       		<?php 
+                       		$option  = '<option>Style 2(Pro)</option>'; 
+                       		$option .= '<option>Style 3(Pro)</option>';
+                       		$option .= '<option>Style 4(Pro)</option>';
+                       		?>
+                       		<?php echo apply_filters( 'uacf7_multistep_progressbar_style', $option, $uacf7_progressbar_style ); ?>
                        </select>
                    </div>
                    
@@ -369,7 +374,7 @@ class UACF7_MULTISTEP {
                     foreach ($all_steps as $step) {
                         $content = $step;
                         ?>
-                        <div class="steps-step"><a href="#step-<?php echo esc_attr($step_id); ?>" type="button"></a></div>
+                        <div class="steps-step"><a title-id=".step-<?php echo esc_attr($step_id); ?>" href="#step-<?php echo esc_attr($step_id); ?>" type="button"></a></div>
                         <?php
                         $step_id++;
                         $step_count++;
@@ -408,11 +413,7 @@ class UACF7_MULTISTEP {
 							}
 						}else {
 							echo esc_attr($step_id);
-						}
-						
-                        //echo apply_filters( 'uacf7_progressbar_step', esc_attr($step_id), $uacf7_multistep_use_step_labels, $content, $cfform->id() );
-							
-						?></a><p><?php if( $uacf7_multistep_use_step_labels != 'on' ) { echo $content; } ?></p></div>
+						} ?></a><?php if( $uacf7_multistep_use_step_labels != 'on' ) { echo '<p>'.$content.'</p>'; } ?></div>
                         <?php
                         $step_id++;
                         $step_count++;
