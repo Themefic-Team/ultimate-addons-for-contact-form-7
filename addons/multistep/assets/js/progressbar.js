@@ -1,7 +1,7 @@
 (function ($) {
 
     $(document).ready(function () {
-        var navListItems  = $('div.setup-panel div a'),
+        var navListItems  = $('.uacf7-steps div.setup-panel div a'),
             allWells      = $('.uacf7-step'),
             allNextBtn    = $('.uacf7-next'),
             allPrevBtn    = $('.uacf7-prev'),

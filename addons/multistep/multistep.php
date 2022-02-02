@@ -221,6 +221,7 @@ class UACF7_MULTISTEP {
                        		$option  = '<option>Style 2(Pro)</option>'; 
                        		$option .= '<option>Style 3(Pro)</option>';
                        		$option .= '<option>Style 4(Pro)</option>';
+                       		$option .= '<option>Style 5(Pro)</option>';
                        		?>
                        		<?php echo apply_filters( 'uacf7_multistep_progressbar_style', $option, $uacf7_progressbar_style ); ?>
                        </select>
@@ -413,7 +414,7 @@ class UACF7_MULTISTEP {
 							}
 						}else {
 							echo esc_attr($step_id);
-						} ?></a><?php if( $uacf7_multistep_use_step_labels != 'on' ) { echo '<p>'.$content.'</p>'; } ?></div>
+						} ?></a><?php if( $uacf7_multistep_use_step_labels != 'on' && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' ) { echo '<p>'.$content.'</p>'; } ?></div>
                         <?php
                         $step_id++;
                         $step_count++;
