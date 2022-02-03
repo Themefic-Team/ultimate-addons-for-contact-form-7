@@ -29,7 +29,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ){
     
     if( empty(array_filter($all_steps)) ) return;
     ?>
-    <div class="multistep_fields_row">
+    <div class="multistep_fields_row" style="display: flex; flex-direction: column;">
     <?php
     $step_count = 1;
     foreach( $all_steps as $step ) {
@@ -74,6 +74,18 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ){
         <div class="uacf7_multistep_progressbar_image_row">
            <p><label for="<?php echo esc_attr('uacf7_progressbar_image_'.$step->name); ?>">Add pregressbar image for this step</label></p>
            <input class="uacf7_multistep_progressbar_image" id="<?php echo esc_attr('uacf7_progressbar_image_'.$step->name); ?>" type="url" name="" value=""> <a class="button-primary" href="#">Add or Upload Image</a>
+           
+           <div class="multistep_fields_row-">
+                <div class="multistep_field_column">
+                   <p><label for="<?php echo 'step_desc_'.$step->name; ?>">Step description</label></p>
+                   <textarea id="<?php echo 'step_desc_'.$step->name; ?>" type="text" name="" cols="40" rows="3" placeholder="<?php echo esc_html__('Step description','ultimate-addons-cf7-pro') ?>"></textarea>
+                </div>
+    
+                <div class="multistep_field_column">
+                   <p><label for="<?php echo 'desc_title_'.$step->name; ?>">Description title</label></p>
+                   <input id="<?php echo 'desc_title_'.$step->name; ?>" type="text" name="" value="" placeholder="<?php echo esc_html__('Description title','ultimate-addons-cf7-pro') ?>">
+                </div>
+            </div>
         </div>
         <?php
         $step_count++;

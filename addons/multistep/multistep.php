@@ -222,6 +222,7 @@ class UACF7_MULTISTEP {
                        		$option .= '<option>Style 3(Pro)</option>';
                        		$option .= '<option>Style 4(Pro)</option>';
                        		$option .= '<option>Style 5(Pro)</option>';
+                       		$option .= '<option>Style 6(Pro)</option>';
                        		?>
                        		<?php echo apply_filters( 'uacf7_multistep_progressbar_style', $option, $uacf7_progressbar_style ); ?>
                        </select>
