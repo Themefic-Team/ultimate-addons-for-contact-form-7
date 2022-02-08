@@ -212,7 +212,7 @@ class UACF7_MULTISTEP {
                    
                    <!--Pro style-->
                    <?php $uacf7_progressbar_style = get_post_meta( $post->id(), 'uacf7_progressbar_style', true ); ?>
-                   <div class="multistep_fields_row">
+                   <div class="multistep_fields_row style-fields">
                        <h3>Progressbar Style</h3>
                        <select name="uacf7_progressbar_style" id="uacf7_progressbar_style">
                        		<option value="default" <?php selected( $uacf7_progressbar_style, 'default', true ); ?>>Default</option>
@@ -246,6 +246,12 @@ class UACF7_MULTISTEP {
 					$uacf7_multistep_circle_font_color = get_post_meta( $post->id(), 'uacf7_multistep_circle_font_color', true ); 
 					$uacf7_multistep_circle_border_radious = get_post_meta( $post->id(), 'uacf7_multistep_circle_border_radious', true ); 
 					$uacf7_multistep_font_size = get_post_meta( $post->id(), 'uacf7_multistep_font_size', true ); 
+					$uacf7_multistep_progress_bg_color = get_post_meta( $post->id(), 'uacf7_multistep_progress_bg_color', true );
+					$uacf7_multistep_progress_line_color = get_post_meta( $post->id(), 'uacf7_multistep_progress_line_color', true );
+					$uacf7_multistep_step_description_color = get_post_meta( $post->id(), 'uacf7_multistep_step_description_color', true );
+					$uacf7_multistep_step_title_color = get_post_meta( $post->id(), 'uacf7_multistep_step_title_color', true );
+					$uacf7_multistep_circle_active_color = get_post_meta( $post->id(), 'uacf7_multistep_circle_active_color', true );
+					$uacf7_multistep_progressbar_title_color = get_post_meta( $post->id(), 'uacf7_multistep_progressbar_title_color', true );
 					?>
 					<div class="multistep_fields_row">
 						<h3>Progressbar Style</h3>
@@ -267,6 +273,10 @@ class UACF7_MULTISTEP {
 							<input id="uacf7_multistep_circle_bg_color" class="uacf7-color-picker" type="text" name="uacf7_multistep_circle_bg_color" value="<?php echo esc_attr($uacf7_multistep_circle_bg_color); ?>">
 						</div>
 						<div class="multistep_field_column">
+							<label for="uacf7_multistep_circle_active_color"><p>Circle Active Color</p></label>
+							<input id="uacf7_multistep_circle_active_color" class="uacf7-color-picker" type="text" name="uacf7_multistep_circle_active_color" value="<?php echo esc_attr($uacf7_multistep_circle_active_color); ?>">
+						</div>
+						<div class="multistep_field_column">
 							<label for="uacf7_multistep_circle_font_color"><p>Circle Font Color</p></label>
 							<input id="uacf7_multistep_circle_font_color" class="uacf7-color-picker" type="text" name="uacf7_multistep_circle_font_color" value="<?php echo esc_attr($uacf7_multistep_circle_font_color); ?>">
 						</div>
@@ -281,6 +291,26 @@ class UACF7_MULTISTEP {
 								<p>Font Size (px)</p>
 								<input id="uacf7_multistep_font_size" type="number" name="uacf7_multistep_font_size" min="0" value="<?php echo esc_attr($uacf7_multistep_font_size); ?>">
 							</label>
+						</div>
+						<div class="multistep_field_column">
+							<label for="uacf7_multistep_progress_bg_color"><p>Progressbar Background Color</p></label>
+							<input id="uacf7_multistep_progress_bg_color" class="uacf7-color-picker" type="text" name="uacf7_multistep_progress_bg_color" value="<?php echo esc_attr($uacf7_multistep_progress_bg_color); ?>">
+						</div>
+						<div class="multistep_field_column">
+							<label for="uacf7_multistep_progress_line_color"><p>Progressbar Line Color</p></label>
+							<input id="uacf7_multistep_progress_line_color" class="uacf7-color-picker" type="text" name="uacf7_multistep_progress_line_color" value="<?php echo esc_attr($uacf7_multistep_progress_line_color); ?>">
+						</div>
+						<div class="multistep_field_column">
+							<label for="uacf7_multistep_step_title_color"><p>Step Title Color</p></label>
+							<input id="uacf7_multistep_step_title_color" class="uacf7-color-picker" type="text" name="uacf7_multistep_step_title_color" value="<?php echo esc_attr($uacf7_multistep_step_title_color); ?>">
+						</div>
+						<div class="multistep_field_column">
+							<label for="uacf7_multistep_progressbar_title_color"><p>Progressbar Title Color</p></label>
+							<input id="uacf7_multistep_progressbar_title_color" class="uacf7-color-picker" type="text" name="uacf7_multistep_progressbar_title_color" value="<?php echo esc_attr($uacf7_multistep_progressbar_title_color); ?>">
+						</div>
+						<div class="multistep_field_column">
+							<label for="uacf7_multistep_step_description_color"><p>Progressbar Description Color</p></label>
+							<input id="uacf7_multistep_step_description_color" class="uacf7-color-picker" type="text" name="uacf7_multistep_step_description_color" value="<?php echo esc_attr($uacf7_multistep_step_description_color); ?>">
 						</div>
 					</div>
                    
@@ -341,6 +371,18 @@ class UACF7_MULTISTEP {
 		update_post_meta( $form->id(), 'uacf7_multistep_circle_border_radious', sanitize_text_field($_POST['uacf7_multistep_circle_border_radious']) );
 
 		update_post_meta( $form->id(), 'uacf7_multistep_font_size', sanitize_text_field($_POST['uacf7_multistep_font_size']) );
+		
+		update_post_meta( $form->id(), 'uacf7_multistep_progress_bg_color', sanitize_text_field($_POST['uacf7_multistep_progress_bg_color']) );
+		
+		update_post_meta( $form->id(), 'uacf7_multistep_progress_line_color', sanitize_text_field($_POST['uacf7_multistep_progress_line_color']) );
+		
+		update_post_meta( $form->id(), 'uacf7_multistep_step_title_color', sanitize_text_field($_POST['uacf7_multistep_step_title_color']) );
+		
+		update_post_meta( $form->id(), 'uacf7_multistep_step_description_color', sanitize_text_field($_POST['uacf7_multistep_step_description_color']) );
+		
+		update_post_meta( $form->id(), 'uacf7_multistep_circle_active_color', sanitize_text_field($_POST['uacf7_multistep_circle_active_color']) );
+		
+		update_post_meta( $form->id(), 'uacf7_multistep_progressbar_title_color', sanitize_text_field($_POST['uacf7_multistep_progressbar_title_color']) );
 		
     }
     

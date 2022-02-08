@@ -106,6 +106,8 @@ function uacf7_multistep_progressbar_style( $form_id ) {
     $uacf7_multistep_circle_font_color = get_post_meta( $form_id, 'uacf7_multistep_circle_font_color', true ); 
     $uacf7_multistep_circle_border_radious = get_post_meta( $form_id, 'uacf7_multistep_circle_border_radious', true ); 
     $uacf7_multistep_font_size = get_post_meta( $form_id, 'uacf7_multistep_font_size', true ); 
+    $uacf7_multistep_circle_active_color = get_post_meta( $form_id, 'uacf7_multistep_circle_active_color', true );
+    $uacf7_multistep_progress_line_color = get_post_meta( $form_id, 'uacf7_multistep_progress_line_color', true );
     ?>
     <style>
     .steps-form .steps-row .steps-step .btn-circle {
@@ -124,7 +126,7 @@ function uacf7_multistep_progressbar_style( $form_id ) {
     .steps-form .steps-row .steps-step .btn-circle:hover,
     .steps-form .steps-row .steps-step .btn-circle:focus,
     .steps-form .steps-row .steps-step .btn-circle:active{
-        <?php if(!empty($uacf7_multistep_circle_bg_color)) echo 'background-color: '.esc_attr($uacf7_multistep_circle_bg_color).' !important;'; ?>
+        <?php if(!empty($uacf7_multistep_circle_active_color)) echo 'background-color: '.esc_attr($uacf7_multistep_circle_active_color).' !important;'; ?>
         <?php if(!empty($uacf7_multistep_circle_font_color)) echo 'color: '.esc_attr($uacf7_multistep_circle_font_color).';'; ?>
     }
     .steps-form .steps-row .steps-step p {
@@ -133,6 +135,11 @@ function uacf7_multistep_progressbar_style( $form_id ) {
     .steps-form .steps-row::before {
         <?php if(!empty($uacf7_multistep_circle_height)) echo 'top: '.esc_attr($uacf7_multistep_circle_height / 2).'px;'; ?>
     }
+    <?php if(!empty($uacf7_multistep_progress_line_color)): ?>
+    .steps-form .steps-row::before {
+    	background-color: <?php echo esc_attr($uacf7_multistep_progress_line_color); ?>;
+    }
+    <?php endif; ?>
     </style>
     <?php
 }
