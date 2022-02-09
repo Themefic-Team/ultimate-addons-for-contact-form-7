@@ -49,8 +49,13 @@
     padding-top: 20px;
     clear: both;
 }
-.multistep_field_column.style-fields {
+.col-25 .multistep_field_column {
     width: 25%;
+    float: left;
+    display: inline-block
+}
+.col-50 .multistep_field_column {
+    width: 50%;
     float: left;
     display: inline-block
 }
