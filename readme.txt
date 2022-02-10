@@ -1,10 +1,10 @@
-=== Ultimate Addons for Contact Form 7 ===
+﻿=== Ultimate Addons for Contact Form 7 ===
 Contributors: themefic, raihan143, hasanet
 Tags: contact form 7, contact form 7 addons, contact form 7 addon, contact form 7 booking form, contact form 7 appointment form, contact form 7 placeholder, contact form 7 conditional fields, redirection for contact form 7, contact form 7 thank you page, contact form 7 columns, contact form 7 style, contact form 7 woocommerce, contact form 7 woocommerce product, multi step contact form 7, multi-step contact form, multi step form, post submission contact form 7, form to post contact form 7, contact form 7 to post, custom post contact form 7, contact form 7 custom post type, contact form 7 post submit, caldera forms, Star Rating, Star Rating contact form 7, range slider, range slider contact form 7, contact form 7 conditional redirect, contact form 7 column width, contact form 7 repeater, contact form 7 repeatable fields
 Requires at least: 4.2
 Tested up to: 5.9
 Requires PHP: 5.4
-Stable tag: 1.8.4
+Stable tag: 1.8.5
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -262,6 +262,10 @@ Just install our Plugin. It will only take 5 mins to create such a form.</a>.
 12. Multi-Step Form Backend (Pro)
 
 == Changelog ==
+
+= 1.8.5 - 09/02/2022 =
+
+- Fixed an error
 
 = 1.8.4 - 1/1/2022 =
 

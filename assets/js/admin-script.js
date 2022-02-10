@@ -52,4 +52,10 @@ function uacf7_progressbar_style(){
     }else{
         jQuery('.multistep_field_column.show-if-style-6').hide();
     }
+    
+    if( jQuery('#uacf7_progressbar_style').val() == 'style-6' ){
+        jQuery('.step-title-description').show();
+    }else{
+        jQuery('.step-title-description').hide();
+    }
 }

@@ -59,3 +59,8 @@
     float: left;
     display: inline-block
 }
+.show-if-left-progressbar button,
+.show-if-style-6 button,
+.show-if-pro button {
+    pointer-events: none
+}
