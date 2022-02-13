@@ -252,6 +252,7 @@ class UACF7_MULTISTEP {
 					$uacf7_multistep_step_title_color = get_post_meta( $post->id(), 'uacf7_multistep_step_title_color', true );
 					$uacf7_multistep_circle_active_color = get_post_meta( $post->id(), 'uacf7_multistep_circle_active_color', true );
 					$uacf7_multistep_progressbar_title_color = get_post_meta( $post->id(), 'uacf7_multistep_progressbar_title_color', true );
+					$uacf7_multistep_step_height = get_post_meta( $post->id(), 'uacf7_multistep_step_height', true );
 					?>
 					<div class="multistep_fields_row col-25">
 						<h3>Progressbar Style</h3>
@@ -311,6 +312,13 @@ class UACF7_MULTISTEP {
 						<div class="multistep_field_column show-if-style-6">
 							<label for="uacf7_multistep_step_description_color"><p>Progressbar Description Color</p></label>
 							<input id="uacf7_multistep_step_description_color" class="uacf7-color-picker" type="text" name="uacf7_multistep_step_description_color" value="<?php echo esc_attr($uacf7_multistep_step_description_color); ?>">
+						</div>
+						<div class="multistep_field_column show-if-left-progressbar">
+							<label for="uacf7_multistep_step_height"><p>Progressbar Height</p></label>
+							<select id="uacf7_multistep_step_height" name="uacf7_multistep_step_height">
+							    <option value="default" <?php selected( $uacf7_multistep_step_height, 'default', true ); ?>>Default</option>
+							    <option value="equal-height" <?php selected( $uacf7_multistep_step_height, 'equal-height', true ); ?>>Equal height</option>
+							</select>
 						</div>
 					</div>
                    
@@ -384,6 +392,8 @@ class UACF7_MULTISTEP {
 		
 		update_post_meta( $form->id(), 'uacf7_multistep_progressbar_title_color', sanitize_text_field($_POST['uacf7_multistep_progressbar_title_color']) );
 		
+		update_post_meta( $form->id(), 'uacf7_multistep_step_height', sanitize_text_field($_POST['uacf7_multistep_step_height']) );
+		
     }
     
     /*
@@ -408,22 +418,24 @@ class UACF7_MULTISTEP {
 			$uacf7_multistep_use_step_labels = !empty(get_post_meta( $cfform->id(), 'uacf7_multistep_use_step_labels', true )) ? get_post_meta( $cfform->id(), 'uacf7_multistep_use_step_labels', true ) : ''; 
 			
 			?>
-            <div class="steps-row setup-panel" style="display:none">
-                <?php
-                    $step_id = 1;
-                    $step_count = 0;
-            
-                    $step_name = get_post_meta( $cfform->id(), 'uacf7_multistep_steps_names', true );
-            		
-                    foreach ($all_steps as $step) {
-                        $content = $step;
-                        ?>
-                        <div class="steps-step"><a title-id=".step-<?php echo esc_attr($step_id); ?>" href="#step-<?php echo esc_attr($step_id); ?>" type="button"></a></div>
-                        <?php
-                        $step_id++;
-                        $step_count++;
-                    }
-                ?>
+			<div class="uacf7-steps steps-form" style="display:none">
+                <div class="steps-row setup-panel">
+                    <?php
+                        $step_id = 1;
+                        $step_count = 0;
+                
+                        $step_name = get_post_meta( $cfform->id(), 'uacf7_multistep_steps_names', true );
+                		
+                        foreach ($all_steps as $step) {
+                            $content = $step;
+                            ?>
+                            <div class="steps-step"><a title-id=".step-<?php echo esc_attr($step_id); ?>" href="#step-<?php echo esc_attr($step_id); ?>" type="button"></a></div>
+                            <?php
+                            $step_id++;
+                            $step_count++;
+                        }
+                    ?>
+                </div>
             </div>
             <?php
 			

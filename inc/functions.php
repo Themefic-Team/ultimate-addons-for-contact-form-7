@@ -48,7 +48,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ){
             if( count($all_steps) == $step_count ) {
                 ?>
                 <div>
-                   <p><label for="<?php echo 'prev_btn_'.$step->name; ?>">Change previus button text for this Step</label></p>
+                   <p><label for="<?php echo 'prev_btn_'.$step->name; ?>">Change previous button text for this Step</label></p>
                    <input id="<?php echo 'prev_btn_'.$step->name; ?>" type="text" name="" value="" placeholder="<?php echo esc_html__('Previous','ultimate-addons-cf7-pro') ?>">
                 </div>
                 <?php
@@ -57,7 +57,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ){
                 ?>
                 <div class="multistep_fields_row-">
                     <div class="multistep_field_column">
-                       <p><label for="<?php echo 'prev_btn_'.$step->name; ?>">Change previus button text for this Step</label></p>
+                       <p><label for="<?php echo 'prev_btn_'.$step->name; ?>">Change previous button text for this Step</label></p>
                        <input id="<?php echo 'prev_btn_'.$step->name; ?>" type="text" name="" value="" placeholder="<?php echo esc_html__('Previous','ultimate-addons-cf7-pro') ?>">
                     </div>
 
@@ -72,7 +72,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ){
         }
         ?>
         <div class="uacf7_multistep_progressbar_image_row">
-           <p><label for="<?php echo esc_attr('uacf7_progressbar_image_'.$step->name); ?>">Add pregressbar image for this step</label></p>
+           <p><label for="<?php echo esc_attr('uacf7_progressbar_image_'.$step->name); ?>">Add progressbar image for this step</label></p>
            <input class="uacf7_multistep_progressbar_image" id="<?php echo esc_attr('uacf7_progressbar_image_'.$step->name); ?>" type="url" name="" value=""> <a class="button-primary" href="#">Add or Upload Image</a>
            
            <div class="multistep_fields_row step-title-description col-50">
