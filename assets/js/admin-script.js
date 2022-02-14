@@ -1,3 +1,12 @@
+(function( $ ) {
+    $(function() {
+         
+        // Add Color Picker to all inputs that have 'color-field' class
+        $( '.uacf7-color-picker' ).wpColorPicker();
+         
+    });
+})( jQuery );
+
 function uacf7_settings_tab(evt, tabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("uacf7-tabcontent");

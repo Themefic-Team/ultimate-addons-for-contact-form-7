@@ -42,12 +42,13 @@
   border-top: none;
     background-color: #fff
 }
-
 .multistep_fields_row {
     width: 100%;
-    display: block;
-    padding-top: 20px;
-    clear: both;
+	display: inline-block;
+	padding: 15px 0 15px 15px;
+	background: #fff;
+	margin-top: 12px;
+	clear: both;
 }
 .col-25 .multistep_field_column {
     width: 25%;

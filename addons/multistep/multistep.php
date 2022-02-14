@@ -226,6 +226,7 @@ class UACF7_MULTISTEP {
                        		?>
                        		<?php echo apply_filters( 'uacf7_multistep_progressbar_style', $option, $uacf7_progressbar_style ); ?>
                        </select>
+                       <p><strong>See live demo examples here:</strong> <a target="_blank" href="https://cf7addons.com/preview/multi-step-form/pro/">Live demo</a></p>
                    </div>
                    
                    <?php
