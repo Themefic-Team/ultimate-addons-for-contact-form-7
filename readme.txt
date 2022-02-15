@@ -4,7 +4,7 @@ Tags: contact form 7, contact form 7 addons, contact form 7 addon, contact form 
 Requires at least: 4.2
 Tested up to: 5.9
 Requires PHP: 5.4
-Stable tag: 1.8.4
+Stable tag: 1.8.8
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -260,8 +260,30 @@ Just install our Plugin. It will only take 5 mins to create such a form.</a>.
 10. WooCommerce Product Dropdown (Free + Pro)
 11. WooCommerce Checkout (Pro)
 12. Multi-Step Form Backend (Pro)
+13. Star Rating Field
+14. Repeater Field
+15. Custom Column Width (Pro)
+16. Frontend Post Submission
+17. Conditional Redirect (Pro)
+18. Multistep Editor Panel
 
 == Changelog ==
+
+= 1.8.8 - 14/02/2022 =
+
+- Fixed multistep issue
+
+= 1.8.7 - 13/02/2022 =
+
+- Fixed an issue
+
+= 1.8.6 - 10/02/2022 =
+
+- Added multistep new skin
+
+= 1.8.5 - 09/02/2022 =
+
+- Fixed an error
 
 = 1.8.4 - 1/1/2022 =
 

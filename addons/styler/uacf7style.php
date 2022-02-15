@@ -21,8 +21,6 @@ class UACF7_uacf7style {
     
     public function enqueue_uacf7style_style() {
          wp_enqueue_style( 'uacf7-uacf7style', UACF7_ADDONS . '/styler/css/uacf7styler.css' );
-         wp_enqueue_style( 'wp-color-picker');
-         wp_enqueue_script( 'wp-color-picker');
          wp_enqueue_script( 'uacf7-uacf7style-script', UACF7_ADDONS . '/styler/js/custom.js', array('jquery', 'wp-color-picker' ), '', true );
          $cm_settings['codeEditor'] = wp_enqueue_code_editor(array('type' => 'text/css'));
          wp_localize_script('jquery', 'cm_settings', $cm_settings);

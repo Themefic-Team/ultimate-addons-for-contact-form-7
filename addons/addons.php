@@ -49,6 +49,9 @@ if( !function_exists( 'uacf7_addons_included' ) ) {
             require_once( 'range-slider/range-slider.php');
         }
 		
+		//Country dropdown
+		require_once( 'country-dropdown/country-dropdown.php');
+		
     }
 }
 
