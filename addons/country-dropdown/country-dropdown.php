@@ -21,9 +21,10 @@ class UACF7_COUNTRY_DROPDOWN {
     }
     
     public function wp_enqueue_script() {
-		wp_enqueue_style( 'uacf7-country-select-style', UACF7_ADDONS . '/country-dropdown/assets/css/countrySelect.min.css' );
+		wp_enqueue_style( 'uacf7-country-select-main', UACF7_ADDONS . '/country-dropdown/assets/css/countrySelect.min.css' );
+		wp_enqueue_style( 'uacf7-country-select-style', UACF7_ADDONS . '/country-dropdown/assets/css/style.css' );
 		
-		wp_enqueue_script( 'uacf7-country-select-script', UACF7_ADDONS . '/country-dropdown/assets/js/countrySelect.min.js', array('jquery'), null );
+		wp_enqueue_script( 'uacf7-country-select-script', UACF7_ADDONS . '/country-dropdown/assets/js/countrySelect.js', array('jquery'), null );
     }
     
     /*
@@ -67,23 +68,35 @@ class UACF7_COUNTRY_DROPDOWN {
 		
 		ob_start();
 		?>
-		<div class="wpcf7-form-control-wrap <?php echo sanitize_html_class( $tag->name ); ?>">
-		<div class="form-item">
+		<span class="wpcf7-form-control-wrap <?php echo sanitize_html_class( $tag->name ); ?>">
+		<!--<div class="form-item">-->
 			<input id="uacf7_countries" type="text">
-		</div>
-		<div class="form-item" style="display:none-;">
+		<!--</div>-->
+		<!--<div class="form-item" style="display:none-;">-->
 			<input type="text" id="uacf7_countries_code" <?php echo $atts; ?> data-countrycodeinput="1" readonly-="readonly" placeholder="Selected country code will appear here" />
 			<span><?php echo $validation_error; ?></span>
-		</div>
+		<!--</div>-->
+		</span>
 		<script>
+			(function ($) {
 			jQuery("#uacf7_countries").countrySelect({
-				// defaultCountry: "jp",
+				//defaultCountry: "jp",
 				// onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-				// responsiveDropdown: true,
+				responsiveDropdown: true,
 				//preferredCountries: ['ca', 'gb', 'us']
 			});
+			
+			const myData = $("#uacf7_countries").countrySelect("getSelectedCountryData").name;
+			//var myData = $.fn.countrySelect.getCountryData();
+
+			
+			//const myData = jQuery("#uacf7_countries").countrySelect();
+			//const myData = jQuery.fn.countrySelect.getCountryData();
+			console.log(myData);
+
+			})(jQuery);
 		</script>
-		</div>
+		
 		<?php
 		$countries = ob_get_clean();
 		

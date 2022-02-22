@@ -1,0 +1,7 @@
+.country-select {
+	width: 100%;
+}
+.country-select.inside input, .country-select.inside input[type="text"] {
+	height: 35px;
+	width: 100%;
+}
