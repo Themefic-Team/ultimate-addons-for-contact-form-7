@@ -1,7 +1,5 @@
-.country-select {
-	width: 100%;
-}
-.country-select.inside input, .country-select.inside input[type="text"] {
-	height: 35px;
-	width: 100%;
+/*Country filed styles*/
+#uacf7_country_select .country-select .wpcf7-uacf7_country_dropdown,
+#uacf7_country_select .country-select {
+	width: 100%
 }

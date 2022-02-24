@@ -24,7 +24,8 @@ class UACF7_COUNTRY_DROPDOWN {
 		wp_enqueue_style( 'uacf7-country-select-main', UACF7_ADDONS . '/country-dropdown/assets/css/countrySelect.min.css' );
 		wp_enqueue_style( 'uacf7-country-select-style', UACF7_ADDONS . '/country-dropdown/assets/css/style.css' );
 		
-		wp_enqueue_script( 'uacf7-country-select-script', UACF7_ADDONS . '/country-dropdown/assets/js/countrySelect.js', array('jquery'), null );
+		wp_enqueue_script( 'uacf7-country-select-library', UACF7_ADDONS . '/country-dropdown/assets/js/countrySelect.js', array('jquery'), null, true );
+		wp_enqueue_script( 'uacf7-country-select-script', UACF7_ADDONS . '/country-dropdown/assets/js/script.js', array('jquery','uacf7-country-select-library'), null, true );
     }
     
     /*
@@ -63,41 +64,30 @@ class UACF7_COUNTRY_DROPDOWN {
         $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
 
         $atts['name'] = $tag->name;
+		
+		$size = $tag->get_option( 'size', 'int', true );
 
+		if ( $size ) {
+			$atts['size'] = $size;
+		} else {
+			//$atts['size'] = 40;
+		}
+		
         $atts = wpcf7_format_atts( $atts );
 		
 		ob_start();
 		?>
-		<span class="wpcf7-form-control-wrap <?php echo sanitize_html_class( $tag->name ); ?>">
-		<!--<div class="form-item">-->
-			<input id="uacf7_countries" type="text">
-		<!--</div>-->
-		<!--<div class="form-item" style="display:none-;">-->
-			<input type="text" id="uacf7_countries_code" <?php echo $atts; ?> data-countrycodeinput="1" readonly-="readonly" placeholder="Selected country code will appear here" />
-			<span><?php echo $validation_error; ?></span>
-		<!--</div>-->
-		</span>
-		<script>
-			(function ($) {
-			jQuery("#uacf7_countries").countrySelect({
-				//defaultCountry: "jp",
-				// onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-				responsiveDropdown: true,
-				//preferredCountries: ['ca', 'gb', 'us']
-			});
-			
-			const myData = $("#uacf7_countries").countrySelect("getSelectedCountryData").name;
-			//var myData = $.fn.countrySelect.getCountryData();
-
-			
-			//const myData = jQuery("#uacf7_countries").countrySelect();
-			//const myData = jQuery.fn.countrySelect.getCountryData();
-			console.log(myData);
-
-			})(jQuery);
-		</script>
+		<span id="uacf7_country_select" class="wpcf7-form-control-wrap <?php echo sanitize_html_class( $tag->name ); ?>">
 		
+			<input id="uacf7_countries_<?php echo esc_attr($tag->name); ?>" type="text" <?php echo $atts; ?> >
+			<span><?php echo $validation_error; ?></span>
+		
+			<div style="display:none;">
+				<input type="hidden" id="uacf7_countries_<?php echo esc_attr($tag->name); ?>_code" data-countrycodeinput="1" readonly="readonly" placeholder="Selected country code will appear here" />
+			</div>
+		</span>
 		<?php
+		
 		$countries = ob_get_clean();
 		
         return $countries;

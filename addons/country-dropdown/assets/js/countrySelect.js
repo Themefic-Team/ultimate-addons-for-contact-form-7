@@ -461,7 +461,8 @@
 				if (!alreadySelected) {
 					this._selectFlag(countryCodes[0]);
 					//UACF7
-					this.countryCodeInput.val(this._getCountryData(countryCodes[0]).name).trigger("change");
+					//this.countryCodeInput.val(this._getCountryData(countryCodes[0]).name).trigger("change");
+					this.countryCodeInput.val(countryCodes[0]).trigger("change");
 				}
 				// Matching country found
 				return true;
