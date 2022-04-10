@@ -12,6 +12,15 @@
         jQuery('.wpcf7-form select, .wpcf7-form input[type="radio"]').on('change', function () {
             uacf7_cf_handler();
         });
+
+        jQuery('.wpcf7-form input[type="range"]').on('input', function () {
+            uacf7_cf_handler();
+        });
+
+        jQuery('#uacf7-slider-range').on('click', function () {
+			
+            uacf7_cf_handler();
+        });
         
         jQuery("input[type='checkbox']").on('change', function () {
             uacf7_cf_handler();
