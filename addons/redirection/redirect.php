@@ -165,7 +165,7 @@ class UACF7_Redirection {
     				</select>
                 </p>
                 <p class="uacf7_redirect_to_url">
-                    <input type="url" id="uacf7-external-url" name="uacf7_redirect[external_url]" class="large-text" value="<?php echo esc_url($options['external_url']); ?>" placeholder="<?php echo esc_html__( 'Enter an external URL', 'ultimate-addons-cf7' ); ?>">
+                    <input type="url" id="uacf7-external-url" name="uacf7_redirect[external_url]" class="large-text" value="<?php echo esc_html($options['external_url']); ?>" placeholder="<?php echo esc_html__( 'Enter an external URL', 'ultimate-addons-cf7' ); ?>">
                 </p>
             
             </div>
@@ -351,7 +351,7 @@ class UACF7_Redirection {
                     break;
 
                 case 'url':
-                    $value = esc_url_raw( $value );
+                    $value = sanitize_text_field( $value );
                     break;
             }
             

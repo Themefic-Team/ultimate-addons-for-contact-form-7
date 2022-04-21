@@ -18,7 +18,6 @@
         });
 
         jQuery('#uacf7-slider-range').on('click', function () {
-			
             uacf7_cf_handler();
         });
         

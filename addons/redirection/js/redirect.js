@@ -23,20 +23,27 @@
                 if( cr_enable == 'yes' && uacf7RedirectType != 'yes' ) {
                     // Set redirect URL
                     if (form.uacf7_redirect_to_type == 'to_url' && form.external_url) {
-                        var redirect_url = form.external_url;
     					
+                        if (typeof uacf7_global_tag_support === 'function') {
+
+                            uacf7_global_tag_support(event, form.external_url, form.target);
+                        }else {
+                            
+                            var redirect_url = form.external_url;
+                        }
+
                     } else if(form.uacf7_redirect_to_type == 'to_page') {
                         var redirect_url = form.thankyou_page_url;
                     }
     
                     // Redirect
-                    if (redirect_url) {
-                        if (!form.target) {
-                            location.href = redirect_url;
-                        } else {
-                            window.open(redirect_url);
-                        }
-                    }
+                    // if (redirect_url) {
+                    //     if (!form.target) {
+                    //         location.href = redirect_url;
+                    //     } else {
+                    //         window.open(redirect_url);
+                    //     }
+                    // }
                 
                 }
 
