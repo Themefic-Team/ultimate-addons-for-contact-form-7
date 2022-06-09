@@ -116,13 +116,16 @@
                             
                         }
                         
-
                         var currentValue = jQuery('.wpcf7-form [name="' + $uacf7_cf_conditions['uacf7_cf_tn'][x] + '"]'+maybeChecked+'').val();
-                        var currentValue = jQuery('.wpcf7-form [uacf-original-name="' + $uacf7_cf_conditions['uacf7_cf_tn'][x] + '"]'+maybeChecked+'').val();
+						
+						if( currentValue == 'undefined' ){
+							var currentValue = jQuery('.wpcf7-form [uacf-original-name="' + $uacf7_cf_conditions['uacf7_cf_tn'][x] + '"]'+maybeChecked+'').val();
+						}
                         
-						if( jQuery('.wpcf7-form-control-wrap').hasClass($uacf7_cf_conditions['uacf7_cf_tn'][x]) ){
-							
-							var currentValue = jQuery('.wpcf7-form-control-wrap.'+$uacf7_cf_conditions['uacf7_cf_tn'][x]+' .wpcf7-form-control'+maybeChecked+'').val();
+						if( currentValue == 'undefined' ){
+							//alert(jQuery('.uacf7_repeater .wpcf7-form-control-wrap.'+tagName+' input'+maybeChecked+'').val());
+							var currentValue = jQuery('.uacf7_repeater .wpcf7-form-control-wrap.'+tagName+' input'+maybeChecked+'').val();
+							alert(currentValue);
 						}
 
                         if( jQuery('.wpcf7-form [name="' + $uacf7_cf_conditions['uacf7_cf_tn'][x] + '"]').is("input[type='checkbox']") ) {
