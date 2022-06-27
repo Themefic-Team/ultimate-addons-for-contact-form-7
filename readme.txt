@@ -329,7 +329,7 @@ Just install our Plugin. It will only take 5 mins to create such a form.</a>.
 
 = 2.0.9 - 13/06/2022 =
 
-- Fixed minor bug
+- Minor Bug Fixed
 
 = 2.0.8 - 12/06/2022 =
 
