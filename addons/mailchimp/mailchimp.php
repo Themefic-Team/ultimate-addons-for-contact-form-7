@@ -1,63 +1,85 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if (!defined('ABSPATH')) {
+  exit;
 }
 
-class UACF7_MAILCHIMP {
+class UACF7_MAILCHIMP
+{
 
-  public static $mailchimlConnection;
+  public $mailchimlConnection;
   public static $mailchimp = null;
 
-  public function __construct() {
+  public function __construct()
+  {
     require_once('inc/functions.php');
-    add_action( 'wpcf7_editor_panels', array( $this, 'uacf7_cf_add_panel' ) );
-    add_action( 'uacf7_admin_tab_button', array( $this, 'add_mailchimp_tab' ), 10 );
-    add_action( 'uacf7_admin_tab_content', array( $this, 'add_mailchimp_tab_content' ) );
+    add_action('wpcf7_editor_panels', array($this, 'uacf7_cf_add_panel'));
+    add_action('uacf7_admin_tab_button', array($this, 'add_mailchimp_tab'), 10);
+    add_action('uacf7_admin_tab_content', array($this, 'add_mailchimp_tab_content'));
+    add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
 
-    if( $this->is_connected() == true ){
-      require_once('vendor/autoload.php');
+    $this->mailchiml_Connection();
+
+    if ($this->is_connected() == true) {
+      //require_once('vendor/autoload.php');
     }
   }
 
   //Internet check
-  public static function is_connected() {
+  public static function is_connected()
+  {
     $connected = @fsockopen("www.example.com", 80);
-    if($connected) {
-       return true;
-       fclose($connected);
+    if ($connected) {
+      return true;
+      fclose($connected);
     } else {
       return false;
     }
-  
   }
 
-  private function mailchimp(){
-    
-    if( $this->is_connected() == true ){
+  public function mailchiml_Connection()
+  {
+
+    $api_key = get_option('uacf7_mailchimp_option_name');
+
+    if (is_array($api_key) && !empty($api_key)) {
+      $api_key = $api_key['uacf7_mailchimp_api_key'];
+    } else {
+      $api_key = '';
+    }
+
+    if ($api_key != '') {
+
+      $response = $this->set_config($api_key, 'ping');
+      $response = json_decode($response);
+
+      if (isset($response->health_status)) { //Display success message
+        $this->$mailchimlConnection = 'true';
+      } else {
+        $this->$mailchimlConnection = 'false';
+      }
+    }
+  }
+
+  private function mailchimp()
+  {
+
+    if ($this->is_connected() == true) {
       $mailchimp = new \MailchimpMarketing\ApiClient();
       $this->$mailchimp = $mailchimp;
     }
-    
   }
 
-  private function set_config($api_key) {
-    
-   /*  $mailchimp->setConfig([
-      'apiKey' => $api_key,
-      'server' => 'us20'
-    ]);
+  private function set_config($api_key = '', $path = '')
+  {
 
-    $response = $mailchimp->ping->get();
- */
-
-    $url = "https://us20.api.mailchimp.com/3.0/ping";
+    $url = "https://us20.api.mailchimp.com/3.0/$path";
 
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
     $headers = array(
-      "Authorization: Bearer $api_key",
+      "Authorization: Bearer $api_key"
     );
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     //for debug only!
@@ -68,78 +90,159 @@ class UACF7_MAILCHIMP {
     curl_close($curl);
 
     return $resp;
-
   }
 
-  public function connection_status() {
-    $api_key = '3e9461b86e36ff4cc339de9152617be5-us20';
-    $response = $this->set_config($api_key);
+  public function connection_status()
+  {
+    $api_key = get_option('uacf7_mailchimp_option_name');
 
-    if( $response ){
-      //$this->$mailchimlConnection = true;
-      return $response;
+    if (is_array($api_key) && !empty($api_key)) {
+      $api_key = $api_key['uacf7_mailchimp_api_key'];
+    } else {
+      $api_key = '';
     }
-    
+
+    if ($api_key != '') {
+
+      $response = $this->set_config($api_key, 'ping');
+      $response = json_decode($response);
+
+      $status = '';
+      $status .= '<span class="status-title"><strong>' . esc_html__('Status: ', 'ultimate-addons-cf7') . '</strong>';
+
+      if ($this->is_connected() == false) { //Checking internet connection
+        $status .= '<span class="status-error">' . esc_html__('Can\'t connect to the server. Please check internet connection.', 'ultimate-addons-cf7') . '</span>';
+      }
+
+      if (isset($response->health_status)) { //Display success message
+        $status .= '<span class="status-success">' . esc_html($response->health_status) . '</span>';
+      }
+
+      if (isset($response->title)) { //Display error title
+        $status .= '<span class="status-error">' . esc_html($response->title) . '</span>';
+      }
+
+      $status .= '</span>';
+
+      if (isset($response->detail)) { //Display error mdetails
+        $status .= '<span class="status-details status-error">' . esc_html($response->detail) . '</span>';
+      }
+    } else {
+      $status .= '<span class="status-details">' . esc_html('Please enter your Mailchimp API key.', 'ultimate-addons-cf7') . '</span>';
+    }
+
+    return $status;
   }
 
-  public function add_mailchimp_tab(){
-    ?>
+  public function add_mailchimp_tab()
+  {
+?>
     <a class="tablinks" onclick="uacf7_settings_tab(event, 'uacf7_mailchimp')">Mailchimp</a>
-    <?php
+  <?php
   }
 
-  public function add_mailchimp_tab_content(){
-    ?>
+  public function add_mailchimp_tab_content()
+  {
+  ?>
     <div id="uacf7_mailchimp" class="uacf7-tabcontent uacf7-mailchimp">
-			
-    <form method="post" action="options.php">
-        <?php
-        echo $this->connection_status();
 
-            settings_fields( 'uacf7_mailchimp_option' );
-            do_settings_sections( 'ultimate-mailchimp-admin' );
-            submit_button();
+      <form method="post" action="options.php">
+        <?php
+        settings_fields('uacf7_mailchimp_option');
+        do_settings_sections('ultimate-mailchimp-admin');
+        submit_button();
         ?>
-    </form>
+      </form>
 
     </div>
-    <?php
+  <?php
   }
- 
-  //Create tab panel
- 
-  public function uacf7_cf_add_panel( $panels ) {
 
-    $panels['uacf7-cf-panel'] = array(
-      'title'    => __( 'UACF7 Mailchimp', 'ultimate-addons-cf7' ),
-      'callback' => array( $this, 'uacf7_create_conditional_panel_fields' ),
+  //Create tab panel
+
+  public function uacf7_cf_add_panel($panels)
+  {
+
+    $panels['uacf7-mailchimp-panel'] = array(
+      'title'    => __('UACF7 Mailchimp', 'ultimate-addons-cf7'),
+      'callback' => array($this, 'uacf7_create_mailchimp_panel_fields'),
     );
     return $panels;
   }
 
-  public function uacf7_create_conditional_panel_fields( $post ) {
-    
+  public function uacf7_create_mailchimp_panel_fields($post)
+  {
+  ?>
+    <fieldset>
+      <div class="ultimate-mailchimp-admin">
+        <div class="ultimate-mailchimp-wrapper">
+
+          <div class="mailchimp_fields_row">
+            <h3>Mailchimp form settings</h3>
+            <label for="uacf7_mailchimp_form">
+              <input id="uacf7_mailchimp_form" type="checkbox" name="uacf7_mailchimp_form" <?php //checked('on', $uacf7_is_multistep); ?>> <strong>Enable mailchimp form</strong>
+            </label>
+          </div>
+
+          <div class="mailchimp_fields_row">
+            <h3>Select Audience</h3>
+            <label for="uacf7_mailchimp_audience">
+              <select name="uacf7_mailchimp_audience" id="uacf7_mailchimp_audience">
+                <?php
+                $api_key = get_option('uacf7_mailchimp_option_name');
+
+                if (is_array($api_key) && !empty($api_key)) {
+                  $api_key = $api_key['uacf7_mailchimp_api_key'];
+                } else {
+                  $api_key = '';
+                }
+            
+                if ($api_key != '') {
+                  
+                  $response = $this->set_config($api_key, 'lists');
+                  
+                  //$response = json_encode($response);
+                  $response = json_decode($response, true);
+                  $x = 0;
+                  foreach( $response['lists'] as $list ){
+                    echo '<option value="'.$list['id'].'">'.$list['name'].'</option>';
+
+                    $x++;
+                  }
+
+                }else {
+
+                }
+                ?>
+              </select>
+              <?php //echo gettype($response); 
+              //print_r($response);
+              ?>
+            </label>
+          </div>
+
+        </div>
+      </div>
+    </fieldset>
+<?php
   }
 
+  //Enqueue admin scripts
+  public function admin_scripts()
+  {
+    wp_enqueue_style('mailchimp-css', UACF7_ADDONS . '/mailchimp/assets/css/admin-style.css');
+  }
 }
 new UACF7_MAILCHIMP();
 
 
 
-
-if( UACF7_MAILCHIMP::is_connected() == true ){
-  echo '<h1>---------------Connection is in a normal state</h1>';
-}else {
-  echo '<h1>---------------Connection is not normal state</h1>';
-  return;
-}
-
-
+return;
 $mailchimp = new \MailchimpMarketing\ApiClient();
 
 $mailchimp->setConfig([
-	'apiKey' => '3e9461b86e36ff4cc339de9152617be5-us20',
-	'server' => 'us20'
+  'apiKey' => '3e9461b86e36ff4cc339de9152617be5-us20',
+  'server' => 'us20'
 ]);
 
 $response = $mailchimp->ping->get();
@@ -158,7 +261,7 @@ $response = $mailchimp->searchMembers->search($email);
 
 $exist_subscriber = $response->exact_matches->total_items;
 
-if( $exist_subscriber == 0 ) {
+if ($exist_subscriber == 0) {
   //$subscriber_hash = md5(strtolower($email));
 
   /* try {
@@ -168,21 +271,20 @@ if( $exist_subscriber == 0 ) {
       echo $e->getMessage();
   } */
 
-try {
+  try {
     $response = $mailchimp->lists->addListMember($list_id, [
-        "email_address" => $email,
-        "status" => "subscribed",
-        "merge_fields" => [
-          "FNAME" => "Prudence",
-          "LNAME" => "McVankab",
-          "COMMENT" => "My first comment"
-        ]
+      "email_address" => $email,
+      "status" => "subscribed",
+      "merge_fields" => [
+        "FNAME" => "Prudence",
+        "LNAME" => "McVankab",
+        "COMMENT" => "My first comment"
+      ]
     ]);
     print_r($response);
-} catch (MailchimpMarketing\ApiException $e) {
+  } catch (MailchimpMarketing\ApiException $e) {
     echo $e->getMessage();
-}
-
+  }
 }
 
 
@@ -220,5 +322,3 @@ print_r($response); */
     echo $e->getMessage();
   }
  */
-
-

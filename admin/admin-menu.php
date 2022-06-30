@@ -305,6 +305,14 @@ class UACF7_Admin_Menu {
 			$sanitary_values['uacf7_enable_country_dropdown_field'] = $input['uacf7_enable_country_dropdown_field'];
 		}
 
+        if ( isset( $input['uacf7_enable_mailchimp'] ) ) {
+			$sanitary_values['uacf7_enable_mailchimp'] = $input['uacf7_enable_mailchimp'];
+		}
+
+		if ( isset( $input['uacf7_mailchimp_api_key'] ) ) {
+			$sanitary_values['uacf7_mailchimp_api_key'] = sanitize_text_field($input['uacf7_mailchimp_api_key']);
+		}
+
         return apply_filters( 'uacf7_save_admin_menu', $sanitary_values, $input );
 	}
     
@@ -314,6 +322,7 @@ class UACF7_Admin_Menu {
 		if ( isset( $input['uacf7_mailchimp_api_key'] ) ) {
 			$sanitary_values['uacf7_mailchimp_api_key'] = $input['uacf7_mailchimp_api_key'];
 		}
+		return apply_filters( 'uacf7_save_mailchimp_menu', $sanitary_values, $input );
 	}
 
     public function uacf7_section_info() {
@@ -442,7 +451,7 @@ class UACF7_Admin_Menu {
 	}
     
     /*
-    * Field - Enable post submission
+    * Field - Enable mailchimp
     */
     public function uacf7_enable_mailchimp_callback() {
 		printf(
@@ -541,15 +550,23 @@ class UACF7_Admin_Menu {
 	}
 	
 	/**
-	 * Field - IP Geo
+	 * Field - Mailchimp
 	 */
 	public function uacf7_mailchimp_api_key_callback(){
-		printf(
-			'<label class="uacf7-admin-toggle" for="uacf7_mailchimp_api_key">
-				<input type="checkbox" class="uacf7-admin-toggle__input" name="uacf7_mailchimp_option_name[uacf7_mailchimp_api_key]" id="uacf7_mailchimp_api_key" %s>
-				<span class="uacf7-admin-toggle-track"><span class="uacf7-admin-toggle-indicator"><span class="checkMark"><svg viewBox="0 0 24 24" id="ghq-svg-check" role="presentation" aria-hidden="true"><path d="M9.86 18a1 1 0 01-.73-.32l-4.86-5.17a1.001 1.001 0 011.46-1.37l4.12 4.39 8.41-9.2a1 1 0 111.48 1.34l-9.14 10a1 1 0 01-.73.33h-.01z"></path></svg></span></span></span>
-			</label>', uacf7_checked('uacf7_mailchimp_api_key')
-		);
+		$val = get_option('uacf7_mailchimp_option_name');
+		
+		if( is_array($val) && !empty(array_filter($val)) ){
+			$val = $val['uacf7_mailchimp_api_key'];
+		}else {
+			$val = '';
+		}
+
+		$mailchimp = new UACF7_MAILCHIMP();
+
+		echo '<label class="" for="uacf7_mailchimp_api_key">
+				<input type="text" class="" name="uacf7_mailchimp_option_name[uacf7_mailchimp_api_key]" id="uacf7_mailchimp_api_key" value="'. $val.'">
+				'.$mailchimp->connection_status().'
+			</label>';
 	}
 
 }
