@@ -28,9 +28,11 @@ class UACF7_MULTISTEP {
         wp_enqueue_script( 'uacf7-multistep', UACF7_ADDONS . '/multistep/assets/js/multistep.js', array('jquery'), null, true );
         wp_enqueue_script( 'uacf7-progressbar', UACF7_ADDONS . '/multistep/assets/js/progressbar.js', array('jquery'), null, true );
         wp_enqueue_style( 'uacf7-multistep-style', UACF7_ADDONS . '/multistep/assets/css/multistep.css' );
+
         
         wp_localize_script('uacf7-multistep', 'uacf7_multistep_obj', array(
         'ajax_url' => admin_url('admin-ajax.php'),
+        'scroll_top' => 'on',
         'nonce' => wp_create_nonce('uacf7-multistep') ));
     }
     
@@ -195,6 +197,8 @@ class UACF7_MULTISTEP {
                     $uacf7_is_multistep = get_post_meta( $post->id(), 'uacf7_multistep_is_multistep', true );
         
                     $uacf7_enable_multistep_progressbar = get_post_meta( $post->id(), 'uacf7_enable_multistep_progressbar', true );
+                    
+                    $uacf7_enable_multistep_scroll = get_post_meta( $post->id(), 'uacf7_enable_multistep_scroll', true );
                    ?>
                    <div class="multistep_fields_row">
                        <h3>Is It Multistep Form?</h3>
@@ -210,6 +214,15 @@ class UACF7_MULTISTEP {
                        <label for="uacf7_enable_multistep_progressbar">
                            <input id="uacf7_enable_multistep_progressbar" type="checkbox" name="uacf7_enable_multistep_progressbar" <?php checked( 'on', $uacf7_enable_multistep_progressbar ); ?>> Enable
                        </label>
+                   </div>
+                   
+                   <div class="multistep_fields_row">
+                       <h3>Scroll To Top</h3>
+                       <label for="uacf7_enable_multistep_scroll">
+                           <input id="uacf7_enable_multistep_scroll" type="checkbox" name="uacf7_enable_multistep_scroll" <?php checked( 'on', $uacf7_enable_multistep_scroll ); ?>> Enable
+                       </label>
+                       <p>Scroll to top after <strong>Clicking on the next button</strong></p>
+                   
                    </div>
                    
                    <!--Pro style-->
@@ -355,6 +368,9 @@ class UACF7_MULTISTEP {
         apply_filters( 'uacf7_multistep_save_pro_feature', '', $form, $all_steps );
         
         update_post_meta( $form->id(), 'uacf7_enable_multistep_progressbar', sanitize_text_field($_POST['uacf7_enable_multistep_progressbar']) );
+
+
+        update_post_meta( $form->id(), 'uacf7_enable_multistep_scroll', sanitize_text_field($_POST['uacf7_enable_multistep_scroll']) );
 		
 		if( $_POST['uacf7_progressbar_style'] == 'default' || $_POST['uacf7_progressbar_style'] == 'style-1' ) {
 			update_post_meta( $form->id(), 'uacf7_progressbar_style', sanitize_text_field($_POST['uacf7_progressbar_style']) );
@@ -411,6 +427,20 @@ class UACF7_MULTISTEP {
             $uacf7_multistep_is_multistep = get_post_meta( $cfform->id(), 'uacf7_multistep_is_multistep', true ); 
             
 			$uacf7_enable_multistep_progressbar = get_post_meta( $cfform->id(), 'uacf7_enable_multistep_progressbar', true );
+
+
+
+			$uacf7_enable_multistep_scroll = get_post_meta( $cfform->id(), 'uacf7_enable_multistep_scroll', true );
+
+            if($uacf7_enable_multistep_scroll == 'on'){
+                wp_localize_script('uacf7-multistep', 'uacf7_multistep_scroll', array( 
+                    'scroll_top' => $uacf7_enable_multistep_scroll, 
+                ));
+            }else{
+                wp_localize_script('uacf7-multistep', 'uacf7_multistep_scroll', array( 
+                    'scroll_top' => 'off', 
+                ));
+            }
 			
             if( $uacf7_multistep_is_multistep == 'on' ) {
 			
