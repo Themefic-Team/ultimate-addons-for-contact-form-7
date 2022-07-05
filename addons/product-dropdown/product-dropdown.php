@@ -366,7 +366,6 @@ class UACF7_PRODUCT_DROPDOWN {
 
                                 <label for="layoutGrid"><input id="layoutGrid" name="layout" class="option" type="radio" disabled value="grid"> Grid</label>
 
-                                <br>
                                 Allow multiple Layout Style <a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a>
                             </td> 
                             
