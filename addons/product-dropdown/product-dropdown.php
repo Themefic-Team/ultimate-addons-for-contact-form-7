@@ -139,20 +139,20 @@ class UACF7_PRODUCT_DROPDOWN {
                 $label = get_the_title(); 
                 $product = wc_get_product( get_the_id() );
                 
-                if($product->sale_price != ''){
-                    $sale_price = get_woocommerce_currency_symbol().' '.$product->sale_price;
-                }elseif($product->price !=''){
-                    $sale_price = get_woocommerce_currency_symbol().' '.$product->price;
+                if($product->get_sale_price() != ''){
+                    $sale_price = get_woocommerce_currency_symbol().' '.$product->get_sale_price();
+                }elseif($product->get_price() !=''){
+                    $sale_price = get_woocommerce_currency_symbol().' '.$product->get_price();
                 }else{
-                    $sale_price = get_woocommerce_currency_symbol().' '.$product->regular_price;
+                    $sale_price = get_woocommerce_currency_symbol().' '.$product->get_regular_price();
                 }
-                if($product->regular_price){
-                    $regular_price = get_woocommerce_currency_symbol().' '.$product->regular_price;
+                if($product->get_regular_price()){
+                    $regular_price = get_woocommerce_currency_symbol().' '.$product->get_regular_price();
                 }else{
                     $regular_price = '';
                 }
                
-                $price = '<del aria-hidden="true"> '.$regular_price.'</del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol"></span>'.$sale_price.'</bdi></span></ins>'; 
+                $price = '<del aria-hidden="true"> '.$sale_price.'</del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol"></span>'.$regular_price.'</bdi></span></ins>'; 
                 $html .= sprintf(' <div class="single-product-grid"> 
                                 <div class="s-product-img"> 
                                     <div class="img-absulate">
