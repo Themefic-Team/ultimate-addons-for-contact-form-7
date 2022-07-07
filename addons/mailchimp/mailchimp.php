@@ -22,8 +22,34 @@ class UACF7_MAILCHIMP
     $this->get_api_key();
   }
 
-  //Internet check
-  public static function is_connected()
+  /* Mailchimp tab */
+  public function add_mailchimp_tab()
+  {
+  ?>
+    <a class="tablinks" onclick="uacf7_settings_tab(event, 'uacf7_mailchimp')">Mailchimp</a>
+  <?php
+  }
+
+  /* Mailchimp tab content */
+  public function add_mailchimp_tab_content()
+  {
+  ?>
+    <div id="uacf7_mailchimp" class="uacf7-tabcontent uacf7-mailchimp">
+
+      <form method="post" action="options.php">
+        <?php
+        settings_fields('uacf7_mailchimp_option');
+        do_settings_sections('ultimate-mailchimp-admin');
+        submit_button();
+        ?>
+      </form>
+
+    </div>
+  <?php
+  }
+
+  /* Check Internet connection */
+  public static function is_internet_connected()
   {
     $connected = @fsockopen("www.example.com", 80);
     if ($connected) {
@@ -34,6 +60,7 @@ class UACF7_MAILCHIMP
     }
   }
 
+  /* Get mailchimp api key */
   public function get_api_key() {
     
     $mailchimp_options = get_option('uacf7_mailchimp_option_name');
@@ -42,11 +69,12 @@ class UACF7_MAILCHIMP
       return $this->$mailchimp_api = $mailchimp_options['uacf7_mailchimp_api_key'];
     }
 
-    $this->mailchiml_connection();
+    $this->mailchimp_connection();
 
   }
 
-  public function mailchiml_connection()
+  /* mailchimp Connection check */
+  public function mailchimp_connection()
   {
 
     $api_key = $this->$mailchimp_api;
@@ -64,7 +92,7 @@ class UACF7_MAILCHIMP
     }
   }
 
-
+  /* Mailchimp config set */
   private function set_config($api_key = '', $path = '')
   {
 
@@ -88,6 +116,7 @@ class UACF7_MAILCHIMP
     return $resp;
   }
 
+  /* Mailchimp connection status */
   public function connection_status()
   {
     $api_key = $this->$mailchimp_api;
@@ -100,7 +129,7 @@ class UACF7_MAILCHIMP
       $status = '';
       $status .= '<span class="status-title"><strong>' . esc_html__('Status: ', 'ultimate-addons-cf7') . '</strong>';
 
-      if ($this->is_connected() == false) { //Checking internet connection
+      if ($this->is_internet_connected() == false) { //Checking internet connection
         $status .= '<span class="status-error">' . esc_html__('Can\'t connect to the server. Please check internet connection.', 'ultimate-addons-cf7') . '</span>';
       }
 
@@ -124,32 +153,7 @@ class UACF7_MAILCHIMP
     return $status;
   }
 
-  public function add_mailchimp_tab()
-  {
-?>
-    <a class="tablinks" onclick="uacf7_settings_tab(event, 'uacf7_mailchimp')">Mailchimp</a>
-  <?php
-  }
-
-  public function add_mailchimp_tab_content()
-  {
-  ?>
-    <div id="uacf7_mailchimp" class="uacf7-tabcontent uacf7-mailchimp">
-
-      <form method="post" action="options.php">
-        <?php
-        settings_fields('uacf7_mailchimp_option');
-        do_settings_sections('ultimate-mailchimp-admin');
-        submit_button();
-        ?>
-      </form>
-
-    </div>
-  <?php
-  }
-
-  //Create tab panel
-
+  /* Create tab panel */
   public function uacf7_cf_add_panel($panels)
   {
 
@@ -160,166 +164,13 @@ class UACF7_MAILCHIMP
     return $panels;
   }
 
+  /* Mailchimp form settings fields */
   public function uacf7_create_mailchimp_panel_fields($post)
   {
-  ?>
-    <fieldset>
-      <div class="ultimate-mailchimp-admin">
-        <div class="ultimate-mailchimp-wrapper">
-
-          <?php
-          echo $this->connection_status();
-          ?>
-          <?php
-          $form_enable = get_post_meta( $post->id(), 'uacf7_mailchimp_form_enable', true );
-          $form_type = get_post_meta( $post->id(), 'uacf7_mailchimp_form_type', true );
-          $audience = get_post_meta( $post->id(), 'uacf7_mailchimp_audience', true );
-          $subscriber_email = get_post_meta( $post->id(), 'uacf7_mailchimp_subscriber_email', true );
-          $subscriber_fname = get_post_meta( $post->id(), 'uacf7_mailchimp_subscriber_fname', true );
-          $subscriber_lname = get_post_meta( $post->id(), 'uacf7_mailchimp_subscriber_lname', true );
-          $uacf7_mailchimp_merge_fields = empty(get_post_meta( $post->id(), 'uacf7_mailchimp_merge_fields', true )) ? array() : get_post_meta( $post->id(), 'uacf7_mailchimp_merge_fields', true );
-          
-          ?>
-          <div class="mailchimp_fields_row">
-            <h3>Mailchimp form settings</h3>
-            <label for="uacf7_mailchimp_form_enable">
-              <input id="uacf7_mailchimp_form_enable" type="checkbox" value="enable" name="uacf7_mailchimp_form_enable" <?php checked( $form_enable, 'enable', true ); ?>> <strong>Enable mailchimp form</strong>
-            </label>
-          </div>
-          <br>
-          <br>
-          <div class="mailchimp_fields_row">
-            <label>
-              <input type="radio" name="uacf7_mailchimp_form_type" checked="checked" value="subscribe" <?php checked( $form_type, 'subscribe', true ); ?>> <strong>Create Subscribe Form</strong>
-            </label><br>
-            <label>
-              <input type="radio" name="uacf7_mailchimp_form_type" value="unsubscribe" <?php checked( $form_type, 'unsubscribe', true ); ?>> <strong>Create Unsubscribe Form</strong>
-            </label>
-          </div>
-          <br>
-          <br>
-          <div class="mailchimp_fields_row">
-
-            <label for="uacf7_mailchimp_audience">
-              <strong>Select Audience</strong><br>
-              <select name="uacf7_mailchimp_audience" id="uacf7_mailchimp_audience">
-                <?php
-                $api_key = $this->$mailchimp_api;
-
-                if ($api_key != '') {
-
-                  $response = $this->set_config($api_key, 'lists');
-
-                  //$response = json_encode($response);
-                  $response = json_decode($response, true);
-                  $x = 0;
-                  foreach ($response['lists'] as $list) {
-                    echo '<option value="' . $list['id'] . '" '.selected( $audience, $list['id'] ).'>' . $list['name'] . '</option>';
-
-                    $x++;
-                  }
-                } else {
-                }
-                ?>
-              </select>
-            </label>
-          </div>
-          <br>
-          <br>
-          <div class="mailchimp_fields_row">
-
-            <table>
-              <tr>
-                <td>
-                  <label for="uacf7_mailchimp_subscriber_email">
-                    <strong>Subscriber Email</strong><br>
-                    <select name="uacf7_mailchimp_subscriber_email" id="uacf7_mailchimp_subscriber_email">
-                      <?php
-                      $all_tags = $post->scan_form_tags(array('type' => 'email', 'type' => 'email*'));
-                      foreach ($all_tags as $tag) {
-                        echo '<option value="' . esc_attr($tag['name']) . '" '.selected( $subscriber_email, $tag['name'] ).'>' . esc_attr($tag['name']) . '</option>';
-                      }
-                      ?>
-                    </select>
-                  </label>
-                </td>
-                <td>
-                  <label for="uacf7_mailchimp_subscriber_fname">
-                    <strong>Subscriber First Name</strong><br>
-                    <select name="uacf7_mailchimp_subscriber_fname" id="uacf7_mailchimp_subscriber_fname">
-                      <?php
-                      $fname_tags = $post->scan_form_tags(array('type' => 'text', 'type' => 'text*'));
-                      foreach ($fname_tags as $tag) {
-                        echo '<option value="' . esc_attr($tag['name']) . '" '.selected( $subscriber_fname, $tag['name'] ).'>' . esc_attr($tag['name']) . '</option>';
-                      }
-                      ?>
-                    </select>
-                  </label>
-                </td>
-                <td>
-                  <label for="uacf7_mailchimp_subscriber_lname">
-                    <strong>Subscriber Last Name</strong><br>
-                    <select name="uacf7_mailchimp_subscriber_lname" id="uacf7_mailchimp_subscriber_lname">
-                      <?php
-                      $lname_tags = $post->scan_form_tags(array('type' => 'text', 'type' => 'text*'));
-                      foreach ($lname_tags as $tag) {
-                        echo '<option value="' . esc_attr($tag['name']) . '" '.selected( $subscriber_lname, $tag['name'] ).'>' . esc_attr($tag['name']) . '</option>';
-                      }
-                      ?>
-                    </select>
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td><h3>Custom fields</h3></td>
-              </tr>
-              
-              <?php
-              $all_fields = $post->scan_form_tags();
-              $x = 1;
-              foreach( $all_fields as $field ){
-                if( $field['type'] != 'submit' ){
-                  $cf7_tag = $uacf7_mailchimp_merge_fields[$x]['mailtag'];
-                  $mergefield = $uacf7_mailchimp_merge_fields[$x]['mergefield'];
-                ?>
-                <tr>
-                  <td>
-                    <label><strong>Contact form tag</strong><br>
-                      <select name="uacf7_mailchimp_extra_field_mailtag_<?php echo esc_attr($x); ?>">
-                        <?php
-                        foreach ($all_fields as $tag) {
-                          if( $tag['type'] != 'submit' ){
-                            echo '<option value="' . esc_attr($tag['name']) . '" '.selected( $cf7_tag, $tag['name'] ).'>' . esc_attr($tag['name']) . '</option>';
-                          }
-                        }
-                        ?>
-                      </select>
-                    </label>
-                  </td>
-                  <td>
-                    <label> <strong>Mailchimp field</strong><br>
-                        <input type="text" placeholder="Please enter mailchimp custom field name" name="uacf7_mailchimp_extra_field_mergefield_<?php echo esc_attr($x); ?>" value="<?php echo esc_attr($mergefield); ?>">
-                    </label>
-                  </td>
-                </tr>
-                <?php
-                $x++;
-                }
-              }
-              ?>
-
-            </table>
-
-          </div>
-
-          <?php wp_nonce_field('uacf7_mailchimp_nonce_action', 'uacf7_mailchimp_nonce'); ?>
-
-        </div>
-      </div>
-    </fieldset>
-<?php
+    require_once( 'inc/template/form-fields.php' );
   }
 
+  /* Save form data */
   public function uacf7_save_contact_form($post)
   {
     if (!isset($_POST) || empty($_POST)) {
@@ -330,12 +181,12 @@ class UACF7_MAILCHIMP
       return;
     }
 
-    update_post_meta( $post->id(), 'uacf7_mailchimp_form_enable', esc_attr($_POST['uacf7_mailchimp_form_enable']) );
-    update_post_meta( $post->id(), 'uacf7_mailchimp_form_type', esc_attr($_POST['uacf7_mailchimp_form_type']) );
-    update_post_meta( $post->id(), 'uacf7_mailchimp_audience', esc_attr($_POST['uacf7_mailchimp_audience']) );
-    update_post_meta( $post->id(), 'uacf7_mailchimp_subscriber_email', esc_attr($_POST['uacf7_mailchimp_subscriber_email']) );
-    update_post_meta( $post->id(), 'uacf7_mailchimp_subscriber_fname', esc_attr($_POST['uacf7_mailchimp_subscriber_fname']) );
-    update_post_meta( $post->id(), 'uacf7_mailchimp_subscriber_lname', esc_attr($_POST['uacf7_mailchimp_subscriber_lname']) );
+    update_post_meta( $post->id(), 'uacf7_mailchimp_form_enable', sanitize_text_field($_POST['uacf7_mailchimp_form_enable']) );
+    update_post_meta( $post->id(), 'uacf7_mailchimp_form_type', sanitize_text_field($_POST['uacf7_mailchimp_form_type']) );
+    update_post_meta( $post->id(), 'uacf7_mailchimp_audience', sanitize_text_field($_POST['uacf7_mailchimp_audience']) );
+    update_post_meta( $post->id(), 'uacf7_mailchimp_subscriber_email', sanitize_text_field($_POST['uacf7_mailchimp_subscriber_email']) );
+    update_post_meta( $post->id(), 'uacf7_mailchimp_subscriber_fname', sanitize_text_field($_POST['uacf7_mailchimp_subscriber_fname']) );
+    update_post_meta( $post->id(), 'uacf7_mailchimp_subscriber_lname', sanitize_text_field($_POST['uacf7_mailchimp_subscriber_lname']) );
 
     $all_fields = $post->scan_form_tags();
     $x = 1;
@@ -359,6 +210,7 @@ class UACF7_MAILCHIMP
 
   }
 
+  /* Add members to mailchimp */
   public function add_members( $id, $audience, $posted_data ) {
 
     $api_key = $this->$mailchimp_api;
@@ -400,7 +252,7 @@ class UACF7_MAILCHIMP
       curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
       //Mailchimp data
-      $data = '{"email_address":"'.sanitize_text_field($subscriber_email).'","status":"subscribed","merge_fields":{"FNAME": "'.sanitize_text_field($subscriber_fname).'", "LNAME": "'.sanitize_text_field($subscriber_lname).'", "COMMENT" : "'.sanitize_text_field($extra_merge_fields).'"},"vip":false,"location":{"latitude":0,"longitude":0}}';
+      $data = '{"email_address":"'.sanitize_email($subscriber_email).'","status":"subscribed","merge_fields":{"FNAME": "'.sanitize_text_field($subscriber_fname).'", "LNAME": "'.sanitize_text_field($subscriber_lname).'"'.$extra_merge_fields.'},"vip":false,"location":{"latitude":0,"longitude":0}}';
       
       curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
@@ -410,11 +262,13 @@ class UACF7_MAILCHIMP
 
       $resp = curl_exec($curl);
       curl_close($curl);
+
       return $resp;
     }
-
+    
   }
 
+  /* Send data before sent email */
   public function send_data($cf7)
   {
     // get the contact form object
@@ -436,7 +290,7 @@ class UACF7_MAILCHIMP
     }
   }
 
-  //Enqueue admin scripts
+  /* Enqueue admin scripts */
   public function admin_scripts()
   {
     wp_enqueue_style('mailchimp-css', UACF7_ADDONS . '/mailchimp/assets/css/admin-style.css');
