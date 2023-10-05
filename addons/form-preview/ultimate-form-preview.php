@@ -19,13 +19,13 @@ class UACF7_FORM_PREVIEW{
     /** Loading Assets */
 
     public function uacf7_form_preview_public_assets_loading(){
-      wp_enqueue_script('form_preview_public_js', UACF7_URL . '/addons/form-preview/assets/public/js/public-submission-id.js', ['jquery'], 'WPCF7_VERSION', true);
-      wp_enqueue_style('form_preview_public_css', UACF7_URL . '/addons/form-preview/assets/public/css/public-submission-id.css', [], 'UAFC7_VERSION', true, 'all');
+      wp_enqueue_script('form_preview_public_js', UACF7_URL . '/addons/form-preview/assets/public/js/public-form-preview.js', ['jquery'], 'UAFC7_VERSION', true);
+      wp_enqueue_style('form_preview_public_css', UACF7_URL . '/addons/form-preview/assets/public/css/public-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
     }
 
     public function uacf7_form_preview_admin_assets_loading(){
-      wp_enqueue_script('form_preview_admin_js', UACF7_URL . '/addons/form-preview/assets/admin/js/admin-submission-id.js', ['jquery'], 'WPCF7_VERSION', true);
-      wp_enqueue_style('form_preview_admin_css', UACF7_URL . '/addons/form-preview/assets/admin/css/admin-submission-id.css', [], 'UAFC7_VERSION', true, 'all');
+      wp_enqueue_script('form_preview_admin_js', UACF7_URL . '/addons/form-preview/assets/admin/js/admin-form-preview.js', ['jquery'], 'UAFC7_VERSION', true);
+      wp_enqueue_style('form_preview_admin_css', UACF7_URL . '/addons/form-preview/assets/admin/css/admin-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
     }
 
 
@@ -42,13 +42,13 @@ class UACF7_FORM_PREVIEW{
       }
       
       /** Enable / Disable Submission ID */
-      $wpcf7 = WPCF7_ContactForm::get_current(); 
-      $formid = $wpcf7->id();
-      $uacf7_form_preview_enable = get_post_meta( $formid, 'uacf7_form_preview_enable', true ); 
+      // $wpcf7 = WPCF7_ContactForm::get_current(); 
+      // $formid = $wpcf7->id();
+      // $uacf7_form_preview_enable = get_post_meta( $formid, 'uacf7_form_preview_enable', true ); 
       
-      if($uacf7_form_preview_enable != 'on'){
-          return;
-      }
+      // if($uacf7_form_preview_enable != 'on'){
+      //     return;
+      // }
 
       $validation_error = wpcf7_get_validation_error($tag->name);
 
@@ -97,7 +97,8 @@ class UACF7_FORM_PREVIEW{
       ?> 
       <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
 
-          <input hidden id="uacf7_<?php echo esc_attr($tag->name); ?>" <?php echo $atts;?> >
+          <input type="button" id="uacf7_form_preview_button" value="<?php echo __('Preview', 'ultimate-addons-cf7');  ?>" <?php echo $atts;?>>
+
           <span><?php echo $validation_error; ?></span>
       </span>
 
