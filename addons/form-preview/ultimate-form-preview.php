@@ -13,6 +13,7 @@ class UACF7_FORM_PREVIEW{
 
       add_action('admin_init', [$this, 'uacf7_form_preview_tag_generator']);
       add_action('wpcf7_init', [$this, 'uacf7_form_preview_add_shortcodes']);
+
     }
 
 
@@ -91,13 +92,15 @@ class UACF7_FORM_PREVIEW{
       $atts['name'] = $tag->name;
 
       $atts = wpcf7_format_atts($atts);
-
+   
       ob_start();
 
       ?> 
       <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
 
-          <input type="button" id="uacf7_form_preview_button" value="<?php echo __('Preview', 'ultimate-addons-cf7');  ?>" <?php echo $atts;?>>
+      <?php   require_once('inc/form-preview.php'); ?>
+
+        <input type="button" id="uacf7_form_preview_button" value="<?php echo __('Preview', 'ultimate-addons-cf7');  ?>" <?php echo $atts;?>>
 
           <span><?php echo $validation_error; ?></span>
       </span>
