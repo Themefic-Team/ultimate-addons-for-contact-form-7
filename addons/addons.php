@@ -88,6 +88,11 @@ if( !function_exists( 'uacf7_addons_included' ) ) {
         if( uacf7_checked( 'uacf7_enable_telegram_field') != ''){
             require_once( 'telegram/ultimate-telegram.php');
         }
+
+         //Addon - Form Preview
+         if( uacf7_checked( 'uacf7_enable_form_preview_field') != ''){
+            require_once( 'form-preview/ultimate-form-preview.php');
+        }
 		
     }
 }

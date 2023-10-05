@@ -395,8 +395,8 @@ class UACF7_Admin_Menu {
 		if ( isset( $input['uacf7_enable_telegram_field'] ) ) {
 			$sanitary_values['uacf7_enable_telegram_field'] = $input['uacf7_enable_telegram_field'];
 		}
-		if ( isset( $input['uacf7_enable_form_preview'] ) ) {
-			$sanitary_values['uacf7_enable_form_preview'] = $input['uacf7_enable_form_preview'];
+		if ( isset( $input['uacf7_enable_form_preview_field'] ) ) {
+			$sanitary_values['uacf7_enable_form_preview_field'] = $input['uacf7_enable_form_preview_field'];
 		}
 		if ( isset( $input['uacf7_enable_booking_form'] ) ) {
 			$sanitary_values['uacf7_enable_booking_form'] = $input['uacf7_enable_booking_form'];
@@ -643,10 +643,10 @@ class UACF7_Admin_Menu {
 
 		public function uacf7_enable_form_preview_callback(){
 			printf(
-				'<label class="uacf7-admin-toggle" for="uacf7_enable_form_preview">
-					<input type="checkbox" class="uacf7-admin-toggle__input" name="uacf7_option_name[uacf7_enable_form_preview]" id="uacf7_enable_form_preview" %s>
+				'<label class="uacf7-admin-toggle" for="uacf7_enable_form_preview_field">
+					<input type="checkbox" class="uacf7-admin-toggle__input" name="uacf7_option_name[uacf7_enable_form_preview_field]" id="uacf7_enable_form_preview_field" %s>
 					<span class="uacf7-admin-toggle-track"><span class="uacf7-admin-toggle-indicator"><span class="checkMark"><svg viewBox="0 0 24 24" id="ghq-svg-check" role="presentation" aria-hidden="true"><path d="M9.86 18a1 1 0 01-.73-.32l-4.86-5.17a1.001 1.001 0 011.46-1.37l4.12 4.39 8.41-9.2a1 1 0 111.48 1.34l-9.14 10a1 1 0 01-.73.33h-.01z"></path></svg></span></span></span>
-				</label>', uacf7_checked('uacf7_enable_form_preview')
+				</label>', uacf7_checked('uacf7_enable_form_preview_field')
 			);
 		 }
     
