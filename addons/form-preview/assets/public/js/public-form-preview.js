@@ -9,6 +9,7 @@
             var close_button = $('.uacf7-form-'+formId).find('.close-button');
             var popup = $('.uacf7-form-'+formId).find('.popup');
             var container = $('.uacf7-form-'+formId).find('#uacf7_form_values_container');
+            var container_with_child = $('.uacf7-form-'+formId);
 
         
             var name_array = [];
@@ -49,18 +50,23 @@
 
 
                 for (let i = 0; i < name_array.length; i++) {
-                    const listItem = $("<p>").text(`${name_array[i]}: ${value_array[i]}`);
+                    const listItem = $("<p class='input_class'>").text(`${name_array[i]}: ${value_array[i]}`);
                     container.append(listItem);
                 }
-            
-
 
             });
 
         //Closing the popup
           close_button.click(function (){
             popup.css('display', 'none');
-            container.remove();
+
+            container.find('p').text('');
+            paragraphCount = 0;
+           
+            // setTimeout(() => {
+            //   $('.uacf7-form-'+formId).find('#uacf7_form_preview_button').trigger('click');
+            // }, 2000);
+        
           });
       });
   });

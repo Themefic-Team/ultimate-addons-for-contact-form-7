@@ -50,11 +50,13 @@
   </style>
 </head>
 <body>
+  
     <div id="popup" class="popup">
         <div class="popup-content">
-            <button type="button" class="close-button">&times;</button>
+            <button type="reset" class="close-button">&times;</button>
             <h2>Form Field Values</h2>
-            <div id="uacf7_form_values_container"></div>
+            <div id="uacf7_form_values_container">
+            </div>
         </div>
     </div>
 </body>
