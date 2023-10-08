@@ -15,8 +15,8 @@ class UACF7_FORM_PREVIEW{
       add_action('wpcf7_init', [$this, 'uacf7_form_preview_add_shortcodes']);
 
 
-      add_action( 'wp_ajax_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_callback'] );
-      add_action( 'wp_ajax_nopriv_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_callback'] );
+      // add_action( 'wp_ajax_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_callback'] );
+      // add_action( 'wp_ajax_nopriv_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_callback'] );
 
     }
 
@@ -38,12 +38,6 @@ class UACF7_FORM_PREVIEW{
     }
 
 
-
-    /** Receiving Data from Ajax Request */
-
-    public function uacf7_form_preview_ajax_callback(){
-     echo "success";
-    }
 
     /** Shortcode Generate - Form Preview */
 

@@ -52,9 +52,8 @@
         <div class="popup-content">
             <span class="close-button">&times;</span>
             <h2>Form Field Values</h2>
-            <p><strong>Name:</strong> <span id="popupName"></span></p>
-            <p><strong>Email:</strong> <span id="popupEmail"></span></p>
-            <p><strong>Message:</strong> <span id="popupMessage"></span></p>
+        
+            <ul id="uacf7_form_values_container"></ul>
         </div>
     </div>
 </body>
