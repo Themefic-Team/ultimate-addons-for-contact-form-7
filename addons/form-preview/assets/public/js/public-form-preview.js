@@ -23,10 +23,24 @@
 
                 var input_name = this.name;
                 var input_value = this.value;
+                var selected_name;
+                var selected_value;
                 if(this.type !== 'submit' && this.type !== 'button'){
-                  name_array.push(input_name);
-                  value_array.push(input_value);
+
+                  if (this.type === 'radio') {
+                    for (let i = 0; i < input_name.length; i++) {
+                    if(input_name[i].checked){
+                      console.log(input_value[i])
+                    }
+                  }
                 }
+                    name_array.push(input_name);
+                    value_array.push(input_value);
+                }
+
+                // if(this.type === 'radio'){
+                  
+                // }
           
               });
 
@@ -35,7 +49,7 @@
 
 
                 for (let i = 0; i < name_array.length; i++) {
-                    const listItem = $("<h4>").text(`${name_array[i]}: ${value_array[i]}`);
+                    const listItem = $("<p>").text(`${name_array[i]}: ${value_array[i]}`);
                     container.append(listItem);
                 }
             
@@ -46,6 +60,7 @@
         //Closing the popup
           close_button.click(function (){
             popup.css('display', 'none');
+            container.remove();
           });
       });
   });

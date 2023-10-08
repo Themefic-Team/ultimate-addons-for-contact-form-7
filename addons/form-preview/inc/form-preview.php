@@ -20,6 +20,8 @@
     height: 100%;
     background-color: rgba(0,0,0,0.7);
     z-index: 1;
+    overflow-y: scroll;
+    cursor: pointer;
   }
 
   .popup-content {
@@ -48,12 +50,11 @@
   </style>
 </head>
 <body>
-<div id="popup" class="popup">
+    <div id="popup" class="popup">
         <div class="popup-content">
-            <span class="close-button">&times;</span>
+            <button type="button" class="close-button">&times;</button>
             <h2>Form Field Values</h2>
-        
-            <ul id="uacf7_form_values_container"></ul>
+            <div id="uacf7_form_values_container"></div>
         </div>
     </div>
 </body>
