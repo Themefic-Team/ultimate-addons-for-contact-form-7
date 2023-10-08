@@ -14,6 +14,10 @@ class UACF7_FORM_PREVIEW{
       add_action('admin_init', [$this, 'uacf7_form_preview_tag_generator']);
       add_action('wpcf7_init', [$this, 'uacf7_form_preview_add_shortcodes']);
 
+
+      add_action( 'wp_ajax_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_callback'] );
+      add_action( 'wp_ajax_nopriv_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_callback'] );
+
     }
 
 
@@ -22,6 +26,10 @@ class UACF7_FORM_PREVIEW{
     public function uacf7_form_preview_public_assets_loading(){
       wp_enqueue_script('form_preview_public_js', UACF7_URL . '/addons/form-preview/assets/public/js/public-form-preview.js', ['jquery'], 'UAFC7_VERSION', true);
       wp_enqueue_style('form_preview_public_css', UACF7_URL . '/addons/form-preview/assets/public/css/public-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
+      wp_localize_script( 'form_preview_public_js', 'uacf7_form_preview_object', [
+        'ajax_url' => admin_url( 'admin-ajax.php' ),
+        'nonce'    	=> wp_create_nonce('uacf7_form_preview')
+      ] );
     }
 
     public function uacf7_form_preview_admin_assets_loading(){
@@ -29,6 +37,13 @@ class UACF7_FORM_PREVIEW{
       wp_enqueue_style('form_preview_admin_css', UACF7_URL . '/addons/form-preview/assets/admin/css/admin-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
     }
 
+
+
+    /** Receiving Data from Ajax Request */
+
+    public function uacf7_form_preview_ajax_callback(){
+     echo "success";
+    }
 
     /** Shortcode Generate - Form Preview */
 
