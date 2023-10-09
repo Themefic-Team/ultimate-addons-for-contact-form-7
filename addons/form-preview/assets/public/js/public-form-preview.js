@@ -75,17 +75,6 @@
 
 
 
-
-              $.each(dataObject, function(key, value) {
-                var paragraph = $('<p></p>');
-                paragraph.text(key + ': ' + value);
-                container.append(paragraph);
-          
-              });
-
-             
-              
-
               
               var others_field_obj = {
                 ...file_obj,
@@ -94,6 +83,12 @@
 
               console.log(others_field_obj)
 
+              $.each(others_field_obj, function(key, value) {
+                var paragraph = $('<p></p>');
+                paragraph.text(key + ': ' + value);
+                container.append(paragraph);
+          
+              });
 
 
 
