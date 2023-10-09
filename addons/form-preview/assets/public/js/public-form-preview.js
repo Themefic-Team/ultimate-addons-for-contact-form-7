@@ -9,7 +9,6 @@
             var close_button = $('.uacf7-form-'+formId).find('.close-button');
             var popup = $('.uacf7-form-'+formId).find('.popup');
             var container = $('.uacf7-form-'+formId).find('#uacf7_form_values_container');
-            var container_with_child = $('.uacf7-form-'+formId).find('#uacf7_form_values_container').find('p');
 
             
             
@@ -19,13 +18,44 @@
               
               var uacf7_form_data = $('.uacf7-form-'+formId).closest('.wpcf7-form').serialize();
 
-              var parsedData = {};
-              $.each(uacf7_form_data.split('&'), function(index, item) {
-                  var keyValue = item.split('=');
-                  var key = decodeURIComponent(keyValue[0]);
-                  var value = decodeURIComponent(keyValue[1]);
-                  parsedData[key] = value;
+              const keyValuePairs = uacf7_form_data.split('&');
+
+              var file_name = $('.uacf7-form-'+formId).find('input');
+
+              var file_obj = {};
+
+              file_name.each(function(){
+
+                if(this.type === 'file'){
+                  var value = this.value;
+                  var name = this.name;
+                  file_obj[name] = value;
+                }
               });
+
+
+
+
+
+
+              const dataObject = {};
+
+              $.each(keyValuePairs, function(index, pair) {
+                const [key, value] = pair.split('=');
+                
+                const decodedValue = decodeURIComponent(value);
+                
+                if (dataObject[key]) {
+                  if (Array.isArray(dataObject[key])) {
+                    dataObject[key].push(decodedValue);
+                  } else {
+                    dataObject[key] = [dataObject[key], decodedValue];
+                  }
+                } else {
+                  dataObject[key] = decodedValue;
+                }
+              });
+
 
               var keysToRemove = [
                 "_wpcf7",
@@ -36,15 +66,17 @@
                 "_wpcf7_posted_data_hash"
               ];
 
-              $.each(parsedData, function(key, value) {
+              $.each(dataObject, function(key, value) {
                 if (keysToRemove.indexOf(key) !== -1) {
                   // Use the delete operator to remove the key-value pair
-                  delete parsedData[key];
+                  delete dataObject[key];
                 }
               });
 
 
-              $.each(parsedData, function(key, value) {
+
+
+              $.each(dataObject, function(key, value) {
                 var paragraph = $('<p></p>');
                 paragraph.text(key + ': ' + value);
                 container.append(paragraph);
@@ -53,7 +85,14 @@
 
              
               
-              console.log(parsedData);
+
+              
+              var others_field_obj = {
+                ...file_obj,
+                ...dataObject
+              };
+
+              console.log(others_field_obj)
 
 
 
