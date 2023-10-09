@@ -11,67 +11,90 @@
             var container = $('.uacf7-form-'+formId).find('#uacf7_form_values_container');
             var container_with_child = $('.uacf7-form-'+formId).find('#uacf7_form_values_container').find('p');
 
-
+            
+            
+            
+            
             function creating_element_for_preview(){
-              var name_array = [];
-              var value_array = [];
-              var form_div = $('.uacf7-form-'+formId).find('input');
               
-              form_div.each(function (){
+              var uacf7_form_data = $('.uacf7-form-'+formId).closest('.wpcf7-form').serialize();
 
-               var input_name = this.name;
-               var input_value = this.value;
+              var parsedData = {};
+              $.each(uacf7_form_data.split('&'), function(index, item) {
+                  var keyValue = item.split('=');
+                  var key = decodeURIComponent(keyValue[0]);
+                  var value = decodeURIComponent(keyValue[1]);
+                  parsedData[key] = value;
+              });
 
-               if(this.type !== 'submit' && this.type !== 'button'){
+              var keysToRemove = [
+                "_wpcf7",
+                "_wpcf7_version",
+                "_wpcf7_locale",
+                "_wpcf7_unit_tag",
+                "_wpcf7_container_post",
+                "_wpcf7_posted_data_hash"
+              ];
 
-                 if (this.type === 'radio') {
-                   for (let i = 0; i < input_name.length; i++) {
-                     if(input_name[i].checked){
-                       console.log(input_value[i])
-                     }
-                 }
-               }
-                   name_array.push(input_name);
-                   value_array.push(input_value);
-               }
+              $.each(parsedData, function(key, value) {
+                if (keysToRemove.indexOf(key) !== -1) {
+                  // Use the delete operator to remove the key-value pair
+                  delete parsedData[key];
+                }
+              });
 
-               // if(this.type === 'radio'){
-                 
-               // }
-         
-             });
+
+              $.each(parsedData, function(key, value) {
+                var paragraph = $('<p></p>');
+                paragraph.text(key + ': ' + value);
+                container.append(paragraph);
+          
+              });
+
+             
+              
+              console.log(parsedData);
+
+
+
 
 
               popup.css('display', 'block');
 
 
-               for (let i = 0; i < name_array.length; i++) {
-               
 
-                   container.append($("<p>").text(`${name_array[i]}: ${value_array[i]}`)); 
 
-               }
             }
 
 
-        // Show Preview
+            // Show Preview
 
-        $('.uacf7-form-'+formId).find('#uacf7_form_preview_button').click(function (){
-          creating_element_for_preview();
-        });
+            $('.uacf7-form-'+formId).find('#uacf7_form_preview_button').click(function (){
+              creating_element_for_preview();
+            });
 
 
-        //Closing Preview
+            //Closing Preview
 
-          close_button.click(function (e){
-            e.preventDefault();
-            popup.css('display', 'none');
+              close_button.click(function (e){
+                e.preventDefault();
+                popup.css('display', 'none');
 
-            container.html('');
-            listItem = [];
-      
+                container.html('');
+                listItem = [];
+          
+              });
+
+
+              //Processing Image for Popup Preview
+
+        
+        
+        
+        
+        
+        
           });
-      });
   });
 
 })(jQuery);
