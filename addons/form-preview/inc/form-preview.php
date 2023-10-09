@@ -53,9 +53,14 @@
   
     <div id="popup" class="popup">
         <div class="popup-content">
-            <button type="reset" class="close-button">&times;</button>
+            <button class="close-button">&times;</button>
             <h2>Form Field Values</h2>
             <div id="uacf7_form_values_container">
+              <!-- <p>dfdf</p>
+              <p>dfd</p>
+              <p>dfdsf</p>
+              <p>yr5te</p>
+              <p>yr5te</p> -->
             </div>
         </div>
     </div>
