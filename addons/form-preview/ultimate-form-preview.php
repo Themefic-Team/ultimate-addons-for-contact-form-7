@@ -42,7 +42,7 @@ class UACF7_FORM_PREVIEW{
     /** Shortcode Generate - Form Preview */
 
     public function uacf7_form_preview_add_shortcodes(){
-      wpcf7_add_form_tag(array('uacf7_submission_id', 'uacf7_submission_id*'),
+      wpcf7_add_form_tag(array('uacf7_form_preview', 'uacf7_form_preview*'),
       array($this, 'uacf7_form_preview_tag_handler_callback'), array('name-attr' => true));
     }
 
@@ -138,7 +138,7 @@ class UACF7_FORM_PREVIEW{
   
     public static function tg_pane_form_preview($contact_form, $args = ''){
       $args = wp_parse_args($args, array());
-      $uacf7_field_type = 'uacf7_submission_id';
+      $uacf7_field_type = 'uacf7_form_preview';
       ?>
     <div class="control-box">
     <fieldset>
