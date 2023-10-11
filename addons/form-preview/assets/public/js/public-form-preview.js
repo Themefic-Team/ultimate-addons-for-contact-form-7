@@ -63,7 +63,8 @@
                 "_wpcf7_locale",
                 "_wpcf7_unit_tag",
                 "_wpcf7_container_post",
-                "_wpcf7_posted_data_hash"
+                "_wpcf7_posted_data_hash",
+                "_uacf7_hidden_conditional_fields"
               ];
 
               $.each(dataObject, function(key, value) {
