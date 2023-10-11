@@ -11,15 +11,78 @@ class UACF7_FORM_PREVIEW{
       add_action('wp_enqueue_scripts', [$this, 'uacf7_form_preview_public_assets_loading']);
       add_action('admin_enqueue_scripts', [$this, 'uacf7_form_preview_admin_assets_loading']);
 
+    
+
       add_action('admin_init', [$this, 'uacf7_form_preview_tag_generator']);
       add_action('wpcf7_init', [$this, 'uacf7_form_preview_add_shortcodes']);
 
 
-      // add_action( 'wp_ajax_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_callback'] );
-      // add_action( 'wp_ajax_nopriv_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_callback'] );
+      // add_action('wpcf7_before_send_mail', [$this, 'uacf7_send_contact_form_preview']);
+
+              // add_filter( 'wpcf7_load_js', '__return_false' ); 
+
+
+      add_action( 'wp_ajax_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_callback'] );
+      add_action( 'wp_ajax_nopriv_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_callback'] );
 
     }
 
+
+  //   public function uacf7_send_contact_form_preview($contact_form) {
+
+  //     $submission = WPCF7_Submission::get_instance();
+  //     if ($submission) {
+  //         $form_id = $contact_form->id();
+  //         $form_name = $contact_form->title();
+      
+
+  //         $posted_data = $submission->get_posted_data();
+
+  //         $form_tags = $submission->get_contact_form()->form_scan_shortcode();
+   
+  //         $properties = $submission->get_contact_form()->get_properties();
+
+
+
+
+  //       //   echo "<pre>";
+  //       //  print_r($posted_data);
+  //       //   echo "</pre>";
+
+
+  //     //   foreach ($posted_data as $key => $value) {
+  //     //     if (is_array($value)) {
+  //     //         // If the value is an array, implode it to a string for display
+  //     //         $value = implode(', ', $value);
+  //     //     }
+  //     //     echo "$key: $value<br>";
+  //     // }
+  //     //   die();
+
+  //     wp_send_json($posted_data);
+
+      
+  //     }
+
+    
+  // }
+
+  public function uacf7_form_preview_ajax_callback(){
+
+    $form_id = $_POST['form_id'];
+    $submission = WPCF7_Submission::get_instance($form_id);
+        if ($submission) {
+        
+          $properties = $submission->get_contact_form()->get_properties();
+          
+
+  }
+
+
+ 
+
+    wp_send_json($submission);
+  }
 
     /** Loading Assets */
 

@@ -18,83 +18,141 @@
               
               var uacf7_form_data = $('.uacf7-form-'+formId).closest('.wpcf7-form').serialize();
 
+
+
               const keyValuePairs = uacf7_form_data.split('&');
 
               var file_name = $('.uacf7-form-'+formId).find('input');
+              
 
+    
               var file_obj = {};
 
-              file_name.each(function(){
+              // file_name.each(function(){
 
-                if(this.type === 'file'){
-                  var value = this.value;
-                  var name = this.name;
-                  file_obj[name] = value;
-                }
-              });
-
-
+              //   if(this.type === 'file'){
+              //     var value = this.value;
+              //     var name = this.name;
+              //     file_obj[name] = value;
+              //   }
+              // });
 
 
 
 
-              const dataObject = {};
+              // const dataObject = {};
 
-              $.each(keyValuePairs, function(index, pair) {
-                const [key, value] = pair.split('=');
+              // $.each(keyValuePairs, function(index, pair) {
+              //   const [key, value] = pair.split('=');
                 
-                const decodedValue = decodeURIComponent(value);
+              //   const decodedValue = decodeURIComponent(value);
                 
-                if (dataObject[key]) {
-                  if (Array.isArray(dataObject[key])) {
-                    dataObject[key].push(decodedValue);
-                  } else {
-                    dataObject[key] = [dataObject[key], decodedValue];
-                  }
-                } else {
-                  dataObject[key] = decodedValue;
-                }
-              });
+              //   if (dataObject[key]) {
+              //     if (Array.isArray(dataObject[key])) {
+              //       dataObject[key].push(decodedValue);
+              //     } else {
+              //       dataObject[key] = [dataObject[key], decodedValue];
+              //     }
+              //   } else {
+              //     dataObject[key] = decodedValue;
+              //   }
+              // });
 
 
-              var keysToRemove = [
-                "_wpcf7",
-                "_wpcf7_version",
-                "_wpcf7_locale",
-                "_wpcf7_unit_tag",
-                "_wpcf7_container_post",
-                "_wpcf7_posted_data_hash",
-                "_uacf7_hidden_conditional_fields"
-              ];
+              // var keysToRemove = [
+              //   "_wpcf7",
+              //   "_wpcf7_version",
+              //   "_wpcf7_locale",
+              //   "_wpcf7_unit_tag",
+              //   "_wpcf7_container_post",
+              //   "_wpcf7_posted_data_hash",
+              //   "_uacf7_hidden_conditional_fields"
+              // ];
 
-              $.each(dataObject, function(key, value) {
-                if (keysToRemove.indexOf(key) !== -1) {
-                  // Use the delete operator to remove the key-value pair
-                  delete dataObject[key];
-                }
+              // $.each(dataObject, function(key, value) {
+              //   if (keysToRemove.indexOf(key) !== -1) {
+              //     // Use the delete operator to remove the key-value pair
+              //     delete dataObject[key];
+              //   }
 
-                if (value === undefined || value === '') {
-                  delete dataObject[key];
-                }
-              });
+              //   if (value === undefined || value === '') {
+              //     delete dataObject[key];
+              //   }
+              // });
 
 
 
               
-              var others_field_obj = {
-                ...file_obj,
-                ...dataObject
-              };
+              // var others_field_obj = {
+              //   ...file_obj,
+              //   ...dataObject
+              // };
 
-              console.log(others_field_obj)
+      
+              // $.each(others_field_obj, function(key, value) {
+              //   var label;
 
-              $.each(others_field_obj, function(key, value) {
-                var paragraph = $('<p></p>');
-                paragraph.text(key + ': ' + value);
-                container.append(paragraph);
+              //   if(key.type === 'checkbox'){
+              //    label = $('input[name="' + key + '"]').parent().parent().parent().parent('label');
+              //   }
+
+           
+
+           
+
+              //   var labelText = label.text();
+
+              //   console.log(key.type)
+
+
+
+
+
+
+
+
+              $.ajax({
+                url: uacf7_form_preview_object.ajax_url, // You can define this variable in your PHP
+                type: 'POST',
+                data: {
+                    action: 'uacf7_form_preview_action',
+                    form_id: formId 
+                },
+                success: function(response) {
+                    // Handle the response, which is the data from your PHP script
+
+                    var data = response;
+
+                     for (var key in data) {
+                    var preview = `<p><strong>${key}:</strong> ${data[key]}</p>`;
+
+                       container.append(preview);
+                  }
+
+                  console.log(response)
+                }
+            });
+
+
+
+         
+                // previewHTML = `<p><strong>${labelText}:</strong> ${value}</p>`;
+            
+
+                // console.log(labelText)
+                // var paragraph = $('<p></p>');
+                // paragraph.text(labelText + ': ' + value);
+                // container.append(previewHTML);
+                // container.append(paragraph);
           
-              });
+              // });
 
+
+
+
+
+
+             
 
 
 
