@@ -72,6 +72,10 @@
                   // Use the delete operator to remove the key-value pair
                   delete dataObject[key];
                 }
+
+                if (value === undefined || value === '') {
+                  delete dataObject[key];
+                }
               });
 
 
