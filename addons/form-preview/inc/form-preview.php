@@ -19,8 +19,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.7);
-    z-index: 1;
-    overflow-y: scroll;
+    z-index: 1; 
     cursor: pointer;
   }
 
@@ -32,6 +31,8 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
+    overflow-y: scroll;
+    height: 500px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
