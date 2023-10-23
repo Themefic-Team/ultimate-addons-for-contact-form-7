@@ -10,13 +10,18 @@ jQuery( document ).ready( function(){
 
 
     jQuery('#selected_multiple').hide();
+    jQuery('#selected_multiple_notice').hide();
     jQuery('#tag-generator-panel-select-multiple').change(function() {
         if (this.checked) {
             jQuery('#selected_multiple').show();
+            jQuery('#selected_multiple_notice').show();
             jQuery('#selected_single').hide();
+            jQuery('#selected_single_notice').hide();
         } else {
             jQuery('#selected_multiple').hide();
+            jQuery('#selected_multiple_notice').hide();
             jQuery('#selected_single').show();
+            jQuery('#selected_single_notice').show();
         }
     });
     

@@ -75,7 +75,6 @@ class UACF7_PRODUCT_DROPDOWN {
         }
 
       
-        
 
         if ( $data = (array) $tag->get_data_option() ) {
             $tag->values = array_merge( $tag->values, array_values( $data ) );
@@ -107,8 +106,7 @@ class UACF7_PRODUCT_DROPDOWN {
 
 
 
-      
-
+    
 /** Selected Multiple Product */
 
         if (isset($atts['selected_multiple']) && is_array($atts['selected_multiple'])) {
@@ -117,23 +115,6 @@ class UACF7_PRODUCT_DROPDOWN {
             $selectedProductMultiple = [];
         }
 
-
-
-
-
-      
-
-    /** Product Preselect */
-
-        // echo '<pre>';
-        // print_r($selectedProductMultiple);
-        // echo '<pre>';
-
-        // die();
-
-
-    
-        
 
     /** Product Sorting By Feature */
 
@@ -249,8 +230,6 @@ class UACF7_PRODUCT_DROPDOWN {
                             );
                 }
 
-              
-
                 $item_atts = wpcf7_format_atts($item_atts);
 
                 $label = get_the_title();
@@ -258,10 +237,6 @@ class UACF7_PRODUCT_DROPDOWN {
                 $dropdown .= sprintf('<option %1$s>%2$s</option>', $item_atts, esc_html($label));
             }
         
-
-
-
-
 
             wp_reset_postdata(); 
             $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
