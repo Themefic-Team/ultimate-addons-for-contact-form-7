@@ -38,5 +38,20 @@ jQuery( document ).ready( function(){
 
         }
     });
+
+
+
+
+    // jQuery(document).on('wpcf7submit', function (event) {
+    //     const formId = event.detail.contactFormId;
+    //     const $form = jQuery(`.wpcf7-form-${formId}`);
     
+    //     if ($form.length) {
+    //         const $textarea = $form.find('textarea[data-form-id="' + formId + '"]');
+    //         const targetInputName = $textarea.data('target-input');
+    //         const textareaValue = $textarea.val();
+    //         $form.find(`input[name="${targetInputName}"]`).val(textareaValue);
+    //     }
+    // });
+
 } );

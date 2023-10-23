@@ -51,6 +51,7 @@ class UACF7_PRODUCT_DROPDOWN {
         $atts['class'] = $tag->get_class_option( $class );
         $atts['id'] = $tag->get_id_option();
         $atts['tabindex'] = $tag->get_option( 'tabindex', 'signed_int', true );
+        $atts['selected_product'] = $tag->get_option( 'selected');
 
         if ( $tag->is_required() ) {
             $atts['aria-required'] = 'true';
@@ -102,6 +103,26 @@ class UACF7_PRODUCT_DROPDOWN {
         }else {
             $product_by = '';
         }
+
+
+
+        $selectedProduct = $atts['selected_product'][0];
+
+        // echo '<pre>';
+        // print_r($selectedProduct);
+        // echo '</pre>';
+
+        // die();
+
+    /** Product Preselect */
+
+    // if($tag->has_option('product_preselect')){
+    //     $product_preselect = sanitize_text_field($_POST['product_preselect']);
+
+    //     var_dump($product_preselect);
+
+    //     die();
+    // }
 
 
     
@@ -196,11 +217,11 @@ class UACF7_PRODUCT_DROPDOWN {
         while ($products->have_posts()) {
             $products->the_post();
         
-            $product_id = get_the_id(); // Get the product ID
+            $product_id = get_the_id(); 
         
             $item_atts = array(
                 'value' => get_the_title(),
-                'selected' => ($product_id == '41') ? 'selected' : '', // Check for '41'
+                'selected' => ($product_id == $selectedProduct) ? 'selected' : '', 
                 'product-id' => $product_id,
             );
         
