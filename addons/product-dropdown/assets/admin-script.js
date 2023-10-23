@@ -1,10 +1,24 @@
 jQuery( document ).ready( function(){
     
-    jQuery('.tag-generator-panel-product-category').hide();
+   
+    jQuery('#selected_multiple').hide();
     jQuery('.tag-generator-panel-product-tag').hide();
     jQuery('.tag-generator-panel-product-category #tag-generator-panel-product-category').attr('name','');
     jQuery('.tag-generator-panel-product-tag #tag-generator-panel-product-tag').attr('name','');
     jQuery('.tag-generator-panel-select-layout-style #tag-generator-panel-select-layout-style').attr('style','');
+
+
+
+    jQuery('#selected_multiple').hide();
+    jQuery('#tag-generator-panel-select-multiple').change(function() {
+        if (this.checked) {
+            jQuery('#selected_multiple').show();
+            jQuery('#selected_single').hide();
+        } else {
+            jQuery('#selected_multiple').hide();
+            jQuery('#selected_single').show();
+        }
+    });
     
     jQuery( 'input[name="product_by"]' ).on('change', function(){
         var product_by = jQuery( this ).val();
