@@ -206,8 +206,12 @@ class UACF7_PRODUCT_DROPDOWN {
 
             if($tag->has_option('multiple')){
                 $selectedProductIds = $selectedProductMultiple;
-            }else{
-               $selectedProductSingle = $atts['selected_single'][0]; //Assinging Selected Product ID 
+            }
+            
+            if (isset($atts) && is_array($atts) && isset($atts['selected_single']) && is_array($atts['selected_single']) && count($atts['selected_single']) > 0) {
+                $selectedProductSingle = $atts['selected_single'][0];
+            } else {
+                $selectedProductSingle = null; 
             }
 
             $dropdown = '<option value="">-Select-</option';
