@@ -51,7 +51,8 @@ class UACF7_PRODUCT_DROPDOWN {
         $atts['class'] = $tag->get_class_option( $class );
         $atts['id'] = $tag->get_id_option();
         $atts['tabindex'] = $tag->get_option( 'tabindex', 'signed_int', true );
-        $atts['selected_product'] = $tag->get_option( 'selected');
+        $atts['selected_single'] = $tag->get_option( 'selected_single');
+        $atts['selected_multiple'] = $tag->get_option( 'selected_multiple');
 
         if ( $tag->is_required() ) {
             $atts['aria-required'] = 'true';
@@ -106,7 +107,16 @@ class UACF7_PRODUCT_DROPDOWN {
 
 
 
-        $selectedProduct = $atts['selected_product'][0];
+      
+
+/** Selected Multiple Product */
+
+        if (isset($atts['selected_multiple']) && is_array($atts['selected_multiple'])) {
+            $selectedProductMultiple = explode('/', reset($atts['selected_multiple']));
+        } else {
+            $selectedProductMultiple = [];
+        }
+
 
 
 
@@ -116,7 +126,7 @@ class UACF7_PRODUCT_DROPDOWN {
     /** Product Preselect */
 
         // echo '<pre>';
-        // print_r($selectedProduct);
+        // print_r($selectedProductMultiple);
         // echo '<pre>';
 
         // die();
@@ -206,28 +216,6 @@ class UACF7_PRODUCT_DROPDOWN {
         //     }
 
 
-        // $products = new WP_Query($args);
-        // if ($multiple) {
-        //     $atts['multiple'] = apply_filters('uacf7_multiple_attribute', '');
-        // }
-        // $dropdown = '<option value="">-Select-</option>';
-        // while ($products->have_posts()) {
-        //     $products->the_post();
-        
-        //     $product_id = get_the_id(); 
-        
-        //     $item_atts = array(
-        //         'value' => get_the_title(),
-        //         'selected' => ($product_id == $selectedProduct) ? 'selected' : '', 
-        //         'product-id' => $product_id,
-        //     );
-        
-        //     $item_atts = wpcf7_format_atts($item_atts);
-        
-        //     $label = get_the_title();
-        
-        //     $dropdown .= sprintf('<option %1$s>%2$s</option>', $item_atts, esc_html($label));
-        // }
 
             $products = new WP_Query($args);
 
@@ -236,9 +224,9 @@ class UACF7_PRODUCT_DROPDOWN {
             }
 
             if($tag->has_option('multiple')){
-                $selectedProductIds = array(39, 40, 41);
+                $selectedProductIds = $selectedProductMultiple;
             }else{
-               $selectedProductIds = $selectedProduct;
+               $selectedProductSingle = $atts['selected_single'][0]; //Assinging Selected Product ID 
             }
 
             $dropdown = '<option value="">-Select-</option';
@@ -256,7 +244,7 @@ class UACF7_PRODUCT_DROPDOWN {
                 }else{
                     $item_atts = array(
                                 'value' => get_the_title(),
-                                'selected' => ($product_id == $selectedProduct) ? 'selected' : '', 
+                                'selected' => ($product_id == $selectedProductSingle) ? 'selected' : '', 
                                 'product-id' => $product_id,
                             );
                 }
