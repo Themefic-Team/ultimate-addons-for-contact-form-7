@@ -342,6 +342,9 @@ class UACF7_PRODUCT_DROPDOWN {
                         </tr>
                         <?php 
                         $product_id_html = ob_get_clean(); 
+
+                       
+
                         /*
                         * Tag generator field after name attribute.
                         */
@@ -380,6 +383,25 @@ class UACF7_PRODUCT_DROPDOWN {
                         </tr>
                         <?php 
                         $product_dropdown_html = ob_get_clean();
+
+                        /**
+                         * Pre Selecting Product
+                         */
+
+                         ob_start(); ?>
+                         <tr>
+                             <th scope="row"><label for="order_by"> <?php echo esc_html( 'Pre Select Product', 'ultimate-addons-cf7' ); ?> </label></th>
+                             <td>
+                                 <label for="asSingle"><input id="asSingle" name="pro_pre_select" class="option" type="radio" value="" checked> Single (Default)</label>
+ 
+                                 <label for="asMultiple"><input id="asMultiple" name="pro_pre_select" class="option" type="radio" value="multiple"> Multiple </label>
+ 
+                                 <!-- <label for="byDSC"><input id="byDSC" name="order_by" class="option" type="radio" value="dsc"> DSC </label> -->
+                             </td>
+                         </tr>
+                         <?php 
+                         $product_pre_selecting_html = ob_get_clean(); 
+                         echo apply_filters('uacf7_tag_generator_product_preselecting_field', $product_pre_selecting_html);
 
                         /*
                         * Tag generator field after name attribute.
