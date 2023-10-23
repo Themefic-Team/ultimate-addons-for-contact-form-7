@@ -392,9 +392,12 @@ class UACF7_PRODUCT_DROPDOWN {
                          <tr>
                              <th scope="row"><label for="order_by"> <?php echo esc_html( 'Pre Select Product', 'ultimate-addons-cf7' ); ?> </label></th>
                              <td>
-                                 <label for="asSingle"><input id="asSingle" name="pro_pre_select" class="option"  disabled type="radio" value="" checked> Single (Default)</label>
+                             <textarea class="values" placeholder="add product those need to be selected" name="values" id="tag-generator-panel-product-pre-select" disabled cols="30" rows="10"></textarea><br>One ID per line. Just to the Product tab, hover over a product and you should see the Product ID.
+
+                                <a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a>
+                                 <!-- <label for="asSingle"><input id="asSingle" name="pro_pre_select" class="option"  disabled type="radio" value="" checked> Single (Default)</label> -->
  
-                                 <label for="asMultiple"><input id="asMultiple" name="pro_pre_select" class="option" disabled type="radio" value="multiple"> Multiple </label> <a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a>
+                                 <!-- <label for="asMultiple"><input id="asMultiple" name="pro_pre_select" class="option" disabled type="radio" value="multiple"> Multiple </label>  -->
  
                                  <!-- <label for="byDSC"><input id="byDSC" name="order_by" class="option" type="radio" value="dsc"> DSC </label> -->
                              </td>
