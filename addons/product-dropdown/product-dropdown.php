@@ -392,9 +392,9 @@ class UACF7_PRODUCT_DROPDOWN {
                          <tr>
                              <th scope="row"><label for="order_by"> <?php echo esc_html( 'Pre Select Product', 'ultimate-addons-cf7' ); ?> </label></th>
                              <td>
-                                 <label for="asSingle"><input id="asSingle" name="pro_pre_select" class="option" type="radio" value="" checked> Single (Default)</label>
+                                 <label for="asSingle"><input id="asSingle" name="pro_pre_select" class="option"  disabled type="radio" value="" checked> Single (Default)</label>
  
-                                 <label for="asMultiple"><input id="asMultiple" name="pro_pre_select" class="option" type="radio" value="multiple"> Multiple </label>
+                                 <label for="asMultiple"><input id="asMultiple" name="pro_pre_select" class="option" disabled type="radio" value="multiple"> Multiple </label> <a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a>
  
                                  <!-- <label for="byDSC"><input id="byDSC" name="order_by" class="option" type="radio" value="dsc"> DSC </label> -->
                              </td>
