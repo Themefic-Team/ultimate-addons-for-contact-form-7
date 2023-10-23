@@ -111,8 +111,8 @@ class UACF7_PRODUCT_DROPDOWN {
 
         $query_array = [
             'post_type'      => 'product',
-             'posts_per_page' => -1,
-             'post_status'    => 'publish',
+            'posts_per_page' => -1,
+            'post_status'    => 'publish',
         ];
 
 
@@ -130,7 +130,7 @@ class UACF7_PRODUCT_DROPDOWN {
         if($tag->has_option( 'order_by:asc' ) ){
             $asc_args = [
                 'orderby'       => 'title',
-                 'order'          => 'ASC'
+                 'order'        => 'ASC'
             ];
 
             $new_args = array_merge($new_args, $asc_args);
@@ -157,34 +157,65 @@ class UACF7_PRODUCT_DROPDOWN {
 
         
                 
+        // $products = new WP_Query($args);
+        // if ( $multiple ) {
+        //     $atts['multiple'] = apply_filters('uacf7_multiple_attribute','');
+        // }
+        // $dropdown = '<option value="">-Select-</option>';
+        //     while ( $products->have_posts() ) {
+        //         $products->the_post();
+                
+        //         if ( $hangover ) {
+        //             $selected = in_array( get_the_title(), (array) $hangover, true );
+        //         } else {
+        //             $selected = in_array( get_the_title(), (array) $default_choice, true );
+        //         }
+
+
+        //         $item_atts = array(
+        //             'value' => get_the_title(),
+        //             'selected' => $selected ? 'selected' : '',
+        //             'product-id' => get_the_id(),
+               
+        //         );
+
+        //         $item_atts = wpcf7_format_atts( $item_atts );
+
+        //         $label = get_the_title();
+
+        //         $dropdown .= sprintf( '<option %1$s>%2$s</option>',
+        //             $item_atts, esc_html( $label ) );
+        //     }
+
+
         $products = new WP_Query($args);
-        if ( $multiple ) {
-            $atts['multiple'] = apply_filters('uacf7_multiple_attribute','');
+        if ($multiple) {
+            $atts['multiple'] = apply_filters('uacf7_multiple_attribute', '');
         }
         $dropdown = '<option value="">-Select-</option>';
-            while ( $products->have_posts() ) {
-                $products->the_post();
-                
-                if ( $hangover ) {
-                    $selected = in_array( get_the_title(), (array) $hangover, true );
-                } else {
-                    $selected = in_array( get_the_title(), (array) $default_choice, true );
-                }
+        while ($products->have_posts()) {
+            $products->the_post();
+        
+            $product_id = get_the_id(); // Get the product ID
+        
+            $item_atts = array(
+                'value' => get_the_title(),
+                'selected' => ($product_id == '41') ? 'selected' : '', // Check for '41'
+                'product-id' => $product_id,
+            );
+        
+            $item_atts = wpcf7_format_atts($item_atts);
+        
+            $label = get_the_title();
+        
+            $dropdown .= sprintf('<option %1$s>%2$s</option>', $item_atts, esc_html($label));
+        }
+        
 
-                $item_atts = array(
-                    'value' => get_the_title(),
-                    'selected' => $selected ? 'selected' : '',
-                    'product-id' => get_the_id(),
-               
-                );
 
-                $item_atts = wpcf7_format_atts( $item_atts );
 
-                $label = get_the_title();
 
-                $dropdown .= sprintf( '<option %1$s>%2$s</option>',
-                    $item_atts, esc_html( $label ) );
-            }
+
             wp_reset_postdata(); 
             $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
             $atts['name'] = $tag->name . ( $multiple ? '[]' : '' );
