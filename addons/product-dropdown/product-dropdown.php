@@ -164,38 +164,6 @@ class UACF7_PRODUCT_DROPDOWN {
         $args = apply_filters( 'uacf7_product_dropdown_query', $very_last_array
         , $values, $product_by );
 
-        
-                
-        // $products = new WP_Query($args);
-        // if ( $multiple ) {
-        //     $atts['multiple'] = apply_filters('uacf7_multiple_attribute','');
-        // }
-        // $dropdown = '<option value="">-Select-</option>';
-        //     while ( $products->have_posts() ) {
-        //         $products->the_post();
-                
-        //         if ( $hangover ) {
-        //             $selected = in_array( get_the_title(), (array) $hangover, true );
-        //         } else {
-        //             $selected = in_array( get_the_title(), (array) $default_choice, true );
-        //         }
-
-
-        //         $item_atts = array(
-        //             'value' => get_the_title(),
-        //             'selected' => $selected ? 'selected' : '',
-        //             'product-id' => get_the_id(),
-               
-        //         );
-
-        //         $item_atts = wpcf7_format_atts( $item_atts );
-
-        //         $label = get_the_title();
-
-        //         $dropdown .= sprintf( '<option %1$s>%2$s</option>',
-        //             $item_atts, esc_html( $label ) );
-        //     }
-
 
 
             $products = new WP_Query($args);
@@ -449,7 +417,7 @@ class UACF7_PRODUCT_DROPDOWN {
                          <tr>
                              <th scope="row"><label for="order_by"> <?php echo esc_html( 'Pre Select Product', 'ultimate-addons-cf7' ); ?> </label></th>
                              <td>
-                             <textarea class="values" placeholder="add product those need to be selected" name="values" id="tag-generator-panel-product-pre-select" disabled cols="30" rows="10"></textarea><br>One ID per line. Just to the Product tab, hover over a product and you should see the Product ID.
+                             <input type='text' id="selected_single" name="selected_single" id="selected_one" class="option" disabled placeholder=" example: 10">
 
                                 <a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a>
                                  <!-- <label for="asSingle"><input id="asSingle" name="pro_pre_select" class="option"  disabled type="radio" value="" checked> Single (Default)</label> -->
