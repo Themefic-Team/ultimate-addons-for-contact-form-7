@@ -254,7 +254,7 @@ class UACF7_PRODUCT_DROPDOWN {
             );
         if($tag->has_option( 'layout:grid' )){ // Grid Layout
             $tag_name = $tag->name;
-            $html = apply_filters('uacf7_dorpdown_grid', $dropdown, $multiple, $products, $hangover, $default_choice, $tag_name, $validation_error, $display_price, $selectedProductMultiple, $selectedProductSingle);   
+            $html = apply_filters('uacf7_dorpdown_grid', $dropdown, $multiple, $products, $hangover, $default_choice, $tag_name, $validation_error, $display_price, $selectedProductSingle, $selectedProductMultiple, $atts, $tag);   
         }else{
             $html = $dropdown;
         }
