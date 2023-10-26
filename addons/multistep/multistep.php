@@ -45,14 +45,18 @@ class UACF7_MULTISTEP {
     function step_end_tag_handler($tag){
         ob_start();  
         $form_current = \WPCF7_ContactForm::get_current();
+
+        $dummy_step_id = 1 ;
         ?>
         <p>
             <button class="uacf7-prev" data-form-id="<?php echo esc_attr($form_current->id()); ?>" ><?php echo esc_html__('Previous', 'ultimate-addons-cf7'); ?></button>
-            <button class="uacf7-next" data-form-id="<?php echo esc_attr($form_current->id()); ?>"><?php echo esc_html__('Next', 'ultimate-addons-cf7'); ?></button>
+            <button class="uacf7-next" data-step-id="<?php echo $dummy_step_id; ?>" data-form-id="<?php echo esc_attr($form_current->id()); ?>"><?php echo esc_html__('Next', 'ultimate-addons-cf7'); ?></button>
             <span class="wpcf7-spinner uacf7-ajax-loader"></span>
         </p>
         </div>
         <?php
+
+        $dummy_step_id ++;
         return ob_get_clean();
        
     } 
@@ -573,7 +577,7 @@ class UACF7_MULTISTEP {
                         $content = $step;
                         ?>
                         <div class="steps-step">
-                            <a title-id=".step-<?php echo esc_attr($step_id); ?>" data-form-id="<?php echo esc_attr($cfform->id()); ?>"   href="#<?php echo esc_attr($cfform->id()); ?>step-<?php echo esc_attr($step_id); ?>" type="button" class="btn <?php if( $step_id == 1 ) { echo esc_attr('uacf7-btn-active'); }else{ echo esc_attr('uacf7-btn-default'); } ?> btn-circle"><?php 
+                            <a data-step-id="<?php echo esc_attr($step_id); ?>" title-id=".step-<?php echo esc_attr($step_id); ?>" data-form-id="<?php echo esc_attr($cfform->id()); ?>"   href="#<?php echo esc_attr($cfform->id()); ?>step-<?php echo esc_attr($step_id); ?>" type="button" class="btn <?php if( $step_id == 1 ) { echo esc_attr('uacf7-btn-active'); }else{ echo esc_attr('uacf7-btn-default'); } ?> btn-circle"><?php 
                                 if(is_array($step_name)) {
                                     do_action( 'uacf7_progressbar_image', $step_name[$step_count] );
                                 }

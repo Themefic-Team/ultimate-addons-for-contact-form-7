@@ -11,8 +11,58 @@
                 
                 allWells.hide();
 
+
+
+                // var next_button =  $(this).parent().parent().parent().siblings('.uacf7-multisetp-form').find(`.uacf7-step.uacf7-step-${form_id}.step-content.step-start`).find('.uacf7-next');
+                // next_button.click(function (){
+                //     var step_id = $(this).data('step-id');
+
+                //     console.log(step_id)
+                // });
+
+
+
+
+
+
+
+
+
+
                 navListItems.click(function (e) {
                     e.preventDefault();
+
+
+
+
+
+                    
+                var next_button =  $(this).parent().parent().parent().siblings('.uacf7-multisetp-form').find(`.uacf7-step.uacf7-step-${form_id}.step-content.step-start`).find('.uacf7-next');
+                var next_button_step_id =  $(this).parent().parent().parent().siblings('.uacf7-multisetp-form').find(`.uacf7-step.uacf7-step-${form_id}.step-content.step-start`).find('.uacf7-next').data('step-id');
+  
+                    var step_id = $(this).data('step-id');
+
+
+
+                    console.log(next_button_step_id)
+
+                    
+
+                    // console.log(step_id - 1)
+
+
+
+
+
+
+
+
+
+
+           
+
+
+
                     var $target = $($(this).attr('href')),
                         title   = $($(this).attr('title-id')),
                         $item   = $(this);
@@ -42,6 +92,8 @@
                         nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
                         curInputs = curStep.find("input[type='text'],input[type='url']"),
                         isValid = true;
+
+
 
                     $(".form-group").removeClass("has-error");
                     for (var i = 0; i < curInputs.length; i++) {
