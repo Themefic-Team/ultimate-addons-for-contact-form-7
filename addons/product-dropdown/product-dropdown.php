@@ -182,7 +182,7 @@ class UACF7_PRODUCT_DROPDOWN {
                 $selectedProductSingle = null; 
             }
 
-            $dropdown = '<option value="">-Select-</option';
+            $dropdown = '<option value="">-Select-</option>';
             while ($products->have_posts()) {
                 $products->the_post();
 
@@ -209,7 +209,6 @@ class UACF7_PRODUCT_DROPDOWN {
                 $dropdown .= sprintf('<option %1$s>%2$s</option>', $item_atts, esc_html($label));
             }
         
-
             wp_reset_postdata(); 
             $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
             $atts['name'] = $tag->name . ( $multiple ? '[]' : '' );
