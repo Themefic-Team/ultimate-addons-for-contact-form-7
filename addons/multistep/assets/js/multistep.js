@@ -153,12 +153,16 @@ jQuery(document).ready(function () {
                 try { 
                     if (json_result.is_valid) {
 
-                        var curStep = jQuery($this).closest(".uacf7-step"),
-                            curStepBtn = curStep.attr("id"),
-                            nextStepWizard = jQuery('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a");
+                        var curStep = jQuery($this).closest(".uacf7-step");
+                            curStepBtn = curStep.attr("id");
+                            // nextStepWizard = jQuery('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a");
+                           jQuery('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a");
 
-                        nextStepWizard.removeAttr('disabled').trigger('click');
-     
+            
+
+                            // console.log(curStepBtn)
+
+                        // nextStepWizard.removeAttr('disabled').trigger('click');
                     } else {
 						
                         // show errors

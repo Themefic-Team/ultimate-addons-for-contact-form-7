@@ -20,62 +20,36 @@
                 //     console.log(step_id)
                 // });
 
-
-
-
-
-
-
-
-
-
                 navListItems.click(function (e) {
                     e.preventDefault();
 
 
-
-
-
                     
-                var next_button =  $(this).parent().parent().parent().siblings('.uacf7-multisetp-form').find(`.uacf7-step.uacf7-step-${form_id}.step-content.step-start`).find('.uacf7-next');
-                var next_button_step_id =  $(this).parent().parent().parent().siblings('.uacf7-multisetp-form').find(`.uacf7-step.uacf7-step-${form_id}.step-content.step-start`).find('.uacf7-next').data('step-id');
-  
-                    var step_id = $(this).data('step-id');
+                    var next_button_parent =  $(this).parent().parent().parent().siblings('.uacf7-multisetp-form').find(`.uacf7-form-${form_id}`); //.step-content.step-start
 
+                    var targetStep = $(this).data('step-id');
+                    var currentStep = targetStep - 1;
 
+                    if (targetStep > currentStep) {
+                        var btn = next_button_parent.find(`.uacf7-next[data-step-id="${currentStep}"][data-form-id="${form_id}"]`);
+                        
 
-                    console.log(next_button_step_id)
-
-                    
-
-                    // console.log(step_id - 1)
-
-
-
-
-
-
-
-
-
-
-           
-
-
-
-                    var $target = $($(this).attr('href')),
-                        title   = $($(this).attr('title-id')),
-                        $item   = $(this);
-
-                    if (!$item.hasClass('disabled')) {
-                        navListItems.removeClass('uacf7-btn-active').addClass('uacf7-btn-default');
-                        $item.addClass('uacf7-btn-active');
-                        allWells.hide();
-                        $target.show();
-                        allStepTitle.hide();
-                        title.show();
-                        $target.find('input:eq(0)').focus();
+                        btn.trigger('click');
                     }
+
+                    // var $target = $($(this).attr('href')),
+                    //     title   = $($(this).attr('title-id')),
+                    //     $item   = $(this);
+
+                    // if (!$item.hasClass('disabled')) {
+                    //     navListItems.removeClass('uacf7-btn-active').addClass('uacf7-btn-default');
+                    //     $item.addClass('uacf7-btn-active');
+                    //     allWells.hide();
+                    //     $target.show();
+                    //     allStepTitle.hide();
+                    //     title.show();
+                    //     $target.find('input:eq(0)').focus();
+                    // }
                 });
 
                 allPrevBtn.click(function () {
