@@ -88,10 +88,7 @@ if( !function_exists( 'uacf7_addons_included' ) ) {
         if( uacf7_checked( 'uacf7_enable_telegram_field') != ''){
             require_once( 'telegram/ultimate-telegram.php');
         }
-		 //Addon - Total Form Submission
-         if( uacf7_checked( 'uacf7_enable_total_submission_field') != ''){
-            require_once( 'total-submission/ultimate-total-submission.php');
-        }
+		
     }
 }
 
