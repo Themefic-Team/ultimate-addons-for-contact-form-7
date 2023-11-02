@@ -7,9 +7,14 @@
        
         public function __construct(){
 
-            add_action( 'wpcf7_init', array( $this, 'uacf7_spam_protection_add_shortcodes' ) );
-            add_action( 'admin_init', array( $this, 'uacf7_spam_protection_tag_generator' ) );
-            add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_spam_protection'), 24, 2 ); 
+            add_action( 'wpcf7_init', [ $this, 'uacf7_spam_protection_add_shortcodes' ]);
+            add_action( 'admin_init', [ $this, 'uacf7_spam_protection_tag_generator' ]);
+            add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_spam_protection'], 24, 2 ); 
+            add_action('wp_enqueue_scripts', [$this, 'uacf7_spam_protection_scripts']);
+        }
+
+        public function uacf7_spam_protection_scripts(){
+
         }
 
         public function uacf7_post_meta_options_spam_protection($value, $post_id){
