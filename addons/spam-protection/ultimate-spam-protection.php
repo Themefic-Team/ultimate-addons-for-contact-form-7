@@ -36,6 +36,14 @@
                         'label_off' => __( 'No', 'ultimate-addons-cf7' ),
                         'default'   => false
                     ),
+                    'uacf7_spam_protection_arithmathic_enable' => array(
+                        'id'        => 'uacf7_spam_protection_arithmathic_enable',
+                        'type'      => 'switch',
+                        'label'     => __( ' Enable/Disable Arithmathic Protection', 'ultimate-addons-cf7' ),
+                        'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
+                        'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+                        'default'   => false
+                    ),
         
                  
                    
