@@ -220,7 +220,16 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
 						'field_width' => 33,
-					),    
+					),
+					'uacf7_enable_spam_protection_fields' => array(
+						'id'        => 'uacf7_enable_spam_protection_fields',
+						'type'      => 'switch',
+						'label'     => __( 'Spam Protection', 'ultimate-addons-cf7' ),
+						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
+						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+						'default'   => false,
+						'field_width' => 33,
+					),     
 				),
 			), 
 			'wooCommerce_integration' => array(
