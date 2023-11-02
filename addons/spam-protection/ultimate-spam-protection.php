@@ -14,7 +14,10 @@
         }
 
         public function uacf7_spam_protection_scripts(){
-
+            wp_enqueue_script('uacf7-spam-protection', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-script.js', ['jquery'], 'WPCF7_VERSION', true);
+            // wp_enqueue_style('submission_id_public_css', UACF7_URL . '/addons/submission-id/assets/public/css/public-submission-id.css', [], 'UAFC7_VERSION', true, 'all');
+ 
+          
         }
 
         public function uacf7_post_meta_options_spam_protection($value, $post_id){
