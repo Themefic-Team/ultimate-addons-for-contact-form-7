@@ -157,8 +157,9 @@
             ?> 
                 <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
 
-                   <input type="text">
+                    <input id="uacf7_<?php echo esc_attr($tag->name); ?>" <?php echo $atts;?> >
                     <span><?php echo $validation_error; ?></span>
+                    
                 </span>
 
             <?php 
