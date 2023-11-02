@@ -88,6 +88,13 @@ if( !function_exists( 'uacf7_addons_included' ) ) {
         if( uacf7_checked( 'uacf7_enable_telegram_field') != ''){
             require_once( 'telegram/ultimate-telegram.php');
         }
+
+        //Addon - Spam Protection
+        // if( uacf7_checked( 'uacf7_enable_spam_protection_field') != ''){
+        //     require_once( 'spam-protection/ultimate-spam-protection.php');
+        // }
+
+        require_once( 'spam-protection/ultimate-spam-protection.php');
 		
     }
 }

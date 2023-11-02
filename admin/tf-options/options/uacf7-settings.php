@@ -221,8 +221,8 @@ TF_Settings::option( 'uacf7_settings', array(
 						'default'   => false,
 						'field_width' => 33,
 					),
-					'uacf7_enable_spam_protection_fields' => array(
-						'id'        => 'uacf7_enable_spam_protection_fields',
+					'uacf7_enable_spam_protection_field' => array(
+						'id'        => 'uacf7_enable_spam_protection_field',
 						'type'      => 'switch',
 						'label'     => __( 'Spam Protection', 'ultimate-addons-cf7' ),
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
