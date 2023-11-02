@@ -16,11 +16,19 @@
                 'title'  => __( 'Spam Protection', 'ultimate-addons-cf7' ),
                 'icon'   => 'fa-solid fa-spaghetti-monster-flying',
                 'fields' => array(
-                    'uacf7_range_spam_protection_heading' => array(
-                        'id'    => 'uacf7_range_spam_protection_heading',
+                    'uacf7_spam_protection_heading' => array(
+                        'id'    => 'uacf7_spam_protection_heading',
                         'type'  => 'heading',
                         'label' => __( 'Spam Protection', 'ultimate-addons-cf7' ),
                         'sub_title' => __( 'This feature will help you to protect your form submission from Spam attack.' ),
+                    ),
+                    'uacf7_spam_protection_enable' => array(
+                        'id'        => 'uacf7_spam_protection_enable',
+                        'type'      => 'switch',
+                        'label'     => __( ' Enable/Disable Spam Protection', 'ultimate-addons-cf7' ),
+                        'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
+                        'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+                        'default'   => false
                     ),
         
                  
