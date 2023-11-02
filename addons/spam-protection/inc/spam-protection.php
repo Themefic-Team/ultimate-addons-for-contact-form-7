@@ -95,7 +95,7 @@
         }
 
         public function uacf7_spam_protection_add_shortcodes() {
-            wpcf7_add_form_tag( array( 'uacf7_range_slider', 'uacf7_range_slider*' ),
+            wpcf7_add_form_tag( array( 'uacf7_spam_protection', 'uacf7_spam_protection*' ),
                 array( $this, 'uacf7_spam_protection_tag_handler_callback' ), array( 'name-attr' => true )
             );
         } 
@@ -116,54 +116,56 @@
             //     return;
             // }
         
-            // $validation_error = wpcf7_get_validation_error($tag->name);
+            $validation_error = wpcf7_get_validation_error($tag->name);
         
-            // $class = wpcf7_form_controls_class($tag->type);
+            $class = wpcf7_form_controls_class($tag->type);
         
         
-            // if ($validation_error) {
-            //     $class .= 'wpcf7-not-valid';
-            // }
+            if ($validation_error) {
+                $class .= 'wpcf7-not-valid';
+            }
         
-            // $atts = array();
+            $atts = array();
         
-            // $atts['class'] = $tag->get_class_option($class);
-            // $atts['id'] = $tag->get_id_option();
-            // $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
+            $atts['class'] = $tag->get_class_option($class);
+            $atts['id'] = $tag->get_id_option();
+            $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
         
-            // if ($tag->is_required()) {
-            //     $atts['aria-required'] = 'true';
-            // }
+            if ($tag->is_required()) {
+                $atts['aria-required'] = 'true';
+            }
         
-            // $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
+            $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
         
-            // $atts['name'] = $tag->name;
+            $atts['name'] = $tag->name;
         
-            // // input size
-            // $size = $tag->get_option('size', 'int', true);
-            // if ($size) {
-            //     $atts['size'] = $size;
-            // } else {
-            //     $atts['size'] = 40;
-            // } 
-            // $value = $tag->values;
-            // $default_value = $tag->get_default_option($value);
+           
+            $value = $tag->values;
+            $default_value = $tag->get_default_option($value);
         
         
             // $value = isset($submission['uacf7_submission_id']) ? $submission['uacf7_submission_id'] : '';
         
-            // $atts['value'] = $value;
+            $atts['value'] = $value;
         
-            // $atts['name'] = $tag->name;
+            $atts['name'] = $tag->name;
         
-            // $atts = wpcf7_format_atts($atts);
+            $atts = wpcf7_format_atts($atts);
+            
+            ob_start();
         
-        
-           
-        
-            // $spam_protection_buffer = ob_get_clean();
+            ?> 
+                <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
 
-            // return $spam_protection_buffer;
+                   <input type="text">
+                    <span><?php echo $validation_error; ?></span>
+                </span>
+
+            <?php 
+        
+            $spam_protection_buffer = ob_get_clean();
+
+            return $spam_protection_buffer;
        
             // return apply_filters( 'uacf7_range_slider_style_pro_feature', $spam_protection_buffer, $tag); 
         
