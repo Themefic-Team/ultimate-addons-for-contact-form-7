@@ -44,7 +44,7 @@
                         'type'      => 'select',
                         'label'     => __( 'Protection Type', 'ultimate-addons-cf7' ),
                         'options'   => array(
-                            'arithmathic' => 'Arithmathic',
+                            'arithmathic_recognation' => 'Arithmathic Recognation',
                             'image_recognation' => 'Image Recognation',
                         ),
                         'default'   => false
