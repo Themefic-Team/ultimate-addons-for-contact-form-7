@@ -88,6 +88,15 @@
                                 ); ?> 
                             </div>
                             <tr>
+                            <th scope="row"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></th>
+                                <td>
+                                    <fieldset>
+                                        <legend class="screen-reader-text"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></legend>
+                                        <label><input type="checkbox" name="required" value="on"><?php _e( 'Required Field', 'ultimate-addons-cf7' );?></label>
+                                    </fieldset>
+                                </td>
+                            </tr> 
+                            <tr>
                                 <th scope="row"><label for="<?php echo esc_attr($args['content'] . '-name'); ?>"><?php echo esc_html(__('Name', 'ultimate-addons-cf7')); ?></label></th>
                                 <td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr($args['content'] . '-name'); ?>" /></td>
                             </tr> 
@@ -122,15 +131,15 @@
                 return '';
             }
              
-            // /** Enable / Disable Spam Protection */
-            // $wpcf7 = WPCF7_ContactForm::get_current(); 
-            // $formid = $wpcf7->id();
-            // $submission = uacf7_get_form_option( $formid, 'submission_id' );
-            // $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false; 
+         /** Enable / Disable Spam Protection */
+            $wpcf7 = WPCF7_ContactForm::get_current(); 
+            $formid = $wpcf7->id();
+            $uacf7_spam_protection = uacf7_get_form_option( $formid, 'uacf7_spam_protection_enable' );
+            $uacf7_spam_protection_enable = isset($submisuacf7_spam_protectionsion['uacf7_spam_protection_enable']) ? $uacf7_spam_protection['uacf7_spam_protection_enable'] : false; 
             
-            // if($uacf7_submission_id_enable != true){
-            //     return;
-            // }
+            if($uacf7_spam_protection_enable != true){
+                return;
+            }
         
             $validation_error = wpcf7_get_validation_error($tag->name);
         
