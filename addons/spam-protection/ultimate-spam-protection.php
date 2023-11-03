@@ -134,10 +134,11 @@
          /** Enable / Disable Spam Protection */
             $wpcf7 = WPCF7_ContactForm::get_current(); 
             $formid = $wpcf7->id();
-            $uacf7_spam_protection = uacf7_get_form_option( $formid, 'uacf7_spam_protection_enable' );
-            $uacf7_spam_protection_enable = isset($submisuacf7_spam_protectionsion['uacf7_spam_protection_enable']) ? $uacf7_spam_protection['uacf7_spam_protection_enable'] : false; 
-            
-            if($uacf7_spam_protection_enable != true){
+        
+            $uacf7_spam_protection = uacf7_get_form_option($formid, 'spam_protection');
+            $uacf7_spam_protection_enable = $uacf7_spam_protection['uacf7_spam_protection_enable']; 
+        
+            if($uacf7_spam_protection_enable != '1'){
                 return;
             }
         
