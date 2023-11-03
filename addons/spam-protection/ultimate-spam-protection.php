@@ -138,9 +138,6 @@
             $uacf7_spam_protection = uacf7_get_form_option($formid, 'spam_protection');
             $uacf7_spam_protection_enable = $uacf7_spam_protection['uacf7_spam_protection_enable']; 
             $uacf7_spam_protection_type = $uacf7_spam_protection['uacf7_spam_protection_type']; 
-
-            // var_dump($uacf7_spam_protection_type);
-            // die();
         
             if($uacf7_spam_protection_enable != '1'){
                 return;
