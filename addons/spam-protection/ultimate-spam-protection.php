@@ -47,8 +47,17 @@
                             'arithmathic_recognation' => 'Arithmathic Recognation',
                             'image_recognation' => 'Image Recognation',
                         ),
-                        'default'   => false
+                        'default'   => 'arithmathic_recognation'
                     ),
+                    'uacf7_image_recognation' => array(
+                        'id'        => 'uacf7_image_recognation',
+                        'type'      => 'text',
+                        'label'     => __( 'Protection Type', 'ultimate-addons-cf7' ),
+                        'dependency' => array( 'uacf7_spam_protection_type', '==', 'image_recognation' )
+                    ),
+             
+
+                    
         
                  
                    
@@ -155,7 +164,7 @@
             $atts = array();
         
             $atts['class'] = $tag->get_class_option($class);
-            $atts['class'] = 'uacf7_spam_recognation';
+            $atts['class'] = 'uacf7_spam_protection';
             $atts['id'] = $tag->get_id_option();
             $atts['data-recognation-type'] = $uacf7_spam_protection_type;
             $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
