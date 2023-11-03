@@ -39,13 +39,13 @@
                         'label_off' => __( 'No', 'ultimate-addons-cf7' ),
                         'default'   => false
                     ),
-                    'uacf7_spam_protection_arithmathic_enable' => array(
-                        'id'        => 'uacf7_spam_protection_arithmathic_enable',
+                    'uacf7_spam_protection_type' => array(
+                        'id'        => 'uacf7_spam_protection_type',
                         'type'      => 'select',
                         'label'     => __( 'Protection Type', 'ultimate-addons-cf7' ),
                         'options'   => array(
-                            'option_1' => 'Arithmathic',
-                            'option_2' => 'Image Recognation',
+                            'arithmathic' => 'Arithmathic',
+                            'image_recognation' => 'Image Recognation',
                         ),
                         'default'   => false
                     ),
@@ -170,7 +170,6 @@
             $default_value = $tag->get_default_option($value);
         
         
-            // $value = isset($submission['uacf7_submission_id']) ? $submission['uacf7_submission_id'] : '';
         
             $atts['value'] = $value;
         
