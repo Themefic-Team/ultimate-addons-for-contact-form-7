@@ -193,13 +193,19 @@
         
             ?> 
                 <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
-
-                    <?php if($uacf7_spam_protection_type === 'arithmathic_recognation'){ ?>
-                        <div id="arithmathic_recognation"></div>
-                    <?php }else{ ?>
-                        <div id="image_recognation"></div>
-                   <?php } ?>
-
+                    <div class="uacf7_spam_recognation">
+                        <?php if($uacf7_spam_protection_type === 'arithmathic_recognation'){ ?>
+                            <div id="arithmathic_recognation">
+                                <span id="frn">5</span>
+                                +
+                                <span id="srn">6</span>
+                                =
+                                <input id ="rtn" type="text">
+                            </div>
+                        <?php }else{ ?>
+                            <div id="image_recognation"></div>
+                    <?php } ?>
+                   </div>
                 </span>
 
             <?php 
