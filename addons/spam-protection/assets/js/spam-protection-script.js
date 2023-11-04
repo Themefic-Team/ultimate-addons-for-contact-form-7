@@ -3,7 +3,6 @@
     var forms = $('.wpcf7-form'); 
     forms.each(function(){
         var formId = $(this).find('input[name="_wpcf7"]').val();  
-        // var needToGenerateNumbers = true;
         var uacf7_spam_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation'); 
         var first_random_number = Math.random() * 10;
         var second_random_number = Math.random() * 10;
@@ -29,14 +28,7 @@
           // }
           // Set wpcf7submit to false to prevent the form submission
           event.preventDefault();
-        }, false);
-
-       
-
-
-
-
-        
+        }, false);  
             
   }); 
 
