@@ -9,13 +9,24 @@
 
         uacf7_spam_protection.find('#arithmathic_recognation').find('#frn').text(Math.ceil(first_random_number));
         uacf7_spam_protection.find('#arithmathic_recognation').find('#srn').text(Math.ceil(second_random_number));
-
+        
         var first_number = uacf7_spam_protection.find('#arithmathic_recognation').find('#frn').text();
         var first_number_int = parseInt(first_number);
         var second_number = uacf7_spam_protection.find('#arithmathic_recognation').find('#srn').text();
         var second_number_int = parseInt(second_number);
+        
+        var total_number = first_number_int + second_number_int;
+        
+        document.addEventListener( 'wpcf7submit', function( event ) {
+          var total_number_usergiven = uacf7_spam_protection.find('#arithmathic_recognation').find('#rtn').val();
+          // if(total_number_usergiven == total_number){
+          //   alert();
+          // }
 
-        console.log(first_number_int + second_number_int);
+          alert(total_number_usergiven);
+        }, false );
+
+       
 
 
 

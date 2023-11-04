@@ -200,7 +200,7 @@
                                 +
                                 <span id="srn">6</span>
                                 =
-                                <input id ="rtn" type="text">
+                                <input id ="rtn" type="number">
                             </div>
                         <?php }else{ ?>
                             <div id="image_recognation"></div>
