@@ -13,7 +13,7 @@
           uacf7_spam_protection.find('#arithmathic_recognation').find('#frn').text(Math.ceil(first_random_number));
           uacf7_spam_protection.find('#arithmathic_recognation').find('#srn').text(Math.ceil(second_random_number));
         }
-        // uacf7_generate_ramdom_numbers();
+        uacf7_generate_ramdom_numbers();
         
         var first_number = uacf7_spam_protection.find('#arithmathic_recognation').find('#frn').text();
         var first_number_int = parseInt(first_number);
@@ -23,11 +23,13 @@
         var total_number = first_number_int + second_number_int;
         
         $(this).on( 'wpcf7submit', function( event ) {
-          var total_number_usergiven = uacf7_spam_protection.find('#arithmathic_recognation').find('#rtn').val();
-          if(total_number_usergiven == total_number){
-            uacf7_generate_ramdom_numbers(); 
-          }
-        });
+          // var total_number_usergiven = uacf7_spam_protection.find('#arithmathic_recognation').find('#rtn').val();
+          // if(total_number_usergiven == total_number){
+          //   uacf7_generate_ramdom_numbers(); 
+          // }
+          // Set wpcf7submit to false to prevent the form submission
+          event.preventDefault();
+        }, false);
 
        
 
