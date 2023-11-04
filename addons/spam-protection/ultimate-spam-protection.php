@@ -213,7 +213,6 @@
                                 <button type="submit">Submit</button>
                             </form>
 
-                            </div>
                     <?php } ?>
                    </div>
                 </span>
