@@ -17,14 +17,12 @@
         
         var total_number = first_number_int + second_number_int;
         
-        document.addEventListener( 'wpcf7submit', function( event ) {
+        $(document).on( 'wpcf7submit', function( event ) {
           var total_number_usergiven = uacf7_spam_protection.find('#arithmathic_recognation').find('#rtn').val();
-          // if(total_number_usergiven == total_number){
-          //   alert();
-          // }
-
-          alert(total_number_usergiven);
-        }, false );
+          if(total_number_usergiven == total_number){
+            alert();
+          }
+        });
 
        
 
