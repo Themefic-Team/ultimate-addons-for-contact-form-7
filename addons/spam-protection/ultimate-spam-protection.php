@@ -213,7 +213,7 @@
                             <input type="text" id="userInput" placeholder="Enter CAPTCHA text">
                             <button onclick="validateCaptcha()">Submit</button>
                             <div id="result"></div>
-                            <div id="refresh" onclick="generateCaptcha()">Refresh CAPTCHA</div>
+                            <div id="refresh">Refresh CAPTCHA</div>
                                             
                             
 

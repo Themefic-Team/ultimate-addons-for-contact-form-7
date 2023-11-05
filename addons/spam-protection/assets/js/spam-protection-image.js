@@ -2,7 +2,10 @@
 
         var forms = $('.wpcf7-form'); 
         forms.each(function(){
-        var   formId       = $(this).find('input[name="_wpcf7"]').val();
+        var formId   = $(this).find('input[name="_wpcf7"]').val();
+        var form_div = $(this).find('.uacf7-form-'+formId);
+
+        console.log(form_div)
 
 
         const captchaCodes = [];
@@ -25,22 +28,26 @@
             const randomIndex = Math.floor(Math.random() * captchaCodes.length);
             const captcha     = captchaCodes[randomIndex];
 
-            document.getElementById("captcha").innerText = captcha;
+            // document.getElementById("captcha").innerText = captcha;
+            form_div.find("#captcha").text(captcha);
         }
 
         function validateCaptcha() {
-            const userInput = document.getElementById("userInput").value;
-            const captcha   = document.getElementById("captcha").innerText;
-
-            const resultDiv = document.getElementById("result");
-
+            const userInput = form_div.find("#userInput").val();
+            const captcha   = form_div.find("#captcha").text();
+            const resultDiv = form_div.find("#result");
+            
             if (userInput === captcha) {
-                resultDiv.innerText = "CAPTCHA validated successfully!";
+                resultDiv.text("CAPTCHA validated successfully!");
             } else {
-                resultDiv.innerText = "CAPTCHA validation failed. Please try again.";
+                resultDiv.text("CAPTCHA validation failed. Please try again.");
             }
         }
-
+        
+        const refreshButton = form_div.find("#refresh");
+        refreshButton.click(function () {
+            generateCaptcha();
+        });
         generateCaptcha();
 
     }); 
