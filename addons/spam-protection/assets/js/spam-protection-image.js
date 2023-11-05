@@ -5,9 +5,6 @@
         var formId   = $(this).find('input[name="_wpcf7"]').val();
         var form_div = $(this).find('.uacf7-form-'+formId);
 
-        console.log(form_div)
-
-
         const captchaCodes = [];
 
         function generateRandomString(length) {
@@ -47,14 +44,43 @@
             const refreshButton = form_div.find("#refresh");
             refreshButton.click(function () {
                 generateCaptcha();
+                makeCaptatoImage();
             });
+
             generateCaptcha();
 
             $(this).on( 'wpcf7submit', function( event ) {
                 validateCaptcha();
+                });
             }, false); 
 
-    }); 
+
+
+
+
+            $(document).ready(function () {
+
+                function makeCaptatoImage (){
+                    const captcha4image = $("#captcha");
+                    const captchaImg = $("#captchaImg");
+    
+                    html2canvas(captcha4image[0], { width: 100, scale: 2 }).then(function (canvas) {
+                        var img = new Image();
+                        img.src = canvas.toDataURL('image/png');
+                        img.width = '100';
+                        console.log(img);
+                    
+                        $(captchaImg).append(img);
+                        
+                    });
+                }
+
+                makeCaptatoImage();
+              
+    
+            });
+
+ 
 
 })(jQuery);
 
