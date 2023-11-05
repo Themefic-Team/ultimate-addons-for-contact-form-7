@@ -211,6 +211,7 @@
                             
                                 <div id="captcha"></div>
                                 <input type="text" id="userInput" placeholder="Enter CAPTCHA text">
+                                <span id="refresh">refresh</span>
                                 <div id="result"></div>
                             </div>
                                             
