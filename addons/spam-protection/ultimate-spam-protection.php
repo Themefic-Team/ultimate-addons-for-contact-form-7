@@ -54,11 +54,15 @@
                         'id'        => 'uacf7_word_filter',
                         'type'      => 'textarea',
                         'label'     => __( 'Word Filter', 'ultimate-addons-cf7' ),
+                        'subtitle' => __( 'Enlist the words you want to avoid from Spammer, Separeate the words using a Comma', 'ultimate-addons-cf7' ),
+                        'placeholder' => __( ', comma separate words', 'ultimate-addons-cf7' ), 
                     ),
                     'uacf7_ip_block'    => array(
                         'id'        => 'uacf7_ip_block',
                         'type'      => 'textarea',
                         'label'     => __( 'IP Block', 'ultimate-addons-cf7' ),
+                        'subtitle' => __( 'Enlist the IP you want to Ban / Block, Separeate the IPs using a Comma', 'ultimate-addons-cf7' ),
+                        'placeholder' => __( ', comma separate IPs', 'ultimate-addons-cf7' ), 
                     ),
              
   
