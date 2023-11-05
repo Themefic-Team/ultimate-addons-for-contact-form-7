@@ -50,18 +50,8 @@
                         ),
                         'default'   => 'arithmathic_recognation'
                     ),
-                    'uacf7_image_recognation' => array(
-                        'id'        => 'uacf7_image_recognation',
-                        'type'      => 'text',
-                        'label'     => __( 'Protection Type', 'ultimate-addons-cf7' ),
-                        'dependency' => array( 'uacf7_spam_protection_type', '==', 'image_recognation' )
-                    ),
              
-
-                    
-        
-                 
-                   
+  
                 )
                     
         
@@ -146,8 +136,8 @@
             $formid = $wpcf7->id();
         
             $uacf7_spam_protection = uacf7_get_form_option($formid, 'spam_protection');
-            $uacf7_spam_protection_enable = $uacf7_spam_protection['uacf7_spam_protection_enable']; 
-            $uacf7_spam_protection_type = $uacf7_spam_protection['uacf7_spam_protection_type']; 
+            $uacf7_spam_protection_enable = isset($uacf7_spam_protection['uacf7_spam_protection_enable']); 
+            $uacf7_spam_protection_type = isset($uacf7_spam_protection['uacf7_spam_protection_type']); 
         
             if($uacf7_spam_protection_enable != '1'){
                 return;
@@ -180,22 +170,21 @@
         
            
             $value = $tag->values;
-            $default_value = $tag->get_default_option($value);
-        
-        
+            $default_value = $tag->get_default_option($value);   
         
             $atts['value'] = $value;
         
             $atts['name'] = $tag->name;
         
             $atts = wpcf7_format_atts($atts);
-            
+
+         
             ob_start();
         
             ?> 
                 <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
                     <div class="uacf7_spam_recognation">
-                        <?php if($uacf7_spam_protection_type === 'arithmathic_recognation'){ ?>
+                        <?php if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'arithmathic_recognation'){ ?>
                             <div id="arithmathic_recognation">
                                 <span id="frn">5</span>
                                 +
@@ -203,17 +192,19 @@
                                 =
                                 <input id ="rtn" type="number" min="0">
                             </div>
-                        <?php }else{ ?>
+                        <?php }else if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'image_recognation'){ ?>
                             <div id="image_recognation">
                             
-                            <form onsubmit="validateCaptcha()">
+                    
                                 <div id="captcha">
                                 </div>
                                 <input type="text" placeholder="Captcha" id="cpatchaTextBox"/>
-                                <button type="submit">Submit</button>
-                            </form>
+                    
+                            
 
-                    <?php } ?>
+                        <?php }else{ ?>
+                            <p>No Protection is applied</p>
+                        <?php } ?>
                    </div>
                 </span>
 
