@@ -4,6 +4,9 @@
         forms.each(function(){
         var formId   = $(this).find('input[name="_wpcf7"]').val();
         var form_div = $(this).find('.uacf7-form-'+formId);
+        const refreshButton = form_div.find("#refresh");
+
+        console.log(refreshButton)
 
         const captchaCodes = [];
 
@@ -41,7 +44,6 @@
             }
             }
         
-            const refreshButton = form_div.find("#refresh");
             refreshButton.click(function () {
                 generateCaptcha();
                 makeCaptatoImage();
@@ -56,11 +58,9 @@
 
 
 
-
-
             $(document).ready(function () {
 
-                function makeCaptatoImage (){
+                function makeCapthatoImage (){
                     const captcha4image = $("#captcha");
                     const captchaImg = $("#captchaImg");
     
@@ -68,19 +68,17 @@
                         var img = new Image();
                         img.src = canvas.toDataURL('image/png');
                         img.width = '100';
-                        console.log(img);
                     
                         $(captchaImg).append(img);
                         
                     });
                 }
 
-                makeCaptatoImage();
-              
+                makeCapthatoImage();         
     
             });
-
+     
+         
  
-
 })(jQuery);
 
