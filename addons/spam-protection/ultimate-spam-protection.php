@@ -17,8 +17,7 @@
             wp_enqueue_script('uacf7-spam-protection', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-script.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_script('uacf7-spam-protection-image', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-image.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_style('uacf7-spam-protection-css', UACF7_URL . '/addons/spam-protection/assets/css/spam-protection-style.css', [], 'WPCF7_VERSION', 'all');
- 
-          
+   
         }
 
         public function uacf7_post_meta_options_spam_protection($value, $post_id){
@@ -68,7 +67,6 @@
   
                 )
                     
-        
             ), $post_id);
         
             $value['spam_protection'] = $spam_protection; 

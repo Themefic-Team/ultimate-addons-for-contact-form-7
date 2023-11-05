@@ -32,8 +32,6 @@
             alert('not matched')
           }
         });
-
-
   }); 
 
 })(jQuery);
