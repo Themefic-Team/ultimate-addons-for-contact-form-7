@@ -10,7 +10,7 @@
             add_action( 'wpcf7_init', [ $this, 'uacf7_spam_protection_add_shortcodes' ]);
             add_action( 'admin_init', [ $this, 'uacf7_spam_protection_tag_generator' ]);
             add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_spam_protection'], 24, 2 ); 
-            add_action('wp_enqueue_scripts', [$this, 'uacf7_spam_protection_scripts']);
+            add_action( 'wp_enqueue_scripts', [$this, 'uacf7_spam_protection_scripts']);
         }
 
         public function uacf7_spam_protection_scripts(){
@@ -27,9 +27,9 @@
                 'icon'   => 'fa-solid fa-spaghetti-monster-flying',
                 'fields' => array(
                     'uacf7_spam_protection_heading' => array(
-                        'id'    => 'uacf7_spam_protection_heading',
-                        'type'  => 'heading',
-                        'label' => __( 'Spam Protection', 'ultimate-addons-cf7' ),
+                        'id'        => 'uacf7_spam_protection_heading',
+                        'type'      => 'heading',
+                        'label'     => __( 'Spam Protection', 'ultimate-addons-cf7' ),
                         'sub_title' => __( 'This feature will help you to protect your form submission from Spam attack.' ),
                     ),
                     'uacf7_spam_protection_enable' => array(
@@ -46,9 +46,19 @@
                         'label'     => __( 'Protection Type', 'ultimate-addons-cf7' ),
                         'options'   => array(
                             'arithmathic_recognation' => 'Arithmathic Recognation',
-                            'image_recognation' => 'Image Recognation',
+                            'image_recognation'       => 'Image Recognation',
                         ),
                         'default'   => 'arithmathic_recognation'
+                    ),
+                    'uacf7_word_filter' => array(
+                        'id'        => 'uacf7_word_filter',
+                        'type'      => 'textarea',
+                        'label'     => __( 'Word Filter', 'ultimate-addons-cf7' ),
+                    ),
+                    'uacf7_ip_block'    => array(
+                        'id'        => 'uacf7_ip_block',
+                        'type'      => 'textarea',
+                        'label'     => __( 'IP Block', 'ultimate-addons-cf7' ),
                     ),
              
   
@@ -135,9 +145,9 @@
             $wpcf7 = WPCF7_ContactForm::get_current(); 
             $formid = $wpcf7->id();
         
-            $uacf7_spam_protection = uacf7_get_form_option($formid, 'spam_protection');
-            $uacf7_spam_protection_enable = isset($uacf7_spam_protection['uacf7_spam_protection_enable']); 
-            $uacf7_spam_protection_type = isset($uacf7_spam_protection['uacf7_spam_protection_type']); 
+            $uacf7_spam_protection        = uacf7_get_form_option($formid, 'spam_protection');
+            $uacf7_spam_protection_enable = isset($uacf7_spam_protection['uacf7_spam_protection_enable']);
+            $uacf7_spam_protection_type   = isset($uacf7_spam_protection['uacf7_spam_protection_type']);
         
             if($uacf7_spam_protection_enable != '1'){
                 return;
@@ -169,12 +179,12 @@
             $atts['name'] = $tag->name;
         
            
-            $value = $tag->values;
-            $default_value = $tag->get_default_option($value);   
+            $value         = $tag->values;
+            $default_value = $tag->get_default_option($value);
         
             $atts['value'] = $value;
         
-            $atts['name'] = $tag->name;
+            $atts['name']  = $tag->name;
         
             $atts = wpcf7_format_atts($atts);
 
