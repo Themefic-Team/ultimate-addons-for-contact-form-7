@@ -50,6 +50,11 @@
         });
         generateCaptcha();
 
+
+        $(this).on( 'wpcf7submit', function( event ) {
+            validateCaptcha();
+        }, false); 
+
     }); 
 
 })(jQuery);
