@@ -42,18 +42,17 @@
             } else {
                 resultDiv.text("CAPTCHA validation failed. Please try again.");
             }
-        }
+            }
         
-        const refreshButton = form_div.find("#refresh");
-        refreshButton.click(function () {
+            const refreshButton = form_div.find("#refresh");
+            refreshButton.click(function () {
+                generateCaptcha();
+            });
             generateCaptcha();
-        });
-        generateCaptcha();
 
-
-        $(this).on( 'wpcf7submit', function( event ) {
-            validateCaptcha();
-        }, false); 
+            $(this).on( 'wpcf7submit', function( event ) {
+                validateCaptcha();
+            }, false); 
 
     }); 
 

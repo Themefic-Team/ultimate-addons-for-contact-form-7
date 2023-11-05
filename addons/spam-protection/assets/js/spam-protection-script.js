@@ -20,21 +20,20 @@
         var second_number_int = parseInt(second_number);
         
         var total_number = first_number_int + second_number_int;
-        
-        // $(this).on( 'wpcf7submit', function( event ) {
-        //   // var total_number_usergiven = uacf7_spam_protection.find('#arithmathic_recognation').find('#rtn').val();
-        //   // if(total_number_usergiven == total_number){
-        //   //   uacf7_generate_ramdom_numbers(); 
-        //   // }
-        //   // Set wpcf7submit to false to prevent the form submission
-        //   event.preventDefault();
-        // }, false);  
-            
 
-        $(this).on('wpcf7mailsent', '.wpcf7-form', function(event) {
-          // Disable the submit button
-          event.preventDefault();
-      }, false);
+   
+        
+        $('.uacf7-form-'+formId).find('input[type="submit"]').on('click', function (e) {
+          var total_number_usergiven = uacf7_spam_protection.find('#arithmathic_recognation').find('#rtn').val();
+          if(total_number_usergiven == total_number){
+            uacf7_generate_ramdom_numbers(); 
+          }else{
+            e.preventDefault();
+            alert('not matched')
+          }
+        });
+
+
   }); 
 
 })(jQuery);

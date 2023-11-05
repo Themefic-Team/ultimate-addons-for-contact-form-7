@@ -209,17 +209,17 @@
                         <?php }else if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'image_recognation'){ ?>
                             <div id="image_recognation">
                             
-                            <div id="captcha"></div>
-                            <input type="text" id="userInput" placeholder="Enter CAPTCHA text">
-                            <button onclick="validateCaptcha()">Submit</button>
-                            <div id="result"></div>
-                            <div id="refresh">Refresh CAPTCHA</div>
+                                <div id="captcha"></div>
+                                <input type="text" id="userInput" placeholder="Enter CAPTCHA text">
+                                <div id="result"></div>
+                            </div>
                                             
                             
 
                         <?php }else{ ?>
                             <p>No Protection is applied</p>
                         <?php } ?>
+                           
                    </div>
                 </span>
 
