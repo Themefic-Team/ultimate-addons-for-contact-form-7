@@ -48,21 +48,21 @@
                             'arithmathic_recognation' => 'Arithmathic Recognation',
                             'image_recognation'       => 'Image Recognation',
                         ),
-                        'default'   => 'arithmathic_recognation'
+                        'default' => 'arithmathic_recognation'
                     ),
                     'uacf7_word_filter' => array(
-                        'id'        => 'uacf7_word_filter',
-                        'type'      => 'textarea',
-                        'label'     => __( 'Word Filter', 'ultimate-addons-cf7' ),
-                        'subtitle' => __( 'Enlist the words you want to avoid from Spammer, Separeate the words using a Comma', 'ultimate-addons-cf7' ),
-                        'placeholder' => __( ', comma separate words', 'ultimate-addons-cf7' ), 
+                        'id'          => 'uacf7_word_filter',
+                        'type'        => 'textarea',
+                        'label'       => __( 'Word Filter', 'ultimate-addons-cf7' ),
+                        'subtitle'    => __( 'Enlist the words you want to avoid from Spammer, Separeate the words using a Comma', 'ultimate-addons-cf7' ),
+                        'placeholder' => __( ', comma separate words', 'ultimate-addons-cf7' ),
                     ),
                     'uacf7_ip_block'    => array(
-                        'id'        => 'uacf7_ip_block',
-                        'type'      => 'textarea',
-                        'label'     => __( 'IP Block', 'ultimate-addons-cf7' ),
-                        'subtitle' => __( 'Enlist the IP you want to Ban / Block, Separeate the IPs using a Comma', 'ultimate-addons-cf7' ),
-                        'placeholder' => __( ', comma separate IPs', 'ultimate-addons-cf7' ), 
+                        'id'          => 'uacf7_ip_block',
+                        'type'        => 'textarea',
+                        'label'       => __( 'IP Block', 'ultimate-addons-cf7' ),
+                        'subtitle'    => __( 'Enlist the IP you want to Ban / Block, Separeate the IPs using a Comma', 'ultimate-addons-cf7' ),
+                        'placeholder' => __( ', comma separate IPs', 'ultimate-addons-cf7' ),
                     ),
              
   
@@ -209,11 +209,12 @@
                         <?php }else if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'image_recognation'){ ?>
                             <div id="image_recognation">
                             
-                    
-                                <div id="captcha">
-                                </div>
-                                <input type="text" placeholder="Captcha" id="cpatchaTextBox"/>
-                    
+                            <div id="captcha"></div>
+                            <input type="text" id="userInput" placeholder="Enter CAPTCHA text">
+                            <button onclick="validateCaptcha()">Submit</button>
+                            <div id="result"></div>
+                            <div id="refresh" onclick="generateCaptcha()">Refresh CAPTCHA</div>
+                                            
                             
 
                         <?php }else{ ?>

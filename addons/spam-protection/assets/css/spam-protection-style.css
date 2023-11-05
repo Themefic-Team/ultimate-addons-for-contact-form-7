@@ -1,20 +1,15 @@
-input[type=text] {
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+#captcha {
+  background-color: #C0C0C0;
+  width: 80px;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 5px 1px 5px #eeeaea;
+  opacity: .5;
+  text-align: center;
+
 }
-button{
-  background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 12px 30px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-canvas{
-  /*prevent interaction with the canvas*/
-  pointer-events:none;
+#refresh {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
 }

@@ -2,71 +2,46 @@
 
         var forms = $('.wpcf7-form'); 
         forms.each(function(){
-            var formId = $(this).find('input[name="_wpcf7"]').val();  
-            var code;
+        var   formId       = $(this).find('input[name="_wpcf7"]').val();
 
-            var uacf7_image_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation').find('#image_recognation'); 
-            function createCaptcha() {
-            uacf7_image_protection.find('#captcha').empty();
-            var charsArray = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*";
-            var lengthOtp = 6;
-            var captcha = [];
 
-            for (var i = 0; i < lengthOtp; i++) {
-                var index = Math.floor(Math.random() * charsArray.length);
-                if (captcha.indexOf(charsArray[index]) === -1) {
-                captcha.push(charsArray[index]);
-                } else {
-                i--;
-                }
+        const captchaCodes = [];
+
+        function generateRandomString(length) {
+            const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&'()*+,-./:;< = >?@[\]^_`{|}~'";
+            let   result     = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
             }
+            return result;
+        }
+        
+        for (let i = 0; i < 50; i++) {
+            const code = generateRandomString(6);
+            captchaCodes.push(code);
+        }
 
-            var canv = $('<canvas>', { id: 'captcha', width: 100, height: 50 });
-            var ctx = canv[0].getContext('2d');
-            // Fill and stroke styles
-            ctx.fillStyle = "#FF0000"; // Red fill color
-            ctx.strokeStyle = "#00FF00"; // Green stroke color
-            ctx.lineWidth = 2; // Stroke width
+        function generateCaptcha() {
+            const randomIndex = Math.floor(Math.random() * captchaCodes.length);
+            const captcha     = captchaCodes[randomIndex];
 
-            // Line styles
-            ctx.lineCap = "round";
-            ctx.lineJoin = "bevel";
-            ctx.miterLimit = 5;
+            document.getElementById("captcha").innerText = captcha;
+        }
 
-            // Transparency
-            ctx.globalAlpha = 0.8;
+        function validateCaptcha() {
+            const userInput = document.getElementById("userInput").value;
+            const captcha   = document.getElementById("captcha").innerText;
 
-            // Font style
-            ctx.font = "italic bold 100px Arial";
+            const resultDiv = document.getElementById("result");
 
-            // Text alignment and baseline
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-
-            // Shadow style
-            ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-            ctx.shadowBlur = 5;
-            ctx.shadowOffsetX = 2;
-            ctx.shadowOffsetY = 2;
-
-            ctx.strokeText(captcha.join(''), 0, 30);
-            code = captcha.join('');
-            $('#captcha').append(canv);
+            if (userInput === captcha) {
+                resultDiv.innerText = "CAPTCHA validated successfully!";
+            } else {
+                resultDiv.innerText = "CAPTCHA validation failed. Please try again.";
             }
+        }
 
-            $(document).ready(function () {
-            createCaptcha();
-
-            uacf7_image_protection.find('#validateButton').on('click', function (event) {
-                event.preventDefault();
-                if ($('#captchaTextBox').val() === code) {
-                alert('Valid Captcha');
-                } else {
-                alert('Invalid Captcha. Try Again');
-                createCaptcha();
-                }
-            });
-            });
+        generateCaptcha();
 
     }); 
 
