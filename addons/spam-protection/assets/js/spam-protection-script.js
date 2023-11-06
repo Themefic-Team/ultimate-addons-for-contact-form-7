@@ -8,6 +8,8 @@
         var refreshButton = uacf7_spam_protection.find("#arithmathic_refresh");
         var validate   = uacf7_spam_protection.find("#arithmathic_validate");
 
+        let predefined_flag = true;
+
     
 
         function uacf7_generate_ramdom_numbers(){
@@ -39,9 +41,28 @@
             const resultDiv = uacf7_spam_protection.find("#arithmathic_result");
             
             if (userInput == return_total_num()) {
-                resultDiv.text("CAPTCHA validated successfully!");
+
+              resultDiv.text("CAPTCHA validated successfully!");
+              setTimeout(() => {
+                
+                resultDiv.text("");
+              }, 2000);
+           
+             
             } else {
+
+              if(predefined_flag){
+
                 resultDiv.text("CAPTCHA validation failed. Please try again.");
+                setTimeout(() => {
+                
+                  resultDiv.text("");
+                }, 2000);
+
+                  $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
+
+
+              }  
             }
           }
 
@@ -49,6 +70,7 @@
           refreshButton.click(function (e) {
               e.preventDefault();
               uacf7_generate_ramdom_numbers();
+              predefined_flag = !predefined_flag;
         
           });
 
@@ -58,6 +80,8 @@
               e.preventDefault();
               validateCaptcha();
           });
+
+         
         
         
   }); 
