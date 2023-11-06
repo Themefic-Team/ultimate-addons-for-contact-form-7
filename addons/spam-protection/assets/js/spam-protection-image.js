@@ -2,12 +2,13 @@
 
         var forms = $('.wpcf7-form'); 
         forms.each(function(){
-        var formId   = $(this).find('input[name="_wpcf7"]').val();
-        var form_div = $(this).find('.uacf7-form-'+formId);
-        const refreshButton = form_div.find("#refresh");
-        const captcha   = form_div.find("#captcha");
-        const validate   = form_div.find("#validate");
-        let predefined_flag = true;
+        var   formId          = $(this).find('input[name="_wpcf7"]').val();
+        var   form_div        = $(this).find('.uacf7-form-'+formId);
+        const refreshButton   = form_div.find("#refresh");
+        const captcha         = form_div.find("#captcha");
+        const validate        = form_div.find("#validate");
+        let   predefined_flag = true;
+        let   main_flag       = true;
         
 
         const captchaCodes = [];
@@ -40,6 +41,7 @@
                 const resultDiv = form_div.find("#result");
                 
                 if (userInput === captcha) {
+                    main_flag = false;
                     resultDiv.text("CAPTCHA validated successfully!");
                     setTimeout(() => {
                       
@@ -62,6 +64,7 @@
 
         
             refreshButton.click(function (e) {
+                main_flag = false;
                 e.preventDefault();
                 generateCaptcha();
                 predefined_flag = !predefined_flag;
@@ -74,22 +77,28 @@
                 validateCaptcha();
             });
 
+
+            $(document).ready(function (){
+                if(main_flag == true){
+                    $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
+                        e.preventDefault();
+                        const resultDiv = form_div.find("#result");
+                        resultDiv.text('Validate Captcha First !');
+                        setTimeout(() => {
+                            resultDiv.text('');
+                            
+                        }, 2000);
+                    });
+                 
+                }
+            });
+
             generateCaptcha();
-
-
-
 
         });
 
 
-
-
-
-
-
-
-
-      
+ 
          
  
 })(jQuery);
