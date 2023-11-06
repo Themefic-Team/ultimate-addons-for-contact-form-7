@@ -16,7 +16,6 @@
         public function uacf7_spam_protection_scripts(){
             wp_enqueue_script('uacf7-spam-protection', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-script.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_script('uacf7-spam-protection-image', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-image.js', ['jquery'], 'WPCF7_VERSION', true);
-            wp_enqueue_script('uacf7-spam-protection-html2canvas', UACF7_URL . '/addons/spam-protection/assets/js/html2canvas.js', [], 'WPCF7_VERSION', true);
             wp_enqueue_style('uacf7-spam-protection-css', UACF7_URL . '/addons/spam-protection/assets/css/spam-protection-style.css', [], 'WPCF7_VERSION', 'all');
    
         }
@@ -199,13 +198,23 @@
                     <div class="uacf7_spam_recognation">
                         <?php if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'arithmathic_recognation'){ ?>
                             <div id="arithmathic_recognation">
-                                <span id="frn">5</span>
-                                +
-                                <span id="srn">6</span>
-                                =
-                                <input id ="rtn" type="number" min="0">
+         
+                                <div id="arithmetic_input_holder">
+                                    <span id="frn">5</span>
+                                    +
+                                    <span id="srn">6</span>
+                                    =
+                                    <input type="number" min="0" id="rtn" placeholder="Enter CAPTCHA answer">
+                                </div>
+                                <div>
+                                <button id="arithmathic_refresh">Refresh</button>
+                                <button id="arithmathic_validate">Validate</button>
+                                </div>
+                                <div id="arithmathic_result"></div>
                             </div>
+
                         <?php }else if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'image_recognation'){ ?>
+
                             <div id="image_recognation">
                                 <div id="captcha_input_holder">
                                 <div id="captcha" ></div>

@@ -18,6 +18,6 @@
 #captcha_input_holder{
   display: inline-block;
 }
-#userInput{
+#userInput, #rtn{
   margin: 5px 0px;
 }

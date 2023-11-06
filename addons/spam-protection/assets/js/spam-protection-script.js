@@ -4,6 +4,10 @@
     forms.each(function(){
         var formId                = $(this).find('input[name="_wpcf7"]').val();
         var uacf7_spam_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation');
+
+        const refreshButton = uacf7_spam_protection.find("#arithmathic_refresh");
+        const validate   = uacf7_spam_protection.find("#arithmathic_validate");
+
         var first_random_number   = Math.random() * 10;
         var second_random_number  = Math.random() * 10;
 
@@ -21,17 +25,31 @@
         
         var total_number = first_number_int + second_number_int;
 
-   
-        
-        $('.uacf7-form-'+formId).find('input[type="submit"]').on('click', function (e) {
-          var total_number_usergiven = uacf7_spam_protection.find('#arithmathic_recognation').find('#rtn').val();
-          if(total_number_usergiven == total_number){
-            uacf7_generate_ramdom_numbers(); 
-          }else{
-            e.preventDefault();
-            alert('not matched')
+
+        function validateCaptcha() {
+          const userInput = uacf7_spam_protection.find("#rtn").val();
+          const resultDiv = uacf7_spam_protection.find("#arithmathic_result");
+          
+          if (userInput == total_number) {
+              resultDiv.text("CAPTCHA validated successfully!");
+          } else {
+              resultDiv.text("CAPTCHA validation failed. Please try again.");
           }
-        });
+          }
+
+      
+          refreshButton.click(function (e) {
+              e.preventDefault();
+              uacf7_generate_ramdom_numbers();
+        
+          });
+
+          validate.click(function (e) {
+              e.preventDefault();
+              validateCaptcha();
+          });
+        
+        
   }); 
 
 })(jQuery);
