@@ -69,6 +69,7 @@
       
           refreshButton.click(function (e) {
               e.preventDefault();
+              uacf7_spam_protection.find("#rtn").val('');
               uacf7_generate_ramdom_numbers();
               predefined_flag = !predefined_flag;
         
