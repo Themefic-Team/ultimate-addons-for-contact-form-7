@@ -1,9 +1,10 @@
 #captcha {
-  pointer-events: none; 
+  user-select: none;
   background-color: #C0C0C0;
   width: 100px;
   font-size: 20px;
   font-weight: bold;
+  display: inline-block;
   text-align: center;
 
   -webkit-text-stroke: 1px black;

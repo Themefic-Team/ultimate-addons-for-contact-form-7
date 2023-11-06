@@ -5,8 +5,9 @@
         var formId   = $(this).find('input[name="_wpcf7"]').val();
         var form_div = $(this).find('.uacf7-form-'+formId);
         const refreshButton = form_div.find("#refresh");
-
-        console.log(refreshButton)
+        const captcha   = form_div.find("#captcha");
+        const validate   = form_div.find("#validate");
+        
 
         const captchaCodes = [];
 
@@ -43,41 +44,34 @@
                 resultDiv.text("CAPTCHA validation failed. Please try again.");
             }
             }
+
         
             refreshButton.click(function () {
                 generateCaptcha();
-                makeCaptatoImage();
+          
+            });
+
+            validate.click(function (e) {
+                e.preventDefault();
+                validateCaptcha();
             });
 
             generateCaptcha();
 
-            $(this).on( 'wpcf7submit', function( event ) {
-                validateCaptcha();
-                });
-            }, false); 
 
 
 
-            $(document).ready(function () {
+        });
 
-                function makeCapthatoImage (){
-                    const captcha4image = $("#captcha");
-                    const captchaImg = $("#captchaImg");
-    
-                    html2canvas(captcha4image[0], { width: 100, scale: 2 }).then(function (canvas) {
-                        var img = new Image();
-                        img.src = canvas.toDataURL('image/png');
-                        img.width = '100';
-                    
-                        $(captchaImg).append(img);
-                        
-                    });
-                }
 
-                makeCapthatoImage();         
-    
-            });
-     
+
+
+
+
+
+
+
+      
          
  
 })(jQuery);

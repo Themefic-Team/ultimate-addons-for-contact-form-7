@@ -208,11 +208,10 @@
                         <?php }else if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'image_recognation'){ ?>
                             <div id="image_recognation">
                             
-                                <div id="captcha"></div>
-                                <div id="captchaImg"></div>
-
+                                <div id="captcha" ></div>
                                 <input type="text" id="userInput" placeholder="Enter CAPTCHA text">
                                 <span id="refresh">refresh</span>
+                                <button id="validate">Validate</button>
                                 <div id="result"></div>
                             </div>
                                             
