@@ -148,10 +148,8 @@
             $formid = $wpcf7->id();
         
             $uacf7_spam_protection        = uacf7_get_form_option($formid, 'spam_protection');
-            $uacf7_spam_protection_enable = isset($uacf7_spam_protection['uacf7_spam_protection_enable']);
-            $uacf7_spam_protection_type   = isset($uacf7_spam_protection['uacf7_spam_protection_type']);
         
-            if($uacf7_spam_protection_enable != '1'){
+            if($uacf7_spam_protection['uacf7_spam_protection_enable'] != '1'){
                 return;
             }
         
@@ -169,7 +167,6 @@
             $atts['class'] = $tag->get_class_option($class);
             $atts['class'] = 'uacf7_spam_protection';
             $atts['id'] = $tag->get_id_option();
-            $atts['data-recognation-type'] = $uacf7_spam_protection_type;
             $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
         
             if ($tag->is_required()) {
