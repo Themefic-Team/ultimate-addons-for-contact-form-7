@@ -18,19 +18,27 @@
         }
         uacf7_generate_ramdom_numbers();
         
-        var first_number      = uacf7_spam_protection.find('#arithmathic_recognation').find('#frn').text();
-        var first_number_int  = parseInt(first_number);
-        var second_number     = uacf7_spam_protection.find('#arithmathic_recognation').find('#srn').text();
-        var second_number_int = parseInt(second_number);
-        
-        var total_number = first_number_int + second_number_int;
+   
 
+
+        function return_total_num (){
+          var first_number      = uacf7_spam_protection.find('#arithmathic_recognation').find('#frn').text();
+          var first_number_int  = parseInt(first_number);
+          var second_number     = uacf7_spam_protection.find('#arithmathic_recognation').find('#srn').text();
+          var second_number_int = parseInt(second_number);
+          
+          var total_number = first_number_int + second_number_int;
+
+          return total_number;
+        }
+
+    
 
         function validateCaptcha() {
             const userInput = uacf7_spam_protection.find("#rtn").val();
             const resultDiv = uacf7_spam_protection.find("#arithmathic_result");
             
-            if (userInput == total_number) {
+            if (userInput == return_total_num()) {
                 resultDiv.text("CAPTCHA validated successfully!");
             } else {
                 resultDiv.text("CAPTCHA validation failed. Please try again.");
