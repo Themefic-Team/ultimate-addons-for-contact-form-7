@@ -46,7 +46,8 @@
             }
 
         
-            refreshButton.click(function () {
+            refreshButton.click(function (e) {
+                e.preventDefault();
                 generateCaptcha();
           
             });
