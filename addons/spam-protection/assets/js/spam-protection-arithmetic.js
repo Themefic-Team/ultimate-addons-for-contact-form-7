@@ -3,14 +3,13 @@
     var forms = $('.wpcf7-form'); 
     forms.each(function(){
         var formId                = $(this).find('input[name="_wpcf7"]').val();
+        var form_div              = $(this).find('.uacf7-form-'+formId);
         var uacf7_spam_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation');
 
         var refreshButton = uacf7_spam_protection.find("#arithmathic_refresh");
         var validate      = uacf7_spam_protection.find("#arithmathic_validate");
         var is_applied    = uacf7_spam_protection.attr("is_applied");
 
-        let predefined_flag       = true;
-        let main_flag             = true;
 
     
 
@@ -46,8 +45,6 @@
             const resultDiv = uacf7_spam_protection.find("#arithmathic_result");
             
             if (userInput == return_total_num()) {
-              main_flag = false;
-
               resultDiv.text("CAPTCHA validated successfully!");
               setTimeout(() => {
                 
@@ -57,7 +54,7 @@
              
             } else {
 
-              if(predefined_flag){
+     
 
                 resultDiv.text("CAPTCHA validation failed. Please try again.");
                 setTimeout(() => {
@@ -65,14 +62,9 @@
                   resultDiv.text("");
                 }, 2000);
 
-                  if(is_applied === 'applied'){
-
                     $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
 
-                  }
-
-
-              }  
+              
             }
           }
 
@@ -80,10 +72,8 @@
           //Refresh button action
           refreshButton.click(function (e) {
               e.preventDefault();
-              main_flag = false;
               uacf7_spam_protection.find("#rtn").val('');
               uacf7_generate_ramdom_numbers();
-              predefined_flag = !predefined_flag;
         
           });
 
@@ -96,9 +86,8 @@
 
 
           //Conditionally make submission event false
-          if(is_applied === 'applied'){
+
             $(document).ready(function (){
-              if(main_flag === true){
                   $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
                     e.preventDefault();
                     const resultDiv = form_div.find("#result");
@@ -107,10 +96,9 @@
                               resultDiv.text('');
                               
                           }, 2000);
-                  });
-              }
+                  });     
             });
-          }
+  
 
          
 
