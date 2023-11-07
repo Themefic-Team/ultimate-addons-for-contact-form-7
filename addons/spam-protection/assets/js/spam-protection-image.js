@@ -2,11 +2,12 @@
 
         var forms = $('.wpcf7-form'); 
         forms.each(function(){
-        var formId        = $(this).find('input[name="_wpcf7"]').val();
-        var form_div      = $(this).find('.uacf7-form-'+formId);
+        var   formId          = $(this).find('input[name="_wpcf7"]').val();
+        var   form_div        = $(this).find('.uacf7-form-'+formId);
         const refreshButton   = form_div.find("#refresh");
         const captcha         = form_div.find("#captcha");
         const validate        = form_div.find("#validate");
+        var   is_applied      = uacf7_spam_protection.attr("is_applied");
         let   predefined_flag = true;
         let   main_flag       = true;
         
@@ -57,8 +58,10 @@
                         
                           resultDiv.text("");
                         }, 2000);
+                        if(is_applied === 'applied'){
         
                           $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
+                        }
         
                       } 
                 }
@@ -83,20 +86,23 @@
 
 
             //Conditionally make submission event false
-            $(document).ready(function (){
-                if(main_flag == true){
-                    $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
-                        e.preventDefault();
-                        const resultDiv = form_div.find("#result");
-                        resultDiv.text('Validate Captcha First !');
-                        setTimeout(() => {
-                            resultDiv.text('');
-                            
-                        }, 2000);
-                    });
-                 
-                }
-            });
+
+            if(is_applied === 'applied'){
+                $(document).ready(function (){
+                    if(main_flag == true){
+                        $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
+                            e.preventDefault();
+                            const resultDiv = form_div.find("#result");
+                            resultDiv.text('Validate Captcha First !');
+                            setTimeout(() => {
+                                resultDiv.text('');
+                                
+                            }, 2000);
+                        });
+                    
+                    }
+                });
+            }
 
             generateCaptcha();
 
