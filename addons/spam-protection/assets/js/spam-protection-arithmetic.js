@@ -37,7 +37,6 @@
           return total_number;
         }
 
-    
 
         //Checking wether the user given data is true
         function validateCaptcha() {
