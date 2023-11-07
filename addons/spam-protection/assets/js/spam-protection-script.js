@@ -5,14 +5,17 @@
         var formId                = $(this).find('input[name="_wpcf7"]').val();
         var uacf7_spam_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation');
 
-        var refreshButton         = uacf7_spam_protection.find("#arithmathic_refresh");
-        var validate              = uacf7_spam_protection.find("#arithmathic_validate");
+        var refreshButton = uacf7_spam_protection.find("#arithmathic_refresh");
+        var validate      = uacf7_spam_protection.find("#arithmathic_validate");
+        var is_applied    = uacf7_spam_protection.attr("is_applied");
 
         let predefined_flag       = true;
         let main_flag             = true;
 
     
 
+
+        // Generating Random Numbers
         function uacf7_generate_ramdom_numbers(){
           var first_random_number   = Math.random() * 10;
           var second_random_number  = Math.random() * 10;
@@ -23,7 +26,7 @@
         
    
 
-
+        //Returning Total Sum of Numbers
         function return_total_num (){
           var first_number      = uacf7_spam_protection.find('#arithmathic_recognation').find('#frn').text();
           var first_number_int  = parseInt(first_number);
@@ -37,6 +40,7 @@
 
     
 
+        //Checking wether the user given data is true
         function validateCaptcha() {
             const userInput = uacf7_spam_protection.find("#rtn").val();
             const resultDiv = uacf7_spam_protection.find("#arithmathic_result");
@@ -61,7 +65,12 @@
                   resultDiv.text("");
                 }, 2000);
 
-                  $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
+                  if(is_applied === 'applied'){
+
+                    $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
+
+                  }
+
 
 
               }  
@@ -69,6 +78,7 @@
           }
 
       
+          //Refresh button action
           refreshButton.click(function (e) {
               e.preventDefault();
               main_flag = false;
@@ -79,25 +89,31 @@
           });
 
       
-
+          //Validate Button action
           validate.click(function (e) {
               e.preventDefault();
               validateCaptcha();
           });
 
-          $(document).ready(function (){
-            if(main_flag === true){
-                $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
-                  e.preventDefault();
-                  const resultDiv = form_div.find("#result");
-                        resultDiv.text('Validate Captcha First !');
-                        setTimeout(() => {
-                            resultDiv.text('');
-                            
-                        }, 2000);
-                });
-            }
-        });
+
+          //Conditionally make submission event false
+          if(is_applied === 'applied'){
+            $(document).ready(function (){
+              if(main_flag === true){
+                  $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
+                    e.preventDefault();
+                    const resultDiv = form_div.find("#result");
+                          resultDiv.text('Validate Captcha First !');
+                          setTimeout(() => {
+                              resultDiv.text('');
+                              
+                          }, 2000);
+                  });
+              }
+            });
+          }
+
+         
 
          
         

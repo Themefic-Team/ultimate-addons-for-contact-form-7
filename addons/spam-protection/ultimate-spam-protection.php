@@ -63,7 +63,6 @@
                         'subtitle'    => __( 'Enlist the IP you want to Ban / Block, Separeate the IPs using a Comma', 'ultimate-addons-cf7' ),
                         'placeholder' => __( ', comma separate IPs', 'ultimate-addons-cf7' ),
                     ),
-             
   
                 )
                     
@@ -166,6 +165,7 @@
         
             $atts['class'] = $tag->get_class_option($class);
             $atts['class'] = 'uacf7_spam_protection';
+            $atts['is_applied'] = 'applied';
             $atts['id'] = $tag->get_id_option();
             $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
         
@@ -191,8 +191,8 @@
             ob_start();
         
             ?> 
-                <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
-                    <div class="uacf7_spam_recognation">
+                <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name);  ?>" >
+                    <div class="uacf7_spam_recognation" <?php echo ($atts);  ?>>
                         <?php if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'arithmathic_recognation'){ ?>
                             <div id="arithmathic_recognation">
          

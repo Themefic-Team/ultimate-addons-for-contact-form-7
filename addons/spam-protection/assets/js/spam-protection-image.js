@@ -2,15 +2,17 @@
 
         var forms = $('.wpcf7-form'); 
         forms.each(function(){
-        var   formId          = $(this).find('input[name="_wpcf7"]').val();
-        var   form_div        = $(this).find('.uacf7-form-'+formId);
+        var formId        = $(this).find('input[name="_wpcf7"]').val();
+        var form_div      = $(this).find('.uacf7-form-'+formId);
         const refreshButton   = form_div.find("#refresh");
         const captcha         = form_div.find("#captcha");
         const validate        = form_div.find("#validate");
         let   predefined_flag = true;
         let   main_flag       = true;
         
+        
 
+        //Generate Image captcha
         const captchaCodes = [];
 
         function generateRandomString(length) {
@@ -31,10 +33,10 @@
             const randomIndex = Math.floor(Math.random() * captchaCodes.length);
             const captcha     = captchaCodes[randomIndex];
 
-            // document.getElementById("captcha").innerText = captcha;
             form_div.find("#captcha").text(captcha);
         }
 
+        //Checking wether the user given data is true
         function validateCaptcha() {
                 const userInput = form_div.find("#userInput").val();
                 const captcha   = form_div.find("#captcha").text();
@@ -62,7 +64,7 @@
                 }
             }
 
-        
+            //Refresh button action
             refreshButton.click(function (e) {
                 main_flag = false;
                 e.preventDefault();
@@ -72,12 +74,15 @@
           
             });
 
+
+            //Validate Button action
             validate.click(function (e) {
                 e.preventDefault();
                 validateCaptcha();
             });
 
 
+            //Conditionally make submission event false
             $(document).ready(function (){
                 if(main_flag == true){
                     $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
