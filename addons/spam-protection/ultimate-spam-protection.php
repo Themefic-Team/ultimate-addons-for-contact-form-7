@@ -14,7 +14,8 @@
         }
 
         public function uacf7_spam_protection_scripts(){
-            wp_enqueue_script('uacf7-spam-protection', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-arithmetic.js', ['jquery'], 'WPCF7_VERSION', true);
+            wp_enqueue_script('uacf7-spam-protection', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-script.js', ['jquery'], 'WPCF7_VERSION', true);
+            wp_enqueue_script('uacf7-spam-protection-arithmetic', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-arithmetic.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_script('uacf7-spam-protection-image', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-image.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_style('uacf7-spam-protection-css', UACF7_URL . '/addons/spam-protection/assets/css/spam-protection-style.css', [], 'WPCF7_VERSION', 'all');
    
