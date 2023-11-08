@@ -42,9 +42,12 @@
                 const userInput = form_div.find("#userInput").val();
                 const captcha   = form_div.find("#captcha").text();
                 const resultDiv = form_div.find("#result");
+
+                console.log('text:' + captcha +'and user given' + userInput)
                 
                 if (userInput === captcha) {
                     resultDiv.text("CAPTCHA validated successfully!");
+
                     $(`.uacf7-form-${formId} input[type="submit"]`).off('click');
                 } else {
 
