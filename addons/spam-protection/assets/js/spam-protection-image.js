@@ -45,24 +45,12 @@
                 
                 if (userInput === captcha) {
                     resultDiv.text("CAPTCHA validated successfully!");
-                    setTimeout(() => {
-                      
-                      resultDiv.text("");
-                    }, 2000);
+                    $(`.uacf7-form-${formId} input[type="submit"]`).off('click');
                 } else {
-                    if(predefined_flag){
 
-                        resultDiv.text("CAPTCHA validation failed. Please try again.");
-                        setTimeout(() => {
-                        
-                          resultDiv.text("");
-                        }, 2000);
-           
+                    resultDiv.text("CAPTCHA validation failed. Please try again.");
+                    $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
         
-                          $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
-                        
-        
-                      } 
                 }
             }
 
@@ -84,20 +72,16 @@
 
 
             //Conditionally make submission event false
-            $(document).ready(function (){
-                    $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
-                        e.preventDefault();
-                        const resultDiv = form_div.find("#result");
-                        resultDiv.text('Validate Captcha First !');
-                        setTimeout(() => {
-                            resultDiv.text('');
-                            
-                        }, 2000);
+            // $(document).ready(function (){
+            //         $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
+            //             e.preventDefault();
+            //             const resultDiv = form_div.find("#result");
+            //             resultDiv.text('Validate Captcha First !');
 
-                        return false;
-                    });
+            //             return false;
+            //         });
                 
-            });
+            // });
   
 
             generateCaptcha();

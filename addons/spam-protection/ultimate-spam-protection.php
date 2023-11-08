@@ -85,6 +85,7 @@
                 array($this, 'tg_pane_spam_protection')
             );
         }
+        
 
         public static function tg_pane_spam_protection($contact_form, $args = ''){
             $args = wp_parse_args($args, array());

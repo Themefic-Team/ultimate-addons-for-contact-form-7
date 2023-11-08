@@ -19,7 +19,7 @@
                     return false;
                 }
         
-        
+                                                                                                                                 
                 // If no issues found, allow form submission
                 return true;
             });
@@ -30,64 +30,49 @@
 
         // $(uacf7_mail).on('change', function (){
 
-            $(document).ready(function() {
-                var current_mail = $(this).val();
-                function isValidEmail(email) {
-                    return validator.isEmail(email);
-                }
+        //     $(document).ready(function() {
+        //         var current_mail = $(this).val();
+        //         function isValidEmail(email) {
+        //             return validator.isEmail(email);
+        //         }
 
-                const email = "test@exampl755e.com";
-                if (isValidEmail(email)) {
-                    console.log("Email is valid");
-                } else {
-                    console.log("Email is invalid");
-                }
+        //         const email = "test@exampl755e.com";
+        //         if (isValidEmail(email)) {
+        //             console.log("Email is valid");
+        //         } else {
+        //             console.log("Email is invalid");
+        //         }
 
             
-            // });
+        //     });
 
-            });
+        // });
 
 
             // Ban Enlisted IPs
 
-            $(document).ready(function() {
+            // $(document).ready(function() {
 
-                const bannedIPs = ['203.76.223.137', '10.0.0.2', '127.0.0.1'];
+            //     const bannedIPs = ['203.76.223.137', '10.0.0.2', '127.0.0.1'];
             
-                $(uacf7_form).on('click', function(event) {
+            //     $(uacf7_form).on('click', function(event) {
 
-                    fetch('https://ipinfo.io/json')
-                        .then(response => response.json())
-                        .then(data => {
-                            const userIPAddress = data.ip; 
-                            console.log(userIPAddress)
+            //         fetch('https://ipinfo.io/json')
+            //             .then(response => response.json())
+            //             .then(data => {
+            //                 const userIPAddress = data.ip; 
+            //                 console.log(userIPAddress)
 
-                            if ($.inArray(userIPAddress, bannedIPs) !== -1) {
-                                alert('Your IP address is banned from submitting this form.');
-                                // event.preventDefault(); 
-                            }
+            //                 if ($.inArray(userIPAddress, bannedIPs) !== -1) {
+            //                     alert('Your IP address is banned from submitting this form.');
+            //                     // event.preventDefault(); 
+            //                 }
         
-                        });              
+            //             });              
                     
-                    });
-            
-           
-               
-
-         
-
-
-            
-                
-
-
-             
-
-    
-         
-
-            });
+            //         });
+        
+            // });
 
 
     });
