@@ -84,7 +84,7 @@
                         resultDiv.text('Validate Captcha First !');
 
                     });
-                    console.log('loaded from img')
+
                 }else{
                     $(`.uacf7-form-${formId} input[type="submit"]`).off('click');
                 }
