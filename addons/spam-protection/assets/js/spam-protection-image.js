@@ -8,8 +8,8 @@
         const refreshButton         = form_div.find("#refresh");
         const captcha               = form_div.find("#captcha");
         const validate              = form_div.find("#validate");
-        var   is_applied            = uacf7_spam_protection.attr("is_applied");
-        let   predefined_flag       = true;
+        let   protection_method       = $(uacf7_spam_protection).attr('protection-method');
+
         
         
 
@@ -36,14 +36,13 @@
 
             form_div.find("#captcha").text(captcha);
         }
+        generateCaptcha();
 
         //Checking wether the user given data is true
         function validateCaptcha() {
                 const userInput = form_div.find("#userInput").val();
                 const captcha   = form_div.find("#captcha").text();
                 const resultDiv = form_div.find("#result");
-
-                console.log('text:' + captcha +'and user given' + userInput)
                 
                 if (userInput === captcha) {
                     resultDiv.text("CAPTCHA validated successfully!");
@@ -61,8 +60,9 @@
             refreshButton.click(function (e) {
                 e.preventDefault();
                 generateCaptcha();
-                predefined_flag = !predefined_flag;
                 form_div.find("#userInput").val('');
+                const resultDiv = form_div.find("#result");
+                resultDiv.text('');
           
             });
 
@@ -75,19 +75,25 @@
 
 
             //Conditionally make submission event false
-            // $(document).ready(function (){
-            //         $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
-            //             e.preventDefault();
-            //             const resultDiv = form_div.find("#result");
-            //             resultDiv.text('Validate Captcha First !');
+            $(document).ready(function (){
 
-            //             return false;
-            //         });
+                if( protection_method === 'image_recognation'){
+                    $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
+                        e.preventDefault();
+                        const resultDiv = form_div.find("#result");
+                        resultDiv.text('Validate Captcha First !');
+
+                    });
+                    console.log('loaded from img')
+                }else{
+                    $(`.uacf7-form-${formId} input[type="submit"]`).off('click');
+                }
+                   
                 
-            // });
+            });
   
 
-            generateCaptcha();
+        
 
         });
 

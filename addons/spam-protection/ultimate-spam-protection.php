@@ -168,7 +168,7 @@
         
             $atts['class'] = $tag->get_class_option($class);
             $atts['class'] = 'uacf7_spam_protection';
-            $atts['is_applied'] = 'applied';
+            $atts['protection-method'] = $uacf7_spam_protection['uacf7_spam_protection_type'];
             $atts['id'] = $tag->get_id_option();
             $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
         
