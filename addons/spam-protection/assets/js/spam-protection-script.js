@@ -28,7 +28,7 @@
                     var country = res.uacf7_ip_block
                         country.split(',');
                     
-                    alert(country);
+                    alert(res.uacf7_country_block);
                       //Time based submission Controls
                     $(uacf7_form).submit(function(event) {
             
