@@ -11,6 +11,9 @@
             add_action( 'admin_init', [ $this, 'uacf7_spam_protection_tag_generator' ]);
             add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_spam_protection'], 24, 2 ); 
             add_action( 'wp_enqueue_scripts', [$this, 'uacf7_spam_protection_scripts']);
+
+            add_action('wp_ajax_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
+            add_action('wp_ajax_nopriv_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
         }
 
         public function uacf7_spam_protection_scripts(){
@@ -19,7 +22,25 @@
             wp_enqueue_script('uacf7-spam-protection-image', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-image.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_script('uacf7-mail-validator','//cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js', [], 'WPCF7_VERSION', true);
             wp_enqueue_style('uacf7-spam-protection-css', UACF7_URL . '/addons/spam-protection/assets/css/spam-protection-style.css', [], 'WPCF7_VERSION', 'all');
+            wp_localize_script( 'uacf7-spam-protection', 'uacf7_spam_pro_obj', [
+                'ajax_url' => admin_url( 'admin-ajax.php' ),
+                'nonce'    => wp_create_nonce('nonce_for_spam_protection')
+            ] );
+        }
+
+
+
+        public function uacf7_spam_action_ajax_callback(){
+              
             
+            $form_id = $_POST['form_id'];
+
+            echo wp_send_json( [
+                    'form_id' => $form_id,
+                ] );
+
+        
+
         }
 
         public function uacf7_post_meta_options_spam_protection($value, $post_id){
