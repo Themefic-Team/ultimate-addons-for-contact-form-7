@@ -38,11 +38,13 @@
             $uacf7_minimum_time_limit = $data['uacf7_minimum_time_limit'];
             $uacf7_word_filter        = $data['uacf7_word_filter'];
             $uacf7_ip_block           = $data['uacf7_ip_block'];
+            $uacf7_country_block           = $data['uacf7_country_block'];
 
             echo wp_send_json( [
                     'uacf7_minimum_time_limit' => $uacf7_minimum_time_limit,
                     'uacf7_word_filter'        => $uacf7_word_filter,
                     'uacf7_ip_block'           => $uacf7_ip_block,
+                    'uacf7_country_block'           => $uacf7_country_block,
                 ] );
 
         
@@ -98,6 +100,21 @@
                         'label'       => __( 'IP Block', 'ultimate-addons-cf7' ),
                         'subtitle'    => __( 'Enlist the IP you want to Ban / Block, Separeate the IPs using a Comma', 'ultimate-addons-cf7' ),
                         'placeholder' => __( ', comma separate IPs', 'ultimate-addons-cf7' ),
+                    ),
+                    'uacf7_country_block'    => array(
+                        'id'          => 'uacf7_country_block',
+                        'type'        => 'select2',
+                        'label'       => __( 'Country Block', 'ultimate-addons-cf7' ),
+                        'subtitle'    => __( 'Select the Country or Countries that you want to Ban / Block', 'ultimate-addons-cf7' ),
+                        'class' => 'tf-field-class',
+                        'options' => array(
+                            'bd' => 'Bangladesh',
+                            'pk' => 'Pakistan',
+                            'np' => 'Nepal',
+                            'af' => 'Afganistan',
+                         
+                         ),
+                         'multiple' => true,
                     ),
   
                 )

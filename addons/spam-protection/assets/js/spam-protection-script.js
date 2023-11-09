@@ -25,7 +25,7 @@
                     
                     var user_inpput_time = res.uacf7_minimum_time_limit * 1000;
                     
-                    alert(res.uacf7_ip_block);
+                    alert(res.uacf7_country_block);
                       //Time based submission Controls
                     $(uacf7_form).submit(function(event) {
             
