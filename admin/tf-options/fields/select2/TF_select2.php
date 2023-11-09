@@ -5,11 +5,13 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'TF_select2' ) ) {
 	class TF_select2 extends TF_Fields {
 
-		public function __construct( $field, $value = '', $settings_id = '', $parent_field = '' ) {
-			parent::__construct( $field, $value, $settings_id, $parent_field  );
+		public function __construct( $field, $value = '', $settings_id = '', $parent_field = '', $section_key = '' ) {
+			parent::__construct( $field, $value, $settings_id, $parent_field , $section_key );
 		}
 
 		public function render() {
+
+
 
 			if(empty($this->field['options']) && empty($this->field['options_callback'])) {
 				return;
@@ -71,6 +73,8 @@ if ( ! class_exists( 'TF_select2' ) ) {
 
 			return $value;
 		}
+
+
 
 	}
 }

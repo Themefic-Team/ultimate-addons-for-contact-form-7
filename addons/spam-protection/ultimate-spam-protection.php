@@ -44,7 +44,7 @@
                     'uacf7_minimum_time_limit' => $uacf7_minimum_time_limit,
                     'uacf7_word_filter'        => $uacf7_word_filter,
                     'uacf7_ip_block'           => $uacf7_ip_block,
-                    'uacf7_country_block'           => $uacf7_country_block,
+                    'uacf7_country_block'      => $uacf7_country_block,
                 ] );
 
         
@@ -106,8 +106,8 @@
                         'type'        => 'select2',
                         'label'       => __( 'Country Block', 'ultimate-addons-cf7' ),
                         'subtitle'    => __( 'Select the Country or Countries that you want to Ban / Block', 'ultimate-addons-cf7' ),
-                        'class' => 'tf-field-class',
-                        'options' => array(
+                        'class'    => 'tf-field-class',
+                        'options'     => array(
                             'bd' => 'Bangladesh',
                             'pk' => 'Pakistan',
                             'np' => 'Nepal',
