@@ -34,9 +34,11 @@
               
             
             $form_id = $_POST['form_id'];
+            $data        = uacf7_get_form_option($form_id, 'spam_protection');
+            $uacf7_minimum_time_limit        = $data['uacf7_minimum_time_limit'];
 
             echo wp_send_json( [
-                    'form_id' => $form_id,
+                    'uacf7_minimum_time_limit' => $uacf7_minimum_time_limit,
                 ] );
 
         
@@ -76,8 +78,8 @@
                         'id'          => 'uacf7_minimum_time_limit',
                         'type'        => 'number',
                         'label'       => __( 'Each Submission Difference', 'ultimate-addons-cf7' ),
-                        'subtitle'    => __( 'You can avoid some spamming bot by setting a time limit to prevent too much frequient submission. Put in miliseconds', 'ultimate-addons-cf7' ),
-                        'placeholder' => __( 'Default: 0 miliseconds', 'ultimate-addons-cf7' ),
+                        'subtitle'    => __( 'You can avoid some spamming bot by setting a time limit to prevent too much frequient submission. Put in seconds', 'ultimate-addons-cf7' ),
+                        'placeholder' => __( 'Default: 0 seconds', 'ultimate-addons-cf7' ),
                     ),
                     'uacf7_word_filter' => array(
                         'id'          => 'uacf7_word_filter',

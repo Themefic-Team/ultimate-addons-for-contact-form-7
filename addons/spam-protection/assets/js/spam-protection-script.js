@@ -24,25 +24,28 @@
                 },
                 success: function(res) {
           
-                    alert(res.form_id);
-        
+                    alert(res.uacf7_minimum_time_limit);
+
+                    var user_inpput_time = res.uacf7_mail * 1000;
+
+                      //Time based submission Controls
+                    $(uacf7_form).submit(function(event) {
+            
+                        var formSubmitTime = new Date().getTime();
+                        var timeTaken      = formSubmitTime - window.performance.timing.navigationStart;
+                        if (timeTaken < user_inpput_time) { 
+                            alert("Possible bot detected! Submission rejected.");
+                            event.preventDefault(); 
+                            return false;
+                        }
+                
+                        return true;
+                    });
           
                 }
               });
 
-            //Time based submission Controls
-            $(uacf7_form).submit(function(event) {
-     
-                var formSubmitTime = new Date().getTime();
-                var timeTaken      = formSubmitTime - window.performance.timing.navigationStart;
-                if (timeTaken < 5000) { 
-                    alert("Possible bot detected! Submission rejected.");
-                    event.preventDefault(); 
-                    return false;
-                }
-        
-                return true;
-            });
+          
     
 
             //IP Ban
