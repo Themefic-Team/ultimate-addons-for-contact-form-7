@@ -33,12 +33,16 @@
         public function uacf7_spam_action_ajax_callback(){
               
             
-            $form_id = $_POST['form_id'];
-            $data        = uacf7_get_form_option($form_id, 'spam_protection');
-            $uacf7_minimum_time_limit        = $data['uacf7_minimum_time_limit'];
+            $form_id                  = $_POST['form_id'];
+            $data                     = uacf7_get_form_option($form_id, 'spam_protection');
+            $uacf7_minimum_time_limit = $data['uacf7_minimum_time_limit'];
+            $uacf7_word_filter        = $data['uacf7_word_filter'];
+            $uacf7_ip_block           = $data['uacf7_ip_block'];
 
             echo wp_send_json( [
                     'uacf7_minimum_time_limit' => $uacf7_minimum_time_limit,
+                    'uacf7_word_filter'        => $uacf7_word_filter,
+                    'uacf7_ip_block'           => $uacf7_ip_block,
                 ] );
 
         
@@ -118,7 +122,7 @@
         
 
         public static function tg_pane_spam_protection($contact_form, $args = ''){
-            $args = wp_parse_args($args, array());
+            $args             = wp_parse_args($args, array());
             $uacf7_field_type = 'uacf7_spam_protection';
             ?>
         <div class="control-box">
@@ -176,10 +180,10 @@
             }
              
          /** Enable / Disable Spam Protection */
-            $wpcf7 = WPCF7_ContactForm::get_current(); 
+            $wpcf7  = WPCF7_ContactForm::get_current();
             $formid = $wpcf7->id();
         
-            $uacf7_spam_protection        = uacf7_get_form_option($formid, 'spam_protection');
+            $uacf7_spam_protection = uacf7_get_form_option($formid, 'spam_protection');
         
             if($uacf7_spam_protection['uacf7_spam_protection_enable'] != '1'){
                 return;
@@ -196,11 +200,11 @@
         
             $atts = array();
         
-            $atts['class'] = $tag->get_class_option($class);
-            $atts['class'] = 'uacf7_spam_protection';
+            $atts['class']             = $tag->get_class_option($class);
+            $atts['class']             = 'uacf7_spam_protection';
             $atts['protection-method'] = $uacf7_spam_protection['uacf7_spam_protection_type'];
-            $atts['id'] = $tag->get_id_option();
-            $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
+            $atts['id']                = $tag->get_id_option();
+            $atts['tabindex']          = $tag->get_option('tabindex', 'signed_int', true);
         
             if ($tag->is_required()) {
                 $atts['aria-required'] = 'true';
@@ -208,7 +212,7 @@
         
             $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
         
-            $atts['name'] = $tag->name;
+            $atts['name']    = $tag->name;
             $atts['user-ip'] = $_SERVER['REMOTE_ADDR'];
         
            
