@@ -4,12 +4,12 @@ jQuery(document).ready(function () {
         // Is Repeater Use in form
         var repeater_count = jQuery(this).find('.uacf7-repeater-count').val();  
         
-		var uacf7_sid = 1;
-        var form_id =jQuery(this).find("input[name=_wpcf7]").val();
-        var uacf7_next = jQuery(this).find('.uacf7-next[data-form-id="' + form_id + '"]');
-        var uacf7_prev = jQuery(this).find('.uacf7-prev[data-form-id="' + form_id + '"]');
-        var uacf7_step = '.uacf7-step-'+form_id; 
-        var total_steps = jQuery(uacf7_step, this).length;  
+  var uacf7_sid   = 1;
+  var form_id     = jQuery(this).find("input[name=_wpcf7]").val();
+  var uacf7_next  = jQuery(this).find('.uacf7-next[data-form-id="' + form_id + '"]');
+  var uacf7_prev  = jQuery(this).find('.uacf7-prev[data-form-id="' + form_id + '"]');
+  var uacf7_step  = '.uacf7-step-'+form_id;
+  var total_steps = jQuery(uacf7_step, this).length;
 
 		jQuery(uacf7_step, this).each(function () {
 			var $this = jQuery(this); 

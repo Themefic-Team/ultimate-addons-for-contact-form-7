@@ -58,6 +58,11 @@
                     });
 
                     //Country Ban
+                    const bannedCountries = ['bd', 'pk', 'af'];
+                    if ($.inArray(user_country, bannedCountries) !== -1) {
+                        alert('Your Country is banned from submitting this form.');
+                        // event.preventDefault(); 
+                    } 
           
                 }
               });
