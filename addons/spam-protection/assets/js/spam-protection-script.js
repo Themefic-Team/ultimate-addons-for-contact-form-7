@@ -37,8 +37,7 @@
                     
                     var user_inpput_time = res.uacf7_minimum_time_limit * 1000;
 
-                    var country = res.uacf7_ip_block
-                        country.split(',');
+                  
                     
                       //Time based submission Controls
                
@@ -51,7 +50,7 @@
                         var lastSubmitTime = ipTimestamps[user_ip] || 0;
                         var timeTaken      = formSubmitTime - lastSubmitTime;
 
-                        if (timeTaken < user_input_time) {
+                        if (timeTaken < user_inpput_time) {
                             alert("Possible bot detected! Submission rejected.");
                             event.preventDefault();
                             return false;
@@ -63,12 +62,11 @@
                     });
 
                      //IP Ban
-                    const bannedIPs = ['127.0.0.1', '10.0.0.2', '127.0.0.1'];
+
                 
                     $(uacf7_form).on('click', function(event) {
 
-
-                        if ($.inArray(user_ip, bannedIPs) !== -1) {
+                        if ($.inArray(user_ip, uacf7_ip_block) !== -1) {
                             alert('Your IP address is banned from submitting this form.');
                             // event.preventDefault(); 
                         }         
@@ -76,8 +74,7 @@
                     });
 
                     //Country Ban
-                    const bannedCountries = ['bd', 'pk', 'af'];
-                    if ($.inArray(user_country, bannedCountries) !== -1) {
+                    if ($.inArray(user_country, uacf7_country_block) !== -1) {
                         alert('Your Country is banned from submitting this form.');
                         // event.preventDefault(); 
                     } 
