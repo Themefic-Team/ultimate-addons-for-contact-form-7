@@ -221,19 +221,13 @@
             }
         
             $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
-        
-            $atts['name']    = $tag->name;
-            $atts['user-ip'] = $_SERVER['REMOTE_ADDR'];
-        
-           
-            $value         = $tag->values;
-            $default_value = $tag->get_default_option($value);
-        
-            $atts['value'] = $value;
-        
-            $atts['name']  = $tag->name;
-        
-            $atts = wpcf7_format_atts($atts);
+            $atts['name']         = $tag->name;
+            $atts['user-ip']      = $_SERVER['REMOTE_ADDR'];
+            $value                = $tag->values;
+            $default_value        = $tag->get_default_option($value);
+            $atts['value']        = $value;
+            $atts['name']         = $tag->name;
+            $atts                 = wpcf7_format_atts($atts);
 
          
             ob_start();
