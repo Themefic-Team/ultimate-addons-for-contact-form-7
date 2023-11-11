@@ -26,10 +26,10 @@
                 },
                 success: function(res) {
 
-                    var uacf7_minimum_time_limit = res.uacf7_minimum_time_limit;
-                    var uacf7_word_filter        = res.uacf7_word_filter;
-                    var uacf7_ip_block           = res.uacf7_ip_block;
-                    var uacf7_country_block      = res.uacf7_country_block;
+                    var uacf7_minimum_time_limit = res.uacf7_minimum_time_limit.split(',');
+                    var uacf7_word_filter        = res.uacf7_word_filter.split(',');
+                    var uacf7_ip_block           = res.uacf7_ip_block.split(',');
+                    var uacf7_country_block      = res.uacf7_country_block.split(',');
 
                     console.log(uacf7_word_filter)
              
