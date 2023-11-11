@@ -25,6 +25,14 @@
                     form_id: formId
                 },
                 success: function(res) {
+
+                    var uacf7_minimum_time_limit = res.uacf7_minimum_time_limit;
+                    var uacf7_word_filter        = res.uacf7_word_filter;
+                    var uacf7_ip_block           = res.uacf7_ip_block;
+                    var uacf7_country_block      = res.uacf7_country_block;
+
+                    console.log(uacf7_word_filter)
+             
           
                     
                     var user_inpput_time = res.uacf7_minimum_time_limit * 1000;
@@ -32,7 +40,6 @@
                     var country = res.uacf7_ip_block
                         country.split(',');
                     
-                    alert(res.uacf7_country_block);
                       //Time based submission Controls
                     $(uacf7_form).submit(function(event) {
             
