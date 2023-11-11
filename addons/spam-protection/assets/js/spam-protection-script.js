@@ -41,18 +41,25 @@
                         country.split(',');
                     
                       //Time based submission Controls
+               
+
+                    var ipTimestamps = {};
+
                     $(uacf7_form).submit(function(event) {
-            
+
                         var formSubmitTime = new Date().getTime();
-                        var timeTaken      = formSubmitTime - window.performance.timing.navigationStart;
-                        if (timeTaken < user_inpput_time) { 
+                        var lastSubmitTime = ipTimestamps[user_ip] || 0;
+                        var timeTaken      = formSubmitTime - lastSubmitTime;
+
+                        if (timeTaken < user_input_time) {
                             alert("Possible bot detected! Submission rejected.");
-                            event.preventDefault(); 
+                            event.preventDefault();
                             return false;
                         }
-                
-                        return true;
 
+                        ipTimestamps[user_ip] = formSubmitTime;
+
+                        return true;
                     });
 
                      //IP Ban
