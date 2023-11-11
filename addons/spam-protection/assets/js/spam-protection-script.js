@@ -61,6 +61,26 @@
                         return true;
                     });
 
+                    //Ban blacklisted domains
+
+
+                    function validateEmail() {
+
+                        const emailInput        = document.getElementById('email');
+                        const email             = emailInput.value.trim().toLowerCase();
+                        const disallowedDomains = ['example.com', 'example.org', 'example.net'];
+    
+                        for (const domain of disallowedDomains) {
+                            if (email.includes(domain)) {
+                                alert('Email from this domain is not allowed. Please use a different email address.');
+                          
+                                return false;
+                            }
+                        }
+  
+                        return true;
+                    }
+
                      //IP Ban
 
                 
