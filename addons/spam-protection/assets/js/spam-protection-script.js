@@ -9,6 +9,10 @@
         var uacf7_spam_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation');
         var user_ip               = $(uacf7_spam_protection).attr('user-ip');
 
+
+        const api_url = uacf7_spam_pro_obj.plugin_dir_url+"assets/data.json";
+
+        console.log(api_url)
        
         $(document).ready(function() {
 

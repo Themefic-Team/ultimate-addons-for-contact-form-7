@@ -24,7 +24,8 @@
             wp_enqueue_style('uacf7-spam-protection-css', UACF7_URL . '/addons/spam-protection/assets/css/spam-protection-style.css', [], 'WPCF7_VERSION', 'all');
             wp_localize_script( 'uacf7-spam-protection', 'uacf7_spam_pro_obj', [
                 'ajax_url' => admin_url( 'admin-ajax.php' ),
-                'nonce'    => wp_create_nonce('nonce_for_spam_protection')
+                'nonce'    => wp_create_nonce('nonce_for_spam_protection'),
+                'plugin_dir_url' => plugin_dir_url( __FILE__ ),
             ] );
         }
 
