@@ -8,6 +8,7 @@
         var uacf7_mail            = $(`.uacf7-form-${formId} input[type="email"]`);
         var uacf7_spam_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation');
         var user_ip               = $(uacf7_spam_protection).attr('user-ip');
+        var user_country               = $(uacf7_spam_protection).attr('iso2');
 
 
         const api_url = uacf7_spam_pro_obj.plugin_dir_url+"assets/data.json";
@@ -31,35 +32,37 @@
                     var uacf7_ip_block           = res.uacf7_ip_block.split(',');
                     var uacf7_country_block      = res.uacf7_country_block.split(',');
 
-                    console.log(uacf7_word_filter)
-             
-          
                     
-                    var user_inpput_time = res.uacf7_minimum_time_limit * 1000;
+                    var user_inpput_time = uacf7_minimum_time_limit * 1000;
 
                   
                     
-                      //Time based submission Controls
+                    //Time based submission Controls
                
-
                     var ipTimestamps = {};
 
-                    $(uacf7_form).submit(function(event) {
+                    $(uacf7_form).on('submit', function(event) {
 
                         var formSubmitTime = new Date().getTime();
                         var lastSubmitTime = ipTimestamps[user_ip] || 0;
                         var timeTaken      = formSubmitTime - lastSubmitTime;
 
                         if (timeTaken < user_inpput_time) {
-                            alert("Possible bot detected! Submission rejected.");
+                            alert("Too fast Submission not acceptable.");
                             event.preventDefault();
                             return false;
                         }
 
                         ipTimestamps[user_ip] = formSubmitTime;
 
+
+                        console.log(ipTimestamps)
+
                         return true;
                     });
+
+
+
 
                     //Ban blacklisted domains
 
@@ -92,6 +95,9 @@
                         }         
                         
                     });
+
+
+
 
                     //Country Ban
                     if ($.inArray(user_country, uacf7_country_block) !== -1) {
