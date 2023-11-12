@@ -20,7 +20,6 @@
             wp_enqueue_script('uacf7-spam-protection', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-script.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_script('uacf7-spam-protection-arithmetic', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-arithmetic.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_script('uacf7-spam-protection-image', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-image.js', ['jquery'], 'WPCF7_VERSION', true);
-            wp_enqueue_script('uacf7-mail-validator','//cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js', [], 'WPCF7_VERSION', true);
             wp_enqueue_style('uacf7-spam-protection-css', UACF7_URL . '/addons/spam-protection/assets/css/spam-protection-style.css', [], 'WPCF7_VERSION', 'all');
             wp_localize_script( 'uacf7-spam-protection', 'uacf7_spam_pro_obj', [
                 'ajax_url' => admin_url( 'admin-ajax.php' ),
