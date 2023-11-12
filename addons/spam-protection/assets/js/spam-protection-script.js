@@ -8,7 +8,7 @@
         var uacf7_mail            = $(`.uacf7-form-${formId} input[type="email"]`);
         var uacf7_spam_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation');
         var user_ip               = $(uacf7_spam_protection).attr('user-ip');
-        var user_country               = $(uacf7_spam_protection).attr('iso2');
+        var user_country          = $(uacf7_spam_protection).attr('iso2');
 
 
         const api_url = uacf7_spam_pro_obj.plugin_dir_url+"assets/data.json";

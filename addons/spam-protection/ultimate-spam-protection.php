@@ -212,9 +212,6 @@
             $ip = $_SERVER['REMOTE_ADDR'];
 		    $addr = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 
-
-
-
             $atts['iso2']              = strtolower($addr['countryCode']);
             $atts['class']             = $tag->get_class_option($class);
             $atts['class']             = 'uacf7_spam_protection';
