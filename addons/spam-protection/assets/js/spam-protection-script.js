@@ -58,8 +58,6 @@
                         return true;
                     });
 
-
-
                      //IP Ban
 
                 
@@ -73,12 +71,15 @@
                     });
 
 
-
                     //Country Ban
                     if ($.inArray(user_country, uacf7_country_block) !== -1) {
                         alert('Your Country is banned from submitting this form.');
                         // event.preventDefault(); 
                     } 
+
+
+                    
+                     // Word Filter
           
                 }
               });

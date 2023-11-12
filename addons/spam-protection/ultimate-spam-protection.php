@@ -30,7 +30,6 @@
 
         public function uacf7_spam_action_ajax_callback(){
               
-            
             $form_id                  = $_POST['form_id'];
             $data                     = uacf7_get_form_option($form_id, 'spam_protection');
             $uacf7_minimum_time_limit = $data['uacf7_minimum_time_limit'];
@@ -44,8 +43,6 @@
                     'uacf7_ip_block'           => $uacf7_ip_block,
                     'uacf7_country_block'      => $uacf7_country_block,
                 ] );
-
-        
 
         }
 
@@ -268,9 +265,7 @@
                                 <button id="validate">Validate</button>
                                 </div>
                                 <div id="result"></div>
-                            </div>
-                                            
-                            
+                            </div> 
 
                         <?php }else{ ?>
                             <p>No Protection is applied</p>
