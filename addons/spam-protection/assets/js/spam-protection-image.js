@@ -8,7 +8,7 @@
         const refreshButton         = form_div.find("#refresh");
         const captcha               = form_div.find("#captcha");
         const validate              = form_div.find("#validate");
-        let   protection_method       = $(uacf7_spam_protection).attr('protection-method');
+        let   protection_method     = $(uacf7_spam_protection).attr('protection-method');
 
         
         

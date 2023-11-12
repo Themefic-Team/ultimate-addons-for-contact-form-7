@@ -14,12 +14,6 @@
         var protection_method     = $(uacf7_spam_protection).attr('protection-method');
 
 
-      
-    
-
-
-    
-
 
         // Generating Random Numbers
         function uacf7_generate_ramdom_numbers(){
@@ -95,7 +89,6 @@
                         
                   });  
                   
-                  console.log('loaded form atri')
                   
                 }else{
                   $(`.uacf7-form-${formId} input[type="submit"]`).off('click');
