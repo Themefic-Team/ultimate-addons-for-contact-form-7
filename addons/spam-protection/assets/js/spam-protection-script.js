@@ -10,10 +10,6 @@
         var user_ip               = $(uacf7_spam_protection).attr('user-ip');
         var user_country          = $(uacf7_spam_protection).attr('iso2');
 
-
-        const api_url = uacf7_spam_pro_obj.plugin_dir_url+"assets/data.json";
-
-        console.log(api_url)
        
         $(document).ready(function() {
 
