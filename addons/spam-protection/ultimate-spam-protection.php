@@ -257,10 +257,11 @@
                                     +
                                     <span id="srn">6</span>
                                     =
+                                    <button id="arithmathic_refresh"><i class="fa-solid fa-rotate"></i></button>
                                     <input type="number" min="0" id="rtn" placeholder="Enter CAPTCHA answer">
                                 </div>
                                 <div>
-                                <button id="arithmathic_refresh"><i class="fa-solid fa-rotate"></i></button>
+                            
                                 </div>
                                 <div id="arithmathic_result"></div>
                             </div>
@@ -269,11 +270,11 @@
 
                             <div id="image_recognation">
                                 <div id="captcha_input_holder">
-                                <div id="captcha" ></div>
-                                <input type="text" id="userInput" placeholder="Enter CAPTCHA answer">
-                                </div>
-                                <div>
-                                <button id="refresh"><i class="fa-solid fa-rotate"></i></button>
+                                    <div id="captcha" ></div>   <button id="refresh"><i class="fa-solid fa-rotate"></i></button>
+                                    <input type="text" id="userInput" placeholder="Enter CAPTCHA answer">
+                                
+                                    </div>
+                                    <div>
                                 </div>
                                 <div id="result"></div>
                             </div> 
