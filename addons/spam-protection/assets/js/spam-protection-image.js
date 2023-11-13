@@ -64,12 +64,14 @@
                     
                     if (userInput === captcha) {
                         resultDiv.text("CAPTCHA validated successfully!");
+                        refreshButton.trigger('click');
                         
                     } else {
     
                         resultDiv.text("CAPTCHA validation failed. Please try again.");
                       
                        e.preventDefault();
+                       refreshButton.trigger('click');
            
                     }
 
