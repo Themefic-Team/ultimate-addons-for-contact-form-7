@@ -57,10 +57,10 @@
 
                         return true;
                     });
+                    
 
                      //IP Ban
 
-                
                     $(uacf7_form).on('click', function(event) {
 
                         if ($.inArray(user_ip, uacf7_ip_block) !== -1) {

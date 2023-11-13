@@ -41,25 +41,6 @@
         }
 
 
-        //Checking wether the user given data is true
-        function validateCaptcha() {
-            const userInput = uacf7_spam_protection.find("#rtn").val();
-            const resultDiv = uacf7_spam_protection.find("#arithmathic_result");
-            
-            if (userInput == return_total_num()) {
-              resultDiv.text("CAPTCHA validated successfully!");
-
-                $(`.uacf7-form-${formId} input[type="submit"]`).off('click');
-          
-            } else {
-
-                resultDiv.text("CAPTCHA validation failed. Please try again.");
-
-                $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
- 
-            }
-          }
-
       
           //Refresh button action
           refreshButton.click(function (e) {
@@ -72,12 +53,7 @@
           });
 
       
-          //Validate Button action
-          validate.click(function (e) {
-              e.preventDefault();
-              validateCaptcha();
-          });
-
+        
 
           //Conditionally make submission event false
          
@@ -86,9 +62,22 @@
                 var form_submit = uacf7_spam_protection.closest(`.uacf7-form-${formId}`).find('.wpcf7-submit');
 
                 form_submit.on('click', function (e) {
-                  e.preventDefault();
-                  const resultDiv = uacf7_spam_protection.find('#arithmathic_recognation').find('#arithmathic_result');
-                    resultDiv.text('Validate Captcha First !');
+
+
+                  var userInput = uacf7_spam_protection.find("#rtn").val();
+                  var resultDiv = uacf7_spam_protection.find("#arithmathic_result");
+          
+                  if (userInput == return_total_num()) {
+                    resultDiv.text("CAPTCHA validated successfully!");
+
+                
+                  } else {
+
+                      resultDiv.text("CAPTCHA validation failed. Please try again.");
+
+                      e.preventDefault();
+                  }
+
                 });
        
                

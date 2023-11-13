@@ -16,14 +16,26 @@
         }
 
         public function uacf7_spam_protection_scripts(){
+
+            wp_register_script('uacf7-spam-protection-arithmetic', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-arithmetic.js', ['jquery'], 'WPCF7_VERSION', true);
+            wp_register_script('uacf7-spam-protection-image', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-image.js', ['jquery'], 'WPCF7_VERSION', true);
+
+            // $form_id              = get_the_ID();
+            // $uacf7_spam_condition = uacf7_get_form_option($form_id, 'spam_protection');
+
+
+            // var_dump($form_id);
+
+           
+
+
             wp_enqueue_script('uacf7-spam-protection', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-script.js', ['jquery'], 'WPCF7_VERSION', true);
-            wp_enqueue_script('uacf7-spam-protection-arithmetic', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-arithmetic.js', ['jquery'], 'WPCF7_VERSION', true);
-            wp_enqueue_script('uacf7-spam-protection-image', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-image.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_style('uacf7-spam-protection-css', UACF7_URL . '/addons/spam-protection/assets/css/spam-protection-style.css', [], 'WPCF7_VERSION', 'all');
             wp_localize_script( 'uacf7-spam-protection', 'uacf7_spam_pro_obj', [
                 'ajax_url'       => admin_url( 'admin-ajax.php' ),
                 'nonce'          => wp_create_nonce('nonce_for_spam_protection'),
             ] );
+
         }
 
 
@@ -215,6 +227,17 @@
             $atts['id']                = $tag->get_id_option();
 
 
+
+            if( $uacf7_spam_protection['uacf7_spam_protection_type'] === 'arithmathic_recognation'){
+                wp_enqueue_script( 'uacf7-spam-protection-arithmetic' );
+            }
+
+            if( $uacf7_spam_protection['uacf7_spam_protection_type'] === 'image_recognation'){
+                wp_enqueue_script( 'uacf7-spam-protection-image' );
+            }
+
+
+
             $atts['tabindex']          = $tag->get_option('tabindex', 'signed_int', true);
         
             if ($tag->is_required()) {
@@ -248,7 +271,6 @@
                                 </div>
                                 <div>
                                 <button id="arithmathic_refresh">Refresh</button>
-                                <button id="arithmathic_validate">Validate</button>
                                 </div>
                                 <div id="arithmathic_result"></div>
                             </div>
@@ -262,7 +284,6 @@
                                 </div>
                                 <div>
                                 <button id="refresh">Refresh</button>
-                                <button id="validate">Validate</button>
                                 </div>
                                 <div id="result"></div>
                             </div> 

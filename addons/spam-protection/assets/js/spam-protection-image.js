@@ -38,24 +38,6 @@
         }
         generateCaptcha();
 
-        //Checking wether the user given data is true
-        function validateCaptcha() {
-                const userInput = form_div.find("#userInput").val();
-                const captcha   = form_div.find("#captcha").text();
-                const resultDiv = form_div.find("#result");
-                
-                if (userInput === captcha) {
-                    resultDiv.text("CAPTCHA validated successfully!");
-
-                    $(`.uacf7-form-${formId} input[type="submit"]`).off('click');
-                } else {
-
-                    resultDiv.text("CAPTCHA validation failed. Please try again.");
-                    $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
-        
-                }
-            }
-
             //Refresh button action
             refreshButton.click(function (e) {
                 e.preventDefault();
@@ -67,11 +49,7 @@
             });
 
 
-            //Validate Button action
-            validate.click(function (e) {
-                e.preventDefault();
-                validateCaptcha();
-            });
+          
 
 
             //Conditionally make submission event false
@@ -80,9 +58,25 @@
                 var form_submit = uacf7_spam_protection.closest(`.uacf7-form-${formId}`).find('.wpcf7-submit');
 
                 form_submit.on('click', function (e) {
-                  e.preventDefault();
-                  const resultDiv = uacf7_spam_protection.find('#image_recognation').find('#result');
-                    resultDiv.text('Validate Captcha First !');
+
+
+                    const userInput = form_div.find("#userInput").val();
+                    const captcha   = form_div.find("#captcha").text();
+                    const resultDiv = form_div.find("#result");
+                    
+                    if (userInput === captcha) {
+                        resultDiv.text("CAPTCHA validated successfully!");
+                        
+                    } else {
+    
+                        resultDiv.text("CAPTCHA validation failed. Please try again.");
+                      
+                       e.preventDefault();
+           
+                    }
+
+
+
                 });
        
                
