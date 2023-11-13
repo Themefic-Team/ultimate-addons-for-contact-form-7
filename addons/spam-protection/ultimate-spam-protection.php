@@ -20,15 +20,6 @@
             wp_register_script('uacf7-spam-protection-arithmetic', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-arithmetic.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_register_script('uacf7-spam-protection-image', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-image.js', ['jquery'], 'WPCF7_VERSION', true);
 
-            // $form_id              = get_the_ID();
-            // $uacf7_spam_condition = uacf7_get_form_option($form_id, 'spam_protection');
-
-
-            // var_dump($form_id);
-
-           
-
-
             wp_enqueue_script('uacf7-spam-protection', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-script.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_style('uacf7-spam-protection-css', UACF7_URL . '/addons/spam-protection/assets/css/spam-protection-style.css', [], 'WPCF7_VERSION', 'all');
             wp_localize_script( 'uacf7-spam-protection', 'uacf7_spam_pro_obj', [
@@ -228,6 +219,7 @@
 
 
 
+            //Conditionally Loading Scripts
             if( $uacf7_spam_protection['uacf7_spam_protection_type'] === 'arithmathic_recognation'){
                 wp_enqueue_script( 'uacf7-spam-protection-arithmetic' );
             }
