@@ -8,11 +8,9 @@
         var form_div              = $(this).find('.uacf7-form-'+formId);
         var uacf7_spam_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation');
     
-
         var refreshButton         = uacf7_spam_protection.find("#arithmathic_refresh");
         var validate              = uacf7_spam_protection.find("#arithmathic_validate");
     
-
         var protection_method     = $(uacf7_spam_protection).attr('protection-method');
 
 

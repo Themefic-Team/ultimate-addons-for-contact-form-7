@@ -49,8 +49,6 @@
             });
 
 
-          
-
 
             //Conditionally make submission event false
             $(window).on('load', function() {

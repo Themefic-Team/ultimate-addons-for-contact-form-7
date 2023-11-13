@@ -7,8 +7,12 @@
         var uacf7_form            = $('.uacf7-form-'+formId);
         var uacf7_mail            = $(`.uacf7-form-${formId} input[type="email"]`);
         var uacf7_spam_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation');
+        var form_submit_btn       = uacf7_spam_protection.closest(`.uacf7-form-${formId}`).find('.wpcf7-submit');
+        var uacf7_message         = uacf7_spam_protection.closest(`.uacf7-form-${formId}`).find('.wpcf7-textarea').val();
         var user_ip               = $(uacf7_spam_protection).attr('user-ip');
         var user_country          = $(uacf7_spam_protection).attr('iso2');
+
+        
 
        
         $(document).ready(function() {
@@ -38,8 +42,9 @@
                
                     var ipTimestamps = {};
 
-                    $(uacf7_form).on('submit', function(event) {
+                    $(form_submit_btn).on('click', function(event) {
 
+                     
                         var formSubmitTime = new Date().getTime();
                         var lastSubmitTime = ipTimestamps[user_ip] || 0;
                         var timeTaken      = formSubmitTime - lastSubmitTime;
@@ -52,24 +57,22 @@
 
                         ipTimestamps[user_ip] = formSubmitTime;
 
-
-                        console.log(ipTimestamps)
-
                         return true;
                     });
-                    
+
 
                      //IP Ban
 
-                    $(uacf7_form).on('click', function(event) {
+                    $(form_submit_btn).on('click', function(event) {
 
                         if ($.inArray(user_ip, uacf7_ip_block) !== -1) {
                             alert('Your IP address is banned from submitting this form.');
-                            // event.preventDefault(); 
-                        }         
+                            event.preventDefault(); 
+                        } 
                         
                     });
-
+                        
+                  
 
                     //Country Ban
                     if ($.inArray(user_country, uacf7_country_block) !== -1) {
@@ -79,7 +82,14 @@
 
 
                     
-                     // Word Filter
+                    // Word Filter
+
+
+                   
+               
+
+                    // });
+
           
                 }
               });

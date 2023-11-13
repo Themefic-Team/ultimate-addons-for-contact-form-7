@@ -228,8 +228,6 @@
                 wp_enqueue_script( 'uacf7-spam-protection-image' );
             }
 
-
-
             $atts['tabindex']          = $tag->get_option('tabindex', 'signed_int', true);
         
             if ($tag->is_required()) {
@@ -262,7 +260,7 @@
                                     <input type="number" min="0" id="rtn" placeholder="Enter CAPTCHA answer">
                                 </div>
                                 <div>
-                                <button id="arithmathic_refresh">Refresh</button>
+                                <button id="arithmathic_refresh"><i class="fa-solid fa-rotate"></i></button>
                                 </div>
                                 <div id="arithmathic_result"></div>
                             </div>
@@ -272,10 +270,10 @@
                             <div id="image_recognation">
                                 <div id="captcha_input_holder">
                                 <div id="captcha" ></div>
-                                <input type="text" id="userInput" placeholder="Enter CAPTCHA text">
+                                <input type="text" id="userInput" placeholder="Enter CAPTCHA answer">
                                 </div>
                                 <div>
-                                <button id="refresh">Refresh</button>
+                                <button id="refresh"><i class="fa-solid fa-rotate"></i></button>
                                 </div>
                                 <div id="result"></div>
                             </div> 
