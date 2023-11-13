@@ -1,5 +1,7 @@
 (function($){
 
+
+
     var forms = $('.wpcf7-form'); 
     forms.each(function(){
         var formId                = $(this).find('input[name="_wpcf7"]').val();
@@ -78,26 +80,25 @@
 
 
           //Conditionally make submission event false
+         
+            $(window).on('load', function() {
+   
+                var form_submit = uacf7_spam_protection.closest(`.uacf7-form-${formId}`).find('.wpcf7-submit');
 
-            $(document).ready(function (){
-              if(protection_method === 'arithmathic_recognation'){
-                  $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
-                    e.preventDefault();
-                    const resultDiv = form_div.find("#result");
-                          resultDiv.text('Validate Captcha First !');
-
-                        
-                  });  
-                  
-                  
-                }else{
-                  $(`.uacf7-form-${formId} input[type="submit"]`).off('click');
-                }
+                form_submit.on('click', function (e) {
+                  e.preventDefault();
+                  const resultDiv = uacf7_spam_protection.find('#arithmathic_recognation').find('#arithmathic_result');
+                    resultDiv.text('Validate Captcha First !');
+                });
+       
+               
             });
-     
-        
-  }); 
+
+
+  });
 
 })(jQuery);
+
+
 
 

@@ -87,6 +87,14 @@
         });
 
 
+        // $(document).ready(function () {
+
+        //     $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
+        // });
+
+
+
+
     });
 })(jQuery);
 
