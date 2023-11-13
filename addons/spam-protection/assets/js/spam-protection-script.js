@@ -50,7 +50,7 @@
                         var timeTaken      = formSubmitTime - lastSubmitTime;
 
                         if (timeTaken < user_inpput_time) {
-                            alert("Too fast Submission not acceptable.");
+                            alert("Too fast submission not acceptable.");
                             event.preventDefault();
                             return false;
                         }
@@ -63,20 +63,21 @@
 
                      //IP Ban
 
-                    $(form_submit_btn).on('click', function(event) {
-
+                     form_submit_btn.on('click', function () {
                         if ($.inArray(user_ip, uacf7_ip_block) !== -1) {
-                            alert('Your IP address is banned from submitting this form.');
-                            event.preventDefault(); 
-                        } 
-                        
-                    });
-                        
+
+                            alert('Your IP is Banned from submitting this Form');
+                            // event.preventDefault(); 
+                          
+                         } 
+                     });
+
+                   
                   
 
                     //Country Ban
                     if ($.inArray(user_country, uacf7_country_block) !== -1) {
-                        alert('Your Country is banned from submitting this form.');
+                        alert('Your country is Banned from submitting this Form');
                         // event.preventDefault(); 
                     } 
 

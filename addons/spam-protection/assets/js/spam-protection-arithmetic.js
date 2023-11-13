@@ -66,17 +66,16 @@
                   var resultDiv = uacf7_spam_protection.find("#arithmathic_result");
           
                   if (userInput == return_total_num()) {
-                    resultDiv.text("CAPTCHA validated successfully!");
-
+                    
                     refreshButton.trigger('click');
+                    resultDiv.text("CAPTCHA validated successfully!");
 
                 
                   } else {
-
-                      resultDiv.text("CAPTCHA validation failed. Please try again.");
-
-                      e.preventDefault();
-                      refreshButton.trigger('click');
+ 
+                    e.preventDefault();
+                    refreshButton.trigger('click');
+                    resultDiv.text("CAPTCHA validation failed. Please try again.");
                   }
 
                 });

@@ -63,15 +63,14 @@
                     const resultDiv = form_div.find("#result");
                     
                     if (userInput === captcha) {
-                        resultDiv.text("CAPTCHA validated successfully!");
                         refreshButton.trigger('click');
+                        resultDiv.text("CAPTCHA validated successfully!");
                         
                     } else {
-    
+       
+                        e.preventDefault();
+                        refreshButton.trigger('click');
                         resultDiv.text("CAPTCHA validation failed. Please try again.");
-                      
-                       e.preventDefault();
-                       refreshButton.trigger('click');
            
                     }
 
