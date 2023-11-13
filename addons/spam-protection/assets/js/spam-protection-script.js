@@ -63,23 +63,28 @@
 
                      //IP Ban
 
-                     form_submit_btn.on('click', function () {
+                     form_submit_btn.on('click', function (e) {
                         if ($.inArray(user_ip, uacf7_ip_block) !== -1) {
 
                             alert('Your IP is Banned from submitting this Form');
-                            // event.preventDefault(); 
+                            e.preventDefault(); 
                           
                          } 
                      });
 
-                   
+
+
+                       //Country Ban
+
+                    form_submit_btn.on('click', function (e) {
+                        if ($.inArray(user_country, uacf7_country_block) !== -1) {
+                            alert('Your country is Banned from submitting this Form');
+                            e.preventDefault(); 
+                        } 
+                    });
                   
 
-                    //Country Ban
-                    if ($.inArray(user_country, uacf7_country_block) !== -1) {
-                        alert('Your country is Banned from submitting this Form');
-                        // event.preventDefault(); 
-                    } 
+                  
 
 
                     

@@ -46,8 +46,6 @@
               uacf7_spam_protection.find("#rtn").val('');
               uacf7_generate_ramdom_numbers();
 
-              console.log('validate')
-        
           });
 
       
