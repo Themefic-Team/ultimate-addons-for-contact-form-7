@@ -75,25 +75,19 @@
 
 
             //Conditionally make submission event false
-            $(document).ready(function (){
+            $(window).on('load', function() {
+   
+                var form_submit = uacf7_spam_protection.closest(`.uacf7-form-${formId}`).find('.wpcf7-submit');
 
-                if( protection_method === 'image_recognation'){
-                    $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {
-                        e.preventDefault();
-                        const resultDiv = form_div.find("#result");
-                        resultDiv.text('Validate Captcha First !');
-
-                    });
-
-                }else{
-                    $(`.uacf7-form-${formId} input[type="submit"]`).off('click');
-                }
-                   
-                
+                form_submit.on('click', function (e) {
+                  e.preventDefault();
+                  const resultDiv = uacf7_spam_protection.find('#image_recognation').find('#result');
+                    resultDiv.text('Validate Captcha First !');
+                });
+       
+               
             });
   
-
-        
 
         });
 
