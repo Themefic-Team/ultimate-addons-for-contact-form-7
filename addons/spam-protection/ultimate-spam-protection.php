@@ -253,10 +253,12 @@
                             <div id="arithmathic_recognation">
          
                                 <div id="arithmetic_input_holder">
+                                    <div id="arithmetic_cal">
                                     <span id="frn">5</span>
                                     +
                                     <span id="srn">6</span>
                                     =
+                                    </div>
                                     <button id="arithmathic_refresh"><i class="fa-solid fa-rotate"></i></button>
                                     <input type="number" min="0" id="rtn" placeholder="Enter CAPTCHA answer">
                                 </div>
