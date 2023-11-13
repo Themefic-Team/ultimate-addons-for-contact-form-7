@@ -9,14 +9,14 @@
 
             add_action( 'wpcf7_init', [ $this, 'uacf7_spam_protection_add_shortcodes' ]);
             add_action( 'admin_init', [ $this, 'uacf7_spam_protection_tag_generator' ]);
-            // add_action( 'wpcf7_before_send_mail', [ $this, 'uacf7_spam_protection_word_filter' ], 10, 1);
+            add_action( 'wpcf7_before_send_mail', [ $this, 'uacf7_spam_protection_word_filter' ], 10, 1);
             add_filter( 'wpcf7_validate_uacf7_spam_protection', array($this, 'uacf7_spam_protection_validation_filter'), 10, 2 );
             add_filter( 'wpcf7_validate_uacf7_spam_protection*', array($this,'uacf7_spam_protection_validation_filter'), 10, 2 );
             add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_spam_protection'], 24, 2 ); 
             add_action( 'wp_enqueue_scripts', [$this, 'uacf7_spam_protection_scripts']);
             add_action('wp_ajax_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
             add_action('wp_ajax_nopriv_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
-            // add_filter( 'wpcf7_load_js', '__return_false' ); 
+            add_filter( 'wpcf7_load_js', '__return_false' ); 
         }
 
         public function uacf7_spam_protection_scripts(){
@@ -117,6 +117,32 @@
             $value['spam_protection'] = $spam_protection; 
             return $value;
         }
+
+
+
+        public function uacf7_spam_protection_word_filter($contact_form ){
+            $submission = WPCF7_Submission::get_instance();
+            
+            if ( $submission ) {
+                $cf7_data = $submission->get_posted_data();
+
+            
+                
+                $service  = $cf7_data['word_filter'];
+
+                // echo '<pre>';
+                // var_dump($service);
+                // echo '</pre>';
+
+                // die();
+               
+                if ( $service === 'income' )  {
+             
+                    add_filter( 'wpcf7_skip_mail', '__return_true' );
+                }
+        }
+
+    }
 
 
         public function uacf7_spam_protection_validation_filter($result, $tag){
