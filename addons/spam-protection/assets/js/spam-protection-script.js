@@ -8,7 +8,7 @@
         var uacf7_mail            = $(`.uacf7-form-${formId} input[type="email"]`);
         var uacf7_spam_protection = $('.uacf7-form-'+formId).find('.uacf7_spam_recognation');
         var form_submit_btn       = uacf7_spam_protection.closest(`.uacf7-form-${formId}`).find('.wpcf7-submit');
-        var uacf7_message         = uacf7_spam_protection.closest(`.uacf7-form-${formId}`).find('.wpcf7-textarea').val();
+        var uacf7_message         = uacf7_spam_protection.closest(`.uacf7-form-${formId} input[type="textarea"]`).val();
         var user_ip               = $(uacf7_spam_protection).attr('user-ip');
         var user_country          = $(uacf7_spam_protection).attr('iso2');
 
@@ -63,30 +63,38 @@
 
                      //IP Ban
 
-                     form_submit_btn.on('click', function (e) {
-                        if ($.inArray(user_ip, uacf7_ip_block) !== -1) {
+                    //  if(user_ip.length > 0){
+                    //     form_submit_btn.on('click', function (e) {
 
-                            alert('Your IP is Banned from submitting this Form');
-                            e.preventDefault(); 
-                          
-                         } 
-                     });
+
+                    //         if ($.inArray(user_ip, uacf7_ip_block) !== -1) {
+    
+                    //             alert('Your IP is Banned from submitting this Form');
+                    //             e.preventDefault(); 
+                              
+                    //          } 
+                    //      });
+                    //  }
+
+                  
 
 
 
                        //Country Ban
 
-                    form_submit_btn.on('click', function (e) {
-                        if ($.inArray(user_country, uacf7_country_block) !== -1) {
-                            alert('Your country is Banned from submitting this Form');
-                            e.preventDefault(); 
-                        } 
-                    });
+                    //    if(user_country.length > 0){
+                    //     form_submit_btn.on('click', function (e) {
+                    //         if ($.inArray(user_country, uacf7_country_block) !== -1) {
+                    //             alert('Your country is Banned from submitting this Form');
+                    //             e.preventDefault(); 
+                    //         } 
+                    //     });
+                    //    }
+
+                 
                   
 
-                  
-
-
+                
                     
                     // Word Filter
 

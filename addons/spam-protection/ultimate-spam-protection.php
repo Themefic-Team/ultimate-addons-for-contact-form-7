@@ -9,10 +9,14 @@
 
             add_action( 'wpcf7_init', [ $this, 'uacf7_spam_protection_add_shortcodes' ]);
             add_action( 'admin_init', [ $this, 'uacf7_spam_protection_tag_generator' ]);
+            // add_action( 'wpcf7_before_send_mail', [ $this, 'uacf7_spam_protection_word_filter' ], 10, 1);
+            add_filter( 'wpcf7_validate_uacf7_spam_protection', array($this, 'uacf7_spam_protection_validation_filter'), 10, 2 );
+            add_filter( 'wpcf7_validate_uacf7_spam_protection*', array($this,'uacf7_spam_protection_validation_filter'), 10, 2 );
             add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_spam_protection'], 24, 2 ); 
             add_action( 'wp_enqueue_scripts', [$this, 'uacf7_spam_protection_scripts']);
             add_action('wp_ajax_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
             add_action('wp_ajax_nopriv_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
+            // add_filter( 'wpcf7_load_js', '__return_false' ); 
         }
 
         public function uacf7_spam_protection_scripts(){
@@ -29,8 +33,7 @@
 
         }
 
-
-
+     
         public function uacf7_spam_action_ajax_callback(){
               
             $form_id                  = $_POST['form_id'];
@@ -113,6 +116,44 @@
         
             $value['spam_protection'] = $spam_protection; 
             return $value;
+        }
+
+
+        public function uacf7_spam_protection_validation_filter($result, $tag){
+
+
+        
+            $name = $tag->name;
+
+            if ( isset( $_POST[$name] )
+            and is_array( $_POST[$name] ) ) {
+                foreach ( $_POST[$name] as $key => $value ) {
+                    if ( '' === $value ) {
+                        unset( $_POST[$name][$key] );
+                    }
+                }
+            }
+    
+            $empty = ! isset( $_POST[$name] ) || empty( $_POST[$name] ) && '0' !== $_POST[$name];
+    
+            if ( $tag->is_required() and $empty ) {
+                $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+            }
+
+            // if($_POST['your-name'] === 'income'){
+            //     $result->invalidate($_POST['your-name'], wpcf7_get_message( 'invalid_required' ) );
+            // }
+
+
+            // echo '<pre>';
+            // var_dump($_POST['your-name']);
+            // echo '</pre>';
+
+            // die();
+            
+    
+            return $result;
+            
         }
 
         public function uacf7_spam_protection_tag_generator(){
@@ -243,7 +284,7 @@
             $atts['name']         = $tag->name;
             $atts                 = wpcf7_format_atts($atts);
 
-         
+    
             ob_start();
         
             ?> 
