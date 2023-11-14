@@ -122,16 +122,20 @@
 
         public function uacf7_spam_protection_word_filter($contact_form ){
 
-            $submission             = WPCF7_Submission::get_instance();
-            $wpcf7                  = WPCF7_ContactForm::get_current();
-            $form_id                = $wpcf7->id();
-            $uacf7_spam_protection  = uacf7_get_form_option($form_id, 'spam_protection');
+            $submission                = WPCF7_Submission::get_instance();
+            $wpcf7                     = WPCF7_ContactForm::get_current();
+            $form_id                   = $wpcf7->id();
+            $uacf7_spam_protection     = uacf7_get_form_option($form_id, 'spam_protection');
             
-            $uacf7_word_filter      = $uacf7_spam_protection['uacf7_word_filter'];
-            $uacf7_ip_filter        = $uacf7_spam_protection['uacf7_ip_block'];
-            $uacf7_countries_filter = $uacf7_spam_protection['uacf7_blocked_countries'];
-            $trimmed_words          = preg_replace('/\s*,\s*/', ',', $uacf7_word_filter);
-            $webmaster_given        = explode(',', $trimmed_words);
+            $uacf7_word_filter         = $uacf7_spam_protection['uacf7_word_filter'];
+            $uacf7_ip_filter           = $uacf7_spam_protection['uacf7_ip_block'];
+            $uacf7_countries_filter    = $uacf7_spam_protection['uacf7_blocked_countries'];
+            $trimmed_words             = preg_replace('/\s*,\s*/', ',', $uacf7_word_filter);
+            $trimmed_ips               = preg_replace('/\s*,\s*/', ',', $uacf7_ip_filter);
+            $trimmed_countries         = preg_replace('/\s*,\s*/', ',', $uacf7_countries_filter);
+            $webmaster_given_words     = explode(',', $trimmed_words);
+            $webmaster_given_ips       = explode(',', $trimmed_ips);
+            $webmaster_given_countries = explode(',', $trimmed_countries);
 
 
             // echo '<pre>';
