@@ -9,14 +9,12 @@
 
             add_action( 'wpcf7_init', [ $this, 'uacf7_spam_protection_add_shortcodes' ]);
             add_action( 'admin_init', [ $this, 'uacf7_spam_protection_tag_generator' ]);
-            add_action( 'wpcf7_before_send_mail', [ $this, 'uacf7_spam_protection_word_filter' ], 10, 1);
             add_filter( 'wpcf7_validate_uacf7_spam_protection', array($this, 'uacf7_spam_protection_validation_filter'), 10, 2 );
             add_filter( 'wpcf7_validate_uacf7_spam_protection*', array($this,'uacf7_spam_protection_validation_filter'), 10, 2 );
             add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_spam_protection'], 24, 2 ); 
             add_action( 'wp_enqueue_scripts', [$this, 'uacf7_spam_protection_scripts']);
             add_action('wp_ajax_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
             add_action('wp_ajax_nopriv_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
-            add_filter( 'wpcf7_load_js', '__return_false' ); 
         }
 
         public function uacf7_spam_protection_scripts(){
@@ -125,65 +123,6 @@
             $value['spam_protection'] = $spam_protection; 
             return $value;
         }
-
-
-
-        public function uacf7_spam_protection_word_filter($contact_form ){
-
-            $submission                = WPCF7_Submission::get_instance();
-            $wpcf7                     = WPCF7_ContactForm::get_current();
-            $form_id                   = $wpcf7->id();
-            $uacf7_spam_protection     = uacf7_get_form_option($form_id, 'spam_protection');
-
-            $uacf7_word_filter         = isset($uacf7_spam_protection['uacf7_word_filter']);
-            $uacf7_ip_filter           = isset($uacf7_spam_protection['uacf7_ip_block']);
-            $uacf7_countries_filter    = isset($uacf7_spam_protection['uacf7_blocked_countries']);
-
-            $trimmed_words             = preg_replace('/\s*,\s*/', ',', $uacf7_word_filter);
-            $trimmed_ips               = preg_replace('/\s*,\s*/', ',', $uacf7_ip_filter);
-            $trimmed_countries         = preg_replace('/\s*,\s*/', ',', $uacf7_countries_filter);
-
-            $webmaster_given_words     = explode(',', $trimmed_words);
-            $webmaster_given_ips       = explode(',', $trimmed_ips);
-            $webmaster_given_countries = explode(',', $trimmed_countries);
-            
-            $user_current_ip           = $_SERVER['REMOTE_ADDR'];
-            $addr                      = @unserialize(file_get_contents('http://ip-api.com/php/'.$user_current_ip));
-            $user_country              = isset($addr['countryCode']) ? $addr['countryCode'] : '';
-            $user_current_country      = strtolower($user_country);
-        
-
-            // echo '<pre>';
-            // var_dump($uacf7_spam_protection['uacf7_spam_protection_enable']);
-            // echo '</pre>';
-
-            // die();
-
-            
-            if ( $submission ) {
-                $uacf7_data         = $submission->get_posted_data();
-                $usergiven_all_data = array_values($uacf7_data);
-
-                if(isset($uacf7_spam_protection['uacf7_spam_protection_enable']) === '1'){
-                    $posted_data = array();
-
-                    foreach ($usergiven_all_data as $value) {
-                        $words = explode(' ', $value);
-                        $posted_data = array_merge($posted_data, $words);
-                    }
-    
-                    $uacf7_word_match = array_intersect( $webmaster_given_words, $posted_data);
-    
-                    if (count($uacf7_word_match) > 0 || in_array( $user_current_ip, $webmaster_given_ips) || in_array($user_current_country, $webmaster_given_countries)) {
-                        add_filter( 'wpcf7_skip_mail', '__return_true' );
-                    }else{
-                        remove_filter('wpcf7_skip_mail', '__return_true');
-                    }
-                }     
-
-        }
-
-    }
 
 
         public function uacf7_spam_protection_validation_filter($result, $tag){
