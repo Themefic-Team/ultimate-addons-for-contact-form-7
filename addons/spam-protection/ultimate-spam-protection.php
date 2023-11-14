@@ -121,25 +121,37 @@
 
 
         public function uacf7_spam_protection_word_filter($contact_form ){
-            $submission = WPCF7_Submission::get_instance();
+
+            $submission             = WPCF7_Submission::get_instance();
+            $wpcf7                  = WPCF7_ContactForm::get_current();
+            $form_id                = $wpcf7->id();
+            $uacf7_spam_protection  = uacf7_get_form_option($form_id, 'spam_protection');
+            
+            $uacf7_word_filter      = $uacf7_spam_protection['uacf7_word_filter'];
+            $uacf7_ip_filter        = $uacf7_spam_protection['uacf7_ip_block'];
+            $uacf7_countries_filter = $uacf7_spam_protection['uacf7_blocked_countries'];
+            $trimmed_words          = preg_replace('/\s*,\s*/', ',', $uacf7_word_filter);
+            $webmaster_given        = explode(',', $trimmed_words);
+
+
+            // echo '<pre>';
+            // var_dump($filtered_word_array);
+            // echo '</pre>';
+
+            // die();
+
             
             if ( $submission ) {
-                $cf7_data = $submission->get_posted_data();
+                $uacf7_data = $submission->get_posted_data();
+                $message    = $uacf7_data['word_filter'];
+                $user_given = explode(' ', $message);
 
-            
-                
-                $service  = $cf7_data['word_filter'];
+                $uacf7_word_match = array_intersect( $webmaster_given, $user_given);
 
-                // echo '<pre>';
-                // var_dump($service);
-                // echo '</pre>';
-
-                // die();
-               
-                if ( $service === 'income' )  {
-             
+                if (count($uacf7_word_match) > 0) {
                     add_filter( 'wpcf7_skip_mail', '__return_true' );
                 }
+
         }
 
     }
@@ -166,18 +178,6 @@
                 $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
             }
 
-            // if($_POST['your-name'] === 'income'){
-            //     $result->invalidate($_POST['your-name'], wpcf7_get_message( 'invalid_required' ) );
-            // }
-
-
-            // echo '<pre>';
-            // var_dump($_POST['your-name']);
-            // echo '</pre>';
-
-            // die();
-            
-    
             return $result;
             
         }
