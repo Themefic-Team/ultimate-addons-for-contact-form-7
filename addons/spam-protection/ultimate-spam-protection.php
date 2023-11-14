@@ -16,7 +16,7 @@
             add_action( 'wp_enqueue_scripts', [$this, 'uacf7_spam_protection_scripts']);
             add_action('wp_ajax_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
             add_action('wp_ajax_nopriv_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
-            // add_filter( 'wpcf7_load_js', '__return_false' ); 
+            add_filter( 'wpcf7_load_js', '__return_false' ); 
         }
 
         public function uacf7_spam_protection_scripts(){
@@ -138,37 +138,40 @@
             $webmaster_given_words     = explode(',', $trimmed_words);
             $webmaster_given_ips       = explode(',', $trimmed_ips);
             $webmaster_given_countries = explode(',', $trimmed_countries);
-
-            // $user_current_ip      = $_SERVER['REMOTE_ADDR'];
-            $user_current_ip      = '203.76.223.137';
-            $addr                 = @unserialize(file_get_contents('http://ip-api.com/php/'.$user_current_ip));
-            $user_country         = isset($addr['countryCode']) ? $addr['countryCode'] : '';
-            $user_current_country = strtolower($user_country);
+            
+            $user_current_ip           = $_SERVER['REMOTE_ADDR'];
+            $addr                      = @unserialize(file_get_contents('http://ip-api.com/php/'.$user_current_ip));
+            $user_country              = isset($addr['countryCode']) ? $addr['countryCode'] : '';
+            $user_current_country      = strtolower($user_country);
         
 
             // echo '<pre>';
-            // var_dump($user_current_country);
+            // var_dump($uacf7_spam_protection['uacf7_spam_protection_enable']);
             // echo '</pre>';
 
             // die();
 
             
             if ( $submission ) {
-                $uacf7_data       = $submission->get_posted_data();
-                $message          = $uacf7_data['word_filter'];
+                $uacf7_data         = $submission->get_posted_data();
+                $usergiven_all_data = array_values($uacf7_data);
 
-                if(isset($message)){
-                    $user_given_words = explode(' ', $message);
+                if($uacf7_spam_protection['uacf7_spam_protection_enable'] === '1'){
+                    $posted_data = array();
 
-                    $uacf7_word_match = array_intersect( $webmaster_given_words, $user_given_words);
+                    foreach ($usergiven_all_data as $value) {
+                        $words = explode(' ', $value);
+                        $posted_data = array_merge($posted_data, $words);
+                    }
+    
+                    $uacf7_word_match = array_intersect( $webmaster_given_words, $posted_data);
     
                     if (count($uacf7_word_match) > 0 || in_array( $user_current_ip, $webmaster_given_ips) || in_array($user_current_country, $webmaster_given_countries)) {
                         add_filter( 'wpcf7_skip_mail', '__return_true' );
                     }else{
                         remove_filter('wpcf7_skip_mail', '__return_true');
                     }
-                }
-               
+                }     
 
         }
 
