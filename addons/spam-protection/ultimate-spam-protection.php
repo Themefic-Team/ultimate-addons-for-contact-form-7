@@ -59,9 +59,15 @@
                 'fields' => array(
                     'uacf7_spam_protection_heading' => array(
                         'id'        => 'uacf7_spam_protection_heading',
-                        'type'      => 'heading',
-                        'label'     => __( 'Spam Protection', 'ultimate-addons-cf7' ),
-                        'sub_title' => __( 'This feature will help you to protect your form submission from Spam attack.' ),
+                        'type'  => 'notice',
+                        'notice' => 'info',
+                        'label'     => __( 'Spam Protection Settins', 'ultimate-addons-cf7' ),
+                        'title' => __( 'This feature will help you to protect your form submission from Spam attack.', 'ultimate-addons-cf7' ),
+                        'content' => sprintf( 
+                            __( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
+                            '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection-for-contact-form-7/" target="_blank">Spam Protection for Contact Form 7</a>',
+                           
+                        ),
                     ),
                     'uacf7_spam_protection_enable' => array(
                         'id'        => 'uacf7_spam_protection_enable',
@@ -94,7 +100,7 @@
                         'type'        => 'textarea',
                         'label'       => __( 'Word Filter', 'ultimate-addons-cf7' ),
                         'subtitle'    => __( 'Enlist the words you want to avoid from Spammer, Separeate the words using a Comma', 'ultimate-addons-cf7' ),
-                        'placeholder' => __( ', comma separate words', 'ultimate-addons-cf7' ),
+                        'placeholder' => __( 'E.g. sex, porn, earn money', 'ultimate-addons-cf7' ),
                         'is_pro'      => true
                     ),
                     'uacf7_ip_block'    => array(
@@ -102,15 +108,18 @@
                         'type'        => 'textarea',
                         'label'       => __( 'IP Block', 'ultimate-addons-cf7' ),
                         'subtitle'    => __( 'Enlist the IP you want to Ban / Block, Separeate the IPs using a Comma', 'ultimate-addons-cf7' ),
-                        'placeholder' => __( ', comma separate IPs', 'ultimate-addons-cf7' ),
+                        'placeholder' => __( 'E.g. 192.158.1.38,192.158.1.39,192.158.1.40', 'ultimate-addons-cf7' ),
                         'is_pro'      => true
                     ),
                     'uacf7_blocked_countries'    => array(
                         'id'          => 'uacf7_blocked_countries',
                         'type'        => 'textarea',
                         'label'       => __( 'Country Block', 'ultimate-addons-cf7' ),
-                        'subtitle'    => __( 'Enlist the the Country or Countries that you want to Ban / Block. Separeate the Countries using a Comma', 'ultimate-addons-cf7' ),
-                        'placeholder' => __( ', comma separate Countries', 'ultimate-addons-cf7' ),
+                        'subtitle'    => sprintf(
+                            __( 'Enlist the the Country or Countries that you want to Ban / Block. Separate the Countries %s using a Comma', 'ultimate-addons-cf7' ),
+                            '<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" target="_blank">' . __('iso2 name', 'ultimate-addons-cf7') . '</a>'
+                        ),
+                        'placeholder' => __( 'E.g. us,ca,uk', 'ultimate-addons-cf7' ),
                         'is_pro'      => true
                     ),
   
