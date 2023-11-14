@@ -29,12 +29,7 @@
 
 
                 var uacf7_minimum_time_limit = (res.uacf7_minimum_time_limit && res.uacf7_minimum_time_limit.length > 0) ? res.uacf7_minimum_time_limit.split(',') : [];
-                var uacf7_word_filter        = (res.uacf7_word_filter && res.uacf7_word_filter.length > 0) ? res.uacf7_word_filter.split(',') : [];
-                var uacf7_ip_block           = (res.uacf7_ip_block && res.uacf7_ip_block.length > 0) ? res.uacf7_ip_block.split(',') : [];
-                var uacf7_country_block      = (res.uacf7_country_block && res.uacf7_country_block.length > 0) ? res.uacf7_country_block.split(',') : [];
-
-                    
-                var user_inpput_time = uacf7_minimum_time_limit * 1000;
+                var user_inpput_time         = uacf7_minimum_time_limit * 1000;
 
                   
                     
@@ -61,61 +56,12 @@
                     });
 
 
-                     //IP Ban
-
-                    //  if(user_ip.length > 0){
-                    //     form_submit_btn.on('click', function (e) {
-
-
-                    //         if ($.inArray(user_ip, uacf7_ip_block) !== -1) {
-    
-                    //             alert('Your IP is Banned from submitting this Form');
-                    //             e.preventDefault(); 
-                              
-                    //          } 
-                    //      });
-                    //  }
-
-                  
-
-
-
-                       //Country Ban
-
-                    //    if(user_country.length > 0){
-                    //     form_submit_btn.on('click', function (e) {
-                    //         if ($.inArray(user_country, uacf7_country_block) !== -1) {
-                    //             alert('Your country is Banned from submitting this Form');
-                    //             e.preventDefault(); 
-                    //         } 
-                    //     });
-                    //    }
-
-                 
-                  
-
-                
-                    
-                    // Word Filter
-
-
-                   
-               
-
-                    // });
 
           
                 }
               });
     
         });
-
-
-        // $(document).ready(function () {
-
-        //     $(`.uacf7-form-${formId} input[type="submit"]`).on('click ', function (e) {e.preventDefault()});
-        // });
-
 
 
 

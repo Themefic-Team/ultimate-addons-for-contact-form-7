@@ -39,15 +39,10 @@
             $form_id                  = $_POST['form_id'];
             $data                     = uacf7_get_form_option($form_id, 'spam_protection');
             $uacf7_minimum_time_limit = $data['uacf7_minimum_time_limit'];
-            $uacf7_word_filter        = $data['uacf7_word_filter'];
-            $uacf7_ip_block           = $data['uacf7_ip_block'];
-            $uacf7_country_block      = $data['uacf7_blocked_countries'];
+
 
             echo wp_send_json( [
                     'uacf7_minimum_time_limit' => $uacf7_minimum_time_limit,
-                    'uacf7_word_filter'        => $uacf7_word_filter,
-                    'uacf7_ip_block'           => $uacf7_ip_block,
-                    'uacf7_country_block'      => $uacf7_country_block,
                 ] );
 
         }
@@ -58,11 +53,11 @@
                 'icon'   => 'fa-solid fa-spaghetti-monster-flying',
                 'fields' => array(
                     'uacf7_spam_protection_heading' => array(
-                        'id'        => 'uacf7_spam_protection_heading',
-                        'type'  => 'notice',
-                        'notice' => 'info',
-                        'label'     => __( 'Spam Protection Settins', 'ultimate-addons-cf7' ),
-                        'title' => __( 'This feature will help you to protect your form submission from Spam attack.', 'ultimate-addons-cf7' ),
+                        'id'      => 'uacf7_spam_protection_heading',
+                        'type'    => 'notice',
+                        'notice'  => 'info',
+                        'label'   => __( 'Spam Protection Settins', 'ultimate-addons-cf7' ),
+                        'title'   => __( 'This feature will help you to protect your form submission from Spam attack.', 'ultimate-addons-cf7' ),
                         'content' => sprintf( 
                             __( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
                             '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection-for-contact-form-7/" target="_blank">Spam Protection for Contact Form 7</a>',
@@ -140,9 +135,9 @@
             $form_id                   = $wpcf7->id();
             $uacf7_spam_protection     = uacf7_get_form_option($form_id, 'spam_protection');
 
-            $uacf7_word_filter         = $uacf7_spam_protection['uacf7_word_filter'];
-            $uacf7_ip_filter           = $uacf7_spam_protection['uacf7_ip_block'];
-            $uacf7_countries_filter    = $uacf7_spam_protection['uacf7_blocked_countries'];
+            $uacf7_word_filter         = isset($uacf7_spam_protection['uacf7_word_filter']);
+            $uacf7_ip_filter           = isset($uacf7_spam_protection['uacf7_ip_block']);
+            $uacf7_countries_filter    = isset($uacf7_spam_protection['uacf7_blocked_countries']);
 
             $trimmed_words             = preg_replace('/\s*,\s*/', ',', $uacf7_word_filter);
             $trimmed_ips               = preg_replace('/\s*,\s*/', ',', $uacf7_ip_filter);
@@ -169,7 +164,7 @@
                 $uacf7_data         = $submission->get_posted_data();
                 $usergiven_all_data = array_values($uacf7_data);
 
-                if($uacf7_spam_protection['uacf7_spam_protection_enable'] === '1'){
+                if(isset($uacf7_spam_protection['uacf7_spam_protection_enable']) === '1'){
                     $posted_data = array();
 
                     foreach ($usergiven_all_data as $value) {
@@ -293,7 +288,7 @@
         
             $uacf7_spam_protection = uacf7_get_form_option($formid, 'spam_protection');
         
-            if($uacf7_spam_protection['uacf7_spam_protection_enable'] != '1'){
+            if(isset($uacf7_spam_protection['uacf7_spam_protection_enable']) != '1'){
                 return;
             }
         
