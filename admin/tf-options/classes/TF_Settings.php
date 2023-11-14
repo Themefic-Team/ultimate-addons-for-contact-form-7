@@ -9,14 +9,14 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 		public $option_title = null;
 		public $option_icon = null;
 		public $option_position = null;
-		public $option_sections = array();
+		public $option_sections = array(); 
 
 		public function __construct( $key, $params = array() ) {
 			$this->option_id       = $key;
 			$this->option_title    = ! empty( $params['title'] ) ? apply_filters( $key . '_title', $params['title'] ) : '';
 			$this->option_icon     = ! empty( $params['icon'] ) ? apply_filters( $key . '_icon', $params['icon'] ) : '';
 			$this->option_position = ! empty( $params['position'] ) ? apply_filters( $key . '_position', $params['position'] ) : 5;
-			$this->option_sections = ! empty( $params['sections'] ) ? apply_filters( $key . '_sections', $params['sections'] ) : array();
+			$this->option_sections = ! empty( $params['sections'] ) ? apply_filters( $key . '_sections', $params['sections'] ) : array(); 
 
 			// run only is admin panel options, avoid performance loss
 			$this->pre_tabs     = $this->pre_tabs( $this->option_sections );
@@ -98,75 +98,62 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 		 * @author Foysal
 		 */
 		public function tf_options() {
-			// add_menu_page(
-			// 	$this->option_title,
-			// 	$this->option_title,
-			// 	'manage_options',
-			// 	$this->option_id,
-			// 	array( $this, 'tf_options_page' ),
-			// 	$this->option_icon,
-			// 	$this->option_position
-			// );
+			add_menu_page(
+				$this->option_title,
+				$this->option_title,
+				'manage_options',
+				$this->option_id,
+				array( $this, 'tf_options_page' ),
+				$this->option_icon,
+				$this->option_position
+			);
 
 			add_submenu_page(
-				'wpcf7', //parent slug
+				$this->option_id, //parent slug
 				__($this->option_title,'ultimate-addons-cf7'), // page_title
 				__($this->option_title,'ultimate-addons-cf7'), // menu_title
 				'manage_options', // capability
-				$this->option_id, // menu_slug
+				$this->option_id. '#tab=general', // menu_slug
 				array( $this, 'tf_options_page' ) // function
-			);
-            //Dashboard submenu
+			); 
+			//Dashboard submenu
 			add_submenu_page(
 				$this->option_id,
-				__('Dashboard', 'tourfic'),
-				__('Dashboard', 'tourfic'),
+				__('addons', 'ultimate-addons-cf7'),
+				__('addons', 'ultimate-addons-cf7'),
 				'manage_options',
-				'tf_dashboard',
-				array( $this, 'tf_dashboard_page' ),
+				'uacf7_addons',
+				array( $this, 'uacf7_addons_page' ),
 			);
-
-			//Setting submenu
-			add_submenu_page(
-				$this->option_id,
-				__('Settings', 'tourfic'),
-				__('Settings', 'tourfic'),
-				'manage_options',
-				$this->option_id . '#tab=general',
-				array( $this, 'tf_options_page' ),
-			);
-
+			if ( class_exists('Ultimate_Addons_CF7_PRO') ) {
+				//License Info submenu
+				// add_submenu_page(
+				// 	$this->option_id, 
+				// 	'manage_options',
+				// 	'tf_license_info',
+				// 	array( $this,'tf_license_info_callback'),
+				// );
+				add_submenu_page(
+					$this->option_id, //parent slug
+					__('UACF7 License', 'ultimate-addons-cf7'),
+					__('UACF7 License', 'ultimate-addons-cf7'),
+					'manage_options',
+					'uacf7_license_info',
+					array( $this,'uacf7_license_info_callback'),
+				);
+			}
+			
 			//Get Help submenu
 			add_submenu_page(
-				'wpcf7',
-				__('Get Help', 'tourfic'),
-				__('Get Help', 'tourfic'),
+				$this->option_id, //parent slug
+				__('Get Help', 'ultimate-addons-cf7'),
+				__('Get Help', 'ultimate-addons-cf7'),
 				'manage_options',
 				'tf_get_help',
 				array( $this,'tf_get_help_callback'),
+				10,
 			);
-
-			// Shortcode submenu
-			add_submenu_page(
-				$this->option_id,
-				__('Shortcodes', 'tourfic'),
-				__('Shortcodes', 'tourfic'),
-				'manage_options',
-				'tf_shortcodes',
-				array( 'TF_Shortcodes','tf_shortcode_callback'),
-			);
-
-			if ( function_exists('is_tf_pro') ) {
-				//License Info submenu
-				add_submenu_page(
-					$this->option_id,
-					__('License Info', 'tourfic'),
-					__('License Info', 'tourfic'),
-					'manage_options',
-					'tf_license_info',
-					array( $this,'tf_license_info_callback'),
-				);
-			}
+ 
 
 			// remove first submenu
 			remove_submenu_page( $this->option_id, $this->option_id );
@@ -178,8 +165,8 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 		?>
 		<div class="tf-setting-top-bar">
 			<div class="version">
-				<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tourfic-logo.webp" alt="logo">
-				<span>v<?php echo esc_attr( '1.10' ); ?></span>
+				<img src="<?php echo UACF7_URL; ?>assets/img/uacf7-icon.png" alt="logo">
+				<span>v<?php echo esc_attr( UACF7_VERSION ); ?></span>
 			</div>
 			<div class="other-document">
 				<svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #003c79;background: ;">
@@ -195,7 +182,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 							</svg>
 						<span><?php _e("Need Help?","tourfic"); ?></span>
 						</a>
-						<a href="https://themefic.com/docs/tourfic/" target="_blank">
+						<a href="https://themefic.com/docs/uacf7/" target="_blank">
 							<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M16.1896 7.57803H13.5902C11.4586 7.57803 9.72274 5.84103 9.72274 3.70803V1.10703C9.72274 0.612031 9.318 0.207031 8.82332 0.207031H5.00977C2.23956 0.207031 0 2.00703 0 5.22003V13.194C0 16.407 2.23956 18.207 5.00977 18.207H12.0792C14.8494 18.207 17.089 16.407 17.089 13.194V8.47803C17.089 7.98303 16.6843 7.57803 16.1896 7.57803ZM8.09478 14.382H4.4971C4.12834 14.382 3.82254 14.076 3.82254 13.707C3.82254 13.338 4.12834 13.032 4.4971 13.032H8.09478C8.46355 13.032 8.76935 13.338 8.76935 13.707C8.76935 14.076 8.46355 14.382 8.09478 14.382ZM9.89363 10.782H4.4971C4.12834 10.782 3.82254 10.476 3.82254 10.107C3.82254 9.73803 4.12834 9.43203 4.4971 9.43203H9.89363C10.2624 9.43203 10.5682 9.73803 10.5682 10.107C10.5682 10.476 10.2624 10.782 9.89363 10.782Z" fill="#003c79"></path>
 							</svg>
@@ -215,186 +202,88 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 		<?php
 		}
 
+
 		/**
-		 * Options Page HTML
-		 * @author Jahid, Foysal
+		 * Get UAC7 Addon Page
+		 * @author Sydur Rahman
 		 */
-		public function tf_dashboard_page() {
-            $current_page_url = $this->get_current_page_url();
-            $query_string = $this->get_query_string($current_page_url);
 
+		public function uacf7_addons_page(){
+			// uacf7_print_r($this->option_sections);
 			?>
-			<div class="tf-setting-dashboard">
-				<!-- dashboard-header-include -->
-				<?php //echo tf_dashboard_header(); ?>
+			<div class="uacf7-addons-settings-page">
+				<h1 class="uacf7-setting-title"><?php echo esc_html('Ultimate Addons for Contact Form 7 (UACF7) Settings', 'ultimate-addons-cf7') ?></h1>
 
-				<div class="tf-setting-preview">
-				<!-- dashboard-banner-section -->
-				<div class="tf-setting-banner">
-					<div class="tf-setting-banner-content">
-						<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tourfic-logo-white.png" alt="logo">
-						<span>Build & Manage Your Next <b>Travel or Hotel Booking Website</b>with Tourfic</span>
+				<div class="uacf7-settings-heading">
+					<div class="uacf7-settings-heading-wrap">
+						<label for="uacf7-addon-filter" class="uacf7-addon-filter-search">
+							<span class="uacf7-addon-filter-icon">
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M17.5 17.5L14.5834 14.5833M16.6667 9.58333C16.6667 13.4954 13.4954 16.6667 9.58333 16.6667C5.67132 16.6667 2.5 13.4954 2.5 9.58333C2.5 5.67132 5.67132 2.5 9.58333 2.5C13.4954 2.5 16.6667 5.67132 16.6667 9.58333Z" stroke="#D5D0E2" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg> 
+							</span>
+							<input id="uacf7-addon-filter" type="text" name="uacf7_addon_filter">
+						</label>
 					</div>
-					<div class="tf-setting-banner-image">
-						<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/hotel-booking-management-system@2x.webp" alt="Banner Image">
+					<div class="uacf7-settings-heading-wrap">
+						<div class="uacf7-addon-filter-cta"> 
+							<button class="uacf7-addon-filter-button all">All (23)</button>
+							<button class="uacf7-addon-filter-button active">Active (09)</button>
+							<button class="uacf7-addon-filter-button deactive">Deactive (06)</button>
+						</div>
 					</div>
 				</div>
-				<!-- dashboard-banner-section -->
 
-				<!-- dashboard-performance-section -->
-
-				<div class="tf-setting-performace-section">
-					<h2><?php _e("Overview","tourfic"); ?></h2>
-					<div class="tf-performance-grid">
-						<div class="tf-single-performance-grid">
-							<div class="tf-single-performance-icon">
-							<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tf-hotel.png" alt="total Hotel">
-							</div>
-							<div class="tf-single-performance-content">
-								<p><?php _e("Total Hotels","tourfic"); ?></p>
-								<h3>
-									<?php
-									$tf_total_hotels = array(
-										'post_type'      => 'tf_hotel',
-										'post_status'    => 'publish',
-										'posts_per_page' => - 1
-									);
-									echo count( get_posts ($tf_total_hotels ) );
-									?>
-								</h3>
-							</div>
-						</div>
+				<div class="uacf7-addon-setting-content"> 
+					<?php 
+					
+						foreach($this->option_sections as $section_key => $section): 
+							
+						if($section_key == 'general_addons' || $section_key == 'extra_fields_addons' || $section_key == 'wooCommerce_integration'):
 						
-						<div class="tf-single-performance-grid">
-							<div class="tf-single-performance-icon">
-							<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tf-tours.png" alt="total Tours">
-							</div>
-							<div class="tf-single-performance-content">
-								<p><?php _e("Total Tours","tourfic"); ?></p>
-								<h3>
-									<?php
-									$tf_total_tours = array(
-										'post_type'      => 'tf_tours',
-										'post_status'    => 'publish',
-										'posts_per_page' => - 1
-									);
-									echo count( get_posts ($tf_total_tours ));
-									?>
-								</h3>
-							</div>
+						foreach ($section['fields'] as $field_key => $field ):
+							$id = $this->option_id.'['.$field['id'].']';
+					?>
+						<div class="uacf7-single-addon-setting uacf7-fields-<?php echo esc_attr($field['id']) ?>" data-parent="<?php echo esc_attr($section_key) ?>" data-filter="<?php echo esc_attr( $field['label'] ) ?>">
+						<?php 
+							if(isset($field['is_pro'])){
+								echo '<span class="addon-status pro">'.esc_html('Pro').'</span>';
+							}else{
+								echo '<span class="addon-status">'.esc_html('Free').'</span>';
+							}
+						?>
+							
+							<img src="<?php echo UACF7_URL.'assets/admin/images/addons/Row.svg' ?>" alt="">
+							<h2 class="uacf7-single-addon-title"><?php echo esc_html( $field['label'] ) ?></h2>
+							<p class="uacf7-single-addon-desc"><?php echo isset($field['subtitle']) ?  $field['subtitle'] : '';  ?></p>
+							<div class="uacf7-single-addon-cta">
+								<a href="#" class="uacf7-single-addon-btn">View Demo</a>
+
+								<div class="uacf7-addon-toggle-wrap">
+									<input type="checkbox" id="<?php echo esc_attr($field['id']) ?>" class="uacf7-addon-toggle__input" name="<?php echo esc_attr( $id ) ?>" id="uacf7_enable_redirection" >
+										
+									<label class="uacf7-addon-toggle-inner" for="<?php echo esc_attr($field['id']) ?>">
+										<span class="uacf7-addon-toggle-track"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<rect y="0.5" width="16" height="16" rx="8" fill="#79757F"/>
+										</svg> 
+										</span>
+									</label>
+								</div>
+								
+							</div> 
 						</div>
 
-                        <div class="tf-single-performance-grid">
-                            <div class="tf-single-performance-icon">
-                                <img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tf-apartment.png" alt="total apartment">
-                            </div>
-                            <div class="tf-single-performance-content">
-                                <p><?php _e("Total Apartments","tourfic"); ?></p>
-                                <h3>
-									<?php
-									$tf_total_apartments = array(
-										'post_type'      => 'tf_apartment',
-										'post_status'    => 'publish',
-										'posts_per_page' => - 1
-									);
-									echo count( get_posts ($tf_total_apartments ) );
-									?>
-                                </h3>
-                            </div>
-                        </div>
-
-						<div class="tf-single-performance-grid">
-							<div class="tf-single-performance-icon">
-							<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tf-booking-online.png" alt="total Booking">
-							</div>
-							<div class="tf-single-performance-content">
-								<p><?php _e("Total Bookings","tourfic"); ?></p>
-								<h3>
-									<?php
-									$tf_order_query_orders = wc_get_orders( array(
-											'limit'  => - 1,
-											'type'   => 'shop_order',
-											'status' => array( 'wc-completed' ),
-										)
-									);
-									echo count( $tf_order_query_orders );
-									?>
-								</h3>
-							</div>
-						</div>
-						<div class="tf-single-performance-grid">
-							<div class="tf-single-performance-icon">
-							<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tf-add-user.png" alt="total Customer">
-							</div>
-							<div class="tf-single-performance-content">
-								<p><?php _e("Total Customers","tourfic"); ?></p>
-								<h3>
-									<?php
-									$tf_customer_query = new WP_User_Query(
-										array(
-											'role' => 'customer',
-										)
-									);
-									echo count( $tf_customer_query->get_results() );
-									?>
-								</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="tf-setting-performace-section">
-					<div id="tf-report-loader">
-						<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/loader.gif" alt="Loader">
-					</div>
-					<div class="tf-report-filter">
-						<h2><?php _e("Reports","tourfic"); ?></h2>
-						<div class="tf-dates-filter">
-							<div class="tf-month-filter">
-								<span><?php _e("Year","tourfic"); ?></span>
-								<select name="tf-year-report" id="tf-year-report">
-									<option value="23"><?php _e("2023","tourfic"); ?></option>
-									<option value="22"><?php _e("2022","tourfic"); ?></option>
-									<option value="21"><?php _e("2021","tourfic"); ?></option>
-									<option value="20"><?php _e("2020","tourfic"); ?></option>
-									<option value="19"><?php _e("2019","tourfic"); ?></option>
-									<option value="18"><?php _e("2018","tourfic"); ?></option>
-									<option value="17"><?php _e("2017","tourfic"); ?></option>
-								</select>
-							</div>
-							<div class="tf-month-filter">
-								<span><?php _e("Month","tourfic"); ?></span>
-								<select name="tf-month-report" id="tf-month-report">
-									<option value=""><?php _e("Select Month","tourfic"); ?></option>
-									<option value="1"><?php _e("January","tourfic"); ?></option>
-									<option value="2"><?php _e("February","tourfic"); ?></option>
-									<option value="3"><?php _e("March","tourfic"); ?></option>
-									<option value="4"><?php _e("April","tourfic"); ?></option>
-									<option value="5"><?php _e("May","tourfic"); ?></option>
-									<option value="6"><?php _e("June","tourfic"); ?></option>
-									<option value="7"><?php _e("July","tourfic"); ?></option>
-									<option value="8"><?php _e("August","tourfic"); ?></option>
-									<option value="9"><?php _e("September","tourfic"); ?></option>
-									<option value="10"><?php _e("October","tourfic"); ?></option>
-									<option value="11"><?php _e("November","tourfic"); ?></option>
-									<option value="12"><?php _e("December","tourfic"); ?></option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="tf-order-report">
-						<canvas id="tf_months" width="800" height="450"></canvas>
-					</div>
-				</div>
-
-				<!-- deshboar-performance-section -->
-
+					<?php 
+						endforeach;  
+						endif;
+						endforeach; 
+					?>
 				</div>
 			</div>
-            
+   
 			<?php
 		}
-
+	 
 		/**
 		 * Get Help Page
 		 * @author Jahid
@@ -404,7 +293,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 		<div class="tf-setting-dashboard">
 
 			<!-- deshboard-header-include -->
-			<?php //echo tf_dashboard_header(); ?>
+			<?php echo $this->tf_top_header(); ?>
 
 			<div class="tf-settings-help-center">
 				<div class="tf-help-center-banner">
@@ -575,72 +464,8 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 		</div>
 		<?php
 		}
-		public function tf_license_info_callback(){
-		?>
-		<div class="tf-setting-dashboard">
-
-			<!-- deshboard-header-include -->
-			<?php //echo tf_dashboard_header(); ?>
-			
-			<div class="tf-setting-license">
-				<div class="tf-setting-license-tabs">
-					<ul>
-						<li class="active">
-							<span>
-								<i class="fas fa-key"></i>
-								<?php _e("License Info","tourfic"); ?>
-							</span>
-						</li>
-					</ul>
-				</div>
-				<div class="tf-setting-license-field">
-					<div class="tf-tab-wrapper">
-						<div id="license" class="tf-tab-content">
-							<div class="tf-field tf-field-callback" style="width: 100%;">
-								<div class="tf-fieldset"></div>
-							</div>
-							<?php 
-							$licenseKey = ! empty( tfliopt( 'license-key' ) ) ? tfliopt( 'license-key' ) : '';
-							$liceEmail  = ! empty( tfliopt( 'license-email' ) ) ? tfliopt( 'license-email' ) : '';
-							
-							if ( TourficProBase::CheckWPPlugin( $licenseKey, $liceEmail, $licenseMessage, $responseObj, TF_PRO_PATH . 'tourfic-pro.php' ) ) {
-								tf_license_info();
-							} else {
-							?>
-							<div class="tf-field tf-field-text" style="width: 100%;">
-								<label for="tf_settings[license-key]" class="tf-field-label"> <?php _e("License Key","tourfic"); ?></label>
-
-								<span class="tf-field-sub-title"><?php _e("Enter your license key here, to activate the product, and get full feature updates and premium support.","tourfic"); ?></span>
-
-								<div class="tf-fieldset">
-									<input type="text" name="tf_settings[license-key]" id="tf_settings[license-key]" value="" placeholder="xxxxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxx" />
-								</div>
-							</div>
-
-							<div class="tf-field tf-field-text" style="width: 100%;">
-								<label for="tf_settings[license-email]" class="tf-field-label"> <?php _e("License Email ","tourfic"); ?></label>
-
-								<span class="tf-field-sub-title"><?php _e("We will send update news of this product by this email address, don't worry, we hate spam","tourfic"); ?></span>
-
-								<div class="tf-fieldset">
-									<input type="text" name="tf_settings[license-email]" id="tf_settings[license-email]" value="" />
-								</div>
-							</div>
-
-							<div class="tf-field tf-field-callback" style="width: 100%;">
-								<div class="tf-fieldset">
-									<div class="tf-license-activate">
-										<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Activate" /></p>
-									</div>
-								</div>
-							</div>
-							<?php } ?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<?php
+		public function uacf7_license_info_callback(){
+			do_action('uacf7_license_info_pro_callback'); 
 		}
 
 		/**
@@ -666,7 +491,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 				?>
 				<div class="tf-setting-dashboard">
 				<!-- dashboard-header-include -->
-				<?php //echo tf_dashboard_header(); ?>
+				<?php echo $this->tf_top_header(); ?>
 
                 <div class="tf-option-wrapper tf-setting-wrapper">
                     <form method="post" action="" class="tf-option-form <?php echo esc_attr($ajax_save_class) ?>" enctype="multipart/form-data">
@@ -676,7 +501,12 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 								<?php
 								$section_count = 0;
 								foreach ( $this->pre_tabs as $key => $section ) :
-									$parent_tab_key = ! empty( $section['fields'] ) ? $key : array_key_first( $section['sub_section'] );
+									if(isset($section['sub_section'])){
+										
+										$parent_tab_key = ! empty( $section['fields'] ) ? $key : array_key_first( $section['sub_section'] );
+									}else{
+										continue;
+									}
 									?>
                                     <div class="tf-admin-tab-item<?php echo ! empty( $section['sub_section'] ) ? ' tf-has-submenu' : '' ?>">
 									
@@ -723,7 +553,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 												$default = isset( $field['default'] ) ? $field['default'] : '';
 												$value   = isset( $tf_option_value[ $field['id'] ] ) ? $tf_option_value[ $field['id'] ] : $default;
 
-												$tf_option = new TF_Options();
+												$tf_option = new UACF7_Options();
 												$tf_option->field( $field, $value, $this->option_id );
 												
 											endforeach;

@@ -38,12 +38,19 @@ class UACF7_Redirection {
 		$redirection = apply_filters('uacf7_post_meta_options_redirection_pro', $data = array(
 			'title'  => __( 'Redirection', 'ultimate-addons-cf7' ),
 			'icon'   => 'fa-solid fa-viruses',
-			'fields' => array(
+			'fields' => array( 
 				'redirection_headding' => array(
 					'id'    => 'redirection_headding',
-					'type'  => 'heading',
+					'type'  => 'notice',
+					'notice' => 'info',
 					'label' => __( 'UACF7 Redirection Settings', 'ultimate-addons-cf7' ),
-					'sub_title' => __( 'This feature will help you to redirect contact form 7 after submission. You can Redirect users to a Thank you page or External page after user fills up the form. ', 'ultimate-addons-cf7' ),
+					'title' => __( 'This addon will help you to redirect contact form 7 after submission. You can Redirect users to a Thank you page or External page after user fills up the form. ', 'ultimate-addons-cf7' ),
+					'content' => sprintf( 
+                        __( 'Not sure how to set this? Check our step by step documentation on  %1s, %2s and %3s .', 'ultimate-addons-cf7' ),
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/redirection-for-contact-form-7/" target="_blank">Redirect to a Page or External URL</a>',
+                        '<a href="https://themefic.com/docs/uacf7/pro-addons/conditional-redirect-for-contact-form-7/" target="_blank">Conditional Redirect</a>',
+                        '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-whatsapp-integration-and-tag-support/" target="_blank">Tag Support</a>'
+                    )
 				),
 				'uacf7_redirect_enable' => array(
 					'id'        => 'uacf7_redirect_enable',
@@ -67,13 +74,14 @@ class UACF7_Redirection {
 				),
 				'page_id' => array(
 					'id'        => 'page_id',
-					'type'      => 'select',
+					'type'      => 'select2',
 					'label'     => __( 'Select a page to redirect ', 'ultimate-addons-cf7' ),  
 					'options'     => 'posts', 
 					'query_args'  => array(
 						'post_type'      => 'page',
 						'posts_per_page' => - 1,
 					),
+					'multiple' => true,
 					'dependency' => array(array( 'uacf7_redirect_to_type', '==', 'to_page' ), array( 'uacf7_redirect_type', '==', false )),
 				),
 				'external_url' => array(
@@ -164,12 +172,15 @@ class UACF7_Redirection {
 
 				$post_id = get_the_ID(); 
 				$post_meta = uacf7_get_form_option($post_id, 'redirection');
-				foreach ( $fields as $field ) {
-					// $forms[ $post_id ][ $field['name'] ] = get_post_meta( $post_id, 'uacf7_redirect_' . $field['name'], true );
-					$forms[ $post_id ][ $field['name'] ] = $post_meta[$field['name']];
+				if($post_meta != false){
+					foreach ( $fields as $field ) {
+						// $forms[ $post_id ][ $field['name'] ] = get_post_meta( $post_id, 'uacf7_redirect_' . $field['name'], true );
+						$forms[ $post_id ][ $field['name'] ] = $post_meta[$field['name']];
+					}
+	
+					$forms[ $post_id ]['thankyou_page_url'] = $forms[ $post_id ]['page_id'] ? get_permalink( $forms[ $post_id ]['page_id'] ) : '';
 				}
-
-				$forms[ $post_id ]['thankyou_page_url'] = $forms[ $post_id ]['page_id'] ? get_permalink( $forms[ $post_id ]['page_id'] ) : '';
+				
 			endwhile;
 			wp_reset_postdata();
 		endif;
@@ -522,14 +533,15 @@ class UACF7_Redirection {
                 
                 // $uacf7_redirect = get_post_meta( get_the_ID(), 'uacf7_redirect_enable', true );
 				$post_meta = uacf7_get_form_option(get_the_ID(), 'redirection');
-                $uacf7_redirect = $post_meta['uacf7_redirect_enable']; 
+				if($post_meta != false){
+					$uacf7_redirect = $post_meta['uacf7_redirect_enable']; 
 
-                if( !empty($uacf7_redirect) && $uacf7_redirect == true ) {
-					 
-                    $forms[ $post_id ] = $uacf7_redirect;
-                
-                }
-        
+					if( !empty($uacf7_redirect) && $uacf7_redirect == true ) {
+						
+						$forms[ $post_id ] = $uacf7_redirect;
+					
+					}
+				} 
     		endwhile;
     		wp_reset_postdata();
     	endif;

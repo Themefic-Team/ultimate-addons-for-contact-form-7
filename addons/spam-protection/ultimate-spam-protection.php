@@ -87,6 +87,7 @@
                         'label'       => __( 'Each Submission Difference', 'ultimate-addons-cf7' ),
                         'subtitle'    => __( 'You can avoid some spamming bot by setting a time limit to prevent too much frequient submission. Put in seconds', 'ultimate-addons-cf7' ),
                         'placeholder' => __( 'Default: 0 seconds', 'ultimate-addons-cf7' ),
+                        'is_pro'      => true
                     ),
                     'uacf7_word_filter' => array(
                         'id'          => 'uacf7_word_filter',
@@ -94,6 +95,7 @@
                         'label'       => __( 'Word Filter', 'ultimate-addons-cf7' ),
                         'subtitle'    => __( 'Enlist the words you want to avoid from Spammer, Separeate the words using a Comma', 'ultimate-addons-cf7' ),
                         'placeholder' => __( ', comma separate words', 'ultimate-addons-cf7' ),
+                        'is_pro'      => true
                     ),
                     'uacf7_ip_block'    => array(
                         'id'          => 'uacf7_ip_block',
@@ -101,6 +103,7 @@
                         'label'       => __( 'IP Block', 'ultimate-addons-cf7' ),
                         'subtitle'    => __( 'Enlist the IP you want to Ban / Block, Separeate the IPs using a Comma', 'ultimate-addons-cf7' ),
                         'placeholder' => __( ', comma separate IPs', 'ultimate-addons-cf7' ),
+                        'is_pro'      => true
                     ),
                     'uacf7_blocked_countries'    => array(
                         'id'          => 'uacf7_blocked_countries',
@@ -108,6 +111,7 @@
                         'label'       => __( 'Country Block', 'ultimate-addons-cf7' ),
                         'subtitle'    => __( 'Enlist the the Country or Countries that you want to Ban / Block. Separeate the Countries using a Comma', 'ultimate-addons-cf7' ),
                         'placeholder' => __( ', comma separate Countries', 'ultimate-addons-cf7' ),
+                        'is_pro'      => true
                     ),
   
                 )

@@ -10,7 +10,7 @@ if ( file_exists( UACF7_PATH . 'admin/tf-options/options/tf-menu-icon.php' ) ) {
 
 TF_Settings::option( 'uacf7_settings', array(
 	'title'    => __( 'Ultimate Addons', 'tourfic' ),
-	'icon'     => $menu_icon,
+	'icon'     => 'dashicons-palmtree',
 	'position' => 25,
 	'sections' => 
 		apply_filters('uacf7_settings_options', array(
@@ -29,10 +29,13 @@ TF_Settings::option( 'uacf7_settings', array(
 						'id'        => 'uacf7_enable_redirection',
 						'type'      => 'switch',
 						'label'     => __( ' Redirection ', 'ultimate-addons-cf7' ),
+						'subtitle' => __( 'Redirect users to a Thank you page or external page after form submission. Option to open in a new tab.', 'ultimate-addons-cf7' ),
+						'demo_link' => 'https://demo.brainstormforce.com/ultimate-addons-for-contact-form-7/redirection/', 
+						'documentation_link' => 'https://docs.brainstormforce.com/how-to-redirect-users-to-a-thank-you-page-after-form-submission/',
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_conditional_field' => array(
 						'id'        => 'uacf7_enable_conditional_field',
@@ -41,7 +44,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_field_column' => array(
 						'id'        => 'uacf7_enable_field_column',
@@ -50,7 +53,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_placeholder' => array(
 						'id'        => 'uacf7_enable_placeholder',
@@ -59,7 +62,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_uacf7style' => array(
 						'id'        => 'uacf7_enable_uacf7style',
@@ -68,7 +71,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_multistep' => array(
 						'id'        => 'uacf7_enable_multistep',
@@ -77,7 +80,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_booking_form' => array(
 						'id'        => 'uacf7_enable_booking_form',
@@ -85,8 +88,8 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label'     => __( 'Booking/Appointment Form', 'ultimate-addons-cf7' ),
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
-						'default'   => false,
-						'field_width' => 33,
+						'default'   => false, 
+						'is_pro' => true,
 					),
 					'uacf7_enable_post_submission' => array(
 						'id'        => 'uacf7_enable_post_submission',
@@ -95,7 +98,8 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
+						'is_pro' => true,
 					),
 					'uacf7_enable_mailchimp' => array(
 						'id'        => 'uacf7_enable_mailchimp',
@@ -104,7 +108,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_database_field' => array(
 						'id'        => 'uacf7_enable_database_field',
@@ -113,7 +117,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_pdf_generator_field' => array(
 						'id'        => 'uacf7_enable_pdf_generator_field',
@@ -122,7 +126,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_conversational_form' => array(
 						'id'        => 'uacf7_enable_conversational_form',
@@ -131,7 +135,8 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
+						'is_pro' => true,
 					),
 					'uacf7_enable_submission_id_field' => array(
 						'id'        => 'uacf7_enable_submission_id_field',
@@ -140,7 +145,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_telegram_field' => array(
 						'id'        => 'uacf7_enable_telegram_field',
@@ -149,7 +154,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 				),
 			), 
@@ -165,7 +170,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_pre_populate_field' => array(
 						'id'        => 'uacf7_enable_pre_populate_field',
@@ -174,7 +179,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_star_rating' => array(
 						'id'        => 'uacf7_enable_star_rating',
@@ -183,7 +188,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_range_slider' => array(
 						'id'        => 'uacf7_enable_range_slider',
@@ -192,7 +197,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_repeater_field' => array(
 						'id'        => 'uacf7_enable_repeater_field',
@@ -201,7 +206,8 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
+						'is_pro' => true,
 					),
 					'uacf7_enable_country_dropdown_field' => array(
 						'id'        => 'uacf7_enable_country_dropdown_field',
@@ -210,7 +216,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 33,
+						
 					),
 					'uacf7_enable_ip_geo_fields' => array(
 						'id'        => 'uacf7_enable_ip_geo_fields',
@@ -244,7 +250,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 50,
+						
 					),
 					'uacf7_enable_product_auto_cart' => array(
 						'id'        => 'uacf7_enable_product_auto_cart',
@@ -253,10 +259,18 @@ TF_Settings::option( 'uacf7_settings', array(
 						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
-						'field_width' => 50,
+						
+						'is_pro' => true,
 					), 
 				),
 			), 
+			'api_integration' => array(
+				'title'  => __( 'API Integration', 'ultimate-addons-cf7' ), 
+				'icon'   => 'fa fa-cog',
+				'fields' => array( 
+				),
+			), 
+			
 			
 			/**
 			 * Import/Export

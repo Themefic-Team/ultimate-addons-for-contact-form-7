@@ -19,6 +19,7 @@ class UACF7_MAILCHIMP
     add_action("wpcf7_before_send_mail", array($this, 'send_data'));
     add_action('wpcf7_after_save', array($this, 'uacf7_save_contact_form'));
     add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_mailchimp'), 17, 2 );  
+    add_filter( 'uacf7_settings_options', array($this, 'uacf7_settings_options_mailchimp'), 17, 2 );  
     // add_filter( 'wpcf7_load_js', '__return_false' );
 
     $this->get_api_key();
@@ -26,8 +27,32 @@ class UACF7_MAILCHIMP
     require_once( 'inc/functions.php' );
   }
 
+  function uacf7_settings_options_mailchimp($value){ 
+    $status = $this->connection_status();
+    $mailchimp = array(
+        'title'  => __( 'Mailchimp API', 'ultimate-addons-cf7' ), 
+        'icon'   => 'fa fa-cog',
+        'parent' => 'api_integration',
+        'fields' => array(  
+            'uacf7_mailchimp_api_key' => array(
+                'id'        => 'uacf7_mailchimp_api_key',
+                'type'      => 'text',
+                'label'     => __( 'Mailchimp API', 'ultimate-addons-cf7' ),  
+            ), 
+            'uacf7_mailchimp_api_status' => array(
+              'id'        => 'uacf7_mailchimp_api_status',
+              'type'     => 'callback',
+              'function' => 'uacf7_mailchimp_api_status_callback',
+              'argument' => $status,
+          
+            ), 
+        ),
+    );
+    $value['mailchimp'] = $mailchimp; 
+    return $value;
+} 
 
-  function uacf7_post_meta_options_mailchimp( $value, $post_id){
+  public function uacf7_post_meta_options_mailchimp( $value, $post_id){
     $status = $this->connection_status();
 
     //get audience
@@ -39,11 +64,14 @@ class UACF7_MAILCHIMP
 
           $response = json_decode($response, true);
           $x = 0;
-          foreach ($response['lists'] as $list) {
-            $audience[$list['id']] = $list['name'];
-              // echo '<option value="' . $list['id'] . '" ' . selected($audience, $list['id']) . '>' . $list['name'] . '</option>'; 
-              $x++;
+          if($response != null){
+            foreach ($response['lists'] as $list) {
+              $audience[$list['id']] = $list['name'];
+                // echo '<option value="' . $list['id'] . '" ' . selected($audience, $list['id']) . '>' . $list['name'] . '</option>'; 
+                $x++;
+            }
           }
+          
       } 
 
     $mailchimp = apply_filters('uacf7_post_meta_options_mailchimp_pro', $data = array(
@@ -51,12 +79,16 @@ class UACF7_MAILCHIMP
         'icon'   => 'fa-brands fa-mailchimp',
         'fields' => array(
             'uacf7_mailchimp_label' => array(
-                'id'    => 'uacf7_mailchimp_label',
-                'type'  => 'heading',
-                'label' => __( 'Mailchimp Form Settings', 'ultimate-addons-cf7' ),
-                'sub_title' => __( 'This feature will help you to Intergrate with Mailchimp.', 'ultimate-addons-cf7' ),
-            ),
-
+              'id'    => 'uacf7_mailchimp_label',
+              'type'  => 'notice',
+              'notice' => 'info',
+              'label' => __( 'Mailchimp Form Settings', 'ultimate-addons-cf7' ),
+              'title' => __( 'This addon will help you to Intergrate with Mailchimp.', 'ultimate-addons-cf7' ),
+              'content' => sprintf( 
+                  __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
+                  '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-mailchimp/" target="_blank">documentation</a>'
+              )
+          ),  
             'uacf7_mailchimp_form_enable' => array(
                 'id'        => 'uacf7_mailchimp_form_enable',
                 'type'      => 'switch',
@@ -123,12 +155,12 @@ class UACF7_MAILCHIMP
               'options'   => 'uacf7',
               'field_width' => '33'
           ),
-          'uacf7_mailchimp_custom_field_headding' => array(
-            'id'        => 'uacf7_mailchimp_custom_field_headding',
-            'type'      => 'heading',
-            'label'     => __( ' Custom Fields ', 'ultimate-addons-cf7' ),
+          // 'uacf7_mailchimp_custom_field_headding' => array(
+          //   'id'        => 'uacf7_mailchimp_custom_field_headding',
+          //   'type'      => 'heading',
+          //   'label'     => __( ' Custom Fields ', 'ultimate-addons-cf7' ),
   
-          ),
+          // ),
 
           'uacf7_mailchimp_merge_fields' => array(
             'id' => 'uacf7_mailchimp_merge_fields',
@@ -212,10 +244,10 @@ class UACF7_MAILCHIMP
   /* Get mailchimp api key */
   public function get_api_key() {
     
-    $mailchimp_options = get_option('uacf7_mailchimp_option_name');
+    $uacf7_mailchimp_api_key = uacf7_settings('uacf7_mailchimp_api_key');
 
-    if( is_array($mailchimp_options) && !empty($mailchimp_options) ) {
-      return $this->mailchimp_api = $mailchimp_options['uacf7_mailchimp_api_key'];
+    if( $uacf7_mailchimp_api_key != false ) {
+      return $this->mailchimp_api = $uacf7_mailchimp_api_key;
     }
 
     $this->mailchimp_connection();
