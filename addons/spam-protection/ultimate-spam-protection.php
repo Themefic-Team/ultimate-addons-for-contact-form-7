@@ -206,7 +206,7 @@
         
             $uacf7_spam_protection = uacf7_get_form_option($formid, 'spam_protection');
         
-            if(isset($uacf7_spam_protection['uacf7_spam_protection_enable']) != '1'){
+            if(isset($uacf7_spam_protection['uacf7_spam_protection_enable']) && $uacf7_spam_protection['uacf7_spam_protection_enable'] != '1'){
                 return;
             }
         
