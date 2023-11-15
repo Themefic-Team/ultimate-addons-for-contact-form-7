@@ -40,6 +40,10 @@
 
             //Refresh button action
             refreshButton.click(function (e) {
+                $(this).find('i').addClass('spin-rotate');
+                setTimeout(() => {
+                  $(this).find('i').removeClass('spin-rotate');
+                }, 1000);
                 e.preventDefault();
                 generateCaptcha();
                 form_div.find("#userInput").val('');

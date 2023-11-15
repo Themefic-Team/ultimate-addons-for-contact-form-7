@@ -42,6 +42,11 @@
       
           //Refresh button action
           refreshButton.click(function (e) {
+
+              $(this).find('i').addClass('spin-rotate');
+              setTimeout(() => {
+                $(this).find('i').removeClass('spin-rotate');
+              }, 1000);
               e.preventDefault();
               uacf7_spam_protection.find("#rtn").val('');
               uacf7_generate_ramdom_numbers();
