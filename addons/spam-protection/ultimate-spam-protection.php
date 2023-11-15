@@ -13,38 +13,17 @@
             add_filter( 'wpcf7_validate_uacf7_spam_protection*', array($this,'uacf7_spam_protection_validation_filter'), 10, 2 );
             add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_spam_protection'], 24, 2 ); 
             add_action( 'wp_enqueue_scripts', [$this, 'uacf7_spam_protection_scripts']);
-            add_action('wp_ajax_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
-            add_action('wp_ajax_nopriv_uacf7_spam_action', [$this,'uacf7_spam_action_ajax_callback']);
         }
 
         public function uacf7_spam_protection_scripts(){
 
             wp_register_script('uacf7-spam-protection-arithmetic', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-arithmetic.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_register_script('uacf7-spam-protection-image', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-image.js', ['jquery'], 'WPCF7_VERSION', true);
-
-            wp_enqueue_script('uacf7-spam-protection', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-script.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_style('uacf7-spam-protection-css', UACF7_URL . '/addons/spam-protection/assets/css/spam-protection-style.css', [], 'WPCF7_VERSION', 'all');
-            wp_localize_script( 'uacf7-spam-protection', 'uacf7_spam_pro_obj', [
-                'ajax_url'       => admin_url( 'admin-ajax.php' ),
-                'nonce'          => wp_create_nonce('nonce_for_spam_protection'),
-            ] );
-
+         
         }
 
      
-        public function uacf7_spam_action_ajax_callback(){
-              
-            $form_id                  = $_POST['form_id'];
-            $data                     = uacf7_get_form_option($form_id, 'spam_protection');
-            $uacf7_minimum_time_limit = $data['uacf7_minimum_time_limit'];
-
-
-            echo wp_send_json( [
-                    'uacf7_minimum_time_limit' => $uacf7_minimum_time_limit,
-                ] );
-
-        }
-
         public function uacf7_post_meta_options_spam_protection($value, $post_id){
             $spam_protection = apply_filters('uacf7_post_meta_options_spam_protection_pro', $data = array(
                 'title'  => __( 'Spam Protection', 'ultimate-addons-cf7' ),
