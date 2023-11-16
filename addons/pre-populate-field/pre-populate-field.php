@@ -19,6 +19,9 @@ class UACF7_PRE_POPULATE {
         add_action( 'wpcf7_after_save', array( $this, 'uacf7_bf_save_contact_form' ) ); 
         add_action( 'wp_ajax_uacf7_ajax_pre_populate_redirect', array( $this, 'uacf7_ajax_pre_populate_redirect' ) ); 
         add_action( 'wp_ajax_nopriv_uacf7_ajax_pre_populate_redirect', array( $this, 'uacf7_ajax_pre_populate_redirect' ) ); 
+        add_action("wpcf7_before_send_mail", array( $this, "uacf7_prevent_mail_while_pre_populate_is_enabled"), 10, 1);
+        //   add_filter( 'wpcf7_load_js', '__return_false' ); 
+
         
     } 
 
@@ -175,6 +178,27 @@ class UACF7_PRE_POPULATE {
         <?php 
          wp_nonce_field( 'uacf7_pre_populate_nonce_action', 'uacf7_pre_populate_nonce' );
     }
+
+
+    /**
+     * Prevent sending mail for Pre Populate ( Sending ) form
+     */
+
+     public function uacf7_prevent_mail_while_pre_populate_is_enabled($contact_form){
+        $wpcf7                     = WPCF7_ContactForm::get_current();
+        $form_id                   = $wpcf7->id();
+
+        $is_pp_enable = get_post_meta( $form_id, 'pre_populate_enable', true );
+
+        add_filter('wpcf7_skip_mail', '__return_false');
+
+        if($is_pp_enable === '1'){
+            add_filter('wpcf7_skip_mail', '__return_true');
+        }
+
+        // var_dump($is_pp_enable);
+        // die();
+     }
     
     
     /*

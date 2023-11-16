@@ -31,11 +31,15 @@
                               } 
                               redirect_data += '&'+shifting_field[i]+'='+value+''; 
                           }   
-                        document.addEventListener('wpcf7mailsent', function (event) {
-                          if (event.detail.status == 'mail_sent') {
+                        document.addEventListener('wpcf7submit', function (event) {
+           
                             location = data.data_redirect_url+redirect_data; // Redirect final location
-                          }
+                          
                         }, false); 
+
+        
+    
+
                       }
                       
                   } 
