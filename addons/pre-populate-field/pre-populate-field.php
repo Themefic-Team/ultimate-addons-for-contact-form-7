@@ -196,8 +196,7 @@ class UACF7_PRE_POPULATE {
             add_filter('wpcf7_skip_mail', '__return_true');
         }
 
-        // var_dump($is_pp_enable);
-        // die();
+       
      }
     
     
