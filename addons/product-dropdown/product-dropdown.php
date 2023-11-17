@@ -279,6 +279,24 @@ class UACF7_PRODUCT_DROPDOWN {
                         */
                         echo apply_filters('uacf7_tag_generator_multiple_select_field', $multiple_attr);
                         ?>
+                    
+                    <?php ob_start(); ?>
+                        <tr>
+                            <th scope="row"></th>
+                            <td><label for="tag-generator-panel-select2"><input id="tag-generator-panel-select2" type="checkbox" disabled> <?php echo esc_attr( __( 'Allow Select2 Dropdown ', 'ultimate-addons-cf7' ) ); ?><a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a></label></td>
+                        </tr>
+                        <?php $multiple_attr = ob_get_clean(); ?>
+                        
+                        <?php 
+                        /*
+                        * Tag generator field after field type
+                        */
+                        echo apply_filters('uacf7_tag_generator_select2_dropdown', $multiple_attr);
+                        ?>
+
+
+
+
                         
                         <?php ob_start(); ?>
                         <tr>
