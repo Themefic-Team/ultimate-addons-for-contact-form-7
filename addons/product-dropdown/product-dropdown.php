@@ -14,10 +14,10 @@ class UACF7_PRODUCT_DROPDOWN {
         add_action( 'admin_init', array( $this, 'tag_generator' ) );
         add_filter( 'wpcf7_validate_uacf7_product_dropdown', array($this, 'wpcf7_product_dropdown_validation_filter'), 10, 2 );
         add_filter( 'wpcf7_validate_uacf7_product_dropdown*', array($this,'wpcf7_product_dropdown_validation_filter'), 10, 2 );
-        add_action( 'admin_enqueue_scripts', array($this, 'admin_enqueue_script' ) );  
+        add_action( 'admin_enqueue_scripts', array($this, 'uacff_product_dropdown_free_script' ) );  
     }
     
-    public function admin_enqueue_script() { 
+    public function uacff_product_dropdown_free_script() { 
 
         wp_enqueue_script( 'uacf7-product-dropdown', UACF7_ADDONS . '/product-dropdown/assets/admin-script.js', array('jquery'), time(), true );
     }

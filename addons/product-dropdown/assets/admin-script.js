@@ -1,7 +1,5 @@
-$(document).ready(function($){
+(function($){
     var forms  = $(".wpcf7");
-
-
 
     forms.each(function(){
 
@@ -56,4 +54,4 @@ $(document).ready(function($){
 
     });
     
-})($);
+})(jQuery);
