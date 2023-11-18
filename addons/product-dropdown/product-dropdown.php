@@ -19,7 +19,7 @@ class UACF7_PRODUCT_DROPDOWN {
     
     public function admin_enqueue_script() { 
 
-        wp_enqueue_script( 'uacf7-product-dropdown', UACF7_ADDONS . '/product-dropdown/assets/admin-script.js', array('jquery'), null, true );
+        wp_enqueue_script( 'uacf7-product-dropdown', UACF7_ADDONS . '/product-dropdown/assets/admin-script.js', array('jquery'), time(), true );
     }
   
     
@@ -111,8 +111,8 @@ class UACF7_PRODUCT_DROPDOWN {
 
         $query_array = [
             'post_type'      => 'product',
-             'posts_per_page' => -1,
-             'post_status'    => 'publish',
+            'posts_per_page' => -1,
+            'post_status'    => 'publish',
         ];
 
 
@@ -129,8 +129,8 @@ class UACF7_PRODUCT_DROPDOWN {
         /** If ASC Selected */
         if($tag->has_option( 'order_by:asc' ) ){
             $asc_args = [
-                'orderby'       => 'title',
-                 'order'          => 'ASC'
+                'orderby' => 'title',
+                'order'   => 'ASC'
             ];
 
             $new_args = array_merge($new_args, $asc_args);
@@ -140,8 +140,8 @@ class UACF7_PRODUCT_DROPDOWN {
 
         if($tag->has_option( 'order_by:dsc' ) ){
             $asc_args = [
-                'orderby'       => 'title',
-                 'order'          => 'DSC'
+                'orderby' => 'title',
+                'order'   => 'DSC'
             ];
 
             $new_args = array_merge($new_args, $asc_args);
@@ -201,7 +201,7 @@ class UACF7_PRODUCT_DROPDOWN {
         }else{
             $html = $dropdown;
         }
-        
+ 
         return $html;
     }
 
@@ -224,6 +224,7 @@ class UACF7_PRODUCT_DROPDOWN {
         if ( $tag->is_required() and $empty ) {
             $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
         }
+
 
         return $result;
     }
