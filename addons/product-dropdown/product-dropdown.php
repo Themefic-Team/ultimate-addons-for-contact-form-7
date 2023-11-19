@@ -49,6 +49,7 @@ class UACF7_PRODUCT_DROPDOWN {
         $atts = array();
 
         $atts['class'] = $tag->get_class_option( $class );
+        $atts['class'] = 'test';
         $atts['id'] = $tag->get_id_option();
         $atts['tabindex'] = $tag->get_option( 'tabindex', 'signed_int', true );
 
@@ -195,6 +196,7 @@ class UACF7_PRODUCT_DROPDOWN {
             
             if($tag->has_option( 'select2:multiple_s2' )){
                 $atts['uacf7-select2-type'] = 'multiple_s2';
+                $atts['multiple']           = 'multiple';
 
             }
 
@@ -212,13 +214,6 @@ class UACF7_PRODUCT_DROPDOWN {
             $html = $dropdown;
         }
 
-
-        // echo "<pre>";
-        // print_r($tag);
-        // echo "</pre>";
-
-        // die();
- 
         return $html;
     }
 
