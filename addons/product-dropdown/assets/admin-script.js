@@ -46,11 +46,6 @@
 
 
 
-    // var product_dropdown_select2 = $('.wpcf7-uacf7_product_dropdown');
-    // console.log(product_dropdown_select2);
-    // product_dropdown_select2.on('click', function () {
-    //     alert();
-    // });
 
     });
     

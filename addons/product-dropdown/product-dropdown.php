@@ -189,6 +189,16 @@ class UACF7_PRODUCT_DROPDOWN {
             $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
             $atts['name'] = $tag->name . ( $multiple ? '[]' : '' );
 
+            if($tag->has_option( 'select2:single_s2' )){
+                $atts['uacf7-tag-val'] = 'single_s2';
+            }
+            
+            if($tag->has_option( 'select2:multiple_s2' )){
+                $atts['uacf7-tag-val'] = 'multiple_s2';
+
+            }
+
+
             $atts = wpcf7_format_atts( $atts );
 
             $dropdown = sprintf(
@@ -201,6 +211,13 @@ class UACF7_PRODUCT_DROPDOWN {
         }else{
             $html = $dropdown;
         }
+
+
+        // echo "<pre>";
+        // print_r($tag);
+        // echo "</pre>";
+
+        // die();
  
         return $html;
     }
