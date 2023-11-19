@@ -281,24 +281,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         echo apply_filters('uacf7_tag_generator_multiple_select_field', $multiple_attr);
                         ?>
                     
-                    <?php ob_start(); ?>
-                        <tr>
-                            <th scope="row"></th>
-                            <td><label for="tag-generator-panel-select2"><input id="tag-generator-panel-select2" type="checkbox" disabled> <?php echo esc_attr( __( 'Allow Select2 Dropdown ', 'ultimate-addons-cf7' ) ); ?><a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a></label></td>
-                        </tr>
-                        <?php $select2_dropdown = ob_get_clean(); ?>
-                        
-                        <?php 
-                        /*
-                        * Tag generator field after field type
-                        */
-                        echo apply_filters('uacf7_tag_generator_select2_dropdown', $select2_dropdown);
-                        ?>
-
-
-
-
-                        
+                       
                         <?php ob_start(); ?>
                         <tr>
                             <th scope="row"></th>
@@ -462,6 +445,26 @@ class UACF7_PRODUCT_DROPDOWN {
                         $select_layout_style = ob_get_clean();
 
                         echo apply_filters('uacf7_tag_generator_product_layout_style_by_field', $select_layout_style);
+                        ?>
+
+                        <?php ob_start(); ?>
+                        <tr>
+                            <th><label for="tag-generator-panel-select2"> <?php echo esc_attr( __( 'Select2', 'ultimate-addons-cf7' ) ); ?></label></th>
+                            <td>
+                                <label for="single_s2"><input id="single_s2" name="select2" class="option" type="radio" value="single_s2"> Single </label>
+
+                                <label for="multiple_s2"><input id="multiple_s2" name="select2" class="option" type="radio" value="multiple_s2"> Multiple </label>
+                                    <br>
+                                <?php echo esc_attr( __( '( Works with Dropdown )', 'ultimate-addons-cf7' ) ); ?> <a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a>
+                            </td>
+                        </tr>
+                        <?php $select2_dropdown = ob_get_clean(); ?>
+                        
+                        <?php 
+                        /*
+                        * Tag generator field after field type
+                        */
+                        echo apply_filters('uacf7_tag_generator_select2_dropdown', $select2_dropdown);
                         ?>
 
                         <tr>
