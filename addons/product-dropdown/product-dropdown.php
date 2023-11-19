@@ -49,7 +49,6 @@ class UACF7_PRODUCT_DROPDOWN {
         $atts = array();
 
         $atts['class'] = $tag->get_class_option( $class );
-        $atts['class'] = 'test';
         $atts['id'] = $tag->get_id_option();
         $atts['tabindex'] = $tag->get_option( 'tabindex', 'signed_int', true );
 
