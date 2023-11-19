@@ -190,11 +190,11 @@ class UACF7_PRODUCT_DROPDOWN {
             $atts['name'] = $tag->name . ( $multiple ? '[]' : '' );
 
             if($tag->has_option( 'select2:single_s2' )){
-                $atts['uacf7-tag-val'] = 'single_s2';
+                $atts['uacf7-select2-type'] = 'single_s2';
             }
             
             if($tag->has_option( 'select2:multiple_s2' )){
-                $atts['uacf7-tag-val'] = 'multiple_s2';
+                $atts['uacf7-select2-type'] = 'multiple_s2';
 
             }
 
