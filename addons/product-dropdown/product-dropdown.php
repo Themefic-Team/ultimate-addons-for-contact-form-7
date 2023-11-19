@@ -451,9 +451,9 @@ class UACF7_PRODUCT_DROPDOWN {
                         <tr>
                             <th><label for="tag-generator-panel-select2"> <?php echo esc_attr( __( 'Select2', 'ultimate-addons-cf7' ) ); ?></label></th>
                             <td>
-                                <label for="single_s2"><input id="single_s2" name="select2" class="option" type="radio" value="single_s2"> Single </label>
+                                <label for="single_s2"><input id="single_s2" name="select2" class="option" type="radio" disabled value="single_s2"> Single </label>
 
-                                <label for="multiple_s2"><input id="multiple_s2" name="select2" class="option" type="radio" value="multiple_s2"> Multiple </label>
+                                <label for="multiple_s2"><input id="multiple_s2" name="select2" class="option" type="radio" disabled value="multiple_s2"> Multiple </label>
                                     <br>
                                 <?php echo esc_attr( __( '( Works with Dropdown )', 'ultimate-addons-cf7' ) ); ?> <a style="color:red" target="_blank" href="https://cf7addons.com/preview/pro">(Pro)</a>
                             </td>
