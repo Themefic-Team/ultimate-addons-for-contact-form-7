@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 
 class ULTIMATE_MATERIAL_DESIGN {
     public function __construct(){
-        add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_material_design'], 25, 2 ); 
+        add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_material_design'], 26, 2 ); 
     }
 
     public function uacf7_post_meta_options_material_design($value, $post_id){

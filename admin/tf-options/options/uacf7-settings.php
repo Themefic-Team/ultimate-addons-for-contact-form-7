@@ -156,6 +156,16 @@ TF_Settings::option( 'uacf7_settings', array(
 						'default'   => false,
 						
 					),
+
+					'uacf7_enable_material_design_field' => array(
+						'id'        => 'uacf7_enable_material_design_field',
+						'type'      => 'switch',
+						'label'     => __( 'Material Design', 'ultimate-addons-cf7' ),
+						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
+						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+						'default'   => false,
+						
+					),
 				),
 			), 
 			'extra_fields_addons' => array(
