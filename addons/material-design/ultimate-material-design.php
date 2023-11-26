@@ -14,8 +14,8 @@ class ULTIMATE_MATERIAL_DESIGN {
 
     public function uacf7_post_meta_options_material_design($value, $post_id){
         $material_design = apply_filters('uacf7_post_meta_options_spam_protection_pro', $data = array(
-            'title'  => __( 'Spam Protection', 'ultimate-addons-cf7' ),
-            'icon'   => 'fa-solid fa-spaghetti-monster-flying',
+            'title'  => __( 'Material Design', 'ultimate-addons-cf7' ),
+            'icon'   => 'fa-solid fa-swatchbook',
             'fields' => array(
                 'uacf7_material_design_heading' => array(
                     'id'      => 'uacf7_material_design_heading',
