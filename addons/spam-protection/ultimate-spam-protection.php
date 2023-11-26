@@ -33,7 +33,7 @@
                         'id'      => 'uacf7_spam_protection_heading',
                         'type'    => 'notice',
                         'notice'  => 'info',
-                        'label'   => __( 'Spam Protection Settins', 'ultimate-addons-cf7' ),
+                        'label'   => __( 'Spam Protection Settings', 'ultimate-addons-cf7' ),
                         'title'   => __( 'This feature will help you to protect your form submission from Spam attack.', 'ultimate-addons-cf7' ),
                         'content' => sprintf( 
                             __( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
