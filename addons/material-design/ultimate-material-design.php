@@ -12,7 +12,13 @@ class ULTIMATE_MATERIAL_DESIGN {
         add_action( 'wpcf7_init', [ $this, 'uacf7_material_design_add_shortcodes' ]);
         add_action( 'admin_init', [ $this, 'uacf7_material_design_tag_generator' ]);
         add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_material_design'], 26, 2 ); 
-        add_filter( 'wpcf7_load_js', '__return_false' ); 
+        add_action( 'wp_enqueue_scripts', [$this, 'uacf7_material_design_scripts']);
+        // add_filter( 'wpcf7_load_js', '__return_false' ); 
+    }
+
+    public function uacf7_material_design_scripts(){
+        wp_register_style( 'md-option-one', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-option-one.css', [], time(), 'all' );
+        wp_register_style( 'md-option-two', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-option-two.css', [], time(), 'all' );
     }
 
     public function uacf7_material_design_tag_generator(){
@@ -90,6 +96,13 @@ class ULTIMATE_MATERIAL_DESIGN {
         $formid = $wpcf7->id();
     
         $uacf7_material_design = uacf7_get_form_option($formid, 'material_design');
+
+        $uacf7_material_design_type = isset($uacf7_material_design['uacf7_material_design_type']) ? $uacf7_material_design['uacf7_material_design_type'] : '';
+
+        // var_dump($uacf7_material_design_type);
+
+        // die();
+
     
         if(isset($uacf7_material_design['uacf7_material_design_enable']) && $uacf7_material_design['uacf7_material_design_enable'] != '1'){
             return;
@@ -127,17 +140,23 @@ class ULTIMATE_MATERIAL_DESIGN {
 
 
         ob_start();
-    
-        ?> 
-            <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name);  ?>" >
-                <div class="uacf7_material_design" <?php echo ($atts);  ?>>
-                 
-                       
-               </div>
-            </span>
 
-        <?php 
-    
+        if($uacf7_material_design_type === 'option_one'){ 
+          
+            wp_enqueue_style( 'md-option-one' );
+            
+        ?> 
+
+            <div class="uacf7_material_design_type_one" <?php echo ($atts);  ?>></div>
+
+        <?php }elseif($uacf7_material_design_type === 'option_two'){
+            wp_enqueue_style( 'md-option-two' ); 
+        ?> 
+            <div class="uacf7_material_design_type_two" <?php echo ($atts);  ?>></div>
+        <?php }else{ ?>
+               <div <?php echo ($atts);  ?>></div>
+        <?php }
+
         $material_design_buffer = ob_get_clean();
 
         return $material_design_buffer;
@@ -171,6 +190,15 @@ class ULTIMATE_MATERIAL_DESIGN {
                     'default'   => false
                 ),
               
+                'uacf7_material_design_type' => array(
+                    'id'        => 'uacf7_material_design_type',
+                    'type'      => 'select',
+                    'label'     => __( 'Material Design Type', 'ultimate-addons-cf7' ),
+                    'options'   => array(
+                        'option_one' => 'Transparent',
+                        'option_two' => 'Background'
+                    )
+                ),
 
             )
                 
