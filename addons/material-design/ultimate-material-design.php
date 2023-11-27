@@ -29,7 +29,7 @@ class ULTIMATE_MATERIAL_DESIGN {
 
     public function tg_pane_material_design($contact_form, $args = ''){
         $args             = wp_parse_args($args, array());
-        $uacf7_field_type = 'uacf7_spam_protection';
+        $uacf7_field_type = 'uacf7_material_design';
         ?>
         <div class="control-box">
         <fieldset>
@@ -91,7 +91,7 @@ class ULTIMATE_MATERIAL_DESIGN {
     
         $uacf7_material_design = uacf7_get_form_option($formid, 'material_design');
     
-        if(isset($uacf7_spam_protection['uacf7_spam_protection_enable']) && $uacf7_spam_protection['uacf7_spam_protection_enable'] != '1'){
+        if(isset($uacf7_material_design['uacf7_material_design_enable']) && $uacf7_material_design['uacf7_material_design_enable'] != '1'){
             return;
         }
     
@@ -130,7 +130,7 @@ class ULTIMATE_MATERIAL_DESIGN {
     
         ?> 
             <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name);  ?>" >
-                <div class="uacf7_spam_recognation" <?php echo ($atts);  ?>>
+                <div class="uacf7_material_design" <?php echo ($atts);  ?>>
                  
                        
                </div>
@@ -146,7 +146,7 @@ class ULTIMATE_MATERIAL_DESIGN {
     }
 
     public function uacf7_post_meta_options_material_design($value, $post_id){
-        $material_design = apply_filters('uacf7_post_meta_options_spam_protection_pro', $data = array(
+        $material_design = apply_filters('uacf7_post_meta_options_material_design_pro', $data = array(
             'title'  => __( 'Material Design', 'ultimate-addons-cf7' ),
             'icon'   => 'fa-solid fa-swatchbook',
             'fields' => array(
