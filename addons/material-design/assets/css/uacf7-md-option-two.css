@@ -1,3 +1,57 @@
-input{
-    background-color: red;
+.wpcf7-form > p {
+  font-size: 16px;
+  font-family: sans-serif;
+  position: relative;
+padding-bottom: -.5em;
+}
+
+.wpcf7-form > p label {
+  position: absolute;
+  top: 62%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-weight: normal;
+  transition: top 0.2s;
+  color: #000000;
+}
+
+.wpcf7-form input.wpcf7-text {
+  border: none;
+  border-bottom: 2px solid #7b7b7b;
+  padding: 15px 0px;
+  width: 100%;
+  background-color: transparent;
+  color: blue;
+  font-size: 16px;
+}
+.wpcf7-form label.has-value {
+  top: 20px;
+  font-size: 11px;
+}
+
+.wpcf7-submit {
+	color: #fdf8d6!important;
+    border-width: 0px!important;
+    border-radius: 0px;
+    letter-spacing: 2px;
+    font-size: 14px;
+    font-family: 'Prompt',Helvetica,Arial,Lucida,sans-serif!important;
+    text-transform: uppercase!important;
+    background-color: #f69080;
+	padding: 15px 20px;
+	transition: all 300ms ease 0ms;
+}
+
+.wpcf7-submit:hover {
+	cursor: pointer;
+	color: #FDF8D6!important;
+    background-image: initial;
+    background-color: #88DDCC;
+	box-shadow: 2px 6px 18px 0px #c47766;
+}
+
+.wpcf7-not-valid-tip {
+    position: absolute;
+    top: 35px;
+
 }
