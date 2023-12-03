@@ -19,7 +19,7 @@ class ULTIMATE_MATERIAL_DESIGN {
 
     public function uacf7_material_design_scripts(){
 
-        wp_enqueue_script('uacf7-material-design-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-script.js', ['jquery'], 'WPCF7_VERSION', true);
+        wp_register_script('uacf7-md-one-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-one-script.js', ['jquery'], 'WPCF7_VERSION', true);
 
 
         wp_register_style( 'md-option-one', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-option-one.css', [], time(), 'all' );
@@ -151,6 +151,7 @@ class ULTIMATE_MATERIAL_DESIGN {
         if($uacf7_material_design_type === 'option_one'){ 
           
             wp_enqueue_style( 'md-option-one' );
+            wp_enqueue_script( 'uacf7-md-one-script' ); 
             
         ?> 
 
@@ -158,6 +159,7 @@ class ULTIMATE_MATERIAL_DESIGN {
 
         <?php }elseif($uacf7_material_design_type === 'option_two'){
             wp_enqueue_style( 'md-option-two' ); 
+       
         ?> 
             <div class="uacf7_material_design_type_two" <?php echo ($atts);  ?>>
         

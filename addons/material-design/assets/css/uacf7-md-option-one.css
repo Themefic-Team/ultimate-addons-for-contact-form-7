@@ -1,3 +1,102 @@
-input{
-    background-color: black;
-}
+[class^='uacf7-form-']  > p {
+    font-size: 16px;
+    position: relative;
+    padding-bottom: 10px;
+    border-radius: 4px, 4px, 0px, 0px;
+  
+  }
+  
+  [class^='uacf7-form-']  > p label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-weight: 400;
+    transition: top 0.2s;
+    color: #000000;
+    left: 10px;
+    border-radius: 4px;
+  }
+  
+  [class^='uacf7-form-']  input.wpcf7-text , input[type="date" i] {
+    border: 1px solid #7b7b7b;
+    padding: 15px 0px;
+    width: 100%;
+    background-color: transparent;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px;
+  }
+  [class^='uacf7-form-']  label.has-value {
+    top: 0px;
+    left: 10px;
+    z-index: 99;
+    font-size: 16px;
+    background-color: #ffff;
+    height: 28px;
+  
+  }
+  
+  .wpcf7-submit {
+      color: #fdf8d6!important;
+    border-width: 0px!important;
+    border-radius: 0px;
+    letter-spacing: 2px;
+    font-size: 14px;
+    text-transform: uppercase!important;
+    background-color: #f69080;
+      padding: 15px 20px;
+      transition: all 300ms ease 0ms;
+  }
+  
+  .wpcf7-submit:hover {
+      cursor: pointer;
+      color: #FDF8D6!important;
+    background-image: initial;
+    background-color: #88DDCC;
+      box-shadow: 2px 6px 18px 0px #c47766;
+  }
+  
+  .wpcf7-not-valid-tip {
+      position: absolute;
+      top: 35px;
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* Date Field Styles */
+  
+  /* [class^='uacf7-form-'] input[type=date]::-webkit-datetime-edit-text {
+    -webkit-appearance: none;
+    display: none;
+  }
+  [class^='uacf7-form-'] input[type=date]::-webkit-datetime-edit-month-field{
+    -webkit-appearance: none;
+    display: none;
+  }
+  [class^='uacf7-form-'] input[type=date]::-webkit-datetime-edit-day-field {
+    -webkit-appearance: none;
+    display: none;
+  }
+  [class^='uacf7-form-'] input[type=date]::-webkit-datetime-edit-year-field {
+    -webkit-appearance: none;
+    display: none;
+  } */
+  
+  
+  /* [class^='uacf7-form-'] input[type="date"]::-webkit-inner-spin-button,
+  [class^='uacf7-form-'] input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: #000; 
+    color: #fff; 
+  
+  } */
