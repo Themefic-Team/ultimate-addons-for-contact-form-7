@@ -2,7 +2,7 @@
 (function($){
 
 $(document).ready(function($){
-	$(".TFText, .TFEmail, .TFTel, .TFFirst_Name, .TFLast_Name").focus(function() {
+	$(".TFText, .TFEmail, .TFTel, .TFFirst_Name, .TFLast_Name").on('focus input', function() {
 			$(this).parent().siblings('label').addClass('has-value');
 	})
 	.blur(function() {

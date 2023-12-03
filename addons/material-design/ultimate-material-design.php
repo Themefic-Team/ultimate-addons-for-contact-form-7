@@ -13,6 +13,7 @@ class ULTIMATE_MATERIAL_DESIGN {
         add_action( 'admin_init', [ $this, 'uacf7_material_design_tag_generator' ]);
         add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_material_design'], 26, 2 ); 
         add_action( 'wp_enqueue_scripts', [$this, 'uacf7_material_design_scripts']);
+        // add_filter( 'wpcf7_contact_form_properties', array( $this, 'uacf7_material_design_form_properties' ), 10, 2 );
 
         // add_filter( 'wpcf7_load_js', '__return_false' ); 
     }
@@ -20,11 +21,25 @@ class ULTIMATE_MATERIAL_DESIGN {
     public function uacf7_material_design_scripts(){
 
         wp_register_script('uacf7-md-one-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-one-script.js', ['jquery'], 'WPCF7_VERSION', true);
+        wp_register_script('uacf7-md-two-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-two-script.js', ['jquery'], 'WPCF7_VERSION', true);
 
 
         wp_register_style( 'md-option-one', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-option-one.css', [], time(), 'all' );
         wp_register_style( 'md-option-two', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-option-two.css', [], time(), 'all' );
     }
+
+
+    // public function uacf7_material_design_form_properties($properties, $cfform){
+    //     if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { 
+
+    //         $form = $properties['form'];
+
+    //         echo '<div class="uacf7-material-design">'.$form.'</div>';
+    //             $properties['form'] = ob_get_clean();
+    //     }
+
+    //     return $properties;
+    // }
 
 
 
@@ -158,7 +173,8 @@ class ULTIMATE_MATERIAL_DESIGN {
             <div class="uacf7_material_design_type_one" <?php echo ($atts);  ?>></div>
 
         <?php }elseif($uacf7_material_design_type === 'option_two'){
-            wp_enqueue_style( 'md-option-two' ); 
+            wp_enqueue_style( 'md-option-two'); 
+            wp_enqueue_script( 'uacf7-md-two-script' ); 
        
         ?> 
             <div class="uacf7_material_design_type_two" <?php echo ($atts);  ?>>
