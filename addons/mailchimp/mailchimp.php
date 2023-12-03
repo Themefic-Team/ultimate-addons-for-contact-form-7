@@ -471,9 +471,10 @@ class UACF7_MAILCHIMP
     $wpcf = WPCF7_Submission::get_instance();
 
     $posted_data = $wpcf->get_posted_data();
-
+ 
     $id = $cf7->id();
     
+   
     // get mailchimp Post Data
     $mailchimp = uacf7_get_form_option( $id, 'mailchimp' ); 
 
@@ -482,10 +483,12 @@ class UACF7_MAILCHIMP
     $audience = isset($mailchimp['uacf7_mailchimp_audience']) ? $mailchimp['uacf7_mailchimp_audience'] : '';
 
     if( $form_enable == true && $form_type == 'subscribe' && $audience != '' ){
-      // uacf7_print_r($data);
       
-      //$wpcf->skip_mail = true;
-      $response = $this->add_members( $id, $audience, $posted_data );   
+      if(apply_filters( 'uacf7_mailchimp_subscribe_checkbox_status', true, $cf7, $wpcf,  $posted_data) == true){  
+
+        $response = $this->add_members( $id, $audience, $posted_data );   
+
+      }
     } 
   }
 

@@ -182,7 +182,7 @@ TF_Settings::option( 'uacf7_settings', array(
 						
 					),
 					'uacf7_enable_mailchimp_pro' => array(
-						'id'        => 'uacf7_enable_mailchimp',
+						'id'        => 'uacf7_enable_mailchimp_pro',
 						'type'      => 'switch',
 						'label'     => __( 'Ultimate Mailchimp Pro', 'ultimate-addons-cf7' ),
 						'image_url' => UACF7_URL . 'assets/admin/images/addons/Connect-with-Mailchimp@2x.png',
