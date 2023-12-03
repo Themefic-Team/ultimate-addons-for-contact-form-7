@@ -1,51 +1,57 @@
 [class^='uacf7-form-']  > p {
-    font-size: 16px;
-    position: relative;
-    padding-bottom: 10px;
-    border-radius: 4px, 4px, 0px, 0px;
+    font-size     : 16px;
+    position      : relative;
+    padding-bottom: 20px;
+    border-radius : 4px, 4px, 0px, 0px;
   
+  }
+
+  [class^='uacf7-form-'] input[type="date"], .wpcf7-select{
+    padding         : 15px 10px;
+    border          : 1px solid #7b7b7b;
+    width           : 100%;
+    background-color: transparent;
+    font-size       : 16px;
+    line-height     : 24px;
+    border-radius   : 4px;
+    box-sizing      : border-box;
+  }
+
+
+  [class^='uacf7-form-'] input[type="text"],input[type="email"], input[type="tel"],input[type="number"],input[type="file"], input[type="textarea"], input[type="select"], input[type="date"], input[type="checkbox"]{
+    cursor: pointer;
   }
   
   [class^='uacf7-form-']  > p label {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    position      : absolute;
+    top           : 40%;
+    transform     : translateY(-50%);
     pointer-events: none;
-    font-weight: 400;
-    transition: top 0.2s;
-    color: #000000;
-    left: 10px;
-    border-radius: 4px;
+    font-weight   : 400;
+    transition    : top 0.2s;
+    color         : #000000;
+    left          : 10px;
+    border-radius : 4px;
   }
   
-  [class^='uacf7-form-']  input.wpcf7-text , input[type="date" i], .wpcf7-select {
-    border: 1px solid #7b7b7b;
-    padding: 15px 0px;
-    width: 100%;
+  [class^='uacf7-form-']  input.wpcf7-text {
+    border          : 1px solid #7b7b7b;
+    padding         : 15px 0px;
+    width           : 100%;
     background-color: transparent;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 4px;
+    font-size       : 16px;
+    line-height     : 24px;
+    border-radius   : 4px;
   }
   [class^='uacf7-form-']  label.has-value {
-    top: 0px;
-    left: 10px;
-    z-index: 99;
-    font-size: 16px;
-    background-color: #ffff;
-    height: 28px;
-  
+    top             : 0px;
+    left            : 10px;
+    z-index         : 99;
+    font-size       : 16px;
+    background-color: #ffffff;
+    height          : 28px;
   }
 
-  /* [class^='uacf7-form-'] .wpcf7-submit{
-    width: 100px;
-    height: 20px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-
-  } */
   
   [class^='uacf7-form-'] .wpcf7-submit {
     width: 148px;
@@ -67,6 +73,7 @@
     cursor: pointer;
   }
   
+
  
   
   [class^='uacf7-form-'] .wpcf7-not-valid-tip {
@@ -123,22 +130,11 @@
   
   /* Date Field Styles */
   
-  /* [class^='uacf7-form-'] input[type=date]::-webkit-datetime-edit-text {
-    -webkit-appearance: none;
-    display: none;
-  }
   [class^='uacf7-form-'] input[type=date]::-webkit-datetime-edit-month-field{
-    -webkit-appearance: none;
-    display: none;
+    left: 20px;
+    
   }
-  [class^='uacf7-form-'] input[type=date]::-webkit-datetime-edit-day-field {
-    -webkit-appearance: none;
-    display: none;
-  }
-  [class^='uacf7-form-'] input[type=date]::-webkit-datetime-edit-year-field {
-    -webkit-appearance: none;
-    display: none;
-  } */
+
   
   
   /* [class^='uacf7-form-'] input[type="date"]::-webkit-inner-spin-button,
