@@ -36,17 +36,33 @@
     height: 28px;
   
   }
+
+  /* [class^='uacf7-form-']  input[type="submit"]{
+    width: 100px;
+    height: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+
+  } */
   
   .wpcf7-submit {
-      color: #fdf8d6!important;
+    width: 148px;
+    height: 40px;
+    border-radius: 50px;
     border-width: 0px!important;
-    border-radius: 0px;
     letter-spacing: 2px;
     font-size: 14px;
     text-transform: uppercase!important;
-    background-color: #f69080;
+    background-color: #6747c1;
       padding: 15px 20px;
       transition: all 300ms ease 0ms;
+
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: center;
   }
   
   .wpcf7-submit:hover {
@@ -64,7 +80,42 @@
   }
   
   
-  
+  /*Checkbox Styles*/
+  [class^='uacf7-form-'] .TFCheckbox{
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .15px;
+    line-height: 24px;
+  }
+
+
+  [class^='uacf7-form-'] .wpcf7-list-item {
+    display: flex;
+    align-items: center;
+    width: 360px;
+    height: 56px;
+    padding: 8px, 24px, 8px, 16px;
+    column-gap: 16px;
+  }
+
+
+  [class^='uacf7-form-'] input[type="checkbox" i]{
+    width: 24px;
+    height: 24px;
+  }
+
+  [class^='uacf7-form-'] input[type="checkbox"]{
+    background-color: #6747c1!important;
+  }
+
+
+  [class^='uacf7-form-'] .wpcf7-list-item-label{
+    width: 280px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+ 
+  }
   
   
   

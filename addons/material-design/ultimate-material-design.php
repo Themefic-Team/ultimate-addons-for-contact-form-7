@@ -206,8 +206,8 @@ class ULTIMATE_MATERIAL_DESIGN {
                     'type'      => 'select',
                     'label'     => __( 'Material Design Type', 'ultimate-addons-cf7' ),
                     'options'   => array(
-                        'option_one' => 'Transparent',
-                        'option_two' => 'Background'
+                        'option_one' => 'Design One',
+                        'option_two' => 'Design Two'
                     )
                 ),
 
