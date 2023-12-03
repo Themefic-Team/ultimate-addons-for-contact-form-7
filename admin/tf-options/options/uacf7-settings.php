@@ -181,6 +181,18 @@ TF_Settings::option( 'uacf7_settings', array(
 						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/mailchimp-for-contact-form-7/', 
 						
 					),
+					'uacf7_enable_mailchimp_pro' => array(
+						'id'        => 'uacf7_enable_mailchimp',
+						'type'      => 'switch',
+						'label'     => __( 'Ultimate Mailchimp Pro', 'ultimate-addons-cf7' ),
+						'image_url' => UACF7_URL . 'assets/admin/images/addons/Connect-with-Mailchimp@2x.png',
+						'default'   => false, 
+						'subtitle' => __( ' Integrate Contact Form 7 with Mailchimp. Automatically add your Contact Form 7 submissions to predetermined lists in Mailchimp, using Mailchimp’s latest API.', 'ultimate-addons-cf7' ),
+						'demo_link' => 'https://cf7addons.com/preview/mailchimp-for-contact-form-7/', 
+						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/mailchimp-for-contact-form-7/',
+						'is_pro' => true, 
+						
+					),
 					'uacf7_enable_database_field' => array(
 						'id'        => 'uacf7_enable_database_field',
 						'type'      => 'switch',

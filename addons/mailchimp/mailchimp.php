@@ -173,9 +173,19 @@ class UACF7_MAILCHIMP
                     'field_width' => '50',
         
                  ),
-             ),
-        )
-                
+             ), 
+          ),
+          'uacf7_mailchimp_subscribe_checkbox' => array(
+            'id'    => 'uacf7_mailchimp_subscribe_checkbox',
+            'type'  => 'notice',
+            'notice' => 'info',
+            'label' => __( 'Mailchimp Subscriber Checkbox', 'ultimate-addons-cf7' ), 
+            'content' => sprintf( 
+                __( 'This feture will help you to a subscribe checkbox into your mailchimp subscriber form. After checked the checkbox user can be added into Mailchimp audience  %1s.', 'ultimate-addons-cf7' ),
+                '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-mailchimp/" target="_blank">View Demo</a>'
+            ), 
+            'is_pro' => true,
+          ), 
           
 
 
