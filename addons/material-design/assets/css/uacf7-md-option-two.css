@@ -1,11 +1,11 @@
-.wpcf7-form > p {
+[class^='uacf7-form-']  > p {
   font-size: 16px;
-  font-family: sans-serif;
   position: relative;
-padding-bottom: -.5em;
+  padding-bottom: 10px;
+
 }
 
-.wpcf7-form > p label {
+[class^='uacf7-form-']  > p label {
   position: absolute;
   top: 62%;
   transform: translateY(-50%);
@@ -13,20 +13,24 @@ padding-bottom: -.5em;
   font-weight: normal;
   transition: top 0.2s;
   color: #000000;
+  left: 10px;
 }
 
-.wpcf7-form input.wpcf7-text {
-  border: none;
-  border-bottom: 2px solid #7b7b7b;
+[class^='uacf7-form-']  input.wpcf7-text {
+  border: 1px solid #7b7b7b;
   padding: 15px 0px;
   width: 100%;
   background-color: transparent;
-  color: blue;
   font-size: 16px;
 }
-.wpcf7-form label.has-value {
-  top: 20px;
-  font-size: 11px;
+[class^='uacf7-form-']  label.has-value {
+  top: 0px;
+  left: 10px;
+  z-index: 99;
+  font-size: 16px;
+  background-color: #ffff;
+  height: 28px;
+
 }
 
 .wpcf7-submit {
@@ -35,7 +39,6 @@ padding-bottom: -.5em;
     border-radius: 0px;
     letter-spacing: 2px;
     font-size: 14px;
-    font-family: 'Prompt',Helvetica,Arial,Lucida,sans-serif!important;
     text-transform: uppercase!important;
     background-color: #f69080;
 	padding: 15px 20px;

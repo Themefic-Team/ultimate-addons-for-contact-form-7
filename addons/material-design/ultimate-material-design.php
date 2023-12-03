@@ -13,7 +13,6 @@ class ULTIMATE_MATERIAL_DESIGN {
         add_action( 'admin_init', [ $this, 'uacf7_material_design_tag_generator' ]);
         add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_material_design'], 26, 2 ); 
         add_action( 'wp_enqueue_scripts', [$this, 'uacf7_material_design_scripts']);
-        add_action( 'wpcf7_form_elements', [$this, 'uacf7_material_design_form_elements']);
 
         // add_filter( 'wpcf7_load_js', '__return_false' ); 
     }
@@ -21,7 +20,6 @@ class ULTIMATE_MATERIAL_DESIGN {
     public function uacf7_material_design_scripts(){
 
         wp_enqueue_script('uacf7-material-design-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-script.js', ['jquery'], 'WPCF7_VERSION', true);
-        wp_enqueue_script('uacf7-material-script', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', ['jquery'], 'WPCF7_VERSION', true);
 
 
         wp_register_style( 'md-option-one', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-option-one.css', [], time(), 'all' );
@@ -29,27 +27,6 @@ class ULTIMATE_MATERIAL_DESIGN {
     }
 
 
-    public function uacf7_material_design_form_elements($content){
-        // Wrap [text] shortcodes in a <span> tag, exclude [exclude_text] shortcodes
-    $content = preg_replace_callback(
-        '/\[text([^\]]*)\]/',
-        function ($matches) {
-            // Check if the shortcode is [exclude_text], if yes, return it unchanged
-            if (isset($matches[1]) && false !== strpos($matches[1], 'exclude_text')) {
-                return $matches[0];
-            }
-
-            // Wrap other [text] shortcodes in a <span> tag
-            return '<span class="wpcf7-form-control-wrap">' . $matches[0] . '</span>';
-        },
-        $content
-    );
-
-    // You can customize this for other input types as needed
-    // For example, [email], [tel], etc.
-
-    return $content;
-    }
 
     public function uacf7_material_design_tag_generator(){
         if (!function_exists('wpcf7_add_tag_generator')) {
