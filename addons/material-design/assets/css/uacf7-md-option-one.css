@@ -18,7 +18,7 @@
     border-radius: 4px;
   }
   
-  [class^='uacf7-form-']  input.wpcf7-text , input[type="date" i] {
+  [class^='uacf7-form-']  input.wpcf7-text , input[type="date" i], .wpcf7-select {
     border: 1px solid #7b7b7b;
     padding: 15px 0px;
     width: 100%;

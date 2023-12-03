@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-	$(".TFText, .TFDate").focus(function() {
+	$(".TFText, .TFDate, .wpcf7-select ").focus(function() {
 			$(this).parent().siblings('label').addClass('has-value');
 	})
 	.blur(function() {
