@@ -1,7 +1,7 @@
 [class^='uacf7-form-']  > p {
     font-size     : 16px;
     position      : relative;
-    padding-bottom: 20px;
+    padding-bottom: 24px;
     border-radius : 4px, 4px, 0px, 0px;
   
   }
@@ -24,7 +24,7 @@
   
   [class^='uacf7-form-']  > p label {
     position      : absolute;
-    top           : 40%;
+    top           : 35%;
     transform     : translateY(-50%);
     pointer-events: none;
     font-weight   : 400;
@@ -52,6 +52,38 @@
     height          : 28px;
   }
 
+  /*Radio Button Styles*/
+
+.wpcf7-form-control.wpcf7-radio input[type="radio"] {
+    /* Hide the default radio button */
+    display: none;
+  }
+  
+  /* Style the container for radio buttons */
+  .wpcf7-form-control.wpcf7-radio label {
+    position: relative;
+    padding-left: 30px; /* Adjust as needed to ensure space for the custom bullet */
+    cursor: pointer;
+
+  }
+  
+  /* Style the custom bullet appearance - unchecked state */
+  .wpcf7-form-control.wpcf7-radio input[type="radio"] + span.wpcf7-list-item-label::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 10px; /* Adjust as needed */
+    height: 10px; /* Adjust as needed */
+    border-radius: 50%;
+    background-color: red; /* Background color for the unchecked state */
+  }
+  
+  /* Style the custom bullet appearance - checked state */
+  .wpcf7-form-control.wpcf7-radio input[type="radio"]:checked + span.wpcf7-list-item-label::before {
+    background-color: red; /* Background color for the checked state */
+  }
   
   [class^='uacf7-form-'] .wpcf7-submit {
     width: 148px;
