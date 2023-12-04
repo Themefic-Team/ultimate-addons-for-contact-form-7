@@ -13,7 +13,7 @@ class ULTIMATE_MATERIAL_DESIGN {
         add_action( 'admin_init', [ $this, 'uacf7_material_design_tag_generator' ]);
         add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_material_design'], 26, 2 ); 
         add_action( 'wp_enqueue_scripts', [$this, 'uacf7_material_design_scripts']);
-        // add_filter( 'wpcf7_contact_form_properties', array( $this, 'uacf7_material_design_form_properties' ), 10, 2 );
+        add_filter( 'wpcf7_contact_form_properties', array( $this, 'uacf7_material_design_form_properties' ), 10, 2 );
 
         // add_filter( 'wpcf7_load_js', '__return_false' ); 
     }
@@ -29,17 +29,17 @@ class ULTIMATE_MATERIAL_DESIGN {
     }
 
 
-    // public function uacf7_material_design_form_properties($properties, $cfform){
-    //     if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { 
+    public function uacf7_material_design_form_properties($properties, $cfform){
+        if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { 
 
-    //         $form = $properties['form'];
+            $form = $properties['form'];
 
-    //         echo '<div class="uacf7-material-design">'.$form.'</div>';
-    //             $properties['form'] = ob_get_clean();
-    //     }
+            echo '<div class="uacf7-material-design">'.$form.'</div>';
+                $properties['form'] = ob_get_clean();
+        }
 
-    //     return $properties;
-    // }
+        return $properties;
+    }
 
 
 
