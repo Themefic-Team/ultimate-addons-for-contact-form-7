@@ -74,6 +74,7 @@
   .uacf7-material-design [class^='uacf7-form-'] .wpcf7-submit {
     width: 148px;
     height: 40px;
+    margin-top: 32px;
     border-radius: 50px;
     border-width: 0px!important;
     letter-spacing: 2px;
