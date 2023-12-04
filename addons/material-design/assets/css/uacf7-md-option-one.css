@@ -173,14 +173,17 @@
  .TF_Field_Wrap {
     display: inline-flex;
     width: 100%;
+    gap: 16px;
   }
   
  .TF_Field_Wrap p {
     font-size     : 16px;
     position      : relative;
     padding-bottom: 24px;
-    width: 50%;
-    box-sizing: border-box;
+    width         : 50%;
+    column-gap    : 16px;
+    box-sizing    : border-box;
+    
 }
 
  .TF_Field_Wrap p label {
@@ -198,6 +201,14 @@
   background-color: transparent;
 }
 
+.TF_Field_Wrap label.has-value {
+  top             : 0px;
+  left            : 10px;
+  font-size       : 16px;
+  height          : 28px;
+  background-color: transparent;
+}
+
  .TF_Field_Wrap p label,
 .TF_Field_Wrap p span {
     display: block;
@@ -210,3 +221,14 @@
   left: 10px;
 }
 
+.TF_Field_Wrap .TFDate .wpcf7-select{
+  padding         : 15px 10px;
+    border          : 1px solid #7b7b7b;
+    width           : 100%;
+    background-color: transparent;
+    font-size       : 16px;
+    line-height     : 24px;
+    border-radius   : 4px;
+    box-sizing      : border-box;
+    
+}
