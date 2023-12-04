@@ -110,10 +110,9 @@
   }
 
 
-  .uacf7-material-design [class^='uacf7-form-'] .wpcf7-list-item {
-    display: flex;
+  .uacf7-material-design [class^='uacf7-form-']  .wpcf7-exclusive-checkbox  .wpcf7-list-item label {
+    display: inline-flex; 
     align-items: center;
-    width: 360px;
     height: 56px;
     column-gap: 16px;
   }
@@ -133,9 +132,22 @@
   .uacf7-material-design [class^='uacf7-form-'] .wpcf7-radio .wpcf7-list-item label {
     display: inline-flex; 
     align-items: center; 
+    height: 56px;
     column-gap: 16px;
 }
 
+
+.uacf7-material-design [class^='uacf7-form-'] .wpcf7-checkbox .wpcf7-list-item{
+  display: inline-flex; 
+  align-items: center;
+  height: 56px;
+  column-gap: 16px;
+}
+
+
+.uacf7-material-design [class^='uacf7-form-'] .wpcf7-checkbox .wpcf7-radio .wpcf7-list-item{
+  display: flex;
+}
 
 
   
