@@ -5,10 +5,10 @@
 
   forms.each(function(){
 
-          var formId = $(this).find('input[name="_wpcf7"]').val();
+        var formId = $(this).find('input[name="_wpcf7"]').val();
 
 		$(document).ready(function($){
-			$(".TFText, .TFEmail, .TFTel, .TFFirst_Name, .TFLast_Name").on('focus input', function() {
+			$(`.uacf7-form-${formId}`).find(".TFText, .TFEmail, .TFTel, .TFFirst_Name, .TFLast_Name").on('focus input', function() {
 					$(this).parent().siblings('label').addClass('has-value');
 			})
 			.blur(function() {
