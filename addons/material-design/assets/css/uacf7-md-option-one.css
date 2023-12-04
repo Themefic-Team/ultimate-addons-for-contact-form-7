@@ -20,7 +20,7 @@
 
   .uacf7-material-design [class^='uacf7-form-'] input[type="text"],input[type="email"], input[type="tel"],input[type="number"],input[type="file"], input[type="textarea"], input[type="select"], input[type="date"], input[type="checkbox"]{
     cursor : pointer;
-    padding         : 15px 10px;
+    padding: 15px 10px;
     z-index: 2;
   }
   
@@ -50,6 +50,7 @@
     font-size       : 16px;
     line-height     : 24px;
     border-radius   : 4px;
+    box-sizing      : border-box;
   }
   .uacf7-material-design [class^='uacf7-form-']  label.has-value {
     top             : 0px;
@@ -69,6 +70,7 @@
     font-size       : 16px;
     line-height     : 24px;
     border-radius   : 4px;
+    box-sizing      : border-box;
   }
 
   /*Radio Button Styles*/
