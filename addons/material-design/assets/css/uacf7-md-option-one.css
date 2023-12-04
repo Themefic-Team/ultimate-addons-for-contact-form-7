@@ -38,6 +38,10 @@
     z-index         : 1;
     background-color: transparent;
   }
+
+  .uacf7-material-design [class^='uacf7-form-'] label{
+    font-size: 16px;
+  }
   
  .uacf7-material-design  [class^='uacf7-form-']  .TFText, .TFEmail, .TFTel {
     border          : 1px solid #7b7b7b;
@@ -96,7 +100,8 @@
   
   .uacf7-material-design [class^='uacf7-form-'] .wpcf7-not-valid-tip {
       position: absolute;
-      top: 35px;
+      top: 40px;
+      left: 10px;
   
   }
   
