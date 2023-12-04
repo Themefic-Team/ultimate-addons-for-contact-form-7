@@ -21,6 +21,7 @@
   .uacf7-material-design [class^='uacf7-form-'] input[type="text"],input[type="email"], input[type="tel"],input[type="number"],input[type="file"], input[type="textarea"], input[type="select"], input[type="date"], input[type="checkbox"]{
     cursor : pointer;
     padding         : 15px 10px;
+    z-index: 2;
   }
   
   .uacf7-material-design [class^='uacf7-form-']  > p label {
@@ -34,7 +35,7 @@
     color           : #000000;
     left            : 10px;
     border-radius   : 4px;
-    z-index         : 2;
+    z-index         : 1;
     background-color: transparent;
   }
   
@@ -113,12 +114,11 @@
     align-items: center;
     width: 360px;
     height: 56px;
-    padding: 8px, 24px, 8px, 16px;
     column-gap: 16px;
   }
 
 
-  .uacf7-material-design [class^='uacf7-form-'] input[type="checkbox" i]{
+  .uacf7-material-design [class^='uacf7-form-'] input[type="checkbox" i], input[type="radio" i]{
     width: 24px;
     height: 24px;
   }
@@ -128,21 +128,15 @@
   }
 
 
-  .uacf7-material-design [class^='uacf7-form-'] .wpcf7-list-item-label{
-    width: 280px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
  
-  }
-  
-  
-  
-  
-  
-  
-  
-  
+  .uacf7-material-design [class^='uacf7-form-'] .wpcf7-radio .wpcf7-list-item label {
+    display: inline-flex; 
+    align-items: center; 
+    column-gap: 16px;
+}
+
+
+
   
   /* Date Field Styles */
   
@@ -152,10 +146,3 @@
   }
 
   
-  
-  /* [class^='uacf7-form-'] input[type="date"]::-webkit-inner-spin-button,
-  [class^='uacf7-form-'] input[type="date"]::-webkit-calendar-picker-indicator {
-    background-color: #000; 
-    color: #fff; 
-  
-  } */
