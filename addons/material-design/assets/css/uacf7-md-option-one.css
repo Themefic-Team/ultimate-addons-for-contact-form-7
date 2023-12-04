@@ -106,6 +106,7 @@
       left: 10px;
   
   }
+
   
   
   /*Checkbox Styles*/
@@ -165,4 +166,47 @@
     
   }
 
+
+
+
   
+ .TF_Field_Wrap {
+    display: inline-flex;
+    width: 100%;
+  }
+  
+ .TF_Field_Wrap p {
+    font-size     : 16px;
+    position      : relative;
+    padding-bottom: 24px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+ .TF_Field_Wrap p label {
+  position        : absolute;
+  padding         : 15px 0px;
+  top             : 35%;
+  transform       : translateY(-50%);
+  pointer-events  : none;
+  font-weight     : 400;
+  transition      : top 0.2s;
+  color           : #000000;
+  left            : 10px;
+  border-radius   : 4px;
+  z-index         : 1;
+  background-color: transparent;
+}
+
+ .TF_Field_Wrap p label,
+.TF_Field_Wrap p span {
+    display: block;
+    width: 100%;
+}
+
+ .TF_Field_Wrap span .wpcf7-not-valid-tip{
+  position: absolute;
+  top: 40px;
+  left: 10px;
+}
+
