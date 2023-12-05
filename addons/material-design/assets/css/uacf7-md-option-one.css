@@ -6,9 +6,35 @@
   
   }
 
-  .uacf7-material-design [class^='uacf7-form-'] input[type="date"], .wpcf7-select{
-    padding         : 15px 10px;
+  .uacf7-material-design [class^='uacf7-form-'],  .uacf7-material-design [class^='uacf7-form-'] option {
+    font-size: 16px!important;
+  }
+
+  .uacf7-material-design [class^='uacf7-form-'] input[type="date"]{
+    height          : 50px;
+    padding         : 10px;
     border          : 1px solid #7b7b7b;
+    color           : #48454E;
+    width           : 100%;
+    background-color: transparent;
+    font-size       : 16px;
+    font-family     : Roboto;
+    line-height     : 24px;
+    border-radius   : 4px;
+    box-sizing      : border-box;
+  }
+
+  input[type="date" i]{
+    cursor          : pointer;
+  }
+
+
+  .uacf7-material-design [class^='uacf7-form-']  .wpcf7-select, input[type="text"],input[type="email"], input[type="tel"],input[type="number"],input[type="file"], input[type="textarea"], input[type="checkbox"]{
+    cursor          : pointer;
+    padding         : 15px 10px;
+    height          : 50px;
+    border          : 1px solid #7b7b7b;
+    color           : #48454E;
     width           : 100%;
     background-color: transparent;
     font-size       : 16px;
@@ -17,11 +43,11 @@
     box-sizing      : border-box;
   }
 
+  .uacf7-material-design [class^='uacf7-form-'] .wpcf7-select {
+    font-size  : 16px;
+    font-family: roboto;
+    color      : #48454E;
 
-  .uacf7-material-design [class^='uacf7-form-'] input[type="text"],input[type="email"], input[type="tel"],input[type="number"],input[type="file"], input[type="textarea"], input[type="select"], input[type="date"], input[type="checkbox"]{
-    cursor : pointer;
-    padding: 15px 10px;
-    z-index: 2;
   }
   
   .uacf7-material-design [class^='uacf7-form-']  > p label {
@@ -31,12 +57,14 @@
     transform       : translateY(-50%);
     pointer-events  : none;
     font-weight     : 400;
+    font-family     : Roboto;
     transition      : top 0.2s;
-    color           : #000000;
+    color           : #48454E;
     left            : 10px;
     border-radius   : 4px;
     z-index         : 1;
     background-color: transparent;
+    letter-spacing  : 0.5px;
   }
 
   .uacf7-material-design [class^='uacf7-form-'] label{
@@ -78,18 +106,18 @@
 
   
   .uacf7-material-design [class^='uacf7-form-'] .wpcf7-submit {
-    width: 148px;
-    height: 40px;
-    margin-top: 32px;
-    border-radius: 50px;
-    border-width: 0px!important;
-    letter-spacing: 2px;
-    font-size: 14px;
-    text-transform: uppercase!important;
+    width           : 148px;
+    height          : 40px;
+    margin-top      : 32px;
+    border-radius   : 50px;
+    border-width    : 0px!important;
+    letter-spacing  : 2px;
+    font-size       : 14px;
+    text-transform  : uppercase!important;
     background-color: #6747c1;
-    color: #ffffff;
-    padding: 10px, 24px, 10px, 24px;
-    transition: all 300ms ease 0ms;
+    color           : #ffffff;
+    padding         : 10px, 24px, 10px, 24px;
+    transition      : all 300ms ease 0ms;
 
  
   }
@@ -102,8 +130,8 @@
   
   .uacf7-material-design [class^='uacf7-form-'] .wpcf7-not-valid-tip {
       position: absolute;
-      top: 40px;
-      left: 10px;
+      top     : 40px;
+      left    : 10px;
   
   }
 
@@ -111,37 +139,43 @@
   
   /*Checkbox Styles*/
   .uacf7-material-design [class^='uacf7-form-'] .TFCheckbox{
-    font-size: 16px;
-    font-weight: 500;
+    font-size     : 16px;
+    font-weight   : 400;
     letter-spacing: .15px;
-    line-height: 24px;
+    line-height   : 24px;
   }
 
 
   .uacf7-material-design [class^='uacf7-form-']  .wpcf7-exclusive-checkbox  .wpcf7-list-item label {
-    display: inline-flex; 
+    display    : inline-flex;
     align-items: center;
-    height: 56px;
-    column-gap: 16px;
+    height     : 56px;
+    font-size  : 16px;
+    column-gap : 16px;
   }
 
 
   .uacf7-material-design [class^='uacf7-form-'] input[type="checkbox" i], input[type="radio" i]{
-    width: 24px;
-    height: 24px;
+    width : 16px;
+    height: 16px;
   }
 
   .uacf7-material-design [class^='uacf7-form-'] input[type="checkbox"]{
-    background-color: #6747c1!important;
+    font-size: 16px;
+  }
+
+  .uacf7-material-design [class^='uacf7-form-'] input[type="checkbox"] .wpcf7-list-item-label{
+    font-size: 16px;
   }
 
 
  
   .uacf7-material-design [class^='uacf7-form-'] .wpcf7-radio .wpcf7-list-item label {
-    display: inline-flex; 
-    align-items: center; 
-    height: 56px;
-    column-gap: 16px;
+    display    : inline-flex;
+    align-items: center;
+    height     : 56px;
+    column-gap : 16px;
+    color      : #48454E;
 }
 
 
@@ -155,6 +189,7 @@
 
 .uacf7-material-design [class^='uacf7-form-'] .wpcf7-checkbox .wpcf7-radio .wpcf7-list-item{
   display: flex;
+  font-size: 16px;
 }
 
 
@@ -183,6 +218,7 @@
     width         : 50%;
     column-gap    : 16px;
     box-sizing    : border-box;
+    color         : #48454E;
     
 }
 
@@ -192,13 +228,15 @@
   top             : 35%;
   transform       : translateY(-50%);
   pointer-events  : none;
+  font-family: Roboto;
   font-weight     : 400;
   transition      : top 0.2s;
-  color           : #000000;
   left            : 10px;
+  color           : #48454E;
   border-radius   : 4px;
   z-index         : 1;
   background-color: transparent;
+  letter-spacing: 0.5px;
 }
 
 .TF_Field_Wrap label.has-value {
@@ -212,23 +250,24 @@
  .TF_Field_Wrap p label,
 .TF_Field_Wrap p span {
     display: block;
-    width: 100%;
+    width  : 100%;
 }
 
  .TF_Field_Wrap span .wpcf7-not-valid-tip{
   position: absolute;
-  top: 40px;
-  left: 10px;
+  top     : 40px;
+  left    : 10px;
 }
 
 .TF_Field_Wrap .TFDate .wpcf7-select{
   padding         : 15px 10px;
-    border          : 1px solid #7b7b7b;
-    width           : 100%;
-    background-color: transparent;
-    font-size       : 16px;
-    line-height     : 24px;
-    border-radius   : 4px;
-    box-sizing      : border-box;
+  border          : 1px solid #7b7b7b;
+  color           : #48454E;
+  width           : 100%;
+  background-color: transparent;
+  font-size       : 16px;
+  line-height     : 24px;
+  border-radius   : 4px;
+  box-sizing      : border-box;
     
 }
