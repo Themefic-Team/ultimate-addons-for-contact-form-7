@@ -4,7 +4,7 @@
 $(document).ready(function($){
 
 	var Uacf7selectedElements = $('.uacf7-material-design [class^="uacf7-form-"] .TFText, .TFEmail, .TFTel, .TFUrl, .TFnum');
-	var Uacf7selectedElementDateandSelect = $('.uacf7-material-design [class^="uacf7-form-"] .TFDate, .wpcf7-select');
+	var Uacf7selectedElementDateandSelect = $('.uacf7-material-design [class^="uacf7-form-"] .TFDate, .wpcf7-select, .TFFile');
 	var Uacf7selectedElementsNested = $('.uacf7-material-design [class^="uacf7-form-"] .TF_Field_Wrap');
 	/** For General Fields */
 	$(Uacf7selectedElements).on('focus input', function() {
