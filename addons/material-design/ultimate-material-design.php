@@ -220,10 +220,10 @@ class ULTIMATE_MATERIAL_DESIGN {
                 'uacf7_material_design_type' => array(
                     'id'        => 'uacf7_material_design_type',
                     'type'      => 'select',
-                    'label'     => __( 'Material Design Type', 'ultimate-addons-cf7' ),
+                    'label'     => __( 'Material Type', 'ultimate-addons-cf7' ),
                     'options'   => array(
-                        'option_one' => 'Design One',
-                        'option_two' => 'Design Two'
+                        'option_one' => 'Outlined',
+                        'option_two' => 'Filled'
                     )
                 ),
 
