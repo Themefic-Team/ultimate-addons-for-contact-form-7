@@ -83,6 +83,13 @@
     background-color: transparent;
     letter-spacing  : 0.5px;
   }
+  
+
+
+
+
+
+
 
   .uacf7-material-design [class^='uacf7-form-'] label{
     font-size: 16px;
@@ -102,21 +109,10 @@
     left            : 10px;
     font-size       : 16px;
     height          : 28px;
-    background-color: transparent;
+    background-color: #ffffff;
+    max-width       : fit-content;
   }
 
-
-  /* .uacf7-material-design [class^='uacf7-form-'] .TFFirst_Name, .TFLast_Name{
-    display         : inline-block;
-    width           : 50%;
-    border          : 1px solid #79757f;
-    padding         : 15px 0px;
-    background-color: transparent;
-    font-size       : 16px;
-    line-height     : 24px;
-    border-radius   : 4px;
-    box-sizing      : border-box;
-  } */
 
   /*Radio Button Styles*/
 
