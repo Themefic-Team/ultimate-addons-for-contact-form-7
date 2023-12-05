@@ -13,7 +13,7 @@
   .uacf7-material-design [class^='uacf7-form-'] input[type="date"]{
     height          : 50px;
     padding         : 10px;
-    border          : 1px solid #7b7b7b;
+    border          : 1px solid #79757f;
     color           : #48454E;
     width           : 100%;
     background-color: transparent;
@@ -29,11 +29,11 @@
   }
 
 
-  .uacf7-material-design [class^='uacf7-form-']  .wpcf7-select, input[type="text"],input[type="email"], input[type="tel"],input[type="number"],input[type="file"], input[type="textarea"], input[type="checkbox"]{
+  .uacf7-material-design [class^='uacf7-form-']  .wpcf7-select, input[type="text"],input[type="email"], input[type="url"], input[type="number"], input[type="tel"],input[type="number"],input[type="file"], input[type="textarea"], input[type="checkbox"]{
     cursor          : pointer;
     padding         : 15px 10px;
     height          : 50px;
-    border          : 1px solid #7b7b7b;
+    border          : 1px solid #79757f;
     color           : #48454E;
     width           : 100%;
     background-color: transparent;
@@ -49,6 +49,23 @@
     color      : #48454E;
 
   }
+
+  .uacf7-material-design [class^='uacf7-form-'] .wpcf7-acceptance .wpcf7-list-item{
+    display    : flex;
+  }
+
+  .uacf7-material-design [class^='uacf7-form-'] .wpcf7-acceptance .wpcf7-list-item label {
+    display    : inline-flex;
+    align-items: center;
+    height     : 40px;
+    column-gap : 16px;
+    color      : #48454E;
+    letter-spacing: .15px;
+
+
+  }
+
+
   
   .uacf7-material-design [class^='uacf7-form-']  > p label {
     position        : absolute;
@@ -72,7 +89,7 @@
   }
   
  .uacf7-material-design  [class^='uacf7-form-']  .TFText, .TFEmail, .TFTel {
-    border          : 1px solid #7b7b7b;
+    border          : 1px solid #79757f;
     width           : 100%;
     background-color: transparent;
     font-size       : 16px;
@@ -89,17 +106,17 @@
   }
 
 
-  .uacf7-material-design [class^='uacf7-form-'] .TFFirst_Name, .TFLast_Name{
+  /* .uacf7-material-design [class^='uacf7-form-'] .TFFirst_Name, .TFLast_Name{
     display         : inline-block;
     width           : 50%;
-    border          : 1px solid #7b7b7b;
+    border          : 1px solid #79757f;
     padding         : 15px 0px;
     background-color: transparent;
     font-size       : 16px;
     line-height     : 24px;
     border-radius   : 4px;
     box-sizing      : border-box;
-  }
+  } */
 
   /*Radio Button Styles*/
 
@@ -132,8 +149,11 @@
       position: absolute;
       top     : 40px;
       left    : 10px;
+      color   : #ba1a1a;
   
   }
+
+
 
   
   
@@ -209,12 +229,13 @@
     display: inline-flex;
     width: 100%;
     gap: 16px;
+
+    padding-bottom: 10px;
   }
   
  .TF_Field_Wrap p {
     font-size     : 16px;
     position      : relative;
-    padding-bottom: 24px;
     width         : 50%;
     column-gap    : 16px;
     box-sizing    : border-box;
@@ -225,7 +246,7 @@
  .TF_Field_Wrap p label {
   position        : absolute;
   padding         : 15px 0px;
-  top             : 35%;
+  top             : 50%;
   transform       : translateY(-50%);
   pointer-events  : none;
   font-family: Roboto;
@@ -253,15 +274,15 @@
     width  : 100%;
 }
 
- .TF_Field_Wrap span .wpcf7-not-valid-tip{
+ .TF_Field_Wrap > span > span{
   position: absolute;
-  top     : 40px;
+  top     : 60px;
   left    : 10px;
 }
 
 .TF_Field_Wrap .TFDate .wpcf7-select{
   padding         : 15px 10px;
-  border          : 1px solid #7b7b7b;
+  border          : 1px solid #79757f;
   color           : #48454E;
   width           : 100%;
   background-color: transparent;

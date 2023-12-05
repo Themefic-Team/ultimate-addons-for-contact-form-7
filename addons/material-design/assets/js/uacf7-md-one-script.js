@@ -2,8 +2,12 @@
 (function($){
 
 $(document).ready(function($){
+
+	var Uacf7selectedElements = $('.uacf7-material-design [class^="uacf7-form-"] .TFText, .TFEmail, .TFTel, .TFUrl, .TFnum');
+	var Uacf7selectedElementDateandSelect = $('.uacf7-material-design [class^="uacf7-form-"] .TFDate, .wpcf7-select');
+	var Uacf7selectedElementsNested = $('.uacf7-material-design [class^="uacf7-form-"] .TF_Field_Wrap');
 	/** For General Fields */
-	$(".TFText, .TFEmail, .TFTel").on('focus input', function() {
+	$(Uacf7selectedElements).on('focus input', function() {
 			$(this).parent().siblings('label').addClass('has-value');
 	})
 	.blur(function() {
@@ -17,7 +21,7 @@ $(document).ready(function($){
 	/*For Two Column*/
 
 
-		$('.TF_Field_Wrap').find('input:not([type="date"]').on('focus', function() {
+		$(Uacf7selectedElementsNested).find('input:not([type="date"]').on('focus', function() {
 			$(this).parent().siblings('label').addClass('has-value');
 		})
 		.blur(function() {
@@ -32,8 +36,8 @@ $(document).ready(function($){
 	
 	/** For Date and Select */
 
-	$('.TFDate, .wpcf7-select').parent().siblings('label').addClass('has-value');
-	$('.TF_Field_Wrap').find('.TFDate').parent().siblings('label').addClass('has-value');
+	$(Uacf7selectedElementDateandSelect).parent().siblings('label').addClass('has-value');
+	$(Uacf7selectedElementsNested).find('.TFDate').parent().siblings('label').addClass('has-value');
 
 });
 
