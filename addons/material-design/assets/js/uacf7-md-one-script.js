@@ -14,25 +14,21 @@ $(document).ready(function($){
 	});
 
 
-
 	/*For Two Column*/
 
-	
 
-		$('.TF_Field_Wrap').find("input").on('focus', function() {
+		$('.TF_Field_Wrap').find('input:not([type="date"]').on('focus', function() {
 			$(this).parent().siblings('label').addClass('has-value');
 		})
 		.blur(function() {
-
-			if ($('input[type="date"]').length === 0) {
 				var text_val = $(this).val();
+		
 				if(text_val === "") {
 					$(this).parent().siblings('label').removeClass('has-value');
-				}
 			}
+
 		});
 
-	
 	
 	/** For Date and Select */
 
