@@ -15,7 +15,7 @@
 
 
 				/** For General Fields */
-				$(uacf7SelectedElements).on('focus keydown keyup change input', function() {
+				$(uacf7SelectedElements).on('focus keydown keyup change input focusout', function() {
 					$(this).parent().siblings('label').addClass('has-value');
 				}).hover(function () {
 					$(this).parent().siblings('label').addClass('has-value');
@@ -26,7 +26,7 @@
 						$(this).parent().siblings('label').addClass('has-value');
 					}
 					$(this).removeClass('hover');
-					if (!$(this).hasClass('TFDate') && !$(this).hasClass('TFFile') && val.length === 0) {
+					if (!$(this).hasClass('TFDate') && !$(this).hasClass('TFFile') && val.length === 0 && $(this).is(':not(:focus)') ) {
 						$(this).parent().siblings('label').removeClass('has-value');
 					}
 				}).keypress(function () {
@@ -45,11 +45,6 @@
 					}
 				});
 				
-			
-				// if($(uacf7SelectedElements).hasClass('wpcf7-not-valid')){
-				// 	$(this).addClass('has-value');
-				// }
-					
 			
 				
 				/** For Date and Select */
