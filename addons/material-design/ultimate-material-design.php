@@ -34,8 +34,11 @@ class ULTIMATE_MATERIAL_DESIGN {
 
             $form = $properties['form'];
 
+            ob_start();
+
             echo '<div class="uacf7-material-design">'.$form.'</div>';
-                $properties['form'] = ob_get_clean();
+
+            $properties['form'] = ob_get_clean();
         }
 
         return $properties;

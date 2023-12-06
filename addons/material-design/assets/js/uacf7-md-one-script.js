@@ -10,11 +10,12 @@
 
 			$(document).ready(function($){
 			
-				var Uacf7selectedElements = $(`.uacf7-material-design .uacf7-form-${formId} .TFText, .TFEmail, .TFTel, .TFUrl, .TFnum`);
-				var Uacf7selectedElementDateandSelect = $(`.uacf7-material-design .uacf7-form-${formId} .TFDate, .wpcf7-select, .TFFile`);
-				var Uacf7selectedElementsNested = $(`.uacf7-material-design .uacf7-form-${formId} .TF_Field_Wrap`);
+				var uacf7SelectedElements             = $(`.uacf7-material-design .uacf7-form-${formId} .TFText, .TFEmail, .TFTel, .TFUrl, .TFnum`);
+				var uacf7SelectedElementDateandSelect = $(`.uacf7-material-design .uacf7-form-${formId} .TFDate, .wpcf7-select, .TFFile`);
+
+
 				/** For General Fields */
-				$(Uacf7selectedElements).on('focus', function() {
+				$(uacf7SelectedElements).on('focus', function() {
 						$(this).parent().siblings('label').addClass('has-value');
 						$(this).css({
 							outline: 'none',
@@ -24,12 +25,16 @@
 					$(this).parent().siblings('label').addClass('has-value');
 					$(this).css({
 						outline: 'none',
+						border: '2px solid #6747c1'
 	
 					});
 				}).mouseleave (function (){
-					$(this).parent().siblings('label').removeClass('has-value');
+					var text_val = $(this).val();
+					if(text_val !== "") {
+						$(this).parent().siblings('label').addClass('has-value');
+					}
 					$(this).css({
-
+						border: ''
 					});
 				})
 				.blur(function() {
@@ -45,38 +50,46 @@
 			
 			
 				/*For Two Column*/
-					$(Uacf7selectedElementsNested).find('input:not([type="date"]').on('focus', function() {
-						$(this).parent().siblings('label').addClass('has-value');
-						$(this).css({
-							outline: 'none',
-							border: '2px solid #6747c1'
-						});
-					}).hover( function () {
-						$(this).parent().siblings('label').addClass('has-value');
-						$(this).css({
-							outline: 'none',
+					// $(uacf7SelectedElementsNested).find('input:not([type="date"]').on('focus', function() {
+					// 	// $(this).parent().siblings('label').addClass('has-value');
+					// 	$(this).closest('.wpcf7-form-control-wrap').siblings('label').addClass('has-value');
+
+					// 	alert('focused')
+					// 	$(this).css({
+					// 		outline: 'none',
+					// 		border: '2px solid #6747c1'
+					// 	});
+					// }).hover( function () {
+					// 	$(this).parent().siblings('label').addClass('has-value');
+					// 	$(this).css({
+					// 		outline: 'none',
+					// 		border: '2px solid #6747c1'
 		
-						});
-					}).mouseleave (function (){
-						$(this).parent().siblings('label').removeClass('has-value');
-						$(this).css({
-							border: ''
-						});
-					})
-					.blur(function() {
-							var text_val = $(this).val();
+					// 	});
+					// }).mouseleave (function (){
+					// 	$(this).parent().siblings('label').removeClass('has-value');
+					// 	$(this).css({
+					// 		border: ''
+					// 	});
+					// })
+					// .blur(function() {
+					// 		var text_val = $(this).val();
 					
-							if(text_val === "") {
-								$(this).parent().siblings('label').removeClass('has-value');
-							}
+					// 		if(text_val === "") {
+					// 			$(this).parent().siblings('label').removeClass('has-value');
+					// 		}
 			
-					});
+					// });
 			
 				
 				/** For Date and Select */
 			
-				$(Uacf7selectedElementDateandSelect).parent().siblings('label').addClass('has-value');
-				$(Uacf7selectedElementsNested).find('.TFDate').parent().siblings('label').addClass('has-value');
+				$(uacf7SelectedElementDateandSelect).parent().siblings('label').addClass('has-value');
+				// $(uacf7SelectedElementsNested).find('.TFDate').parent().siblings('label').addClass('has-value');
+			
+
+
+
 			
 			});
 			
