@@ -16,65 +16,48 @@
 
 				/** For General Fields */
 				$(uacf7SelectedElements).on('focus', function() {
+
 						$(this).parent().siblings('label').addClass('has-value');
 					
 				}).hover( function () {
+
 					$(this).parent().siblings('label').addClass('has-value');
 					$(this).addClass('hover');
+
 				}).mouseleave (function (){
-					var text_val = $(this).val();
-					if(text_val !== "") {
+
+
+					var val = $(this).val();
+
+					if(val.length !== 0) {
 						$(this).parent().siblings('label').addClass('has-value');
 					}
+
+
 					$(this).removeClass('hover');
-					if(!$(this).hasClass('TFDate') && !$(this).hasClass('TFFile')){
+					if(!$(this).hasClass('TFDate') && !$(this).hasClass('TFFile') && val.length === 0){
 						$(this).parent().siblings('label').removeClass('has-value');
 					}
 					
-				})
-				.blur(function() {
+				}).keypress(function () {
+
+					$(this).parent().siblings('label').addClass('has-value');
+
+				}).blur(function() {
+
 					var text_val = $(this).val();
 					if(text_val === "") {
 						$(this).parent().siblings('label').removeClass('has-value');
 					}
 
-					$(this).css({
-						border: ''
-					});
+					
 				});
 			
 			
-				/*For Two Column*/
-					// $(uacf7SelectedElementsNested).find('input:not([type="date"]').on('focus', function() {
-					// 	// $(this).parent().siblings('label').addClass('has-value');
-					// 	$(this).closest('.wpcf7-form-control-wrap').siblings('label').addClass('has-value');
-
-					// 	alert('focused')
-					// 	$(this).css({
-					// 		outline: 'none',
-					// 		border: '2px solid #6747c1'
-					// 	});
-					// }).hover( function () {
-					// 	$(this).parent().siblings('label').addClass('has-value');
-					// 	$(this).css({
-					// 		outline: 'none',
-					// 		border: '2px solid #6747c1'
-		
-					// 	});
-					// }).mouseleave (function (){
-					// 	$(this).parent().siblings('label').removeClass('has-value');
-					// 	$(this).css({
-					// 		border: ''
-					// 	});
-					// })
-					// .blur(function() {
-					// 		var text_val = $(this).val();
+				if($(uacf7SelectedElements).hasClass('wpcf7-not-valid')){
+					$(this).addClass('has-value');
+				}
 					
-					// 		if(text_val === "") {
-					// 			$(this).parent().siblings('label').removeClass('has-value');
-					// 		}
-			
-					// });
 			
 				
 				/** For Date and Select */
