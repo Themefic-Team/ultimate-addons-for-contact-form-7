@@ -20,12 +20,12 @@ class ULTIMATE_MATERIAL_DESIGN {
 
     public function uacf7_material_design_scripts(){
 
-        wp_register_script('uacf7-md-one-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-one-script.js', ['jquery'], 'WPCF7_VERSION', true);
-        wp_register_script('uacf7-md-two-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-two-script.js', ['jquery'], 'WPCF7_VERSION', true);
+        wp_register_script('uacf7-md-outlined-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-outlined-script.js', ['jquery'], 'WPCF7_VERSION', true);
+        wp_register_script('uacf7-md-filled-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-filled-script.js', ['jquery'], 'WPCF7_VERSION', true);
 
 
-        wp_register_style( 'md-option-one', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-option-one.css', [], time(), 'all' );
-        wp_register_style( 'md-option-two', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-option-two.css', [], time(), 'all' );
+        wp_register_style( 'md-option-outlined', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-outlined.css', [], time(), 'all' );
+        wp_register_style( 'md-option-filled', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-filled.css', [], time(), 'all' );
     }
 
 
@@ -166,18 +166,18 @@ class ULTIMATE_MATERIAL_DESIGN {
 
         ob_start();
 
-        if($uacf7_material_design_type === 'option_one'){ 
+        if($uacf7_material_design_type === 'outlined'){ 
           
-            wp_enqueue_style( 'md-option-one' );
-            wp_enqueue_script( 'uacf7-md-one-script' ); 
+            wp_enqueue_style( 'md-option-outlined' );
+            wp_enqueue_script( 'uacf7-md-outlined-script' ); 
             
         ?> 
 
-            <div class="uacf7_material_design_type_one" <?php echo ($atts);  ?>></div>
+            <dfilled class="uacf7_material_design_type_one" <?php echo ($atts);  ?>></dfilled
 
-        <?php }elseif($uacf7_material_design_type === 'option_two'){
-            wp_enqueue_style( 'md-option-two'); 
-            wp_enqueue_script( 'uacf7-md-two-script' ); 
+        <?php }elseif($uacf7_material_design_type === 'filled'){
+            wp_enqueue_style( 'md-option-filled'); 
+            wp_enqueue_script( 'uacf7-md-filled-script' ); 
        
         ?> 
             <div class="uacf7_material_design_type_two" <?php echo ($atts);  ?>>
@@ -225,8 +225,8 @@ class ULTIMATE_MATERIAL_DESIGN {
                     'type'      => 'select',
                     'label'     => __( 'Material Type', 'ultimate-addons-cf7' ),
                     'options'   => array(
-                        'option_one' => 'Outlined',
-                        'option_two' => 'Filled'
+                        'outlined' => 'Outlined',
+                        'filled' => 'Filled'
                     )
                 ),
 

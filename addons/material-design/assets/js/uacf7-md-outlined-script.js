@@ -54,11 +54,11 @@
 				$(uacf7SelectedElementDateandSelect).parent().siblings('label').addClass('has-value');
 
 				
-				if(uacf7SelectedRequired){
-					$(uacf7SelectedRequired).on('change', function() {
-						$(uacf7SelectedElements).parent().siblings('label').addClass('required-tip');
-					});
-				}
+				// if(uacf7SelectedRequired){
+				// 	$(uacf7SelectedRequired).on('change', function() {
+				// 		$(uacf7SelectedElements).parent().siblings('label').addClass('required-tip');
+				// 	});
+				// }
 
 				
 
