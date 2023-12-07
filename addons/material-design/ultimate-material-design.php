@@ -35,12 +35,43 @@ class ULTIMATE_MATERIAL_DESIGN {
         if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { 
 
             $form = $properties['form'];
+            $form_id = $cfform->id();
 
-            ob_start();
+           
 
-            echo '<div class="uacf7-material-design">'.$form.'</div>';
+            $uacf7_material_design = uacf7_get_form_option($form_id, 'material_design');
+            $uacf7_material_design_type = isset($uacf7_material_design['uacf7_material_design_type']) ? $uacf7_material_design['uacf7_material_design_type'] : '';
 
-            $properties['form'] = ob_get_clean();
+
+            if($uacf7_material_design_type === 'outlined'){
+
+                ob_start();
+
+                echo '<div class="uacf7-material-design-outlined">'.$form.'</div>';
+    
+                $properties['form'] = ob_get_clean();
+
+            }elseif($uacf7_material_design_type === 'filled'){
+                ob_start();
+
+                echo '<div class="uacf7-material-design-filled">'.$form.'</div>';
+    
+                $properties['form'] = ob_get_clean();
+
+            }elseif($uacf7_material_design_type === 'dark'){
+                ob_start();
+
+                echo '<div class="uacf7-material-design-dark">'.$form.'</div>';
+    
+                $properties['form'] = ob_get_clean();
+            }else{
+                ob_start();
+
+                echo $form;
+    
+                $properties['form'] = ob_get_clean();
+            }
+
         }
 
         return $properties;
@@ -126,9 +157,6 @@ class ULTIMATE_MATERIAL_DESIGN {
 
         $uacf7_material_design_type = isset($uacf7_material_design['uacf7_material_design_type']) ? $uacf7_material_design['uacf7_material_design_type'] : '';
 
-        // var_dump($uacf7_material_design_type);
-
-        // die();
 
     
         if(isset($uacf7_material_design['uacf7_material_design_enable']) && $uacf7_material_design['uacf7_material_design_enable'] != '1'){
