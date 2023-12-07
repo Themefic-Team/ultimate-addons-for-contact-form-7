@@ -10,39 +10,60 @@
 
 			$(document).ready(function($){
 			
-				var Uacf7selectedElements = $(`.uacf7-material-design .uacf7-form-${formId} .TFText, .TFEmail, .TFTel, .TFUrl, .TFnum`);
-				var Uacf7selectedElementDateandSelect = $(`.uacf7-material-design .uacf7-form-${formId} .TFDate, .wpcf7-select, .TFFile`);
-				var Uacf7selectedElementsNested = $(`.uacf7-material-design .uacf7-form-${formId} .TF_Field_Wrap`);
+				var uacf7SelectedElements             = $(`.uacf7-material-design .uacf7-form-${formId} .TFText, .TFEmail, .TFTel, .TFUrl, .TFnum, .TFDate, .TFFile `);
+				var uacf7SelectedElementDateandSelect = $(`.uacf7-material-design .uacf7-form-${formId} .TFDate, .wpcf7-select, .TFFile`);
+				var uacf7SelectedRequired             = $(`.uacf7-material-design .uacf7-form-${formId}`).attr('aria-required', 'true');
+
+
 				/** For General Fields */
-				$(Uacf7selectedElements).on('focus input', function() {
+				$(uacf7SelectedElements).on('focus', function() {
+					$(this).parent().siblings('label').addClass('has-value');
+					$(this).addClass('input-focus');
+				}).hover(function () {
+					$(this).parent().siblings('label').addClass('has-value');
+					$(this).parent().siblings('label').addClass('has-value');
+					$(this).addClass('hover');
+				}).mouseleave(function () {
+					var val = $(this).val();
+					if (val.length !== 0) {
 						$(this).parent().siblings('label').addClass('has-value');
-				})
-				.blur(function() {
+					}
+					$(this).removeClass('hover');
+					if (!$(this).hasClass('TFDate') && !$(this).hasClass('TFFile') && val.length === 0 && $(this).is(':not(:focus)') ) {
+						$(this).parent().siblings('label').removeClass('has-value');
+					}
+				}).keypress(function () {
+					$(this).parent().siblings('label').addClass('has-value');
+				}).on('input', function () {
+					var val = $(this).val();
+					if (val.trim() !== '') {
+						$(this).parent().siblings('label').addClass('has-value');
+					} else {
+						$(this).parent().siblings('label').removeClass('has-value');
+					}
+				}).blur(function () {
 					var text_val = $(this).val();
-					if(text_val === "") {
+					if (text_val === "") {
 						$(this).parent().siblings('label').removeClass('has-value');
 					}
 				});
-			
-			
-				/*For Two Column*/
-					$(Uacf7selectedElementsNested).find('input:not([type="date"]').on('focus', function() {
-						$(this).parent().siblings('label').addClass('has-value');
-					})
-					.blur(function() {
-							var text_val = $(this).val();
-					
-							if(text_val === "") {
-								$(this).parent().siblings('label').removeClass('has-value');
-						}
-			
-					});
+				
 			
 				
 				/** For Date and Select */
 			
-				$(Uacf7selectedElementDateandSelect).parent().siblings('label').addClass('has-value');
-				$(Uacf7selectedElementsNested).find('.TFDate').parent().siblings('label').addClass('has-value');
+				$(uacf7SelectedElementDateandSelect).parent().siblings('label').addClass('has-value');
+
+				
+				// if(uacf7SelectedRequired){
+				// 	$(uacf7SelectedRequired).on('change', function() {
+				// 		$(uacf7SelectedElements).parent().siblings('label').addClass('required-tip');
+				// 	});
+				// }
+
+				
+
+
 			
 			});
 			
