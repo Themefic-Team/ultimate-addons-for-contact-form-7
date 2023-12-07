@@ -21,54 +21,42 @@
 
   .uacf7-material-design-dark [class^='uacf7-form-'],  .uacf7-material-design-dark [class^='uacf7-form-'] option {
     font-size: 16px!important;
+    color: #CAC4CF;
   }
+
 
 
   .uacf7-material-design-dark [class^='uacf7-form-']  > p .wpcf7-not-valid-tip ,  .uacf7-material-design-dark [class^='uacf7-form-'] .uacf7-row .uacf7-col-6  > p .wpcf7-not-valid-tip{
     color: #f7aea5;
   }
 
-  .uacf7-material-design-dark [class^='uacf7-form-'] .wpcf7-select:hover{
-    border           :1px solid  #6747c1!important;
-  }
 
-  .uacf7-material-design-dark [class^='uacf7-form-'] input[type="date"]{
+
+
+  .uacf7-material-design-dark [class^='uacf7-form-'] .wpcf7-file,  .uacf7-material-design-dark [class^='uacf7-form-'] .wpcf7-select,  .uacf7-material-design-dark [class^='uacf7-form-'] .wpcf7-date {
     height          : 50px;
     padding         : 10px;
-    border          : 1px solid #CAC4CF;
-    color           : #48454E;
+    border          : none;
+    border-bottom   : 1px solid #CAC4CF;
+    color           : #CAC4CF;
     width           : 100%;
-    background-color: transparent;
+    background-color: #363438;
     font-size       : 16px;
     font-family     : Roboto;
     line-height     : 24px;
-    border-radius   : 4px;
+    border-radius   : 4px 4px 0px 0px;
     box-sizing      : border-box;
   }
 
-  .wpcf7 input[type=file], .wpcf7-select {
-    height: 50px;
-    padding: 10px;
-    border: 1px solid #CAC4CF;
-    color: #48454E;
-    width: 100%;
-    background-color: transparent;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: 24px;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-
-  input[type="date" i]{
-    cursor          : pointer;
+  .uacf7-material-design-dark [class^='uacf7-form-'] .wpcf7-select:hover{
+    border-bottom   : 2px solid #CAC4CF;
   }
 
 
   .uacf7-material-design-dark [class^='uacf7-form-']  .wpcf7-select, input[type="text"],input[type="email"], input[type="url"], input[type="number"], input[type="tel"],input[type="number"],input[type="file"], input[type="textarea"], input[type="checkbox"]{
     cursor          : pointer;
     padding         : 15px 10px;
-    border: none;
+    border          : none;
     height          : 50px;
     border-bottom   : 1px solid #cac4cf;
     color           : #cac4cf;
@@ -80,15 +68,11 @@
     box-sizing      : border-box;
   }
 
-  .uacf7-material-design-dark [class^='uacf7-form-'] .wpcf7-select {
-    font-size  : 16px;
-    font-family: roboto;
-    color      : #48454E;
 
-  }
 
   .uacf7-material-design-dark [class^='uacf7-form-'] .wpcf7-acceptance .wpcf7-list-item{
     display    : flex;
+    color: #CAC4CF;;
   }
 
   .uacf7-material-design-dark [class^='uacf7-form-'] .wpcf7-acceptance .wpcf7-list-item label {
@@ -96,7 +80,7 @@
     align-items   : center;
     height        : 40px;
     column-gap    : 16px;
-    color         : #48454E;
+    color         : #CAC4CF;;
     letter-spacing: .15px;
 
 
@@ -175,10 +159,6 @@
 
 
 
-  /*Radio Button Styles*/
-
-
-  
   .uacf7-material-design-dark [class^='uacf7-form-'] .wpcf7-submit {
     width           : 148px;
     height          : 40px;
@@ -211,24 +191,13 @@
   }
 
 
-
-  
-  
-  /*Checkbox Styles*/
-  .uacf7-material-design-dark [class^='uacf7-form-'] .TFCheckbox{
-    font-size     : 16px;
-    font-weight   : 400;
-    letter-spacing: .15px;
-    line-height   : 24px;
-  }
-
-
   .uacf7-material-design-dark [class^='uacf7-form-']  .wpcf7-exclusive-checkbox  .wpcf7-list-item label {
     display    : inline-flex;
     align-items: center;
     height     : 56px;
     font-size  : 16px;
     column-gap : 16px;
+    color      : #CAC4CF;
   }
 
 
@@ -252,7 +221,7 @@
     align-items: center;
     height     : 56px;
     column-gap : 16px;
-    color      : #48454E;
+    color      : #CAC4CF;;
 }
 
 
