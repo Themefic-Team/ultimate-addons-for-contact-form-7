@@ -22,10 +22,12 @@ class ULTIMATE_MATERIAL_DESIGN {
 
         wp_register_script('uacf7-md-outlined-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-outlined-script.js', ['jquery'], 'WPCF7_VERSION', true);
         wp_register_script('uacf7-md-filled-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-filled-script.js', ['jquery'], 'WPCF7_VERSION', true);
+        wp_register_script('uacf7-md-dark-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-dark-script.js', ['jquery'], 'WPCF7_VERSION', true);
 
 
         wp_register_style( 'md-option-outlined', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-outlined.css', [], time(), 'all' );
         wp_register_style( 'md-option-filled', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-filled.css', [], time(), 'all' );
+        wp_register_style( 'md-option-dark', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-dark.css', [], time(), 'all' );
     }
 
 
@@ -173,17 +175,28 @@ class ULTIMATE_MATERIAL_DESIGN {
             
         ?> 
 
-            <dfilled class="uacf7_material_design_type_one" <?php echo ($atts);  ?>></dfilled
+            <div class="uacf7_material_design_outlined" <?php echo ($atts);  ?>></div>
 
         <?php }elseif($uacf7_material_design_type === 'filled'){
             wp_enqueue_style( 'md-option-filled'); 
             wp_enqueue_script( 'uacf7-md-filled-script' ); 
        
         ?> 
-            <div class="uacf7_material_design_type_two" <?php echo ($atts);  ?>>
+            <div class="uacf7_material_design_filled" <?php echo ($atts);  ?>>
         
         </div>
-        <?php }else{ ?>
+        <?php }elseif($uacf7_material_design_type === 'dark'){
+            wp_enqueue_style( 'md-option-dark'); 
+            wp_enqueue_script( 'uacf7-md-dark-script' ); 
+       
+        ?> 
+            <div class="uacf7_material_design_dark" <?php echo ($atts);  ?>>
+        
+        </div>
+        <?php }
+        
+        
+        else{ ?>
                <div <?php echo ($atts);  ?>></div>
         <?php }
 
@@ -226,7 +239,8 @@ class ULTIMATE_MATERIAL_DESIGN {
                     'label'     => __( 'Material Type', 'ultimate-addons-cf7' ),
                     'options'   => array(
                         'outlined' => 'Outlined',
-                        'filled' => 'Filled'
+                        'filled'   => 'Filled',
+                        'dark'     => 'Dark',
                     )
                 ),
 
