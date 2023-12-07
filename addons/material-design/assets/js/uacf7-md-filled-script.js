@@ -10,9 +10,9 @@
 
 			$(document).ready(function($){
 			
-				var uacf7SelectedElements             = $(`.uacf7-material-design .uacf7-form-${formId} .TFText, .TFEmail, .TFTel, .TFUrl, .TFnum, .TFDate, .TFFile `);
-				var uacf7SelectedElementDateandSelect = $(`.uacf7-material-design .uacf7-form-${formId} .TFDate, .wpcf7-select, .TFFile`);
-				var uacf7SelectedRequired             = $(`.uacf7-material-design .uacf7-form-${formId}`).attr('aria-required', 'true');
+				var uacf7SelectedElements             = $(`.uacf7-material-design-filled .uacf7-form-${formId} .TFText, .TFEmail, .TFTel, .TFUrl, .TFnum, .TFDate, .TFFile `);
+				var uacf7SelectedElementDateandSelect = $(`.uacf7-material-design-filled .uacf7-form-${formId} .TFDate, .wpcf7-select, .TFFile`);
+				var uacf7SelectedRequired             = $(`.uacf7-material-design-filled .uacf7-form-${formId}`).attr('aria-required', 'true');
 
 
 				/** For General Fields */
