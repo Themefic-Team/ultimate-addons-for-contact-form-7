@@ -13,7 +13,7 @@
 
 
 
-.uacf7-material-design-dark input[type="text"].wpcf7-not-valid, input[type="email"].wpcf7-not-valid, input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, input[type="tel"].wpcf7-not-valid, input[type="date"].wpcf7-not-valid, input[type="file"].wpcf7-not-valid {
+.uacf7-material-design-dark [class^='uacf7-form-'] input[type="text"].wpcf7-not-valid, input[type="email"].wpcf7-not-valid, input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, input[type="tel"].wpcf7-not-valid, input[type="date"].wpcf7-not-valid, input[type="file"].wpcf7-not-valid, input[type="select"].wpcf7-not-valid {
   border-bottom: 2px solid #f7aea5 !important;
   color: #f7aea5;
 }
