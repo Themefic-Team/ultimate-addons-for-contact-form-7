@@ -2,7 +2,7 @@
     font-size     : 16px;
     position       : relative;
     padding-bottom: 24px;
-    z-index       : 2;
+    z-index       : 1;
   
   }
 
@@ -113,13 +113,15 @@
   
   .uacf7-material-design [class^='uacf7-form-']  label.has-value,  .uacf7-material-design [class^='uacf7-form-'] .uacf7-row .uacf7-col-6 label.has-value  {
     top             : 0%;
-    margin-top: -6px;
+    margin-top      : -1.5px;
     left            : 10px;
     font-size       : 16px;
-    height          : 28px;
+    min-height      : 15px;
+    line-height     : 15px;
     background-color: #ffffff;
     max-width       : fit-content;
     color           : #6747c1;
+    z-index         : 99;
     
 
   }
