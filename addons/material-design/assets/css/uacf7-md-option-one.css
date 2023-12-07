@@ -126,6 +126,21 @@
 
   }
 
+  .uacf7-material-design [class^='uacf7-form-']  label.required-tip,  .uacf7-material-design [class^='uacf7-form-'] .uacf7-row .uacf7-col-6 label.required-tip  {
+    top             : 0%;
+    margin-top      : -1.5px;
+    left            : 10px;
+    font-size       : 16px;
+    min-height      : 15px;
+    line-height     : 15px;
+    background-color: #ffffff;
+    max-width       : fit-content;
+    color           : #BA1A1A;
+    z-index         : 99;
+    
+
+  }
+
 
   .uacf7-material-design [class^='uacf7-form-']  span > input.hover,  .uacf7-material-design [class^='uacf7-form-'] .uacf7-row .uacf7-col-6 span > input.hover {
 				outline: none;
