@@ -154,7 +154,7 @@
   .uacf7-material-design-filled   .wpcf7-submit {
     width           : 148px;
     height          : 40px;
-    margin-top      : 30px;
+    margin-top      : 32px;
     border-radius   : 50px;
     border-width    : 0px!important;
     letter-spacing  : 2px;
@@ -164,6 +164,11 @@
     color           : #ffffff;
     padding         : 10px, 24px, 10px, 24px;
     transition      : all 300ms ease 0ms;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    padding: 10px 20px;
+
 
  
   }

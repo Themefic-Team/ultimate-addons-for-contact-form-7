@@ -1,4 +1,4 @@
-.uacf7-material-design-outlined [class^='uacf7-form-']  > p,  .uacf7-material-design-outlined [class^='uacf7-form-'] .uacf7-row .uacf7-col-6 > p {
+.uacf7-material-design-outlined   p,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > p {
     font-size     : 16px;
     position       : relative;
     padding-bottom: 24px;
@@ -8,20 +8,20 @@
 
 
 
-.uacf7-material-design-outlined input[type="text"].wpcf7-not-valid, input[type="email"].wpcf7-not-valid, input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, input[type="tel"].wpcf7-not-valid, input[type="date"].wpcf7-not-valid, input[type="file"].wpcf7-not-valid {
+.uacf7-material-design-outlined input[type="text"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="email"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="url"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="number"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="tel"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="date"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="file"].wpcf7-not-valid {
   border: 2px solid #BA1A1A !important;
 }
 
 
-  .uacf7-material-design-outlined [class^='uacf7-form-'],  .uacf7-material-design-outlined [class^='uacf7-form-'] option {
+  .uacf7-material-design-outlined [class^='uacf7-form-'],  .uacf7-material-design-outlined  option {
     font-size: 16px!important;
   }
 
-  .uacf7-material-design-outlined [class^='uacf7-form-'] .wpcf7-select:hover{
+  .uacf7-material-design-outlined  .wpcf7-select:hover{
     border           :1px solid  #6747c1!important;
   }
 
-  .uacf7-material-design-outlined [class^='uacf7-form-'] input[type="date"]{
+  .uacf7-material-design-outlined  input[type="date"]{
     height          : 50px;
     padding         : 10px;
     border          : 1px solid #CAC4CF;
@@ -35,7 +35,7 @@
     box-sizing      : border-box;
   }
 
-  .wpcf7 input[type=file], .wpcf7-select {
+  .uacf7-material-design-outlined .wpcf7 input[type=file], .uacf7-material-design-outlined .wpcf7-select {
     height: 50px;
     padding: 10px;
     border: 1px solid #CAC4CF;
@@ -54,7 +54,7 @@
   }
 
 
-  .uacf7-material-design-outlined [class^='uacf7-form-']  .wpcf7-select, input[type="text"],input[type="email"], input[type="url"], input[type="number"], input[type="tel"],input[type="number"],input[type="file"], input[type="textarea"], input[type="checkbox"]{
+  .uacf7-material-design-outlined  .wpcf7-select,   .uacf7-material-design-outlined input[type="text"],  .uacf7-material-design-outlined input[type="email"],   .uacf7-material-design-outlined input[type="url"],   .uacf7-material-design-outlined input[type="number"],   .uacf7-material-design-outlined input[type="tel"],  .uacf7-material-design-outlined input[type="number"],  .uacf7-material-design-outlined input[type="file"],  .uacf7-material-design-outlined  input[type="textarea"],  .uacf7-material-design-outlined  input[type="checkbox"]{
     cursor          : pointer;
     padding         : 15px 10px;
     height          : 50px;
@@ -68,18 +68,18 @@
     box-sizing      : border-box;
   }
 
-  .uacf7-material-design-outlined [class^='uacf7-form-'] .wpcf7-select {
+  .uacf7-material-design-outlined  .wpcf7-select {
     font-size  : 16px;
     font-family: roboto;
     color      : #48454E;
 
   }
 
-  .uacf7-material-design-outlined [class^='uacf7-form-'] .wpcf7-acceptance .wpcf7-list-item{
+  .uacf7-material-design-outlined  .wpcf7-acceptance .wpcf7-list-item{
     display    : flex;
   }
 
-  .uacf7-material-design-outlined [class^='uacf7-form-'] .wpcf7-acceptance .wpcf7-list-item label {
+  .uacf7-material-design-outlined  .wpcf7-acceptance .wpcf7-list-item label {
     display       : inline-flex;
     align-items   : center;
     height        : 40px;
@@ -92,7 +92,7 @@
 
 
   
-  .uacf7-material-design-outlined [class^='uacf7-form-']  > p label,  .uacf7-material-design-outlined [class^='uacf7-form-'] .uacf7-row .uacf7-col-6 > p label {
+  .uacf7-material-design-outlined p label,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > p label {
     position        : absolute;
     padding         : 15px 0px;
     box-sizing      : border-box;
@@ -111,7 +111,7 @@
   }
 
   
-  .uacf7-material-design-outlined [class^='uacf7-form-']  label.has-value,  .uacf7-material-design-outlined [class^='uacf7-form-'] .uacf7-row .uacf7-col-6 label.has-value  {
+  .uacf7-material-design-outlined  label.has-value,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.has-value  {
     top             : 0%;
     margin-top      : -1.5px;
     left            : 10px;
@@ -126,7 +126,7 @@
 
   }
 
-  .uacf7-material-design-outlined [class^='uacf7-form-']  label.required-tip,  .uacf7-material-design-outlined [class^='uacf7-form-'] .uacf7-row .uacf7-col-6 label.required-tip  {
+  .uacf7-material-design-outlined   label.required-tip,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.required-tip  {
     top             : 0%;
     margin-top      : -1.5px;
     left            : 10px;
@@ -136,13 +136,17 @@
     background-color: #ffffff;
     max-width       : fit-content;
     color           : #BA1A1A;
-    z-index         : 99;
-    
+    z-index         : 99; 
 
   }
 
 
-  .uacf7-material-design-outlined [class^='uacf7-form-']  span > input.hover,  .uacf7-material-design-outlined [class^='uacf7-form-'] .uacf7-row .uacf7-col-6 span > input.hover {
+  .uacf7-material-design-outlined input.input-tip,  .uacf7-material-design-outlined .uacf7-row .uacf7-col-6 input.input-tip{
+    border: 2px solid #BA1A1A;
+  }
+
+
+  .uacf7-material-design-outlined   span > input.hover,  .uacf7-material-design-outlined .uacf7-row .uacf7-col-6 span > input.hover {
 				outline: none;
         border: 1px solid #6747c1;
   }
@@ -153,7 +157,7 @@
 
 
   
-  .uacf7-material-design-outlined [class^='uacf7-form-'] .wpcf7-submit {
+  .uacf7-material-design-outlined .wpcf7-submit {
     width           : 148px;
     height          : 40px;
     margin-top      : 32px;
@@ -166,17 +170,21 @@
     color           : #ffffff;
     padding         : 10px, 24px, 10px, 24px;
     transition      : all 300ms ease 0ms;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    padding: 10px 20px;
 
  
   }
 
-  .uacf7-material-design-outlined [class^='uacf7-form-'] .wpcf7-submit:hover{
+  .uacf7-material-design-outlined  .wpcf7-submit:hover{
     cursor: pointer;
   }
   
 
   
-  .uacf7-material-design-outlined [class^='uacf7-form-'] .wpcf7-not-valid-tip {
+  .uacf7-material-design-outlined  .wpcf7-not-valid-tip {
       position: absolute;
       top     : 60px;
       left    : 10px;
@@ -189,7 +197,7 @@
   
   
   /*Checkbox Styles*/
-  .uacf7-material-design-outlined [class^='uacf7-form-'] .TFCheckbox{
+  .uacf7-material-design-outlined  .TFCheckbox{
     font-size     : 16px;
     font-weight   : 400;
     letter-spacing: .15px;
@@ -197,7 +205,7 @@
   }
 
 
-  .uacf7-material-design-outlined [class^='uacf7-form-']  .wpcf7-exclusive-checkbox  .wpcf7-list-item label {
+  .uacf7-material-design-outlined  .wpcf7-exclusive-checkbox  .wpcf7-list-item label {
     display    : inline-flex;
     align-items: center;
     height     : 56px;
@@ -206,22 +214,22 @@
   }
 
 
-  .uacf7-material-design-outlined [class^='uacf7-form-'] input[type="checkbox" i], input[type="radio" i]{
+  .uacf7-material-design-outlined  input[type="checkbox" i], input[type="radio" i]{
     width : 16px;
     height: 16px;
   }
 
-  .uacf7-material-design-outlined [class^='uacf7-form-'] input[type="checkbox"]{
+  .uacf7-material-design-outlined  input[type="checkbox"]{
     font-size: 16px;
   }
 
-  .uacf7-material-design-outlined [class^='uacf7-form-'] input[type="checkbox"] .wpcf7-list-item-label{
+  .uacf7-material-design-outlined  input[type="checkbox"] .wpcf7-list-item-label{
     font-size: 16px;
   }
 
 
  
-  .uacf7-material-design-outlined [class^='uacf7-form-'] .wpcf7-radio .wpcf7-list-item label {
+  .uacf7-material-design-outlined  .wpcf7-radio .wpcf7-list-item label {
     display    : inline-flex;
     align-items: center;
     height     : 56px;
@@ -230,7 +238,7 @@
 }
 
 
-.uacf7-material-design-outlined [class^='uacf7-form-'] .wpcf7-checkbox .wpcf7-list-item{
+.uacf7-material-design-outlined  .wpcf7-checkbox .wpcf7-list-item{
   display: inline-flex; 
   align-items: center;
   height: 56px;
@@ -238,7 +246,7 @@
 }
 
 
-.uacf7-material-design-outlined [class^='uacf7-form-'] .wpcf7-checkbox .wpcf7-radio .wpcf7-list-item{
+.uacf7-material-design-outlined  .wpcf7-checkbox .wpcf7-radio .wpcf7-list-item{
   display: flex;
   font-size: 16px;
 }
@@ -246,7 +254,7 @@
   
   /* Date Field Styles */
   
-  .uacf7-material-design-outlined [class^='uacf7-form-'] input[type=date]::-webkit-datetime-edit-month-field{
+  .uacf7-material-design-outlined  input[type=date]::-webkit-datetime-edit-month-field{
     left: 20px;
     
   }
