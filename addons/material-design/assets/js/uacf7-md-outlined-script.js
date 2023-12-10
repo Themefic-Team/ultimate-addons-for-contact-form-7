@@ -13,7 +13,7 @@
 			$(document).ready(function($){
 			
 				var uacf7SelectedElements             = $(`.uacf7-material-design-outlined .uacf7-form-${formId} .TFText, .TFEmail, .TFTel, .TFUrl, .TFnum, .TFDate, .TFFile `);
-				var uacf7SelectedElementDateandSelect = $(`.uacf7-material-design-outlined .uacf7-form-${formId} .wpcf7-date, .wpcf7-select, .wpcf7-file`);
+				var uacf7SelectedElementDateandSelect = $(`.uacf7-material-design-outlined .uacf7-form-${formId} .wpcf7-date, .wpcf7-select, .wpcf7-file, .TFTextarea`);
 				var uacf7SelectedRequired             = $(`.uacf7-material-design-outlined .uacf7-form-${formId}`).find('.wpcf7-validates-as-required');
 
 

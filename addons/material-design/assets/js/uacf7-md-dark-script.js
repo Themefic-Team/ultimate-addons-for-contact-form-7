@@ -11,7 +11,7 @@
 			$(document).ready(function($){
 			
 				var uacf7SelectedElements             = $(`.uacf7-material-design-dark .uacf7-form-${formId} .TFText, .TFEmail, .TFTel, .TFUrl, .TFnum, .TFDate, .TFFile `);
-				var uacf7SelectedElementDateandSelect = $(`.uacf7-material-design-dark .uacf7-form-${formId} .TFDate, .wpcf7-select, .TFFile`);
+				var uacf7SelectedElementDateandSelect = $(`.uacf7-material-design-dark .uacf7-form-${formId} .wpcf7-date, .wpcf7-select, .wpcf7-file, .TFTextarea`);
 				var uacf7SelectedRequired             = $(`.uacf7-material-design-dark .uacf7-form-${formId}`).attr('aria-required');
 
 				/** For General Fields */

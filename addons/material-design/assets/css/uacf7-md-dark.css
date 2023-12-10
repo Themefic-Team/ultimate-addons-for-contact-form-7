@@ -14,7 +14,7 @@
 
 
 
-.uacf7-material-design-dark  input[type="text"].wpcf7-not-valid, .uacf7-material-design-dark input[type="email"].wpcf7-not-valid, .uacf7-material-design-dark input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, .uacf7-material-design-dark input[type="tel"].wpcf7-not-valid,.uacf7-material-design-dark input[type="date"].wpcf7-not-valid, .uacf7-material-design-dark input[type="file"].wpcf7-not-valid, .uacf7-material-design-dark input[type="select"].wpcf7-not-valid {
+.uacf7-material-design-dark  input[type="text"].wpcf7-not-valid, .uacf7-material-design-dark input[type="email"].wpcf7-not-valid, .uacf7-material-design-dark input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, .uacf7-material-design-dark input[type="tel"].wpcf7-not-valid,.uacf7-material-design-dark input[type="date"].wpcf7-not-valid, .uacf7-material-design-dark input[type="file"].wpcf7-not-valid, .uacf7-material-design-dark input[type="select"].wpcf7-not-valid, .uacf7-material-design-dark input[type="textarea"].wpcf7-not-valid {
   border-bottom: 2px solid #f7aea5 !important;
   color: #f7aea5;
 }
@@ -54,7 +54,7 @@
   }
 
 
-  .uacf7-material-design-dark  .wpcf7-select, .uacf7-material-design-dark input[type="text"],.uacf7-material-design-dark input[type="email"],.uacf7-material-design-dark  input[type="url"], .uacf7-material-design-dark input[type="number"],.uacf7-material-design-dark  input[type="tel"],.uacf7-material-design-dark input[type="file"],.uacf7-material-design-dark  input[type="textarea"], .uacf7-material-design-dark input[type="checkbox"]{
+  .uacf7-material-design-dark  .wpcf7-select, .uacf7-material-design-dark input[type="text"],.uacf7-material-design-dark input[type="email"],.uacf7-material-design-dark  input[type="url"], .uacf7-material-design-dark input[type="number"],.uacf7-material-design-dark  input[type="tel"],.uacf7-material-design-dark input[type="file"],  .uacf7-material-design-dark input[type="checkbox"]{
     cursor          : pointer;
     padding         : 15px 10px;
     border          : none;
@@ -69,11 +69,25 @@
     box-sizing      : border-box;
   }
 
+  .uacf7-material-design-dark  textarea{
+    padding         : 15px 10px;
+    border          : none;
+    border-bottom   : 1px solid #cac4cf;
+    color           : #cac4cf;
+    width           : 100%;
+    background-color: #363438;
+    font-size       : 16px;
+    height          : 100px;
+    line-height     : 24px;
+    border-radius   : 4px 4px 0px 0px;
+    box-sizing      : border-box;
+  }
+
 
 
   .uacf7-material-design-dark .wpcf7-acceptance .wpcf7-list-item{
-    display    : flex;
-    color: #CAC4CF;;
+    display: flex;
+    color  : #CAC4CF;
   }
 
   .uacf7-material-design-dark .wpcf7-acceptance .wpcf7-list-item label {
