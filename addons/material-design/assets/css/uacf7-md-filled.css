@@ -78,8 +78,20 @@
     line-height     : 15px;
     background-color: transparent;
     max-width       : fit-content;
-    z-index         : 99;
 
+
+
+  }
+
+
+  .uacf7-material-design-dark  label.hover-label,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.hover-label {
+    font-size       : 16px;
+    left            : 16px;
+    font-size       : 16px;
+    min-height      : 15px;
+    line-height     : 15px;
+    background-color: transparent;
+    max-width       : fit-content;
 
   }
 
