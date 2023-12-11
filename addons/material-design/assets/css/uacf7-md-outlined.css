@@ -1,9 +1,9 @@
 .uacf7-material-design-outlined   p,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > p {
-    font-size  : 16px;
-    position   : relative;
-    padding-bottom    : 24px;
-    z-index    : 1;
-    font-family: 'Roboto', sans-serif;
+    font-size     : 16px;
+    position      : relative;
+    padding-bottom: 24px;
+    z-index       : 1;
+    font-family   : 'Roboto', sans-serif;
   
   }
 
@@ -41,18 +41,7 @@
     box-sizing      : border-box;
   }
 
-  /* .uacf7-material-design-outlined .wpcf7 input[type=file], .uacf7-material-design-outlined .wpcf7-select {
-    height: 50px;
-    padding: 10px;
-    border: 1px solid #CAC4CF;
-    color: #48454E;
-    width: 100%;
-    background-color: transparent;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 4px;
-    box-sizing: border-box;
-  } */
+
 
   input[type="date" i]{
     cursor          : pointer;
@@ -125,7 +114,7 @@
   
   .uacf7-material-design-outlined p label,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > p label {
     position        : absolute;
-    padding         : 15px 4px;
+    padding         : 15px 16px;
     box-sizing      : border-box;
     top             : 35%;
     transform       : translateY(-50%);
@@ -133,7 +122,7 @@
     font-weight     : 400;
     transition      : top 0.2s;
     color           : #48454E;
-    left            : 12px;
+    left            : 16px;
     border-radius   : 4px;
     z-index         : 1;
     background-color: transparent;
@@ -143,15 +132,15 @@
   
   .uacf7-material-design-outlined  label.has-value,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.has-value  {
     top             : 0%;
-    left            : 12px;
+    left            : 16px;
     font-size       : 12px;
     min-height      : 15px;
     line-height     : 15px;
     background-color: #ffffff;
     max-width       : fit-content;
     color           : #6747c1;
-    padding: 0px 4px!important;
-    z-index         : 99;
+    padding         : 0px 4px!important;
+
     
 
   }
@@ -159,7 +148,7 @@
 /*To add style the label of Date, File, Select, and Textarea input*/
   .uacf7-material-design-outlined  label.dfst,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.dfst  {
     top             : 0%;
-    left            : 12px;
+    left            : 16px;
     font-size       : 12px;
     min-height      : 15px;
     line-height     : 15px;
@@ -181,7 +170,7 @@
 
   .uacf7-material-design-outlined  label.hover-dfst-label,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.hover-dfst-label  {
     top             : 0%;
-    left            : 12px;
+    left            : 16px;
     font-size       : 12px;
     min-height      : 15px;
     line-height     : 15px;
@@ -197,7 +186,7 @@
 
     
   .uacf7-material-design-outlined  label.hover-label,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.hover-label  {
-    left       : 12px;
+    left       : 16px;
     font-size  : 16px;
     min-height : 15px;
     line-height: 15px;

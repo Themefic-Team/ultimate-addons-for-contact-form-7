@@ -27,10 +27,11 @@
 					if (val.length !== 0) {
 						$(this).parent().siblings('label').addClass('has-value');
 					}
+
 					$(this).removeClass('hover');
-					if ($(this).is(':not(:focus)') ) {
-						$(this).parent().siblings('label').removeClass('has-value');
-					}
+					// if ($(this).is(':not(:focus)') ) {
+					// 	$(this).parent().siblings('label').removeClass('has-value');
+					// }
 				}).keypress(function () {
 					$(this).parent().siblings('label').addClass('has-value');
 				}).on('input', function () {
@@ -45,7 +46,6 @@
 					if (text_val === "") {
 						$(this).parent().siblings('label').removeClass('has-value');
 					}
-
 
 					$(this).parent().siblings('label').removeClass('label-focus');
 					$(this).removeClass('input-focus');

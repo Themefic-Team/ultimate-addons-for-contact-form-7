@@ -10,7 +10,7 @@
 
 
 .uacf7-material-design-filled input[type="text"].wpcf7-not-valid, input[type="email"].wpcf7-not-valid, input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, input[type="tel"].wpcf7-not-valid, input[type="date"].wpcf7-not-valid, input[type="file"].wpcf7-not-valid {
-  border-bottom: 1px solid #BA1A1A !important;
+  border-bottom: 2px solid #BA1A1A !important;
 }
 
 
@@ -23,9 +23,9 @@
   }
  
 
-  .uacf7-material-design-filled   .wpcf7-date,   .uacf7-material-design-filled  .wpcf7-select, .uacf7-material-design-filled .wpcf7-file{
+  .uacf7-material-design-filled  .wpcf7-date,   .uacf7-material-design-filled  .wpcf7-select, .uacf7-material-design-filled .wpcf7-file{
     height          : 50px;
-    padding         : 10px;
+    padding         : 15px 16px;
     border          : 1px solid #CAC4CF;
     color           : #48454E;
     width           : 100%;
@@ -34,11 +34,12 @@
     line-height     : 24px;
     border-radius   : 4px;
     box-sizing      : border-box;
+    left            : 16px;
   }
 
   .uacf7-material-design-filled   .wpcf7-select, .uacf7-material-design-filled input[type="text"], .uacf7-material-design-filled  input[type="date"],.uacf7-material-design-filled  input[type="email"], .uacf7-material-design-filled  input[type="url"], .uacf7-material-design-filled  input[type="number"], .uacf7-material-design-filled  input[type="tel"],.uacf7-material-design-filled  input[type="number"],.uacf7-material-design-filled  input[type="file"], .uacf7-material-design-filled  input[type="checkbox"]{
     cursor          : pointer;
-    padding         : 15px 10px;
+    padding         : 15px 16px;
     height          : 50px;
     border-bottom   : 1px solid #48454E;
     color           : #1c1b1e;
@@ -53,7 +54,7 @@
 
   .uacf7-material-design-filled p label ,  .uacf7-material-design-filled .uacf7-row .uacf7-col-6 > p label {
     position        : absolute;
-    padding         : 15px 0px;
+    padding         : 15px 16px;
     box-sizing      : border-box;
     top             : 35%;
     transform       : translateY(-50%);
@@ -61,7 +62,7 @@
     font-weight     : 400;
     transition      : top 0.2s;
     color           : #48454E;
-    left            : 10px;
+    left            : 16px;
     border-radius   : 4px;
     z-index         : 1;
     background-color: transparent;
@@ -71,7 +72,7 @@
   .uacf7-material-design-filled label.has-value,  .uacf7-material-design-filled .uacf7-row .uacf7-col-6 label.has-value  {
     top             : 10%;
     font-size       : 12px!important;
-    left            : 10px;
+    left            : 16px;
     font-size       : 16px;
     min-height      : 15px;
     line-height     : 15px;
@@ -112,14 +113,14 @@
 
 
   .uacf7-material-design-filled span > input.hover,  .uacf7-material-design-filled   .uacf7-row .uacf7-col-6 span > input.hover {
-    border-bottom   : 1px solid #1c1b1e;
+    border-bottom   : 2px solid #1c1b1e;
     color           : #1c1b1e;
     background-color: #d6d1d6;
   }
 
 
   .uacf7-material-design-filled    input.input-focus,  .uacf7-material-design-filled   .uacf7-row .uacf7-col-6 input.input-focus {
-    border-bottom   : 1px solid #6747c1!important;
+    border-bottom   : 2px solid #6747c1!important;
     color           : #1c1b1e;
     background-color: #e6e1e6;
   }
@@ -129,13 +130,13 @@
     /*For  Date, File, Select, and Textarea Field*/
     .uacf7-material-design-filled  .wpcf7-select.hover-dfst,  .uacf7-material-design-filled  .wpcf7-file.hover-dfst,  .uacf7-material-design-filled  .wpcf7-date.hover-dfst,  .uacf7-material-design-filled  .wpcf7-select.wpcf7-textarea.hover-dfst{
    
-    border-bottom   : 1px solid  #1c1b1e;
+    border-bottom   : 2px solid  #1c1b1e;
     color           : #1c1b1e;
     background-color: #d6d1d6;
     }
   
     .uacf7-material-design-filled  .wpcf7-select.focus-dfst,  .uacf7-material-design-filled  .wpcf7-file.focus-dfst,  .uacf7-material-design-filled  .wpcf7-date.focus-dfst,  .uacf7-material-design-filled  .wpcf7-select.wpcf7-textarea.focus-dfst{
-      border-bottom          : 1px solid #6747c1!important;
+      border-bottom          : 2px solid #6747c1!important;
     }
 
 
@@ -145,15 +146,13 @@
   .uacf7-material-design-filled  label.dfst,  .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 label.dfst  {
     top             : 10%;
     font-size       : 12px!important;
-    left            : 10px;
+    left            : 16px;
     font-size       : 16px;
     min-height      : 15px;
     line-height     : 15px;
     background-color: transparent;
     max-width       : fit-content;
-    z-index         : 99;
-
-    
+    z-index         : 99;   
 
   }
 
@@ -176,7 +175,6 @@
 
   .uacf7-material-design-filled textarea:hover{
     cursor          : pointer;
-    padding         : 15px 16px;
     height          : 100px;
     width           : 100%;
     background-color: transparent;
@@ -214,7 +212,7 @@
   .uacf7-material-design-filled  label.hover-dfst-label,  .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 label.hover-dfst-label  {
     top             : 10%;
     font-size       : 12px!important;
-    left            : 10px;
+    left            : 16px;
     font-size       : 16px;
     min-height      : 15px;
     line-height     : 15px;
@@ -224,7 +222,6 @@
     
 
   }
-
 
 
 
