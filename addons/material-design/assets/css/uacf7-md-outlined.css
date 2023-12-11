@@ -18,12 +18,12 @@
   }
 
   /*For  Date, File, Select, and Textarea Field*/
-  .uacf7-material-design-outlined  .wpcf7-select.hover-dfst,  .uacf7-material-design-outlined  .wpcf7-file.hover-dfst,  .uacf7-material-design-outlined  .wpcf7-date.hover-dfst,  .uacf7-material-design-outlined  .wpcf7-select.TFTextarea.hover-dfst{
+  .uacf7-material-design-outlined  .wpcf7-select.hover-dfst,  .uacf7-material-design-outlined  .wpcf7-file.hover-dfst,  .uacf7-material-design-outlined  .wpcf7-date.hover-dfst,  .uacf7-material-design-outlined  .wpcf7-select.wpcf7-textarea.hover-dfst{
     border: 1px solid #1C1B1E;
     color : #1C1B1E;
   }
 
-  .uacf7-material-design-outlined  .wpcf7-select.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-file.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-date.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-select.TFTextarea.focus-dfst{
+  .uacf7-material-design-outlined  .wpcf7-select.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-file.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-date.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-select.wpcf7-textarea.focus-dfst{
     border          : 2px solid #6747c1!important;
   }
 
@@ -86,6 +86,34 @@
     height          : 100px;
     border          : 1px solid #CAC4CF;
     color           : #48454E;
+    width           : 100%;
+    background-color: transparent;
+    font-size       : 16px;
+    line-height     : 24px;
+    border-radius   : 4px;
+    box-sizing      : border-box;
+  }
+
+  .uacf7-material-design-outlined textarea:hover{
+    cursor          : pointer;
+    padding         : 15px 10px;
+    height          : 100px;
+    border          : 1px solid #1C1B1E;
+    color           : #1C1B1E;
+    width           : 100%;
+    background-color: transparent;
+    font-size       : 16px;
+    line-height     : 24px;
+    border-radius   : 4px;
+    box-sizing      : border-box;
+  }
+
+  .uacf7-material-design-outlined textarea:focus{
+    cursor          : pointer;
+    padding         : 15px 10px;
+    height          : 100px;
+    border          : 1px solid #6747c1;
+    color           : #1C1B1E;
     width           : 100%;
     background-color: transparent;
     font-size       : 16px;
