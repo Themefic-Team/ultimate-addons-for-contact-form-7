@@ -26,9 +26,7 @@
 
 				}).hover(function () {
 
-					var val = $(this).val();
-
-					if($(this).is(':not(:focus)')){
+					if($(this).is(':not(:focus)') && $(this).val().trim() === ''){
 						$(this).parent().siblings('label').addClass('hover-label');
 						$(this).addClass('hover');
 					}
