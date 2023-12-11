@@ -16,12 +16,17 @@
 
 				/** For General Fields */
 				$(uacf7SelectedElements).on('focus', function() {
+					
 					$(this).parent().siblings('label').addClass('has-value');
+					$(this).parent().siblings('label').removeClass('hover-label');
 					// $(this).addClass('input-focus');
 				}).hover(function () {
-					$(this).parent().siblings('label').addClass('has-value');
-					$(this).parent().siblings('label').addClass('has-value');
-					$(this).addClass('hover');
+
+					if($(this).is(':not(:focus)') && $(this).val().trim() === ''){
+						$(this).parent().siblings('label').addClass('hover-label');
+						$(this).addClass('hover');
+					}
+
 				}).mouseleave(function () {
 					var val = $(this).val();
 					if (val.length !== 0) {
