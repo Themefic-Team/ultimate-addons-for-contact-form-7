@@ -84,25 +84,6 @@
   }
 
 
-
-  .uacf7-material-design-dark .wpcf7-acceptance .wpcf7-list-item{
-    display: flex;
-    color  : #CAC4CF;
-  }
-
-  .uacf7-material-design-dark .wpcf7-acceptance .wpcf7-list-item label {
-    display       : inline-flex;
-    align-items   : center;
-    height        : 40px;
-    column-gap    : 16px;
-    color         : #CAC4CF;;
-    letter-spacing: .15px;
-
-
-  }
-
-
-  
   .uacf7-material-design-dark  p > label,  .uacf7-material-design-dark .uacf7-row .uacf7-col-6 > p label {
     position        : absolute;
     padding         : 15px 0px;
@@ -210,59 +191,61 @@
   }
 
 
-  .uacf7-material-design-dark  .wpcf7-exclusive-checkbox  .wpcf7-list-item label {
+  .uacf7-material-design-dark label {
+    color: #cac4cf ;
+  }
+
+  .uacf7-material-design-dark span > .wpcf7-list-item-label {
+    color: #cac4cf ;
+  }
+
+
+  .uacf7-material-design-dark > .wpcf7-exclusive-checkbox  > .wpcf7-list-item {
     display    : inline-flex;
     align-items: center;
     height     : 56px;
     font-size  : 16px;
     column-gap : 16px;
-    color      : #CAC4CF;
   }
 
 
-  .uacf7-material-design-dark  input[type="checkbox" i], .uacf7-material-design-dark input[type="radio" i]{
+  .uacf7-material-design-dark   input[type="checkbox" i], input[type="radio" i]{
     width : 16px;
     height: 16px;
   }
 
-  .uacf7-material-design-dark   input[type="checkbox"]{
-    font-size: 16px;
-  }
 
-  .uacf7-material-design-dark  input[type="checkbox"] .wpcf7-list-item-label{
-    font-size: 16px;
-    color      : #CAC4CF;
-  }
+  .uacf7-material-design-dark   .wpcf7-acceptance .wpcf7-list-item {
+    display       : inline-flex;
+    align-items   : center;
+    height        : 40px;
+    column-gap    : 16px;
+    letter-spacing: .15px;
 
+
+  }
 
  
-  .uacf7-material-design-dark  .wpcf7-radio .wpcf7-list-item label {
+ 
+  .uacf7-material-design-dark   .wpcf7-radio .wpcf7-list-item {
     display    : inline-flex;
     align-items: center;
     height     : 56px;
     column-gap : 16px;
-    color      : #CAC4CF;
+    color      : #cac4cf;
 }
 
 
-.uacf7-material-design-dark  .wpcf7-checkbox .wpcf7-list-item{
-  display: inline-flex; 
-  align-items: center;
-  height: 56px;
-  column-gap: 16px;
-  color      : #CAC4CF;
-}
-
-.uacf7-material-design-dark label{
-  color      : #CAC4CF;
-} 
+  .uacf7-material-design-dark > .wpcf7-checkbox > .wpcf7-list-item, .uacf7-material-design-dark  > .wpcf7-radio  > .wpcf7-list-item{
+    display    : inline-flex;
+    align-items: center;
+    height     : 56px;
+    column-gap : 16px;
+    /* color      : #cac4cf!important; */
+  }
 
 
-
-.uacf7-material-design-dark  .wpcf7-checkbox .wpcf7-radio .wpcf7-list-item{
-  display: flex;
-  font-size: 16px;
-}
+ 
 
   
   /* Date Field Styles */
