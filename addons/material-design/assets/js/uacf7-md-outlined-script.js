@@ -20,11 +20,13 @@
 				/** For General Fields */
 				$(uacf7SelectedElements).on('focus', function() {
 					$(this).parent().siblings('label').addClass('has-value');
+					$(this).addClass('input-focus');
+					$(this).parent().siblings('label').removeClass('hover-label');
 				}).hover(function () {
-					$(this).parent().siblings('label').addClass('has-value');
-					$(this).parent().siblings('label').addClass('has-value');
+					$(this).parent().siblings('label').addClass('hover-label');
 					$(this).addClass('hover');
 				}).mouseleave(function () {
+					$(this).parent().siblings('label').removeClass('hover-label');
 					var val = $(this).val();
 					if (val.length !== 0) {
 						$(this).parent().siblings('label').addClass('has-value');
@@ -43,6 +45,8 @@
 						$(this).parent().siblings('label').removeClass('has-value');
 					}
 				}).blur(function () {
+
+					$(this).removeClass('input-focus');
 					var text_val = $(this).val();
 			
 					if (text_val === "" || text_val.length < 0) {

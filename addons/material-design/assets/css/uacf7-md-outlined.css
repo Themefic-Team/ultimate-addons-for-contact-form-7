@@ -69,6 +69,11 @@
   }
 
 
+  .uacf7-material-design-outlined  .wpcf7-select.input-focus,   .uacf7-material-design-outlined input[type="text"].input-focus,  .uacf7-material-design-outlined input[type="email"].input-focus,   .uacf7-material-design-outlined input[type="url"].input-focus,   .uacf7-material-design-outlined input[type="number"].input-focus,   .uacf7-material-design-outlined input[type="tel"].input-focus,  .uacf7-material-design-outlined input[type="number"].input-focus,  .uacf7-material-design-outlined input[type="file"].input-focus, .uacf7-material-design-outlined  input[type="checkbox"].input-focus{
+    border          : 2px solid #6747c1!important;
+  }
+
+
   .uacf7-material-design-outlined textarea{
     cursor          : pointer;
     padding         : 15px 10px;
@@ -110,7 +115,7 @@
   
   .uacf7-material-design-outlined p label,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > p label {
     position        : absolute;
-    padding         : 15px 0px;
+    padding         : 15px 4px;
     box-sizing      : border-box;
     top             : 35%;
     transform       : translateY(-50%);
@@ -119,7 +124,7 @@
     font-family     : Roboto;
     transition      : top 0.2s;
     color           : #48454E;
-    left            : 10px;
+    left            : 12px;
     border-radius   : 4px;
     z-index         : 1;
     background-color: transparent;
@@ -129,24 +134,38 @@
   
   .uacf7-material-design-outlined  label.has-value,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.has-value  {
     top             : 0%;
-    margin-top      : -1.5px;
-    left            : 10px;
-    font-size       : 16px;
+    margin-top      : -1px;
+    left            : 12px;
+    font-size       : 12px;
     min-height      : 15px;
     line-height     : 15px;
     background-color: #ffffff;
     max-width       : fit-content;
     color           : #6747c1;
+    padding: 0px 4px!important;
     z-index         : 99;
+    
+
+  }
+
+
+    
+  .uacf7-material-design-outlined  label.hover-label,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.hover-label  {
+    left       : 12px;
+    font-size  : 16px;
+    min-height : 15px;
+    line-height: 15px;
+    max-width  : fit-content;
+    color      : #1C1B1E;
+    padding    : 0px 4px;
     
 
   }
 
   .uacf7-material-design-outlined   label.required-tip,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.required-tip  {
     top             : 0%;
-    margin-top      : -1.5px;
-    left            : 10px;
-    font-size       : 16px;
+    margin-top      : -1px;
+    left            : 16px;
     min-height      : 15px;
     line-height     : 15px;
     background-color: #ffffff;
@@ -164,7 +183,7 @@
 
   .uacf7-material-design-outlined   span > input.hover,  .uacf7-material-design-outlined .uacf7-row .uacf7-col-6 span > input.hover {
 				outline: none;
-        border: 1px solid #6747c1;
+        border: 1px solid #1C1B1E;
   }
 
 
@@ -198,13 +217,14 @@
     cursor: pointer;
   }
   
-
   
   .uacf7-material-design-outlined  .wpcf7-not-valid-tip {
       position: absolute;
-      top     : 60px;
-      left    : 10px;
+      top     : 48px;
+      left    : 16px;
       color   : #ba1a1a;
+      font-size: 12px;
+      padding-top: 4px;
   
   }
 
