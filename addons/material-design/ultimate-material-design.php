@@ -34,12 +34,9 @@ class ULTIMATE_MATERIAL_DESIGN {
     public function uacf7_material_design_form_properties($properties, $cfform){
         if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { 
 
-            $form = $properties['form'];
+            $form    = $properties['form'];
             $form_id = $cfform->id();
-
-           
-
-            $uacf7_material_design = uacf7_get_form_option($form_id, 'material_design');
+            $uacf7_material_design      = uacf7_get_form_option($form_id, 'material_design');
             $uacf7_material_design_type = isset($uacf7_material_design['uacf7_material_design_type']) ? $uacf7_material_design['uacf7_material_design_type'] : '';
 
 
@@ -150,11 +147,9 @@ class ULTIMATE_MATERIAL_DESIGN {
         }
          
      /** Enable / Disable Material Design */
-        $wpcf7  = WPCF7_ContactForm::get_current();
-        $formid = $wpcf7->id();
-    
-        $uacf7_material_design = uacf7_get_form_option($formid, 'material_design');
-
+        $wpcf7                      = WPCF7_ContactForm::get_current();
+        $formid                     = $wpcf7->id();
+        $uacf7_material_design      = uacf7_get_form_option($formid, 'material_design');
         $uacf7_material_design_type = isset($uacf7_material_design['uacf7_material_design_type']) ? $uacf7_material_design['uacf7_material_design_type'] : '';
 
 
@@ -164,8 +159,7 @@ class ULTIMATE_MATERIAL_DESIGN {
         }
     
         $validation_error = wpcf7_get_validation_error($tag->name);
-    
-        $class = wpcf7_form_controls_class($tag->type);
+        $class            = wpcf7_form_controls_class($tag->type);
     
     
         if ($validation_error) {

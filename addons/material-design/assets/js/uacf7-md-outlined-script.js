@@ -55,14 +55,27 @@
 				}).blur(function () {
 
 					$(this).removeClass('input-focus');
+
 					var text_val = $(this).val();
 			
 					if (text_val === "" || text_val.length < 0) {
 				
 						$(this).parent().siblings('label').removeClass('has-value');
+					}else{
+						$(this).css({
+							border : '1px solid #1C1B1E'
+						});
 					}
 					
 				});
+
+
+
+				// uacf7SelectedElements.each(function() {
+				// 	if ($(this).val().trim() !== "") {
+				// 		$(this).css('border', '3px solid green');
+				// 	}
+				// });
 
 				
 				// if(uacf7SelectedRequired){
@@ -101,6 +114,12 @@
 					
 					$(this).parent().siblings('label').removeClass('focus-dfst-label');
 					$(this).removeClass('focus-dfst');
+
+					if ($(this).val().trim() !== "") {
+						$(this).css({
+							border: '1px solid #1C1B1E'
+						});
+					}
 				});
 				
 		});

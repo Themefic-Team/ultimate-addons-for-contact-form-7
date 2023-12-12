@@ -19,7 +19,7 @@
 					
 					$(this).parent().siblings('label').addClass('has-value');
 					$(this).parent().siblings('label').removeClass('hover-label');
-					// $(this).addClass('input-focus');
+					$(this).addClass('input-focus');
 				}).hover(function () {
 
 					if($(this).is(':not(:focus)') && $(this).val().trim() === ''){
@@ -50,6 +50,8 @@
 					if (text_val === "") {
 						$(this).parent().siblings('label').removeClass('has-value');
 					}
+
+					$(this).removeClass('input-focus');
 				});
 				
 			
