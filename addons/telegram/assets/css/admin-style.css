@@ -10,9 +10,9 @@
   }
   
   #uacf7-telegram-panel .telegram_panel_wrapper .telegram_wrapper_first_col .bot_title_and_status .chat_title_div{
-    width:100%!important;
+    width   : 100%!important;
     overflow: hidden!important;
-    display: inline-block;
+    display : inline-block;
   }
   
   #uacf7-telegram-panel .telegram_panel_wrapper .telegram_wrapper_first_col .bot_title_and_status .bot_title{
@@ -21,8 +21,8 @@
   }
   
   #uacf7-telegram-panel .telegram_panel_wrapper .telegram_wrapper_first_col .bot_title_and_status .bot_status{
-    width: 70%!important;
-    float: right!important;
+    width  : 70%!important;
+    float  : right!important;
     padding: 24px 0px!important;
    
   }
@@ -55,12 +55,12 @@
   
   
   #uacf7-telegram-panel .telegram_wrapper_first_col .check_bot .status:before {
-    content: ' ';
-    width: 8px;
-    height: 8px;
-    display: inline-block;
+    content      : ' ';
+    width        : 8px;
+    height       : 8px;
+    display      : inline-block;
     border-radius: 50%;
-    margin-right: 8px;
+    margin-right : 8px;
   }
   
   
@@ -77,12 +77,12 @@
   }
   
   #uacf7-telegram-panel .telegram_wrapper_first_col .check_bot .status:before {
-  content: ' ';
-  width: 8px;
-  height: 8px;
-  display: inline-block;
+  content      : ' ';
+  width        : 8px;
+  height       : 8px;
+  display      : inline-block;
   border-radius: 50%;
-  margin-right: 8px;
+  margin-right : 8px;
   }
   
   /*Bot Status Styles Ends*/
@@ -95,19 +95,19 @@
 
    
   .uacf7-admin-toggle__input {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
+    clip       : rect(0 0 0 0);
+    clip-path  : inset(50%);
+    height     : 1px;
+    overflow   : hidden;
+    position   : absolute;
     white-space: nowrap;
-    width: 1px;
+    width      : 1px;
   }
 
 
   .uacf7-admin-toggle__input:checked + .uacf7-admin-toggle-track .uacf7-admin-toggle-indicator {
     background: #06af00;
-    transform: translateX(30px);
+    transform : translateX(30px);
   }
  
   .uacf7-admin-toggle__input:checked + .uacf7-admin-toggle-track {
@@ -117,13 +117,13 @@
 	  opacity: 0.75;
   }
   .uacf7-admin-toggle__input:checked + .uacf7-admin-toggle-track .uacf7-admin-toggle-indicator .checkMark {
-    opacity: 1;
+    opacity   : 1;
     transition: opacity 0.25s ease-in-out;
   }
 
 
   #showing_success_message{
-    color: #008000!important;
+    color    : #008000!important;
     font-size: 20px!important;
   }
 

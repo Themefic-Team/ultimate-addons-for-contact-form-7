@@ -36,18 +36,18 @@ class UACF7_TELEGRAM {
         'fields' => array(
             
             'uacf7_telegram_heading' => array(
-              'id'    => 'uacf7_telegram_heading',
-              'type'  => 'notice',
-              'notice' => 'info',
-              'label' => __( 'Telegram Settings', 'ultimate-addons-cf7' ),
-              'title' => __( 'This addon will help you to integrate telegram into you contact form 7.', 'ultimate-addons-cf7' ),
+              'id'      => 'uacf7_telegram_heading',
+              'type'    => 'notice',
+              'notice'  => 'info',
+              'label'   => __( 'Telegram Settings', 'ultimate-addons-cf7' ),
+              'title'   => __( 'This addon will help you to integrate telegram into you contact form 7.', 'ultimate-addons-cf7' ),
               'content' => sprintf( 
                   __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
                   '<a href="https://themefic.com/docs/uacf7/free-addons/uacf7-telegram/" target="_blank">documentation</a>'
               )
             ),
             'uacf7_telegram_enable_icon' => array(
-              'id'        => 'uacf7_telegram_enable_icon',
+              'id'       => 'uacf7_telegram_enable_icon',
               'type'     => 'callback',
               'function' => 'uacf7_telegram_active_status_callback',
               'argument' => $post_id,
@@ -90,19 +90,13 @@ class UACF7_TELEGRAM {
 
       $submission = WPCF7_Submission::get_instance();
       if ($submission) {
-          $form_id = $contact_form->id();
-          $form_name = $contact_form->title();
-      
-
+          $form_id     = $contact_form->id();
+          $form_name   = $contact_form->title();
           $posted_data = $submission->get_posted_data();
-
-          $form_tags = $submission->get_contact_form()->form_scan_shortcode();
-   
-          $properties = $submission->get_contact_form()->get_properties();
-      
-
-          $mail = $contact_form->prop( 'mail' );
-          $message = wpcf7_mail_replace_tags( @ $mail[ 'body' ] );
+          $form_tags   = $submission->get_contact_form()->form_scan_shortcode();
+          $properties  = $submission->get_contact_form()->get_properties();
+          $mail        = $contact_form->prop( 'mail' );
+          $message     = wpcf7_mail_replace_tags( @ $mail[ 'body' ] );
 
         
 
@@ -129,15 +123,15 @@ class UACF7_TELEGRAM {
 
 
      if (!empty($uacf7_telegram_settings)) {
-         $uacf7_telegram_enable = $uacf7_telegram_settings['uacf7_telegram_enable'];
+         $uacf7_telegram_enable    = $uacf7_telegram_settings['uacf7_telegram_enable'];
          $uacf7_telegram_bot_token = $uacf7_telegram_settings['uacf7_telegram_bot_token'];
-         $uacf7_telegram_chat_id = $uacf7_telegram_settings['uacf7_telegram_chat_id'];
+         $uacf7_telegram_chat_id   = $uacf7_telegram_settings['uacf7_telegram_chat_id'];
       
      }
 
  
-      $bot_token =  $uacf7_telegram_bot_token;
-      $chat_id =  $uacf7_telegram_chat_id;
+      $bot_token = $uacf7_telegram_bot_token;
+      $chat_id   = $uacf7_telegram_chat_id;
 
      if($uacf7_telegram_enable == true ){
         $api_url = "https://api.telegram.org/bot$bot_token/sendMessage";
@@ -145,11 +139,11 @@ class UACF7_TELEGRAM {
 
       $args = array(
         'chat_id' => $chat_id,
-        'text' => $message,
+        'text'    => $message,
       ); 
       
       $response = wp_remote_post($api_url, array(
-          'body' => json_encode($args),
+          'body'    => json_encode($args),
           'headers' => array('Content-Type' => 'application/json'),
       ));
 
