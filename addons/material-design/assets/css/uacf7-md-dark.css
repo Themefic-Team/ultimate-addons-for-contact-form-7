@@ -366,12 +366,10 @@
   .uacf7-material-design-dark .wpcf7-date::-webkit-calendar-picker-indicator { 
   
     background-image: url('./icons/calendar-icon-for-dark.png');
-    border-radius   : 50%;
-    padding         : 5px;
-    color           : #CAC4CF!important;
     background-color: #2a292c!important;
-    width           : 28px;
-    height          : 28px;
+    padding         : 10px;
+    background-color: #e7e2e7;
+    border-radius   : 50%;
   }
 
 

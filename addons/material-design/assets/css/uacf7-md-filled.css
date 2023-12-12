@@ -342,12 +342,8 @@
   .uacf7-material-design-filled .wpcf7-date::-webkit-calendar-picker-indicator { 
   
     background-image: url('./icons/calendar-icon-for-filled.png');
-    background-color: #ddd;
-    border-radius   : 5%;
-    padding         : 5px;
-    color           : #48454E;
-    width           : 28px;
-    height          : 28px;
+    width           : 20px;
+    height          : 20px;
   }
 
 
