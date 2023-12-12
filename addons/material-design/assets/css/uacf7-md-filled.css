@@ -232,7 +232,6 @@
     line-height     : 15px;
     background-color: transparent;
     max-width       : fit-content;
- 
 
   }
 
@@ -330,10 +329,6 @@
 }
 
 
-/* .uacf7-material-design-filled   .wpcf7-checkbox .wpcf7-radio .wpcf7-list-item{
-  display: flex;
-  font-size: 16px;
-} */
 
   
   /* Date Field Styles */
@@ -341,6 +336,18 @@
   .uacf7-material-design-filled   input[type=date]::-webkit-datetime-edit-month-field{
     left: 20px;
     
+  }
+
+
+  .uacf7-material-design-filled .wpcf7-date::-webkit-calendar-picker-indicator { 
+  
+    background-image: url('./icons/calendar-icon-for-filled.png');
+    background-color: #ddd;
+    border-radius   : 5%;
+    padding         : 5px;
+    color           : #48454E;
+    width           : 28px;
+    height          : 28px;
   }
 
 
