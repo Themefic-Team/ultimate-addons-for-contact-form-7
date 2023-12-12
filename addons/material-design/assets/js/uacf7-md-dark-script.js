@@ -15,6 +15,8 @@
 				var uacf7SelectedRequired             = $(`.uacf7-material-design-dark .uacf7-form-${formId}`).attr('aria-required');
 
 				/** For General Fields */
+				uacf7SelectedElements.attr('autocomplete', 'off');
+				uacf7SelectedElementDateandSelect.attr('autocomplete', 'off');
 				$(uacf7SelectedElements).on('focus', function() {
 					
 					$(this).parent().siblings('label').addClass('has-value');
