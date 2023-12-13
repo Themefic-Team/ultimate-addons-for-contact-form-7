@@ -221,6 +221,13 @@
   }
 
 
+  .uacf7-material-design-outlined   span > input.hover-when-inputted,  .uacf7-material-design-outlined .uacf7-row .uacf7-col-6 span > input.hover-when-inputted {
+    outline: none;
+    border: 1px solid #1C1B1E;
+}
+
+
+
 
   /*Radio Button Styles*/
 

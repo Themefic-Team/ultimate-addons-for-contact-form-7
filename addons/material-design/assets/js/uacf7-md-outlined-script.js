@@ -31,8 +31,9 @@
 
 					if($(this).is(':not(:focus)') && $(this).val().trim() === ''){
 						$(this).parent().siblings('label').addClass('hover-label');
-						$(this).addClass('hover');
 					}
+
+					$(this).addClass('hover');
 					
 				}).mouseleave(function () {
 					$(this).parent().siblings('label').removeClass('hover-label');
@@ -64,10 +65,6 @@
 					if (text_val === "" || text_val.length < 0) {
 				
 						$(this).parent().siblings('label').removeClass('has-value');
-					}else{
-						$(this).css({
-							border : '1px solid #1C1B1E'
-						});
 					}
 					
 				});
