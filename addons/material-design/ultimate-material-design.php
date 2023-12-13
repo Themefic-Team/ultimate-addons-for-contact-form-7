@@ -102,6 +102,7 @@ class ULTIMATE_MATERIAL_DESIGN {
                                     '<a href="https://themefic.com/docs/uacf7/free-addons/material-design/" target="_blank">documentation</a>'
                                 ); ?> 
                             </div>
+                            
                             <tr>
                             <th scope="row"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></th>
                                 <td>
