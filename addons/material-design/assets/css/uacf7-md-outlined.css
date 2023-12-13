@@ -43,11 +43,6 @@
 
 
 
-  input[type="date" i]{
-    cursor          : pointer;
-  }
-
-
    .uacf7-material-design-outlined input[type="text"],  .uacf7-material-design-outlined input[type="email"],   .uacf7-material-design-outlined input[type="url"],   .uacf7-material-design-outlined input[type="number"],   .uacf7-material-design-outlined input[type="tel"],  .uacf7-material-design-outlined input[type="number"], .uacf7-material-design-outlined  input[type="checkbox"]{
     cursor          : pointer;
     padding         : 15px 16px;

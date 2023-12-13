@@ -36,7 +36,7 @@
 
   .uacf7-material-design-filled   .wpcf7-select, .uacf7-material-design-filled input[type="text"], .uacf7-material-design-filled  input[type="date"],.uacf7-material-design-filled  input[type="email"], .uacf7-material-design-filled  input[type="url"], .uacf7-material-design-filled  input[type="number"], .uacf7-material-design-filled  input[type="tel"],.uacf7-material-design-filled  input[type="number"],.uacf7-material-design-filled  input[type="file"], .uacf7-material-design-filled  input[type="checkbox"]{
     cursor          : pointer;
-    padding         : 15px 16px;
+    padding         : 0px 16px;
     border          : none;
     height          : 50px;
     border-bottom   : 1px solid #48454E;
@@ -47,7 +47,20 @@
     line-height     : 24px;
     border-radius   : 4px 4px 0px 0px;
     box-sizing      : border-box;
+    padding-top     : 8px;
   }
+
+
+
+  /* .uacf7-material-design-filled  input[type="file"]::before {
+    content: '';
+    display: inline-block;
+    padding: 0px 20px;
+    margin-bottom: 0px!important;
+    padding-bottom: 0px!important;
+    cursor: pointer;
+    z-index: 0;
+  } */
 
 
   .uacf7-material-design-filled p label ,  .uacf7-material-design-filled .uacf7-row .uacf7-col-6 > p label {
@@ -72,7 +85,6 @@
     margin-top      : 8px;
     font-size       : 12px!important;
     left            : 16px;
-    font-size       : 16px;
     min-height      : 15px;
     line-height     : 15px;
     background-color: transparent;
@@ -86,7 +98,6 @@
   .uacf7-material-design-dark  label.hover-label,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.hover-label {
     font-size       : 16px;
     left            : 16px;
-    font-size       : 16px;
     min-height      : 15px;
     line-height     : 15px;
     background-color: transparent;
@@ -98,6 +109,7 @@
 
   .uacf7-material-design-filled label.label-focus,  .uacf7-material-design-filled .uacf7-row .uacf7-col-6 label.label-focus  {
     color: #6747c1; 
+    margin-top: 8px;
 
   }
 
@@ -116,7 +128,7 @@
 
   }
 
-  .uacf7-material-design-filled    input.required-tip,  .uacf7-material-design-filled   .uacf7-row .uacf7-col-6 input.required-tip  {
+  .uacf7-material-design-filled input.required-tip,  .uacf7-material-design-filled   .uacf7-row .uacf7-col-6 input.required-tip  {
 
 
     border-bottom   : 1px solid #BA1A1A;
@@ -136,6 +148,8 @@
     border-bottom   : 2px solid #6747c1!important;
     color           : #1c1b1e;
     background-color: #e6e1e6;
+    padding-bottom: 0;
+
   }
 
 
@@ -149,7 +163,7 @@
     }
   
     .uacf7-material-design-filled  .wpcf7-select.focus-dfst,  .uacf7-material-design-filled  .wpcf7-file.focus-dfst,  .uacf7-material-design-filled  .wpcf7-date.focus-dfst,  .uacf7-material-design-filled  .wpcf7-select.wpcf7-textarea.focus-dfst{
-      border-bottom          : 2px solid #6747c1!important;
+      border-bottom: 2px solid #6747c1!important;
     }
 
 
@@ -161,9 +175,8 @@
     margin-top      : 8px;
     font-size       : 12px!important;
     left            : 16px;
-    font-size       : 16px;
     min-height      : 15px;
-    line-height     : 15px;
+    line-height     : 24px;
     background-color: transparent;
     max-width       : fit-content;
     z-index         : 99;   
@@ -229,14 +242,20 @@
     margin-top      : 8px;
     font-size       : 12px!important;
     left            : 16px;
-    font-size       : 16px;
     min-height      : 15px;
-    line-height     : 15px;
+    line-height     : 24px;
     background-color: transparent;
     max-width       : fit-content;
 
   }
 
+
+
+  .uacf7-material-design-filled  input[type=file]::file-selector-button {
+    margin-top: 10px;
+    border-radius: .2em;
+    transition: 1s;
+  }
 
 
 
