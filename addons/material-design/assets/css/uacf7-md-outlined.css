@@ -354,6 +354,9 @@
   display            : inline-flex;
   align-items        : center;
   padding-left       : 2px;
+  background-size    : cover;
+  background-color   : #ffffff;
+  border-radius      : 50%;
  
  }
 

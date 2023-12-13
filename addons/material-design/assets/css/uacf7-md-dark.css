@@ -304,8 +304,8 @@
 
 
   .uacf7-material-design-dark  input[type="checkbox" i], input[type="radio" i]{
-    width     : 20px;
-    height    : 20px;
+    width     : 18px;
+    height    : 18px;
     box-sizing: border-box;
     position  : relative;
   }
@@ -346,11 +346,11 @@
   
   .uacf7-material-design-dark input[type="checkbox"]:checked::before {
     position           : absolute;
-    background-color   : #6747c1;
-    background-image   : url('../icons/check_small.svg');
+    background-color   : #cebdff;
+    background-image   : url('../icons/check_small_dark.svg');
     background-position: center;
     border-radius      : 3px;
-    color              : #ffffff;
+    color              : #6747c1;
     content            : "";
     top                : 0;
     bottom             : 0;
@@ -366,9 +366,8 @@
 
    .uacf7-material-design-dark input[type="radio"]:checked::before {
     position           : absolute;
-    background-image   : url('../icons/radio-icon.svg');
+    background-image   : url('../icons/radio-icon-dark.svg');
     background-position: center;
-    border-radius      : 3px;
     color              : #ffffff;
     content            : "";
     top                : 0;
@@ -379,7 +378,10 @@
     display            : inline-flex;
     align-items        : center;
     padding-left       : 2px;
-   
+    background-size    : cover;
+    border-radius      : 50%;
+    background-color   : #141316;
+
    }
  
 
