@@ -16,8 +16,6 @@
 				var uacf7SelectedElementDateandSelect = $(`.uacf7-material-design-outlined .uacf7-form-${formId} .wpcf7-date, .wpcf7-select, .wpcf7-file, .wpcf7-textarea`);
 				var uacf7SelectedRequired             = $(`.uacf7-material-design-outlined .uacf7-form-${formId}`).find('.wpcf7-validates-as-required');
 
-
-				/** For General Fields */
 				uacf7SelectedElements.attr('autocomplete', 'off');
 				uacf7SelectedElementDateandSelect.attr('autocomplete', 'off');
 
@@ -69,27 +67,7 @@
 					
 				});
 
-
-
-				// uacf7SelectedElements.each(function() {
-				// 	if ($(this).val().trim() !== "") {
-				// 		$(this).css('border', '3px solid green');
-				// 	}
-				// });
-
 				
-				// if(uacf7SelectedRequired){
-				// 	$(uacf7SelectedRequired).on('blur', function() {
-
-				// 		$(this).prevAll().parent().siblings('label').addClass('required-tip');
-				// 		$(this).addClass('input-tip');
-		
-				// 	});
-				// }
-			
-		
-
-
 
 			/** For Date, File, Textarea and Select */
 	
@@ -115,11 +93,6 @@
 					$(this).parent().siblings('label').removeClass('focus-dfst-label');
 					$(this).removeClass('focus-dfst');
 
-					// if ($(this).val().trim() !== "") {
-					// 	$(this).css({
-					// 		border: '1px solid #1C1B1E'
-					// 	});
-					// }
 				});
 				
 		});

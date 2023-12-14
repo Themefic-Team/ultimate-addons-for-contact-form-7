@@ -1,4 +1,4 @@
-.uacf7-material-design-outlined   p,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > p {
+  .uacf7-material-design-outlined   p,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > p {
     font-size     : 16px;
     position      : relative;
     padding-bottom: 24px;
@@ -15,10 +15,9 @@
   }
 
 
-
-.uacf7-material-design-outlined input[type="text"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="email"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="url"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="number"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="tel"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="date"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="file"].wpcf7-not-valid {
-  border: 2px solid #BA1A1A !important;
-}
+  .uacf7-material-design-outlined input[type="text"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="email"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="url"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="number"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="tel"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="date"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="file"].wpcf7-not-valid {
+    border: 2px solid #BA1A1A !important;
+  }
 
 
   .uacf7-material-design-outlined [class^='uacf7-form-'],  .uacf7-material-design-outlined  option {
@@ -143,8 +142,6 @@
     color           : #6747c1;
     padding         : 0px 4px!important;
 
-    
-
   }
 
 /*To add style the label of Date, File, Select, and Textarea input*/
@@ -160,7 +157,6 @@
     padding         : 0px 4px!important;
     z-index         : 99;
     
-
   }
 
 
@@ -185,8 +181,7 @@
 
   }
 
-
-    
+ 
   .uacf7-material-design-outlined  label.hover-label,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.hover-label  {
     left       : 16px;
     font-size  : 16px;
@@ -218,23 +213,16 @@
 
 
   .uacf7-material-design-outlined   span > input.hover,  .uacf7-material-design-outlined .uacf7-row .uacf7-col-6 span > input.hover {
-				outline: none;
-        border: 1px solid #1C1B1E;
+    outline: none;
+    border : 1px solid #1C1B1E;
   }
 
 
   .uacf7-material-design-outlined   span > input.hover-when-inputted,  .uacf7-material-design-outlined .uacf7-row .uacf7-col-6 span > input.hover-when-inputted {
     outline: none;
-    border: 1px solid #1C1B1E;
+    border : 1px solid #1C1B1E;
 }
 
-
-
-
-  /*Radio Button Styles*/
-
-
-  
   .uacf7-material-design-outlined .wpcf7-submit {
     width           : 148px;
     height          : 40px;
@@ -276,14 +264,14 @@
 
 /*For Acceptance, Checkbox and Radio Buttons*/
 .uacf7-material-design-outlined   input[type="checkbox"],  .uacf7-material-design-outlined input[type="radio"]{
-    width : 20px;
-    height: 20px;
+    width     : 20px;
+    height    : 20px;
     box-sizing: border-box;
-    position: relative;
+    position  : relative;
 }
 
 .uacf7-material-design-outlined .wpcf7-checkbox .wpcf7-list-item {
-  display: inline-flex;
+  display    : inline-flex;
   align-items: center;
 }
 
@@ -292,7 +280,7 @@
 }
 
 .uacf7-material-design-outlined .wpcf7-acceptance .wpcf7-list-item label {
-  display: flex;
+  display    : flex;
   align-items: center;
 }
 
@@ -302,7 +290,7 @@
 
 
 .uacf7-material-design-outlined .wpcf7-radio .wpcf7-list-item label {
-  display: flex;
+  display    : flex;
   align-items: center;
 }
 

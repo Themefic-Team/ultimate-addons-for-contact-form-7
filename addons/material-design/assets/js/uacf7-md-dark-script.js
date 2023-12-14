@@ -14,7 +14,6 @@
 				var uacf7SelectedElementDateandSelect = $(`.uacf7-material-design-dark .uacf7-form-${formId} .wpcf7-date, .wpcf7-select, .wpcf7-file, .wpcf7-textarea`);
 				var uacf7SelectedRequired             = $(`.uacf7-material-design-dark .uacf7-form-${formId}`).attr('aria-required');
 
-				/** For General Fields */
 				uacf7SelectedElements.attr('autocomplete', 'off');
 				uacf7SelectedElementDateandSelect.attr('autocomplete', 'off');
 				$(uacf7SelectedElements).on('focus', function() {
@@ -56,15 +55,6 @@
 					$(this).removeClass('input-focus');
 				});
 				
-			
-			
-
-				// if(uacf7SelectedRequired){
-				// 	$(uacf7SelectedRequired).on('change', function() {
-				// 		$(uacf7SelectedRequired).parent().siblings('label').addClass('required-tip');
-				// 	});
-				// }
-
 
 				/** For Date, File, Textarea and Select */
 	
@@ -90,10 +80,6 @@
 					$(this).parent().siblings('label').removeClass('focus-dfst-label');
 					$(this).removeClass('focus-dfst');
 				});
-
-
-				
-
 
 			
 			});

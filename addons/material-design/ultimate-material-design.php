@@ -34,8 +34,8 @@ class ULTIMATE_MATERIAL_DESIGN {
     public function uacf7_material_design_form_properties($properties, $cfform){
         if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { 
 
-            $form    = $properties['form'];
-            $form_id = $cfform->id();
+            $form                       = $properties['form'];
+            $form_id                    = $cfform->id();
             $uacf7_material_design      = uacf7_get_form_option($form_id, 'material_design');
             $uacf7_material_design_type = isset($uacf7_material_design['uacf7_material_design_type']) ? $uacf7_material_design['uacf7_material_design_type'] : '';
 
@@ -153,27 +153,20 @@ class ULTIMATE_MATERIAL_DESIGN {
         $uacf7_material_design      = uacf7_get_form_option($formid, 'material_design');
         $uacf7_material_design_type = isset($uacf7_material_design['uacf7_material_design_type']) ? $uacf7_material_design['uacf7_material_design_type'] : '';
 
-
-    
         if(isset($uacf7_material_design['uacf7_material_design_enable']) && $uacf7_material_design['uacf7_material_design_enable'] != '1'){
             return;
         }
     
         $validation_error = wpcf7_get_validation_error($tag->name);
         $class            = wpcf7_form_controls_class($tag->type);
-    
-    
+
         if ($validation_error) {
             $class .= 'wpcf7-not-valid';
         }
-
         $atts = array();
-
         $atts['class']             = $tag->get_class_option($class);
         $atts['class']             = 'uacf7_material_design';
         $atts['id']                = $tag->get_id_option();
-
-
         $atts['tabindex']          = $tag->get_option('tabindex', 'signed_int', true);
     
         if ($tag->is_required()) {
@@ -217,7 +210,6 @@ class ULTIMATE_MATERIAL_DESIGN {
         
         </div>
         <?php }
-        
         
         else{ ?>
                <div <?php echo ($atts);  ?>></div>

@@ -1,17 +1,17 @@
-.uacf7-material-design-dark{
-  background-color: #141316;
-  padding         : 20px 10px;
-  border-radius   : 3px;
-  color           : #cac4cf;
-}
-
-.uacf7-material-design-dark  p,  .uacf7-material-design-dark   .uacf7-row .uacf7-col-6 > p {
-    font-size     : 16px;
-    position      : relative;
-    padding-bottom: 24px;
-    z-index       : 1;
-    font-family   : 'Roboto', sans-serif;
+  .uacf7-material-design-dark{
+    background-color: #141316;
+    padding         : 20px 10px;
+    border-radius   : 3px;
+    color           : #cac4cf;
   }
+
+  .uacf7-material-design-dark  p,  .uacf7-material-design-dark   .uacf7-row .uacf7-col-6 > p {
+      font-size     : 16px;
+      position      : relative;
+      padding-bottom: 24px;
+      z-index       : 1;
+      font-family   : 'Roboto', sans-serif;
+    }
 
 
   .uacf7-material-design-dark   .TFCheckbox,     .uacf7-material-design-dark .TFAcceptance,     .uacf7-material-design-dark .TFSelect,     .uacf7-material-design-dark .TFRadio,    .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 > .TFCheckbox,    .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 > .TFAcceptance,   .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 > .TFSelect,   .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 > .TFRadio{
@@ -25,17 +25,16 @@
     color           : #CAC4CF!important;
   }
 
-
-
-.uacf7-material-design-dark  input[type="text"].wpcf7-not-valid, .uacf7-material-design-dark input[type="email"].wpcf7-not-valid, .uacf7-material-design-dark input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, .uacf7-material-design-dark input[type="tel"].wpcf7-not-valid,.uacf7-material-design-dark input[type="date"].wpcf7-not-valid, .uacf7-material-design-dark input[type="file"].wpcf7-not-valid, .uacf7-material-design-dark input[type="select"].wpcf7-not-valid, .uacf7-material-design-dark input[type="textarea"].wpcf7-not-valid {
-  border-bottom: 2px solid #f7aea5 !important;
-}
-
-
-.uacf7-material-design-dark  option {
-    font-size: 16px!important;
-    color: #CAC4CF;
+    
+  .uacf7-material-design-dark  input[type="text"].wpcf7-not-valid, .uacf7-material-design-dark input[type="email"].wpcf7-not-valid, .uacf7-material-design-dark input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, .uacf7-material-design-dark input[type="tel"].wpcf7-not-valid,.uacf7-material-design-dark input[type="date"].wpcf7-not-valid, .uacf7-material-design-dark input[type="file"].wpcf7-not-valid, .uacf7-material-design-dark input[type="select"].wpcf7-not-valid, .uacf7-material-design-dark input[type="textarea"].wpcf7-not-valid {
+    border-bottom: 2px solid #f7aea5 !important;
   }
+
+
+  .uacf7-material-design-dark  option {
+      font-size: 16px!important;
+      color    : #CAC4CF;
+    }
 
 
   .uacf7-material-design-dark  label.hover-label,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.hover-label {
@@ -102,8 +101,6 @@
     box-sizing      : border-box;
   }
 
-
-
   .uacf7-material-design-dark textarea:hover{
     padding         : 15px 16px;
     border          : none;
@@ -118,8 +115,6 @@
     box-sizing      : border-box;
     cursor          : pointer;
   }
-
-
 
   .uacf7-material-design-dark textarea:focus{
     padding         : 15px 16px;
@@ -158,7 +153,6 @@
 
   
   .uacf7-material-design-dark  label.has-value,  .uacf7-material-design-dark .uacf7-row .uacf7-col-6 label.has-value  {
-    /* color           : #6747c1; */
     top             : 4px;
     margin-top      : 8px;
     font-size       : 12px!important;
@@ -170,7 +164,6 @@
     max-width       : fit-content;
     z-index         : 99;
     
-
   }
 
   .uacf7-material-design-dark  label.required-tip,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.required-tip  {
@@ -183,7 +176,6 @@
     max-width       : fit-content;
     color           : #f7aea5;
     
-
   }
 
   .uacf7-material-design-dark  input.required-tip,  .uacf7-material-design-dark .uacf7-row .uacf7-col-6 input.required-tip  {
@@ -192,12 +184,10 @@
   }
 
   .uacf7-material-design-dark  input[type=file]::file-selector-button {
-    margin-top: 10px;
+    margin-top   : 10px;
     border-radius: .2em;
-    transition: 1s;
+    transition   : 1s;
   }
-
-
 
   .uacf7-material-design-dark  span > input.hover,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 span > input.hover {
     border-bottom   : 2px solid #C9C5CA;
@@ -210,7 +200,6 @@
     border-bottom   : 2px solid #CEBDFF!important;
     color           : #C9C5CA;
   }
-
 
    /*To add style the label of Date, File, Select, and Textarea input*/
    .uacf7-material-design-dark  label.dfst,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.dfst  {
@@ -258,8 +247,6 @@
     align-items     : center;
     padding: 10px 20px;
 
-
- 
   }
 
   .uacf7-material-design-dark  .wpcf7-submit:hover{
@@ -282,14 +269,14 @@
  
 /*For Acceptance, Checkbox and Radio Buttons*/
 .uacf7-material-design-dark    input[type="checkbox"],    .uacf7-material-design-dark  input[type="radio"]{
-  width : 20px;
-  height: 20px;
+  width     : 20px;
+  height    : 20px;
   box-sizing: border-box;
-  position: relative;
+  position  : relative;
 }
 
 .uacf7-material-design-dark  .wpcf7-checkbox .wpcf7-list-item {
-    display: inline-flex;
+    display    : inline-flex;
     align-items: center;
 }
 
@@ -298,7 +285,7 @@
 }
 
 .uacf7-material-design-dark  .wpcf7-acceptance .wpcf7-list-item label {
-  display: flex;
+  display    : flex;
   align-items: center;
 }
 
@@ -308,7 +295,7 @@
 
 
 .uacf7-material-design-dark  .wpcf7-radio .wpcf7-list-item label {
-  display: flex;
+  display    : flex;
   align-items: center;
 }
 
@@ -316,133 +303,131 @@
   margin-right: 16px; 
 }
 
+
+.uacf7-material-design-dark input[type="checkbox"]:checked::before {
+  position           : absolute;
+  background-color   : #cebdff;
+  background-image   : url('../icons/check_small_dark.svg');
+  background-position: center;
+  border-radius      : 3px;
+  color              : #6747c1;
+  content            : "";
+  top                : 0;
+  bottom             : 0;
+  left               : 0;
+  width              : 100%;
+  height             : 100%;
+  display            : inline-flex;
+  align-items        : center;
+  padding-left       : 2px;
   
-  .uacf7-material-design-dark input[type="checkbox"]:checked::before {
-    position           : absolute;
-    background-color   : #cebdff;
-    background-image   : url('../icons/check_small_dark.svg');
-    background-position: center;
-    border-radius      : 3px;
-    color              : #6747c1;
-    content            : "";
-    top                : 0;
-    bottom             : 0;
-    left               : 0;
-    width              : 100%;
-    height             : 100%;
-    display            : inline-flex;
-    align-items        : center;
-    padding-left       : 2px;
-   
-   }
-
-   .uacf7-material-design-dark input[type="checkbox"]:hover::before {
-    position           : absolute;
-    background-image   : url('../icons/check_small_dark.svg');
-    background-position: center;
-    border-radius      : 3px;
-    color              : #6747c1;
-    content            : "";
-    top                : 0;
-    bottom             : 0;
-    left               : 0;
-    width              : 100%;
-    height             : 100%;
-    display            : inline-flex;
-    align-items        : center;
-    padding-left       : 2px;
-    background-size    : cover;
-    background-color   : #cebdff;
-    box-shadow         : 0 0 0 5px #2e2c2f;
-    box-sizing         : border-box;
-   
-   }
-
-
-   .uacf7-material-design-dark input[type="radio"]:checked::before {
-    position           : absolute;
-    background-image   : url('../icons/radio-icon-dark.svg');
-    background-position: center;
-    color              : #ffffff;
-    content            : "";
-    top                : 0;
-    bottom             : 0;
-    left               : 0;
-    width              : 100%;
-    height             : 100%;
-    display            : inline-flex;
-    align-items        : center;
-    padding-left       : 2px;
-    background-size    : cover;
-    border-radius      : 100px;
-    background-color   : #141316;
-
-   }
-
-
-
-    .uacf7-material-design-dark input[type="radio"]:hover::before {
-    position           : absolute;
-    background-image   : url('../icons/radio-icon-dark.svg');
-    background-position: center;
-    color              : #ffffff;
-    content            : "";
-    top                : 0;
-    bottom             : 0;
-    left               : 0;
-    width              : 100%;
-    height             : 100%;
-    display            : inline-flex;
-    align-items        : center;
-    padding-left       : 2px;
-    background-size    : cover;
-    background-color   : #2e2c2f;
-    border-radius      : 100px;
-    box-shadow         : 0 0 0 5px #2e2c2f;
-    box-sizing         : border-box;
-   
-   }
-
-
-   .uacf7-material-design-dark input[type="radio"]:hover::before {
-    position           : absolute;
-    background-image   : url('../icons/radio-icon-dark.svg');
-    background-position: center;
-    color              : #ffffff;
-    content            : "";
-    top                : 0;
-    bottom             : 0;
-    left               : 0;
-    width              : 100%;
-    height             : 100%;
-    display            : inline-flex;
-    align-items        : center;
-    padding-left       : 2px;
-    background-size    : cover;
-    background-color   : #2e2c2f;
-    border-radius      : 100px;
-    box-shadow         : 0 0 0 5px #2e2c2f;
-    box-sizing         : border-box;
-   
-   }
- 
-
-  
-  /* Date Field Styles */
-  
-  .uacf7-material-design-dark  input[type=date]::-webkit-datetime-edit-month-field{
-    left: 20px;
-    
   }
 
-  .uacf7-material-design-dark .wpcf7-date::-webkit-calendar-picker-indicator { 
+  .uacf7-material-design-dark input[type="checkbox"]:hover::before {
+  position           : absolute;
+  background-image   : url('../icons/check_small_dark.svg');
+  background-position: center;
+  border-radius      : 3px;
+  color              : #6747c1;
+  content            : "";
+  top                : 0;
+  bottom             : 0;
+  left               : 0;
+  width              : 100%;
+  height             : 100%;
+  display            : inline-flex;
+  align-items        : center;
+  padding-left       : 2px;
+  background-size    : cover;
+  background-color   : #cebdff;
+  box-shadow         : 0 0 0 5px #2e2c2f;
+  box-sizing         : border-box;
   
-    background-image: url('../icons/calendar-icon-for-dark.png');
-    background-color: #2a292c!important;
-    padding         : 10px;
-    background-color: #e7e2e7;
-    border-radius   : 50%;
   }
 
 
+  .uacf7-material-design-dark input[type="radio"]:checked::before {
+  position           : absolute;
+  background-image   : url('../icons/radio-icon-dark.svg');
+  background-position: center;
+  color              : #ffffff;
+  content            : "";
+  top                : 0;
+  bottom             : 0;
+  left               : 0;
+  width              : 100%;
+  height             : 100%;
+  display            : inline-flex;
+  align-items        : center;
+  padding-left       : 2px;
+  background-size    : cover;
+  border-radius      : 100px;
+  background-color   : #141316;
+
+  }
+
+
+
+  .uacf7-material-design-dark input[type="radio"]:hover::before {
+  position           : absolute;
+  background-image   : url('../icons/radio-icon-dark.svg');
+  background-position: center;
+  color              : #ffffff;
+  content            : "";
+  top                : 0;
+  bottom             : 0;
+  left               : 0;
+  width              : 100%;
+  height             : 100%;
+  display            : inline-flex;
+  align-items        : center;
+  padding-left       : 2px;
+  background-size    : cover;
+  background-color   : #2e2c2f;
+  border-radius      : 100px;
+  box-shadow         : 0 0 0 5px #2e2c2f;
+  box-sizing         : border-box;
   
+  }
+
+
+  .uacf7-material-design-dark input[type="radio"]:hover::before {
+  position           : absolute;
+  background-image   : url('../icons/radio-icon-dark.svg');
+  background-position: center;
+  color              : #ffffff;
+  content            : "";
+  top                : 0;
+  bottom             : 0;
+  left               : 0;
+  width              : 100%;
+  height             : 100%;
+  display            : inline-flex;
+  align-items        : center;
+  padding-left       : 2px;
+  background-size    : cover;
+  background-color   : #2e2c2f;
+  border-radius      : 100px;
+  box-shadow         : 0 0 0 5px #2e2c2f;
+  box-sizing         : border-box;
+  
+  }
+
+
+/* Date Field Styles */
+
+.uacf7-material-design-dark  input[type=date]::-webkit-datetime-edit-month-field{
+  left: 20px;
+  
+}
+
+.uacf7-material-design-dark .wpcf7-date::-webkit-calendar-picker-indicator { 
+
+  background-image: url('../icons/calendar-icon-for-dark.png');
+  background-color: #2a292c!important;
+  padding         : 10px;
+  background-color: #e7e2e7;
+  border-radius   : 50%;
+}
+
+
