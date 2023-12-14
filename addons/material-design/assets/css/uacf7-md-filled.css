@@ -337,6 +337,7 @@
     background-image   : url('../icons/check_small.svg');
     background-position: center;
     color              : #ffffff;
+    border-radius      : 3px;
     content            : "";
     top                : 0;
     bottom             : 0;
@@ -409,7 +410,7 @@
     align-items        : center;
     padding-left       : 2px;
     background-size    : cover;
-    background-color   : #ffffff;
+    background-color   : #CAC4CF;
     border-radius      : 50%;
     box-shadow         : 0 0 0 5px #CAC4CF;
     box-sizing         : border-box;

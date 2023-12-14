@@ -361,7 +361,6 @@
  }
 
 
-
 .uacf7-material-design-outlined input[type="radio"]:checked::before {
   position           : absolute;
   background-image   : url('../icons/radio-icon.svg');
@@ -414,7 +413,7 @@
     align-items        : center;
     padding-left       : 2px;
     background-size    : cover;
-    background-color   : #ffffff;
+    background-color   : #CAC4CF;
     border-radius      : 100px;
     box-shadow         : 0 0 0 5px #CAC4CF;
     box-sizing         : border-box;
