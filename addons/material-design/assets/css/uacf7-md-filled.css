@@ -6,6 +6,12 @@
   font-family: 'Roboto', sans-serif;
 }
 
+  .uacf7-material-design-filled   .TFCheckbox,     .uacf7-material-design-filled .TFAcceptance,     .uacf7-material-design-filled .TFSelect,     .uacf7-material-design-filled .TFRadio,    .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 > .TFCheckbox,    .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 > .TFAcceptance,   .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 > .TFSelect,   .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 > .TFRadio{
+  font-size     : 16px;
+  padding-bottom: 24px;
+  font-family   : 'Roboto', sans-serif;
+
+}
 
 
 
@@ -14,25 +20,25 @@
 }
 
 
-  .uacf7-material-design-filled  ,  .uacf7-material-design-filled   option {
+.uacf7-material-design-filled  ,  .uacf7-material-design-filled   option {
     font-size: 16px!important;
-  }
+}
 
 
 
-  .uacf7-material-design-filled  .wpcf7-date,   .uacf7-material-design-filled  .wpcf7-select, .uacf7-material-design-filled .wpcf7-file{
+  .uacf7-material-design-filled  input[type="date"],    .uacf7-material-design-filled input[type="file"],    .uacf7-material-design-filled  .wpcf7-select{
     height          : 50px;
-    padding         : 15px 16px;
-    border          : none;
+    padding         : 10px;
+    border          : 1px solid #CAC4CF;
     color           : #48454E;
     width           : 100%;
-    background-color: #e6e1e6;
+    background-color: transparent;
     font-size       : 16px;
     line-height     : 24px;
     border-radius   : 4px;
     box-sizing      : border-box;
-    left            : 16px;
   }
+
 
   .uacf7-material-design-filled   .wpcf7-select, .uacf7-material-design-filled input[type="text"], .uacf7-material-design-filled  input[type="date"],.uacf7-material-design-filled  input[type="email"], .uacf7-material-design-filled  input[type="url"], .uacf7-material-design-filled  input[type="number"], .uacf7-material-design-filled  input[type="tel"],.uacf7-material-design-filled  input[type="number"],.uacf7-material-design-filled  input[type="file"], .uacf7-material-design-filled  input[type="checkbox"]{
     cursor          : pointer;
@@ -52,15 +58,6 @@
 
 
 
-  /* .uacf7-material-design-filled  input[type="file"]::before {
-    content: '';
-    display: inline-block;
-    padding: 0px 20px;
-    margin-bottom: 0px!important;
-    padding-bottom: 0px!important;
-    cursor: pointer;
-    z-index: 0;
-  } */
 
 
   .uacf7-material-design-filled p label ,  .uacf7-material-design-filled .uacf7-row .uacf7-col-6 > p label {
@@ -95,7 +92,7 @@
   }
 
 
-  .uacf7-material-design-dark  label.hover-label,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.hover-label {
+  .uacf7-material-design-filled  label.hover-label,  .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 label.hover-label {
     font-size       : 16px;
     left            : 16px;
     min-height      : 15px;
@@ -260,7 +257,7 @@
 
 
 
-  /*Radio Button Styles*/
+
 
 
   
@@ -286,7 +283,7 @@
  
   }
 
-  .uacf7-material-design-filled   .wpcf7-submit:hover{
+  .uacf7-material-design-filled  .wpcf7-submit:hover{
     cursor: pointer;
   }
   
@@ -303,32 +300,42 @@
   }
 
 
-  .uacf7-material-design-filled > .wpcf7-exclusive-checkbox  > .wpcf7-list-item {
-    display    : inline-flex;
-    align-items: center;
-    height     : 56px;
-    font-size  : 16px;
-    column-gap : 16px;
-  }
-
-
-  .uacf7-material-design-filled   input[type="checkbox"],   .uacf7-material-design-filled input[type="radio"]{
+ /*For Acceptance, Checkbox and Radio Buttons*/
+  .uacf7-material-design-filled    input[type="checkbox"],    .uacf7-material-design-filled  input[type="radio"]{
     width : 20px;
     height: 20px;
     box-sizing: border-box;
     position: relative;
+}
 
+  .uacf7-material-design-filled  .wpcf7-checkbox .wpcf7-list-item {
+      display: inline-flex;
+      align-items: center;
   }
-  .uacf7-material-design-filled   .wpcf7-acceptance .wpcf7-list-item {
-    display       : inline-flex;
-    align-items   : center;
-    height        : 40px;
-    column-gap    : 16px;
-    color         : #48454E;
-    letter-spacing: .15px;
 
-
+  .uacf7-material-design-filled  .wpcf7-checkbox .wpcf7-list-item input[type="checkbox"] {
+      margin-right: 16px; 
   }
+
+  .uacf7-material-design-filled  .wpcf7-acceptance .wpcf7-list-item label {
+    display: flex;
+    align-items: center;
+  }
+
+  .uacf7-material-design-filled  .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] {
+    margin-right: 16px;
+  }
+
+
+  .uacf7-material-design-filled  .wpcf7-radio .wpcf7-list-item label {
+    display: flex;
+    align-items: center;
+  }
+
+  .uacf7-material-design-filled  .wpcf7-radio .wpcf7-list-item input[type="radio"] {
+    margin-right: 16px; 
+  }
+
 
 
   .uacf7-material-design-filled input[type="checkbox"]:checked::before {
@@ -417,25 +424,6 @@
    
    }
  
-
- 
-  .uacf7-material-design-filled   .wpcf7-radio .wpcf7-list-item {
-    display    : inline-flex;
-    align-items: center;
-    height     : 56px;
-    column-gap : 16px;
-    color      : #48454E;
-}
-
-
-.uacf7-material-design-filled > .wpcf7-checkbox > .wpcf7-list-item, .uacf7-material-design-filled  > .wpcf7-radio  > .wpcf7-list-item{
-  display: inline-flex; 
-  align-items: center;
-  height: 56px;
-  column-gap: 16px;
-}
-
-
 
   
   /* Date Field Styles */
