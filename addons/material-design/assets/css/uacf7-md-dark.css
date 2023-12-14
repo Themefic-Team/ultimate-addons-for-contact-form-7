@@ -303,7 +303,7 @@
   }
 
 
-  .uacf7-material-design-dark  input[type="checkbox" i], input[type="radio" i]{
+  .uacf7-material-design-dark  input[type="checkbox"],  .uacf7-material-design-dark input[type="radio"]{
     width     : 18px;
     height    : 18px;
     box-sizing: border-box;
@@ -379,9 +379,32 @@
     align-items        : center;
     padding-left       : 2px;
     background-size    : cover;
-    border-radius      : 50%;
+    border-radius      : 100px;
     background-color   : #141316;
 
+   }
+
+
+   .uacf7-material-design-dark input[type="radio"]:hover::before {
+    position           : absolute;
+    background-image   : url('../icons/radio-icon-dark.svg');
+    background-position: center;
+    color              : #ffffff;
+    content            : "";
+    top                : 0;
+    bottom             : 0;
+    left               : 0;
+    width              : 100%;
+    height             : 100%;
+    display            : inline-flex;
+    align-items        : center;
+    padding-left       : 2px;
+    background-size    : cover;
+    background-color   : #2e2c2f;
+    border-radius      : 100px;
+    box-shadow         : 0 0 0 5px #2e2c2f;
+    box-sizing         : border-box;
+   
    }
  
 
