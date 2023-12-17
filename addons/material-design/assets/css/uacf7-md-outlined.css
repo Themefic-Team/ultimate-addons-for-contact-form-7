@@ -24,7 +24,7 @@
     font-size: 16px!important;
   }
 
-  /*For  Date, File, Select, and Textarea Field*/
+ /*To add style the label of d = Date, f = File, s = Select, and t = Textarea input*/
   .uacf7-material-design-outlined  .wpcf7-select.hover-dfst,  .uacf7-material-design-outlined  .wpcf7-file.hover-dfst,  .uacf7-material-design-outlined  .wpcf7-date.hover-dfst,  .uacf7-material-design-outlined  .wpcf7-select.wpcf7-textarea.hover-dfst{
     border: 1px solid #1C1B1E;
     color : #1C1B1E;

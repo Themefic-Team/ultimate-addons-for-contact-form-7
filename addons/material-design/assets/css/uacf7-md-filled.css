@@ -140,7 +140,7 @@
 
 
 
-  /*For  Date, File, Select, and Textarea Field*/
+ /*To add style the label of d = Date, f = File, s = Select, and t = Textarea input*/
   .uacf7-material-design-filled  .wpcf7-select.hover-dfst,  .uacf7-material-design-filled  .wpcf7-file.hover-dfst,  .uacf7-material-design-filled  .wpcf7-date.hover-dfst,  .uacf7-material-design-filled  .wpcf7-select.wpcf7-textarea.hover-dfst{
   border-bottom   : 1px solid  #1c1b1e;
   color           : #1c1b1e;

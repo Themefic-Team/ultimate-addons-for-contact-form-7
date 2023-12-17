@@ -201,7 +201,7 @@
     color           : #C9C5CA;
   }
 
-   /*To add style the label of Date, File, Select, and Textarea input*/
+   /*To add style the label of d = Date, f = File, s = Select, and t = Textarea input*/
    .uacf7-material-design-dark  label.dfst,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.dfst  {
     top             : 4px;
     margin-top      : 8px;
