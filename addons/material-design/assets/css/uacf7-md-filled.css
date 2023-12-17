@@ -14,14 +14,8 @@
   }
   .uacf7-material-design-filled   .uacf7-material-radio .wpcf7-form-control-wrap,  .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 > .uacf7-material-radio .wpcf7-form-control-wrap{
     padding: 10px 0px;
-  }
+  } 
 
-    .uacf7-material-design-filled   .TFCheckbox,     .uacf7-material-design-filled .TFAcceptance,     .uacf7-material-design-filled .TFSelect,     .uacf7-material-design-filled .TFRadio,    .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 > .TFCheckbox,    .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 > .TFAcceptance,   .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 > .TFSelect,   .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 > .TFRadio{
-    font-size     : 16px;
-    padding-bottom: 24px;
-    font-family   : 'Roboto', sans-serif;
-
-  }
 
   .uacf7-material-design-filled input[type="text"].wpcf7-not-valid, input[type="email"].wpcf7-not-valid, input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, input[type="tel"].wpcf7-not-valid, input[type="date"].wpcf7-not-valid, input[type="file"].wpcf7-not-valid {
     border-bottom: 2px solid #BA1A1A;

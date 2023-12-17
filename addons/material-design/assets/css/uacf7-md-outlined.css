@@ -17,13 +17,6 @@
     padding: 10px 0px;
   }
 
-  .uacf7-material-design-outlined   .TFCheckbox,   .uacf7-material-design-outlined .TFAcceptance,   .uacf7-material-design-outlined .TFSelect,   .uacf7-material-design-outlined .TFRadio,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > .TFCheckbox,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > .TFAcceptance, .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > .TFSelect, .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > .TFRadio{
-    font-size     : 16px;
-    padding-bottom: 24px;
-    font-family   : 'Roboto', sans-serif;
-  
-  }
-
 
   .uacf7-material-design-outlined input[type="text"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="email"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="url"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="number"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="tel"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="date"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="file"].wpcf7-not-valid {
     border: 2px solid #BA1A1A;
