@@ -16,12 +16,12 @@
 
 
   .uacf7-material-design-outlined input[type="text"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="email"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="url"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="number"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="tel"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="date"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="file"].wpcf7-not-valid {
-    border: 2px solid #BA1A1A !important;
+    border: 2px solid #BA1A1A;
   }
 
 
   .uacf7-material-design-outlined [class^='uacf7-form-'],  .uacf7-material-design-outlined  option {
-    font-size: 16px!important;
+    font-size: 16px;
   }
 
  /*To add style the label of d = Date, f = File, s = Select, and t = Textarea input*/
@@ -31,7 +31,7 @@
   }
 
   .uacf7-material-design-outlined  .wpcf7-select.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-file.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-date.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-select.wpcf7-textarea.focus-dfst{
-    border          : 2px solid #6747c1!important;
+    border          : 2px solid #6747c1;
   }
 
   .uacf7-material-design-outlined  input[type="date"],   .uacf7-material-design-outlined  input[type="file"],   .uacf7-material-design-outlined  .wpcf7-select{
@@ -65,7 +65,7 @@
 
 
   .uacf7-material-design-outlined  .wpcf7-select.input-focus,   .uacf7-material-design-outlined input[type="text"].input-focus,  .uacf7-material-design-outlined input[type="email"].input-focus,   .uacf7-material-design-outlined input[type="url"].input-focus,   .uacf7-material-design-outlined input[type="number"].input-focus,   .uacf7-material-design-outlined input[type="tel"].input-focus,  .uacf7-material-design-outlined input[type="number"].input-focus,  .uacf7-material-design-outlined input[type="file"].input-focus, .uacf7-material-design-outlined  input[type="checkbox"].input-focus{
-    border          : 2px solid #6747c1!important;
+    border          : 2px solid #6747c1;
   }
 
 
@@ -134,13 +134,13 @@
   .uacf7-material-design-outlined  label.has-value,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.has-value  {
     top             : 0%;
     left            : 16px;
-    font-size       : 12px;
+    font-size       : 12px!important;
     min-height      : 15px;
     line-height     : 15px;
     background-color: #ffffff;
     max-width       : fit-content;
     color           : #6747c1;
-    padding         : 0px 4px!important;
+    padding         : 0px 4px;
 
   }
 
@@ -154,7 +154,7 @@
     background-color: #ffffff;
     max-width       : fit-content;
     color           : #48454E;
-    padding         : 0px 4px!important;
+    padding         : 0px 4px;
     z-index         : 99;
     
   }
@@ -162,7 +162,7 @@
 
   .uacf7-material-design-outlined  label.focus-dfst-label,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.focus-dfst-label  {
   
-    color           : #6747c1!important; 
+    color           : #6747c1; 
 
   }
 
@@ -175,7 +175,7 @@
     background-color: #ffffff;
     max-width       : fit-content;
     color           : #1C1B1E;
-    padding         : 0px 4px!important;
+    padding         : 0px 4px;
     z-index         : 99;
     
 
@@ -228,10 +228,10 @@
     height          : 40px;
     margin-top      : 32px;
     border-radius   : 50px;
-    border-width    : 0px!important;
+    border-width    : 0px;
     letter-spacing  : 2px;
     font-size       : 14px;
-    text-transform  : uppercase!important;
+    text-transform  : uppercase;
     background-color: #6747c1;
     color           : #ffffff;
     padding         : 10px, 24px, 10px, 24px;

@@ -14,12 +14,12 @@
   }
 
   .uacf7-material-design-filled input[type="text"].wpcf7-not-valid, input[type="email"].wpcf7-not-valid, input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, input[type="tel"].wpcf7-not-valid, input[type="date"].wpcf7-not-valid, input[type="file"].wpcf7-not-valid {
-    border-bottom: 2px solid #BA1A1A !important;
+    border-bottom: 2px solid #BA1A1A;
   }
 
 
   .uacf7-material-design-filled  ,  .uacf7-material-design-filled   option {
-      font-size: 16px!important;
+      font-size: 16px;
   }
 
 
@@ -130,7 +130,7 @@
 
 
   .uacf7-material-design-filled    input.input-focus,  .uacf7-material-design-filled   .uacf7-row .uacf7-col-6 input.input-focus {
-    border-bottom   : 2px solid #6747c1!important;
+    border-bottom   : 2px solid #6747c1;
     color           : #1c1b1e;
     background-color: #e6e1e6;
     padding-bottom  : 0;
@@ -147,7 +147,7 @@
   }
 
   .uacf7-material-design-filled  .wpcf7-select.focus-dfst,  .uacf7-material-design-filled  .wpcf7-file.focus-dfst,  .uacf7-material-design-filled  .wpcf7-date.focus-dfst,  .uacf7-material-design-filled  .wpcf7-select.wpcf7-textarea.focus-dfst{
-    border-bottom: 2px solid #6747c1!important;
+    border-bottom: 2px solid #6747c1;
   }
 
 
@@ -157,7 +157,7 @@
   .uacf7-material-design-filled  label.dfst,  .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 label.dfst  {
     top             : 4px;
     margin-top      : 8px;
-    font-size       : 12px!important;
+    font-size       : 12px;
     left            : 16px;
     min-height      : 15px;
     line-height     : 24px;
@@ -214,14 +214,14 @@
 
   .uacf7-material-design-filled  label.focus-dfst-label,  .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 label.focus-dfst-label  {
   
-    color           : #6747c1!important; 
+    color           : #6747c1; 
 
   }
 
   .uacf7-material-design-filled  label.hover-dfst-label,  .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 label.hover-dfst-label  {
     top             : 4px;
     margin-top      : 8px;
-    font-size       : 12px!important;
+    font-size       : 12px;
     left            : 16px;
     min-height      : 15px;
     line-height     : 24px;
@@ -241,10 +241,10 @@
     height          : 40px;
     margin-top      : 32px;
     border-radius   : 50px;
-    border-width    : 0px!important;
+    border-width    : 0px;
     letter-spacing  : 2px;
     font-size       : 14px;
-    text-transform  : uppercase!important;
+    text-transform  : uppercase;
     background-color: #6747c1;
     color           : #ffffff;
     padding         : 10px, 24px, 10px, 24px;

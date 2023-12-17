@@ -22,17 +22,17 @@
   }
 
   .uacf7-material-design-dark label,  .uacf7-material-design-dark   .uacf7-row .uacf7-col-6 >label{
-    color           : #CAC4CF!important;
+    color           : #CAC4CF;
   }
 
     
   .uacf7-material-design-dark  input[type="text"].wpcf7-not-valid, .uacf7-material-design-dark input[type="email"].wpcf7-not-valid, .uacf7-material-design-dark input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, .uacf7-material-design-dark input[type="tel"].wpcf7-not-valid,.uacf7-material-design-dark input[type="date"].wpcf7-not-valid, .uacf7-material-design-dark input[type="file"].wpcf7-not-valid, .uacf7-material-design-dark input[type="select"].wpcf7-not-valid, .uacf7-material-design-dark input[type="textarea"].wpcf7-not-valid {
-    border-bottom: 2px solid #f7aea5 !important;
+    border-bottom: 2px solid #f7aea5;
   }
 
 
   .uacf7-material-design-dark  option {
-      font-size: 16px!important;
+      font-size: 16px;
       color    : #CAC4CF;
     }
 
@@ -191,15 +191,14 @@
   }
 
   .uacf7-material-design-dark  span > input.hover,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 span > input.hover {
-    border-bottom   : 2px solid #C9C5CA;
     color           : #cac4cf;
-    background-color: #444246!important;
+    background-color: #444246;
     box-sizing      : border-box;
  
   }
 
   .uacf7-material-design-dark   input.input-focus,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 input.input-focus {
-    border-bottom   : 2px solid #CEBDFF!important;
+    border-bottom   : 2px solid #CEBDFF;
     color           : #C9C5CA;
   }
 
@@ -207,7 +206,7 @@
    .uacf7-material-design-dark  label.dfst,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.dfst  {
     top             : 4px;
     margin-top      : 8px;
-    font-size       : 12px!important;
+    font-size       : 12px;
     left            : 16px;
     font-size       : 16px;
     min-height      : 15px;
@@ -236,10 +235,10 @@
     height          : 40px;
     margin-top      : 32px;
     border-radius   : 50px;
-    border-width    : 0px!important;
+    border-width    : 0px;
     letter-spacing  : 2px;
     font-size       : 14px;
-    text-transform  : uppercase!important;
+    text-transform  : uppercase;
     background-color: #6747c1;
     color           : #ffffff;
     padding         : 10px, 24px, 10px, 24px;
@@ -397,7 +396,7 @@
 .uacf7-material-design-dark .wpcf7-date::-webkit-calendar-picker-indicator { 
 
   background-image: url('../icons/calendar-icon-for-dark.png');
-  background-color: #2a292c!important;
+  background-color: #2a292c;
   padding         : 10px;
   background-color: #e7e2e7;
   border-radius   : 50%;
