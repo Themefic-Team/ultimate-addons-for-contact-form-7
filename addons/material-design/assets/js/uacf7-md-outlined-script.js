@@ -40,7 +40,7 @@
 						$(this).parent().siblings('label').addClass('has-value');
 					}
 					$(this).removeClass('hover');
-					if (!$(this).hasClass('TFDate') && !$(this).hasClass('TFFile') && val.length === 0 && $(this).is(':not(:focus)') ) {
+					if (!$(this).hasClass('wpcf7-date') && !$(this).hasClass('wpcf7-file') && val.length === 0 && $(this).is(':not(:focus)') ) {
 						$(this).parent().siblings('label').removeClass('has-value');
 					}
 				}).keypress(function () {

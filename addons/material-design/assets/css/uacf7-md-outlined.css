@@ -322,7 +322,7 @@
 
 .uacf7-material-design-outlined input[type="checkbox"]:hover::before {
   position           : absolute;
-  background-image   : url('../icons/check_small.svg');
+  /* background-image   : url('../icons/check_small.svg'); */
   background-position: center;
   border-radius      : 3px;
   color              : #6747c1;
@@ -381,7 +381,7 @@
 
   .uacf7-material-design-outlined input[type="radio"]:hover::before {
     position           : absolute;
-    background-image   : url('../icons/radio-icon.svg');
+    /* background-image   : url('../icons/radio-icon.svg'); */
     background-position: center;
     color              : #ffffff;
     content            : "";
@@ -394,7 +394,7 @@
     align-items        : center;
     padding-left       : 2px;
     background-size    : cover;
-    background-color   : #CAC4CF;
+    background-color   : #6747c1;
     border-radius      : 100px;
     box-shadow         : 0 0 0 5px #CAC4CF;
     box-sizing         : border-box;
