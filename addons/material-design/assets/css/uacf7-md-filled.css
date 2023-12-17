@@ -134,7 +134,7 @@
 
 
   .uacf7-material-design-filled    input.input-focus,  .uacf7-material-design-filled   .uacf7-row .uacf7-col-6 input.input-focus {
-    border-bottom   : 2px solid #6747c1;
+    border-bottom   : 2px solid #6747c1!important;
     color           : #1c1b1e;
     background-color: #e6e1e6;
     padding-bottom  : 0;
@@ -151,7 +151,7 @@
   }
 
   .uacf7-material-design-filled  .wpcf7-select.focus-dfst,  .uacf7-material-design-filled  .wpcf7-file.focus-dfst,  .uacf7-material-design-filled  .wpcf7-date.focus-dfst,  .uacf7-material-design-filled  .wpcf7-select.wpcf7-textarea.focus-dfst{
-    border-bottom: 2px solid #6747c1;
+    border-bottom: 2px solid #6747c1!important;
   }
 
 
@@ -161,7 +161,7 @@
   .uacf7-material-design-filled  label.dfst,  .uacf7-material-design-filled  .uacf7-row .uacf7-col-6 label.dfst  {
     top             : 4px;
     margin-top      : 8px;
-    font-size       : 12px;
+    font-size       : 12px!important;
     left            : 16px;
     min-height      : 15px;
     line-height     : 24px;

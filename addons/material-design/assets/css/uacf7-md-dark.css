@@ -201,7 +201,7 @@
   }
 
   .uacf7-material-design-dark   input.input-focus,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 input.input-focus {
-    border-bottom   : 2px solid #CEBDFF;
+    border-bottom   : 2px solid #CEBDFF!important;
     color           : #C9C5CA;
   }
 
@@ -209,7 +209,7 @@
    .uacf7-material-design-dark  label.dfst,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.dfst  {
     top             : 4px;
     margin-top      : 8px;
-    font-size       : 12px;
+    font-size       : 12px!important;
     left            : 16px;
     font-size       : 16px;
     min-height      : 15px;
@@ -222,7 +222,7 @@
 
 
   .uacf7-material-design-dark  .wpcf7-select.focus-dfst,  .uacf7-material-design-dark  .wpcf7-file.focus-dfst,  .uacf7-material-design-dark  .wpcf7-date.focus-dfst,  .uacf7-material-design-dark  .wpcf7-select.wpcf7-textarea.focus-dfst{
-    border-bottom   : 2px solid #cac4cf;
+    border-bottom   : 2px solid #cac4cf!important;
     color           : #cac4cf;
   }
 

@@ -15,7 +15,8 @@
   }
   .uacf7-material-design-outlined   .uacf7-material-radio .wpcf7-form-control-wrap,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 > .uacf7-material-radio .wpcf7-form-control-wrap{
     padding: 10px 0px;
-  }
+  } 
+
 
 
   .uacf7-material-design-outlined input[type="text"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="email"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="url"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="number"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="tel"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="date"].wpcf7-not-valid, .uacf7-material-design-outlined input[type="file"].wpcf7-not-valid {
@@ -34,7 +35,7 @@
   }
 
   .uacf7-material-design-outlined  .wpcf7-select.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-file.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-date.focus-dfst,  .uacf7-material-design-outlined  .wpcf7-select.wpcf7-textarea.focus-dfst{
-    border          : 2px solid #6747c1;
+    border          : 2px solid #6747c1!important;
   }
 
   .uacf7-material-design-outlined  input[type="date"],   .uacf7-material-design-outlined  input[type="file"],   .uacf7-material-design-outlined  .wpcf7-select{
@@ -68,7 +69,7 @@
 
 
   .uacf7-material-design-outlined  .wpcf7-select.input-focus,   .uacf7-material-design-outlined input[type="text"].input-focus,  .uacf7-material-design-outlined input[type="email"].input-focus,   .uacf7-material-design-outlined input[type="url"].input-focus,   .uacf7-material-design-outlined input[type="number"].input-focus,   .uacf7-material-design-outlined input[type="tel"].input-focus,  .uacf7-material-design-outlined input[type="number"].input-focus,  .uacf7-material-design-outlined input[type="file"].input-focus, .uacf7-material-design-outlined  input[type="checkbox"].input-focus{
-    border          : 2px solid #6747c1;
+    border          : 2px solid #6747c1!important;
   }
 
 
@@ -166,6 +167,7 @@
   .uacf7-material-design-outlined  label.focus-dfst-label,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.focus-dfst-label  {
   
     color           : #6747c1; 
+   
 
   }
 
@@ -186,12 +188,12 @@
 
  
   .uacf7-material-design-outlined  label.hover-label,  .uacf7-material-design-outlined  .uacf7-row .uacf7-col-6 label.hover-label  {
-    /* left       : 16px; */
-    font-size  : 16px;
-    min-height : 15px;
-    max-width  : fit-content;
-    color      : #1C1B1E;
-    /* padding    : 0px 4px; */
+    font-size   : 16px;
+    min-height  : 15px;
+    max-width   : fit-content;
+    color       : #1C1B1E;
+    /* padding-left: 4px;
+    padding-right: 4px; */
     
 
   }
@@ -248,7 +250,9 @@
   }
 
   .uacf7-material-design-outlined  .wpcf7-submit:hover{
-    cursor: pointer;
+    cursor          : pointer;
+    background-color: #6747c1!important;
+    color           : #ffffff;
   }
   
   
