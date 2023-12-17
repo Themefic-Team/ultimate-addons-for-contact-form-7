@@ -1,3 +1,5 @@
+// const { divide } = require("lodash");
+
 (function ($) {
     'use strict';
     $(document).ready(function () {
@@ -103,8 +105,26 @@
         $(window).on('hashchange load', function () {
             let hash = window.location.hash;
             let query = window.location.search;
-            let slug = hash.replace('#tab=', '');
+            let slug = hash.replace('#tab=', ''); 
+            if (hash) {
+                let selectedTab = $('.tf-tablinks[data-tab="' + slug + '"]'),
+                    parentDiv = selectedTab.closest('.tf-admin-tab-item');
 
+                selectedTab.trigger('click');
+                parentDiv.trigger('click');
+            }
+
+            if (query.indexOf('dashboard') > -1) {
+                let submenu = $("#toplevel_page_tf_settings").find(".wp-submenu");
+                submenu.find("a").filter(function (a, e) {
+                    return e.href.indexOf(query) > -1;
+                }).parent().addClass("current");
+            }
+        });
+        $(document).ready(function () {
+            let hash = window.location.hash;
+            let query = window.location.search;
+            let slug = hash.replace('#tab=', ''); 
             if (hash) {
                 let selectedTab = $('.tf-tablinks[data-tab="' + slug + '"]'),
                     parentDiv = selectedTab.closest('.tf-admin-tab-item');
@@ -450,9 +470,70 @@
 
             //remove active class
             iconLi.removeClass('active');
-        })
+        });
+
+        // uacf7 addone count activate and deactivate addon
+        function uacf7_addon_count() {
+          
+
+            var all = $('.uacf7-addon-input-field[type="checkbox"]').length; 
+            var activated = $('.uacf7-addon-input-field[type="checkbox"]:checked').length;  
+            var deactivate = $('.uacf7-addon-input-field[type="checkbox"]:not(:checked)').length;
+
+            $('.uacf7-addon-filter-button.all .uacf7-addon-filter-cta-count').text(all);
+            $('.uacf7-addon-filter-button.activete .uacf7-addon-filter-cta-count').text(activated);
+            $('.uacf7-addon-filter-button.deactive .uacf7-addon-filter-cta-count').text(deactivate);
+        } 
+        uacf7_addon_count();
 
 
+        // Uacf7 Addon save data
+        $(document).on('change', '.uacf7-addon-input-field', function () {
+            uacf7_addon_count();
+            if($(this).is(':checked')){
+                $(this).val(1); 
+            }else{
+                $(this).val(0);
+            } 
+            $(".tf-option-form.tf-ajax-save").submit();
+            
+        });
+
+       
+        $(document).on('click', '.uacf7-addon-filter-button', function (e) {
+            e.preventDefault(); 
+            $(this).addClass('active').siblings().removeClass('active');
+            if($(this).hasClass('all')){
+                $('.uacf7-single-addon-setting').css('display', 'block');
+            }else if($(this).hasClass('activete')){
+                $('.uacf7-single-addon-setting').css('display', 'none');
+                $('.uacf7-single-addon-setting input[type="checkbox"]:checked').closest('.uacf7-single-addon-setting').css('display', 'block');
+            }else if($(this).hasClass('deactive')){
+                $('.uacf7-single-addon-setting').css('display', 'none');
+                $('.uacf7-single-addon-setting input[type="checkbox"]:not(:checked)').closest('.uacf7-single-addon-setting').css('display', 'block');
+            }
+        });
+
+        // Uacf7 Ultimate Innput Filter
+        $(document).on('keyup', '#uacf7-addon-filter', function () {
+            $('.uacf7-addon-filter-button.all').addClass('active').siblings().removeClass('active');
+            $('.uacf7-addons-settings-page').find('.tf-field-notice-inner').remove();
+            var filter_string = $(this).val().toLowerCase(); 
+            if(filter_string == ''){
+               
+                $('.uacf7-single-addon-setting').css('display', 'block');
+            }else{ 
+                $('.uacf7-single-addon-setting').css('display', 'none');
+                $('.uacf7-single-addon-setting[data-filter*="' + filter_string + '"]').css('display', 'block');
+                if($('.uacf7-single-addon-setting[data-filter*="' + filter_string + '"]').length == 0){
+                    $('.uacf7-addons-settings-page').append('<div class="tf-field-notice-inner tf-notice-danger" style="display: block;">No Addon Found ....</div>');
+                }else{
+                    $('.uacf7-addons-settings-page').find('.tf-field-notice-inner').remove();
+                }
+            }
+            
+           
+        });
         /*
         * Options ajax save
         * @author: Foysal
@@ -949,6 +1030,84 @@
         });
 
     });
+
+    $(document).ready(function () {
+        $('.tf-import-btn').on('click', function (event) {
+            event.preventDefault();
+
+            // Get the import URL from the button's href attribute 
+            // Get the import data from the textarea
+
+            var textarea = $('textarea[name="tf_import_option"]');
+            var form_id = textarea.attr('data-form-id'); 
+            var importData = textarea.val().trim();
+            if (importData == '') {
+                alert(tf_options.tf_export_import_msg.import_empty);
+                let importField = $('textarea[name="tf_import_option"]');
+                importField.focus();
+                importField.css('border', '1px solid red');
+                return;
+            } else {
+                //confirm data before send
+                if (!confirm(tf_options.tf_export_import_msg.import_confirm)) {
+                    return;
+                }
+
+                $.ajax({
+                    url: tf_options.ajax_url,
+                    method: 'POST',
+                    data: {
+                        action: 'uacf7_option_import',
+                        tf_import_option: importData,
+                        form_id: form_id,
+                        ajax_nonce: tf_options.nonce,
+                    },
+                    beforeSend: function () {
+                        $('.tf-import-btn').html('Importing...');
+                        $('.tf-import-btn').attr('disabled', 'disabled');
+                    },
+                    success: function (response) {
+                        if (response.success) { 
+                            alert(tf_options.tf_export_import_msg.imported);
+                            $('.tf-import-btn').html('Imported');
+                            window.location.reload();
+                        } else {
+                            alert('Something went wrong!');
+                        }
+                    }
+                });
+            }
+        })
+    });
+
+    //export the data in txt file
+    jQuery(document).ready(function ($) {
+        $('.tf-export-btn').on('click', function (event) {
+            event.preventDefault();
+
+            // Get the textarea value
+            var textarea = $('textarea[name="tf_export_option"]');
+            var option_name = textarea.attr('data-option');
+            var textareaValue = textarea.val();
+
+            // Create a blob with the textarea value
+            var blob = new Blob([textareaValue], {type: 'text/plain'});
+
+            // Create a temporary URL for the blob
+            var url = window.URL.createObjectURL(blob);
+
+            // Create a temporary link element
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = option_name+'.txt';  
+
+            // Programmatically click the link to initiate the file download
+            link.click();
+
+            // Clean up the temporary URL
+            window.URL.revokeObjectURL(url);
+        });
+    });
 })(jQuery);
 
 
@@ -969,7 +1128,7 @@ function openTab(evt, tabName) {
 }
 
 var frame, gframe;
-(function ($) {
+(function ($) { 
     // Single Image remove
     $(document).on("click", ".tf-image-close", function (e) {
         e.preventDefault();

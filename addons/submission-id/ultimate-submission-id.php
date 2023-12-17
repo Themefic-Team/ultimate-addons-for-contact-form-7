@@ -9,8 +9,7 @@ if (!defined('ABSPATH')) {
 class UACF7_SUBMISSION_ID{
 
     public function __construct(){
-        add_action('wp_enqueue_scripts', [$this, 'submission_id_public_assets_loading']);
-        add_action('admin_enqueue_scripts', [$this, 'submission_id_admin_assets_loading']);
+        add_action('wp_enqueue_scripts', [$this, 'submission_id_public_assets_loading']); 
 
         add_action('admin_init', [$this, 'submission_tag_generator']);
         add_action('wpcf7_init', [$this, 'submission_id_add_shortcodes']);
@@ -53,7 +52,8 @@ class UACF7_SUBMISSION_ID{
                     'label'     => __( ' Enable/Disable Submission ID', 'ultimate-addons-cf7' ),
                     'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
                     'label_off' => __( 'No', 'ultimate-addons-cf7' ),
-                    'default'   => false
+                    'default'   => false, 
+                    'field_width' => 33,
                 ),
                 'uacf7_submission_id' => array(
                     'id'        => 'uacf7_submission_id',
@@ -61,6 +61,7 @@ class UACF7_SUBMISSION_ID{
                     'label'     => __( ' Submission ID Starts from ', 'ultimate-addons-cf7' ),
                     'placeholder'     => __( ' 1 ', 'ultimate-addons-cf7' ),
                     'description'     => __( ' E.g. default 1 ', 'ultimate-addons-cf7' ),
+                    'field_width' => 33,
                 ),
                 'uacf7_submission_id_step' => array(
                     'id'        => 'uacf7_submission_id_step',
@@ -68,6 +69,7 @@ class UACF7_SUBMISSION_ID{
                     'label'     => __( ' Submission ID Step Increament ', 'ultimate-addons-cf7' ),
                     'placeholder'     => __( ' 1 ', 'ultimate-addons-cf7' ),
                     'description'     => __( ' E.g. default 1 ', 'ultimate-addons-cf7' ),
+                    'field_width' => 33,
                 ), 
             ),
             
@@ -86,16 +88,13 @@ public function submission_id_public_assets_loading(){
     wp_enqueue_style('submission_id_public_css', UACF7_URL . '/addons/submission-id/assets/public/css/public-submission-id.css', [], 'UAFC7_VERSION', true, 'all');
     wp_localize_script( 'submission_id_public_js', 'submission_id_obj', [
         "ajaxurl" => admin_url( 'admin-ajax.php' ),
+        'nonce'   => wp_create_nonce( 'uacf7-submission-id-nonce' ),
 
     ] );
 }
+ 
 
-public function submission_id_admin_assets_loading(){
 
-    wp_enqueue_script('submission_id_admin_js', UACF7_URL . '/addons/submission-id/assets/admin/js/admin-submission-id.js', ['jquery'], 'UAFC7_VERSION', true);
-    wp_enqueue_style('submission_id_admin_css', UACF7_URL . '/addons/submission-id/assets/admin/css/admin-submission-id.css', [], 'UAFC7_VERSION', true, 'all');
-
-}
 
 /** Ends Loading Essential JS & CSS */
 
@@ -107,14 +106,17 @@ public function submission_id_admin_assets_loading(){
 
  public function uacf7_update_submission_id(){
 
-
-        $form_id    = $_POST['form_id'];
-        $submission = uacf7_get_form_option( $form_id, 'submission_id' );
-        $meta_data  = isset($submission['uacf7_submission_id']) ? $submission['uacf7_submission_id'] : 0;
-        echo wp_send_json( [
-        'form_id' => $form_id,
-        'meta_data' => $meta_data
-       ] );
+    if ( !wp_verify_nonce($_POST['ajax_nonce'], 'uacf7-submission-id-nonce')) {
+        exit(esc_html__("Security error", 'ultimate-addons-cf7'));
+    } 
+    $form_id = $_POST['form_id'];
+    $submission = uacf7_get_form_option( $form_id, 'submission_id' );
+    $meta_data = isset($submission['uacf7_submission_id']) ? $submission['uacf7_submission_id'] : 0;
+    
+    echo wp_send_json( [
+    'form_id' => $form_id,
+    'meta_data' => $meta_data
+    ] );
    
  }
 

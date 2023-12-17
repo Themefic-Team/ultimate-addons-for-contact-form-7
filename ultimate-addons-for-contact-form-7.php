@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Ultimate Addons for Contact Form 7
  * Plugin URI: https://cf7addons.com/
- * Description: 25+ Essential Addons for Contact form 7 including Conditional Fields, Multi Step Form, Thank you page Redirection, Columns Layout, WooCommerce Integration, Star Rating Fields, Range Slider and many more stunning Addons, all in one.
- * Version: 3.2.2
+ * Description: 25+ Essential Addons for Contact Form 7 including Conditional Fields, Multi Step Form, Thank you page Redirection, Columns Layout, WooCommerce Integration, Star Rating Fields, Range Slider and many more stunning Addons, all in one.
+ * Version: 3.2.11
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -36,7 +36,7 @@ class Ultimate_Addons_CF7 {
         }
         
         //Plugin loaded
-        add_action( 'plugins_loaded', array( $this, 'uacf7_plugin_loaded' ) );
+        add_action( 'plugins_loaded', array( $this, 'uacf7_plugin_loaded' ), 10 );
         
         if(defined('WPCF7_VERSION') && WPCF7_VERSION >= 5.7){ 
             add_filter( 'wpcf7_autop_or_not', '__return_false' );
@@ -52,6 +52,16 @@ class Ultimate_Addons_CF7 {
     public function uacf7_plugin_loaded() {
         //Register text domain
         load_plugin_textdomain( 'ultimate-addons-cf7', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
+
+              
+ 
+        //Enqueue admin scripts
+        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'uacf7_frontend_scripts' ) );
+         
+        //Require ultimate functions
+        require_once( 'inc/functions.php' ); 
+
         
         if(class_exists('WPCF7')){
             //Init ultimate addons
@@ -60,6 +70,12 @@ class Ultimate_Addons_CF7 {
         }else{
             //Admin notice
             add_action( 'admin_notices', array( $this, 'uacf7_admin_notice' ) );
+        }
+
+      
+        // Require the main Option file
+        if ( file_exists( UACF7_PATH . 'admin/tf-options/TF_Options.php' ) ) {
+            require_once UACF7_PATH . 'admin/tf-options/TF_Options.php';
         }
     }
     
@@ -82,29 +98,15 @@ class Ultimate_Addons_CF7 {
     */
     public function uacf7_init() {
         
-     
-        //Require ultimate functions
-        require_once( 'inc/functions.php' );
- 
-        //Enqueue admin scripts
-        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'uacf7_frontend_scripts' ) );
-         
-       
-
-       
         
         //Require admin menu
-        require_once( 'admin/admin-menu.php' );
+        // require_once( 'admin/admin-menu.php' );
                 
         //Require ultimate addons
         require_once( 'addons/addons.php' );
         // require_once UACF7_PATH . 'admin/tf-options/TF_Optionss.php';
+      
        
-       
-        if ( file_exists( UACF7_PATH . 'admin/tf-options/TF_Options.php' ) ) {
-            require_once UACF7_PATH . 'admin/tf-options/TF_Options.php';
-        }
        
     }
     
@@ -114,17 +116,12 @@ class Ultimate_Addons_CF7 {
         
         wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css', 'sadf' );
         
-        wp_enqueue_media();
+        // wp_enqueue_media();
         wp_enqueue_style( 'wp-color-picker' );
         wp_enqueue_script( 'wp-color-picker' );
         wp_enqueue_script( 'uacf7-admin-script', UACF7_URL . 'assets/js/admin-script.js', array('jquery'), null, true ); 
 
-		// Custom
-		wp_enqueue_style( 'uacf7-admin-sweet-alert', '//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css', '', UACF7_VERSION );
-		wp_enqueue_style( 'uacf7-admin', UACF7_URL . 'assets/admin/css/tourfic-admin.min.css', '', UACF7_VERSION );
-		wp_enqueue_script( 'uacf7-admin-sweet-alert', '//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js', array( 'jquery' ), UACF7_VERSION, true );
-		wp_enqueue_script( 'uacf7-admin', UACF7_URL . 'assets/admin/js/tourfic-admin-scripts.min.js', array( 'jquery', 'wp-data', 'wp-editor', 'wp-edit-post' ), UACF7_VERSION, true );
-		 
+	
        
         wp_localize_script( 'uacf7-admin', 'uacf7_options', array(
             'ajax_url'          => admin_url( 'admin-ajax.php' ),

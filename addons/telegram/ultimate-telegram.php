@@ -21,8 +21,7 @@ class UACF7_TELEGRAM {
 
   public function uacf7_telegram_admin_js_script(){
 
-    wp_enqueue_script( 'uacf7-telegram-scripts', UACF7_ADDONS. '/telegram/assets/js/admin-script.js', ['jquery'], 'UACF7_VERSION', true );
-    wp_enqueue_style( 'uacf7-telegram-styles', UACF7_ADDONS. '/telegram/assets/css/admin-style.css', [], 'UACF7_VERSION', 'all' );
+    wp_enqueue_script( 'uacf7-telegram-scripts', UACF7_ADDONS. '/telegram/assets/js/admin-script.js', ['jquery'], 'UACF7_VERSION', true ); 
 
     
   }
@@ -46,28 +45,30 @@ class UACF7_TELEGRAM {
                   '<a href="https://themefic.com/docs/uacf7/free-addons/uacf7-telegram/" target="_blank">documentation</a>'
               )
             ),
+            'uacf7_telegram_enable' => array(
+              'id'        => 'uacf7_telegram_enable',
+              'type'      => 'switch',
+              'label'     => __( ' Enable/Disable Telegram', 'ultimate-addons-cf7' ),
+              'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
+              'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+              'default'   => false,
+              'field_width' => 50,
+          ),
             'uacf7_telegram_enable_icon' => array(
               'id'       => 'uacf7_telegram_enable_icon',
               'type'     => 'callback',
               'function' => 'uacf7_telegram_active_status_callback',
               'argument' => $post_id,
+              'field_width' => 50,
           
-            ),
-         
-            'uacf7_telegram_enable' => array(
-                'id'        => 'uacf7_telegram_enable',
-                'type'      => 'switch',
-                'label'     => __( ' Enable/Disable Telegram', 'ultimate-addons-cf7' ),
-                'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
-                'label_off' => __( 'No', 'ultimate-addons-cf7' ),
-                'default'   => false
-            ),
+            ), 
             'uacf7_telegram_bot_token' => array(
                 'id'        => 'uacf7_telegram_bot_token',
                 'type'      => 'text',
                 'label'     => __( ' Telegram BOT Token ', 'ultimate-addons-cf7' ),
                 'placeholder'     => __( ' Paste here Telegram BOT TOKEN..... ', 'ultimate-addons-cf7' ),
                 'description'     => __( 'You need to create your own Telegram-Bot. Learn how to create & get Token <a href="https://core.telegram.org/bots#3-how-do-i-create-a-bot">here</a>.', 'ultimate-addons-cf7' ),
+                'field_width' => 50,
             ),
             'uacf7_telegram_chat_id' => array(
               'id'        => 'uacf7_telegram_chat_id',
@@ -75,6 +76,7 @@ class UACF7_TELEGRAM {
               'label'     => __( ' Telegram Chat ID ', 'ultimate-addons-cf7' ),
               'placeholder'     => __( ' Paste here Telegram Chat ID..... ', 'ultimate-addons-cf7' ),
               'description'     => __( 'You need to create your own Telegram-Chat ID. Learn how to get  <a href="https://www.google.com/search?q=%22how+to+get+telegram+chat+id">here</a>.', 'ultimate-addons-cf7' ),
+              'field_width' => 50,
           ),
 
         ),
@@ -90,13 +92,19 @@ class UACF7_TELEGRAM {
 
       $submission = WPCF7_Submission::get_instance();
       if ($submission) {
-          $form_id     = $contact_form->id();
-          $form_name   = $contact_form->title();
+          $form_id   = $contact_form->id();
+          $form_name = $contact_form->title();
+      
+
           $posted_data = $submission->get_posted_data();
-          $form_tags   = $submission->get_contact_form()->form_scan_shortcode();
-          $properties  = $submission->get_contact_form()->get_properties();
-          $mail        = $contact_form->prop( 'mail' );
-          $message     = wpcf7_mail_replace_tags( @ $mail[ 'body' ] );
+
+          $form_tags = $submission->get_contact_form()->scan_form_tags();
+   
+          $properties = $submission->get_contact_form()->get_properties();
+      
+
+          $mail    = $contact_form->prop( 'mail' );
+          $message = wpcf7_mail_replace_tags( @ $mail[ 'body' ] );
 
         
 
@@ -130,34 +138,40 @@ class UACF7_TELEGRAM {
      }
 
  
-      $bot_token = $uacf7_telegram_bot_token;
-      $chat_id   = $uacf7_telegram_chat_id;
 
-     if($uacf7_telegram_enable == true ){
+    $uacf7_telegram_enable = isset($uacf7_telegram_enable) ? $uacf7_telegram_enable : 'off';
+    $bot_token             = isset($uacf7_telegram_bot_token) ? $uacf7_telegram_bot_token : '';
+    $chat_id               = isset($uacf7_telegram_chat_id) ? $uacf7_telegram_chat_id : '';
+    
+    if ($uacf7_telegram_enable === 'on' && $bot_token && $chat_id) {
         $api_url = "https://api.telegram.org/bot$bot_token/sendMessage";
-     } 
 
-      $args = array(
-        'chat_id' => $chat_id,
-        'text'    => $message,
-      ); 
-      
-      $response = wp_remote_post($api_url, array(
-          'body'    => json_encode($args),
-          'headers' => array('Content-Type' => 'application/json'),
-      ));
+
+        $args = array(
+          'chat_id' => $chat_id,
+          'text'    => $message,
+      );
+  
+  
+        $response = wp_remote_post($api_url, array(
+            'body'    => json_encode($args),
+            'headers' => array('Content-Type' => 'application/json'),
+        ));
+  
+     
+        if (is_wp_error($response)) {
+            error_log('Telegram API request failed: ' . $response->get_error_message());
+        }
+    }
+
+
 
    
-      if (is_wp_error($response)) {
-          error_log('Telegram API request failed: ' . $response->get_error_message());
-      }
         
   }
 
 }
-
-
-
+ 
 
 $UACF7_TELEGRAM = new UACF7_TELEGRAM();
 

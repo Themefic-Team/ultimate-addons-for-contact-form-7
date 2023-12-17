@@ -35,6 +35,10 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 			//enqueue scripts
 			add_action( 'admin_enqueue_scripts', array( $this, 'tf_options_admin_enqueue_scripts' ),9 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'tf_options_wp_enqueue_scripts' ) );
+
+			// Import Export
+			add_action( 'wp_ajax_uacf7_option_import', array($this, 'uacf7_option_import_callback') );
+			
 		}
 
 		public function tf_options_version() {
@@ -47,6 +51,28 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 
 		public function tf_options_file_url( $file_url = '' ) {
 			return plugin_dir_url( __FILE__ ) . $file_url;
+		}
+
+		/**
+		 * Import Export Callback
+		 * @author Sydur Rahman
+		 */
+		public function uacf7_option_import_callback(){
+			if ( !wp_verify_nonce($_POST['ajax_nonce'], 'tf_options_nonce')) {
+				exit(esc_html__("Security error", 'ultimate-addons-cf7'));
+			} 
+			$imported_data = stripslashes( $_POST['tf_import_option'] );
+			$form_id = stripslashes( $_POST['form_id'] );
+			if($form_id != 0){
+				$imported_data = unserialize( $imported_data ); 
+				$imported_data = apply_filters( 'uacf7_post_meta_import_export', $imported_data, $form_id);
+				update_post_meta( $form_id, 'uacf7_form_opt', $imported_data );
+			}else{
+				$imported_data = unserialize( $imported_data );
+				update_option( 'uacf7_settings', $imported_data );
+			}
+    		
+    		wp_send_json_success($imported_data);
 		}
 
 		/**
@@ -134,23 +160,19 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 		 */
 		public function tf_options_admin_enqueue_scripts( $screen ) {
 			global $post_type;
-			 
-
+			//  var_dump($screen);
+			//  exit;
+			// die();
 			$tf_options_screens   = array(
-				'toplevel_page_tf_settings',
+				'toplevel_page_uacf7_settings',
+				'ultimate-addons_page_uacf7_addons',
 				'toplevel_page_wpcf7',
-				'tourfic-settings_page_tf_get_help',
-				'tourfic-settings_page_tf_license_info',
-				'tourfic-settings_page_tf_dashboard',
-				'tourfic-settings_page_tf_shortcodes',
-				'tourfic-vendor_page_tf_vendor_reports',
-				'tourfic-vendor_page_tf_vendor_list',
-				'tourfic-vendor_page_tf_vendor_commissions',
-				'tourfic-vendor_page_tf_vendor_withdraw',
-				'tf_hotel_page_tf-hotel-backend-booking',
-				'tf_tours_page_tf-tour-backend-booking'
+				'contact_page_wpcf7-new', 
+				'admin_page_uacf7-setup-wizard', 
+				'ultimate-addons_page_uacf7_license_info', 
 			);
 			$tf_options_post_type = array( 'tf_hotel', 'tf_tours', 'tf_apartment' ); 
+
 			if("tourfic-settings_page_tf_dashboard"==$screen){
 				//Order Data Retrive
 				$tf_old_order_limit = new WC_Order_Query( array(
@@ -298,6 +320,8 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 			wp_enqueue_style( 'wp-color-picker' );
 			if ( in_array( $screen, $tf_options_screens ) || in_array( $post_type, $tf_options_post_type ) ) {
 
+				wp_enqueue_style( 'uacf7-admin-sweet-alert', '//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css', '', UACF7_VERSION );
+				wp_enqueue_style( 'uacf7-admin', UACF7_URL . 'assets/admin/css/tourfic-admin.min.css', '', UACF7_VERSION );
 				wp_enqueue_style( 'uacf7-fontawesome-4', '//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css', array(), $this->tf_options_version() );
 				wp_enqueue_style( 'uacf7-fontawesome-5', '//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css', array(), $this->tf_options_version() );
 				wp_enqueue_style( 'uacf7-fontawesome-6', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css', array(), $this->tf_options_version() );
@@ -308,6 +332,10 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 
 			//Js
 			if ( in_array( $screen, $tf_options_screens ) || in_array( $post_type, $tf_options_post_type ) ) {
+					// Custom
+				wp_enqueue_script( 'uacf7-admin-sweet-alert', '//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js', array( 'jquery' ), UACF7_VERSION, true );
+				wp_enqueue_script( 'uacf7-admin', UACF7_URL . 'assets/admin/js/tourfic-admin-scripts.min.js', array( 'jquery', 'wp-data', 'wp-editor', 'wp-edit-post' ), UACF7_VERSION, true );
+				
 				wp_enqueue_script( 'Chart-js', '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js', array( 'jquery' ), '2.6.0', true );
 				wp_enqueue_script( 'uacf7-flatpickr', '//cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js', array( 'jquery' ), $this->tf_options_version(), true );
 				wp_enqueue_script( 'uacf7-select2', '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), $this->tf_options_version(), true );
@@ -338,6 +366,11 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 				'tf_complete_order' => isset( $tf_complete_orders ) ? $tf_complete_orders : '',
 				'tf_cancel_orders'  => isset( $tf_cancel_orders ) ? $tf_cancel_orders : '',
 				'tf_chart_enable'   => isset( $tf_chart_enable ) ? $tf_chart_enable : '', 
+				'tf_export_import_msg' => array(
+					'imported'       => __( 'Imported successfully!', 'tourfic' ),
+					'import_confirm' => __( 'Are you sure you want to import this data?', 'tourfic' ),
+					'import_empty'   => __( 'Import Data cannot be empty!', 'tourfic' ),
+				)
 			) );
 		}
 
