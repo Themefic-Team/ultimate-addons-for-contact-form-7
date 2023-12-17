@@ -16,48 +16,41 @@ class ULTIMATE_MATERIAL_DESIGN {
 
     public function uacf7_material_design_scripts(){
 
-        wp_register_script('uacf7-md-outlined-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-outlined-script.js', ['jquery'], 'WPCF7_VERSION', true);
-        wp_register_script('uacf7-md-filled-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-filled-script.js', ['jquery'], 'WPCF7_VERSION', true);
-        wp_register_script('uacf7-md-dark-script', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-dark-script.js', ['jquery'], 'WPCF7_VERSION', true);
+        wp_register_script('uacf7-md-script-outlined', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-outlined-script.js', ['jquery'], 'WPCF7_VERSION', true);
+        wp_register_script('uacf7-md-script-filled', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-filled-script.js', ['jquery'], 'WPCF7_VERSION', true);
+        wp_register_script('uacf7-md-script-dark', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-dark-script.js', ['jquery'], 'WPCF7_VERSION', true);
 
 
-        wp_register_style( 'md-option-outlined', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-outlined.css', [], time(), 'all' );
-        wp_register_style( 'md-option-filled', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-filled.css', [], time(), 'all' );
-        wp_register_style( 'md-option-dark', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-dark.css', [], time(), 'all' );
+        wp_register_style( 'md-option-css-outlined', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-outlined.css', [], time(), 'all' );
+        wp_register_style( 'md-option-css-filled', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-filled.css', [], time(), 'all' );
+        wp_register_style( 'md-option-css-dark', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-dark.css', [], time(), 'all' );
     }
 
 
     public function uacf7_material_design_form_properties($properties, $cfform){
         if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { 
 
-            $form                       = $properties['form'];
-            $form_id                    = $cfform->id();
-            $uacf7_material_design      = uacf7_get_form_option($form_id, 'material_design');
-            $uacf7_material_design_type = isset($uacf7_material_design['uacf7_material_design_type']) ? $uacf7_material_design['uacf7_material_design_type'] : '';
-            $class  =  !empty($uacf7_material_design_type) ? ' uacf7-material-design-'. $uacf7_material_design_type : ''; 
+            $form                         = $properties['form'];
+            $form_id                      = $cfform->id();
+            $uacf7_material_design        = uacf7_get_form_option($form_id, 'material_design');
+            $uacf7_material_design_type   = isset($uacf7_material_design['uacf7_material_design_type']) ? $uacf7_material_design['uacf7_material_design_type'] : '';
+            $uacf7_material_design_enable = isset($uacf7_material_design['uacf7_material_design_enable']) ? $uacf7_material_design['uacf7_material_design_enable'] : 0;
+            $class                        = !empty($uacf7_material_design_type) ? ' uacf7-material-design-'. $uacf7_material_design_type : '';
 
 
-            if ($uacf7_material_design_type === 'filled') {
+            if($uacf7_material_design_enable == true){
+                if ( $uacf7_material_design_type != '') { 
+                    wp_enqueue_style('md-option-css-'.$uacf7_material_design_type);
+                    wp_enqueue_script('uacf7-md-script-'.$uacf7_material_design_type); 
+                } 
 
-                wp_enqueue_style('md-option-filled');
-                wp_enqueue_script('uacf7-md-filled-script');
-          
-            } elseif ($uacf7_material_design_type === 'dark') {
-
-                wp_enqueue_style('md-option-dark');
-                wp_enqueue_script('uacf7-md-dark-script');
-          
-             
-            } else{
-                wp_enqueue_style('md-option-outlined');
-                wp_enqueue_script('uacf7-md-outlined-script');
+                ob_start();
+                
+                echo '<div class="'.esc_attr(  $class ).'">'.$form.'</div>';
+    
+                $properties['form'] = ob_get_clean();
             }
            
-            ob_start();
-            
-            echo '<div class="'.esc_attr(  $class ).'">'.$form.'</div>';
-
-            $properties['form'] = ob_get_clean();
 
         }
 
