@@ -327,10 +327,8 @@
 
   .uacf7-material-design-dark input[type="checkbox"]:hover::before {
   position           : absolute;
-  /* background-image   : url('../icons/check_small_dark.svg'); */
   background-position: center;
   border-radius      : 3px;
-  color              : #6747c1;
   content            : "";
   top                : 0;
   bottom             : 0;
@@ -341,7 +339,6 @@
   align-items        : center;
   padding-left       : 2px;
   background-size    : cover;
-  background-color   : #cebdff;
   box-shadow         : 0 0 0 5px #2e2c2f;
   box-sizing         : border-box;
   
@@ -372,9 +369,7 @@
 
   .uacf7-material-design-dark input[type="radio"]:hover::before {
   position           : absolute;
-  /* background-image   : url('../icons/radio-icon-dark.svg'); */
   background-position: center;
-  color              : #ffffff;
   content            : "";
   top                : 0;
   bottom             : 0;
@@ -385,7 +380,6 @@
   align-items        : center;
   padding-left       : 2px;
   background-size    : cover;
-  background-color   : #cebdff;
   border-radius      : 100px;
   box-shadow         : 0 0 0 5px #2e2c2f;
   box-sizing         : border-box;
