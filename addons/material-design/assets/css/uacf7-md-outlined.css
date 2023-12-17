@@ -55,7 +55,7 @@
 
    .uacf7-material-design-outlined input[type="text"],  .uacf7-material-design-outlined input[type="email"],   .uacf7-material-design-outlined input[type="url"],   .uacf7-material-design-outlined input[type="number"],   .uacf7-material-design-outlined input[type="tel"],  .uacf7-material-design-outlined input[type="number"], .uacf7-material-design-outlined  input[type="checkbox"]{
     cursor          : pointer;
-    padding         : 15px 16px;
+    padding         : 0px 16px;
     height          : 50px;
     border          : 1px solid #CAC4CF;
     color           : #48454E;
@@ -65,11 +65,16 @@
     line-height     : 24px;
     border-radius   : 4px;
     box-sizing      : border-box;
+    left            : 16px;
   }
 
 
   .uacf7-material-design-outlined  .wpcf7-select.input-focus,   .uacf7-material-design-outlined input[type="text"].input-focus,  .uacf7-material-design-outlined input[type="email"].input-focus,   .uacf7-material-design-outlined input[type="url"].input-focus,   .uacf7-material-design-outlined input[type="number"].input-focus,   .uacf7-material-design-outlined input[type="tel"].input-focus,  .uacf7-material-design-outlined input[type="number"].input-focus,  .uacf7-material-design-outlined input[type="file"].input-focus, .uacf7-material-design-outlined  input[type="checkbox"].input-focus{
     border          : 2px solid #6747c1!important;
+    line-height     : 24px;
+    padding         : 0px 16px;
+    box-sizing: border-box;
+    /* left            : 16px; */
   }
 
 
@@ -377,17 +382,20 @@
   
     background-image: url('../icons/calendar-icon-for-filled.png');
     padding         : 10px;
-    background-color: #e7e2e7;
     border-radius   : 50%;
- 
+    
+  }
+  
+  .uacf7-material-design-outlined .wpcf7-date::-webkit-calendar-picker-indicator:hover{
+    background-color: #e7e2e7;
+    cursor          : pointer;
+
   }
 
 
   .uacf7-material-design-outlined input[type="radio"]:hover::before {
     position           : absolute;
-    /* background-image   : url('../icons/radio-icon.svg'); */
     background-position: center;
-    /* color              : #ffffff; */
     content            : "";
     top                : 0;
     bottom             : 0;
@@ -398,7 +406,6 @@
     align-items        : center;
     padding-left       : 2px;
     background-size    : cover;
-    /* background-color   : #ffffff; */
     border-radius      : 100px;
     box-shadow         : 0 0 0 5px #CAC4CF;
     box-sizing         : border-box;
