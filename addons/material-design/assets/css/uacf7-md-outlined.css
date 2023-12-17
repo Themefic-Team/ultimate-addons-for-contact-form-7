@@ -186,7 +186,6 @@
     left       : 16px;
     font-size  : 16px;
     min-height : 15px;
-    line-height: 15px;
     max-width  : fit-content;
     color      : #1C1B1E;
     padding    : 0px 4px;
@@ -213,8 +212,9 @@
 
 
   .uacf7-material-design-outlined   span > input.hover,  .uacf7-material-design-outlined .uacf7-row .uacf7-col-6 span > input.hover {
-    outline: none;
-    border : 1px solid #1C1B1E;
+    outline   : none;
+    border    : 1px solid #1C1B1E;
+    box-sizing: border-box;
   }
 
 
