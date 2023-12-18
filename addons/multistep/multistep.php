@@ -15,9 +15,12 @@ class UACF7_MULTISTEP {
         add_action( 'admin_init', array( $this, 'tag_generator' ) );        
         add_action( 'wp_ajax_check_fields_validation', array( $this, 'check_fields_validation' ) );
         add_action( 'wp_ajax_nopriv_check_fields_validation', array( $this, 'check_fields_validation' ) );
+
         wpcf7_add_form_tag( 'uacf7_step_start', array( $this, 'step_start_tag_handler' ), true );
         wpcf7_add_form_tag( 'uacf7_step_end', array( $this, 'step_end_tag_handler' ), false );
-        wpcf7_add_form_tag( 'uacf7_multistep_progressbar', array( $this, 'uacf7_multistep_progressbar' ), true );  
+
+        // wpcf7_add_form_tag( 'uacf7_multistep_progressbar', array( $this, 'uacf7_multistep_progressbar' ), true );  
+
         add_filter( 'wpcf7_contact_form_properties', array( $this, 'uacf7_properties' ), 10, 2 );
         add_filter( 'uacf7_post_meta_options', array( $this, 'uacf7_post_meta_options_multistep' ), 14, 2 );  
         add_filter( 'uacf7_post_meta_options_multistep_pro', array( $this, 'uacf7_post_meta_options_multistep_pro' ), 10, 2 );  
@@ -465,6 +468,19 @@ class UACF7_MULTISTEP {
                         'label' => __( 'Step '.$step_count.'', 'ultimate-addons-cf7' ), 
                         'is_pro' => true,
                     );
+
+                    $fields['uacf7_progressbar_icon_type'.$step->name.''] = array(
+                        'id'        => 'uacf7_progressbar_icon_type'.$step->name.'',
+                        'type'      => 'radio',
+                        'label'     => __( 'Progressbar Icon Type', 'ultimate-addons-cf7' ),
+                        'options' => array(
+                            'image' => 'Image',
+                            'icon' => 'Icon ',
+                         ),
+                         'default' => 'image',
+                         'inline' => true, 
+                        'is_pro' => true, 
+                    );
                     
                     $fields['uacf7_progressbar_image_'.$step->name.''] = array(
                         'id'        => 'uacf7_progressbar_image_'.$step->name.'',
@@ -473,7 +489,18 @@ class UACF7_MULTISTEP {
                         'class' => 'tf-field-class', 
                         'multiple' => false,
                         'inline' => true, 
-                        'is_pro' => true,
+                        'is_pro' => true, 
+                        'dependency' => array( 'uacf7_progressbar_icon_type'.$step->name.'', '==', 'image' ),
+                    );
+                    $fields['uacf7_progressbar_icon_'.$step->name.''] = array(
+                        'id'        => 'uacf7_progressbar_icon_'.$step->name.'',
+                        'type' => 'Icon',
+                        'label'     => __( 'Add progressbar icon for this step', 'ultimate-addons-cf7' ),  
+                        'class' => 'tf-field-class', 
+                        'multiple' => false,
+                        'inline' => true, 
+                        'is_pro' => true, 
+                        'dependency' => array( 'uacf7_progressbar_icon_type'.$step->name.'', '==', 'icon' ),
                     );
                    
                     if($step_count == 1){
@@ -633,7 +660,7 @@ class UACF7_MULTISTEP {
                                     }
                                     if( $uacf7_progressbar_style == 'style-1' ){
                                         if( $uacf7_multistep_use_step_labels != true ) {
-                                            echo $content;
+                                            echo $content.' test';
                                         }else { 
                                             echo esc_attr($step_id);
                                         }
