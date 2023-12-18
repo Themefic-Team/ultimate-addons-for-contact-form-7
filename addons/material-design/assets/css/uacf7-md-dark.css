@@ -159,6 +159,7 @@
   .uacf7-material-design-dark  label.has-value,  .uacf7-material-design-dark .uacf7-row .uacf7-col-6 label.has-value  {
     top             : 4px;
     margin-top      : 8px;
+    color           : #CEBDFF!important;
     font-size       : 12px!important;
     left            : 16px;
     font-size       : 16px;

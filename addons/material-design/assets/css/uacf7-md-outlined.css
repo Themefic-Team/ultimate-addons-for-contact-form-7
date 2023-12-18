@@ -38,7 +38,7 @@
     border          : 2px solid #6747c1!important;
   }
 
-  .uacf7-material-design-outlined  input[type="date"],   .uacf7-material-design-outlined  input[type="file"],   .uacf7-material-design-outlined  .wpcf7-select{
+  .uacf7-material-design-outlined  input[type="date"],   .uacf7-material-design-outlined  input[type="file"],  .uacf7-material-design-outlined  .wpcf7-select{
     height          : 50px;
     padding         : 10px;
     border          : 1px solid #CAC4CF;
