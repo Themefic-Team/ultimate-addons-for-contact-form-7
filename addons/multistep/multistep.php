@@ -163,21 +163,22 @@ class UACF7_MULTISTEP {
                 
 
                 'uacf7_multistep_progressbar_color_option' => array(
-                    'id' => 'uacf7_multistep_progressbar_color_option',
-                    'type' => 'color',
-                    'label'     => __( 'Color Options', 'ultimate-addons-cf7' ), 
-                    'subtitle'     => __( 'Customize Progressbar Color Options', 'ultimate-addons-cf7' ), 
-                    'class' => 'tf-field-class',
+                    'id'       => 'uacf7_multistep_progressbar_color_option',
+                    'type'     => 'color',
+                    'label'    => __( 'Color Options', 'ultimate-addons-cf7' ),
+                    'subtitle' => __( 'Customize Progressbar Color Options', 'ultimate-addons-cf7' ),
+                    'class'    => 'tf-field-class',
                     'multiple' => true,
-                    'inline' => true,
-                    'colors' => array(
-                        'uacf7_multistep_circle_bg_color' => ' Circle Background Color', 
-                        'uacf7_multistep_circle_active_color' => 'Circle Active Color', 
-                        'uacf7_multistep_circle_font_color' => 'Circle Font Color', 
-                        'uacf7_multistep_progress_bg_color' => 'Progressbar Background Color ', 
-                        'uacf7_multistep_progress_line_color' => 'Progressbar Line Color ', 
-                        'uacf7_multistep_step_title_color' => ' Step Title Color', 
-                        'uacf7_multistep_progressbar_title_color' => 'Progressbar Title Color',  
+                    'inline'   => true,
+                    'colors'   => array(
+                        'uacf7_multistep_circle_bg_color'          => 'Circle Background Color',
+                        'uacf7_multistep_circle_active_color'      => 'Circle Active Color',
+                        'uacf7_multistep_circle_active_font_color' => 'Circle Active Font Color',
+                        'uacf7_multistep_circle_font_color'        => 'Circle Font Color',
+                        'uacf7_multistep_progress_bg_color'        => 'Progressbar Background Color ',
+                        'uacf7_multistep_progress_line_color'      => 'Progressbar Line Color ',
+                        'uacf7_multistep_step_title_color'         => 'Step Title Color',
+                        'uacf7_multistep_progressbar_title_color'  => 'Progressbar Title Color',
                     ), 
                 ),
 
@@ -630,18 +631,31 @@ class UACF7_MULTISTEP {
                 do_action( 'uacf7_multistep_before_form', $cfform->id() );
             ?>
             <?php 
-            $uacf7_multistep_progressbar_title_color = isset($multistep_meta['uacf7_multistep_progressbar_title_color']) ? $multistep_meta['uacf7_multistep_progressbar_title_color'] : '';
-            if($uacf7_progressbar_style == 'default' && !empty($uacf7_multistep_progressbar_title_color)):
+            $uacf7_multistep_progressbar_title_color = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']: '';
+            $uacf7_multistep_circle_active_font_color = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_active_font_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_active_font_color']: '';
+            
+            if($uacf7_progressbar_style == 'default' && !empty($uacf7_multistep_progressbar_title_color))                                        : 
             ?>
             <style>
                 .steps-form .steps-row .steps-step p {
                     color: <?php echo esc_attr($uacf7_multistep_progressbar_title_color); ?>;
                 }
+                
                 .uacf7-steps  .uacf7-next, .uacf7-steps .uacf7-next{
                     padding: <?php echo esc_attr($uacf7_multistep_button_padding_tb); ?> <?php echo esc_attr($uacf7_multistep_button_padding_lr); ?> ;
                 } 
             </style>
             <?php endif; ?>
+
+
+            <!-- styling the active tab/button -->
+            
+            <style>
+                .steps-form .steps-row .steps-step .uacf7-btn-active {
+                    color: <?php echo esc_attr($uacf7_multistep_circle_active_font_color); ?>!important;
+                }
+            </style>
+
             <?php if(!empty($all_steps)): ?>
                 <div class="uacf7-steps steps-form <?php if($uacf7_progressbar_style == 'style-1'){echo 'progressbar-style-1';} ?>">
                     <div class="steps-row setup-panel">
@@ -660,7 +674,7 @@ class UACF7_MULTISTEP {
                                     }
                                     if( $uacf7_progressbar_style == 'style-1' ){
                                         if( $uacf7_multistep_use_step_labels != true ) {
-                                            echo $content.' test';
+                                            echo $content;
                                         }else { 
                                             echo esc_attr($step_id);
                                         }
@@ -669,6 +683,7 @@ class UACF7_MULTISTEP {
                                     } ?>
                                 </a>
                                 <?php 
+
                                     if( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' ) { 
                                         echo '<p>'.esc_html($content).'</p>'; 
                                     } 
