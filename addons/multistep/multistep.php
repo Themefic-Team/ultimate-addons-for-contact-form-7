@@ -172,14 +172,24 @@ class UACF7_MULTISTEP {
                     'inline'   => true,
                     'colors'   => array(
                         'uacf7_multistep_circle_bg_color'          => 'Circle Background Color',
+                        'uacf7_multistep_circle_bg_hover_color'    => 'Circle Background Hover Color',
                         'uacf7_multistep_circle_active_color'      => 'Circle Active Color',
                         'uacf7_multistep_circle_active_font_color' => 'Circle Active Font Color',
                         'uacf7_multistep_circle_font_color'        => 'Circle Font Color',
                         'uacf7_multistep_progress_bg_color'        => 'Progressbar Background Color ',
                         'uacf7_multistep_progress_line_color'      => 'Progressbar Line Color ',
                         'uacf7_multistep_step_title_color'         => 'Step Title Color',
+                        'uacf7_multistep_step_title_hover_color'   => 'Step Title Hover Color',
                         'uacf7_multistep_progressbar_title_color'  => 'Progressbar Title Color',
                     ), 
+                ),
+
+                'uacf7_multistep_step_title_font_weight' => array(
+                    'id'          => 'uacf7_multistep_step_title_font_weight',
+                    'type'        => 'number',
+                    'label'       => __( 'Step Title Font Weight', 'ultimate-addons-cf7' ),
+                    'placeholder' => __( ' E.g. 600 (Do not add px or em ).', 'ultimate-addons-cf7' ),
+        
                 ),
 
                 'uacf7_progressbar_size_option' => array(
@@ -631,38 +641,70 @@ class UACF7_MULTISTEP {
                 do_action( 'uacf7_multistep_before_form', $cfform->id() );
             ?>
             <?php 
-            $uacf7_multistep_progressbar_title_color = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']: '';
-            $uacf7_multistep_circle_active_font_color = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_active_font_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_active_font_color']: '';
+            $uacf7_multistep_progressbar_title_color  = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']: '';
+            $uacf7_multistep_circle_active_font_color = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_active_font_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_active_font_color']: '#2979ff';
+            $uacf7_multistep_step_title_hover_color   = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_step_title_hover_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_step_title_hover_color']: '#607085';
+            $uacf7_multistep_circle_bg_hover_color    = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_bg_hover_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_bg_hover_color']: '#F8F9FB';
+            $uacf7_multistep_step_title_font_weight   = isset($multistep_meta['uacf7_multistep_step_title_font_weight']) ? $multistep_meta['uacf7_multistep_step_title_font_weight']: '600';
             
             if($uacf7_progressbar_style == 'default' && !empty($uacf7_multistep_progressbar_title_color))                                        : 
             ?>
             <style>
                 .steps-form .steps-row .steps-step p {
                     color: <?php echo esc_attr($uacf7_multistep_progressbar_title_color); ?>;
+                  
                 }
                 
                 .uacf7-steps  .uacf7-next, .uacf7-steps .uacf7-next{
                     padding: <?php echo esc_attr($uacf7_multistep_button_padding_tb); ?> <?php echo esc_attr($uacf7_multistep_button_padding_lr); ?> ;
                 } 
+                
             </style>
             <?php endif; ?>
 
 
             <!-- styling the active tab/button -->
+
+            <?php if($uacf7_progressbar_style === 'style-1')                                        : 
+            ?>
             
             <style>
-                .steps-form .steps-row .steps-step .uacf7-btn-active {
+                .progressbar-style-1 .steps-row .steps-step .uacf7-btn-active {
                     color: <?php echo esc_attr($uacf7_multistep_circle_active_font_color); ?>!important;
                 }
+
+                .progressbar-style-1 .steps-row .steps-step .btn-circle{
+
+                    font-weight: <?php echo esc_attr($uacf7_multistep_step_title_font_weight); ?>!important;
+                }
+
+                .progressbar-style-1 .steps-row .steps-step{
+
+                    display    : flex!important;
+                    align-items: left!important;
+                    left       : 32px!important;
+                }
+
+                .progressbar-style-1 .steps-row .steps-step .btn-circle i {
+                    margin-right: 8px;
+          
+                }
+                
+                .progressbar-style-1 .steps-row .steps-step .uacf7-btn-default:hover:not(.uacf7-btn-active) {
+                    color     : <?php echo esc_attr($uacf7_multistep_step_title_hover_color); ?>!important;
+                    background: <?php echo esc_attr($uacf7_multistep_circle_bg_hover_color); ?>!important;
+                }
+        
             </style>
+            <?php endif; ?>
 
             <?php if(!empty($all_steps)): ?>
                 <div class="uacf7-steps steps-form <?php if($uacf7_progressbar_style == 'style-1'){echo 'progressbar-style-1';} ?>">
                     <div class="steps-row setup-panel">
                     <?php
-                        $step_id = 1;
+                        $step_id    = 1;
                         $step_count = 0;
-                        $step_name = apply_filters('uacf7_multistep_steps_names', '', $all_steps);
+                        $step_name  = apply_filters('uacf7_multistep_steps_names', '', $all_steps);
                     
                         foreach ($all_steps as $step) {
                             $content = $step->values[0];
@@ -686,6 +728,7 @@ class UACF7_MULTISTEP {
 
                                     if( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' ) { 
                                         echo '<p>'.esc_html($content).'</p>'; 
+
                                     } 
                                 ?>
                             </div>
