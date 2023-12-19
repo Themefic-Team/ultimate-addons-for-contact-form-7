@@ -160,6 +160,61 @@ class UACF7_MULTISTEP {
               
                     ),
 
+
+                'uacf7_multistep_progressbar_color_option_style_1' => array(
+                    'id'        => 'uacf7_multistep_progressbar_color_option_style_1',
+                    'type'      => 'color',
+                    'label'     => __( ' Style 1 Color Option ', 'ultimate-addons-cf7' ),
+                    'subtitle' => __( 'Only for Style 1', 'ultimate-addons-cf7' ),
+                    'multiple' => true,
+                    'inline'   => true,
+                    'dependency' => array( 'uacf7_progressbar_style', '==', 'style-1' ),
+                    'colors'   => array(
+                        'uacf7_multistep_circle_bg_color_style_1'          => 'Circle Background Color',
+                        'uacf7_multistep_circle_bg_hover_color_style_1'    => 'Circle Background Hover Color',
+                        'uacf7_multistep_circle_active_color_style_1'      => 'Circle Active Color',
+                        'uacf7_multistep_circle_active_font_color_style_1' => 'Circle Active Font Color',
+                        'uacf7_multistep_circle_border_color_style_1'      => 'Circle Border Color',
+                        'uacf7_multistep_circle_font_color_style_1'        => 'Circle Font Color',
+                        'uacf7_multistep_progress_bg_color_style_1'        => 'Progressbar Background Color ',
+                        'uacf7_multistep_progress_line_color_style_1'      => 'Progressbar Line Color ',
+                        'uacf7_multistep_step_title_color_style_1'         => 'Step Title Color',
+                        'uacf7_multistep_step_title_hover_color_style_1'   => 'Step Title Hover Color',
+                        'uacf7_multistep_progressbar_title_color_style_1'  => 'Progressbar Title Color',
+                    ),
+                
+                ),
+
+                
+                'uacf7_multistep_step_title_font_weight_style_1' => array(
+                    'id'          => 'uacf7_multistep_step_title_font_weight_style_1',
+                    'type'        => 'number',
+                    'label'       => __( 'Step 1 Title Font Weight', 'ultimate-addons-cf7' ),
+                    'subtitle'    => __( 'Only for Style 1', 'ultimate-addons-cf7' ),
+                    'placeholder' => __( ' E.g. 600 (Do not add px or em ).', 'ultimate-addons-cf7' ),
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-1' )
+        
+                ),
+
+                'uacf7_multistep_circle_height_style_1' => array(
+                    'id'          => 'uacf7_multistep_circle_height_style_1',
+                    'type'        => 'number',
+                    'label'       => __( ' Style 1 Circle Height', 'ultimate-addons-cf7' ),
+                    'subtitle'    => __( 'Only for Style 1', 'ultimate-addons-cf7' ),
+                    'placeholder' => __( 'height', 'ultimate-addons-cf7' ),
+                    'field_width' => 50,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-1' ),
+                ),
+                'uacf7_multistep_font_size_style_1' => array(
+                    'id'          => 'uacf7_multistep_font_size_style_1',
+                    'type'        => 'number',
+                    'label'       => __( ' Style 1 Circle Font Size', 'ultimate-addons-cf7' ),
+                    'subtitle'    => __( 'Only for Style 1', 'ultimate-addons-cf7' ),
+                    'placeholder' => __( 'font size', 'ultimate-addons-cf7' ),
+                    'field_width' => 50,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-1' ),
+                ),
+
                 
 
                 'uacf7_multistep_progressbar_color_option' => array(
@@ -172,26 +227,16 @@ class UACF7_MULTISTEP {
                     'inline'   => true,
                     'colors'   => array(
                         'uacf7_multistep_circle_bg_color'          => 'Circle Background Color',
-                        'uacf7_multistep_circle_bg_hover_color'    => 'Circle Background Hover Color',
                         'uacf7_multistep_circle_active_color'      => 'Circle Active Color',
-                        'uacf7_multistep_circle_active_font_color' => 'Circle Active Font Color',
-                        'uacf7_multistep_circle_border_color'      => 'Circle Border Color',
                         'uacf7_multistep_circle_font_color'        => 'Circle Font Color',
                         'uacf7_multistep_progress_bg_color'        => 'Progressbar Background Color ',
                         'uacf7_multistep_progress_line_color'      => 'Progressbar Line Color ',
                         'uacf7_multistep_step_title_color'         => 'Step Title Color',
-                        'uacf7_multistep_step_title_hover_color'   => 'Step Title Hover Color',
                         'uacf7_multistep_progressbar_title_color'  => 'Progressbar Title Color',
                     ), 
                 ),
 
-                'uacf7_multistep_step_title_font_weight' => array(
-                    'id'          => 'uacf7_multistep_step_title_font_weight',
-                    'type'        => 'number',
-                    'label'       => __( 'Step Title Font Weight', 'ultimate-addons-cf7' ),
-                    'placeholder' => __( ' E.g. 600 (Do not add px or em ).', 'ultimate-addons-cf7' ),
-        
-                ),
+              
 
                 'uacf7_progressbar_size_option' => array(
                     'id' => 'uacf7_progressbar_size_option',
@@ -642,15 +687,14 @@ class UACF7_MULTISTEP {
                 do_action( 'uacf7_multistep_before_form', $cfform->id() );
             ?>
             <?php 
-            $uacf7_multistep_progressbar_title_color  = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']: '#8997a9';
-            $uacf7_multistep_circle_active_font_color = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_active_font_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_active_font_color']: '#2979ff';
-            $uacf7_multistep_step_title_hover_color   = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_step_title_hover_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_step_title_hover_color']: '#607085';
-            $uacf7_multistep_circle_bg_hover_color    = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_bg_hover_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_bg_hover_color']: '#F8F9FB';
-            $uacf7_multistep_circle_border_color    = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_border_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_border_color']: '#2979ff';
-            $uacf7_multistep_step_title_font_weight   = isset($multistep_meta['uacf7_multistep_step_title_font_weight']) && $multistep_meta['uacf7_multistep_step_title_font_weight'] ? $multistep_meta['uacf7_multistep_step_title_font_weight'] : '600';
-            $uacf7_multistep_font_size                = isset($multistep_meta['uacf7_multistep_font_size']) && $multistep_meta['uacf7_multistep_font_size'] > 1 ? $multistep_meta['uacf7_multistep_font_size']: '20';
-            $uacf7_multistep_circle_height            = isset($multistep_meta['uacf7_multistep_circle_height']) && $multistep_meta['uacf7_multistep_circle_height'] > 1 ? $multistep_meta['uacf7_multistep_circle_height']: '60';
-
+           $uacf7_multistep_circle_active_font_color_style_1 = isset($multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_circle_active_font_color_style_1']) && $multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_circle_active_font_color_style_1'] !== '' ? $multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_circle_active_font_color_style_1']: '#2979ff';
+           $uacf7_multistep_step_title_hover_color_style_1   = isset($multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_step_title_hover_color_style_1']) && $multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_step_title_hover_color_style_1'] !== '' ? $multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_step_title_hover_color_style_1']: '#607085';
+           $uacf7_multistep_circle_bg_hover_color_style_1    = isset($multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_circle_bg_hover_color_style_1']) && $multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_circle_bg_hover_color_style_1'] !== '' ? $multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_circle_bg_hover_color_style_1']: '#F8F9FB';
+           $uacf7_multistep_circle_border_color_style_1      = isset($multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_circle_border_color_style_1']) && $multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_circle_border_color_style_1'] !== '' ? $multistep_meta['uacf7_multistep_progressbar_color_option_style_1']['uacf7_multistep_circle_border_color_style_1']: '#2979ff';
+           $uacf7_multistep_step_title_font_weight_style_1   = isset($multistep_meta['uacf7_multistep_step_title_font_weight_style_1']) && $multistep_meta['uacf7_multistep_step_title_font_weight_style_1'] !== '' ? $multistep_meta['uacf7_multistep_step_title_font_weight_style_1'] : '600';
+           $uacf7_multistep_font_size_style_1                = isset($multistep_meta['uacf7_multistep_font_size_style_1']) && $multistep_meta['uacf7_multistep_font_size_style_1'] > 1 ? $multistep_meta['uacf7_multistep_font_size_style_1']: '20';
+           $uacf7_multistep_circle_height_style_1            = isset($multistep_meta['uacf7_multistep_circle_height_style_1']) && $multistep_meta['uacf7_multistep_circle_height_style_1'] > 1 ? $multistep_meta['uacf7_multistep_circle_height_style_1']: '60';
+           
             if($uacf7_progressbar_style == 'default' && !empty($uacf7_multistep_progressbar_title_color))                                        : 
             ?>
             <style>
@@ -674,14 +718,14 @@ class UACF7_MULTISTEP {
             
             <style>
                 .progressbar-style-1 .steps-row .steps-step .uacf7-btn-active {
-                    color: <?php echo esc_attr($uacf7_multistep_circle_active_font_color); ?>!important;
-                    border-bottom: 4px solid <?php echo esc_attr($uacf7_multistep_circle_border_color); ?>!important;
+                    color: <?php echo esc_attr($uacf7_multistep_circle_active_font_color_style_1); ?>!important;
+                    border-bottom: 4px solid <?php echo esc_attr($uacf7_multistep_circle_border_color_style_1); ?>!important;
                 }
 
                 .progressbar-style-1 .steps-row .steps-step .btn-circle{
 
-                  font-weight : <?php echo esc_attr($uacf7_multistep_step_title_font_weight); ?>!important;
-                  font-size   : <?php echo esc_attr($uacf7_multistep_font_size); ?>px!important;
+                  font-weight : <?php echo esc_attr($uacf7_multistep_step_title_font_weight_style_1); ?>!important;
+                  font-size   : <?php echo esc_attr($uacf7_multistep_font_size_style_1); ?>px!important;
                   padding-left: 32px!important;
                   box-sizing  : border-box!important;
           
@@ -694,7 +738,7 @@ class UACF7_MULTISTEP {
                 }
 
                 .progressbar-style-1 .steps-row .steps-step{
-                    height     : <?php echo esc_attr($uacf7_multistep_circle_height); ?>px!important;
+                    height     : <?php echo esc_attr($uacf7_multistep_circle_height_style_1); ?>px!important;
                 }
 
                 .progressbar-style-1 .steps-row .steps-step .btn-circle i {
@@ -710,8 +754,8 @@ class UACF7_MULTISTEP {
                 
                 
                 .progressbar-style-1 .steps-row .steps-step .uacf7-btn-default:hover:not(.uacf7-btn-active) {
-                    color     : <?php echo esc_attr($uacf7_multistep_step_title_hover_color); ?>!important;
-                    background: <?php echo esc_attr($uacf7_multistep_circle_bg_hover_color); ?>!important;
+                    color     : <?php echo esc_attr($uacf7_multistep_step_title_hover_color_style_1); ?>!important;
+                    background: <?php echo esc_attr($uacf7_multistep_circle_bg_hover_color_style_1); ?>!important;
                 }
         
             </style>
