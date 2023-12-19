@@ -175,6 +175,7 @@ class UACF7_MULTISTEP {
                         'uacf7_multistep_circle_bg_hover_color'    => 'Circle Background Hover Color',
                         'uacf7_multistep_circle_active_color'      => 'Circle Active Color',
                         'uacf7_multistep_circle_active_font_color' => 'Circle Active Font Color',
+                        'uacf7_multistep_circle_border_color'      => 'Circle Border Color',
                         'uacf7_multistep_circle_font_color'        => 'Circle Font Color',
                         'uacf7_multistep_progress_bg_color'        => 'Progressbar Background Color ',
                         'uacf7_multistep_progress_line_color'      => 'Progressbar Line Color ',
@@ -641,10 +642,11 @@ class UACF7_MULTISTEP {
                 do_action( 'uacf7_multistep_before_form', $cfform->id() );
             ?>
             <?php 
-            $uacf7_multistep_progressbar_title_color  = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']: '';
+            $uacf7_multistep_progressbar_title_color  = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_progressbar_title_color']: '#8997a9';
             $uacf7_multistep_circle_active_font_color = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_active_font_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_active_font_color']: '#2979ff';
             $uacf7_multistep_step_title_hover_color   = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_step_title_hover_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_step_title_hover_color']: '#607085';
             $uacf7_multistep_circle_bg_hover_color    = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_bg_hover_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_bg_hover_color']: '#F8F9FB';
+            $uacf7_multistep_circle_border_color    = isset($multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_border_color']) ? $multistep_meta['uacf7_multistep_progressbar_color_option']['uacf7_multistep_circle_border_color']: '#2979ff';
             $uacf7_multistep_step_title_font_weight   = isset($multistep_meta['uacf7_multistep_step_title_font_weight']) && $multistep_meta['uacf7_multistep_step_title_font_weight'] ? $multistep_meta['uacf7_multistep_step_title_font_weight'] : '600';
             $uacf7_multistep_font_size                = isset($multistep_meta['uacf7_multistep_font_size']) && $multistep_meta['uacf7_multistep_font_size'] > 1 ? $multistep_meta['uacf7_multistep_font_size']: '20';
             $uacf7_multistep_circle_height            = isset($multistep_meta['uacf7_multistep_circle_height']) && $multistep_meta['uacf7_multistep_circle_height'] > 1 ? $multistep_meta['uacf7_multistep_circle_height']: '60';
@@ -673,6 +675,7 @@ class UACF7_MULTISTEP {
             <style>
                 .progressbar-style-1 .steps-row .steps-step .uacf7-btn-active {
                     color: <?php echo esc_attr($uacf7_multistep_circle_active_font_color); ?>!important;
+                    border-bottom: 4px solid <?php echo esc_attr($uacf7_multistep_circle_border_color); ?>!important;
                 }
 
                 .progressbar-style-1 .steps-row .steps-step .btn-circle{
@@ -681,18 +684,13 @@ class UACF7_MULTISTEP {
                   font-size   : <?php echo esc_attr($uacf7_multistep_font_size); ?>px!important;
                   padding-left: 32px!important;
                   box-sizing  : border-box!important;
+          
                 }
 
-                .progressbar-style-1 .steps-row .steps-step{
-                    /* box-sizing: border-box!important; */
-                }
                 .progressbar-style-1 .steps-row .steps-step a {
                     display     : flex!important;
                     align-items : center!important;
-                    /* padding-left: 32px!important; */
-                    /* box-sizing: border-box!important; */
-      
-
+                 
                 }
 
                 .progressbar-style-1 .steps-row .steps-step{
