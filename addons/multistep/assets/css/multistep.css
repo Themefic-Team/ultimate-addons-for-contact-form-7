@@ -71,13 +71,10 @@
 }
 
 .steps-form .steps-row .steps-step .btn-circle img {
-    /*    border-radius: 50% !important;*/
-    width: 100%;
-    height: 100%;
+    width: 24px;
+    height: 24px;
     object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0
+    margin-right: 8px!important;
 }
 
 .uacf7-btn-default {
@@ -158,9 +155,9 @@
     color: #444;
 }
 
-.progressbar-style-1.steps-form .steps-row .steps-step .btn-circle img {
+/* .progressbar-style-1.steps-form .steps-row .steps-step .btn-circle img {
     display: none;
-}
+} */
 
 .progressbar-style-1.steps-form .steps-row {
     display: flex;
@@ -232,4 +229,5 @@
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {}
+
 
