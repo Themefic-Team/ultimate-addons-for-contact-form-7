@@ -726,6 +726,15 @@ class UACF7_MULTISTEP {
                 $uacf7_multistep_circle_height            = isset($multistep_meta['uacf7_multistep_circle_height']) && $multistep_meta['uacf7_multistep_circle_height']                       !== '' ? $multistep_meta['uacf7_multistep_circle_height']: '60';
                 $uacf7_multistep_font_size                = isset($multistep_meta['uacf7_multistep_font_size']) && $multistep_meta['uacf7_multistep_font_size']                               !== '' ? $multistep_meta['uacf7_multistep_font_size']: '20';
                 $uacf7_multistep_circle_font_weight       = isset($multistep_meta['uacf7_multistep_circle_font_weight']) && $multistep_meta['uacf7_multistep_circle_font_weight']             !== '' ? $multistep_meta['uacf7_multistep_circle_font_weight']: '600';
+                
+                
+                
+                $uacf7_multistep_button_bg            = isset($multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_bg']) && $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_bg']                     !== '' ? $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_bg']: '#2979FF';
+                $uacf7_multistep_button_color         = isset($multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_color']) && $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_color']               !== '' ? $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_color']: '#ffffff';
+                $uacf7_multistep_button_border_color  = isset($multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_border_color']) && $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_border_color'] !== '' ? $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_border_color']: '';
+                $uacf7_multistep_button_hover_bg      = isset($multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_bg']) && $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_bg']         !== '' ? $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_bg']: '#2264d1';
+                $uacf7_multistep_button_hover_color   = isset($multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_color']) && $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_color']   !== '' ? $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_color']: '#ffffff';
+                $uacf7_multistep_button_border_radius = isset($multistep_meta['uacf7_multistep_button_border_radius']) && $multistep_meta['uacf7_multistep_button_border_radius']                                                                       !== '' ? $multistep_meta['uacf7_multistep_button_border_radius']: '4';
                         
                 
            $uacf7_multistep_progressbar_title_color = isset($multistep_meta['uacf7_multistep_progressbar_title_color']) ? $multistep_meta['uacf7_multistep_progressbar_title_color'] : '';
@@ -748,6 +757,11 @@ class UACF7_MULTISTEP {
             <!-- Styling Style 1 -->
 
             <?php if($uacf7_progressbar_style === 'style-1'): 
+
+            
+// echo '<pre>';
+// print_r($multistep_meta);
+// echo '</pre>';
             ?>
             
             <style>
@@ -801,28 +815,30 @@ class UACF7_MULTISTEP {
                     color     : <?php echo esc_attr($uacf7_multistep_circle_font_hover_color); ?>!important;
                     background: <?php echo esc_attr($uacf7_multistep_circle_bg_hover_color); ?>!important;
                 }
-
+                
                 button.uacf7-next,   button.uacf7-prev, .wpcf7-submit {
-       
-                    width  : 123px!important;
-                    height : 48px!important;
-                    Padding: 12px, 24px, 12px, 24px!important;
-                    border-radius: 4px;
-                    background: #2979FF;
-                    color: #ffffff;
-                    font-size: 16px;
-                    letter-spacing: 0.5px;
-                    border: none;
-                    cursor: pointer;
+                    
+                    background: <?php echo esc_attr($uacf7_multistep_button_bg); ?>!important;
+                    color: <?php echo esc_attr($uacf7_multistep_button_color); ?>!important;
+                    width         : 123px!important;
+                    height        : 48px!important;
+                    Padding       : 12px, 24px, 12px, 24px!important;
+                    border-radius : <?php echo esc_attr($uacf7_multistep_button_border_radius); ?>px!important;
+                    font-size     : 16px!important;
+                    letter-spacing: 0.5px!important;
+                    border        : none!important;
+                    cursor        : pointer!important;
                 }
 
 
                 button.uacf7-next:hover,   button.uacf7-prev:hover, .wpcf7-submit:hover {
-                    background: #2264d1;
+                    background:  <?php echo esc_attr($uacf7_multistep_button_hover_bg); ?>!important;
                 }
         
             </style>
             <?php endif; ?>
+
+
 
             <?php if(!empty($all_steps)): ?>
                 <div class="uacf7-steps steps-form <?php if($uacf7_progressbar_style == 'style-1'){echo 'progressbar-style-1';} ?>">
@@ -853,6 +869,7 @@ class UACF7_MULTISTEP {
                                     } ?>
                                 </a>
                                 <?php 
+
 
                                     if( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' ) { 
                                         echo '<p>'.esc_html($content).'</p>'; 
