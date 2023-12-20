@@ -79,12 +79,12 @@
 
 .uacf7-btn-default {
     color: #fff;
-    background-color: #65ce92 !important;
+    background-color: #65ce92;
 }
 
 .steps-form .steps-row .steps-step .btn-circle.uacf7-btn-active {
     color: #fff;
-    background-color: #15a552 !important;
+    background-color: #15a552;
     outline: 0;
     -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
@@ -133,20 +133,14 @@
 	width: 100%;
 	border-radius: 0px;
 } */
-.progressbar-style-1 .uacf7-btn-default {
-    color: #444;
-    background-color: #ddd !important;
-}
+
 
 .progressbar-style-1.steps-form .steps-row .steps-step .btn-circle.uacf7-btn-active {
     transform: inherit;
     box-shadow: none
 }
 
-.progressbar-style-1.steps-form .steps-row .steps-step .btn-circle.uacf7-btn-active:hover {
-    box-shadow: none;
-    color: #fff
-}
+
 
 .progressbar-style-1.steps-form .steps-row .steps-step .btn-circle:hover,
 .progressbar-style-1.steps-form .steps-row .steps-step .btn-circle:focus,
@@ -186,13 +180,7 @@
     border-radius: 0;
 }
 
-.progressbar-style-1 .steps-step .uacf7-btn-active {
-    background: #15a552 !important;
-}
 
-.progressbar-style-1 .steps-step .uacf7-btn-active {
-    color: #fff !important;
-}
 
 .progressbar-style-1.steps-form .steps-row::before {
     display: none;
