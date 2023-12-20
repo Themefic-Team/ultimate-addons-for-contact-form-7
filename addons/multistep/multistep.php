@@ -801,6 +801,25 @@ class UACF7_MULTISTEP {
                     color     : <?php echo esc_attr($uacf7_multistep_circle_font_hover_color); ?>!important;
                     background: <?php echo esc_attr($uacf7_multistep_circle_bg_hover_color); ?>!important;
                 }
+
+                button.uacf7-next,   button.uacf7-prev, .wpcf7-submit {
+       
+                    width  : 123px!important;
+                    height : 48px!important;
+                    Padding: 12px, 24px, 12px, 24px!important;
+                    border-radius: 4px;
+                    background: #2979FF;
+                    color: #ffffff;
+                    font-size: 16px;
+                    letter-spacing: 0.5px;
+                    border: none;
+                    cursor: pointer;
+                }
+
+
+                button.uacf7-next:hover,   button.uacf7-prev:hover, .wpcf7-submit:hover {
+                    background: #2264d1;
+                }
         
             </style>
             <?php endif; ?>
