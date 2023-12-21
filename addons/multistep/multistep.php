@@ -855,6 +855,11 @@ class UACF7_MULTISTEP {
                             <div class="steps-step">
                                 <a title-id=".step-<?php echo esc_attr($step_id); ?>" data-form-id="<?php echo esc_attr($cfform->id()); ?>"   href="#<?php echo esc_attr($cfform->id()); ?>step-<?php echo esc_attr($step_id); ?>" type="button" class="btn <?php if( $step_id == 1 ) { echo esc_attr('uacf7-btn-active'); }else{ echo esc_attr('uacf7-btn-default'); } ?> btn-circle"><?php 
                                     if(is_array($step_name)) {
+
+                                        if($uacf7_progressbar_style == 'style-7'){
+                                            echo '<p>' . $content . '</p>';
+                                        }
+
                                         do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
                                     }
                                     if( $uacf7_progressbar_style == 'style-1' ){
@@ -864,13 +869,16 @@ class UACF7_MULTISTEP {
                                             echo esc_attr($step_id);
                                         }
                                     }else {
-                                        echo esc_attr($step_id);
+                                        if( $uacf7_progressbar_style != 'style-7'){
+
+                                            echo esc_attr($step_id);
+                                        }
                                     } ?>
                                 </a>
                                 <?php 
 
 
-                                    if( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' ) { 
+                                    if( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-7' ) { 
                                         echo '<p>'.esc_html($content).'</p>'; 
 
                                     } 
