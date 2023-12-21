@@ -152,6 +152,11 @@ class UACF7_MULTISTEP {
                             'url' 			=> UACF7_ADDONS."/multistep/assets/img/skin-6.png",
                             'is_pro' => true,    
                         ), 
+                        'style-7' 				=> array(
+                            'title'			=> 'Style 7',
+                            'url' 			=> UACF7_ADDONS."/multistep/assets/img/skin-7.png",
+                            'is_pro' => true,    
+                        ),
                      ), 
                     // 'default'   	=> function_exists( 'tourfic_template_settings' ) ? tourfic_template_settings() : '',
                     // 'dependency'  => [
@@ -756,13 +761,7 @@ class UACF7_MULTISTEP {
 
             <!-- Styling Style 1 -->
 
-            <?php if($uacf7_progressbar_style === 'style-1'): 
-
-            
-// echo '<pre>';
-// print_r($multistep_meta);
-// echo '</pre>';
-            ?>
+            <?php if($uacf7_progressbar_style === 'style-1'): ?>
             
             <style>
                 .progressbar-style-1 .steps-row .steps-step .uacf7-btn-active {
