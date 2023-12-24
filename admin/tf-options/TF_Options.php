@@ -161,6 +161,7 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 				'contact_page_wpcf7-new', 
 				'admin_page_uacf7-setup-wizard', 
 				'ultimate-addons_page_uacf7_license_info', 
+				'ultimate-addons_page_uacf7-integration', 
 			);
 			$tf_options_post_type = array( 'tf_hotel', 'tf_tours', 'tf_apartment' ); 
 

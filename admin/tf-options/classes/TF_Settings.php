@@ -139,6 +139,15 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					array( $this,'uacf7_license_info_callback'),
 				);
 			}
+
+			add_submenu_page(
+				$this->option_id, //parent slug
+				__('Integration','ultimate-addons-cf7'), // page_title
+				__('Integration','ultimate-addons-cf7'), // menu_title
+				'manage_options', // capability
+				'uacf7-integration', // menu_slug
+				array( $this, 'tf_integration_page' ) // function
+			); 
 			
 			// //Get Help submenu
 			// add_submenu_page(
@@ -299,6 +308,30 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 						</div>
 						<?php wp_nonce_field( 'tf_option_nonce_action', 'tf_option_nonce' ); ?>
 					</form>
+				</div>
+	
+
+			</div>
+			
+			<?php
+		}
+	 
+
+		/**
+		 * Get UAC7 Addon Page
+		 * @author Sydur Rahman
+		 */
+
+		public function tf_integration_page(){
+			// uacf7_print_r($this->option_sections);
+			
+			?>
+			<div class="tf-setting-dashboard">
+				<!-- deshboard-header-include -->
+				<?php echo $this->tf_top_header(); ?>
+				<div class="uacf7-addons-settings-page">
+					<h1 class="uacf7-setting-title"><?php echo esc_html('Ultimate Addons for Contact Form 7 (UACF7) Settings', 'ultimate-addons-cf7') ?></h1>
+					 
 				</div>
 	
 
