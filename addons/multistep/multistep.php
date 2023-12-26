@@ -846,10 +846,18 @@ class UACF7_MULTISTEP {
                         $step_id    = 1;
                         $step_count = 0;
                         $step_name  = apply_filters('uacf7_multistep_steps_names', '', $all_steps);
+
+                   
+
+
                     
                         foreach ($all_steps as $step) {
                             // $content = $step->values[0];
                             $content = isset($step->values[0]) ? $step->values[0] : '';
+
+                        //    print_r($step_name);
+                            // print_r($multistep_meta['desc_title_' . $step_name[$step_count]]);
+
 
                             ?>
                             <div class="steps-step">
@@ -869,6 +877,8 @@ class UACF7_MULTISTEP {
 
                                             echo '</div>';
                                         }
+                                     
+                                        
 
                                         do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
                                     }
