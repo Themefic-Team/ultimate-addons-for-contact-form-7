@@ -872,7 +872,7 @@ class UACF7_MULTISTEP {
                                             echo '<div class="uacf7-ms-skin7-title-desc">';
                                             echo '<p>' . $content . '</p>';
                                             if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
-                                                echo '<span>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</span>';
+                                                echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
                                             }
 
                                             echo '</div>';
