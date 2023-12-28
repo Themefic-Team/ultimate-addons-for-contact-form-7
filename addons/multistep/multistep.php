@@ -840,6 +840,7 @@ class UACF7_MULTISTEP {
 
 
             <?php if(!empty($all_steps)): ?>
+                <!-- <div class="uacf7-multistep-pb-default-wrapper"> -->
                 <div class="uacf7-steps steps-form <?php if($uacf7_progressbar_style == 'style-1'){echo 'progressbar-style-1';} ?>">
                     <div class="steps-row setup-panel">
                     <?php
@@ -864,10 +865,7 @@ class UACF7_MULTISTEP {
                                 <a title-id=".step-<?php echo esc_attr($step_id); ?>" data-form-id="<?php echo esc_attr($cfform->id()); ?>"   href="#<?php echo esc_attr($cfform->id()); ?>step-<?php echo esc_attr($step_id); ?>" type="button" class="btn <?php if( $step_id == 1 ) { echo esc_attr('uacf7-btn-active'); }else{ echo esc_attr('uacf7-btn-default'); } ?> btn-circle"><?php 
                                     if(is_array($step_name)) {
 
-                                        // if($uacf7_progressbar_style == 'style-7'){
-                                        //     echo '<p>' . $content . '</p>';
-                                        // }
-
+                                       
                                         if($uacf7_progressbar_style == 'style-7'){
                                             echo '<div class="uacf7-ms-skin7-title-desc">';
                                             echo '<p>' . $content . '</p>';
@@ -913,6 +911,7 @@ class UACF7_MULTISTEP {
                         ?>
                     </div>
                 </div>
+                <!-- </div> -->
             <?php endif; ?>
             <?php
 			}
