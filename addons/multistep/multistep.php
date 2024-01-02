@@ -157,7 +157,7 @@ class UACF7_MULTISTEP {
                             'url' 			=> UACF7_ADDONS."/multistep/assets/img/skin-7.png",
                             'is_pro' => true,    
                         ),
-                        'style-7' 				=> array(
+                        'style-8' 				=> array(
                             'title'			=> 'Style 8',
                             'url' 			=> UACF7_ADDONS."/multistep/assets/img/skin-8.png",
                             'is_pro' => true,    
@@ -845,7 +845,7 @@ class UACF7_MULTISTEP {
 
 
             <?php if(!empty($all_steps)): ?>
-                <!-- <div class="uacf7-multistep-pb-default-wrapper"> -->
+                <div class="<?php echo isset($uacf7_progressbar_style) ? $uacf7_progressbar_style . " uacf7-common-pb" : "default-skin-style"; ?>">
                 <div class="uacf7-steps steps-form <?php if($uacf7_progressbar_style == 'style-1'){echo 'progressbar-style-1';} ?>">
                     <div class="steps-row setup-panel">
                     <?php
@@ -861,9 +861,7 @@ class UACF7_MULTISTEP {
                             // $content = $step->values[0];
                             $content = isset($step->values[0]) ? $step->values[0] : '';
 
-                        //    print_r($step_name);
-                            // print_r($multistep_meta['desc_title_' . $step_name[$step_count]]);
-
+        
 
                             ?>
                             <div class="steps-step">
@@ -885,17 +883,17 @@ class UACF7_MULTISTEP {
 
                                         do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
                                     }
-                                    if( $uacf7_progressbar_style == 'style-1' ){
+                                    if( $uacf7_progressbar_style == 'style-1'){
                                         if( $uacf7_multistep_use_step_labels != true ) {
                                             echo $content;
                                         }else { 
                                             echo esc_attr($step_id);
                                         }
                                     }else {
-                                        if( $uacf7_progressbar_style != 'style-7'){
+                                        // if( $uacf7_progressbar_style != 'style-7'){
 
-                                            echo esc_attr($step_id);
-                                        }
+                                        //     echo esc_attr($step_id);
+                                        // }
                                     } ?>
                                 </a>
                                 <?php 
@@ -916,7 +914,7 @@ class UACF7_MULTISTEP {
                         ?>
                     </div>
                 </div>
-                <!-- </div> -->
+                </div>
             <?php endif; ?>
             <?php
 			}
