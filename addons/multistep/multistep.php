@@ -877,6 +877,27 @@ class UACF7_MULTISTEP {
                                             }
 
                                             echo '</div>';
+                                        }elseif($uacf7_progressbar_style == 'style-8'){ 
+
+                 
+
+                                            echo  '<div class="uacf7-ms-skin8-step-label-wrapper">'; ?>
+                                                
+
+                           
+                                            <div class="uacf7-ms-skin8-step-wrapper">
+                                            <p class="uacf7-ms-skin8-current-step"></p>
+                                            <?php echo '<p class="uacf7-ms-skin8-total-step">'. $content . '</p>'; ?>
+                                            </div>
+                                       
+                                              <?php if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
+                                                echo  '<div class="uacf7-ms-skin8-step-label">';
+                                                echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                                echo  '</div>';
+                                            } 
+
+                                            echo '</div>';
+                                        
                                         }
                                      
                                         
@@ -887,10 +908,15 @@ class UACF7_MULTISTEP {
                                         if( $uacf7_multistep_use_step_labels != true ) {
                                             echo $content;
                                         }else { 
-                                            echo esc_attr($step_id);
+                                       
+
+                                             if( $uacf7_progressbar_style != 'style-8'){
+
+                                                echo esc_attr($step_id);
+                                            }
                                         }
                                     }else {
-                                        // if( $uacf7_progressbar_style != 'style-7'){
+                                        // if( $uacf7_progressbar_style == 'style-8'){
 
                                         //     echo esc_attr($step_id);
                                         // }

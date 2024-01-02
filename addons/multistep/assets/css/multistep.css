@@ -29,7 +29,7 @@
 
 .steps-form .steps-row {
     display: table-row;
-}
+} 
 
 .steps-form .steps-row:before {
     top: 18px;
@@ -47,9 +47,9 @@
     position: relative;
 }
 
-.steps-form .steps-row .steps-step p {
+/* .steps-form .steps-row .steps-step p {
     margin-top: 0.5rem;
-}
+}  */
 
 .steps-form .steps-row .steps-step button[disabled] {
     opacity: 1 !important;
