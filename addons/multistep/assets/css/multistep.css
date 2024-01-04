@@ -31,7 +31,7 @@
     display: table-row;
 } 
 
-.steps-form .steps-row:before {
+/* .steps-form .steps-row:before {
     top: 18px;
     bottom: 0;
     position: absolute;
@@ -39,7 +39,7 @@
     width: 100%;
     height: 1px;
     background-color: #ccc;
-}
+} */
 
 .steps-form .steps-row .steps-step {
     display: table-cell;
@@ -47,9 +47,9 @@
     position: relative;
 }
 
-/* .steps-form .steps-row .steps-step p {
+.steps-form .steps-row .steps-step p {
     margin-top: 0.5rem;
-}  */
+} 
 
 .steps-form .steps-row .steps-step button[disabled] {
     opacity: 1 !important;
