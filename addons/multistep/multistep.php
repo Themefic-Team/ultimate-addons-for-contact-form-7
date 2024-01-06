@@ -879,23 +879,16 @@ class UACF7_MULTISTEP {
                                             echo '</div>';
                                         }elseif($uacf7_progressbar_style == 'style-8'){ 
 
-                 
-
                                             echo  '<div class="uacf7-ms-skin8-step-label-wrapper">'; ?>
-                                                
-
-                           
+                     
                                             <div class="uacf7-ms-skin8-step-wrapper">
-                                            <p class="uacf7-ms-skin8-current-step"></p>
-                                            <?php echo '<p class="uacf7-ms-skin8-total-step">'. $content . '</p>'; ?>
+                                            <p class="uacf7-ms-skin8-current-step"></p><?php echo '<p class="uacf7-ms-skin8-total-step">'.$content.'</p>'; ?>
                                             </div>
-                                       
                                               <?php if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
                                                 echo  '<div class="uacf7-ms-skin8-step-label">';
                                                 echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
                                                 echo  '</div>';
                                             } 
-
                                             echo '</div>';
                                         
                                         }
