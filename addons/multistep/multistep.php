@@ -162,6 +162,21 @@ class UACF7_MULTISTEP {
                             'url' 			=> UACF7_ADDONS."/multistep/assets/img/skin-8.png",
                             'is_pro' => true,    
                         ),
+                        'style-9' 				=> array(
+                            'title'			=> 'Style 9',
+                            'url' 			=> UACF7_ADDONS."/multistep/assets/img/skin-9.png",
+                            'is_pro' => true,    
+                        ),
+                        'style-10' 				=> array(
+                            'title'			=> 'Style 10',
+                            'url' 			=> UACF7_ADDONS."/multistep/assets/img/skin-10.png",
+                            'is_pro' => true,    
+                        ),
+                        'style-11' 				=> array(
+                            'title'			=> 'Style 11',
+                            'url' 			=> UACF7_ADDONS."/multistep/assets/img/skin-11.png",
+                            'is_pro' => true,    
+                        ),
                      ), 
                     // 'default'   	=> function_exists( 'tourfic_template_settings' ) ? tourfic_template_settings() : '',
                     // 'dependency'  => [
