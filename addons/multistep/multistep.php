@@ -435,6 +435,7 @@ class UACF7_MULTISTEP {
 					<div class="steps-step"><a href="#step-<?php echo esc_attr($step_id); ?>" type="button" class="btn <?php if( $step_id == 1 ) { echo esc_attr('uacf7-btn-active'); }else{ echo esc_attr('uacf7-btn-default'); } ?> btn-circle"><?php 
 					if(is_array($step_name)) {
 						do_action( 'uacf7_progressbar_image', $step_name[$step_count], $form_current->id() );
+						do_action( 'uacf7_progressbar_banner', $step_name[$step_count], $form_current->id() );
 					}
 					echo apply_filters( 'uacf7_progressbar_step', esc_attr($step_id), $uacf7_multistep_use_step_labels, $content ); ?></a><p><?php if( $uacf7_multistep_use_step_labels != 'on' ) { echo $content; } ?></p></div>
 					<?php
@@ -596,6 +597,19 @@ class UACF7_MULTISTEP {
                         'inline' => true, 
                         'is_pro' => true, 
                         'dependency' => array( 'uacf7_progressbar_icon_type'.$step->name.'', '==', 'image' ),
+                    );
+
+
+                    $fields['uacf7_progressbar_banner_'.$step->name.''] = array(
+                        'id'        => 'uacf7_progressbar_banner_'.$step->name.'',
+                        'type' => 'image',
+                        'label'     => __( 'Add progressbar Banner for this step', 'ultimate-addons-cf7' ),  
+                        'class' => 'tf-field-class', 
+                        'multiple' => false,
+                        'inline' => true, 
+                        'is_pro' => true, 
+                        'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-9' ),
+                      
                     );
                     $fields['uacf7_progressbar_icon_'.$step->name.''] = array(
                         'id'        => 'uacf7_progressbar_icon_'.$step->name.'',
@@ -906,36 +920,60 @@ class UACF7_MULTISTEP {
                                             } 
                                             echo '</div>';
                                         
+                                        }elseif($uacf7_progressbar_style == 'style-9'){ 
+
+                                            do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
+
+                                            echo '<div class="uacf7-ms-skin9-title-desc">';
+                                            echo '<p>' . $content . '</p>';
+                                            if (isset($multistep_meta['desc_title_' . $step_name[$step_count]]) && isset($multistep_meta['step_desc_' . $step_name[$step_count]])) {
+                                                echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                                echo '<p>' . $multistep_meta['step_desc_' . $step_name[$step_count]] . '</p>';
+                                            }
+
+                                            echo '</div>';
+                                            do_action( 'uacf7_progressbar_banner', $step_name[$step_count], $cfform->id() );
+                                        
+                                        }elseif($uacf7_progressbar_style == 'style-10'){ 
+
+                                            echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                        
                                         }
                                      
                                         
+                                        if($uacf7_progressbar_style != 'style-9'){ 
 
-                                        do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
+                                            do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
+                                        }
+
+                                       
                                     }
                                     if( $uacf7_progressbar_style == 'style-1'){
+
+
                                         if( $uacf7_multistep_use_step_labels != true ) {
                                             echo $content;
+                                            
                                         }else { 
                                        
 
-                                             if( $uacf7_progressbar_style != 'style-8'){
+                                             if( $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-10'){
 
                                                 echo esc_attr($step_id);
                                             }
                                         }
                                     }else {
-                                        // if( $uacf7_progressbar_style == 'style-8'){
+                                        if( $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-10'){
 
-                                        //     echo esc_attr($step_id);
-                                        // }
+                                            echo esc_attr($step_id);
+                                        }
                                     } ?>
                                 </a>
                                 <?php 
 
 
-                                    if( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-7' ) { 
+                                    if( $uacf7_multistep_use_step_labels != true  && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-10' ) { 
                                         echo '<p>'.esc_html($content).'</p>'; 
-
                                     } 
                                 ?>
                             </div>
