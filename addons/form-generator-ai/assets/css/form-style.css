@@ -1,0 +1,101 @@
+/* Ai Generated Form Style
+* @author M Hemel Hasan
+*/
+
+/* Color */
+:root {
+  --uacf7-global-color-primary: #382673;
+  --uacf7-global-text-color-secondary: #383c41;
+  --uacf7-global-placeholder-color: #606266;
+  --uacf7-global-border-color: #dadbdd;
+  --uacf7-global-button-color: var(--uacf7-global-color-primary);
+  --uacf7-border-radius: 5px;
+  --uacf7-white-color: #fff;
+}
+
+/* Default */
+
+.uacf7-wrapper-default {
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  min-inline-size: 100%;
+}
+
+.uacf7-wrapper-default label {
+  display: inline-block;
+  font-weight: 500;
+  line-height: inherit;
+  margin-bottom: 15px;
+}
+
+.uacf7-wrapper-default label span {
+  display: block;
+  margin-top: 5px;
+}
+
+.uacf7-wrapper-default input[type="date"],
+.uacf7-wrapper-default input[type="email"],
+.uacf7-wrapper-default input[type="number"],
+.uacf7-wrapper-default input[type="password"],
+.uacf7-wrapper-default input[type="search"],
+.uacf7-wrapper-default input[type="tel"],
+.uacf7-wrapper-default input[type="text"],
+.uacf7-wrapper-default input[type="url"],
+.uacf7-wrapper-default select,
+.uacf7-wrapper-default textarea,
+.uacf7-wrapper-default label span textarea,
+.uacf7-wrapper-default label span input {
+  padding: 0.7rem 1rem;
+  background-clip: padding-box;
+  background-image: none;
+  border: 1px solid var(--uacf7-global-border-color);
+  border-radius: var(--uacf7-border-radius);
+  color: var(--uacf7-global-text-color-secondary);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  outline: none;
+}
+
+input[type="date"]:focus-visible,
+input[type="date"]:visited,
+input[type="email"]:focus-visible,
+input[type="email"]:visited,
+input[type="number"]:focus-visible,
+input[type="number"]:visited,
+input[type="password"]:focus-visible,
+input[type="password"]:visited,
+input[type="search"]:focus-visible,
+input[type="search"]:visited,
+input[type="tel"]:focus-visible,
+input[type="tel"]:visited,
+input[type="text"]:focus-visible,
+input[type="text"]:visited,
+select:visited,
+select:focus-visible,
+textarea:visited,
+textarea:focus-visible {
+  border-color: var(--uacf7-global-button-color) !important;
+}
+
+.uacf7-wrapper-default input[type="submit"] {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--uacf7-global-color-primary);
+  border-style: solid;
+  border-radius: var(--uacf7-border-radius);
+  border-width: 2px;
+  border-color: var(--uacf7-global-button-color);
+  padding: 8px 20px;
+  text-align: center;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  outline: none;
+}
+
+.uacf7-wrapper-default input[type="submit"]:focus,
+.uacf7-wrapper-default input[type="submit"]:hover {
+  color: var(--uacf7-white-color);
+  background-color: var(--uacf7-global-color-primary);
+}

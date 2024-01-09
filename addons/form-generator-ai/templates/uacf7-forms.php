@@ -1,4 +1,4 @@
-<?php  
+<?php
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -7,33 +7,58 @@ defined( 'ABSPATH' ) || exit;
  * @package   UACF7
  * @subpackage Form Generator AI
  * @since     1.0.0
- * @Author:  Sydur Rahman
+ * @Author:  Sydur Rahman, M Hemel Hasan
  */
 
- switch ($uacf7_default[1]) {
+switch ( $uacf7_default[1] ) {
+	// Start Form from MHemelHasan
+	case 'basis-contact-form':
+		$form =
+			'<div class="uacf7-wrapper-default">
+    [uacf7-row]
+        [uacf7-col col:6]
+            <label> First Name *
+                [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Last Name *
+                [text* your-last-name autocomplete:name placeholder "Last Name"] </label>  [/uacf7-col]
+    [/uacf7-row]
+    <label> Email *
+        [email* your-email autocomplete:email placeholder "Email Address"] </label>
+    <label> Subject *
+        [text* your-subject placeholder "Subject"] </label>
+    <label> Your Message *
+        [textarea* your-message placeholder "Your Message"] </label>
+    [submit "Submit Form"]
+</div>';
+		break;
 
-    case "multistep":
-$form = '[uacf7_step_start uacf7_step_start-901 "Step One"]
-<label> Your name
-    [text* your-name] </label> 
-<label> Your email
-    [email* your-email] </label>
-[uacf7_step_end]
-[uacf7_step_start uacf7_step_start-902 "Step Two"]
-<label> Subject
-    [text* your-subject] </label> 
-<label> Do you need an appointment?
-    [select* menu-663 include_blank "Yes" "No"] </label> 
-[uacf7_step_end]
-[uacf7_step_start uacf7_step_start-903 "Step Three"]
-<label> Your message (optional)
-    [textarea your-message] </label> 
-[submit "Submit"]
-[uacf7_step_end]'; 
-        break;
-     
-    case "conditional":
-$form =  '<h4>Condition for Field Type: <strong>Text</strong></h4>
+	// End Form from -MHemelHasan
+
+	case "multistep":
+		$form = '<div class="uacf7-wrapper-default">
+    [uacf7_step_start uacf7_step_start-901 "Step One"]
+    <label> Your name
+        [text* your-name] </label> 
+    <label> Your email
+        [email* your-email] </label>
+    [uacf7_step_end]
+    [uacf7_step_start uacf7_step_start-902 "Step Two"]
+    <label> Subject
+        [text* your-subject] </label> 
+    <label> Do you need an appointment?
+        [select* menu-663 include_blank "Yes" "No"] </label> 
+    [uacf7_step_end]
+    [uacf7_step_start uacf7_step_start-903 "Step Three"]
+    <label> Your message (optional)
+        [textarea your-message] </label> 
+    [submit "Submit"]
+    [uacf7_step_end]
+</div>';
+		break;
+
+	case "conditional":
+		$form = '<h4>Condition for Field Type: <strong>Text</strong></h4>
 Write name <strong>"John Doe"</strong> or <strong>"Abul Mia"</strong> to test it out 
 <label> Your Name </label> 
 [conditional namefield]
@@ -87,10 +112,10 @@ Select <strong>"Option Two"</strong> or <strong>"Option Three"</strong> to test 
 <label> Insert Your E-mail
 [email* your-email-two] </label> 
 [submit "Submit"]';
-        break; 
+		break;
 
-    case "subscription":
-$form =  '<label> First Name:
+	case "subscription":
+		$form = '<label> First Name:
     [text* first-name placeholder "John"] </label> 
 <label> Last Name:
     [text* last-name placeholder "Doe"] </label> 
@@ -105,15 +130,15 @@ $form =  '<label> First Name:
 <label> Terms and Conditions:
     [acceptance acceptance-terms] I accept the terms and conditions. [/acceptance] </label> 
 [submit "Subscribe Now"]';
-        break; 
+		break;
 
-    case "blog":
-        $form = apply_filters('uacf7_post_submission_form_ai_generator', esc_html('To generate this form, please download “Ultimate Post Submission Addon” from our client portal and activate'), $uacf7_default);
- 
-        break; 
+	case "blog":
+		$form = apply_filters( 'uacf7_post_submission_form_ai_generator', esc_html( 'To generate this form, please download “Ultimate Post Submission Addon” from our client portal and activate' ), $uacf7_default );
 
-    case "feedback":
-$form =  '<label> Your Name
+		break;
+
+	case "feedback":
+		$form = '<label> Your Name
     [text* your-name]  </label> 
 <label> Your Email
     [email* your-email]  </label> 
@@ -122,10 +147,10 @@ $form =  '<label> Your Name
 <label> Your Feedback
     [textarea* your-feedback]  </label> 
 [submit "Submit Feedback"]';
-        break; 
-        
-    case "application":
-$form =  '<label> Full Name
+		break;
+
+	case "application":
+		$form = '<label> Full Name
     [text* full-name]  </label> 
 <label> Email Address
     [email* your-email]  </label> 
@@ -138,10 +163,10 @@ $form =  '<label> Full Name
 <label> Upload Resume
     [file resume-file filetypes:pdf|doc|docx limit:2mb] </label> 
 [submit "Submit Application"] ';
-        break;   
+		break;
 
-    case "inquiry":
-$form =  '<label> Your Name (required)
+	case "inquiry":
+		$form = '<label> Your Name (required)
     [text* your-name]  </label> 
 <label> Your Email (required)
     [email* your-email]  </label> 
@@ -150,10 +175,10 @@ $form =  '<label> Your Name (required)
 <label> Your Inquiry
     [textarea your-inquiry]  </label> 
 [submit "Send Inquiry"]';
-        break;   
+		break;
 
-    case "survey":
-$form =  '<label> Your Name (required)
+	case "survey":
+		$form = '<label> Your Name (required)
     [text* your-name]  </label> 
 <label> Your Email (required)
     [email* your-email]  </label> 
@@ -166,10 +191,10 @@ $form =  '<label> Your Name (required)
 <label> Any suggestions for us to improve?
     [textarea suggestions]  </label> 
 [submit "Submit Survey"]';
-        break;   
-        
-    case "address":
-$form =  '<label> First Name
+		break;
+
+	case "address":
+		$form = '<label> First Name
     [text* first-name placeholder "John"] </label> 
 <label> Last Name
     [text* last-name placeholder "Doe"] </label> 
@@ -188,10 +213,10 @@ $form =  '<label> First Name
 <label> Email Address
     [email* email-address placeholder "john.doe@example.com"] </label> 
 [submit "Submit"]';
-        break;   
-        
-    case "event":
-$form =  '<label> Full Name
+		break;
+
+	case "event":
+		$form = '<label> Full Name
     [text* full-name placeholder "John Doe"] </label> 
 <label> Email Address
     [email* email-address placeholder "john.doe@example.com"] </label> 
@@ -208,18 +233,18 @@ $form =  '<label> Full Name
 <label> Event Selection
     [select event-selection "Workshop A" "Workshop B" "Seminar X" "Seminar Y"] </label> 
 [submit "Register"]';
-        break;   
+		break;
 
-    case "newsletter":
-$form =  '<label> Full Name
+	case "newsletter":
+		$form = '<label> Full Name
     [text* full-name placeholder "John Doe"] </label> 
 <label> Email Address
     [email* email-address placeholder "john.doe@example.com"]</label> 
 [submit "Subscribe"]';
-        break;   
-        
-    case "donation":
-$form =  '<label> Full Name
+		break;
+
+	case "donation":
+		$form = '<label> Full Name
     [text* full-name placeholder "Jane Smith"] </label> 
 <label> Email Address
     [email* email-address placeholder "jane.smith@example.com"] </label> 
@@ -232,10 +257,10 @@ $form =  '<label> Full Name
 <label> Message (Optional)
     [textarea message placeholder "Your message or dedication..."] </label> 
 [submit "Donate Now"]';
-        break;   
+		break;
 
-    case "product-review":
-$form =  '<label> Your Name
+	case "product-review":
+		$form = '<label> Your Name
     [text* your-name placeholder "Jane Smith"] </label> 
 <label> Your Email
     [email* your-email placeholder "jane.smith@example.com"] </label> 
@@ -254,16 +279,16 @@ $form =  '<label> Your Name
 <label> Would you purchase this product again?
     [checkbox purchase-again "Yes"] </label> 
 [submit "Submit Your Review"]';
-        break;    
-    case "service-booking":
-    case "appointment-form":
-    case "booking": 
-        $form = apply_filters('uacf7_booking_form_ai_generator', esc_html('To generate this form, please download “Ultimate booking Addon” from our client portal and activate'), $uacf7_default);
- 
-        break;    
-         
-    case "rating":
-$form =  '<label> Name
+		break;
+	case "service-booking":
+	case "appointment-form":
+	case "booking":
+		$form = apply_filters( 'uacf7_booking_form_ai_generator', esc_html( 'To generate this form, please download “Ultimate booking Addon” from our client portal and activate' ), $uacf7_default );
+
+		break;
+
+	case "rating":
+		$form = '<label> Name
     [text* name placeholder "John Doe"] </label> 
 <label> Email Address
     [email* email-address placeholder "john.doe@example.com"] </label> 
@@ -272,27 +297,27 @@ $form =  '<label> Name
 <label> Comments or Feedback
     [textarea feedback placeholder "Please share your feedback"] </label> 
 [submit "Submit Rating"]';
-        break;   
-        
-         
-    case "repeater":
-        $form = apply_filters('uacf7_repeater_form_ai_generator', esc_html('To generate this form, please download “Ultimate Repeater Addon” from our client portal and activate  ultimate repeater Addon first'), $uacf7_default);
+		break;
 
-        break;   
-        
-    case "conversational-appointment-form":
-    case "conversational-interview-form":
-        $form = apply_filters('uacf7_conversational_form_ai_generator', esc_html('To generate this form, please download “ultimate Conversational Form Addon” from our client portal and activate ultimate repeater Addon first'), $uacf7_default);
 
-        break;   
-          
-        
-    default:
-        $form = "Sorry, we couldn't find a matching form for the keyword ".$uacf7_default[1].". Please try another keyword or consult the Form Generator AI for assistance.";
-        break;
+	case "repeater":
+		$form = apply_filters( 'uacf7_repeater_form_ai_generator', esc_html( 'To generate this form, please download “Ultimate Repeater Addon” from our client portal and activate  ultimate repeater Addon first' ), $uacf7_default );
+
+		break;
+
+	case "conversational-appointment-form":
+	case "conversational-interview-form":
+		$form = apply_filters( 'uacf7_conversational_form_ai_generator', esc_html( 'To generate this form, please download “ultimate Conversational Form Addon” from our client portal and activate ultimate repeater Addon first' ), $uacf7_default );
+
+		break;
+
+
+	default:
+		$form = "Sorry, we couldn't find a matching form for the keyword " . $uacf7_default[1] . ". Please try another keyword or consult the Form Generator AI for assistance.";
+		break;
 }
 
-ob_clean(); 
+ob_clean();
 echo $form;
 return ob_get_clean();
 ?>
