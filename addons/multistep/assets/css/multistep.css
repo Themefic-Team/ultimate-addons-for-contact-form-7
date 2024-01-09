@@ -118,6 +118,7 @@
     flex-grow: 1;
     /* flex-basis: 0; */
     border-right: 1px solid #fff;
+
 }
 
 .progressbar-style-1.steps-form .steps-row .steps-step:last-child {
@@ -125,8 +126,8 @@
 }
 
 .progressbar-style-1.steps-form .steps-row .steps-step p {
-    margin-top: 0.5rem;
-    display: none;
+    /* margin-top: 0.5rem; */
+    /* display: none; */
 }
 
 .progressbar-style-1.steps-form .steps-row .steps-step .btn-circle {
