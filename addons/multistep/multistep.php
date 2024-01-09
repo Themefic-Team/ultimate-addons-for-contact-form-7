@@ -804,6 +804,13 @@ class UACF7_MULTISTEP {
                     border-bottom: <?php echo esc_attr($uacf7_multistep_circle_border); ?>px solid <?php echo esc_attr($uacf7_multistep_circle_border_color); ?>!important;
         
                 }
+
+                .progressbar-style-1 .steps-row .steps-step .style-1-filled {
+                    color: <?php echo esc_attr($uacf7_multistep_circle_active_font_color); ?>!important;
+                    background: #F5F8FF!important;
+                    border-bottom: <?php echo esc_attr($uacf7_multistep_circle_border); ?>px solid #C4DAFF!important;
+        
+                }
                 
                 .progressbar-style-1 .steps-row .steps-step .btn-circle{
         
@@ -917,6 +924,7 @@ class UACF7_MULTISTEP {
                                             echo '<p>' . $content . '</p>';
                                             if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
                                                 echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                
                                             }
                                             echo '</div>';
                                         }elseif($uacf7_progressbar_style == 'style-8'){ 
