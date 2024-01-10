@@ -262,6 +262,27 @@ class UACF7_MULTISTEP {
                     'label'     => __( ' Circle Border Color', 'ultimate-addons-cf7' ),   
                     'field_width' => 50,
                 ),
+                'uacf7_multistep_circle_font_color_when_active_and_filled' => array(
+                    'id'        => 'uacf7_multistep_circle_font_color_when_active_and_filled',
+                    'type'      => 'color',
+                    'label'     => __( ' Circle Font Color When Active and Filled', 'ultimate-addons-cf7' ),   
+                    'field_width' => 100,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-9' ),
+                ),
+                'uacf7_multistep_circle_border_color_when_filled' => array(
+                    'id'        => 'uacf7_multistep_circle_border_color_when_filled',
+                    'type'      => 'color',
+                    'label'     => __( ' Circle Border Color When Filled', 'ultimate-addons-cf7' ),   
+                    'field_width' => 100,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-9' ),
+                ),
+                'uacf7_multistep_circle_border_color_when_active' => array(
+                    'id'        => 'uacf7_multistep_circle_border_color_when_active',
+                    'type'      => 'color',
+                    'label'     => __( ' Circle Border Color When Active', 'ultimate-addons-cf7' ),   
+                    'field_width' => 100,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-9' ),
+                ),
 
 
                 'uacf7_progressbar_size_option' => array(
@@ -920,8 +941,11 @@ class UACF7_MULTISTEP {
                                             }
                                             echo '</div>';
                                         }elseif ($uacf7_progressbar_style == 'style-11') {
+                                            do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
                                             echo '<div class="uacf7-ms-skin11-title-desc">';
-                                            echo '<p>' . $content . '</p>';
+                                            if( isset($content)){
+                                                echo '<p>' . $content . '</p>';
+                                            }
                                             if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
                                                 echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
                 
@@ -963,7 +987,7 @@ class UACF7_MULTISTEP {
                                         }
                                      
                                         
-                                        if($uacf7_progressbar_style != 'style-9'){ 
+                                        if($uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-11'){ 
 
                                             do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
                                         }
