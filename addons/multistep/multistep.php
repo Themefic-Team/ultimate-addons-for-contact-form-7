@@ -206,7 +206,7 @@ class UACF7_MULTISTEP {
                 'uacf7_multistep_circle_bg_active_color' => array(
                     'id'       => 'uacf7_multistep_circle_bg_active_color',
                     'type'     => 'color',
-                    'label'    => __( 'Circle Background Hover Color', 'ultimate-addons-cf7' ),
+                    'label'    => __( 'Circle Background Active Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 50,
                 
@@ -262,26 +262,66 @@ class UACF7_MULTISTEP {
                     'label'     => __( ' Circle Border Color', 'ultimate-addons-cf7' ),   
                     'field_width' => 50,
                 ),
-                'uacf7_multistep_circle_font_color_when_active_and_filled' => array(
-                    'id'        => 'uacf7_multistep_circle_font_color_when_active_and_filled',
-                    'type'      => 'color',
-                    'label'     => __( ' Circle Font Color When Active and Filled', 'ultimate-addons-cf7' ),   
-                    'field_width' => 100,
-                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-9' ),
-                ),
+            
                 'uacf7_multistep_circle_border_color_when_filled' => array(
                     'id'        => 'uacf7_multistep_circle_border_color_when_filled',
                     'type'      => 'color',
-                    'label'     => __( ' Circle Border Color When Filled', 'ultimate-addons-cf7' ),   
+                    'label'     => __( ' Circle Border Filled Color', 'ultimate-addons-cf7' ),   
                     'field_width' => 100,
                     'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-9' ),
                 ),
                 'uacf7_multistep_circle_border_color_when_active' => array(
                     'id'        => 'uacf7_multistep_circle_border_color_when_active',
                     'type'      => 'color',
-                    'label'     => __( ' Circle Border Color When Active', 'ultimate-addons-cf7' ),   
+                    'label'     => __( ' Circle Border Active Color', 'ultimate-addons-cf7' ),   
                     'field_width' => 100,
                     'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-9' ),
+                ),
+                'uacf7_multistep_progress_filled_line_color' => array(
+                    'id'        => 'uacf7_multistep_progress_filled_line_color',
+                    'type'      => 'color',
+                    'label'     => __( ' Progressbar Filled Line Color', 'ultimate-addons-cf7' ),   
+                    'field_width' => 100,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-7' ),
+                ),
+                'uacf7_multistep_filled_font_color' => array(
+                    'id'        => 'uacf7_multistep_filled_font_color',
+                    'type'      => 'color',
+                    'label'     => __( ' Circle Filled Font Color', 'ultimate-addons-cf7' ),   
+                    'field_width' => 100,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-10' ),
+                ),
+
+                'uacf7_multistep_circel_font_color_when_filled' => array(
+                    'id'        => 'uacf7_multistep_circel_font_color_when_filled',
+                    'type'      => 'color',
+                    'label'     => __( ' Circle Font/Icon Filled Color', 'ultimate-addons-cf7' ),   
+                    'field_width' => 100,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-8' ),
+                ),
+                'uacf7_multistep_circel_bg_color_when_filled' => array(
+                    'id'        => 'uacf7_multistep_circel_bg_color_when_filled',
+                    'type'      => 'color',
+                    'label'     => __( ' Circle Background Filled Color', 'ultimate-addons-cf7' ),   
+                    'field_width' => 100,
+                    'dependency' =>array( 'uacf7_progressbar_style', '==', 'style-8' ),
+                  
+                ),
+                'uacf7_multistep_circel_bg_color_when_filled' => array(
+                    'id'        => 'uacf7_multistep_circel_bg_color_when_filled',
+                    'type'      => 'color',
+                    'label'     => __( ' Circle Background Filled Color', 'ultimate-addons-cf7' ),   
+                    'field_width' => 100,
+                    'dependency' =>array( 'uacf7_progressbar_style', '==', 'style-9' ),
+                  
+                ),
+                'uacf7_multistep_circle_filled_font_color' => array(
+                    'id'        => 'uacf7_multistep_circle_filled_font_color',
+                    'type'      => 'color',
+                    'label'     => __( ' Circle Font Filled Color', 'ultimate-addons-cf7' ),   
+                    'field_width' => 100,
+                    'dependency' =>array( 'uacf7_progressbar_style', '==', 'style-9' ),
+                  
                 ),
 
 
@@ -851,9 +891,7 @@ class UACF7_MULTISTEP {
                   }
 
 
-                .progressbar-style-1 .steps-row .steps-step .btn-circle.step-filled{
-
-                }
+             
 
                 .progressbar-style-1 .steps-row .steps-step a {
                     display     : flex!important;
