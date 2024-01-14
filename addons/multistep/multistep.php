@@ -432,9 +432,8 @@ class UACF7_MULTISTEP {
                     'label'     => __( ' Circle Border', 'ultimate-addons-cf7' ),   
                     'placeholder'     => __( 'border', 'ultimate-addons-cf7' ), 
                     'field_width' => 50,
-                ),
-
-            
+                ), 
+                
                 'uacf7_multistep_font_size' => array(
                     'id'        => 'uacf7_multistep_font_size',
                     'type'      => 'number',
