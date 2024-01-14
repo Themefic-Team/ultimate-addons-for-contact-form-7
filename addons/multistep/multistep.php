@@ -1009,19 +1009,14 @@ class UACF7_MULTISTEP {
                     <?php
                         $step_id    = 1;
                         $step_count = 0;
-                        $step_name  = apply_filters('uacf7_multistep_steps_names', '', $all_steps);
-
-                   
-
-
-                    
+                        $step_name  = apply_filters('uacf7_multistep_steps_names', '', $all_steps); 
                         foreach ($all_steps as $step) {
                             // $content = $step->values[0];
                             $content = isset($step->values[0]) ? $step->values[0] : ''; ?>
                             <div class="steps-step">
                                 <a title-id=".step-<?php echo esc_attr($step_id); ?>" data-form-id="<?php echo esc_attr($cfform->id()); ?>"   href="#<?php echo esc_attr($cfform->id()); ?>step-<?php echo esc_attr($step_id); ?>" type="button" class="btn <?php if( $step_id == 1 ) { echo esc_attr('uacf7-btn-active'); }else{ echo esc_attr('uacf7-btn-default'); } ?> btn-circle"><?php 
                                     if(is_array($step_name)) {
-
+                                        /*
                                         if($uacf7_progressbar_style == 'style-7'){
                                             echo '<div class="uacf7-ms-skin7-title-desc">';
                                             echo '<p>' . $content . '</p>';
@@ -1080,18 +1075,18 @@ class UACF7_MULTISTEP {
 
                                             do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
                                         }
+                                         */
+                                        do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
 
                                     }
                                     if( $uacf7_progressbar_style == 'style-1'){
 
-                                        if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
+                                        if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])  &&  !empty($multistep_meta['desc_title_' . $step_name[$step_count]])) {
                                             echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                        }else{
+                                            echo esc_html($content);
                                         }
-
-                                             if( $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-10'){
-
-                                                echo esc_attr($step_id);
-                                            }
+ 
                                         
                                     }else {
                                         if(  $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-10' && $uacf7_progressbar_style != 'style-11' ){
@@ -1104,7 +1099,7 @@ class UACF7_MULTISTEP {
 
 
                                     if( $uacf7_multistep_use_step_labels != true  && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-10' && $uacf7_progressbar_style != 'style-11' ) { 
-                                        // echo '<p>'.esc_html($content).'</p>'; 
+                                        echo '<p>'.esc_html($content).'</p>'; 
                                     } 
                                 ?>
                             </div>
