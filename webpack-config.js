@@ -6,13 +6,13 @@ const entryPoints = {};
 const freeAdminJs = glob.sync('./sass/admin/js/free/*.js');
 
 //Uacf7  free 
-entryPoints['ultimate-addons-for-contact-form-7/assets/admin/js/tourfic-admin-scripts.min'] = freeAdminJs;
+entryPoints['ultimate-addons-for-contact-form-7/assets/admin/js/uacf7-admin-scripts.min'] = freeAdminJs;
 
 //scss entry points 
-const adminScss = glob.sync('./sass/admin/css/tourfic-admin.scss');
+const adminScss = glob.sync('./sass/admin/css/uacf7-admin.scss');
 // 
 
-const config = {
+const uacf7_config = {
     entry: entryPoints,
 
     output: {
@@ -39,4 +39,4 @@ const config = {
 }
 
 // Export the config object.
-module.exports = config;
+module.exports = uacf7_config;

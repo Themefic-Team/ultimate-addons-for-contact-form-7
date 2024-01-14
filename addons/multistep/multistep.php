@@ -68,10 +68,9 @@ class UACF7_MULTISTEP {
 			'fields' => array(
                 'placeholder_headding' => array(
 					'id'    => 'placeholder_headding',
-					'type'  => 'notice',
-					'notice' => 'info',
+					'type'  => 'heading', 
 					'label' => __( 'Multistep', 'ultimate-addons-cf7' ),
-					'title' => __( 'This addon will help you to create the Multistep Form.', 'ultimate-addons-cf7' ),
+					'subtitle' => __( 'This addon will help you to create the Multistep Form.', 'ultimate-addons-cf7' ),
                     'content' => sprintf( 
                         __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">documentation</a>'
@@ -123,6 +122,10 @@ class UACF7_MULTISTEP {
                     'multiple' 		=> true,
                     'inline'   		=> true,
                     'options' => array(
+                        'default' 				=> array(
+                            'title'			=> 'Default',
+                            'url' 			=> UACF7_ADDONS."/multistep/assets/img/default.png", 
+                        ), 
                         'style-1' 				=> array(
                             'title'			=> 'Style 1',
                             'url' 			=> UACF7_ADDONS."/multistep/assets/img/skin-1.png", 
@@ -178,11 +181,7 @@ class UACF7_MULTISTEP {
                             'is_pro' => true,    
                         ),
                      ), 
-                    // 'default'   	=> function_exists( 'tourfic_template_settings' ) ? tourfic_template_settings() : '',
-                    // 'dependency'  => [
-                    // array( 'tf_single_hotel_layout_opt', '==', 'single' )
-                    // ],
-              
+                   
                     ),
 
 
@@ -535,7 +534,7 @@ class UACF7_MULTISTEP {
         ob_start();
 		$form_current = \WPCF7_ContactForm::get_current();  
         $steps = $form_current->scan_form_tags( array('type'=>'uacf7_step_start') );
-		$all_steps = apply_filters('uacf7_multistep_steps_title', array(), $all_steps);
+		$all_steps = apply_filters('uacf7_multistep_steps_title', array(), $steps);
         $meta = uacf7_get_form_option( $form_current->id(), 'multistep' );
         ?>
         <div class="uacf7-steps steps-form">

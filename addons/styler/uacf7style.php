@@ -331,6 +331,7 @@ class UACF7_uacf7style {
                     'type'      => 'select',
                     'label'     => __( 'Border Style ', 'ultimate-addons-cf7' ),   
                     'options'     => array(
+                        ''      => 'Select Border Style',
                         'none'      => 'None',
                         'dotted' => "Dotted",
                         'dashed' => "Dashed",
@@ -369,7 +370,7 @@ class UACF7_uacf7style {
                 'uacf7_uacf7style_btn_color_option' => array(
                     'id' => 'uacf7_uacf7style_btn_color_option',
                     'type' => 'color',
-                    'label'     => __( 'Border Color', 'ultimate-addons-cf7' ),  
+                    'label'     => __( 'Button Color', 'ultimate-addons-cf7' ),  
                     'class' => 'tf-field-class',
                     // 'default' => '#ffffff',
                     'multiple' => true,
@@ -385,7 +386,7 @@ class UACF7_uacf7style {
                     'id'        => 'uacf7_uacf7style_btn_font_size',
                     'type'      => 'number',
                     'label'     => __( 'Font Size (in px)', 'ultimate-addons-cf7' ),   
-                    'placeholder'     => __( 'Enter input border width', 'ultimate-addons-cf7' ), 
+                    'placeholder'     => __( 'Enter Button Font Size', 'ultimate-addons-cf7' ), 
                     'content' => __( 'E.g. 16 (Do not add px or em ).', 'ultimate-addons-cf7' ), 
                     'field_width' => 50,
                 ), 
