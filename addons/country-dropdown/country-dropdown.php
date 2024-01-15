@@ -23,8 +23,8 @@ class UACF7_COUNTRY_DROPDOWN {
 		add_action( 'wp_enqueue_scripts', array($this, 'wp_enqueue_script' ) );
         
         
-        add_filter( 'wpcf7_validate_uacf7_phone_number', array($this, 'wpcf7_country_dropdown_validation_filter'), 10, 2 );
-        add_filter( 'wpcf7_validate_uacf7_phone_number*', array($this,'wpcf7_country_dropdown_validation_filter'), 10, 2 );
+        add_filter( 'wpcf7_validate_uacf7_phone_number', array($this, 'wpcf7_fields_validation_filter'), 10, 2 );
+        add_filter( 'wpcf7_validate_uacf7_phone_number*', array($this,'wpcf7_fields_validation_filter'), 10, 2 );
     }
     
     public function wp_enqueue_script() {
@@ -92,7 +92,6 @@ class UACF7_COUNTRY_DROPDOWN {
 		} else {
 			//$atts['size'] = 40;
 		}
-    
 		
         $placeholder = $tag->get_option( 'placeholder');
         if(!empty($placeholder)){
@@ -110,7 +109,7 @@ class UACF7_COUNTRY_DROPDOWN {
             
             <input <?php  echo $atts; ?> type="tel" id="phone_<?php echo esc_attr($tag->name); ?>"  class="form-control">
             </div>
-            <p id="vallidation_message_<?php echo esc_attr($tag->name); ?>"></p>
+            <p id="validation_message_<?php echo esc_attr($tag->name); ?>"></p>
             <span><?php echo $validation_error; ?></span>
 		
 		</span>
@@ -207,6 +206,27 @@ class UACF7_COUNTRY_DROPDOWN {
         return $countries;
     }
 
+
+    public function wpcf7_fields_validation_filter( $result, $tag ) {
+        $name = $tag->name;
+
+        if ( isset( $_POST[$name] )
+        and is_array( $_POST[$name] ) ) {
+            foreach ( $_POST[$name] as $key => $value ) {
+                if ( '' === $value ) {
+                    unset( $_POST[$name][$key] );
+                }
+            }
+        }
+
+        $empty = ! isset( $_POST[$name] ) || empty( $_POST[$name] ) && '0' !== $_POST[$name];
+
+        if ( $tag->is_required() and $empty ) {
+            $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+        }
+
+        return $result;
+    }
 
  
     public function wpcf7_country_dropdown_validation_filter( $result, $tag ) {
