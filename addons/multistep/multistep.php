@@ -874,7 +874,7 @@ class UACF7_MULTISTEP {
                 $uacf7_multistep_circle_font_hover_color  = isset($multistep_meta['uacf7_multistep_circle_font_hover_color']) && $multistep_meta['uacf7_multistep_circle_font_hover_color']   !== '' ? $multistep_meta['uacf7_multistep_circle_font_hover_color']: '#607085';
                 $uacf7_multistep_circle_active_font_color = isset($multistep_meta['uacf7_multistep_circle_active_font_color']) && $multistep_meta['uacf7_multistep_circle_active_font_color'] !== '' ? $multistep_meta['uacf7_multistep_circle_active_font_color']: '#2979FF';
                 $uacf7_multistep_progress_line_color      = isset($multistep_meta['uacf7_multistep_progress_line_color']) && $multistep_meta['uacf7_multistep_progress_line_color']           !== '' ? $multistep_meta['uacf7_multistep_progress_line_color']: '';
-                $uacf7_multistep_circle_border_color      = isset($multistep_meta['uacf7_multistep_circle_border_color']) && $multistep_meta['uacf7_multistep_circle_border_color']           !== '' ? $multistep_meta['uacf7_multistep_circle_border_color']: '#2979FF'; 
+                $uacf7_multistep_circle_border_color      = isset($multistep_meta['uacf7_multistep_circle_border_color']) && $multistep_meta['uacf7_multistep_circle_border_color']           !== '' ? $multistep_meta['uacf7_multistep_circle_border_color']: '#2979FF';
                 $uacf7_multistep_circle_border            = isset($multistep_meta['uacf7_multistep_circle_border']) && $multistep_meta['uacf7_multistep_circle_border']                       !== '' ? $multistep_meta['uacf7_multistep_circle_border']: '4';
                 $uacf7_multistep_circle_height            = isset($multistep_meta['uacf7_multistep_circle_height']) && $multistep_meta['uacf7_multistep_circle_height']                       !== '' ? $multistep_meta['uacf7_multistep_circle_height']: '60';
                 $uacf7_multistep_font_size                = isset($multistep_meta['uacf7_multistep_font_size']) && $multistep_meta['uacf7_multistep_font_size']                               !== '' ? $multistep_meta['uacf7_multistep_font_size']: '20';
@@ -945,12 +945,20 @@ class UACF7_MULTISTEP {
                 
                 .style-1 + .uacf7-multisetp-form button.uacf7-next,       .style-1 + .uacf7-multisetp-form button.uacf7-prev,      .style-1 + .uacf7-multisetp-form .wpcf7-submit {
                     
-                    background: <?php echo esc_attr($uacf7_multistep_button_bg); ?>!important;
-                    color: <?php echo esc_attr($uacf7_multistep_button_color); ?>!important;
-                    border-radius : <?php echo esc_attr($uacf7_multistep_button_border_radius); ?>px!important;
+                    background: <?php echo esc_attr($uacf7_multistep_button_bg); ?>; ;
+                    padding: <?php echo esc_attr($uacf7_multistep_button_padding_tb); ?>px <?php echo esc_attr($uacf7_multistep_button_padding_lr); ?>px;
+                    width: 123px;
+                    height: 48px;
+                    border-radius: <?php echo esc_attr($uacf7_multistep_button_border_radius); ?>px;
+                    color: <?php echo esc_attr($uacf7_multistep_button_color); ?>;
+                    border: 1px solid <?php echo esc_attr($uacf7_multistep_button_border_color); ?>;
+                    display: flex-end;
+                    cursor: pointer;
                 }
                 .style-1 + .uacf7-multisetp-form button.uacf7-next:hover,        .style-1 + .uacf7-multisetp-form button.uacf7-prev:hover, .wpcf7-submit:hover {
-                    background:  <?php echo esc_attr($uacf7_multistep_button_hover_bg); ?>!important;
+                    background: <?php echo esc_attr($uacf7_multistep_button_hover_bg); ?>;
+                    color: <?php echo esc_attr($uacf7_multistep_button_hover_color); ?>;
+                    border: 1px solid <?php echo esc_attr($uacf7_multistep_button_border_hover_color); ?>;
                 }
         
             </style>
