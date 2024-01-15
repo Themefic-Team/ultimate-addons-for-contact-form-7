@@ -914,86 +914,42 @@ class UACF7_MULTISTEP {
                     color: <?php echo esc_attr($uacf7_multistep_circle_active_font_color); ?>!important;
                     background: <?php echo esc_attr($uacf7_multistep_circle_bg_active_color); ?>!important;
                     border-bottom: <?php echo esc_attr($uacf7_multistep_circle_border); ?>px solid <?php echo esc_attr($uacf7_multistep_circle_border_color); ?>!important;
-        
                 }
 
                 .progressbar-style-1 .steps-row .steps-step .style-1-filled {
                     color: <?php echo esc_attr($uacf7_multistep_circle_active_font_color); ?>!important;
                     background: #F5F8FF!important;
                     border-bottom: <?php echo esc_attr($uacf7_multistep_circle_border); ?>px solid #C4DAFF!important;
-        
                 }
                 
                 .progressbar-style-1 .steps-row .steps-step .btn-circle{
-        
-                  color       : <?php echo esc_attr($uacf7_multistep_circle_font_color); ?>;
-                  font-weight : <?php echo esc_attr($uacf7_multistep_circle_font_weight); ?>!important;
-                  font-size   : <?php echo esc_attr($uacf7_multistep_font_size); ?>px!important;
-                  padding-left: 32px!important;
-                  box-sizing  : border-box!important;
-          
+                    color       : <?php echo esc_attr($uacf7_multistep_circle_font_color); ?>;
+                    font-weight : <?php echo esc_attr($uacf7_multistep_circle_font_weight); ?>!important;
+                    font-size   : <?php echo esc_attr($uacf7_multistep_font_size); ?>px!important;
                 }
 
                 .progressbar-style-1 .steps-row .steps-step .btn-circle:not(.uacf7-btn-active){
                     
                     background  : <?php echo esc_attr($uacf7_multistep_circle_bg_color); ?>;
                    
-            
                   }
-
-
-             
-
-                .progressbar-style-1 .steps-row .steps-step a {
-                    display     : flex!important;
-                    align-items : center!important;
-                    
-                }
-                
-                .progressbar-style-1 .steps-row .steps-step i, .progressbar-style-1 .steps-row .steps-step p{
-                    display: inline;
-                    margin: 0;
-             
-
-                }
 
                 .progressbar-style-1 .steps-row .steps-step{
                     height     : <?php echo esc_attr($uacf7_multistep_circle_height); ?>px!important;
                 }
 
-                .progressbar-style-1 .steps-row .steps-step .btn-circle i {
-                    margin-right: 8px!important;
-                }
-
-                .progressbar-style-1 .steps-form .steps-row .steps-step .btn-circle img {
-                    width       : 24px;
-                    height      : 24px;
-                    object-fit  : cover;
-                    margin-right: 8px!important;
-                }
-                
-                
                 .progressbar-style-1 .steps-row .steps-step .uacf7-btn-default:hover:not(.uacf7-btn-active) {
                     color     : <?php echo esc_attr($uacf7_multistep_circle_font_hover_color); ?>!important;
                     background: <?php echo esc_attr($uacf7_multistep_circle_bg_hover_color); ?>!important;
                 }
                 
-                button.uacf7-next,   button.uacf7-prev, .wpcf7-submit {
+                .style-1 + .uacf7-multisetp-form button.uacf7-next,       .style-1 + .uacf7-multisetp-form button.uacf7-prev,      .style-1 + .uacf7-multisetp-form .wpcf7-submit {
                     
                     background: <?php echo esc_attr($uacf7_multistep_button_bg); ?>!important;
                     color: <?php echo esc_attr($uacf7_multistep_button_color); ?>!important;
-                    width         : 123px!important;
-                    height        : 48px!important;
-                    Padding       : 12px, 24px, 12px, 24px!important;
                     border-radius : <?php echo esc_attr($uacf7_multistep_button_border_radius); ?>px!important;
-                    font-size     : 16px!important;
-                    letter-spacing: 0.5px!important;
-                    border        : none!important;
-                    cursor        : pointer!important;
                 }
-
-
-                button.uacf7-next:hover,   button.uacf7-prev:hover, .wpcf7-submit:hover {
+                .style-1 + .uacf7-multisetp-form button.uacf7-next:hover,        .style-1 + .uacf7-multisetp-form button.uacf7-prev:hover, .wpcf7-submit:hover {
                     background:  <?php echo esc_attr($uacf7_multistep_button_hover_bg); ?>!important;
                 }
         

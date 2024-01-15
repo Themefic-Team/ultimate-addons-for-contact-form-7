@@ -217,3 +217,40 @@
 @media (min-width: 1400px) {}
 
 
+/* Style 1 Styles */
+.progressbar-style-1 .steps-row .steps-step .btn-circle{
+    padding-left: 32px!important;
+    box-sizing  : border-box!important;
+}
+.progressbar-style-1 .steps-row .steps-step a {
+    display     : flex!important;
+    align-items : center!important;
+    
+}
+.progressbar-style-1 .steps-row .steps-step i, .progressbar-style-1 .steps-row .steps-step p{
+    display: inline;
+    margin: 0;
+
+
+}
+
+.progressbar-style-1 .steps-row .steps-step .btn-circle i {
+    margin-right: 8px!important;
+}
+
+.progressbar-style-1 .steps-form .steps-row .steps-step .btn-circle img {
+    width       : 24px;
+    height      : 24px;
+    object-fit  : cover;
+    margin-right: 8px!important;
+}
+
+.style-1 + .uacf7-multisetp-form button.uacf7-next,       .style-1 + .uacf7-multisetp-form button.uacf7-prev,      .style-1 + .uacf7-multisetp-form .wpcf7-submit {
+    font-size     : 16px!important;
+    letter-spacing: 0.5px!important;
+    border        : none!important;
+    cursor        : pointer!important;
+    width         : 123px!important;
+    height        : 48px!important;
+    Padding       : 12px, 24px, 12px, 24px!important;
+}
