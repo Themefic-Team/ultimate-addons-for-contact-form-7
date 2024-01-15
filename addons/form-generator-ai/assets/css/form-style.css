@@ -7,7 +7,7 @@
   --uacf7-global-color-primary: #382673;
   --uacf7-global-text-color-secondary: #383c41;
   --uacf7-global-placeholder-color: #606266;
-  --uacf7-global-border-color: #dadbdd;
+  --uacf7-global-border-color: #e4e9f8;
   --uacf7-global-button-color: var(--uacf7-global-color-primary);
   --uacf7-border-radius: 5px;
   --uacf7-white-color: #fff;
@@ -24,6 +24,13 @@
   min-inline-size: 100%;
 }
 
+.uacf7-wrapper-default hr {
+  background-color: var(--uacf7-global-border-color);
+  border: none;
+  height: 1px;
+  margin-bottom: 20px;
+}
+
 .uacf7-wrapper-default label {
   display: inline-block;
   font-weight: 500;
@@ -36,6 +43,7 @@
   margin-top: 5px;
 }
 
+/* All Input form  */
 .uacf7-wrapper-default input[type="date"],
 .uacf7-wrapper-default input[type="email"],
 .uacf7-wrapper-default input[type="number"],
@@ -56,6 +64,10 @@
   color: var(--uacf7-global-text-color-secondary);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   outline: none;
+}
+
+.uacf7-wrapper-default textarea {
+  height: 90px;
 }
 
 input[type="date"]:focus-visible,
@@ -79,7 +91,51 @@ textarea:focus-visible {
   border-color: var(--uacf7-global-button-color) !important;
 }
 
-.uacf7-wrapper-default input[type="submit"] {
+/* Checkbox style */
+.uacf7-wrapper-default .uacf7-checkbox .wpcf7-list-item-label {
+  margin: 0;
+}
+
+.uacf7-wrapper-default .uacf7-checkbox .wpcf7-list-item {
+  display: flex !important;
+  align-items: center;
+  margin: 0.5em 0 0 1em;
+  font-weight: 400;
+}
+
+.uacf7-wrapper-default .uacf7-checkbox span input {
+  margin-right: 10px;
+}
+
+/* Radio style */
+.uacf7-wrapper-default .uacf7-radio .wpcf7-list-item-label {
+  margin: 0;
+}
+
+.uacf7-wrapper-default .uacf7-radio .wpcf7-list-item {
+  display: flex !important;
+  align-items: center;
+  margin: 0.5em 0 0 1em;
+  font-weight: 400;
+}
+
+.uacf7-wrapper-default .uacf7-radio span input {
+  margin-right: 10px;
+}
+
+/* Form Submit Button */
+.uacf7-wrapper-default .uacf7-submint {
+  display: flex;
+  align-items: center;
+}
+
+.uacf7-wrapper-default .uacf7-submint.end {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.uacf7-wrapper-default .uacf7-submint input[type="submit"] {
   font-size: 16px;
   font-weight: 700;
   color: var(--uacf7-global-color-primary);
@@ -87,15 +143,52 @@ textarea:focus-visible {
   border-radius: var(--uacf7-border-radius);
   border-width: 2px;
   border-color: var(--uacf7-global-button-color);
-  padding: 8px 20px;
+  padding: 10px 20px;
   text-align: center;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
     box-shadow 0.15s ease-in-out;
   outline: none;
 }
 
-.uacf7-wrapper-default input[type="submit"]:focus,
-.uacf7-wrapper-default input[type="submit"]:hover {
+.uacf7-wrapper-default .uacf7-submint input[type="submit"]:focus,
+.uacf7-wrapper-default .uacf7-submint input[type="submit"]:hover {
   color: var(--uacf7-white-color);
+  background-color: var(--uacf7-global-color-primary);
+}
+
+/* Submit Button fill style  */
+.uacf7-wrapper-default .uacf7-submint.fill input[type="submit"] {
+  background-color: var(--uacf7-global-color-primary);
+  color: var(--uacf7-white-color);
+}
+
+.uacf7-wrapper-default .uacf7-submint.fill input[type="submit"]:focus,
+.uacf7-wrapper-default .uacf7-submint.fill input[type="submit"]:hover {
+  color: var(--uacf7-global-color-primary);
+  background-color: var(--uacf7-white-color);
+}
+
+/* Submit Button full-width style  */
+.uacf7-wrapper-default .uacf7-submint.full-width {
+  position: relative;
+}
+
+.uacf7-wrapper-default .uacf7-submint.full-width input[type="submit"] {
+  width: 100%;
+}
+
+.uacf7-wrapper-default .uacf7-submint.full-width > span {
+  position: absolute;
+  left: 50%;
+  margin-left: -12px;
+}
+
+.uacf7-wrapper-default .uacf7-submint.fill.full-width > span.wpcf7-spinner {
+  background-color: var(--uacf7-white-color);
+}
+
+.uacf7-wrapper-default
+  .uacf7-submint.fill.full-width
+  > span.wpcf7-spinner::before {
   background-color: var(--uacf7-global-color-primary);
 }
