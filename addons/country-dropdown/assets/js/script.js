@@ -25,49 +25,66 @@
       });
     });
 
-    function uacf7_phone_number_fn(iso2) {
-      form.find('.uacf7_phone_number input[type="tel"]').each(function () {
-        var phoneTagName = $(this).attr('phone-tag-name');
-        var telInput = $('#phone_' + phoneTagName);
 
-        telInput.intlTelInput('destroy');
+    //Phone Number Tag
 
-        telInput.intlTelInput({
-          utilsScript: uacf7_localize_obj.plugin_dir_url + 'assets/js/utils.js',
-          initialCountry: iso2 || 'us',
-        });
+    function initializePhoneNumberField(input, iso2) {
+      var phone_tag_name_attr = input.attr('name');
+      var phoneTagName = input.attr('phone-tag-name');
 
-        var validate = function (input) {
-          if ($.trim(input.val())) {
-            if (!input.intlTelInput("isValidNumber")) {
-              $('#validation_message_' + phoneTagName).text(uacf7_localize_obj.phone_number_validation_message);
-            } else {
-              $('#validation_message_' + phoneTagName).text('');
-            }
-          }
-        };
-
-        telInput.on('blur', function () {
-          validate(telInput);
-        });
+      var telInput = $('input[name^="'+phone_tag_name_attr+'"]');
+      
+      telInput.intlTelInput('destroy');
+    
+      telInput.intlTelInput({
+        utilsScript: uacf7_localize_obj.plugin_dir_url + 'assets/js/utils.js',
+        initialCountry: iso2 || 'us',
+      });
+    
+      var validate = function (input) {
+        if ($.trim(input.val())) {
+          if (!input.intlTelInput("isValidNumber")) {
+            // alert(uacf7_localize_obj.phone_number_validation_message);
+          } 
+        }
+      };
+    
+      telInput.on('blur', function () {
+        validate(telInput);
+      });
+    }
+    
+    function applyIntlTelInput(selector, iso2) {
+      $(selector).each(function () {
+        initializePhoneNumberField($(this), iso2);
       });
     }
 
+    window.applyIntlTelInput = applyIntlTelInput;
+  
+    
     $(document).ready(function () {
-      uacf7_phone_number_fn();
+      var tel_input = form.find('.uacf7_phone_number').find('input[type="tel"]:not(.wpcf7-tel)');
+      applyIntlTelInput(tel_input); 
+      
     });
-
-    // Free Verison iso2 getting
+    
+    // Free Version iso2 getting
     form.on('click', '#uacf7_country_select .country-list li', function () {
       var iso2 = $(this).attr('data-country-code');
-      uacf7_phone_number_fn(iso2);
+      input = form.find('.uacf7_phone_number').find('input[type="tel"]:not(.wpcf7-tel)');
+      applyIntlTelInput(input, iso2);
     });
-
-    // Pro Verison iso2 getting
+    
+    // Pro Version iso2 getting
     var countryField = form.find('#uacf7_country_select').find('select');
     countryField.on('change', function () {
       var iso2 = $(this).find('option:selected').attr('iso2');
-      uacf7_phone_number_fn(iso2);
+      input = form.find('.uacf7_phone_number').find('input[type="tel"]:not(.wpcf7-tel)');
+      applyIntlTelInput(input, iso2);
     });
+
+
+    
   });
 })(jQuery);
