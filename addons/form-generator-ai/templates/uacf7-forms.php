@@ -240,6 +240,93 @@ switch ( $uacf7_default[1] ) {
 </div>';
 		break;
 
+	case 'proposal':
+		$form = '<div class="uacf7-wrapper-default">
+    [uacf7-row]
+        [uacf7-col col:6]
+            <label> First Name *
+                [text* your-first-name autocomplete:first-name placeholder "First Name"] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Last Name *
+                [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+    [/uacf7-row]
+
+    <label> Job Title *
+        [text* job-title] </label>
+    <label> Company Name *
+        [text* company-name] </label>
+    <label> Biography
+        [textarea biography] </label>
+    <label> Email *
+        [email* your-email autocomplete:email] </label>
+    <label> Proposal Title
+        [text proposal-title] </label>
+    <label> Short Description
+        [textarea short-disc] </label>
+    <label> Abstract
+        [textarea abstract] </label>
+    <label> Topics
+        [radio topics class:uacf7-radio default:1 "Topics 1" "Topics 2" "Topics 3" "Topics 4"] </label>
+    <label> Session Type
+        [select session-type class:uacf7-drop-down "Panel" "Work shop" "Presentation" "Other"] </label>
+    <label> Audience Level
+        [select audience-level class:uacf7-drop-down "Novice" "Intermediate" "Expert"] </label>
+    <label> Video URL
+        [url* video-url] </label>
+    <label> Additional Information
+        [textarea dditional-info] </label>
+
+    <div class="uacf7-submint fill end">
+        [submit "Submit Order Form"]
+    </div>
+
+</div>';
+		break;
+
+	case 'volunteer-sign-up-form':
+		$form = '<div class="uacf7-wrapper-default">
+    <h3 style="text-align: center;">Volunteer Sign Up</h3>
+    <p style="text-align: center;">Come with us and help out your local community!</p>
+    <br>
+    <hr>
+    <br>
+
+    <label> Where would you like to volunteer (Check any that apply) *
+        [checkbox* question-1 class:uacf7-checkbox "Food bank" "Animal shelter" "Preschool" "City lawn care" "Community Service"] </label>
+
+    <label> How many hours a week can you dedicate?
+        [text how-many-week] </label>
+
+    <label> When are you available to start?
+        [text starting-time] </label>
+
+    [uacf7-row]
+        [uacf7-col col:6]
+            <label> First Name *
+                [text* first-name autocomplete:first-name] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Last Name *
+                [text* last-name autocomplete:last-name] </label>  [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Permanent Address
+                [text address] </label>  [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> City
+                [text city] </label>  [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Phone
+                [tel phone] </label>  [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Email
+                [email* email autocomplete:email] </label>  [/uacf7-col]
+    [/uacf7-row]
+
+    <div class="uacf7-submint">
+        [submit "Submit Form"]
+    </div>
+
+</div>';
+		break;
 
 	// End Form from -MHemelHasan
 
