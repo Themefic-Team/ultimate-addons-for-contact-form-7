@@ -18,10 +18,10 @@ switch ( $uacf7_default[1] ) {
     [uacf7-row]
         [uacf7-col col:6]
             <label> First Name *
-                [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+                [text* your-first-name autocomplete:first-name placeholder "First Name"] </label> [/uacf7-col]
         [uacf7-col col:6] 
             <label> Last Name *
-                [text* your-last-name autocomplete:name placeholder "Last Name"] </label>  [/uacf7-col]
+                [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
     [/uacf7-row]
     <label> Email *
         [email* your-email autocomplete:email placeholder "Email Address"] </label>
@@ -44,7 +44,7 @@ switch ( $uacf7_default[1] ) {
                 [text* first-name autocomplete:name] </label>  [/uacf7-col]
         [uacf7-col col:6]
             <label> Last Name
-                [text* last-name autocomplete:name] </label>  [/uacf7-col]
+                [text* last-name autocomplete:last-name] </label>  [/uacf7-col]
     [/uacf7-row]
     <label> Email
         [email* your-email autocomplete:email] </label>
@@ -59,7 +59,7 @@ switch ( $uacf7_default[1] ) {
     [uacf7-row]
         [uacf7-col col:6]
             <span>
-                [email* email-address placeholder "Your Mail Address"] </span> 
+                [email* email-address autocomplete:email placeholder "Your Mail Address"] </span> 
         [/uacf7-col]
         [uacf7-col col:6]
             <div class="uacf7-submint fill full-width">
@@ -78,7 +78,7 @@ switch ( $uacf7_default[1] ) {
                 [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
         [uacf7-col col:6] 
             <label> Last Name *
-                [text* your-last-name autocomplete:name placeholder "Last Name"] </label>  [/uacf7-col]
+                [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
     [/uacf7-row]
     <label> Email *
         [email* your-email autocomplete:email placeholder "Email Address"] </label>
@@ -100,7 +100,7 @@ switch ( $uacf7_default[1] ) {
         [text* full-name autocomplete:name placeholder "Full Name"] </label>
     <label> Email *
         [email* your-email autocomplete:email placeholder "Email Address"] </label>
-    <label> Which game you want to play?*
+    <label> Which game you want to play? *
         [checkbox* question-1 class:uacf7-checkbox "Football" "Cricket" "Hocky"]</label>
     <label> Time of the match?
         [radio question-2 class:uacf7-radio default:1 "Morning" "Afternoon" "Any time"]</label>
@@ -111,6 +111,135 @@ switch ( $uacf7_default[1] ) {
     </div>
 </div>';
 		break;
+
+	case 'survey-form':
+		$form = '<div class="uacf7-wrapper-default">
+    <h3>Client Satisfaction Survey</h3>
+    <hr>
+    <br>
+    <label> Which product did you purchase? *
+        [select* product-list class:uacf7-drop-down "Office Accessories" "Home appliance" "Digital Product" "Garage Hardware"] </label>
+    <label> What was your primary reason for purchasing the product? *
+        [textarea* primary-reason] </label>
+    <label> What three features are most important to you? *
+        [checkbox* question-1 class:uacf7-checkbox "Custom responses" "Custom integrations" "Expanded functionality" "Easy to navigate" "Offline capabilities"] </label>
+    <label> How can we improve our products/services? *
+        [textarea* improvements] </label>
+    <label> Would you use our product / service in the future?
+        [radio question-2 class:uacf7-radio default:1 "Definitely" "Probably" "Not Sure" "Probably Not"] </label>
+    <div class="uacf7-submint">
+        [submit "Submit Form"]
+    </div>
+</div>';
+		break;
+	case 'complaint-form':
+		$form = '<div class="uacf7-wrapper-default">
+    <h3>Customer Information</h3>
+    <hr>
+    <br>
+    [uacf7-row]
+        [uacf7-col col:6]
+            <label> First Name *
+                [text* your-first-name autocomplete:first-name placeholder "First Name"] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Last Name *
+                [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+    [/uacf7-row]
+
+    <label> Product Name *
+        [text* product-name] </label> 
+    <label> Product ID *
+        [text* product-id] </label> 
+
+    [uacf7-row]
+        [uacf7-col col:6]
+            [uacf7-row]
+                [uacf7-col col:6]    
+                    <label> Address Line 1 *
+                        [text* address-1] </label> [/uacf7-col]
+                [uacf7-col col:6]
+                    <label> Address Line 2 
+                        [text address-1] </label> [/uacf7-col]
+            [/uacf7-row]
+        [/uacf7-col]
+        [uacf7-col col:6]
+            <label> Country
+                [uacf7_country_dropdown uacf7_country_974] </label>
+        [/uacf7-col]
+    [/uacf7-row]
+
+    [uacf7-row]
+        [uacf7-col col:6]
+            [uacf7-row]
+                [uacf7-col col:6]    
+                    <label> City *
+                        [text* country_city] </label> [/uacf7-col]
+                [uacf7-col col:6]
+                    <label> State 
+                        [text country_state] </label> [/uacf7-col]
+            [/uacf7-row]
+        [/uacf7-col]
+        [uacf7-col col:6]
+            <label> Zip Code *
+                [number* zip-code] </label>
+        [/uacf7-col]
+    [/uacf7-row]
+
+    [uacf7-row]
+        [uacf7-col col:6] 
+            <label> Phone *
+                [tel* phone] </label> [/uacf7-col]
+        [uacf7-col col:6]
+            <label> Email *
+                [email* your-email autocomplete:email placeholder "Email Address"] </label> [/uacf7-col]
+    [/uacf7-row]
+
+    <h3>Complaint Information</h3>
+    <hr>
+    <br>
+    <label> Complaint Date *
+        [date* complaint-date min:2019-01-16] </label>
+    <label> Complaint Details:
+        [textarea complaint-details] </label>
+    <label> What action needs to be taken to resolve this issue?
+        [textarea complaint-action] </label>
+    <div class="uacf7-submint fill">
+        [submit "Submit Form"]
+    </div>
+</div>';
+		break;
+
+	case 'service-order':
+		$form = '<div class="uacf7-wrapper-default">
+    [uacf7-row]
+        [uacf7-col col:6]
+            <label> First Name *
+                [text* your-first-name autocomplete:first-name placeholder "First Name"] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Last Name *
+                [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+    [/uacf7-row]
+
+        <label> Email *
+            [email* your-email autocomplete:email placeholder "Email Address"] </label>
+
+    [uacf7-row]
+        [uacf7-col col:6]
+            <label> Choose Service *
+                [checkbox* question-1 class:uacf7-checkbox "Service Items 1 - $10/ Hour" "Service Items 2 - $15/ Hour" "Service Items 3 - $20/ Hour"] </label>
+        [/uacf7-col]
+        [uacf7-col col:6]
+            <label> How many hours *
+                [number* how-hours] </label>
+        [/uacf7-col]
+    [/uacf7-row]
+
+    <div class="uacf7-submint fill end">
+        [submit "Submit Order Form"]
+    </div>
+</div>';
+		break;
+
 
 	// End Form from -MHemelHasan
 

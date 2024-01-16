@@ -129,6 +129,9 @@ class UACF7_FORM_GENERATOR {
 		$secend_option_form = [ 
 			[ "value" => "basis-contact-form", "label" => "Basis Contact Form" ],
 			[ "value" => "polling", "label" => "Polling Form" ],
+			[ "value" => "survey-form", "label" => "Client Satisfaction Survey Form" ],
+			[ "value" => "complaint-form", "label" => "Customer Complaint Form" ],
+			[ "value" => "service-order", "label" => "Service Order Form" ],
 			[ "value" => "multistep", "label" => "Multistep" ],
 			apply_filters( 'uacf7_booking_ai_form_dropdown', [ "value" => "booking", "label" => "Booking (Pro)" ] ),
 			[ "value" => "conditional", "label" => "Conditional" ],
