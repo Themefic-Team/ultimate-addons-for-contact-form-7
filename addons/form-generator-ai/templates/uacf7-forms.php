@@ -328,6 +328,77 @@ switch ( $uacf7_default[1] ) {
 </div>';
 		break;
 
+	case 'donation-form':
+		$form = '<div class="uacf7-wrapper-default">
+    <p style="text-align: center;"><strong>Fillup this form to add to our doner list. </strong></p>
+    <hr>
+    <br>
+
+    [uacf7-row]
+        [uacf7-col col:6]
+            <label> First Name *
+                [text* first-name autocomplete:first-name] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Last Name *
+                [text* last-name autocomplete:last-name] </label>  [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Phone
+                [tel phone] </label>  [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Email
+                [email* email autocomplete:email] </label>  [/uacf7-col]
+    [/uacf7-row]
+
+    [uacf7-row]
+        [uacf7-col col:6]
+            [uacf7-row]
+                [uacf7-col col:6]    
+                    <label> Address Line 1 *
+                        [text* address-1] </label> [/uacf7-col]
+                [uacf7-col col:6]
+                    <label> Address Line 2 
+                        [text address-1] </label> [/uacf7-col]
+            [/uacf7-row]
+        [/uacf7-col]
+        [uacf7-col col:6]
+            <label> Country
+                [uacf7_country_dropdown uacf7_country] </label>
+        [/uacf7-col]
+    [/uacf7-row]
+
+    [uacf7-row]
+        [uacf7-col col:6]
+            [uacf7-row]
+                [uacf7-col col:6]    
+                    <label> City *
+                        [text* country_city] </label> [/uacf7-col]
+                [uacf7-col col:6]
+                    <label> State 
+                        [text country_state] </label> [/uacf7-col]
+            [/uacf7-row]
+        [/uacf7-col]
+        [uacf7-col col:6]
+            <label> Zip Code *
+                [number* zip-code] </label>
+        [/uacf7-col]
+    [/uacf7-row]
+
+    <label> Amount you would like to donate
+        [number donate-amount placeholder "e.g.: $10"] </label>
+
+    <label> Your Preferred Method of Donation *
+        [checkbox* question-1 class:uacf7-checkbox "Credit Card" "PayPal" "CashApp" "Wire Transfer" "Check"] </label>
+
+    <label> How repeatedly do you want to donate? *
+        [checkbox* question-2 class:uacf7-checkbox "One Time" "Yearly" "Monthly" "Weekly" "Daily"] </label>
+
+    <div class="uacf7-submint">
+        [submit "Submit Form"]
+    </div>
+
+</div>';
+		break;
+
 	// End Form from -MHemelHasan
 
 	case "multistep":

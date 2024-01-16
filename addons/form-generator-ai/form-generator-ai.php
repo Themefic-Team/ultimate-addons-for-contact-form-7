@@ -133,6 +133,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "complaint-form", "label" => "Customer Complaint Form" ],
 			[ "value" => "service-order", "label" => "Service Order Form" ],
 			[ "value" => "proposal", "label" => "Conference Proposal" ],
+			[ "value" => "donation-form", "label" => "Donation Form" ],
 			[ "value" => "volunteer-sign-up-form", "label" => "Volunteer sign up form" ],
 			[ "value" => "multistep", "label" => "Multistep" ],
 			apply_filters( 'uacf7_booking_ai_form_dropdown', [ "value" => "booking", "label" => "Booking (Pro)" ] ),
