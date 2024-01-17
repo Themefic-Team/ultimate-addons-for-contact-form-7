@@ -44,7 +44,9 @@
       var validate = function (input) {
         if ($.trim(input.val())) {
           if (!input.intlTelInput("isValidNumber")) {
-            // alert(uacf7_localize_obj.phone_number_validation_message);
+            $(input).parent().next('.uacf7_phone_validation').text(uacf7_localize_obj.phone_number_validation_message);
+          }else{
+            $(input).parent().next('.uacf7_phone_validation').text('');
           } 
         }
       };
