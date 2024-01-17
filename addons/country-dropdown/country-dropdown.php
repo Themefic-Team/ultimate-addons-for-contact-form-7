@@ -23,8 +23,8 @@ class UACF7_COUNTRY_DROPDOWN {
 		add_action( 'wp_enqueue_scripts', array($this, 'wp_enqueue_script' ) );
         
         
-        add_filter( 'wpcf7_validate_uacf7_phone_number', array($this, 'wpcf7_fields_validation_filter'), 10, 2 );
-        add_filter( 'wpcf7_validate_uacf7_phone_number*', array($this,'wpcf7_fields_validation_filter'), 10, 2 );
+        add_filter( 'wpcf7_validate_uacf7_phone_number', array($this, 'phone_number_fields_validation_filter'), 10, 2 );
+        add_filter( 'wpcf7_validate_uacf7_phone_number*', array($this,'phone_number_fields_validation_filter'), 10, 2 );
     }
     
     public function wp_enqueue_script() {
@@ -77,6 +77,7 @@ class UACF7_COUNTRY_DROPDOWN {
         $atts['tabindex'] = $tag->get_option( 'tabindex', 'signed_int', true );
         $atts['phone-tag-name'] = $tag->name; 
 
+
         if ( $tag->is_required() ) {
             $atts['aria-required'] = 'true';
         }
@@ -108,8 +109,6 @@ class UACF7_COUNTRY_DROPDOWN {
             <input <?php  echo $atts; ?> type="tel" id="phone_<?php echo esc_attr($tag->name); ?>"  class="form-control">
             <span class="uacf7_phone_validation"></span>
             <span><?php echo $validation_error; ?></span>
-
-            <?php var_dump($validation_error); ?>
 		
 		</span>
 		<?php
@@ -244,6 +243,19 @@ class UACF7_COUNTRY_DROPDOWN {
 
         if ( $tag->is_required() and $empty ) {
             $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+        }
+
+        return $result;
+    }
+
+
+    public function phone_number_fields_validation_filter($result, $tag){
+        $name = $tag->name;
+
+        $empty = !isset($_FILES[$name]['name']) || empty($_FILES[$name]['name']) && '0' !== $_FILES[$name]['name'];
+
+        if ($tag->is_required() and $empty) {
+            $result->invalidate($tag, wpcf7_get_message('invalid_required'));
         }
 
         return $result;
