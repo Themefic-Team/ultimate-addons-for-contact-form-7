@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
  * @package   UACF7
  * @subpackage Form Generator AI
  * @since     1.0.0
- * @Author:  Sydur Rahman, M Hemel Hasan, Masum Billah
+ * @Author:  Sydur Rahman, M Hemel Hasan and Masum Billah
  */
 
 switch ( $uacf7_default[1] ) {
@@ -483,7 +483,52 @@ switch ( $uacf7_default[1] ) {
             [submit "Submit Form"]
         </div>
     </div>';
-    break;	
+    break;
+
+    case "charity-dinner":
+    $form = '<div class="uacf7-wrapper-default">
+            <h2 style="text-align: center; color:#115e99;">Charity Dinner</h2>
+            <p style="text-align: center; color: #115e99;">Charity dinner for refugee children!</p>
+            <br>
+            <hr>
+            <br>
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> First Name
+                        [text* first-name autocomplete:first-name placeholder "First Name"] 
+                    </label> 
+                [/uacf7-col]
+                [uacf7-col col:6] 
+                    <label> Last Name *
+                        [text* last-name autocomplete:last-name placeholder "Last Name"] </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            [uacf7-row]
+                [uacf7-col col:6]
+                <label> Phone
+                [tel donors-phone placeholder "Phone Number"] </label>
+                    </label> 
+                [/uacf7-col]
+                [uacf7-col col:6] 
+                <label>Email
+                [email donors-email placeholder "Email"] </label
+                [/uacf7-col]
+            [/uacf7-row]
+        <div class="uacf7-charity-dinner">
+        <label> Will you attend ?
+
+                [radio will-donor-attend class:uacf7-radio default:1 "Yes" "No"] </label>
+        <label> Number of Guests
+                [number total-guest min:1 placeholder "1-3"]  </label> 
+
+        <label> Special Request
+                [textarea* donor-special-request]  </label> 
+            <div class="uacf7-submint">
+                [submit "Submit Form"]
+            </div>
+        </div>
+        </div>';
+        break;
     // End Form from -Masum Billah	
 
 	case "multistep":

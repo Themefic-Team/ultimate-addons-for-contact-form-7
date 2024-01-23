@@ -192,3 +192,13 @@ textarea:focus-visible {
   > span.wpcf7-spinner::before {
   background-color: var(--uacf7-global-color-primary);
 }
+
+
+.uacf7-wrapper-default .uacf7-charity-dinner{
+  padding: 0 15px;
+}
+.uacf7-wrapper-default .uacf7-charity-dinner .wpcf7-submit{
+  background: #115e99!important;
+  color: #ffffff!important;
+  border-color: #115e99!important;
+}
