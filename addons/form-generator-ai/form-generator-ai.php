@@ -152,6 +152,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "newsletter", "label" => "Newsletter" ],
 			[ "value" => "newslettertow", "label" => "Newsletter Style 2" ],
 			[ "value" => "donation", "label" => "Donation" ],
+			[ "value" => "blood-donation", "label" => "Blood Donation Form" ],
 			[ "value" => "product-review", "label" => "Product Review" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),

@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
  * @package   UACF7
  * @subpackage Form Generator AI
  * @since     1.0.0
- * @Author:  Sydur Rahman, M Hemel Hasan
+ * @Author:  Sydur Rahman, M Hemel Hasan, Masum Billah
  */
 
 switch ( $uacf7_default[1] ) {
@@ -400,6 +400,91 @@ switch ( $uacf7_default[1] ) {
 		break;
 
 	// End Form from -MHemelHasan
+
+
+    // Start Form from -Masum Billah
+    case "blood-donation":
+        $form = '<div class="uacf7-wrapper-default">
+
+        <h3 style="text-align: center;">Blood Donation Form</h3>
+    
+        <p style="text-align: center;">Donate blood save life!</p>
+    
+        <br>
+    
+        <hr>
+    
+        <br>
+    
+        [uacf7-row]
+    
+            [uacf7-col col:6]
+    
+                <label> Donor\'s First Name *
+                    [text* first-name autocomplete:first-name placeholder "First Name"] 
+                </label> 
+            [/uacf7-col]
+    
+            [uacf7-col col:6] 
+    
+                <label> Donor\'s Last Name *
+                    [text* last-name autocomplete:last-name placeholder "Last Name"] </label>  
+            [/uacf7-col]
+        [/uacf7-row]
+        [uacf7-row]
+            [uacf7-col col:12] 
+            <label> Date of Birth
+                    [date date-of-birth placeholder "dd/mm/yy"] </label>
+            [/uacf7-col]
+        [/uacf7-row]
+         <label> Donor\'s Email
+    
+            [email donors-email placeholder "Email"] </label>
+         <label> Donor\'s Phone
+    
+            [tel donors-phone placeholder "Phone Number"] </label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label> Current Address
+                    [text* donors-current-address placeholder "A/35 Lake Forest Drive Road"] 
+                </label> 
+            [/uacf7-col]
+    
+            [uacf7-col col:6] 
+    
+                <label> City
+                [text* donors-city] </label>  
+            [/uacf7-col]
+        [/uacf7-row]
+      [uacf7-row]
+    
+        [uacf7-col col:6]
+
+            <label> State
+                [text* donors-state] 
+            </label> 
+        [/uacf7-col]
+
+        [uacf7-col col:6] 
+
+            <label> Zip Code
+            [text* donors-zip] </label>  
+        [/uacf7-col]
+        [/uacf7-row]
+            <label> Country
+            [text donors-country ] </label>
+            <label> Blood Group
+            [select* donor-blood-group include_blank "O+" "O-" "A+" "A-" "B+" "B-" "AB+" "AB-"] </label>
+            <label> Have you done a blood donation before?
+            [radio is-donated-before class:uacf7-radio default:1 "Yes" "No"] </label>
+        <label> Do you have any known allergy?
+            [radio if-allergy class:uacf7-radio default:1 "Yes" "No"]  </label>
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>';
+    break;	
+    // End Form from -Masum Billah	
 
 	case "multistep":
 		$form = '<div class="uacf7-wrapper-default">
