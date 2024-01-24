@@ -494,7 +494,7 @@ switch ( $uacf7_default[1] ) {
             <br>
             [uacf7-row]
                 [uacf7-col col:6]
-                    <label> First Name
+                    <label> First Name *
                         [text* first-name autocomplete:first-name placeholder "First Name"] 
                     </label> 
                 [/uacf7-col]
@@ -529,6 +529,67 @@ switch ( $uacf7_default[1] ) {
         </div>
         </div>';
         break;
+    case 'volunteer-application':
+    $form = '<div class="uacf7-wrapper-default">  
+        [uacf7-row]
+        [uacf7-col col:6]
+            <label> First Name *
+                [text* first-name autocomplete:first-name placeholder "First Name"] 
+            </label> 
+        [/uacf7-col]
+        [uacf7-col col:6] 
+            <label> Last Name *
+                [text* last-name autocomplete:last-name placeholder "Last Name"] </label>  
+        [/uacf7-col]
+        [/uacf7-row]
+        <label>Email
+        [email volunteer-email placeholder "Email"] </label
+        <label> Contact No *
+        [tel volunteer-phone placeholder "Phone Number"] </label>
+            </label> 
+        <br>
+        [uacf7-row]
+         [uacf7-col col:12]
+        <label>Address</label>
+        [/uacf7-col]
+        [/uacf7-row]
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> Address Line 1 *
+            [text* volunteer-address-one] 
+        </label> 
+        [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Address Line 2 
+            [text volunteer-address-two] 
+        </label>    
+        [/uacf7-col]
+        [/uacf7-row]
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> City *
+            [text* volunteer-city] 
+        </label> 
+        [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> State * 
+            [text volunteer-state] 
+        </label>    
+        [/uacf7-col]
+        [/uacf7-row]
+        <label> Zip Code
+            [text* volunteer-zip] </label> 
+        <label> Working Days
+            [checkbox volunteer-working-days class:uacf7-checkbox "Sunday" " Satarday" " Monday" " Tuesday" " Wednesday" " Thursday" " Friday"] </label>
+        <label> Area of Interest/ skills
+            [textarea* volunteer-interest]  </label> 
+        <label> Comments (optional)
+            [textarea* volunteer-comments]  </label> 
+            <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>';
+    break;
     // End Form from -Masum Billah	
 
 	case "multistep":
