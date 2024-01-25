@@ -167,6 +167,8 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "event-registration", "label" => "Event Registration" ],
 			[ "value" => "tell-a-friend", "label" => "Tell a Friend Form" ],
 			[ "value" => "accident-report-form", "label" => "Accident Report Form" ],
+			[ "value" => "complaint-form-2", "label" => "Complaint Form" ],
+			[ "value" => "directory-information", "label" => "Directory Information" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),
 			apply_filters( 'uacf7_conversational_appointment_form_dropdown', [ "value" => "conversational-appointment-form", "label" => "Conversational Appointment Booking  (Pro)" ] ),

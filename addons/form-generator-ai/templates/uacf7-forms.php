@@ -954,6 +954,88 @@ switch ( $uacf7_default[1] ) {
             </div>
         </div>';
         break;
+
+    case "complaint-form-2":
+        $form = '<div class="uacf7-wrapper-default">
+        <h4 style="text-align:center"> Please fill out the following form with your complaint. We will review your request and follow up with you as soon as possible. </h4>
+        [uacf7-row]
+        
+            [uacf7-col col:6]
+    
+            <label> First Name *
+    
+            [text* your-first-name autocomplete:name ] </label> [/uacf7-col]
+    
+            [uacf7-col col:6] 
+    
+            <label> Last Name 
+    
+            [text your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
+    
+            [/uacf7-row]
+        <label> Email
+        [email* your-email autocomplete:email] </label>
+        <label> Address </label>
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> Address Line 1
+        [text address-1 ] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Address Line 2
+        [text address-2 ] </label>  [/uacf7-col]
+        [/uacf7-row]
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> City
+        [text city ] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> State
+        [text state ] </label>  [/uacf7-col]
+        [/uacf7-row]
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> Zip
+        [text zip ] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Country
+        [text country ] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label> Date of incident 
+        [date date-of-incident]
+        </label>
+        <label> Please describe the incident you would like to report.
+        [textarea incident-details]
+        </label>
+        <label> How would you like to see this incident resolved?
+        [textarea incident-resolved-details]
+        </label>
+        [acceptance acceptance-terms optional] All the data I submitted is truthfull, and I am responsible for that. [/acceptance]
+            <div class="uacf7-submint">
+            [submit "Submit Form"]
+            </div>
+        </div>';
+        break;
+    case "directory-information":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name *
+        [text* your-first-name autocomplete:name ] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Last Name 
+        [text your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label> Username *
+        [text* your-username] </label>
+        <label> Site Address*
+        [text* your-site-address] </label>
+            <label> Do you want to share your password?
+        [radio wanna-share-password class:uacf7-radio default:2 "Yes" "No"] </label>
+            <div class="uacf7-submint">
+            [submit "Submit Informations"]
+            </div>
+        </div>';
+        break;
     // End Form from -Masum Billah	
 
 	case "multistep":
