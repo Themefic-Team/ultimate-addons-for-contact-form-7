@@ -908,6 +908,52 @@ switch ( $uacf7_default[1] ) {
             </div>
         </div>';
         break;
+    case "accident-report-form":
+        $form = '<div class="uacf7-wrapper-default">
+        <label> I am reporting a :
+        [checkbox accident-type class:uacf7-checkbox "Loss of time/injury" "Work vehicle accident" "Work accident" "First aid incident" "Observation"]
+        </label>
+        <h3> Person Reporting Incident </h3>
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name *
+        [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Last Name 
+        [text your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <h3> Person Involved in Incident </h3>
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name *
+        [text* involved-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Last Name 
+        [text involved-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label> Incident Date and Time *
+        [date* accident-date-time ] </label>
+        <label> Location of Incident
+        [text* location-of-incident ] 
+        <label> Please describe the event in detail.
+        [textarea your-incident-details] </label>
+        <label> Was damage done to the property?
+        [radio is-damaged class:uacf7-radio default:1 "Yes" "No"]
+        </label>
+        <label> How many hours were lost because of this incident?
+          [text incident-hours-lost ] 
+        </label>
+        <label> What first aid measures were needed?
+        [textarea your-incident-aid] </label>
+        <label> Could this incident been avoided?
+        [radio could-avoided class:uacf7-radio default:1 "Yes" "No"]
+        </label>
+        [acceptance acceptance-terms optional] I certify that the information I have provided is truthful to the best of my knowledge. [/acceptance]
+            <div class="uacf7-submint">
+            [submit "Send Message"]
+            </div>
+        </div>';
+        break;
     // End Form from -Masum Billah	
 
 	case "multistep":
