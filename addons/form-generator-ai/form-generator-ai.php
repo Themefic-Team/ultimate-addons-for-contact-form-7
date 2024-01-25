@@ -155,6 +155,8 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "blood-donation", "label" => "Blood Donation" ],
 			[ "value" => "charity-dinner", "label" => "Charity Dinner" ],
 			[ "value" => "volunteer-application", "label" => "Volunteer Application" ],
+			[ "value" => "graphic-designer-contact-form", "label" => "	
+			Graphic Designer Contact Form" ],
 			[ "value" => "product-review", "label" => "Product Review" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),

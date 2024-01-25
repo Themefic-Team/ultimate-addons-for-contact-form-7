@@ -150,6 +150,7 @@ textarea:focus-visible {
   outline: none;
 }
 
+
 .uacf7-wrapper-default .uacf7-submint input[type="submit"]:focus,
 .uacf7-wrapper-default .uacf7-submint input[type="submit"]:hover {
   color: var(--uacf7-white-color);

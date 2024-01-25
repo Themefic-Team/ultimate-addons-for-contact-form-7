@@ -590,6 +590,37 @@ switch ( $uacf7_default[1] ) {
         </div>
     </div>';
     break;
+
+    case "graphic-designer-contact-form":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label> First Name *
+                    [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+                <label> Last Name *
+                    [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label> Email *
+            [email* your-email autocomplete:email placeholder "Email Address"] </label>
+        <label> Phone Number
+                [tel your-phone  placeholder "Phone"] </label>
+        <label> When is the best time to contact you?
+                [text your-time  ] </label>
+            <label> When is the best date to contact you?
+                [date your-date  placeholder ] </label>
+        <label> What can I help you with?
+        [radio your-services class:uacf7-checkbox default:1 "Social Media Publication" " Prints & Ilustrations" " Website Design" " Other"]
+                </label>
+            <label> Describe your need *
+                [textarea* your-message placeholder "Type your message here...."] </label>
+            <label> When do you need the graphic designer? *
+                [date* your-needing-date ] </label>
+            <div class="uacf7-submint">
+                [submit "Submit Form"]
+            </div>
+        </div>';
+        break;
     // End Form from -Masum Billah	
 
 	case "multistep":
