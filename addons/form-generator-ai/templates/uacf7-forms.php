@@ -96,21 +96,21 @@ switch ( $uacf7_default[1] ) {
 
 	case 'polling':
 		$form = '<div class="uacf7-wrapper-default">
-    <label> Full Name *
-        [text* full-name autocomplete:name placeholder "Full Name"] </label>
-    <label> Email *
-        [email* your-email autocomplete:email placeholder "Email Address"] </label>
-    <label> Which game you want to play? *
-        [checkbox* question-1 class:uacf7-checkbox "Football" "Cricket" "Hocky"]</label>
-    <label> Time of the match?
-        [radio question-2 class:uacf7-radio default:1 "Morning" "Afternoon" "Any time"]</label>
-    <label> Put your suggestion  (optional)
-        [textarea your-suggestion] </label>
-    <div class="uacf7-submint">
-        [submit "Submit Your opinion"]
-    </div>
-</div>';
-		break;
+        <label> Full Name *
+            [text* full-name autocomplete:name placeholder "Full Name"] </label>
+        <label> Email *
+            [email* your-email autocomplete:email placeholder "Email Address"] </label>
+        <label> Which game you want to play? *
+            [checkbox* question-1 class:uacf7-checkbox "Football" "Cricket" "Hocky"]</label>
+        <label> Time of the match?
+            [radio question-2 class:uacf7-radio default:1 "Morning" "Afternoon" "Any time"]</label>
+        <label> Put your suggestion  (optional)
+            [textarea your-suggestion] </label>
+        <div class="uacf7-submint">
+            [submit "Submit Your opinion"]
+        </div>
+    </div>';
+	break;
 
 	case 'survey-form':
 		$form = '<div class="uacf7-wrapper-default">
@@ -819,8 +819,48 @@ switch ( $uacf7_default[1] ) {
                 [submit "Submit Bug Report"]
             </div>
     </div>';
-
     break;
+    case "vendor-contact":
+        $form = '
+        <div class="uacf7-wrapper-default">
+            <label> Subject *
+                [text* your-subject] </label>
+
+            <label> Message *
+                [textarea* your-message] </label>
+
+            [submit "Submit Form"]
+        </div>';
+        break;
+    case "request-a-leave":
+       $form = '<div class="uacf7-wrapper-default">
+       [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name *
+         [text* your-first-name autocomplete:name ] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Last Name *
+        [text* your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label> Email *
+        [email* your-email] </label>
+        <label> Contact No *
+        [tel* your-contact-no] </label>
+        <label> Position *
+        [text* your-position] </label>
+        <label> Manager *
+        [tel* your-manager] </label>
+        <label> Leave Start *
+        [date* your-leave-start] </label>
+       <label> Leave End *
+        [date* your-leave-end] </label>
+       <label> Leave Type *
+            [radio leave-type class:uacf7-radio default:1 "Vacation" "Sick" "Quitting" "Maternity/Paternity" "Other"] </label>
+            <label> Comments *
+            [textarea* your-comments] </label>
+        [submit "Apply for Leave"]
+        </div>';  
+    break;   
     // End Form from -Masum Billah	
 
 	case "multistep":
