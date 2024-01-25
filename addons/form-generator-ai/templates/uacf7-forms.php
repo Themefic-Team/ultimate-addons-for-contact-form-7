@@ -889,6 +889,25 @@ switch ( $uacf7_default[1] ) {
         </div>
         </div>';
         break; 
+    case "tell-a-friend":
+        $form = '<div class="uacf7-wrapper-default">
+            [uacf7-row]
+            [uacf7-col col:6]
+                <label> First Name *
+                    [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+                <label> Last Name 
+                    [text your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+            [/uacf7-row]
+            <label> To *
+                [text* message-to ] </label>
+            <label> Message
+                [textarea your-message] </label>
+            <div class="uacf7-submint">
+            [submit "Send Message"]
+            </div>
+        </div>';
+        break;
     // End Form from -Masum Billah	
 
 	case "multistep":
