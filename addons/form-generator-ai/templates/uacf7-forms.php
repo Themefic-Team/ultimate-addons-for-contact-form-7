@@ -684,6 +684,34 @@ switch ( $uacf7_default[1] ) {
             </div>
         </div>';
         break;
+
+    case "request-for-quote":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+            [uacf7-col col:6]
+            <label> First Name *
+                [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+        <label> Last Name *
+            [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label>  Email *
+            [email* your-email autocomplete:email placeholder "Email Address"] </label>
+        <label> Phone No *
+            [tel* your-phone autocomplete:email placeholder "Phone No"] </label>
+        <label> Prefered Method of Contact ? *
+        [radio preffered-method class:uacf7-radio "Phone" "Email" "Others"] </label>
+        [conditional others-conditional]
+        <label> Others
+                [text* your-others-method  ] </label>
+        [/conditional]
+        <label> Comments
+                [textarea your-comments  ] </label>
+            <div class="uacf7-submint">
+                [submit "Submit Request"]
+            </div>
+        </div>';
+        break;
     // End Form from -Masum Billah	
 
 	case "multistep":
