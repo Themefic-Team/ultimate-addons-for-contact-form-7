@@ -620,7 +620,7 @@ switch ( $uacf7_default[1] ) {
                 [submit "Submit Form"]
             </div>
         </div>';
-        break;
+    break;
     case "hardware-request-form":
         $form = '<div class="uacf7-wrapper-default">
         <h3 style="text-align: center"> Hardware Request Form </h3>
@@ -655,7 +655,7 @@ switch ( $uacf7_default[1] ) {
                 [submit "Submit Form"]
             </div>
         </div>';
-        break;
+    break;
     case "it-service-req":
         $form = '<div class="uacf7-wrapper-default">
         <p style="text-align: center; font-weight: bold;" > Please fill out this form and an IT service team member will be in touch with you shortly..</p>
@@ -683,7 +683,7 @@ switch ( $uacf7_default[1] ) {
                 [submit "Submit Request"]
             </div>
         </div>';
-        break;
+    break;
 
     case "request-for-quote":
         $form = '<div class="uacf7-wrapper-default">
@@ -711,7 +711,52 @@ switch ( $uacf7_default[1] ) {
                 [submit "Submit Request"]
             </div>
         </div>';
-        break;
+    break;
+    case "report-a-bug":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3 style="text-align:center;">Report a Bug </h3>
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name *
+            [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+        <label> Last Name *
+            [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label>  Enter Your Email Address  *
+            [email* your-email autocomplete:email placeholder "Email Address"] </label>
+        <label> Title of the Issue *
+            [text* your-issue-title  ] </label>
+        <label> Problem Status *
+            [select* your-problem-status include_blank "Open " "Hold" "Fixed " "Closed" "Invalid " "Others"] </label>
+        [conditional others-conditional]
+        <label> Others
+            [text* your-others-status  ] </label>
+            [/conditional]
+        <label> Summary of the Information *
+            [textarea* your-bug-summery  ] </label>
+        <label> Steps to Reproduce *
+            [textarea* your-reproduce-steps  ] </label>
+        <label> Results *
+            [textarea* your-step-result  ] </label>
+        <label> Regression
+            [textarea your-regression  ] </label>
+        <label> Is there a Workaround?
+            [radio question-1 class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label> Documentation & Notes
+        [file document]
+        </label>
+         <label> Reproducibility *
+               [select* your-reproducibility include_blank "I didn\'t try" "Rarely" "Sometimes" "Always"] </label>
+        <label> Classification of Bug*
+               [select* your-bug-classification include_blank "Security" "Crash/Hang/Data Loss" "Perfomance/Ui-Usability" "Serius Bug" "Other Bug" "Feature (New)" "Enhancement"] </label>
+        <label> How severe it is? *
+            [select* how-severe-is include_blank "Trivial" "Normal" "Major" "Critical"] </label>
+                <div class="uacf7-submint">
+                    [submit "Submit Bug Report"]
+                </div>
+            </div>';
+    break;
     // End Form from -Masum Billah	
 
 	case "multistep":
