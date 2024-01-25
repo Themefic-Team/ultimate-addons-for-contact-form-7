@@ -138,11 +138,11 @@ textarea:focus-visible {
 .uacf7-wrapper-default .uacf7-submint input[type="submit"] {
   font-size: 16px;
   font-weight: 700;
-  color: var(--uacf7-global-color-primary);
+  color: var(--uacf7-white-color);
   border-style: solid;
   border-radius: var(--uacf7-border-radius);
   border-width: 2px;
-  border-color: var(--uacf7-global-button-color);
+  border-color: var(--uacf7-white-color);
   padding: 10px 20px;
   text-align: center;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
@@ -160,7 +160,7 @@ textarea:focus-visible {
 /* Submit Button fill style  */
 .uacf7-wrapper-default .uacf7-submint.fill input[type="submit"] {
   background-color: var(--uacf7-global-color-primary);
-  color: var(--uacf7-white-color);
+  color: var(--uacf7-white-color)!important;
 }
 
 .uacf7-wrapper-default .uacf7-submint.fill input[type="submit"]:focus,

@@ -157,6 +157,8 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "volunteer-application", "label" => "Volunteer Application" ],
 			[ "value" => "graphic-designer-contact-form", "label" => "	
 			Graphic Designer Contact Form" ],
+			[ "value" => "hardware-request-form", "label" => "	
+			Hardware Request Form" ],
 			[ "value" => "product-review", "label" => "Product Review" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),

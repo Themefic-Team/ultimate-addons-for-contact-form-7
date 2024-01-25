@@ -610,11 +610,46 @@ switch ( $uacf7_default[1] ) {
             <label> When is the best date to contact you?
                 [date your-date  placeholder ] </label>
         <label> What can I help you with?
-        [radio your-services class:uacf7-checkbox default:1 "Social Media Publication" " Prints & Ilustrations" " Website Design" " Other"]
+        [radio your-services class:uacf7-radio default:1 "Social Media Publication" " Prints & Ilustrations" " Website Design" " Other"]
                 </label>
             <label> Describe your need *
                 [textarea* your-message placeholder "Type your message here...."] </label>
             <label> When do you need the graphic designer? *
+                [date* your-needing-date ] </label>
+            <div class="uacf7-submint">
+                [submit "Submit Form"]
+            </div>
+        </div>';
+        break;
+    case "hardware-request-form":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3 style="text-align: center"> Hardware Request Form </h3>
+        <p style="text-align: center"> This form will be used to request if any new hardware is needed in any department.</p>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label> Requester\'s First Name *
+                    [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+                <label> Requester\'s Last Name *
+                [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label> Requester\'s Email *
+            [email* your-email autocomplete:email placeholder "Email Address"] </label>
+        <label> Requester\'s Phone Number *
+            [tel your-phone  placeholder "Phone"] </label>
+        <label> Department to Purchase*
+            [text* your-purchase-dept  ] </label>
+            <label> What type of hardware do you need?
+        [select item-type include_blank "New Desktop" "New Laptop" "Laptop Table" "Accessories" "Others"] </label>
+        <label> If you choose other, please write the name.
+                [text your-other-choice  ] </label>
+        <label> Choose Software to to be pre installed     
+        [checkbox other-adobe-products class:uacf7-checkbox "Microsoft Office" " Adobe Products" " 3D Software"] </label>
+            <label> Other Software / Instruction *
+                [textarea* other-soft-instruction placeholder "Type your message here...."] </label>
+            <label> Reason for the Request (Be Specific) *
+                [textarea* other-soft-instruction placeholder "Type your message here...."] </label>
+            <label> Date Submitted
                 [date* your-needing-date ] </label>
             <div class="uacf7-submint">
                 [submit "Submit Form"]
