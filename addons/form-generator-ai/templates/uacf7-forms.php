@@ -1036,6 +1036,62 @@ switch ( $uacf7_default[1] ) {
             </div>
         </div>';
         break;
+    case "patient-intake-form":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name *
+        [text* first-name autocomplete:name ] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Last Name 
+        [text last-name autocomplete:last-name ] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label> Patient Age *
+        [number* patient-age min:0] </label>
+        <label> Preferred Name / Nickname *
+        [text* patient-nickname] </label>
+            <label> Patient Gender *
+        [select patient-gender include_blank "Male" "Female" "Others"] </label>
+        <label> Phone no. *
+                [tel* patient-phone] </label>
+        <label> Spouse Name
+                [text patient-spouse ] </label>
+        <label> With whome do you live?
+                [text patient-live-with] </label>
+        <label> Marital Status *
+                [radio patient-marital-status class:uacf7-radio "Married" "Unmarried" "Others"] </label>
+        <label> Occupation
+                [text patient-occupation placeholder "If retired or disabled then enter your last occupation"] </label>
+        <label> Retired? *
+            [radio is-retired class:uacf7-radio default:2 "Yes" "No"]
+        </label>
+        <label> Disability ?*
+            [radio is-disabled class:uacf7-radio default:2 "Yes" "No"]
+        </label>
+        <label> Who is your primary care doctor:?
+                [text primary-care-doctor] </label>
+        <label> Where is your primary care doctor located ?
+
+                [text primary-care-doctor-located] </label>
+        <label> Phone Number of primary care doctor:
+                [tel primary-care-doctor-phone] </label>
+        <label> Allergic to any medications? *
+            [radio is-allergic  class:uacf7-radio default:2 "Yes" "No"]
+        </label>
+        <label> Do you smoke?*
+            [radio is-smoke class:uacf7-radio default:2 "Yes" "No"]
+        </label>
+        <label> If you quit, when did you stop?
+                [text if-quit ] </label>
+        <label> Do you drink alcohol?
+                [text if-alcohol] </label>
+        <label> Personal opinion
+                [textarea personal-opinion] </label>
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+            </div>
+        </div>';
+    break;
     // End Form from -Masum Billah	
 
 	case "multistep":

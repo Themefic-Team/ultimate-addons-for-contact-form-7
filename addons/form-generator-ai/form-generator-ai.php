@@ -169,6 +169,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "accident-report-form", "label" => "Accident Report Form" ],
 			[ "value" => "complaint-form-2", "label" => "Complaint Form" ],
 			[ "value" => "directory-information", "label" => "Directory Information" ],
+			[ "value" => "patient-intake-form", "label" => "Patient Intake Form" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),
 			apply_filters( 'uacf7_conversational_appointment_form_dropdown', [ "value" => "conversational-appointment-form", "label" => "Conversational Appointment Booking  (Pro)" ] ),
