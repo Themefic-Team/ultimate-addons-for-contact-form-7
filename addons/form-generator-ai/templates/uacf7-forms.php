@@ -828,8 +828,9 @@ switch ( $uacf7_default[1] ) {
 
             <label> Message *
                 [textarea* your-message] </label>
-
+            <div class="uacf7-submint end fill">
             [submit "Submit Form"]
+            </div>
         </div>';
         break;
     case "request-a-leave":
@@ -858,9 +859,36 @@ switch ( $uacf7_default[1] ) {
             [radio leave-type class:uacf7-radio default:1 "Vacation" "Sick" "Quitting" "Maternity/Paternity" "Other"] </label>
             <label> Comments *
             [textarea* your-comments] </label>
+        <div class="uacf7-submint end fill">
         [submit "Apply for Leave"]
-        </div>';  
-    break;   
+        </div>
+    </div>';  
+    break;
+    case "event-registration":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name *
+            [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Last Name *
+            [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label> Email
+            [email* your-email autocomplete:email placeholder "email address"] </label>
+        <label> Phone
+            [tel* your-phone  placeholder "phone number"] </label>
+        <label> Company
+            [text company placeholder "company name" ] </label>
+        <label> Website
+            [url your-website placeholder "https://google.com"] </label>
+        <label> Message (if any)
+            [textarea your-message] </label>
+         <div class="uacf7-submint">
+        [submit "Submit Form"]
+        </div>
+        </div>';
+        break; 
     // End Form from -Masum Billah	
 
 	case "multistep":

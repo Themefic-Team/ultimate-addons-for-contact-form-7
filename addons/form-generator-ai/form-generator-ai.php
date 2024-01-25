@@ -163,6 +163,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "check-request", "label" => "Check Request" ],
 			[ "value" => "vendor-contact", "label" => "Vendor Contact" ],
 			[ "value" => "request-a-leave", "label" => "Request a Leave" ],
+			[ "value" => "event-registration", "label" => "Event Registration" ],
 			[ "value" => "product-review", "label" => "Product Review" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),
