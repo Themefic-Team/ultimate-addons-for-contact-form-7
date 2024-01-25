@@ -160,6 +160,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "it-service-req", "label" => "IT Service Request" ],
 			[ "value" => "request-for-quote", "label" => "Request for Quote" ],
 			[ "value" => "report-a-bug", "label" => "Report a Bug" ],
+			[ "value" => "check-request", "label" => "Check Request" ],
 			[ "value" => "product-review", "label" => "Product Review" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),

@@ -757,6 +757,70 @@ switch ( $uacf7_default[1] ) {
                 </div>
             </div>';
     break;
+    case "check-request":
+        $form = '<div class="uacf7-wrapper-default">
+        <h2 style="text-align:center;">Check Request</h2>
+        <p style="text-align:center;">If you are in need of funds, please fill out the following check request. We will reach out to you once the request has been approved. If this is an emergency, please contact the financial department directly.</p>
+        <h3>Requested By :</h3>
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name *
+            [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+        <label> Last Name *
+        [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+        [/uacf7-row]
+        <label> Email *
+            [email* your-email autocomplete:email placeholder "Email Address"] </label>
+        <label> Date Requested 
+         [date date-requested  ]</label>
+       <label> Date Needed *
+         [date* date-needed ]</label>
+        <label> Purpose of Funds
+            [text purpose-of-fund  ] </label>
+        <label> Amount Requested ($) *
+        [number* requested-amount min:1 ] </label>
+        <h3>Make Payable To :</h3>
+    [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name
+        [text payable-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+    <label> Last Name
+        [text payable-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+    [/uacf7-row]
+    <label> Payable to Address </label>
+    [uacf7-row]
+        [uacf7-col col:6]
+        <label> Address Line 1
+        [text payable-address-1 ] </label> [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Address Line 2
+        [text payable-address-2 ] </label>  [/uacf7-col]
+    [/uacf7-row]
+    [uacf7-row]
+    [uacf7-col col:6]
+        <label> City
+            [text payable-city ] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+          <label> State
+        [text payable-state ] </label>  [/uacf7-col]
+    [/uacf7-row]
+    [uacf7-row]
+    [uacf7-col col:6]
+        <label> Zip
+            [text payable-zip ] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+          <label> Country
+        [text payable-country ] </label>  [/uacf7-col]
+    [/uacf7-row]
+       [acceptance acceptance-terms] I have read and agree to the Terms and Conditions and Privacy Policy [/acceptance]
+            <div class="uacf7-submint">
+                [submit "Submit Bug Report"]
+            </div>
+    </div>';
+
+    break;
     // End Form from -Masum Billah	
 
 	case "multistep":
