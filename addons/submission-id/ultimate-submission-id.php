@@ -37,6 +37,7 @@ class UACF7_SUBMISSION_ID{
             'icon'   => 'fa-solid fa-fingerprint',
             'fields' => array(
                 'uacf7_submission_id_heading' => array(
+<<<<<<< HEAD
                     'id'    => 'uacf7_submission_id_heading',
                     'type'  => 'heading', 
                     'label' => __( 'Unique Submission ID Settings', 'ultimate-addons-cf7' ),
@@ -54,6 +55,18 @@ class UACF7_SUBMISSION_ID{
                             '<a href="https://themefic.com/docs/uacf7/free-addons/unique-id-for-contact-form-7/" target="_blank" rel="noopener">Submission ID</a>'
                         )
                       ),
+=======
+                    'id'      => 'uacf7_submission_id_heading',
+                    'type'    => 'notice',
+                    'notice'  => 'info',
+                    'label'   => __( 'Unique Submission ID Settings', 'ultimate-addons-cf7' ),
+                    'title'   => __( 'This addon will help you to track submission data into the database.', 'ultimate-addons-cf7' ),
+                    'content' => sprintf( 
+                        __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/unique-submission-id/" target="_blank">documentation</a>'
+                    )
+                ),
+>>>>>>> f3ddd0cb3c95929c0bad416239610ce792f233a7
              
                 'uacf7_submission_id_enable' => array(
                     'id'        => 'uacf7_submission_id_enable',
@@ -153,7 +166,7 @@ public function submission_id_public_assets_loading(){
  */
 public function uacf7_submission_id_insert_callback( $uacf7_db_id, $form_id, $insert_data, $tags){
 
-    $submission = uacf7_get_form_option( $form_id, 'submission_id' );
+    $submission                 = uacf7_get_form_option( $form_id, 'submission_id' );
     $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false;
 
     if($uacf7_submission_id_enable == true){
@@ -177,13 +190,13 @@ public function uacf7_submission_id_insert_callback( $uacf7_db_id, $form_id, $in
 
 public function submission_id_update($form){
 
-    $submission = uacf7_get_form_option( $form->id(), 'submission_id' );
-    $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false; 
+    $submission                 = uacf7_get_form_option( $form->id(), 'submission_id' );
+    $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false;
 
     if($uacf7_submission_id_enable == true){
           
         $getCurrentData = isset($submission['uacf7_submission_id']) ? $submission['uacf7_submission_id'] : 0;
-        $step_counter = isset($submission['uacf7_submission_id_step']) ? $submission['uacf7_submission_id_step'] : 0;
+        $step_counter   = isset($submission['uacf7_submission_id_step']) ? $submission['uacf7_submission_id_step'] : 0;
 
 
 
@@ -217,10 +230,10 @@ public function uacf7_submission_id_tag_handler_callback($tag){
     }
      
     /** Enable / Disable Submission ID */
-    $wpcf7 = WPCF7_ContactForm::get_current(); 
-    $formid = $wpcf7->id();
-    $submission = uacf7_get_form_option( $formid, 'submission_id' );
-    $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false; 
+    $wpcf7                      = WPCF7_ContactForm::get_current();
+    $formid                     = $wpcf7->id();
+    $submission                 = uacf7_get_form_option( $formid, 'submission_id' );
+    $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false;
     
     if($uacf7_submission_id_enable != true){
         return;
@@ -237,8 +250,8 @@ public function uacf7_submission_id_tag_handler_callback($tag){
 
     $atts = array();
 
-    $atts['class'] = $tag->get_class_option($class);
-    $atts['id'] = $tag->get_id_option();
+    $atts['class']    = $tag->get_class_option($class);
+    $atts['id']       = $tag->get_id_option();
     $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
 
     if ($tag->is_required()) {

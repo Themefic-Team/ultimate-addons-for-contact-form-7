@@ -35,6 +35,7 @@ class UACF7_TELEGRAM {
         'fields' => array(
             
             'uacf7_telegram_heading' => array(
+<<<<<<< HEAD
               'id'    => 'uacf7_telegram_heading',
               'type'  => 'heading', 
               'label' => __( 'Telegram Integration', 'ultimate-addons-cf7' ),
@@ -52,6 +53,18 @@ class UACF7_TELEGRAM {
                     '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-telegram/" target="_blank" rel="noopener">Telegram Integration</a>'
                 )
               ),
+=======
+              'id'      => 'uacf7_telegram_heading',
+              'type'    => 'notice',
+              'notice'  => 'info',
+              'label'   => __( 'Telegram Settings', 'ultimate-addons-cf7' ),
+              'title'   => __( 'This addon will help you to integrate telegram into you contact form 7.', 'ultimate-addons-cf7' ),
+              'content' => sprintf( 
+                  __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
+                  '<a href="https://themefic.com/docs/uacf7/free-addons/uacf7-telegram/" target="_blank">documentation</a>'
+              )
+            ),
+>>>>>>> f3ddd0cb3c95929c0bad416239610ce792f233a7
             'uacf7_telegram_enable' => array(
               'id'        => 'uacf7_telegram_enable',
               'type'      => 'switch',
@@ -62,7 +75,7 @@ class UACF7_TELEGRAM {
               'field_width' => 50,
           ),
             'uacf7_telegram_enable_icon' => array(
-              'id'        => 'uacf7_telegram_enable_icon',
+              'id'       => 'uacf7_telegram_enable_icon',
               'type'     => 'callback',
               'function' => 'uacf7_telegram_active_status_callback',
               'argument' => $post_id,

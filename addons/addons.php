@@ -67,6 +67,7 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
 			require_once( 'mailchimp/mailchimp.php' );
 		}
 
+<<<<<<< HEAD
 		//Addon - Dynamic Text
 		if ( isset( $option['uacf7_enable_dynamic_text'] ) && $option['uacf7_enable_dynamic_text'] == true ) {
 			require_once( 'dynamic-text/dynamic-text.php' );
@@ -119,6 +120,24 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
 		}
 
 	}
+=======
+        //Addon - Telegram
+        if( isset($option['uacf7_enable_telegram_field']) && $option['uacf7_enable_telegram_field'] == true ){  
+            require_once( 'telegram/ultimate-telegram.php');
+        }
+
+         //Addon - Spam Protection
+         if( isset($option['uacf7_enable_spam_protection_field']) && $option['uacf7_enable_spam_protection_field'] == true ){  
+            require_once( 'spam-protection/ultimate-spam-protection.php');
+        }
+
+        //Addon - Material Design
+        if( isset($option['uacf7_enable_material_design_field']) && $option['uacf7_enable_material_design_field'] == true ){  
+            require_once( 'material-design/ultimate-material-design.php');
+        }
+	
+    }
+>>>>>>> f3ddd0cb3c95929c0bad416239610ce792f233a7
 }
 
 uacf7_addons_included();

@@ -10,7 +10,7 @@
     url: apiUrl,
     type: 'GET',
     success: function(data) {
-      const botName = data.result.first_name;
+      const botName     = data.result.first_name;
       const botUsername = data.result.username;
       $('.online').css('display', 'block');
       $('.offline').css('display', 'none');
