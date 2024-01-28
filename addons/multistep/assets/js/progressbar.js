@@ -18,8 +18,10 @@
                         $item   = $(this);
 
                     if (!$item.hasClass('disabled')) {
-                        navListItems.removeClass('uacf7-btn-active').addClass('uacf7-btn-default');
-                        $item.addClass('uacf7-btn-active');
+                        // if(!$(this).closest('.uacf7-common-pb').hasClass('style-8')){
+                            navListItems.removeClass('uacf7-btn-active').addClass('uacf7-btn-default');
+                            $item.addClass('uacf7-btn-active');
+                        // }
                         allWells.hide();
                         $target.show();
                         allStepTitle.hide();
