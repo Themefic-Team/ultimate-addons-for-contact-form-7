@@ -10,6 +10,9 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 		public $option_icon = null;
 		public $option_position = null;
 		public $option_sections = array(); 
+		public $pre_tabs = ''; 
+		public $pre_fields = ''; 
+		public $pre_sections = ''; 
 
 		public function __construct( $key, $params = array() ) {
 			$this->option_id       = $key;
@@ -111,8 +114,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			//Addons submenu
 			add_submenu_page(
 				$this->option_id,
-				__('Add-ons', 'ultimate-addons-cf7'),
-				__('Add-ons', 'ultimate-addons-cf7'),
+				__('All Addons', 'ultimate-addons-cf7'),
+				__('All Addons', 'ultimate-addons-cf7'),
 				'manage_options',
 				'uacf7_addons',
 				array( $this, 'uacf7_addons_page' ),
@@ -121,8 +124,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			// 
 			add_submenu_page(
 				$this->option_id, //parent slug
-				__('Options','ultimate-addons-cf7'), // page_title
-				__('Options','ultimate-addons-cf7'), // menu_title
+				__('Settings','ultimate-addons-cf7'), // page_title
+				__('Settings','ultimate-addons-cf7'), // menu_title
 				'manage_options', // capability
 				$this->option_id.'#tab=mailchimp', // menu_slug
 				array( $this, 'tf_options_page' ) // function
@@ -132,8 +135,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				//License Info submenu 
 				add_submenu_page(
 					$this->option_id, //parent slug
-					__('License', 'ultimate-addons-cf7'),
-					__('License', 'ultimate-addons-cf7'),
+					__('Pro License', 'ultimate-addons-cf7'),
+					__('Pro License', 'ultimate-addons-cf7'),
 					'manage_options',
 					'uacf7_license_info',
 					array( $this,'uacf7_license_info_callback'),
@@ -228,9 +231,9 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 							</div>
 							<div class="uacf7-settings-heading-wrap">
 								<div class="uacf7-addon-filter-cta"> 
-									<button class="uacf7-addon-filter-button all">All ( <span class="uacf7-addon-filter-cta-count"></span> )</button>
-									<button class="uacf7-addon-filter-button activete">Active ( <span class="uacf7-addon-filter-cta-count"></span> )</button>
-									<button class="uacf7-addon-filter-button deactive">Deactive ( <span class="uacf7-addon-filter-cta-count"></span> )</button>
+									<button class="uacf7-addon-filter-button all active"><?php echo _e('All', 'ultimate-addons-cf7') ?> ( <span class="uacf7-addon-filter-cta-count"></span> )</button>
+									<button class="uacf7-addon-filter-button activete"><?php echo _e('Active', 'ultimate-addons-cf7') ?> ( <span class="uacf7-addon-filter-cta-count"></span> )</button>
+									<button class="uacf7-addon-filter-button deactive"><?php echo _e('Deactive', 'ultimate-addons-cf7') ?> ( <span class="uacf7-addon-filter-cta-count"></span> )</button>
 								</div>
 							</div>
 						</div>
@@ -240,12 +243,18 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 							<?php 
 								$data = get_option( $this->option_id, true );
 
+								$fields = [];
 
 								foreach($this->option_sections as $section_key => $section): 
 									
 								if($section_key == 'general_addons' || $section_key == 'extra_fields_addons' || $section_key == 'wooCommerce_integration'):
-								
-								foreach ($section['fields'] as $field_key => $field ):
+									$fields = array_merge($fields, $section['fields']); 
+								endif;
+								endforeach;  
+							
+								//  Short as Alphabetically
+								usort($fields, array($this, 'uacf7_setup_wizard_sorting'));
+								foreach ($fields as $field_key => $field ):
 									$id = $this->option_id.'['.$field['id'].']';
 							?>
 								<div class="uacf7-single-addon-setting uacf7-fields-<?php echo esc_attr($field['id']) ?>" data-parent="<?php echo esc_attr($section_key) ?>" data-filter="<?php echo esc_html( strtolower($field['label']) ) ?>">
@@ -257,6 +266,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 									}else{
 										echo '<span class="addon-status">'.esc_html('Free').'</span>';
 									}
+									$child = isset($field['child_field']) ? $field['child_field'] : '';
+									$is_pro = isset($field['is_pro']) ? 'pro' : '';
 									$default = $field['default'] == true ? 'checked' : '';
 									$default = isset($data[$field['id']]) && $data[$field['id']] == 1  ? 'checked' : $default;
 									$value = isset($data[$field['id']]) ? $data[$field['id']] : 0;
@@ -278,7 +289,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										<a href="<?php echo sanitize_url($demo_link); ?>" target="_blank" class="uacf7-single-addon-btn">View Demo</a>
 
 										<div class="uacf7-addon-toggle-wrap">
-											<input type="checkbox" id="<?php echo esc_attr($field['id']) ?>" <?php echo esc_attr( $default ) ?> value="<?php echo esc_html($value); ?>" class="uacf7-addon-input-field" name="<?php echo esc_attr( $id ) ?>" id="uacf7_enable_redirection" >
+											<input type="checkbox" data-child="<?php echo esc_attr($child) ?>" data-is-pro="<?php echo esc_attr($is_pro) ?>" id="<?php echo esc_attr($field['id']) ?>" <?php echo esc_attr( $default ) ?> value="<?php echo esc_html($value); ?>" class="uacf7-addon-input-field" name="<?php echo esc_attr( $id ) ?>" id="uacf7_enable_redirection" >
 												
 											<label class="uacf7-addon-toggle-inner <?php echo esc_attr( $label_class ) ?> " for="<?php echo esc_attr($field['id']) ?>">
 												<span class="uacf7-addon-toggle-track"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -292,8 +303,6 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								</div>
 
 							<?php 
-								endforeach;  
-								endif;
 								endforeach; 
 							?>
 						</div>
@@ -306,7 +315,14 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			
 			<?php
 		}
-	 
+
+		// Custom comparison function based on 'label' value
+		public function uacf7_setup_wizard_sorting($a, $b) {
+			$labelA = $a['label'][0];
+    		$labelB = $b['label'][0];
+			return strcmp($labelA, $labelB);
+		}
+
 		/**
 		 * Get Help Page
 		 * @author Jahid
