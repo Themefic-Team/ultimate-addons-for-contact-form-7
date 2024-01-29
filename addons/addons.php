@@ -117,13 +117,16 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
             require_once( 'telegram/ultimate-telegram.php');
         }
 
-        //Addon - Spam Protection
-        // if( uacf7_checked( 'uacf7_enable_spam_protection_field') != ''){
-        //     require_once( 'spam-protection/ultimate-spam-protection.php');
-        // }
+         //Addon - Spam Protection
+         if( isset($option['uacf7_enable_spam_protection_field']) && $option['uacf7_enable_spam_protection_field'] == true ){  
+            require_once( 'spam-protection/ultimate-spam-protection.php');
+        }
 
-        require_once( 'spam-protection/ultimate-spam-protection.php');
-		
+        //Addon - Material Design
+        if( isset($option['uacf7_enable_material_design_field']) && $option['uacf7_enable_material_design_field'] == true ){  
+            require_once( 'material-design/ultimate-material-design.php');
+        }
+	
     }
 }
 

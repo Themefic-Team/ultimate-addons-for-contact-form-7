@@ -277,6 +277,20 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'demo_link' => '#',
 						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/contact-form-7-webhook/',
 					),
+
+					'uacf7_enable_material_design_field' => array(
+						'id'                 => 'uacf7_enable_material_design_field',
+						'type'               => 'switch',
+						'label'              => __( 'Material Design', 'ultimate-addons-cf7' ),
+						'image_url'          => UACF7_URL . 'assets/admin/images/addons/material-design.png',
+						'subtitle'           => __( 'This feature will help you to add Material Design for forms', 'ultimate-addons-cf7' ),
+						'label_on'           => __( 'Yes', 'ultimate-addons-cf7' ),
+						'label_off'          => __( 'No', 'ultimate-addons-cf7' ),
+						'default'            => false,
+						'demo_link'          => 'https://cf7addons.com/preview/material-design-for-contact-form-7/',
+						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/material-design//',
+						
+					),
 				),
 			),
 			'extra_fields_addons' => array(
@@ -383,11 +397,13 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'id'        => 'uacf7_enable_ip_geo_fields',
 						'type'      => 'switch',
 						'label'     => __( 'IP Geo Fields (Autocomplete Country, City, State, Zip Fields)', 'ultimate-addons-cf7' ),
-						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
-						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
-						'default'   => false,
-						'field_width' => 33,
-					),
+						'image_url' => UACF7_URL . 'assets/admin/images/addons/IP-Geolocation@2x.png',
+						'default'   => false, 
+						'subtitle' => __( 'This features will help you to set IP Geolocation based Auto Complete Country, City, State, Zip Fields on Contact Form 7.', 'ultimate-addons-cf7' ),
+						'demo_link' => 'https://themefic.com/docs/ultimate-addons-for-contact-form-7/contact-form-7-autocomplete/', 
+						'documentation_link' => 'https://cf7addons.com/preview/contact-form-7-autocomplete/', 
+						'is_pro' => true,
+					),  
 					'uacf7_enable_spam_protection_field' => array(
 						'id'        => 'uacf7_enable_spam_protection_field',
 						'type'      => 'switch',
@@ -396,7 +412,7 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 						'default'   => false,
 						'field_width' => 33,
-					),     
+					),    
 				),
 			),
 			'wooCommerce_integration' => array(
