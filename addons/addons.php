@@ -67,6 +67,7 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
 			require_once( 'mailchimp/mailchimp.php' );
 		}
 
+
 		//Addon - Dynamic Text
 		if ( isset( $option['uacf7_enable_dynamic_text'] ) && $option['uacf7_enable_dynamic_text'] == true ) {
 			require_once( 'dynamic-text/dynamic-text.php' );
