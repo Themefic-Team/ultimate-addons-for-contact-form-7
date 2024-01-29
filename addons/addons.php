@@ -111,14 +111,20 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
 		if ( isset( $option['uacf7_enable_signature_field'] ) && $option['uacf7_enable_signature_field'] == true ) {
 			require_once( 'signature/ultimate-signature.php' );
 		}
+	
+        //Addon - Telegram
+        if( isset($option['uacf7_enable_telegram_field']) && $option['uacf7_enable_telegram_field'] == true ){  
+            require_once( 'telegram/ultimate-telegram.php');
+        }
 
+        //Addon - Spam Protection
+        // if( uacf7_checked( 'uacf7_enable_spam_protection_field') != ''){
+        //     require_once( 'spam-protection/ultimate-spam-protection.php');
+        // }
 
-		//Addon - Telegram
-		if ( isset( $option['uacf7_enable_telegram_field'] ) && $option['uacf7_enable_telegram_field'] == true ) {
-			require_once( 'telegram/ultimate-telegram.php' );
-		}
-
-	}
+        require_once( 'spam-protection/ultimate-spam-protection.php');
+		
+    }
 }
 
 uacf7_addons_included();

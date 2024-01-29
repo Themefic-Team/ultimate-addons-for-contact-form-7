@@ -231,9 +231,9 @@ if ( ! class_exists( 'UACF7_Metabox' ) ) {
 			}
 
 			if ( ! empty( $tf_meta_box_value ) ) {
-				//            
-				$meta_data = apply_filters( 'tf_metabox_before_save_option', $tf_meta_box_value, $post_id );
-
+            
+				$meta_data = apply_filters('tf_metabox_before_save_option', $tf_meta_box_value, $post_id); 
+				
 				update_post_meta( $post_id, $this->metabox_id, $meta_data );
 			} else {
 				delete_post_meta( $post_id, $this->metabox_id );
