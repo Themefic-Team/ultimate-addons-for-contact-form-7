@@ -1092,6 +1092,64 @@ switch ( $uacf7_default[1] ) {
             </div>
         </div>';
     break;
+    case "market-research-survey":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3>Market Research Survey</h3>
+        <hr>
+        <br>
+        [uacf7_step_start uacf7_step_start-367]   
+        <label> How often do you use our product? 
+                [checkbox how-often-use class:uacf7-checkbox "More than once a week" " Once a week" " Monthly" " Every other month" " A few times a year"] </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-368]
+        <label> What similar products do you use? (by name and brand)
+        [textarea about-similar-product]
+        </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-369]   
+        <label> When did you last purchase our product? 
+            [checkbox last-purchased-product class:uacf7-checkbox "Less than 1 month ago" "Between 1 month and 6 months ago" "Between 6 months and 1 year ago" " More than one year ago" " I don\'t remember"] </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-370]
+        <label> What similar products do you use? (by name and brand)
+        [textarea about-similar-product-2]
+        </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-371]   
+        <label> When did you last purchase our product? 
+            [checkbox last-purchased-product-2 class:uacf7-checkbox "Less than 1 month ago" "Between 1 month and 6 months ago" "Between 6 months and 1 year ago" " More than one year ago" " I don\'t remember"] </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-372]   
+        <label> Have you had a chance to review our newest product? 
+            [radio newest-product class:uacf7-radio "Yes" "No"] </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-373]   
+        <label> What do you think of our new product? 
+            [textarea about-new-product] </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-374]   
+        <label> What is your least favorite thing about our new product? 
+            [textarea favorite-about-new-product] </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-375]   
+        <label> How do you feel our products pricing compares with other similar products? 
+            [checkbox pricing-with-similar-product class:uacf7-checkbox "Less expensive" "About the same price" "More expensive"] </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-376] 
+        <h3> Tell us a little about yourself. </h3>
+        <hr>  
+        <label> What is your age range?
+            [radio age-range class:uacf7-radio default:1 "18 or younger" " 19 - 24" " 25 - 34" " 35 - 44" " 45 - 54" " 55 or older"] </label> 
+        <label> What country are you from?
+            [text* country] </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-400]
+            <div class="uacf7-submint">
+                [submit "Submit Form"]
+            </div>
+        [uacf7_step_end end]
+    </div>';
+    break;
     // End Form from -Masum Billah	
 
 	case "multistep":
