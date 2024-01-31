@@ -1241,6 +1241,51 @@ switch ( $uacf7_default[1] ) {
           </div>
        </div>';
     break;
+
+    case 'pricing-survey':
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7_step_start uacf7_step_start-753]
+              <label> Are you currently a customer? *
+                [radio is-customer class:uacf7-radio default:1 "Yes" "No"] 
+              </label> 
+       [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-754]
+              <label> Which plan are you subscribed to?* 
+                [radio subscribe-plan class:uacf7-radio default:1 "Plan A" "Plan B" "Plan C"] 
+              </label> 
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-755]
+              <label> How long have you been a customer? *
+     [radio how-long-as-customer class:uacf7-radio default:1 "Less than a month" " 1-6 months" " 6 months to 1 year" " 1-3 years" " More than 3 years"] 
+              </label> 
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-756]
+              <label> What do you like about our service?
+                 [textarea about-our-services]
+              </label> 
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-757]
+              <label>What do you dislike about our service?
+                 [textarea why-dislike]
+              </label> 
+        [uacf7_step_end end]
+     [uacf7_step_start uacf7_step_start-758]
+              <label>Would you recommend our product?*
+                  [radio is-recommend class:uacf7-radio default:1 "Yes" "No"] 
+              </label> 
+        [uacf7_step_end end]
+       [uacf7_step_start uacf7_step_start-759]
+              <label>Do you have any additional comments or suggestions?
+                 [textarea any-suggestion]
+              </label> 
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-800]
+             <div class="uacf7-submint">
+                 [submit "Submit Form"]
+             </div>
+        [uacf7_step_end end]
+      </div>';
+      break;
     // End Form from -Masum Billah	
 
 	case "multistep":
