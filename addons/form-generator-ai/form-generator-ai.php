@@ -177,6 +177,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "product-order-form", "label" => "Product Order Form" ],
 			[ "value" => "donation-form-2", "label" => "Donate Now" ],
 			[ "value" => "order-bump-form", "label" => "Order Bump Form" ],
+			[ "value" => "student-survey", "label" => "Student Survey Form" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),
 			apply_filters( 'uacf7_conversational_appointment_form_dropdown', [ "value" => "conversational-appointment-form", "label" => "Conversational Appointment Booking  (Pro)" ] ),

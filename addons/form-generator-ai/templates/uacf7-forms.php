@@ -1444,10 +1444,64 @@ switch ( $uacf7_default[1] ) {
         </div>
         [acceptance acceptance-terms optional] Yes, I want access $19 extra [/acceptance]
             <div class="uacf7-submint uacf7-order-bump-form">
-                [submit  "Donate Now"]
+                [submit  "Purchase Now"]
             </div>
         </div>';
         break;
+    case "student-survey":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7_step_start uacf7_step_start-630]
+                [uacf7-row]
+                [uacf7-col col:6]
+                <label> First Name *
+                [text* first-name ] 
+                </label> 
+                [/uacf7-col]
+                [uacf7-col col:6]
+                <label> Last Name
+                [text last-name] 
+                </label> 
+                [/uacf7-col]
+                [/uacf7-row]
+                <label> Email*
+                [email* email ] 
+            <h3> How important is it that we provide you with the following?</h3> 
+            <label> Variety of student organizations *
+            [radio student-org class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
+            </label>
+            <label> Plenty of professor office hours *
+            [radio prof-office-hrs class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
+            </label>
+            <label> Internship opportunities *
+            [radio internship-opportunities class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
+            </label>
+            [uacf7_step_end end]
+            [uacf7_step_start uacf7_step_start-631]
+            <h3> How important is it that we provide you with the following? </h3>
+            <label> Get a job to help pay for college expenses *
+            [radio college-expenses class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
+            </label>
+            <label> Become a teacher assistant *
+            [radio become-teacher-assistant class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
+            </label>
+            <label> Study abroad  *
+            [radio study-abroad class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
+            </label>
+            <label> Take out student loans *
+            [radio student-loan class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
+            </label>
+            <label> Please select any activities/groups you plan on participating in while in school.*
+            [checkbox* interest class:uacf7-checkbox "Intramural Sports" "Student Organizations" "Fraternity/Sorority" "Other"]
+            </label>
+            <label> Others
+            [textarea others ]
+            </label>
+                <div class="uacf7-submint">
+                    [submit  "Submit Form"]
+                </div>
+            [uacf7_step_end end]
+        </div>';
+    break;
 
     // End Form from -Masum Billah	
 
