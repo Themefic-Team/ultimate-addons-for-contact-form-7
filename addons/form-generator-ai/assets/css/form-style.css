@@ -207,8 +207,13 @@ textarea:focus-visible {
   color: #ffffff!important;
   border-color: #115e99!important;
 }
-
-/* Multistep Forms */
-/* .uacf7-wrapper-default .uacf7-step.step-content button.uacf7-next {
-  float: right!important;
-} */
+.uacf7-wrapper-default .uacf7-order-bump-form .wpcf7-submit{
+  background-color: #E6A23C!important;
+  border-radius: 6px;
+  font-size: 18px;
+  line-height: 1.5;
+  padding: 8px 16px;
+}
+.uacf7-wrapper-default .uacf7-order-bump-form .wpcf7-submit:hover{
+  background-color: #EBB563!important;
+}

@@ -1335,6 +1335,120 @@ switch ( $uacf7_default[1] ) {
         </div>
     </div>';
     break;
+    case "product-order-form":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name *
+        [text* first-name ] 
+        </label> 
+        [/uacf7-col]
+        [uacf7-col col:6]
+        <label> Last Name 
+        [text last-name ] 
+        </label> 
+        [/uacf7-col]
+        [/uacf7-row]
+        <label> Email *
+        [email* email]
+        </label> 
+       <label> Shipping Address </label>
+        [uacf7-row]
+          [uacf7-col col:6]
+          <label> Address Line 1 *
+          [text* address-line-1 ] 
+          </label> 
+          <label> City *
+          [text* city ] 
+          </label> 
+          <label> Zip Code
+          [text zip-code ] 
+           </label> 
+          [/uacf7-col]
+          [uacf7-col col:6] 
+          <label> Address Line 2
+          [text address-line-2 ] 
+          </label> 
+          <label> State
+          [text state] 
+          </label> 
+          <label> Country
+          [text country] 
+          </label>
+          [/uacf7-col]
+         [/uacf7-row]
+        <label> Choose your Product * 
+        [checkbox* product class:uacf7-checkbox "Product Item 1 - $10" "Product Item 2 - $50" "Product Item 3 - $100"]
+        </label>
+        <label> Choose Payment Method * 
+        [radio payment-method class:uacf7-radio "Pay with Card (Stripe)" "Pay with Paypal" "Test Payment"]
+        </label>
+        <div class="uacf7-submint">
+            [submit "Purchase"]
+        </div>
+    </div>';
+    break;
+    case "donation-form-2":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name *
+        [text* first-name ] 
+        </label> 
+        [/uacf7-col]
+        [uacf7-col col:6]
+        <label> Last Name 
+        [text last-name ] 
+        </label> 
+        [/uacf7-col]
+        [/uacf7-row]
+        <label> Email *
+        [email* email]
+        </label> 
+        <label> Donation Amount * 
+        [radio donation-amount class:uacf7-radio "$10" "$50" "$100" "Other"]
+        [conditional conditional-505]
+        </label>
+        <label> Type your amount 
+        [number  other-donation-amount min:1 ]
+        </label>
+        [/conditional]
+       <label> Payment Method 
+        [radio payment-method class:uacf7-radio default:1 "Pay with Card (Stripe)" "Pay with Paypal" "Offline Payment"]
+        </label>
+        <div class="uacf7-submint">
+            [submit "Donate Now"]
+        </div>
+    </div>';
+    break;
+    case "order-bump-form":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> Name *
+        [text* name ] 
+        </label> 
+        [/uacf7-col]
+        [uacf7-col col:6]
+        <label> Email*
+        [email* email ] 
+        </label> 
+        [/uacf7-col]
+        [/uacf7-row]
+        <label> Your Awesome Product <br> Price: $49</label> 
+       <label> Payment Method 
+        [radio payment-method class:uacf7-radio default:1 "Pay with Card (Stripe)" "Pay with Paypal" "Offline Payment"]
+        </label>
+        <div> 
+        <p style="margin: 0;"><span style="text-decoration: underline;"><strong>One time offer:</strong></span> I would also like get over-the-shulder videos that walk me through every single steps of the passive profits system for only $19 extra (a $97 value)</p>
+        </div>
+        [acceptance acceptance-terms optional] Yes, I want access $19 extra [/acceptance]
+            <div class="uacf7-submint uacf7-order-bump-form">
+                [submit  "Donate Now"]
+            </div>
+        </div>';
+        break;
+
     // End Form from -Masum Billah	
 
 	case "multistep":
