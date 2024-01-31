@@ -171,6 +171,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "directory-information", "label" => "Directory Information" ],
 			[ "value" => "patient-intake-form", "label" => "Patient Intake Form" ],
 			[ "value" => "market-research-survey", "label" => "Market Research Survey" ],
+			[ "value" => "database-management", "label" => "Database Management" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),
 			apply_filters( 'uacf7_conversational_appointment_form_dropdown', [ "value" => "conversational-appointment-form", "label" => "Conversational Appointment Booking  (Pro)" ] ),

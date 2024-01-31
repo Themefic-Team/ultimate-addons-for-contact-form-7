@@ -1150,6 +1150,97 @@ switch ( $uacf7_default[1] ) {
         [uacf7_step_end end]
     </div>';
     break;
+    case "database-management": 
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+        [uacf7-col col:6]
+        <label> First Name
+        [text first-name autocomplete:first-name ] 
+        </label>
+        [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Last Name 
+        [text last-name autocomplete:last-name ] </label>  
+        [/uacf7-col]
+        [/uacf7-row]
+        <label> Email
+        [email email autocomplete:email ] </label> 
+       <label> Phone Number
+        [tel phone-number  ] </label> 
+       <label> Address </label>
+       [uacf7-row]
+        [uacf7-col col:6]
+        <label> Address Line 1
+        [text address-line-1 ] 
+        </label> 
+        <label> City
+        [text city ] 
+        </label> 
+        <label> Zip Code
+        [text zip-code ] 
+         </label> 
+        [/uacf7-col]
+        [uacf7-col col:6] 
+        <label> Address Line 2
+        [text address-line-2 ] 
+        </label> 
+        <label> State
+        [text state] 
+        </label> 
+        <label> Country
+        [text country] 
+        </label>
+        [/uacf7-col]
+       [/uacf7-row]
+       <label> Describe your current issues/needs * 
+       [textarea* current-issue ]
+       </label>
+       <label> Describe your current system if applicable *
+       [textarea* current-system]
+       </label>
+       
+       <label> What is your expertise with managing your database?
+       [select db-expertise class:uacf7-select include_black "Novice" "Intermediate" "Expert"]
+       </label>
+       <label> Do you need an internet in your office?
+       [radio if-internet-need class:uacf7-radio"Yes" "No"]
+       </label>
+       <label> Software Type
+       [select software-type class:uacf7-select include_blank "Accounting and Financial Management" "Asset Management" "Business Intelligence and Data Management Customer" "Relationship Management (CRM)" "Enterprise Resource Planning (ERP)" "Human Capital Management (HCM)" "Information Management and Collaboration" "Product Lifecycle Management (PLM)" "Project and Process Management" "Supply Chain Management (SCM)"]
+       </label>
+       <label> Business Area
+       [select business-area class:uacf7-select include_blank "Sales and Marketing" "Professional Services and Support" "Production and Distribution" "IT Management and Development" "Data Management and Analysis" "Back Office and Operation"]
+       </label>
+       <label> Needed Requirements, Functionality, or Specification
+       [textarea needed-requirements ]
+       </label>
+       <label> Desired deliverables
+       [textarea desired-deliverables]
+       </label>
+       <label> When do you need the support? *
+       [date* support-needed-date]
+       </label>
+       <label> What is your budget? *
+       [number* your-budget min:1]
+       </label>
+          
+       <label>Will this system be sold as third party software?
+       [radio third-party-software class:uacf7-radio"Yes" "No"]
+       </label>
+       <label>Will you need back up services?
+       [radio need-backup-services class:uacf7-radio"Yes" "No"]
+       </label>
+       <label>Will you need virus protection?
+       [radio need-virus-protection class:uacf7-radio "Yes" "No"]
+       </label>
+       <label>Upload any supporting documents.
+       [file supporting-docs ]
+       </label>
+          <div class="uacf7-submint">
+               [submit "Submit Form"]
+          </div>
+       </div>';
+    break;
     // End Form from -Masum Billah	
 
 	case "multistep":
