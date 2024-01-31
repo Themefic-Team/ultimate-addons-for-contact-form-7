@@ -1286,6 +1286,55 @@ switch ( $uacf7_default[1] ) {
         [uacf7_step_end end]
       </div>';
       break;
+    case "workshop-registration":
+        $form = '<div class="uacf7-wrapper-default">
+        <h2 style="text-align: center; color:#3838b0"> Workshop Registration </h2>
+        <label style="text-align: center;"> You can Add a Logo </label>
+        <h5 style="text-align: center; color:#3838b0"> Date : December 05, 2020                 Time: 10:00 am           Address : 3491 Henry Ford Avenue, Tulsa, OK, Oklahoma, 74120 </h5>
+        <label> Name 
+        [text name]
+        </label> 
+        <label> Email
+        [email email]
+        </label> 
+        <label> Phone
+        [tel phone]
+        </label> 
+        <label> Company
+        [text company]
+        </label> 
+        [uacf7-row]
+          [uacf7-col col:6]
+          <label> Permanent Address
+          [text permanent-address ] 
+          </label> 
+          <label> City
+          [text city ] 
+          </label> 
+          <label> Zip Code
+          [text zip-code ] 
+           </label> 
+          [/uacf7-col]
+          [uacf7-col col:6] 
+          <label> Current Address
+          [text current-address ] 
+          </label> 
+          <label> State
+          [text state] 
+          </label> 
+          <label> Country
+          [text country] 
+          </label>
+          [/uacf7-col]
+         [/uacf7-row]
+        <label> How did you hear about the workshop?
+        [checkbox where-from-heard class:uacf7-checkbox "Website" "Friend/Colleague" "Online Search"]
+        </label>
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>';
+    break;
     // End Form from -Masum Billah	
 
 	case "multistep":
