@@ -1451,20 +1451,20 @@ switch ( $uacf7_default[1] ) {
     case "student-survey":
         $form = '<div class="uacf7-wrapper-default">
         [uacf7_step_start uacf7_step_start-630]
-                [uacf7-row]
-                [uacf7-col col:6]
-                <label> First Name *
-                [text* first-name ] 
-                </label> 
-                [/uacf7-col]
-                [uacf7-col col:6]
-                <label> Last Name
-                [text last-name] 
-                </label> 
-                [/uacf7-col]
-                [/uacf7-row]
-                <label> Email*
-                [email* email ] 
+            [uacf7-row]
+            [uacf7-col col:6]
+            <label> First Name *
+            [text* first-name ] 
+            </label> 
+            [/uacf7-col]
+            [uacf7-col col:6]
+            <label> Last Name
+            [text last-name] 
+            </label> 
+            [/uacf7-col]
+            [/uacf7-row]
+            <label> Email*
+            [email* email ] 
             <h3> How important is it that we provide you with the following?</h3> 
             <label> Variety of student organizations *
             [radio student-org class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
@@ -1554,6 +1554,78 @@ switch ( $uacf7_default[1] ) {
             </div>';
         break;
 
+    case "course-evalution":
+            $form = '
+            <div class="uacf7-wrapper-default">
+            [uacf7_step_start uacf7_step_start-170]
+            <p style="text-align:center;">Please answer all required questions. Only complete this evaluation if you will be completing the course.</p>
+            <h4>Course Data</h4>
+            <label> Course Name *
+                [text* course-name ] </label> 
+            <label> Course Number *
+                [text* course-number] </label> 
+            <label> Section Number * 
+                [text* section-number] </label> 
+            <label> Instructor Name * 
+                [text* instructor-name] </label> 
+            [uacf7_step_end end]
+            [uacf7_step_start uacf7_step_start-171]
+            <h4>Evaluation</h4>
+            <p>Your Evaluations are important, so please do it carefully</p>
+            <hr>
+            <label> Level of effort you put into the course. *
+                       [radio leave-of-effort class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            <label> Your level of knowledge at the beginning of the course. *
+                       [radio label-of-knowledge-beginning class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            <label> Your level of knowledge at the end of the course.  *
+                       [radio label-of-knowledge-end class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            <label> I understood the objectives of the course.  *
+                       [radio objectives class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            <label> The length of the course was appropriate to cover content.  *
+                       [radio length-was-appropriate class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label>
+            <label> The course provided me with new information.  *
+                       [radio provided-new-information class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label>
+            [uacf7_step_end end]
+            [uacf7_step_start uacf7_step_start-172]
+            <label>Instructor\'s preparation.						
+                       [radio instructor-preparation class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            <label>Instructor\'s deliverance .						
+                       [radio instructor-deliverance class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            <label>Instructor\'s communication.						
+                       [radio instructor-communication class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            <label>Instructor\'s effectiveness.						
+                       [radio instructor-effectiveness class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            <label>Instructor\'s availability.						
+                [radio instructor-availability class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            <label>Overall quality of the course						
+                [radio overall-quality-of-course class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            <label>Overall quality of the equipment used for the course.						
+                [radio overall-quality-of-equipment class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
+            [uacf7_step_end end]
+        
+            [uacf7_step_start uacf7_step_start-173]  
+            <label>Would you recommend this course to other students?						
+                        [radio will-recommend class:uacf7-radio default:1 "Yes" "No"] </label>
+            <label>Why did you choose this course?						
+                        [radio why-choose class:uacf7-radio default:1 "Degree requirement" "Time offered" "Interest"] </label>
+            <label>Your class standing.						
+                        [radio your-class-standing class:uacf7-radio default:1 "Freshman" "Sophomore" "Junior" "Senior" "Graduate"] </label>
+            [uacf7_step_end end]
+            [uacf7_step_start uacf7_step_start-174] 
+            [uacf7-row][uacf7-col col:6] 
+            <label>Please identify aspects of the course you found useful.				
+                [textarea is-useful-feedback] </label> 
+            [/uacf7-col][uacf7-col col:6] 
+            <label>Please provide any suggestions to improve the course.			
+                [textarea should-improve-feedback] </label> 
+            [/uacf7-col][/uacf7-row]
+            <div class="uacf7-submit">
+                [submit "Submit Form"]
+            </div>
+            [uacf7_step_end end]
+        </div>';
+    break;
+  
     // End Form from -Masum Billah
 
 	case "multistep":
@@ -1575,7 +1647,7 @@ switch ( $uacf7_default[1] ) {
         [textarea your-message] </label> 
     [submit "Submit"]
     [uacf7_step_end]
-</div>';
+    </div>';
 		break;
 
 	case "conditional":
