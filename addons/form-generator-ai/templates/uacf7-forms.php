@@ -129,8 +129,8 @@ switch ( $uacf7_default[1] ) {
         [radio question-2 class:uacf7-radio default:1 "Definitely" "Probably" "Not Sure" "Probably Not"] </label>
     <div class="uacf7-submint">
         [submit "Submit Form"]
-    </div>
-</div>';
+        </div>
+    </div>';
 		break;
 	case 'complaint-form':
 		$form = '<div class="uacf7-wrapper-default">
@@ -405,1226 +405,1680 @@ switch ( $uacf7_default[1] ) {
     // Start Form from -Masum Billah
     case "blood-donation":
         $form = '<div class="uacf7-wrapper-default">
-
-        <h3 style="text-align: center;">Blood Donation Form</h3>
-    
-        <p style="text-align: center;">Donate blood save life!</p>
-    
-        <br>
-    
-        <hr>
-    
-        <br>
-    
-        [uacf7-row]
-    
-            [uacf7-col col:6]
-    
-                <label> Donor\'s First Name *
-                    [text* first-name autocomplete:first-name placeholder "First Name"] 
-                </label> 
-            [/uacf7-col]
-    
-            [uacf7-col col:6] 
-    
-                <label> Donor\'s Last Name *
-                    [text* last-name autocomplete:last-name placeholder "Last Name"] </label>  
-            [/uacf7-col]
-        [/uacf7-row]
-        [uacf7-row]
-            [uacf7-col col:12] 
-            <label> Date of Birth
-                    [date date-of-birth placeholder "dd/mm/yy"] </label>
-            [/uacf7-col]
-        [/uacf7-row]
-         <label> Donor\'s Email
-    
-            [email donors-email placeholder "Email"] </label>
-         <label> Donor\'s Phone
-    
-            [tel donors-phone placeholder "Phone Number"] </label>
-        [uacf7-row]
-            [uacf7-col col:6]
-                <label> Current Address
-                    [text* donors-current-address placeholder "A/35 Lake Forest Drive Road"] 
-                </label> 
-            [/uacf7-col]
-    
-            [uacf7-col col:6] 
-    
-                <label> City
-                [text* donors-city] </label>  
-            [/uacf7-col]
-        [/uacf7-row]
-      [uacf7-row]
-    
-        [uacf7-col col:6]
-
-            <label> State
-                [text* donors-state] 
-            </label> 
-        [/uacf7-col]
-
-        [uacf7-col col:6] 
-
-            <label> Zip Code
-            [text* donors-zip] </label>  
-        [/uacf7-col]
-        [/uacf7-row]
-            <label> Country
-            [text donors-country ] </label>
-            <label> Blood Group
-            [select* donor-blood-group include_blank "O+" "O-" "A+" "A-" "B+" "B-" "AB+" "AB-"] </label>
-            <label> Have you done a blood donation before?
-            [radio is-donated-before class:uacf7-radio default:1 "Yes" "No"] </label>
-        <label> Do you have any known allergy?
-            [radio if-allergy class:uacf7-radio default:1 "Yes" "No"]  </label>
-        <div class="uacf7-submint">
-            [submit "Submit Form"]
-        </div>
-    </div>';
-    break;
-
-    case "charity-dinner":
-    $form = '<div class="uacf7-wrapper-default">
-            <h2 style="text-align: center; color:#115e99;">Charity Dinner</h2>
-            <p style="text-align: center; color: #115e99;">Charity dinner for refugee children!</p>
+            <h3 style="text-align: center;">Blood Donation Form</h3>
+            <p style="text-align: center;">Donate blood save life!</p>
             <br>
             <hr>
             <br>
             [uacf7-row]
                 [uacf7-col col:6]
-                    <label> First Name *
+                    <label> Donor\'s First Name *
                         [text* first-name autocomplete:first-name placeholder "First Name"] 
                     </label> 
                 [/uacf7-col]
                 [uacf7-col col:6] 
-                    <label> Last Name *
+                    <label> Donor\'s Last Name *
                         [text* last-name autocomplete:last-name placeholder "Last Name"] </label>  
                 [/uacf7-col]
             [/uacf7-row]
             [uacf7-row]
-                [uacf7-col col:6]
-                <label> Phone
+                [uacf7-col col:12] 
+                <label> Date of Birth
+                        [date date-of-birth placeholder "dd/mm/yy"] </label>
+                [/uacf7-col]
+            [/uacf7-row]
+            <label> Donor\'s Email
+                [email donors-email placeholder "Email"] </label>
+            <label> Donor\'s Phone
                 [tel donors-phone placeholder "Phone Number"] </label>
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> Current Address
+                        [text* donors-current-address placeholder "A/35 Lake Forest Drive Road"] 
                     </label> 
                 [/uacf7-col]
                 [uacf7-col col:6] 
-                <label>Email
-                [email donors-email placeholder "Email"] </label
+                    <label> City
+                        [text* donors-city] </label>  
                 [/uacf7-col]
             [/uacf7-row]
-        <div class="uacf7-charity-dinner">
-        <label> Will you attend ?
-
-                [radio will-donor-attend class:uacf7-radio default:1 "Yes" "No"] </label>
-        <label> Number of Guests
-                [number total-guest min:1 placeholder "1-3"]  </label> 
-
-        <label> Special Request
-                [textarea* donor-special-request]  </label> 
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> State
+                        [text* donors-state] </label> 
+                [/uacf7-col]
+                [uacf7-col col:6] 
+                    <label> Zip Code
+                        [text* donors-zip] </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            <label> Country
+                [text donors-country ] </label>
+            <label> Blood Group
+                [select* donor-blood-group include_blank "O+" "O-" "A+" "A-" "B+" "B-" "AB+" "AB-"] </label>
+            <label> Have you done a blood donation before?
+                [radio is-donated-before class:uacf7-radio default:1 "Yes" "No"] </label>
+            <label> Do you have any known allergy?
+                [radio if-allergy class:uacf7-radio default:1 "Yes" "No"]  </label>
             <div class="uacf7-submint">
                 [submit "Submit Form"]
             </div>
-        </div>
         </div>';
-        break;
-    case 'volunteer-application':
-    $form = '<div class="uacf7-wrapper-default">  
-        [uacf7-row]
-        [uacf7-col col:6]
-            <label> First Name *
-                [text* first-name autocomplete:first-name placeholder "First Name"] 
-            </label> 
-        [/uacf7-col]
-        [uacf7-col col:6] 
-            <label> Last Name *
-                [text* last-name autocomplete:last-name placeholder "Last Name"] </label>  
-        [/uacf7-col]
-        [/uacf7-row]
-        <label>Email
-        [email volunteer-email placeholder "Email"] </label
-        <label> Contact No *
-        [tel volunteer-phone placeholder "Phone Number"] </label>
-            </label> 
-        <br>
-        [uacf7-row]
-         [uacf7-col col:12]
-        <label>Address</label>
-        [/uacf7-col]
-        [/uacf7-row]
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> Address Line 1 *
-            [text* volunteer-address-one] 
-        </label> 
-        [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Address Line 2 
-            [text volunteer-address-two] 
-        </label>    
-        [/uacf7-col]
-        [/uacf7-row]
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> City *
-            [text* volunteer-city] 
-        </label> 
-        [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> State * 
-            [text volunteer-state] 
-        </label>    
-        [/uacf7-col]
-        [/uacf7-row]
-        <label> Zip Code
-            [text* volunteer-zip] </label> 
-        <label> Working Days
-            [checkbox volunteer-working-days class:uacf7-checkbox "Sunday" " Satarday" " Monday" " Tuesday" " Wednesday" " Thursday" " Friday"] </label>
-        <label> Area of Interest/ skills
-            [textarea* volunteer-interest]  </label> 
-        <label> Comments (optional)
-            [textarea* volunteer-comments]  </label> 
-            <div class="uacf7-submint">
-            [submit "Submit Form"]
-        </div>
-    </div>';
-    break;
+    break;    
 
-    case "graphic-designer-contact-form":
+    case "charity-dinner":
         $form = '<div class="uacf7-wrapper-default">
+        <h2 style="text-align: center; color:#115e99;">Charity Dinner</h2>
+        <p style="text-align: center; color: #115e99;">Charity dinner for refugee children!</p>
+        <br>
+        <hr>
+        <br>
         [uacf7-row]
             [uacf7-col col:6]
                 <label> First Name *
-                    [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+                    [text* first-name autocomplete:first-name placeholder "First Name"] 
+                </label> 
+            [/uacf7-col]
             [uacf7-col col:6] 
                 <label> Last Name *
-                    [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+                    [text* last-name autocomplete:last-name placeholder "Last Name"] </label>  
+            [/uacf7-col]
         [/uacf7-row]
-        <label> Email *
-            [email* your-email autocomplete:email placeholder "Email Address"] </label>
-        <label> Phone Number
-                [tel your-phone  placeholder "Phone"] </label>
-        <label> When is the best time to contact you?
-                [text your-time  ] </label>
-            <label> When is the best date to contact you?
-                [date your-date  placeholder ] </label>
-        <label> What can I help you with?
-        [radio your-services class:uacf7-radio default:1 "Social Media Publication" " Prints & Ilustrations" " Website Design" " Other"]
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label> Phone
+                    [tel donors-phone placeholder "Phone Number"] 
                 </label>
+            [/uacf7-col]
+            [uacf7-col col:6] 
+                <label>Email
+                    [email donors-email placeholder "Email"] 
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+    
+        <div class="uacf7-charity-dinner">
+            <label> Will you attend?
+                [radio will-donor-attend class:uacf7-radio default:1 "Yes" "No"] 
+            </label>
+            
+            <label> Number of Guests
+                [number total-guest min:1 placeholder "1-3"]  
+            </label> 
+    
+            <label> Special Request
+                [textarea* donor-special-request]  
+            </label> 
+    
+            <div class="uacf7-submint">
+                [submit "Submit Form"]
+            </div>
+        </div>
+    </div>';
+    break;
+    
+    case 'volunteer-application':
+        $form = '
+        <div class="uacf7-wrapper-default">
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> First Name *
+                        [text* first-name autocomplete:first-name placeholder "First Name"] 
+                    </label>
+                [/uacf7-col]
+                [uacf7-col col:6] 
+                    <label> Last Name *
+                        [text* last-name autocomplete:last-name placeholder "Last Name"] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            <label>Email
+                [email volunteer-email placeholder "Email"] 
+            </label>
+            
+            <label>Contact No *
+                [tel volunteer-phone placeholder "Phone Number"] 
+            </label>
+            
+            <br>
+            
+            [uacf7-row]
+                [uacf7-col col:12]
+                    <label>Address</label>
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> Address Line 1 *
+                        [text* volunteer-address-one] 
+                    </label>
+                [/uacf7-col]
+                [uacf7-col col:6] 
+                    <label> Address Line 2 
+                        [text volunteer-address-two] 
+                    </label>    
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> City *
+                        [text* volunteer-city] 
+                    </label>
+                [/uacf7-col]
+                [uacf7-col col:6] 
+                    <label> State * 
+                        [text volunteer-state] 
+                    </label>    
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            <label> Zip Code
+                [text* volunteer-zip] 
+            </label>
+            
+            <label> Working Days
+                [checkbox volunteer-working-days class:uacf7-checkbox "Sunday" "Satarday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday"] 
+            </label>
+            
+            <label> Area of Interest/ skills
+                [textarea* volunteer-interest]  
+            </label>
+            
+            <label> Comments (optional)
+                [textarea* volunteer-comments]  
+            </label>
+            
+            <div class="uacf7-submint">
+                [submit "Submit Form"]
+            </div>
+        </div>';
+        break;
+    
+    case "graphic-designer-contact-form":
+        $form = '
+        <div class="uacf7-wrapper-default">
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> First Name *
+                        [text* your-first-name autocomplete:name placeholder "First Name"] 
+                    </label> 
+                [/uacf7-col]
+                [uacf7-col col:6] 
+                    <label> Last Name *
+                        [text* your-last-name autocomplete:last-name placeholder "Last Name"] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            <label> Email *
+                [email* your-email autocomplete:email placeholder "Email Address"] 
+            </label>
+            
+            <label> Phone Number
+                [tel your-phone  placeholder "Phone"] 
+            </label>
+            
+            <label> When is the best time to contact you?
+                [text your-time] 
+            </label>
+            
+            <label> When is the best date to contact you?
+                [date your-date placeholder] 
+            </label>
+            
+            <label> What can I help you with?
+                [radio your-services class:uacf7-radio default:1 "Social Media Publication" "Prints & Illustrations" "Website Design" "Other"]
+            </label>
+            
             <label> Describe your need *
-                [textarea* your-message placeholder "Type your message here...."] </label>
+                [textarea* your-message placeholder "Type your message here...."] 
+            </label>
+            
             <label> When do you need the graphic designer? *
-                [date* your-needing-date ] </label>
+                [date* your-needing-date] 
+            </label>
+            
             <div class="uacf7-submint">
                 [submit "Submit Form"]
             </div>
         </div>';
-    break;
+        break;
+    
     case "hardware-request-form":
-        $form = '<div class="uacf7-wrapper-default">
-        <h3 style="text-align: center"> Hardware Request Form </h3>
-        <p style="text-align: center"> This form will be used to request if any new hardware is needed in any department.</p>
-        [uacf7-row]
-            [uacf7-col col:6]
-                <label> Requester\'s First Name *
-                    [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-                <label> Requester\'s Last Name *
-                [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label> Requester\'s Email *
-            [email* your-email autocomplete:email placeholder "Email Address"] </label>
-        <label> Requester\'s Phone Number *
-            [tel your-phone  placeholder "Phone"] </label>
-        <label> Department to Purchase*
-            [text* your-purchase-dept  ] </label>
+        $form = '
+        <div class="uacf7-wrapper-default">
+            <h3 style="text-align: center"> Hardware Request Form </h3>
+            <p style="text-align: center"> This form will be used to request if any new hardware is needed in any department.</p>
+            
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> Requester\'s First Name *
+                        [text* your-first-name autocomplete:name placeholder "First Name"] 
+                    </label> 
+                [/uacf7-col]
+                [uacf7-col col:6] 
+                    <label> Requester\'s Last Name *
+                        [text* your-last-name autocomplete:last-name placeholder "Last Name"] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            <label> Requester\'s Email *
+                [email* your-email autocomplete:email placeholder "Email Address"] 
+            </label>
+            
+            <label> Requester\'s Phone Number *
+                [tel your-phone  placeholder "Phone"] 
+            </label>
+            
+            <label> Department to Purchase*
+                [text* your-purchase-dept] 
+            </label>
+            
             <label> What type of hardware do you need?
-        [select item-type include_blank "New Desktop" "New Laptop" "Laptop Table" "Accessories" "Others"] </label>
-        <label> If you choose other, please write the name.
-                [text your-other-choice  ] </label>
-        <label> Choose Software to to be pre installed     
-        [checkbox other-adobe-products class:uacf7-checkbox "Microsoft Office" " Adobe Products" " 3D Software"] </label>
+                [select item-type include_blank "New Desktop" "New Laptop" "Laptop Table" "Accessories" "Others"] 
+            </label>
+            
+            <label> If you choose other, please write the name.
+                [text your-other-choice] 
+            </label>
+            
+            <label> Choose Software to be pre-installed     
+                [checkbox other-adobe-products class:uacf7-checkbox "Microsoft Office" "Adobe Products" "3D Software"] 
+            </label>
+            
             <label> Other Software / Instruction *
-                [textarea* other-soft-instruction placeholder "Type your message here...."] </label>
+                [textarea* other-soft-instruction placeholder "Type your message here...."] 
+            </label>
+            
             <label> Reason for the Request (Be Specific) *
-                [textarea* other-soft-instruction placeholder "Type your message here...."] </label>
+                [textarea* other-soft-instruction placeholder "Type your message here...."] 
+            </label>
+            
             <label> Date Submitted
-                [date* your-needing-date ] </label>
+                [date* your-needing-date] 
+            </label>
+            
             <div class="uacf7-submint">
                 [submit "Submit Form"]
             </div>
         </div>';
-    break;
+        break;    
     case "it-service-req":
-        $form = '<div class="uacf7-wrapper-default">
-        <p style="text-align: center; font-weight: bold;" > Please fill out this form and an IT service team member will be in touch with you shortly..</p>
-        [uacf7-row]
-            [uacf7-col col:6]
-            <label> First Name *
-                [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-        <label> Last Name *
-            [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label>  Email *
-            [email* your-email autocomplete:email placeholder "Email Address"] </label>
-        <label> Department *
-            [text* your-dept  ] </label>
-        <label> What are you having issues with?
-        [checkbox issue-with class:uacf7-checkbox "Computer" "Projector " "Internet Connection " "Others"] </label>
-        [conditional others-conditional]
-        <label> Others
-                [text* your-others-issue  ] </label>
-        [/conditional]
-        <label> Any details we should know about?
-                [textarea your-other-details  ] </label>
-            <div class="uacf7-submint">
-                [submit "Submit Request"]
-            </div>
-        </div>';
-    break;
-
-    case "request-for-quote":
-        $form = '<div class="uacf7-wrapper-default">
-        [uacf7-row]
-            [uacf7-col col:6]
-            <label> First Name *
-                [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-        <label> Last Name *
-            [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label>  Email *
-            [email* your-email autocomplete:email placeholder "Email Address"] </label>
-        <label> Phone No *
-            [tel* your-phone autocomplete:email placeholder "Phone No"] </label>
-        <label> Prefered Method of Contact ? *
-        [radio preffered-method class:uacf7-radio "Phone" "Email" "Others"] </label>
-        [conditional others-conditional]
-        <label> Others
-                [text* your-others-method  ] </label>
-        [/conditional]
-        <label> Comments
-                [textarea your-comments  ] </label>
-            <div class="uacf7-submint">
-                [submit "Submit Request"]
-            </div>
-        </div>';
-    break;
-    case "report-a-bug":
-        $form = '<div class="uacf7-wrapper-default">
-        <h3 style="text-align:center;">Report a Bug </h3>
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name *
-            [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-        <label> Last Name *
-            [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label>  Enter Your Email Address  *
-            [email* your-email autocomplete:email placeholder "Email Address"] </label>
-        <label> Title of the Issue *
-            [text* your-issue-title  ] </label>
-        <label> Problem Status *
-            [select* your-problem-status include_blank "Open " "Hold" "Fixed " "Closed" "Invalid " "Others"] </label>
-        [conditional others-conditional]
-        <label> Others
-            [text* your-others-status  ] </label>
+        $form = '
+        <div class="uacf7-wrapper-default">
+            <p style="text-align: center; font-weight: bold;">Please fill out this form, and an IT service team member will be in touch with you shortly.</p>
+            
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> First Name *
+                        [text* your-first-name autocomplete:name placeholder "First Name"] 
+                    </label> 
+                [/uacf7-col]
+                
+                [uacf7-col col:6] 
+                    <label> Last Name *
+                        [text* your-last-name autocomplete:last-name placeholder "Last Name"] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            <label>Email *
+                [email* your-email autocomplete:email placeholder "Email Address"] 
+            </label>
+            
+            <label>Department *
+                [text* your-dept] 
+            </label>
+            
+            <label>What are you having issues with?
+                [checkbox issue-with class:uacf7-checkbox "Computer" "Projector" "Internet Connection" "Others"] 
+            </label>
+            
+            [conditional others-conditional]
+                <label>Others
+                    [text* your-others-issue] 
+                </label>
             [/conditional]
-        <label> Summary of the Information *
-            [textarea* your-bug-summery  ] </label>
-        <label> Steps to Reproduce *
-            [textarea* your-reproduce-steps  ] </label>
-        <label> Results *
-            [textarea* your-step-result  ] </label>
-        <label> Regression
-            [textarea your-regression  ] </label>
-        <label> Is there a Workaround?
-            [radio question-1 class:uacf7-radio default:1 "Yes" "No"]</label>
-        <label> Documentation & Notes
-        [file document]
-        </label>
-         <label> Reproducibility *
-               [select* your-reproducibility include_blank "I didn\'t try" "Rarely" "Sometimes" "Always"] </label>
-        <label> Classification of Bug*
-               [select* your-bug-classification include_blank "Security" "Crash/Hang/Data Loss" "Perfomance/Ui-Usability" "Serius Bug" "Other Bug" "Feature (New)" "Enhancement"] </label>
-        <label> How severe it is? *
-            [select* how-severe-is include_blank "Trivial" "Normal" "Major" "Critical"] </label>
-                <div class="uacf7-submint">
-                    [submit "Submit Bug Report"]
-                </div>
-            </div>';
-    break;
-    case "check-request":
-        $form = '<div class="uacf7-wrapper-default">
-        <h2 style="text-align:center;">Check Request</h2>
-        <p style="text-align:center;">If you are in need of funds, please fill out the following check request. We will reach out to you once the request has been approved. If this is an emergency, please contact the financial department directly.</p>
-        <h3>Requested By :</h3>
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name *
-            [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-        <label> Last Name *
-        [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label> Email *
-            [email* your-email autocomplete:email placeholder "Email Address"] </label>
-        <label> Date Requested 
-         [date date-requested  ]</label>
-       <label> Date Needed *
-         [date* date-needed ]</label>
-        <label> Purpose of Funds
-            [text purpose-of-fund  ] </label>
-        <label> Amount Requested ($) *
-        [number* requested-amount min:1 ] </label>
-        <h3>Make Payable To :</h3>
-    [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name
-        [text payable-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-    <label> Last Name
-        [text payable-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-    [/uacf7-row]
-    <label> Payable to Address </label>
-    [uacf7-row]
-        [uacf7-col col:6]
-        <label> Address Line 1
-        [text payable-address-1 ] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Address Line 2
-        [text payable-address-2 ] </label>  [/uacf7-col]
-    [/uacf7-row]
-    [uacf7-row]
-    [uacf7-col col:6]
-        <label> City
-            [text payable-city ] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-          <label> State
-        [text payable-state ] </label>  [/uacf7-col]
-    [/uacf7-row]
-    [uacf7-row]
-    [uacf7-col col:6]
-        <label> Zip
-            [text payable-zip ] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-          <label> Country
-        [text payable-country ] </label>  [/uacf7-col]
-    [/uacf7-row]
-       [acceptance acceptance-terms] I have read and agree to the Terms and Conditions and Privacy Policy [/acceptance]
+            
+            <label>Any details we should know about?
+                [textarea your-other-details] 
+            </label>
+            
+            <div class="uacf7-submint">
+                [submit "Submit Request"]
+            </div>
+        </div>';
+        break;
+    
+    case "request-for-quote":
+        $form = '
+        <div class="uacf7-wrapper-default">
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> First Name *
+                        [text* your-first-name autocomplete:name placeholder "First Name"] 
+                    </label> 
+                [/uacf7-col]
+                
+                [uacf7-col col:6] 
+                    <label> Last Name *
+                        [text* your-last-name autocomplete:last-name placeholder "Last Name"] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            <label>Email *
+                [email* your-email autocomplete:email placeholder "Email Address"] 
+            </label>
+            
+            <label>Phone No *
+                [tel* your-phone autocomplete:email placeholder "Phone No"] 
+            </label>
+            
+            <label>Prefered Method of Contact? *
+                [radio preffered-method class:uacf7-radio "Phone" "Email" "Others"] 
+            </label>
+            
+            [conditional others-conditional]
+                <label>Others
+                    [text* your-others-method] 
+                </label>
+            [/conditional]
+            
+            <label>Comments
+                [textarea your-comments] 
+            </label>
+            
+            <div class="uacf7-submint">
+                [submit "Submit Request"]
+            </div>
+        </div>';
+        break;
+    
+    case "report-a-bug":
+        $form = '
+        <div class="uacf7-wrapper-default">
+            <h3 style="text-align:center;">Report a Bug</h3>
+            
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> First Name *
+                        [text* your-first-name autocomplete:name placeholder "First Name"] 
+                    </label> 
+                [/uacf7-col]
+                
+                [uacf7-col col:6] 
+                    <label> Last Name *
+                        [text* your-last-name autocomplete:last-name placeholder "Last Name"] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            <label>Enter Your Email Address  *
+                [email* your-email autocomplete:email placeholder "Email Address"] 
+            </label>
+            
+            <label>Title of the Issue *
+                [text* your-issue-title] 
+            </label>
+            
+            <label>Problem Status *
+                [select* your-problem-status include_blank "Open" "Hold" "Fixed" "Closed" "Invalid" "Others"] 
+            </label>
+            
+            [conditional others-conditional]
+                <label>Others
+                    [text* your-others-status] 
+                </label>
+            [/conditional]
+            
+            <label>Summary of the Information *
+                [textarea* your-bug-summery] 
+            </label>
+            
+            <label>Steps to Reproduce *
+                [textarea* your-reproduce-steps] 
+            </label>
+            
+            <label>Results *
+                [textarea* your-step-result] 
+            </label>
+            
+            <label>Regression
+                [textarea your-regression] 
+            </label>
+            
+            <label>Is there a Workaround?
+                [radio question-1 class:uacf7-radio default:1 "Yes" "No"] 
+            </label>
+            
+            <label>Documentation & Notes
+                [file document] 
+            </label>
+            
+            <label>Reproducibility *
+                [select* your-reproducibility include_blank "I didn\'t try" "Rarely" "Sometimes" "Always"] 
+            </label>
+            
+            <label>Classification of Bug*
+                [select* your-bug-classification include_blank "Security" "Crash/Hang/Data Loss" "Performance/Ui-Usability" "Serious Bug" "Other Bug" "Feature (New)" "Enhancement"] 
+            </label>
+            
+            <label>How severe is it? *
+                [select* how-severe-is include_blank "Trivial" "Normal" "Major" "Critical"] 
+            </label>
+            
             <div class="uacf7-submint">
                 [submit "Submit Bug Report"]
             </div>
-    </div>';
-    break;
-    case "vendor-contact":
+        </div>';
+        break;
+    
+    case "check-request":
         $form = '
         <div class="uacf7-wrapper-default">
-            <label> Subject *
-                [text* your-subject] </label>
-
-            <label> Message *
-                [textarea* your-message] </label>
-            <div class="uacf7-submint end fill">
-            [submit "Submit Form"]
+            <h2 style="text-align:center;">Check Request</h2>
+            <p style="text-align:center;">If you are in need of funds, please fill out the following check request. We will reach out to you once the request has been approved. If this is an emergency, please contact the financial department directly.</p>
+            
+            <h3>Requested By :</h3>
+            
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> First Name *
+                        [text* your-first-name autocomplete:name placeholder "First Name"] 
+                    </label> 
+                [/uacf7-col]
+                
+                [uacf7-col col:6] 
+                    <label> Last Name *
+                        [text* your-last-name autocomplete:last-name placeholder "Last Name"] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            <label>Email *
+                [email* your-email autocomplete:email placeholder "Email Address"] 
+            </label>
+            
+            <label>Date Requested 
+                [date date-requested] 
+            </label>
+            
+            <label>Date Needed *
+                [date* date-needed] 
+            </label>
+            
+            <label>Purpose of Funds
+                [text purpose-of-fund] 
+            </label>
+            
+            <label>Amount Requested ($)
+                [number* requested-amount min:1] 
+            </label>
+            
+            <h3>Make Payable To :</h3>
+            
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> First Name
+                        [text payable-first-name autocomplete:name placeholder "First Name"] 
+                    </label> 
+                [/uacf7-col]
+                
+                [uacf7-col col:6] 
+                    <label> Last Name
+                        [text payable-last-name autocomplete:last-name placeholder "Last Name"] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            <label>Payable to Address </label>
+            
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> Address Line 1
+                        [text payable-address-1] 
+                    </label> 
+                [/uacf7-col]
+                
+                [uacf7-col col:6] 
+                    <label> Address Line 2
+                        [text payable-address-2] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> City
+                        [text payable-city] 
+                    </label> 
+                [/uacf7-col]
+                
+                [uacf7-col col:6] 
+                    <label> State
+                        [text payable-state] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> Zip
+                        [text payable-zip] 
+                    </label> 
+                [/uacf7-col]
+                
+                [uacf7-col col:6] 
+                    <label> Country
+                        [text payable-country] 
+                    </label>  
+                [/uacf7-col]
+            [/uacf7-row]
+            
+            [acceptance acceptance-terms] I have read and agree to the Terms and Conditions and Privacy Policy [/acceptance]
+            
+            <div class="uacf7-submint">
+                [submit "Submit Bug Report"]
             </div>
         </div>';
-        break;
-    case "request-a-leave":
-       $form = '<div class="uacf7-wrapper-default">
-       [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name *
-         [text* your-first-name autocomplete:name ] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Last Name *
-        [text* your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label> Email *
-        [email* your-email] </label>
-        <label> Contact No *
-        [tel* your-contact-no] </label>
-        <label> Position *
-        [text* your-position] </label>
-        <label> Manager *
-        [tel* your-manager] </label>
-        <label> Leave Start *
-        [date* your-leave-start] </label>
-       <label> Leave End *
-        [date* your-leave-end] </label>
-       <label> Leave Type *
-            [radio leave-type class:uacf7-radio default:1 "Vacation" "Sick" "Quitting" "Maternity/Paternity" "Other"] </label>
-            <label> Comments *
-            [textarea* your-comments] </label>
-        <div class="uacf7-submint end fill">
-        [submit "Apply for Leave"]
-        </div>
-    </div>';  
-    break;
-    case "event-registration":
-        $form = '<div class="uacf7-wrapper-default">
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name *
-            [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Last Name *
-            [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label> Email
-            [email* your-email autocomplete:email placeholder "email address"] </label>
-        <label> Phone
-            [tel* your-phone  placeholder "phone number"] </label>
-        <label> Company
-            [text company placeholder "company name" ] </label>
-        <label> Website
-            [url your-website placeholder "https://google.com"] </label>
-        <label> Message (if any)
-            [textarea your-message] </label>
-         <div class="uacf7-submint">
-        [submit "Submit Form"]
-        </div>
-        </div>';
-        break; 
-    case "tell-a-friend":
-        $form = '<div class="uacf7-wrapper-default">
+        break;        
+        case "vendor-contact":
+            $form = '
+            <div class="uacf7-wrapper-default">
+                <label>Subject *
+                    [text* your-subject] 
+                </label>
+        
+                <label>Message *
+                    [textarea* your-message] 
+                </label>
+                
+                <div class="uacf7-submint end fill">
+                    [submit "Submit Form"]
+                </div>
+            </div>';
+            break;
+        
+        case "request-a-leave":
+            $form = '
+            <div class="uacf7-wrapper-default">
+                [uacf7-row]
+                    [uacf7-col col:6]
+                        <label> First Name *
+                            [text* your-first-name autocomplete:name] 
+                        </label> 
+                    [/uacf7-col]
+                    
+                    [uacf7-col col:6] 
+                        <label> Last Name *
+                            [text* your-last-name autocomplete:last-name] 
+                        </label>  
+                    [/uacf7-col]
+                [/uacf7-row]
+                
+                <label>Email *
+                    [email* your-email] 
+                </label>
+                
+                <label>Contact No *
+                    [tel* your-contact-no] 
+                </label>
+                
+                <label>Position *
+                    [text* your-position] 
+                </label>
+                
+                <label>Manager *
+                    [tel* your-manager] 
+                </label>
+                
+                <label>Leave Start *
+                    [date* your-leave-start] 
+                </label>
+                
+                <label>Leave End *
+                    [date* your-leave-end] 
+                </label>
+                
+                <label>Leave Type *
+                    [radio leave-type class:uacf7-radio default:1 "Vacation" "Sick" "Quitting" "Maternity/Paternity" "Other"] 
+                </label>
+                
+                <label>Comments *
+                    [textarea* your-comments] 
+                </label>
+                
+                <div class="uacf7-submint end fill">
+                    [submit "Apply for Leave"]
+                </div>
+            </div>';  
+            break;
+        
+        case "event-registration":
+            $form = '
+            <div class="uacf7-wrapper-default">
+                [uacf7-row]
+                    [uacf7-col col:6]
+                        <label> First Name *
+                            [text* your-first-name autocomplete:name placeholder "First Name"] 
+                        </label> 
+                    [/uacf7-col]
+                    
+                    [uacf7-col col:6] 
+                        <label> Last Name *
+                            [text* your-last-name autocomplete:last-name placeholder "Last Name"] 
+                        </label>  
+                    [/uacf7-col]
+                [/uacf7-row]
+                
+                <label>Email
+                    [email* your-email autocomplete:email placeholder "email address"] 
+                </label>
+                
+                <label>Phone
+                    [tel* your-phone  placeholder "phone number"] 
+                </label>
+                
+                <label>Company
+                    [text company placeholder "company name"] 
+                </label>
+                
+                <label>Website
+                    [url your-website placeholder "https://google.com"] 
+                </label>
+                
+                <label>Message (if any)
+                    [textarea your-message] 
+                </label>
+                
+                <div class="uacf7-submint">
+                    [submit "Submit Form"]
+                </div>
+            </div>';
+            break; 
+        
+        case "tell-a-friend":
+            $form = '
+            <div class="uacf7-wrapper-default">
+                [uacf7-row]
+                    [uacf7-col col:6]
+                        <label> First Name *
+                            [text* your-first-name autocomplete:name placeholder "First Name"] 
+                        </label> 
+                    [/uacf7-col]
+                    
+                    [uacf7-col col:6] 
+                        <label> Last Name 
+                            [text your-last-name autocomplete:last-name placeholder "Last Name"] 
+                        </label>  
+                    [/uacf7-col]
+                [/uacf7-row]
+                
+                <label>To *
+                    [text* message-to ] 
+                </label>
+                
+                <label>Message
+                    [textarea your-message] 
+                </label>
+                
+                <div class="uacf7-submint">
+                    [submit "Send Message"]
+                </div>
+            </div>';
+            break;
+        
+        case "accident-report-form":
+            $form = '
+            <div class="uacf7-wrapper-default">
+                <label>I am reporting a:
+                    [checkbox accident-type class:uacf7-checkbox "Loss of time/injury" "Work vehicle accident" "Work accident" "First aid incident" "Observation"]
+                </label>
+                
+                <h3>Person Reporting Incident</h3>
+                
+                [uacf7-row]
+                    [uacf7-col col:6]
+                        <label> First Name *
+                            [text* your-first-name autocomplete:name placeholder "First Name"] 
+                        </label> 
+                    [/uacf7-col]
+                    
+                    [uacf7-col col:6] 
+                        <label> Last Name 
+                            [text your-last-name autocomplete:last-name placeholder "Last Name"] 
+                        </label>  
+                    [/uacf7-col]
+                [/uacf7-row]
+                
+                <h3>Person Involved in Incident</h3>
+                
+                [uacf7-row]
+                    [uacf7-col col:6]
+                        <label> First Name *
+                            [text* involved-first-name autocomplete:name placeholder "First Name"] 
+                        </label> 
+                    [/uacf7-col]
+                    
+                    [uacf7-col col:6] 
+                        <label> Last Name 
+                            [text involved-last-name autocomplete:last-name placeholder "Last Name"] 
+                        </label>  
+                    [/uacf7-col]
+                [/uacf7-row]
+                
+                <label>Incident Date and Time *
+                    [date* accident-date-time ] 
+                </label>
+                
+                <label>Location of Incident
+                    [text* location-of-incident ] 
+                </label>
+                
+                <label>Please describe the event in detail.
+                    [textarea your-incident-details] 
+                </label>
+                
+                <label>Was damage done to the property?
+                    [radio is-damaged class:uacf7-radio default:1 "Yes" "No"]
+                </label>
+                
+                <label>How many hours were lost because of this incident?
+                    [text incident-hours-lost ] 
+                </label>
+                
+                <label>What first aid measures were needed?
+                    [textarea your-incident-aid] 
+                </label>
+                
+                <label>Could this incident have been avoided?
+                    [radio could-avoided class:uacf7-radio default:1 "Yes" "No"]
+                </label>
+                
+                [acceptance acceptance-terms optional] I certify that the information I have provided is truthful to the best of my knowledge. [/acceptance]
+                
+                <div class="uacf7-submint">
+                    [submit "Send Message"]
+                </div>
+            </div>';
+            break;
+        
+
+        case "vendor-contact":
+            $form = '
+            <div class="uacf7-wrapper-default">
+                <label> Subject *
+                    [text* your-subject] </label>
+    
+                <label> Message *
+                    [textarea* your-message] </label>
+                <div class="uacf7-submint end fill">
+                [submit "Submit Form"]
+                </div>
+            </div>';
+            break;
+        case "request-a-leave":
+            $form = '<div class="uacf7-wrapper-default">
             [uacf7-row]
             [uacf7-col col:6]
-                <label> First Name *
-                    [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-                <label> Last Name 
-                    [text your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-            [/uacf7-row]
-            <label> To *
-                [text* message-to ] </label>
-            <label> Message
-                [textarea your-message] </label>
-            <div class="uacf7-submint">
-            [submit "Send Message"]
-            </div>
-        </div>';
-        break;
-    case "accident-report-form":
-        $form = '<div class="uacf7-wrapper-default">
-        <label> I am reporting a :
-        [checkbox accident-type class:uacf7-checkbox "Loss of time/injury" "Work vehicle accident" "Work accident" "First aid incident" "Observation"]
-        </label>
-        <h3> Person Reporting Incident </h3>
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name *
-        [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Last Name 
-        [text your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <h3> Person Involved in Incident </h3>
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name *
-        [text* involved-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Last Name 
-        [text involved-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label> Incident Date and Time *
-        [date* accident-date-time ] </label>
-        <label> Location of Incident
-        [text* location-of-incident ] 
-        <label> Please describe the event in detail.
-        [textarea your-incident-details] </label>
-        <label> Was damage done to the property?
-        [radio is-damaged class:uacf7-radio default:1 "Yes" "No"]
-        </label>
-        <label> How many hours were lost because of this incident?
-          [text incident-hours-lost ] 
-        </label>
-        <label> What first aid measures were needed?
-        [textarea your-incident-aid] </label>
-        <label> Could this incident been avoided?
-        [radio could-avoided class:uacf7-radio default:1 "Yes" "No"]
-        </label>
-        [acceptance acceptance-terms optional] I certify that the information I have provided is truthful to the best of my knowledge. [/acceptance]
-            <div class="uacf7-submint">
-            [submit "Send Message"]
-            </div>
-        </div>';
-        break;
-
-    case "complaint-form-2":
-        $form = '<div class="uacf7-wrapper-default">
-        <h4 style="text-align:center"> Please fill out the following form with your complaint. We will review your request and follow up with you as soon as possible. </h4>
-        [uacf7-row]
-        
-            [uacf7-col col:6]
-    
             <label> First Name *
-    
-            [text* your-first-name autocomplete:name ] </label> [/uacf7-col]
-    
+                [text* your-first-name autocomplete:name ] </label> [/uacf7-col]
             [uacf7-col col:6] 
-    
-            <label> Last Name 
-    
-            [text your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
-    
+            <label> Last Name *
+            [text* your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
             [/uacf7-row]
-        <label> Email
-        [email* your-email autocomplete:email] </label>
-        <label> Address </label>
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> Address Line 1
-        [text address-1 ] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Address Line 2
-        [text address-2 ] </label>  [/uacf7-col]
-        [/uacf7-row]
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> City
-        [text city ] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> State
-        [text state ] </label>  [/uacf7-col]
-        [/uacf7-row]
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> Zip
-        [text zip ] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Country
-        [text country ] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label> Date of incident 
-        [date date-of-incident]
-        </label>
-        <label> Please describe the incident you would like to report.
-        [textarea incident-details]
-        </label>
-        <label> How would you like to see this incident resolved?
-        [textarea incident-resolved-details]
-        </label>
-        [acceptance acceptance-terms optional] All the data I submitted is truthfull, and I am responsible for that. [/acceptance]
-            <div class="uacf7-submint">
+            <label> Email *
+            [email* your-email] </label>
+            <label> Contact No *
+            [tel* your-contact-no] </label>
+            <label> Position *
+            [text* your-position] </label>
+            <label> Manager *
+            [tel* your-manager] </label>
+            <label> Leave Start *
+            [date* your-leave-start] </label>
+            <label> Leave End *
+            [date* your-leave-end] </label>
+            <label> Leave Type *
+                [radio leave-type class:uacf7-radio default:1 "Vacation" "Sick" "Quitting" "Maternity/Paternity" "Other"] </label>
+                <label> Comments *
+                [textarea* your-comments] </label>
+            <div class="uacf7-submint end fill">
+            [submit "Apply for Leave"]
+            </div>
+        </div>';  
+        break;
+        case "event-registration":
+            $form = '<div class="uacf7-wrapper-default">
+            [uacf7-row]
+            [uacf7-col col:6]
+            <label> First Name *
+                [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+            <label> Last Name *
+                [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+            [/uacf7-row]
+            <label> Email
+                [email* your-email autocomplete:email placeholder "email address"] </label>
+            <label> Phone
+                [tel* your-phone  placeholder "phone number"] </label>
+            <label> Company
+                [text company placeholder "company name" ] </label>
+            <label> Website
+                [url your-website placeholder "https://google.com"] </label>
+            <label> Message (if any)
+                [textarea your-message] </label>
+                <div class="uacf7-submint">
             [submit "Submit Form"]
             </div>
-        </div>';
-        break;
-    case "directory-information":
-        $form = '<div class="uacf7-wrapper-default">
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name *
-        [text* your-first-name autocomplete:name ] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Last Name 
-        [text your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label> Username *
-        [text* your-username] </label>
-        <label> Site Address*
-        [text* your-site-address] </label>
-            <label> Do you want to share your password?
-        [radio wanna-share-password class:uacf7-radio default:2 "Yes" "No"] </label>
-            <div class="uacf7-submint">
-            [submit "Submit Informations"]
-            </div>
-        </div>';
-        break;
-    case "patient-intake-form":
-        $form = '<div class="uacf7-wrapper-default">
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name *
-        [text* first-name autocomplete:name ] </label> [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Last Name 
-        [text last-name autocomplete:last-name ] </label>  [/uacf7-col]
-        [/uacf7-row]
-        <label> Patient Age *
-        [number* patient-age min:0] </label>
-        <label> Preferred Name / Nickname *
-        [text* patient-nickname] </label>
-            <label> Patient Gender *
-        [select patient-gender include_blank "Male" "Female" "Others"] </label>
-        <label> Phone no. *
-                [tel* patient-phone] </label>
-        <label> Spouse Name
-                [text patient-spouse ] </label>
-        <label> With whome do you live?
-                [text patient-live-with] </label>
-        <label> Marital Status *
-                [radio patient-marital-status class:uacf7-radio "Married" "Unmarried" "Others"] </label>
-        <label> Occupation
-                [text patient-occupation placeholder "If retired or disabled then enter your last occupation"] </label>
-        <label> Retired? *
-            [radio is-retired class:uacf7-radio default:2 "Yes" "No"]
-        </label>
-        <label> Disability ?*
-            [radio is-disabled class:uacf7-radio default:2 "Yes" "No"]
-        </label>
-        <label> Who is your primary care doctor:?
-                [text primary-care-doctor] </label>
-        <label> Where is your primary care doctor located ?
-
-                [text primary-care-doctor-located] </label>
-        <label> Phone Number of primary care doctor:
-                [tel primary-care-doctor-phone] </label>
-        <label> Allergic to any medications? *
-            [radio is-allergic  class:uacf7-radio default:2 "Yes" "No"]
-        </label>
-        <label> Do you smoke?*
-            [radio is-smoke class:uacf7-radio default:2 "Yes" "No"]
-        </label>
-        <label> If you quit, when did you stop?
-                [text if-quit ] </label>
-        <label> Do you drink alcohol?
-                [text if-alcohol] </label>
-        <label> Personal opinion
-                [textarea personal-opinion] </label>
-        <div class="uacf7-submint">
-            [submit "Submit Form"]
-            </div>
-        </div>';
-    break;
-    case "market-research-survey":
-        $form = '<div class="uacf7-wrapper-default">
-        <h3>Market Research Survey</h3>
-        <hr>
-        <br>
-        [uacf7_step_start uacf7_step_start-367]   
-        <label> How often do you use our product? 
-                [checkbox how-often-use class:uacf7-checkbox "More than once a week" " Once a week" " Monthly" " Every other month" " A few times a year"] </label>
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-368]
-        <label> What similar products do you use? (by name and brand)
-        [textarea about-similar-product]
-        </label>
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-369]   
-        <label> When did you last purchase our product? 
-            [checkbox last-purchased-product class:uacf7-checkbox "Less than 1 month ago" "Between 1 month and 6 months ago" "Between 6 months and 1 year ago" " More than one year ago" " I don\'t remember"] </label>
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-370]
-        <label> What similar products do you use? (by name and brand)
-        [textarea about-similar-product-2]
-        </label>
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-371]   
-        <label> When did you last purchase our product? 
-            [checkbox last-purchased-product-2 class:uacf7-checkbox "Less than 1 month ago" "Between 1 month and 6 months ago" "Between 6 months and 1 year ago" " More than one year ago" " I don\'t remember"] </label>
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-372]   
-        <label> Have you had a chance to review our newest product? 
-            [radio newest-product class:uacf7-radio "Yes" "No"] </label>
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-373]   
-        <label> What do you think of our new product? 
-            [textarea about-new-product] </label>
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-374]   
-        <label> What is your least favorite thing about our new product? 
-            [textarea favorite-about-new-product] </label>
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-375]   
-        <label> How do you feel our products pricing compares with other similar products? 
-            [checkbox pricing-with-similar-product class:uacf7-checkbox "Less expensive" "About the same price" "More expensive"] </label>
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-376] 
-        <h3> Tell us a little about yourself. </h3>
-        <hr>  
-        <label> What is your age range?
-            [radio age-range class:uacf7-radio default:1 "18 or younger" " 19 - 24" " 25 - 34" " 35 - 44" " 45 - 54" " 55 or older"] </label> 
-        <label> What country are you from?
-            [text* country] </label>
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-400]
+            </div>';
+            break; 
+        case "tell-a-friend":
+            $form = '<div class="uacf7-wrapper-default">
+                [uacf7-row]
+                [uacf7-col col:6]
+                    <label> First Name *
+                        [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+                [uacf7-col col:6] 
+                    <label> Last Name 
+                        [text your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+                [/uacf7-row]
+                <label> To *
+                    [text* message-to ] </label>
+                <label> Message
+                    [textarea your-message] </label>
+                <div class="uacf7-submint">
+                [submit "Send Message"]
+                </div>
+            </div>';
+            break;
+        case "accident-report-form":
+            $form = '<div class="uacf7-wrapper-default">
+            <label> I am reporting a :
+            [checkbox accident-type class:uacf7-checkbox "Loss of time/injury" "Work vehicle accident" "Work accident" "First aid incident" "Observation"]
+            </label>
+            <h3> Person Reporting Incident </h3>
+            [uacf7-row]
+            [uacf7-col col:6]
+            <label> First Name *
+            [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+            <label> Last Name 
+            [text your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+            [/uacf7-row]
+            <h3> Person Involved in Incident </h3>
+            [uacf7-row]
+            [uacf7-col col:6]
+            <label> First Name *
+            [text* involved-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+            <label> Last Name 
+            [text involved-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
+            [/uacf7-row]
+            <label> Incident Date and Time *
+            [date* accident-date-time ] </label>
+            <label> Location of Incident
+            [text* location-of-incident ] 
+            <label> Please describe the event in detail.
+            [textarea your-incident-details] </label>
+            <label> Was damage done to the property?
+            [radio is-damaged class:uacf7-radio default:1 "Yes" "No"]
+            </label>
+            <label> How many hours were lost because of this incident?
+                [text incident-hours-lost ] 
+            </label>
+            <label> What first aid measures were needed?
+            [textarea your-incident-aid] </label>
+            <label> Could this incident have been avoided?
+            [radio could-avoided class:uacf7-radio default:1 "Yes" "No"]
+            </label>
+            [acceptance acceptance-terms optional] I certify that the information I have provided is truthful to the best of my knowledge. [/acceptance]
+                <div class="uacf7-submint">
+                [submit "Send Message"]
+                </div>
+            </div>';
+            break;
+    
+        case "complaint-form-2":
+            $form = '<div class="uacf7-wrapper-default">
+            <h4 style="text-align:center"> Please fill out the following form with your complaint. We will review your request and follow up with you as soon as possible. </h4>
+            [uacf7-row]
+            
+                [uacf7-col col:6]
+        
+                <label> First Name *
+        
+                [text* your-first-name autocomplete:name ] </label> [/uacf7-col]
+        
+                [uacf7-col col:6] 
+        
+                <label> Last Name 
+        
+                [text your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
+        
+                [/uacf7-row]
+            <label> Email
+            [email* your-email autocomplete:email] </label>
+            <label> Address </label>
+            [uacf7-row]
+            [uacf7-col col:6]
+            <label> Address Line 1
+            [text address-1 ] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+            <label> Address Line 2
+            [text address-2 ] </label>  [/uacf7-col]
+            [/uacf7-row]
+            [uacf7-row]
+            [uacf7-col col:6]
+            <label> City
+            [text city ] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+            <label> State
+            [text state ] </label>  [/uacf7-col]
+            [/uacf7-row]
+            [uacf7-row]
+            [uacf7-col col:6]
+            <label> Zip
+            [text zip ] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+            <label> Country
+            [text country ] </label>  [/uacf7-col]
+            [/uacf7-row]
+            <label> Date of incident 
+            [date date-of-incident]
+            </label>
+            <label> Please describe the incident you would like to report.
+            [textarea incident-details]
+            </label>
+            <label> How would you like to see this incident resolved?
+            [textarea incident-resolved-details]
+            </label>
+            [acceptance acceptance-terms optional] All the data I submitted is truthfull, and I am responsible for that. [/acceptance]
+                <div class="uacf7-submint">
+                [submit "Submit Form"]
+                </div>
+            </div>';
+            break;
+    
+        case "directory-information":
+            $form = '<div class="uacf7-wrapper-default">
+            [uacf7-row]
+            [uacf7-col col:6]
+            <label> First Name *
+            [text* your-first-name autocomplete:name ] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+            <label> Last Name 
+            [text your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
+            [/uacf7-row]
+            <label> Username *
+            [text* your-username] </label>
+            <label> Site Address*
+            [text* your-site-address] </label>
+                <label> Do you want to share your password?
+            [radio wanna-share-password class:uacf7-radio default:2 "Yes" "No"] </label>
+                <div class="uacf7-submint">
+                [submit "Submit Informations"]
+                </div>
+            </div>';
+            break;
+    
+        case "patient-intake-form":
+            $form = '<div class="uacf7-wrapper-default">
+            [uacf7-row]
+            [uacf7-col col:6]
+            <label> First Name *
+            [text* first-name autocomplete:name ] </label> [/uacf7-col]
+            [uacf7-col col:6] 
+            <label> Last Name 
+            [text last-name autocomplete:last-name ] </label>  [/uacf7-col]
+            [/uacf7-row]
+            <label> Patient Age *
+            [number* patient-age min:0] </label>
+            <label> Preferred Name / Nickname *
+            [text* patient-nickname] </label>
+                <label> Patient Gender *
+            [select patient-gender include_blank "Male" "Female" "Others"] </label>
+            <label> Phone no. *
+                    [tel* patient-phone] </label>
+            <label> Spouse Name
+                    [text patient-spouse ] </label>
+            <label> With whom do you live?
+                    [text patient-live-with] </label>
+            <label> Marital Status *
+                    [radio patient-marital-status class:uacf7-radio "Married" "Unmarried" "Others"] </label>
+            <label> Occupation
+                    [text patient-occupation placeholder "If retired or disabled then enter your last occupation"] </label>
+            <label> Retired? *
+                [radio is-retired class:uacf7-radio default:2 "Yes" "No"]
+            </label>
+            <label> Disability ?*
+                [radio is-disabled class:uacf7-radio default:2 "Yes" "No"]
+            </label>
+            <label> Who is your primary care doctor:?
+                    [text primary-care-doctor] </label>
+            <label> Where is your primary care doctor located ?
+                    [text primary-care-doctor-located] </label>
+            <label> Phone Number of primary care doctor:
+                    [tel primary-care-doctor-phone] </label>
+            <label> Allergic to any medications? *
+                [radio is-allergic  class:uacf7-radio default:2 "Yes" "No"]
+            </label>
+            <label> Do you smoke?*
+                [radio is-smoke class:uacf7-radio default:2 "Yes" "No"]
+            </label>
+            <label> If you quit, when did you stop?
+                    [text if-quit ] </label>
+            <label> Do you drink alcohol?
+                    [text if-alcohol] </label>
+            <label> Personal opinion
+                    [textarea personal-opinion] </label>
             <div class="uacf7-submint">
                 [submit "Submit Form"]
-            </div>
-        [uacf7_step_end end]
-    </div>';
-    break;
-    case "database-management": 
-        $form = '<div class="uacf7-wrapper-default">
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name
-        [text first-name autocomplete:first-name ] 
-        </label>
-        [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Last Name 
-        [text last-name autocomplete:last-name ] </label>  
-        [/uacf7-col]
-        [/uacf7-row]
-        <label> Email
-        [email email autocomplete:email ] </label> 
-       <label> Phone Number
-        [tel phone-number  ] </label> 
-       <label> Address </label>
-       [uacf7-row]
-        [uacf7-col col:6]
-        <label> Address Line 1
-        [text address-line-1 ] 
-        </label> 
-        <label> City
-        [text city ] 
-        </label> 
-        <label> Zip Code
-        [text zip-code ] 
-         </label> 
-        [/uacf7-col]
-        [uacf7-col col:6] 
-        <label> Address Line 2
-        [text address-line-2 ] 
-        </label> 
-        <label> State
-        [text state] 
-        </label> 
-        <label> Country
-        [text country] 
-        </label>
-        [/uacf7-col]
-       [/uacf7-row]
-       <label> Describe your current issues/needs * 
-       [textarea* current-issue ]
-       </label>
-       <label> Describe your current system if applicable *
-       [textarea* current-system]
-       </label>
-       
-       <label> What is your expertise with managing your database?
-       [select db-expertise class:uacf7-select include_black "Novice" "Intermediate" "Expert"]
-       </label>
-       <label> Do you need an internet in your office?
-       [radio if-internet-need class:uacf7-radio"Yes" "No"]
-       </label>
-       <label> Software Type
-       [select software-type class:uacf7-select include_blank "Accounting and Financial Management" "Asset Management" "Business Intelligence and Data Management Customer" "Relationship Management (CRM)" "Enterprise Resource Planning (ERP)" "Human Capital Management (HCM)" "Information Management and Collaboration" "Product Lifecycle Management (PLM)" "Project and Process Management" "Supply Chain Management (SCM)"]
-       </label>
-       <label> Business Area
-       [select business-area class:uacf7-select include_blank "Sales and Marketing" "Professional Services and Support" "Production and Distribution" "IT Management and Development" "Data Management and Analysis" "Back Office and Operation"]
-       </label>
-       <label> Needed Requirements, Functionality, or Specification
-       [textarea needed-requirements ]
-       </label>
-       <label> Desired deliverables
-       [textarea desired-deliverables]
-       </label>
-       <label> When do you need the support? *
-       [date* support-needed-date]
-       </label>
-       <label> What is your budget? *
-       [number* your-budget min:1]
-       </label>
-          
-       <label>Will this system be sold as third party software?
-       [radio third-party-software class:uacf7-radio"Yes" "No"]
-       </label>
-       <label>Will you need back up services?
-       [radio need-backup-services class:uacf7-radio"Yes" "No"]
-       </label>
-       <label>Will you need virus protection?
-       [radio need-virus-protection class:uacf7-radio "Yes" "No"]
-       </label>
-       <label>Upload any supporting documents.
-       [file supporting-docs ]
-       </label>
-          <div class="uacf7-submint">
-               [submit "Submit Form"]
-          </div>
-       </div>';
-    break;
+                </div>
+            </div>';
+        break;
+    
+        case "market-research-survey":
+            $form = '<div class="uacf7-wrapper-default">
+            <h3>Market Research Survey</h3>
+            <hr>
+            <br>
+            
+            [uacf7_step_start uacf7_step_start-367]   
+                <label>How often do you use our product? 
+                    [checkbox how-often-use class:uacf7-checkbox "More than once a week" " Once a week" " Monthly" " Every other month" " A few times a year"] 
+                </label>
+            [uacf7_step_end end]
+            
+            [uacf7_step_start uacf7_step_start-368]
+                <label>What similar products do you use? (by name and brand)
+                    [textarea about-similar-product]
+                </label>
+            [uacf7_step_end end]
+            
+            [uacf7_step_start uacf7_step_start-369]   
+                <label>When did you last purchase our product? 
+                    [checkbox last-purchased-product class:uacf7-checkbox "Less than 1 month ago" "Between 1 month and 6 months ago" "Between 6 months and 1 year ago" " More than one year ago" " I don\'t remember"] 
+                </label>
+            [uacf7_step_end end]
+            
+            [uacf7_step_start uacf7_step_start-370]
+                <label>What similar products do you use? (by name and brand)
+                    [textarea about-similar-product-2]
+                </label>
+            [uacf7_step_end end]
+            
+            [uacf7_step_start uacf7_step_start-371]   
+                <label>When did you last purchase our product? 
+                    [checkbox last-purchased-product-2 class:uacf7-checkbox "Less than 1 month ago" "Between 1 month and 6 months ago" "Between 6 months and 1 year ago" " More than one year ago" " I don\'t remember"] 
+                </label>
+            [uacf7_step_end end]
+            
+            [uacf7_step_start uacf7_step_start-372]   
+                <label>Have you had a chance to review our newest product? 
+                    [radio newest-product class:uacf7-radio "Yes" "No"] 
+                </label>
+            [uacf7_step_end end]
+            
+            [uacf7_step_start uacf7_step_start-373]   
+                <label>What do you think of our new product? 
+                    [textarea about-new-product] 
+                </label>
+            [uacf7_step_end end]
+            
+            [uacf7_step_start uacf7_step_start-374]   
+                <label>What is your least favorite thing about our new product? 
+                    [textarea favorite-about-new-product] 
+                </label>
+            [uacf7_step_end end]
+            
+            [uacf7_step_start uacf7_step_start-375]   
+                <label>How do you feel our product\'s pricing compares with other similar products? 
+                    [checkbox pricing-with-similar-product class:uacf7-checkbox "Less expensive" "About the same price" "More expensive"] 
+                </label>
+            [uacf7_step_end end]
+            
+            [uacf7_step_start uacf7_step_start-376] 
+                <h3> Tell us a little about yourself. </h3>
+                <hr>  
+                <label>What is your age range?
+                    [radio age-range class:uacf7-radio default:1 "18 or younger" " 19 - 24" " 25 - 34" " 35 - 44" " 45 - 54" " 55 or older"] 
+                </label> 
+                <label>What country are you from?
+                    [text* country] 
+                </label>
+            [uacf7_step_end end]
+            
+            [uacf7_step_start uacf7_step_start-400]
+                <div class="uacf7-submint">
+                    [submit "Submit Form"]
+                </div>
+            [uacf7_step_end end]
+        </div>';
+        break;
+        case "database-management": 
+            $form = '<div class="uacf7-wrapper-default">
+                [uacf7-row]
+                    [uacf7-col col:6]
+                        <label> First Name
+                            [text first-name autocomplete:first-name ] </label>
+                    [/uacf7-col]
+                    [uacf7-col col:6] 
+                        <label> Last Name 
+                            [text last-name autocomplete:last-name ] </label>  
+                [/uacf7-col]
+                [/uacf7-row]
+        
+                <label> Email
+                    [email email autocomplete:email ] </label> 
+        
+                <label> Phone Number
+                    [tel phone-number  ] </label> 
+        
+                <label> Address </label>
+                [uacf7-row]
+                    [uacf7-col col:6]
+                        <label> Address Line 1
+                            [text address-line-1 ] </label> 
+        
+                        <label> City
+                            [text city ] </label> 
+        
+                        <label> Zip Code
+                            [text zip-code ] </label> 
+                    [/uacf7-col]
+        
+                    [uacf7-col col:6] 
+                        <label> Address Line 2
+                            [text address-line-2 ] </label> 
+        
+                        <label> State
+                            [text state] </label> 
+        
+                        <label> Country
+                            [text country] </label>
+                    [/uacf7-col]
+                [/uacf7-row]
+        
+                <label> Describe your current issues/needs * 
+                    [textarea* current-issue ] </label>
+        
+                <label> Describe your current system if applicable *
+                    [textarea* current-system] </label>
+        
+                <label> What is your expertise with managing your database?
+                    [select db-expertise class:uacf7-select include_black "Novice" "Intermediate" "Expert"] </label>
+        
+                <label> Do you need an internet in your office?
+                    [radio if-internet-need class:uacf7-radio"Yes" "No"] </label>
+        
+                <label> Software Type
+                    [select software-type class:uacf7-select include_blank "Accounting and Financial Management" "Asset Management" "Business Intelligence and Data Management Customer" "Relationship Management (CRM)" "Enterprise Resource Planning (ERP)" "Human Capital Management (HCM)" "Information Management and Collaboration" "Product Lifecycle Management (PLM)" "Project and Process Management" "Supply Chain Management (SCM)"] </label>
+        
+                <label> Business Area
+                    [select business-area class:uacf7-select include_blank "Sales and Marketing" "Professional Services and Support" "Production and Distribution" "IT Management and Development" "Data Management and Analysis" "Back Office and Operation"] </label>
+        
+                <label> Needed Requirements, Functionality, or Specification
+                    [textarea needed-requirements ] </label>
+        
+                <label> Desired deliverables
+                    [textarea desired-deliverables] </label>
+        
+                <label> When do you need the support? *
+                    [date* support-needed-date] </label>
+        
+                <label> What is your budget? *
+                    [number* your-budget min:1] </label>
+        
+                <label>Will this system be sold as third party software?
+                    [radio third-party-software class:uacf7-radio"Yes" "No"] </label>
+        
+                <label>Will you need back up services?
+                    [radio need-backup-services class:uacf7-radio"Yes" "No"] </label>
+        
+                <label>Will you need virus protection?
+                    [radio need-virus-protection class:uacf7-radio "Yes" "No"] </label>
+        
+                <label>Upload any supporting documents.
+                    [file supporting-docs ] </label>
+        
+                <div class="uacf7-submint">
+                    [submit "Submit Form"]
+                </div>
+            </div>';
+            break;        
 
-    case 'pricing-survey':
-        $form = '<div class="uacf7-wrapper-default">
-        [uacf7_step_start uacf7_step_start-753]
-              <label> Are you currently a customer? *
-                [radio is-customer class:uacf7-radio default:1 "Yes" "No"] 
-              </label> 
-       [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-754]
-              <label> Which plan are you subscribed to?* 
-                [radio subscribe-plan class:uacf7-radio default:1 "Plan A" "Plan B" "Plan C"] 
-              </label> 
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-755]
-              <label> How long have you been a customer? *
-     [radio how-long-as-customer class:uacf7-radio default:1 "Less than a month" " 1-6 months" " 6 months to 1 year" " 1-3 years" " More than 3 years"] 
-              </label> 
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-756]
-              <label> What do you like about our service?
-                 [textarea about-our-services]
-              </label> 
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-757]
-              <label>What do you dislike about our service?
-                 [textarea why-dislike]
-              </label> 
-        [uacf7_step_end end]
-     [uacf7_step_start uacf7_step_start-758]
-              <label>Would you recommend our product?*
-                  [radio is-recommend class:uacf7-radio default:1 "Yes" "No"] 
-              </label> 
-        [uacf7_step_end end]
-       [uacf7_step_start uacf7_step_start-759]
-              <label>Do you have any additional comments or suggestions?
-                 [textarea any-suggestion]
-              </label> 
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-800]
-             <div class="uacf7-submint">
-                 [submit "Submit Form"]
-             </div>
-        [uacf7_step_end end]
-      </div>';
-      break;
-    case "workshop-registration":
-        $form = '<div class="uacf7-wrapper-default">
-        <h2 style="text-align: center; color:#3838b0"> Workshop Registration </h2>
-        <label style="text-align: center;"> You can Add a Logo </label>
-        <h5 style="text-align: center; color:#3838b0"> Date : December 05, 2020                 Time: 10:00 am           Address : 3491 Henry Ford Avenue, Tulsa, OK, Oklahoma, 74120 </h5>
-        <label> Name 
-        [text name]
-        </label> 
-        <label> Email
-        [email email]
-        </label> 
-        <label> Phone
-        [tel phone]
-        </label> 
-        <label> Company
-        [text company]
-        </label> 
+            case 'pricing-survey':
+                $form = '<div class="uacf7-wrapper-default">
+                    [uacf7_step_start uacf7_step_start-753]
+                        <label> Are you currently a customer? *
+                            [radio is-customer class:uacf7-radio default:1 "Yes" "No"] 
+                        </label> 
+                    [uacf7_step_end end]
+                    [uacf7_step_start uacf7_step_start-754]
+                        <label> Which plan are you subscribed to?* 
+                            [radio subscribe-plan class:uacf7-radio default:1 "Plan A" "Plan B" "Plan C"] 
+                        </label> 
+                    [uacf7_step_end end]
+                    [uacf7_step_start uacf7_step_start-755]
+                        <label> How long have you been a customer? *
+                            [radio how-long-as-customer class:uacf7-radio default:1 "Less than a month" " 1-6 months" " 6 months to 1 year" " 1-3 years" " More than 3 years"] 
+                        </label> 
+                    [uacf7_step_end end]
+                    [uacf7_step_start uacf7_step_start-756]
+                        <label> What do you like about our service?
+                            [textarea about-our-services]
+                        </label> 
+                    [uacf7_step_end end]
+                    [uacf7_step_start uacf7_step_start-757]
+                        <label>What do you dislike about our service?
+                            [textarea why-dislike]
+                        </label> 
+                    [uacf7_step_end end]
+                    [uacf7_step_start uacf7_step_start-758]
+                        <label>Would you recommend our product?*
+                            [radio is-recommend class:uacf7-radio default:1 "Yes" "No"] 
+                        </label> 
+                    [uacf7_step_end end]
+                    [uacf7_step_start uacf7_step_start-759]
+                        <label>Do you have any additional comments or suggestions?
+                            [textarea any-suggestion]
+                        </label> 
+                    [uacf7_step_end end]
+                    [uacf7_step_start uacf7_step_start-800]
+                        <div class="uacf7-submint">
+                            [submit "Submit Form"]
+                        </div>
+                    [uacf7_step_end end]
+                </div>';
+                break;
+            
+            case "workshop-registration":
+                $form = '<div class="uacf7-wrapper-default">
+                    <h2 style="text-align: center; color:#3838b0"> Workshop Registration </h2>
+                    <label style="text-align: center;"> You can Add a Logo </label>
+                    <h5 style="text-align: center; color:#3838b0"> Date : December 05, 2020                 Time: 10:00 am           Address : 3491 Henry Ford Avenue, Tulsa, OK, Oklahoma, 74120 </h5>
+                    <label> Name 
+                        [text name]
+                    </label> 
+                    <label> Email
+                        [email email]
+                    </label> 
+                    <label> Phone
+                        [tel phone]
+                    </label> 
+                    <label> Company
+                        [text company]
+                    </label> 
+                    [uacf7-row]
+                        [uacf7-col col:6]
+                            <label> Permanent Address
+                                [text permanent-address ] 
+                            </label> 
+                            <label> City
+                                [text city ] 
+                            </label> 
+                            <label> Zip Code
+                                [text zip-code ] 
+                            </label> 
+                        [/uacf7-col]
+                        [uacf7-col col:6] 
+                            <label> Current Address
+                                [text current-address ] 
+                            </label> 
+                            <label> State
+                                [text state] 
+                            </label> 
+                            <label> Country
+                                [text country] 
+                            </label>
+                        [/uacf7-col]
+                    [/uacf7-row]
+                    <label> How did you hear about the workshop?
+                        [checkbox where-from-heard class:uacf7-checkbox "Website" "Friend/Colleague" "Online Search"]
+                    </label>
+                    <div class="uacf7-submint">
+                        [submit "Submit Form"]
+                    </div>
+                </div>';
+                break;
+            
+case "product-order-form":
+    $form = '<div class="uacf7-wrapper-default">
         [uacf7-row]
-          [uacf7-col col:6]
-          <label> Permanent Address
-          [text permanent-address ] 
-          </label> 
-          <label> City
-          [text city ] 
-          </label> 
-          <label> Zip Code
-          [text zip-code ] 
-           </label> 
-          [/uacf7-col]
-          [uacf7-col col:6] 
-          <label> Current Address
-          [text current-address ] 
-          </label> 
-          <label> State
-          [text state] 
-          </label> 
-          <label> Country
-          [text country] 
-          </label>
-          [/uacf7-col]
-         [/uacf7-row]
-        <label> How did you hear about the workshop?
-        [checkbox where-from-heard class:uacf7-checkbox "Website" "Friend/Colleague" "Online Search"]
-        </label>
-        <div class="uacf7-submint">
-            [submit "Submit Form"]
-        </div>
-    </div>';
-    break;
-    case "product-order-form":
-        $form = '<div class="uacf7-wrapper-default">
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name *
-        [text* first-name ] 
-        </label> 
-        [/uacf7-col]
-        [uacf7-col col:6]
-        <label> Last Name 
-        [text last-name ] 
-        </label> 
-        [/uacf7-col]
+            [uacf7-col col:6]
+                <label> First Name *
+                    [text* first-name ] 
+                </label> 
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label> Last Name 
+                    [text last-name ] 
+                </label> 
+            [/uacf7-col]
         [/uacf7-row]
         <label> Email *
-        [email* email]
+            [email* email]
         </label> 
-       <label> Shipping Address </label>
+        <label> Shipping Address </label>
         [uacf7-row]
-          [uacf7-col col:6]
-          <label> Address Line 1 *
-          [text* address-line-1 ] 
-          </label> 
-          <label> City *
-          [text* city ] 
-          </label> 
-          <label> Zip Code
-          [text zip-code ] 
-           </label> 
-          [/uacf7-col]
-          [uacf7-col col:6] 
-          <label> Address Line 2
-          [text address-line-2 ] 
-          </label> 
-          <label> State
-          [text state] 
-          </label> 
-          <label> Country
-          [text country] 
-          </label>
-          [/uacf7-col]
-         [/uacf7-row]
+            [uacf7-col col:6]
+                <label> Address Line 1 *
+                    [text* address-line-1 ] 
+                </label> 
+                <label> City *
+                    [text* city ] 
+                </label> 
+                <label> Zip Code
+                    [text zip-code ] 
+                </label> 
+            [/uacf7-col]
+            [uacf7-col col:6] 
+                <label> Address Line 2
+                    [text address-line-2 ] 
+                </label> 
+                <label> State
+                    [text state] 
+                </label> 
+                <label> Country
+                    [text country] 
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
         <label> Choose your Product * 
-        [checkbox* product class:uacf7-checkbox "Product Item 1 - $10" "Product Item 2 - $50" "Product Item 3 - $100"]
+            [checkbox* product class:uacf7-checkbox "Product Item 1 - $10" "Product Item 2 - $50" "Product Item 3 - $100"]
         </label>
         <label> Choose Payment Method * 
-        [radio payment-method class:uacf7-radio "Pay with Card (Stripe)" "Pay with Paypal" "Test Payment"]
+            [radio payment-method class:uacf7-radio "Pay with Card (Stripe)" "Pay with Paypal" "Test Payment"]
         </label>
         <div class="uacf7-submint">
             [submit "Purchase"]
         </div>
     </div>';
     break;
+
     case "donation-form-2":
         $form = '<div class="uacf7-wrapper-default">
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> First Name *
-        [text* first-name ] 
-        </label> 
-        [/uacf7-col]
-        [uacf7-col col:6]
-        <label> Last Name 
-        [text last-name ] 
-        </label> 
-        [/uacf7-col]
-        [/uacf7-row]
-        <label> Email *
-        [email* email]
-        </label> 
-        <label> Donation Amount * 
-        [radio donation-amount class:uacf7-radio "$10" "$50" "$100" "Other"]
-        [conditional conditional-505]
-        </label>
-        <label> Type your amount 
-        [number  other-donation-amount min:1 ]
-        </label>
-        [/conditional]
-       <label> Payment Method 
-        [radio payment-method class:uacf7-radio default:1 "Pay with Card (Stripe)" "Pay with Paypal" "Offline Payment"]
-        </label>
-        <div class="uacf7-submint">
-            [submit "Donate Now"]
-        </div>
-    </div>';
-    break;
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> First Name *
+                        [text* first-name ] 
+                    </label> 
+                [/uacf7-col]
+                [uacf7-col col:6]
+                    <label> Last Name 
+                        [text last-name ] 
+                    </label> 
+                [/uacf7-col]
+            [/uacf7-row]
+            <label> Email *
+                [email* email]
+            </label> 
+            <label> Donation Amount * 
+                [radio donation-amount class:uacf7-radio "$10" "$50" "$100" "Other"]
+                [conditional conditional-505]
+            </label>
+            <label> Type your amount 
+                [number  other-donation-amount min:1 ]
+            </label>
+            [/conditional]
+            <label> Payment Method 
+                [radio payment-method class:uacf7-radio default:1 "Pay with Card (Stripe)" "Pay with Paypal" "Offline Payment"]
+            </label>
+            <div class="uacf7-submint">
+                [submit "Donate Now"]
+            </div>
+        </div>';
+        break;
+    
     case "order-bump-form":
         $form = '<div class="uacf7-wrapper-default">
-        [uacf7-row]
-        [uacf7-col col:6]
-        <label> Name *
-        [text* name ] 
-        </label> 
-        [/uacf7-col]
-        [uacf7-col col:6]
-        <label> Email*
-        [email* email ] 
-        </label> 
-        [/uacf7-col]
-        [/uacf7-row]
-        <label> Your Awesome Product <br> Price: $49</label> 
-       <label> Payment Method 
-        [radio payment-method class:uacf7-radio default:1 "Pay with Card (Stripe)" "Pay with Paypal" "Offline Payment"]
-        </label>
-        <div> 
-        <p style="margin: 0;"><span style="text-decoration: underline;"><strong>One time offer:</strong></span> I would also like get over-the-shulder videos that walk me through every single steps of the passive profits system for only $19 extra (a $97 value)</p>
-        </div>
-        [acceptance acceptance-terms optional] Yes, I want access $19 extra [/acceptance]
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label> Name *
+                        [text* name ] 
+                    </label> 
+                [/uacf7-col]
+                [uacf7-col col:6]
+                    <label> Email*
+                        [email* email ] 
+                    </label> 
+                [/uacf7-col]
+            [/uacf7-row]
+            <label> Your Awesome Product <br> Price: $49</label> 
+            <label> Payment Method 
+                [radio payment-method class:uacf7-radio default:1 "Pay with Card (Stripe)" "Pay with Paypal" "Offline Payment"]
+            </label>
+            <div> 
+                <p style="margin: 0;"><span style="text-decoration: underline;"><strong>One-time offer:</strong></span> I would also like to get over-the-shoulder videos that walk me through every single step of the passive profits system for only $19 extra (a $97 value)</p>
+            </div>
+            [acceptance acceptance-terms optional] Yes, I want access $19 extra [/acceptance]
             <div class="uacf7-submint uacf7-order-bump-form">
                 [submit  "Purchase Now"]
             </div>
         </div>';
         break;
+    
     case "student-survey":
         $form = '<div class="uacf7-wrapper-default">
-        [uacf7_step_start uacf7_step_start-630]
-            [uacf7-row]
-            [uacf7-col col:6]
-            <label> First Name *
-            [text* first-name ] 
-            </label> 
-            [/uacf7-col]
-            [uacf7-col col:6]
-            <label> Last Name
-            [text last-name] 
-            </label> 
-            [/uacf7-col]
-            [/uacf7-row]
-            <label> Email*
-            [email* email ] 
-            <h3> How important is it that we provide you with the following?</h3> 
-            <label> Variety of student organizations *
-            [radio student-org class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
-            </label>
-            <label> Plenty of professor office hours *
-            [radio prof-office-hrs class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
-            </label>
-            <label> Internship opportunities *
-            [radio internship-opportunities class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
-            </label>
+            [uacf7_step_start uacf7_step_start-630]
+                [uacf7-row]
+                    [uacf7-col col:6]
+                        <label> First Name *
+                            [text* first-name ] 
+                        </label> 
+                    [/uacf7-col]
+                    [uacf7-col col:6]
+                        <label> Last Name
+                            [text last-name] 
+                        </label> 
+                    [/uacf7-col]
+                [/uacf7-row]
+                <label> Email*
+                    [email* email ] 
+                    <h3> How important is it that we provide you with the following?</h3> 
+                    <label> Variety of student organizations *
+                        [radio student-org class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
+                    </label>
+                    <label> Plenty of professor office hours *
+                        [radio prof-office-hrs class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
+                    </label>
+                    <label> Internship opportunities *
+                        [radio internship-opportunities class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
+                    </label>
             [uacf7_step_end end]
             [uacf7_step_start uacf7_step_start-631]
-            <h3> How important is it that we provide you with the following? </h3>
-            <label> Get a job to help pay for college expenses *
-            [radio college-expenses class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
-            </label>
-            <label> Become a teacher assistant *
-            [radio become-teacher-assistant class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
-            </label>
-            <label> Study abroad  *
-            [radio study-abroad class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
-            </label>
-            <label> Take out student loans *
-            [radio student-loan class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
-            </label>
-            <label> Please select any activities/groups you plan on participating in while in school.*
-            [checkbox* interest class:uacf7-checkbox "Intramural Sports" "Student Organizations" "Fraternity/Sorority" "Other"]
-            </label>
-            <label> Others
-            [textarea others ]
-            </label>
+                <h3> How important is it that we provide you with the following? </h3>
+                <label> Get a job to help pay for college expenses *
+                    [radio college-expenses class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
+                </label>
+                <label> Become a teacher assistant *
+                    [radio become-teacher-assistant class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
+                </label>
+                <label> Study abroad  *
+                    [radio study-abroad class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
+                </label>
+                <label> Take out student loans *
+                    [radio student-loan class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
+                </label>
+                <label> Please select any activities/groups you plan on participating in while in school.*
+                    [checkbox* interest class:uacf7-checkbox "Intramural Sports" "Student Organizations" "Fraternity/Sorority" "Other"]
+                </label>
+                <label> Others
+                    [textarea others ]
+                </label>
                 <div class="uacf7-submint">
                     [submit  "Submit Form"]
                 </div>
             [uacf7_step_end end]
         </div>';
-    break;
-    case "classroom-observation":
-        $form = '<div class="uacf7-wrapper-default">
-        [uacf7_step_start uacf7_step_start-170]
-        <h2 style="text-align:center;">Classroom Observation</h2>
-        <p style="text-align:center;">Please use the following form to evaluate the teachers performance in the classroom. Your feedback is valuable and helps us ensure success for all teachers and students. Please answer each question honestly.</p>
-        <label> Teacher\'s Name 
-            [text teacher-name ] </label> 
-        <label> Classroom/Course 
-            [text course-name ] </label> 
-        <label> Observation Date 
-            [date observation-date] </label> 
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-171]
-            <label> Teacher was prepared for the lesson.
-                   [radio is-teacher-prepared class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
-         <label> Teacher encouraged student participation.	
-                   [radio is-teacher-encouraged class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
-         <label> Teacher explained the lesson thoroughly.	
-                   [radio is-teacher-explained class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
-         <label> Teacher interacted with all students.		
-                   [radio is-teacher-interacted class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
-         <label>Teacher was able to control the entire classroom.		
-                   [radio is-teacher-control class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
-        <label>Teacher effectively used technology.			
-                   [radio is-teacher-use-technology class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
-        <label>Teacher used time efficiently.				
-                   [radio is-teacher-use-time-efficiently class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
-        <label>Teacher responded appropriately to student questions.					
-                   [radio is-teacher-responded-appropriately class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
-        <label>Teacher used a variety of teaching methods.						
-                   [radio is-teacher-used-teaching-methods class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
-        [uacf7_step_end end]
-        [uacf7_step_start uacf7_step_start-172]
-        <label>Based on this observation, would you pass or fail this teacher?						
-                   [radio your-result class:uacf7-radio default:1 "Pass" "Fail"] </label> 
-        <label>Additional Comments					
-                   [textarea additional-comments ] </label> 
-        <h4> Oberserver\'s Details (Optional) </h4>
-        [uacf7-row][uacf7-col col:6] 
-        <label>First Name					
-                   [text first-name] </label> 
-        [/uacf7-col][uacf7-col col:6] 
-        <label>Last Name					
-                   [text last-name] </label> 
-        [/uacf7-col][/uacf7-row]
-        [uacf7_step_end end]
-                <div class="uacf7-submint">
+        break;
+    
+        case "classroom-observation":
+            $form = '<div class="uacf7-wrapper-default">
+                [uacf7_step_start uacf7_step_start-170]
+                    <h2 style="text-align:center;">Classroom Observation</h2>
+                    <p style="text-align:center;">Please use the following form to evaluate the teacher\'s performance in the classroom. Your feedback is valuable and helps us ensure success for all teachers and students. Please answer each question honestly.</p>
+                    <label> Teacher\'s Name 
+                        [text teacher-name ] 
+                    </label> 
+                    <label> Classroom/Course 
+                        [text course-name ] 
+                    </label> 
+                    <label> Observation Date 
+                        [date observation-date] 
+                    </label> 
+                [uacf7_step_end end]
+                [uacf7_step_start uacf7_step_start-171]
+                    <label> Teacher was prepared for the lesson.
+                        [radio is-teacher-prepared class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
+                    </label> 
+                    <label> Teacher encouraged student participation.
+                        [radio is-teacher-encouraged class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
+                    </label> 
+                    <label> Teacher explained the lesson thoroughly.
+                        [radio is-teacher-explained class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
+                    </label> 
+                    <label> Teacher interacted with all students.
+                        [radio is-teacher-interacted class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
+                    </label> 
+                    <label> Teacher was able to control the entire classroom.
+                        [radio is-teacher-control class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
+                    </label> 
+                    <label> Teacher effectively used technology.
+                        [radio is-teacher-use-technology class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
+                    </label> 
+                    <label> Teacher used time efficiently.
+                        [radio is-teacher-use-time-efficiently class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
+                    </label> 
+                    <label> Teacher responded appropriately to student questions.
+                        [radio is-teacher-responded-appropriately class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
+                    </label> 
+                    <label> Teacher used a variety of teaching methods.
+                        [radio is-teacher-used-teaching-methods class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
+                    </label> 
+                [uacf7_step_end end]
+                [uacf7_step_start uacf7_step_start-172]
+                    <label> Based on this observation, would you pass or fail this teacher?
+                        [radio your-result class:uacf7-radio default:1 "Pass" "Fail"] 
+                    </label> 
+                    <label> Additional Comments
+                        [textarea additional-comments ] 
+                    </label> 
+                    <h4> Observer\'s Details (Optional) </h4>
+                    [uacf7-row][uacf7-col col:6] 
+                        <label> First Name
+                            [text first-name] 
+                        </label> 
+                    [/uacf7-col][uacf7-col col:6] 
+                        <label> Last Name
+                            [text last-name] 
+                        </label> 
+                    [/uacf7-col][/uacf7-row]
+                [uacf7_step_end end]
+                <div class="uacf7-submit">
                     [submit "Submit Bug Report"]
                 </div>
             </div>';
-        break;
-
-    case "course-evalution":
+            break;
+        
+        case "course-evalution":
             $form = '
             <div class="uacf7-wrapper-default">
-            [uacf7_step_start uacf7_step_start-170]
-            <p style="text-align:center;">Please answer all required questions. Only complete this evaluation if you will be completing the course.</p>
-            <h4>Course Data</h4>
-            <label> Course Name *
-                [text* course-name ] </label> 
-            <label> Course Number *
-                [text* course-number] </label> 
-            <label> Section Number * 
-                [text* section-number] </label> 
-            <label> Instructor Name * 
-                [text* instructor-name] </label> 
-            [uacf7_step_end end]
-            [uacf7_step_start uacf7_step_start-171]
-            <h4>Evaluation</h4>
-            <p>Your Evaluations are important, so please do it carefully</p>
-            <hr>
-            <label> Level of effort you put into the course. *
-                       [radio leave-of-effort class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            <label> Your level of knowledge at the beginning of the course. *
-                       [radio label-of-knowledge-beginning class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            <label> Your level of knowledge at the end of the course.  *
-                       [radio label-of-knowledge-end class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            <label> I understood the objectives of the course.  *
-                       [radio objectives class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            <label> The length of the course was appropriate to cover content.  *
-                       [radio length-was-appropriate class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label>
-            <label> The course provided me with new information.  *
-                       [radio provided-new-information class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label>
-            [uacf7_step_end end]
-            [uacf7_step_start uacf7_step_start-172]
-            <label>Instructor\'s preparation.						
-                       [radio instructor-preparation class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            <label>Instructor\'s deliverance .						
-                       [radio instructor-deliverance class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            <label>Instructor\'s communication.						
-                       [radio instructor-communication class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            <label>Instructor\'s effectiveness.						
-                       [radio instructor-effectiveness class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            <label>Instructor\'s availability.						
-                [radio instructor-availability class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            <label>Overall quality of the course						
-                [radio overall-quality-of-course class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            <label>Overall quality of the equipment used for the course.						
-                [radio overall-quality-of-equipment class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] </label> 
-            [uacf7_step_end end]
-        
-            [uacf7_step_start uacf7_step_start-173]  
-            <label>Would you recommend this course to other students?						
-                        [radio will-recommend class:uacf7-radio default:1 "Yes" "No"] </label>
-            <label>Why did you choose this course?						
-                        [radio why-choose class:uacf7-radio default:1 "Degree requirement" "Time offered" "Interest"] </label>
-            <label>Your class standing.						
-                        [radio your-class-standing class:uacf7-radio default:1 "Freshman" "Sophomore" "Junior" "Senior" "Graduate"] </label>
-            [uacf7_step_end end]
-            [uacf7_step_start uacf7_step_start-174] 
-            [uacf7-row][uacf7-col col:6] 
-            <label>Please identify aspects of the course you found useful.				
-                [textarea is-useful-feedback] </label> 
-            [/uacf7-col][uacf7-col col:6] 
-            <label>Please provide any suggestions to improve the course.			
-                [textarea should-improve-feedback] </label> 
-            [/uacf7-col][/uacf7-row]
-            <div class="uacf7-submit">
-                [submit "Submit Form"]
-            </div>
-            [uacf7_step_end end]
-        </div>';
-    break;
+                [uacf7_step_start uacf7_step_start-170]
+                    <p style="text-align:center;">Please answer all required questions. Only complete this evaluation if you will be completing the course.</p>
+                    <h4>Course Data</h4>
+                    <label> Course Name *
+                        [text* course-name ] 
+                    </label> 
+                    <label> Course Number *
+                        [text* course-number] 
+                    </label> 
+                    <label> Section Number * 
+                        [text* section-number] 
+                    </label> 
+                    <label> Instructor Name * 
+                        [text* instructor-name] 
+                    </label> 
+                [uacf7_step_end end]
+                [uacf7_step_start uacf7_step_start-171]
+                    <h4>Evaluation</h4>
+                    <p>Your Evaluations are important, so please do it carefully</p>
+                    <hr>
+                    <label> Level of effort you put into the course. *
+                        [radio leave-of-effort class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                    <label> Your level of knowledge at the beginning of the course. *
+                        [radio label-of-knowledge-beginning class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                    <label> Your level of knowledge at the end of the course.  *
+                        [radio label-of-knowledge-end class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                    <label> I understood the objectives of the course.  *
+                        [radio objectives class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                    <label> The length of the course was appropriate to cover content.  *
+                        [radio length-was-appropriate class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label>
+                    <label> The course provided me with new information.  *
+                        [radio provided-new-information class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label>
+                [uacf7_step_end end]
+                [uacf7_step_start uacf7_step_start-172]
+                    <label> Instructor\'s preparation.                        
+                        [radio instructor-preparation class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                    <label> Instructor\'s deliverance .                        
+                        [radio instructor-deliverance class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                    <label> Instructor\'s communication.                        
+                        [radio instructor-communication class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                    <label> Instructor\'s effectiveness.                        
+                        [radio instructor-effectiveness class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                    <label> Instructor\'s availability.                        
+                        [radio instructor-availability class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                    <label> Overall quality of the course                        
+                        [radio overall-quality-of-course class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                    <label> Overall quality of the equipment used for the course.                        
+                        [radio overall-quality-of-equipment class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
+                    </label> 
+                [uacf7_step_end end]
+                [uacf7_step_start uacf7_step_start-173]  
+                    <label> Would you recommend this course to other students?                        
+                        [radio will-recommend class:uacf7-radio default:1 "Yes" "No"] 
+                    </label>
+                    <label> Why did you choose this course?                        
+                        [radio why-choose class:uacf7-radio default:1 "Degree requirement" "Time offered" "Interest"] 
+                    </label>
+                    <label> Your class standing.                        
+                        [radio your-class-standing class:uacf7-radio default:1 "Freshman" "Sophomore" "Junior" "Senior" "Graduate"] 
+                    </label>
+                [uacf7_step_end end]
+                [uacf7_step_start uacf7_step_start-174] 
+                    [uacf7-row][uacf7-col col:6] 
+                        <label> Please identify aspects of the course you found useful.                
+                            [textarea is-useful-feedback] 
+                        </label> 
+                    [/uacf7-col][uacf7-col col:6] 
+                        <label> Please provide any suggestions to improve the course.            
+                            [textarea should-improve-feedback] 
+                        </label> 
+                    [/uacf7-col][/uacf7-row]
+                    <div class="uacf7-submit">
+                        [submit "Submit Form"]
+                    </div>
+                [uacf7_step_end end]
+            </div>';
+        break;                    
   
     // End Form from -Masum Billah
 
