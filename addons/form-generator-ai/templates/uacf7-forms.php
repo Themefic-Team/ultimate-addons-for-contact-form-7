@@ -1502,8 +1502,59 @@ switch ( $uacf7_default[1] ) {
             [uacf7_step_end end]
         </div>';
     break;
+    case "classroom-observation":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7_step_start uacf7_step_start-170]
+        <h2 style="text-align:center;">Classroom Observation</h2>
+        <p style="text-align:center;">Please use the following form to evaluate the teachers performance in the classroom. Your feedback is valuable and helps us ensure success for all teachers and students. Please answer each question honestly.</p>
+        <label> Teacher\'s Name 
+            [text teacher-name ] </label> 
+        <label> Classroom/Course 
+            [text course-name ] </label> 
+        <label> Observation Date 
+            [date observation-date] </label> 
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-171]
+            <label> Teacher was prepared for the lesson.
+                   [radio is-teacher-prepared class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
+         <label> Teacher encouraged student participation.	
+                   [radio is-teacher-encouraged class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
+         <label> Teacher explained the lesson thoroughly.	
+                   [radio is-teacher-explained class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
+         <label> Teacher interacted with all students.		
+                   [radio is-teacher-interacted class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
+         <label>Teacher was able to control the entire classroom.		
+                   [radio is-teacher-control class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
+        <label>Teacher effectively used technology.			
+                   [radio is-teacher-use-technology class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
+        <label>Teacher used time efficiently.				
+                   [radio is-teacher-use-time-efficiently class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
+        <label>Teacher responded appropriately to student questions.					
+                   [radio is-teacher-responded-appropriately class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
+        <label>Teacher used a variety of teaching methods.						
+                   [radio is-teacher-used-teaching-methods class:uacf7-radio default:1 "Strongly Agree" "Agree	" "Neutral	" "Disagree	" "Strongly Disagree"] </label> 
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-172]
+        <label>Based on this observation, would you pass or fail this teacher?						
+                   [radio your-result class:uacf7-radio default:1 "Pass" "Fail"] </label> 
+        <label>Additional Comments					
+                   [textarea additional-comments ] </label> 
+        <h4> Oberserver\'s Details (Optional) </h4>
+        [uacf7-row][uacf7-col col:6] 
+        <label>First Name					
+                   [text first-name] </label> 
+        [/uacf7-col][uacf7-col col:6] 
+        <label>Last Name					
+                   [text last-name] </label> 
+        [/uacf7-col][/uacf7-row]
+        [uacf7_step_end end]
+                <div class="uacf7-submint">
+                    [submit "Submit Bug Report"]
+                </div>
+            </div>';
+        break;
 
-    // End Form from -Masum Billah	
+    // End Form from -Masum Billah
 
 	case "multistep":
 		$form = '<div class="uacf7-wrapper-default">
