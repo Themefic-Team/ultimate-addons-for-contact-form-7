@@ -180,7 +180,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "student-survey", "label" => "Student Survey Form" ],
 			[ "value" => "classroom-observation", "label" => "Class Room Observation" ],
 			[ "value" => "course-evalution", "label" => "Course Evalution" ],
-			[ "value" => "hi", "label" => "hi" ],
+			[ "value" => "university-enrollment", "label" => "University Enrollment" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),
 			apply_filters( 'uacf7_conversational_appointment_form_dropdown', [ "value" => "conversational-appointment-form", "label" => "Conversational Appointment Booking  (Pro)" ] ),

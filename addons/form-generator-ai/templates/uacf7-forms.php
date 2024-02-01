@@ -2078,7 +2078,136 @@ case "product-order-form":
                     </div>
                 [uacf7_step_end end]
             </div>';
-        break;                    
+        break;
+    case "university-enrollment":
+        $form = '<div class="uacf7-wrapper-default">
+        <label>Anticipated Start Date *
+            [date anticipated-start-date]
+        </label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>First Name
+                    [text first-name]
+                </label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name
+                    [text last-name]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Phone
+            [tel phone]
+        </label>
+        <label>Email
+            [email email]
+        </label>
+        <label>Birth Date
+            [date* birth-date]
+        </label>
+        <label>Gender *
+            [radio gender class:uacf7-radio default:1 "Male" "Female" "Others"]
+        </label>
+        <label>Address </label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1
+                    [text address-line-1 ]
+                </label>
+                <label>City*
+                    [text* city ]
+                </label>
+                <label>Zip Code *
+                    [text* zip-code ]
+                </label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Address Line 2
+                    [text* address-line-2 ]
+                </label>
+                <label>State *
+                    [text* state]
+                </label>
+                <label>Country *
+                    [text* country]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Proof of identity (e.g. birth certificate, Passport etc.)
+            [file proof-of-identity]
+        </label>
+        <h4>Background Information: </h4>
+        <hr>
+        <label>Enrollment Status
+            [radio enrollment-status class:uacf7-radio default:1 "Full Time" " Part Time"]
+        </label>
+        <label>High School Name
+            [text high-school-name]
+        </label>
+        <label>High School Address </label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1
+                    [text address-line-1-2 ]
+                </label>
+                <label>City*
+                    [text* city-2 ]
+                </label>
+                <label>Zip Code *
+                    [text* zip-code-2 ]
+                </label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Address Line 2
+                    [text* address-line-2-2 ]
+                </label>
+                <label>State *
+                    [text* state-2]
+                </label>
+                <label>Country *
+                    [text* country-2]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>GPA *
+            [number* gpa]
+        </label>
+        <label>Diploma Type *
+            [text* diploma-type]
+        </label>
+        <label>High School Transcripts *
+            [file* high-school-transcript]
+        </label>
+        <label>Medical Allergies *
+            [text* medical-allergies]
+        </label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Parent/Guardian (First Name) *
+                    [text* guardian-first-name]
+                </label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>(Last Name) *
+                    [text* guardian-last-name]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Parent/Guardian Company *
+            [text* guardian-company]
+        </label>
+        <label>Parent/Guardian Phone *
+            [tel* guardian-phone]
+        </label>
+        <label>Parent/Guardian Email *
+            [email* guardian-email]
+        </label>
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>
+    '; 
+    break;                  
   
     // End Form from -Masum Billah
 
