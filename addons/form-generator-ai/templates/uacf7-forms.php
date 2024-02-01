@@ -2207,7 +2207,140 @@ case "product-order-form":
         </div>
     </div>
     '; 
-    break;                  
+    break;  
+    case "high-school-transcript":
+        $form = '
+        <div class="uacf7-wrapper-default">
+    [uacf7-row]
+        [uacf7-col col:4]
+            <label>First Name *
+                [text* first-name]
+            </label>
+        [/uacf7-col]
+
+        [uacf7-col col:4]
+            <label>Middle Name
+                [text middle-name]
+            </label>
+        [/uacf7-col]
+
+        [uacf7-col col:4]
+            <label>Last Name *
+                [text* last-name]
+            </label>
+        [/uacf7-col]
+    [/uacf7-row]
+
+    <label>Graduation Date *
+        [date* graduation-date]
+    </label>
+
+    <label>Address </label>
+    [uacf7-row]
+        [uacf7-col col:6]
+            <label>Address Line 1
+                [text address-line-1 ]
+            </label>
+
+            <label>City*
+                [text* city ]
+            </label>
+
+            <label>Zip Code *
+                [text* zip-code ]
+            </label>
+        [/uacf7-col]
+
+        [uacf7-col col:6]
+            <label>Address Line 2
+                [text* address-line-2 ]
+            </label>
+
+            <label>State *
+                [text* state]
+            </label>
+
+            <label>Country *
+                [text* country]
+            </label>
+        [/uacf7-col]
+    [/uacf7-row]
+
+    <label>Registration Number *
+        [number* registration-number]
+    </label>
+
+    <label>Birth Date
+        [date* birth-date]
+    </label>
+
+    <label>Current Phone *
+        [tel* phone]
+    </label>
+
+    <label>Email *
+        [email* email]
+    </label>
+
+    <label>I wish to pick up an UNOFFICIAL copy of my transcript
+        [checkbox willing-to-unofficial-copy class:uacf7-radio "Yes" "No"]
+    </label>
+
+    <h3>Please send an OFFICIAL copy of my high school transcript to:</h3>
+
+    <label>College/University Name *
+        [text* uni-or-clg-name]
+    </label>
+
+    <label>Address </label>
+    [uacf7-row]
+        [uacf7-col col:6]
+            <label>Address Line 1
+                [text uni-address-line-1 ]
+            </label>
+
+            <label>City*
+                [text* uni-city ]
+            </label>
+
+            <label>Zip Code *
+                [text* uni-zip-code ]
+            </label>
+        [/uacf7-col]
+
+        [uacf7-col col:6]
+            <label>Address Line 2
+                [text* uni-address-line-2 ]
+            </label>
+
+            <label>State *
+                [text* uni-state]
+            </label>
+
+            <label>Country *
+                [text* uni-country]
+            </label>
+        [/uacf7-col]
+    [/uacf7-row]
+
+    <label>Email *
+        [email* uni-email]
+    </label>
+
+    <label>Today\'s Date
+        [date* todays-date]
+    </label>
+
+    <label>Your Signature
+        [uacf7_signature* student-signature]
+    </label>
+
+    <div class="uacf7-submint">
+        [submit "Submit Form"]
+    </div>
+    </div>
+    ';
+    break;                
   
     // End Form from -Masum Billah
 
