@@ -182,6 +182,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "course-evalution", "label" => "Course Evalution" ],
 			[ "value" => "university-enrollment", "label" => "University Enrollment" ],
 			[ "value" => "high-school-transcript", "label" => "High School Transcript" ],
+			[ "value" => "functional-behavioral-assesment", "label" => "Functional Behavioral Assessment" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),
 			apply_filters( 'uacf7_conversational_appointment_form_dropdown', [ "value" => "conversational-appointment-form", "label" => "Conversational Appointment Booking  (Pro)" ] ),

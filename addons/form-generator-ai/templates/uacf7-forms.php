@@ -2340,7 +2340,155 @@ case "product-order-form":
     </div>
     </div>
     ';
-    break;                
+    break; 
+    case "functional-behavioral-assesment":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7_step_start uacf7_step_start-534]
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label>First Name *
+                        [text* first-name]
+                    </label>
+                [/uacf7-col]
+                [uacf7-col col:6]
+                    <label>Last Name *
+                        [text* last-name]
+                    </label>
+                [/uacf7-col]
+            [/uacf7-row]
+            <label>Date *
+                [date* date]
+            </label>
+            <label>Sources of Data *
+                [checkbox* source-of-data class:uacf7-checkbox "Record Review" " Scatterplot" " ABC Logs" " Other"]
+            </label>
+            <label>Information Reported By *
+                [checkbox* info-reported-by class:uacf7-checkbox "Teacher" " Parent" " Student" " Other"]
+            </label>
+            <label> Describe your role.
+                [textarea* your-role]
+            </label>
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label>Assessor Name(First Name) *
+                        [text* assessor-first-name]
+                    </label>
+                [/uacf7-col]
+                [uacf7-col col:6]
+                    <label>Assessor Name(Last Name)
+                        [text* assessor-last-name]
+                    </label>
+                [/uacf7-col]
+            [/uacf7-row]
+            <h3> Problem Behaviors </h3>
+            <hr>
+            <label> Describe behaviors in specific and observable terms.
+                [text* term-desc]
+            </label>
+            <label> Estimated frequency
+                [text* estimated-frequency]
+            </label>
+            <label> Describe any observed patterns related to reported behavior.
+                [text* reported-behavior]
+            </label>
+            <h3> Medical/Health Information </h3>
+            <hr>
+            <label> Known health, medical, or psychiatric conditions
+                [text* health-conditions]
+            </label>
+            <label> Current medications
+                [text* current-medications]
+            </label>
+            <label> Known traumatic events
+                [text* known-traumatic-events]
+            </label>
+            <label> Medical treatments, therapies, or services (outside of school)
+                [text* outside-school-treatments]
+            </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-536]
+            <h3> Intervention History </h3>
+            <hr>
+            <label> Describe a brief history of the problem behavior and any interventions.
+                [textarea* interventions-history]
+            </label>
+            <label> If applicable, how would you describe the effectiveness of past intervention efforts?
+                [textarea* interventions-efforts]
+            </label>
+            <label> What rewards are currently provided to the student in school? For what and how often?
+                [textarea* provided-rewards]
+            </label>
+            <label> What consequences are currently used in school for problem behaviors?
+                [textarea* consequences-problem-behaviors]
+            </label>
+            <label> What is the typical student response to these consequences?
+                [textarea* consequences-typical-response]
+            </label>
+            <h3> Skills Assessment </h3>
+            <hr>
+            <label> What are the student\'s academic strengths?
+                [text* academic-strengths]
+            </label>
+            <label> What are the student\'s academic needs?
+                [text* academic-needs]
+            </label>
+            <label> What are the student\'s organizational needs?
+                [textarea* organizational-needs]
+            </label>
+            <label> What are the student\'s preferred learning styles?
+                [text* preferred-learning-styles]
+            </label>
+            <label> What are the student\'s social strengths?
+                [text* social-strengths]
+            </label>
+            <label> What are the student\'s deficits in regard to social skills with adults and peers?
+                [textarea* social-skills-with-adults-and-peers]
+            </label>
+            <h3> Communication Summary </h3>
+            <hr>
+            <label> Does the student have difficulty in expressing any of these basic communication functions?
+                [checkbox* basic-communication-functions class:uacf7-checkbox "Gaining adult attention" " Gaining attention of peers" " Dealing with a difficult task" " Expressing frustration or confusion" " Requesting things of others" " Rejecting or protesting something" " Indicating preferences or making choices" " Requesting assistance"]
+            </label>
+            <label> Use the summary below to think about and identify possible replacement behaviors for instruction. Number separate issues in each of the following fields to clearly connect problem behavior to communication function and replacement behavior. Target Problem Behavior(s)
+                [textarea* possible-replacement-behaviors]
+            </label>
+            <label> Related Communication Function(s)
+                [textarea* related-communication-functions]
+            </label>
+            <label> Possible Replacement Behavior(s)
+                [textarea* possible-replacement-behaviors]
+            </label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-535]
+            <h3> Consequence Analysis </h3>
+            <hr>
+            <label> Thinking about the last few times the behavior occurred, what typically actually happens immediately afterward?
+                [text* thinking-about-last-behavior-occurred]
+            </label>
+            <label> Are demands typically altered after the target behavior?
+                [text* targeted-behavior]
+            </label>
+            <label> Does someone usually intervene to help the student after the target behavior?
+                [text* intervene-targeted-behavior]
+            </label>
+            <label> Does the student gain access to something that he/she appears to want?
+                [textarea* does-student-gain-access]
+            </label>
+            <label> Does the behavior appear pleasurable to the student apart from what else is going on around him/her?
+                [textarea* behavior-appear-pleasurable]
+            </label>
+            <label> Does the behavior appear to give the student control of others or the situation? Explain.
+                [textarea* behavior-situation-explain]
+            </label>
+            <label> Does the behavior, or do related behaviors, appear to be compulsive (i.e., repetitive, internally driven)? Explain.
+                [textarea* behavior-compulsive]
+            </label>
+            <div class="uacf7-submint">
+                [submit "Submit Form"]
+            </div>
+        [uacf7_step_end end]
+    </div>';  
+    break;
   
     // End Form from -Masum Billah
 
