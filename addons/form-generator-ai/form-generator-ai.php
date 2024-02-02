@@ -180,6 +180,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "student-survey", "label" => "Student Survey Form" ],
 			[ "value" => "classroom-observation", "label" => "Class Room Observation" ],
 			[ "value" => "course-evalution", "label" => "Course Evalution" ],
+			[ "value" => "admission-form", "label" => "Student Admission Form" ],
 			[ "value" => "university-enrollment", "label" => "University Enrollment" ],
 			[ "value" => "high-school-transcript", "label" => "High School Transcript" ],
 			[ "value" => "functional-behavioral-assesment", "label" => "Functional Behavioral Assessment" ],

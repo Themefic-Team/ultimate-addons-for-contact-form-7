@@ -2489,6 +2489,52 @@ case "product-order-form":
         [uacf7_step_end end]
     </div>';  
     break;
+    case "admission-form":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>First Name *
+                    [text* first-name]
+                </label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name *
+                    [text* last-name]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Email*
+            [email* email]
+        </label>
+        <label>Birth Date *
+            [date* birth-date]
+        </label>
+        <label>Gender *
+            [radio gender class:uacf7-radio default:1 "Male" "Female" "Others"]
+        </label>
+        <label>Select section *
+            [select* section include_blank class:uacf7-select "Section - A" "Section - B" "Section - C"]
+        </label>
+        <label> Apply for Class *
+            [radio apply-for-class class:uacf7-radio default:1 "O Level" "A Level"]
+        </label>
+        <label> Guardian Name *
+            [text* guardian-name]
+        </label>
+        <label> Guardian Contact *
+            [tel* guardian-contact]
+        </label>
+        <label> Upload Your Photo *
+            [file* your-photo]
+        </label>
+        <label> Comments (Optional)
+            [textarea your-comments]
+        </label>
+        <div class="uacf7-submint">
+            [submit "Apply For Admission"]
+        </div>
+    </div>';
+    break;
   
     // End Form from -Masum Billah
 
