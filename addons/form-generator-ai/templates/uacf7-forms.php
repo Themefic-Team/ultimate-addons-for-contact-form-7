@@ -2535,6 +2535,41 @@ case "product-order-form":
         </div>
     </div>';
     break;
+    case "multiple-file-upload":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>First Name *
+                    [text* first-name]
+                </label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name *
+                    [text* last-name]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+        
+        <label>Email*
+            [email* email]
+        </label>
+    
+        [uarepeater uarepeater-232 add "Add more" remove "Remove"]
+            <label> Upload Your File *
+                [file* your-photo]
+            </label>
+        [/uarepeater]
+    
+        <label> Comments (Optional)
+            [textarea your-comments]
+        </label>
+        
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>
+    ';
+    break;
   
     // End Form from -Masum Billah
 
