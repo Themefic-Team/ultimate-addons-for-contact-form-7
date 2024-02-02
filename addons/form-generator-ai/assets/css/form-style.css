@@ -126,6 +126,9 @@ textarea:focus-visible {
 .uacf7-wrapper-default .uacf7-radio span input {
   margin-right: 10px;
 }
+.uacf7-wrapper-default .uacf7-rating label span{
+  display: inline-block;
+}
 
 /* Form Submit Button */
 .uacf7-wrapper-default .uacf7-submint {

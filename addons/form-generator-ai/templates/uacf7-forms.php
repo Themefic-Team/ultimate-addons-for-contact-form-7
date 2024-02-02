@@ -2570,6 +2570,37 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "software-survey":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3>Software Survey</h3>
+        <hr>
+    
+        <label>How did you hear about ...?
+            [checkbox* where-from-heard class:uacf7-checkbox "Our Website" "Friends" "Social Media" "Ads" "Generic Search"]
+        </label>
+    
+        <label>Which platform do you use?
+            [checkbox* which-platform class:uacf7-checkbox "Mac OS" "Linux" "Windows" "Other"]
+        </label>
+    
+        <label>How would you rate our software?
+            [uacf7_star_rating* rating icon:star1 "default"]
+        </label>
+    
+        <label>Did you purchase any of our software?
+            [radio did-you-purchased class:uacf7-radio default:1 "Yes" "No"]
+        </label>
+    
+        <label>Please let us know if you have any suggestions for us.
+            [textarea your-comments]
+        </label>
+    
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>
+    ';
+    break;
   
     // End Form from -Masum Billah
 
