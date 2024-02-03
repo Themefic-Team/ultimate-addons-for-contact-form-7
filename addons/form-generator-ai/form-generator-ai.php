@@ -184,6 +184,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "multiple-file-upload", "label" => "Multiple File Upload" ],
 			[ "value" => "software-survey", "label" => "Software Survey" ],
 			[ "value" => "university-enrollment", "label" => "University Enrollment" ],
+			[ "value" => "website-feedback", "label" => "Website Feedback" ],
 			[ "value" => "high-school-transcript", "label" => "High School Transcript" ],
 			[ "value" => "functional-behavioral-assesment", "label" => "Functional Behavioral Assessment" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),

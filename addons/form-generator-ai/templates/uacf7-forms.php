@@ -2601,6 +2601,34 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "website-feedback":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3>Website Feedback</h3>
+        <hr>
+        <label>Your Full Name *
+            [text* your-name]
+        </label>
+        <label>Your Email *
+            [email* your-email]
+        </label>
+        <label>Is this the first time you have visited the website?
+            [radio is-this-first-time-visit class:uacf7-radio default:1 "Yes" "No"]
+        </label>
+        <label>What is the PRIMARY reason you came to the site?
+            [textarea your-reason-of-visit]
+        </label>
+        <label>Did you find what you needed? *
+            [checkbox* did-you-find-what-you-needed class:uacf7-checkbox "Yes, all of it" "Yes, some of it" "No, none of it"]
+        </label>
+        <label>User Friendliness
+            [uacf7_star_rating* how-much-user-friendly "default"]
+        </label>
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>
+    ';
+    break;
   
     // End Form from -Masum Billah
 
