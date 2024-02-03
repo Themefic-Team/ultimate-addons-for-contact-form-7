@@ -2696,6 +2696,191 @@ case "product-order-form":
     </div>
     ';
     break;
+
+    case "finance-application":
+        $form ='<div class="uacf7-wrapper-default">
+        <h3>Finance Application</h3>
+        [uacf7-row][uacf7-col col:4] 
+        <label> Date 
+        [date date]
+        </label>
+        [/uacf7-col][uacf7-col col:4]
+        <label> Sales Person
+        [text sales-person]
+        </label>
+        [/uacf7-col][uacf7-col col:4] 
+        <label> Choose One
+        [radio choose-credit-type class:uacf7-radio default:1 "Individual Credit" "Joint Credit"]
+        </label>
+        [/uacf7-col][/uacf7-row]
+        <h3> Applicant Name: </h3>
+        [uacf7-row][uacf7-col col:4] 
+        <label> First Name 
+        [text first-name]
+        </label>
+        [/uacf7-col][uacf7-col col:4]
+        <label> Middle Name
+        [text middle-name]
+        </label>
+        [/uacf7-col][uacf7-col col:4] 
+        <label> Last Name
+        [text last-name]
+        </label>
+        [/uacf7-col][/uacf7-row]
+        <label> Social Security Number * 
+        [number* security-number]
+        </label>
+        [uacf7-row][uacf7-col col:4] 
+        <label>Birth Date
+        [date* birth-date]
+        </label>
+        [/uacf7-col][uacf7-col col:4]
+        <label> Home Phone Number
+        [tel home-phone-number]
+        </label>
+        [/uacf7-col][uacf7-col col:4] 
+        <label> Cell Phone Number
+        [tel* cell-phone-number]
+        </label>
+        [/uacf7-col][/uacf7-row]
+        [uacf7-row][uacf7-col col:4] 
+        <label>Applicant Email *
+        [email* applicant-email]
+        </label>
+        [/uacf7-col][uacf7-col col:4]
+        <label> Number of Dependents
+        [number number-of-dependencies]
+        </label>
+        [/uacf7-col][uacf7-col col:4] 
+        <label> Time at Resident
+        [text* time-at-resident]
+        </label>
+        [/uacf7-col][/uacf7-row]
+        <label> Present Address </label>
+        [uacf7-row][uacf7-col col:6] 
+        <label>Street Line 1 *
+        [text* applicant-street-1]
+        </label>
+        <label>City *
+        [text* applicant-city]
+        </label>
+        <label>Zip Code *
+        [text* applicant-zip]
+        </label>
+        [/uacf7-col][uacf7-col col:6]
+        <label>Street Line 2 *
+        [text* applicant-street-2]
+        </label>
+        <label>State *
+        [text* applicant-state]
+        </label>
+        <label>Country *
+        [text* applicant-country]
+        </label>
+        [/uacf7-col][/uacf7-row]
+        <label> Previous Address ( If less than 2 years at present address ) </label>
+        [uacf7-row][uacf7-col col:6] 
+        <label>Street Line 1 *
+        [text* applicant-street-1-prev]
+        </label>
+        <label>City *
+        [text* applicant-city-prev]
+        </label>
+        <label>Zip Code *
+        [text* applicant-zip-prev]
+        </label>
+        [/uacf7-col][uacf7-col col:6]
+        <label>Street Line 2 *
+        [text* applicant-street-2-prev]
+        </label>
+        <label>State *
+        [text* applicant-state-prev]
+        </label>
+        <label>Country *
+        [text* applicant-country-prev]
+        </label>
+        [/uacf7-col][/uacf7-row]
+        [uacf7-row][uacf7-col col:4] 
+        <label> How many years *
+        [number* how-many-years]
+        </label>
+        [/uacf7-col][uacf7-col col:4]
+        <label> Gross Annual Income *
+        [number* gross-annual-income]
+        </label>
+        [/uacf7-col][uacf7-col col:4] 
+        <label> Mark please 
+        [radio profession class:uacf7-radio default:1 " Military" "Spouse" "Single"]
+        </label>
+        [/uacf7-col][/uacf7-row]
+        [uacf7-row][uacf7-col col:6] 
+        <label>Military Unit Number 
+        [text military-unit-number]
+        </label>
+        <label>Work Phone Number *
+        [tel* work-phone-number]
+        </label>
+        [/uacf7-col][uacf7-col col:6]
+        <label>Military Rank 
+        [text military-rank]
+        </label>
+        <label>Numeric Field *
+        [number* numeric-field]
+        </label>
+        [/uacf7-col][/uacf7-row]
+        <label> Source of Additional Income
+        [text source-of-additional-income]
+        </label>
+        <h3> Co-Applicant Information </h3>
+        <hr>
+        [uacf7-row][uacf7-col col:6] 
+        <label>First Name
+        [text co-applicant-first-name]
+        </label>
+        [/uacf7-col][uacf7-col col:6]
+        <label>Last Name
+        [text co-applicant-last-name]
+        </label>
+        [/uacf7-col][/uacf7-row]
+        <label>Email
+        [email co-applicant-email]
+        </label>
+        <label>Cell Phone
+        [tel co-applicant-cell]
+        </label>
+        <label>Address </label>
+        [uacf7-row][uacf7-col col:6] 
+        <label>Street Line 1 *
+        [text* co-applicant-street-1]
+        </label>
+        <label>City *
+        [text* co-applicant-city]
+        </label>
+        <label>Zip Code *
+        [text* co-applicant-zip]
+        </label>
+        [/uacf7-col][uacf7-col col:6]
+        <label>Street Line 2 *
+        [text* co-applicant-street-2]
+        </label>
+        <label>State *
+        [text* co-applicant-state]
+        </label>
+        <label>Country *
+        [text* co-applicant-country]
+        </label>
+        [/uacf7-col][/uacf7-row]
+        [acceptance terms] By clicking the submit button, I agree to terms & conditions [/acceptance]
+        <label>I authorize the XXX to make whatever inquires it deems necessary in connection with this credit application and in the course of review or collection of any credit extended in reliance on this application. I further authorized any person or YYY to complete and finish to the XXX any information that it may have or obtain in response to such inquires and agree that such information along with this application shall remain the XXX\'s property, whether or not credit is extended. All information stated in this application is declared to be a true representation of the facts and made for the purpose of obtaining the credit request. I HAVE REVIEWED THE ABOVE DISCLOSURE.
+        </label>
+        <div class="uacf7-submint">
+
+            [submit "Submit Form"]
+
+        </div>
+
+    </div>';
+    break;
   
     // End Form from -Masum Billah
 
