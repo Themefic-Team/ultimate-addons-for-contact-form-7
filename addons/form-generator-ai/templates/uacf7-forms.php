@@ -2629,6 +2629,73 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "partnership-application":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3>Partnership Application Form</h3>
+        <p>Thank you for your interests in our company. We are excited to have you on board as one of our esteemed partners. To get started, please complete all fields accordingly. We will review and get in touch with you shortly. If you are unsure about any of the answers, please use an estimation.</p>
+        <hr>
+        [uacf7-row][uacf7-col col:6] 
+            <label>Company Name
+                [text company-name]
+            </label>
+            <label>Number of Employees
+                [text number-of-employees]
+            </label>
+        [/uacf7-col][uacf7-col col:6] 
+            <label>Company URL
+                [url company-url]
+            </label>
+            <label>Number of Customers
+                [text number-of-customers]
+            </label>
+        [/uacf7-col][/uacf7-row]
+        <label>Place of Business 
+            [select place-of-business include_blank "USA" "UK" "Singapore" "Palestine"]
+        </label>
+        <label>Current Demand Generation Activities (you can select more than one)
+            [checkbox currently-demanded-activities class:uacf7-checkbox "Direct Mailer" "Website Optimization" "Email/Mobile Marketing" "Media Advertisement" "Social Media" "Paid Search / SEO" "Trade show/Workshop"]
+        </label>
+        <label>Do you want us to publish your profile on our site?
+            [radio wanna-publish-profile class:uacf7-radio default:1 "Yes" "No"]
+        </label>
+        <label>Your Company Profile (less than 150 words)
+            [textarea your-company-profile]
+        </label>
+        <label>Company Specialization Keywords (Separated by comma)
+            [textarea your-company-keywords]
+        </label>
+        [uacf7-row][uacf7-col col:6] 
+            <label>Sales Inquiry Number (Leave blank if unknown)
+                [number sales-inquiry-number]
+            </label>
+        [/uacf7-col][uacf7-col col:6] 
+            <label>Sales Enquiry Email Address
+                [email sales-inquiry-email]
+            </label>
+        [/uacf7-col][/uacf7-row]
+        <label>Upload Logo (PNG, Transparent Background)
+            [file your-logo]
+        </label>
+        <hr>
+        <h3>Point of Contact - Partnership</h3>
+        <label>Contact Name
+            [text contact-name]
+        </label>
+        [uacf7-row][uacf7-col col:6] 
+            <label>Phone Number*
+                [tel* contact-phone]
+            </label>
+        [/uacf7-col][uacf7-col col:6] 
+            <label>Email Address*
+                [email* contact-email]
+            </label>
+        [/uacf7-col][/uacf7-row]
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>
+    ';
+    break;
   
     // End Form from -Masum Billah
 
