@@ -3227,7 +3227,24 @@ case "product-order-form":
             </div>
            ';
         break;
-  
+    case "party-invite":
+        $form = '<div class="uacf7-wrapper-default">
+        <h6 style="text-align:center">You\'re Invited!</h6>
+        <h6 style="text-align:center">Come get cool at our pool this 4th of July!</h6>
+        <p style="text-align:center">[You can add an Image/Logo Here]</p>
+        <p style="text-align:center">Time: July 4th, 2020</p>
+        <p style="text-align:center">Address: 2611 Ash Avenue, SAN DIEGO, CA, California, 92152</p>
+        <hr>
+        <label>Are you coming? * [radio are-you-coming class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Will you bring a guest with you? * [radio bringing-guest class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Are you bringing any food? (e.g., wine, sandwich, pizza, etc.) * [radio bringing-food class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Your Special Comments (If any) [textarea special-comments]</label>
+        <div class="uacf7-submint">
+            [submit "Submit"]
+        </div>
+    </div>
+    ';
+    break;
     // End Form from -Masum Billah
 
 	case "multistep":
