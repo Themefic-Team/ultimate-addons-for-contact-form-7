@@ -189,6 +189,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "finance-application", "label" => "Finance Application" ],
 			[ "value" => "high-school-transcript", "label" => "High School Transcript" ],
 			[ "value" => "book-a-room", "label" => "Book a Room" ],
+			[ "value" => "qoute-request", "label" => "Qoute Request" ],
 			[ "value" => "functional-behavioral-assesment", "label" => "Functional Behavioral Assessment" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),

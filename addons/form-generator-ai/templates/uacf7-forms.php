@@ -2908,6 +2908,67 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "qoute-request":
+        $form ='<div class="uacf7-wrapper-default">
+        [uacf7_step_start uacf7_step_start-509]
+        <h3>REQUEST FOR QUOTE</h3>
+        <hr>
+        <label>Date [date date]</label>
+        <hr>
+        <h3>CONTACT INFORMATION</h3>
+        <hr>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>First Name [text first-name placeholder]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name [text last-name placeholder]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Address</label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1 [text address-line-1]</label>
+                <label>City* [text* city]</label>
+                <label>Zip Code* [text* zip-code]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Address Line 2 [text* address-line-2]</label>
+                <label>State* [text* state]</label>
+                <label>Country* [text* country]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-510]
+        <h3>PRODUCTS</h3>
+        <br>
+        <h4>ITEM 1</h4>
+        [uacf7-row][uacf7-col col:6]
+            <label>Product Name: [text product-name-1]</label>
+        [/uacf7-col][uacf7-col col:6]
+            <label>Quantity [number product-quantity-1]</label>
+        [/uacf7-col][/uacf7-row]
+        <h4>ITEM 2</h4>
+        [uacf7-row][uacf7-col col:6]
+            <label>Product Name: [text product-name-2]</label>
+        [/uacf7-col][uacf7-col col:6]
+            <label>Quantity [number product-quantity-2]</label>
+        [/uacf7-col][/uacf7-row]
+        <h4>ITEM 3</h4>
+        [uacf7-row][uacf7-col col:6]
+            <label>Product Name: [text product-name-3]</label>
+        [/uacf7-col][uacf7-col col:6]
+            <label>Quantity [number product-quantity-3]</label>
+        [/uacf7-col][/uacf7-row]
+        <h4>NOTES</h4>
+        <label>Additional comments or questions: [textarea your-comments]</label>
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+        [uacf7_step_end end]
+    </div>
+    ';
+    break;
   
     // End Form from -Masum Billah
 
