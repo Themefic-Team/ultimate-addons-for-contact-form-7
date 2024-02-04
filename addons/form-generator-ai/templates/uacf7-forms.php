@@ -3561,6 +3561,49 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "social-service":
+        $form = '<div class="uacf7-wrapper-default">
+        <label>Social Worker:</label>
+        [uacf7-row]
+            [uacf7-col col:6] 
+                <label>First Name [text social-worker-first-name]</label>
+            [/uacf7-col]
+            [uacf7-col col:6] 
+                <label>Last Name [text social-worker-last-name]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Case Name [text case-name]</label>
+        <label>Case Worker:</label>
+        [uacf7-row]
+            [uacf7-col col:6] 
+                <label>First Name [text case-worker-first-name]</label>
+            [/uacf7-col]
+            [uacf7-col col:6] 
+                <label>Last Name [text case-worker-last-name]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Case Type [text case-type]</label>
+        <label>Date of Visit: * [date* date]</label>
+        <label>Check all that apply:</label>
+        [checkbox terms class:uacf7-checkbox "The home appears to be clean, safe, sanitary and in good repair" "Waste is stored, located and disposed of in a manner that will not permit the transmission of communicable disease or odors, create a nuisance, or provide a breeding place or food source for insects or rodents" "At least one toilet, bath or shower with hot and cold running water" "An operable heating system" "Suitable sleeping areas – no halls, stairways, unfinished attic, garage, bathroom, eating area, closet, shed, or detached buildings" "Children of the opposite sex who are 5 or older do not share the same bedroom" "Each child is provided with a clean, comfortable mattress, clean linens, blankets and a pillow" "Medication and toxic substances are locked up so that children in the home cannot access" "Operable telephone" "Emergency telephone numbers – including fire, police, poison control and ambulance must be conspicuously posted adjacent to all telephones" "Fireplaces, fireplace inserts, wood and coal burning stoves and free standing space heaters, if allowed by local ordinance, shall be installed equipped and operated according to manufacturer’s specification and requirements specified by local ordinance" "Smoke detector on each level of residence (including basement)" "Fire extinguisher gauge or button ensures adequate pressure. If there is not gauge or button, the extinguisher is tested and tagged by fire company or appropriate source" "Protective caps in all electrical outlets (children under 5)" "No exposed electrical wires" "Guns locked and ammunition stored separately" "Number of persons transported does not exceed vehicle capacity" "Seat belts in automobiles are used by occupants" "Children who are under eight (8) years of age who are transported in motor vehicles shall be securely fastened in a child passenger restraint system" "Children shall be limited to floor level not more than 2 stories above ground level" "Exits for building with up to and including 2 stories, a minimum of one exit from each floor kept free from obstructions shall be provided" "First Aid supplies in the home" "Fire escape plans are posted" "Baby gates are used on staircases if they are under 2 years old"]
+        [uacf7-row]
+            [uacf7-col col:6] 
+                <label>Smoke Alarms Operable? [radio smoke-alerm class:uacf7-radio default:1 "Yes" "No"]</label>
+            [/uacf7-col]
+            [uacf7-col col:6] 
+                <label>Date Checked [date* date-checked]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Items Discussed During Visit: [textarea items-discussed]</label>
+        <label>Notes & Comments: [textarea notes-comments]</label>
+        <label>Today\'s Date: [date todays-date]</label>
+        [acceptance terms] I certify that this home meets the standards for approval as described in this form. [/acceptance]
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>
+    ';
+    break;
     // End Form from -Masum Billah
 
 	case "multistep":

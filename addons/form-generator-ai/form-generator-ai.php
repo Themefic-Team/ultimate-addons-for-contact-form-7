@@ -197,6 +197,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "party-invite", "label" => "Party Invite" ],
 			[ "value" => "birthday-party", "label" => "Birthday Party" ],
 			[ "value" => "vehicle-inspection", "label" => "Vehicle Inspection" ],
+			[ "value" => "social-service", "label" => "social Service Home Visit" ],
 			[ "value" => "employee-evaluation", "label" => "Employee Evaluation" ],
 			[ "value" => "functional-behavioral-assesment", "label" => "Functional Behavioral Assessment" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
