@@ -3735,6 +3735,63 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "swimming-competition-enrollment":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3 style="text-align:center; color:#382673">Swimming Competition Enrollment</h3>
+        <p style="text-align:center; color:#382673">Please fill this form out to enter into the competition </p>
+        <p style="text-align:center;">[Add an awesome image here]</p>
+        <hr>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>First Name [text first-name]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name [text last-name]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Height [text height]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Select age group [select age-group class:uacf7-select include_blank "5-12 Years" "13-21 Years" "Above 21"]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Father Name [text father-name]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Mother Name [text mother-name]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Phone [tel phone]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Email [email email]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Address </label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1 [text address-line-1 ]</label>
+                <label>City* [text* city ]</label>
+                <label>Zip Code * [text* zip-code ]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Address Line 2 [text* address-line-2 ]</label>
+                <label>State * [text* state]</label>
+                <label>Country * [text* country]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>
+    ';
+    break;
     // End Form from -Masum Billah
 
 	case "multistep":

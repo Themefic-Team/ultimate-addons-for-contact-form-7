@@ -201,6 +201,7 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "handicap-parking-request", "label" => "Handicap Parking Request" ],
 			[ "value" => "employee-evaluation", "label" => "Employee Evaluation" ],
 			[ "value" => "confidential-morbidity", "label" => "Confidential Morbidity"],
+			[ "value" => "swimming-competition-enrollment", "label" => "Swimming Competition Enrollment"],
 			[ "value" => "functional-behavioral-assesment", "label" => "Functional Behavioral Assessment" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),
 			apply_filters( 'uacf7_appointment_form_dropdown', [ "value" => "appointment-form", "label" => "Appointment (Pro)" ] ),
