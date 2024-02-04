@@ -192,6 +192,8 @@ class UACF7_FORM_GENERATOR {
 			[ "value" => "qoute-request", "label" => "Qoute Request" ],
 			[ "value" => "loan-application", "label" => "Loan Application" ],
 			[ "value" => "personal-loan", "label" => "Personal Loan" ],
+			[ "value" => "sponsor-request", "label" => "Sponsor Request" ],
+			[ "value" => "job-listing", "label" => "Job Listing" ],
 			[ "value" => "employee-evaluation", "label" => "Employee Evaluation" ],
 			[ "value" => "functional-behavioral-assesment", "label" => "Functional Behavioral Assessment" ],
 			apply_filters( 'uacf7_service_booking_form_dropdown', [ "value" => "service-booking", "label" => "Service Booking (Pro)" ] ),

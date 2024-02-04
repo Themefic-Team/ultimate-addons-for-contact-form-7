@@ -3128,6 +3128,105 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "sponsor-request":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7_step_start uacf7_step_start-589]
+            <h3 style="text-align: center; font-weight:bold; color:#34C4C7">Sponsorship Request</h3>
+            <p style="text-align: center; color:#88D7D8">Let\'s get started.</p>
+            <hr>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-590]
+            <label>What\'s your Name [text name]</label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-591]
+            <label>What\'s your Email [email email]</label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-592]
+            <label>What\'s your Phone Number [tel phone-number]</label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-593]
+            <label>What\'s your Address</label>
+            [uacf7-row]
+                [uacf7-col col:6]
+                    <label>Address Line 1 [text address-line-1]</label>
+                    <label>City* [text* city]</label>
+                    <label>Zip Code* [text* zip-code]</label>
+                [/uacf7-col]
+                [uacf7-col col:6]
+                    <label>Address Line 2 [text* address-line-2]</label>
+                    <label>State* [text* state]</label>
+                    <label>Country* [text* country]</label>
+                [/uacf7-col]
+            [/uacf7-row]
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-594]
+            <label>May I know where do you work? [text working-place]</label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-595]
+            <label>Which position do you want to sponsor? [text sponsor-position]</label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-596]
+            <label>Special Request [textarea special-request]</label>
+            <div class="uacf7-submint">
+                [submit "Submit"]
+            </div>
+        [uacf7_step_end end]
+    </div>
+    ';
+    break;
+    case "job-listing":
+        $form = '<div class="uacf7-wrapper-default">
+                [uacf7_step_start uacf7_step_start-589]
+                    <h3>Personal Information</h3>
+                    <hr>
+                    <label>Company Name [text company-name]</label>
+                    <label>Salutation [select salutation class:uacf7-select include_blank "Mr" "Mrs" "Miss" "Ms." "Dr." "Prof."]</label>
+                    [uacf7-row][uacf7-col col:4] 
+                        <label>First Name [text first-name]</label>
+                    [/uacf7-col][uacf7-col col:4] 
+                        <label>Middle Name [text middle-name]</label>
+                    [/uacf7-col][uacf7-col col:4] 
+                        <label>Last Name [text last-name]</label>
+                    [/uacf7-col][/uacf7-row]
+                    <label>Email [email email]</label>
+                    [acceptance terms optional]Agree to show contact information in public posting (optional)[/acceptance]
+                [uacf7_step_end end]
+                [uacf7_step_start uacf7_step_start-590]
+                    <h3>Information of Your Position</h3>
+                    <hr>
+                    <label>Company Name * [text company-name-2]</label>
+                    <label>Department / Division [text company-dept]</label>
+                    <label>Position Title [text position-title]</label>
+                    <label>Reference Number [text ref-number]</label>
+                    <label>Job Posting Url [url job-posting-url]</label>
+                    <label>Salary Details [text salary-details]</label>
+                    [acceptance salary-nego optional]Salary Negotiable[/acceptance]
+                    <label>Type of Employment [select type-of-employment class:uacf7-select include_blank "Full Time" "Part Time"]</label>
+                    <label>Type of Contract [select type-of-contract class:uacf7-select include_blank "Permanent" "Term" "Locum"]</label>
+                    <label>Type of Position [select type-of-position class:uacf7-select include_blank "Academic" "Administrative" "Obstetrics" "Gynaecology" "Obstetrics/Gynaecology" "Other"]</label>
+                    <label>Job Summary [textarea job-summery]</label>
+                    <label>Roles and Responsibilities [textarea job-roles]</label>
+                    <label>Skills and Competencies [textarea job-skills]</label>
+                    <label>Education and Experience [textarea education-and-experience]</label>
+                    <label>Others [textarea others-details]</label>
+                    <label>Upload your CV * [file* your-cv]</label>
+                    <label>Start Date of Employment * [date* start-date]</label>
+                    <label>Application Deadline * [date* application-deadline]</label>
+                [uacf7_step_end end]
+                [uacf7_step_start uacf7_step_start-591]
+                    <h3>Payment Information</h3>
+                    <hr>
+                    <label>Salary Amount [radio salary-amount class:uacf7-radio default:1 "$ 400.00 - 1 Month Posting Duration" "$ 600.00 - 2 Month Posting Duration" "$ 900.00 - 3 Month Posting Duration" "Other"]</label>
+                    [conditional conditional-946]
+                        <label>Type your Amount [text custom-salary-amount]</label>
+                    [/conditional]   
+                    <div class="uacf7-submint">
+                        [submit "Submit"]
+                    </div>
+                [uacf7_step_end end]
+            </div>
+           ';
+        break;
   
     // End Form from -Masum Billah
 
