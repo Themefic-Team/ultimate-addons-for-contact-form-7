@@ -2969,6 +2969,165 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "loan-application":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3>Business Loan Application</h3>
+        <p>Personal Information</p>
+        <hr>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>First Name [text first-name placeholder]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name [text last-name placeholder]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>E-mail of Applicant* [email* applicant-email]</label>
+        <label>Phone number of Applicant* [tel* applicant-phone]</label>
+        <label>Fax Number of Applicant [number applicant-fax]</label>
+        <label>Address of Applicant</label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1 [text address-line-1]</label>
+                <label>City* [text* city]</label>
+                <label>Zip Code* [text* zip-code]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Address Line 2 [text* address-line-2]</label>
+                <label>State* [text* state]</label>
+                <label>Country* [text* country]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Date of Birth of Applicant [date* applicant-date-of-birth]</label>
+        <h3>Project Details</h3>
+        <br>
+        <label>Applying as * [radio applying-as class:uacf7-radio default:1 "Sole Proprietor" "Partnership" "Corporation"]</label>
+        <label>Planned Business Location</label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1 [text business-address-line-1]</label>
+                <label>City* [text* business-city]</label>
+                <label>Zip Code* [text* business-zip-code]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Address Line 2 [text* business-address-line-2]</label>
+                <label>State* [text* business-state]</label>
+                <label>Country* [text* business-country]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Project Marketing Material [file project-marketing-material]</label>
+        <label>Project Information [file project-information]</label>
+        <label>Does the borrower have an up-to-date assets and liabilities statement? * [radio borrower-liabilities class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Have you previously been financed? * [radio previously-financed class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Loan Reason [checkbox loan-reason class:uacf7-checkbox "Construction" "Asset Purchase" "Refinancing" "Other"]</label>
+        <label>Project Gross Value [text project-gross-value]</label>
+        <label>Loan Amount [text loan-amount]</label>
+        <p>The information provided in this application shall not be shared with anyone else and is kept confidential</p>
+        [acceptance acceptance] I agree that the information herein is true and correct [/acceptance]
+        <div class="uacf7-submint">
+            [submit "Submit Application Form"]
+        </div>
+    </div>
+    ';
+    break;
+    case "personal-loan":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7_step_start uacf7_step_start-303]
+        <h3>Personal Information</h3>
+        <hr>
+        <label>Title * [select* title include_blank "Mr" "Mrs" "Ms"]</label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>First Name [text first-name placeholder]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name [text last-name placeholder]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Date of Birth* [date* date-of-birth]</label>
+        <label>Marital Status* [radio marital-status class:uacf7-radio default:1 "Single" "Married" "Other"]</label>
+        <label>Email * [email* email]</label>
+        <label>Phone Number * [tel* phone-number]</label>
+        <label>Address of Applicant</label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1 [text address-line-1]</label>
+                <label>City* [text* city]</label>
+                <label>Zip Code* [text* zip-code]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Address Line 2 [text* address-line-2]</label>
+                <label>State* [text* state]</label>
+                <label>Country* [text* country]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>How long have you lived in your given address? * [radio how-long-living-there class:uacf7-radio default:1 "0-1 years" "1-2 years" "2-3 years" "3-4 years" "5+ years"]</label>
+        [uacf7_step_end end]
+        [uacf7_step_start uacf7_step_start-304]
+        <h3 style="text-align:center">Employment Information</h3>
+        <p style="text-align:center">Put Your Employment Information below, Please fill all the required. </p>
+        <hr>
+        <label>Present Employer* [text* present-employer]</label>
+        <label>Occupation* [text* occupation]</label>
+        <label>Experience of work (years)* [checkbox* experience-of-work class:uacf7-checkbox "0-1 years" "1-2 years" "2-3 years" "3-4 years" "5+ years"]</label>
+        <label>Gross monthly income * [text* gross-monthly-income]</label>
+        <label>Monthly rent/mortgage * [text* monthly-mortgage]</label>
+        <label>Down Payment Amount * [text* down-payment-amount]</label>
+        <label>Comments [text your-comments]</label>
+        [acceptance acceptance] I have read and agree to the Terms and Conditions and Privacy Policy [/acceptance]
+        <div class="uacf7-submint">
+            [submit "Submit Application Form"]
+        </div>
+        [uacf7_step_end end]
+    </div>
+    ';
+    break;
+    case "employee-evaluation":
+        $form = '<div class="uacf7-wrapper-default">
+        <p style="text-align: center; font-weight:bold">Please remember that the form will be confidential and will be used for only internally; so, feel free to submit your data however you feel to submit;</p>
+        <hr>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>First Name [text first-name placeholder]</label>
+                <label>Title [text title]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name [text last-name placeholder]</label>
+                <label>Relationship with employee: [select relationship-with-employee include_blank "Coworker" "Supervisor(Direct)" "Supervisor(Indirect)"]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <h3>Employee Information</h3>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>First Name [text employee-first-name placeholder]</label>
+                <label>Text Input [text text-input]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name [text employee-last-name placeholder]</label>
+                <label>Review type: [radio review-type class:uacf7-radio default:1 "90-Day Review" "Annual/Raise Review"]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <p>How would you rate the employee...</p>
+        <label>Attendance? [radio attendance class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Professionalism? [radio professionalism class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Attire? [radio attire class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Work area? [radio work-area class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Ability to do the job? [radio ability-to-job class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Ability to work with others? [radio ability-to-work-with-others class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Ability to receive feedback/criticism? [radio ability-to-receive-feedback class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Ability to adapt? [radio ability-to-adapt class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Willingness to learn? [radio willingness-to-learn class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Willingness to participate? [radio willingness-to-participate class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Work ethic? [radio work-ethic class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>Quality of work? [radio quality-of-work class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
+        <label>What are the employee\'s top qualities? [textarea employees-top-qualities]</label>
+        <label>In what ways could the employee improve? [textarea employees-improvement-comments]</label>
+        <div class="uacf7-submint">
+            [submit "Submit"]
+        </div>
+    </div>
+    ';
+    break;
   
     // End Form from -Masum Billah
 
