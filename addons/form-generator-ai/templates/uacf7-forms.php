@@ -3641,6 +3641,100 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "confidential-morbidity":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3>Provider Information</h3>
+        <hr>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Physician\'s Name (First Name) [text physician-first-name]</label>
+                <label>Physician\'s Phone Number [tel physician-phone-number]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name [text physician-last-name]</label>
+                <label>Facility Phone [tel facility-phone]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Facility Address</label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1 [text physician-address-line-1]</label>
+                <label>City* [text* physician-city]</label>
+                <label>Zip Code * [text* physician-zip-code]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Address Line 2 [text* physician-address-line-2]</label>
+                <label>State * [text* physician-state]</label>
+                <label>Country * [text* physician-country]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <h3>Patient Information</h3>
+        <hr>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Patient\'s Name (First Name) [text patient-first-name]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name [text patient-last-name]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Patient Address </label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1 [text patient-address-line-1]</label>
+                <label>City* [text* patient-city]</label>
+                <label>Zip Code * [text* patient-zip-code]</label>
+                <label>Patient Phone * [tel* patient-phone]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Address Line 2 [text* patient-address-line-2]</label>
+                <label>State * [text* patient-state]</label>
+                <label>Country * [text* patient-country]</label>
+                <label>Patient Email* [email* patient-email]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Race [radio race class:uacf7-radio default:1 "White" "Black" "Asian" "Native American" "Pacific Islander" "Other"]</label>
+                <label>Social Security Number [text social-security-number ]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Ethnicity [radio ethnicity class:uacf7-radio default:1 "Hispanic" "Non-Hispanic"]</label>
+                <label>Gender [radio gender class:uacf7-radio default:1 "Male" "Female" "Transgender, Male-Female" "Transgender, Female-Male"]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <p>Parent/Guardian Name:</p>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Guardian Name [text guardian-name]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Guardian Phone [tel guardian-phone]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <h3>Disease</h3>
+        <hr>
+        <label>Disease or Condition Name [text disease-name]</label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Admission Date [date admission-date]</label>
+                <label>Diagnosis Date [date diagnosis-date]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Onset Date [date onset-date]</label>
+                <label>Discharge Date [date discharge-date]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Symptoms [textarea symptoms]</label>
+        <label>Was laboratory testing ordered? [radio lab-test-ordered class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>What the patient treated? [radio patient-treated class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Description of other illnesses/treatments [textarea other-illnesses]</label>
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>
+    ';
+    break;
     // End Form from -Masum Billah
 
 	case "multistep":
