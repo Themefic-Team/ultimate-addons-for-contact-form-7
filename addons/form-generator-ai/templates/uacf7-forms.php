@@ -3245,6 +3245,26 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "birthday-party":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3 style="text-align:center; color:#14B8E5; font-weight:bold">Join Birthday Party!</h3>
+        <p style="text-align:center">[You can add an Image/Logo Here]</p>
+        <p style="text-align:center; color:#382673; font-weight:bold">Date: December 05, 2019 | Time: 12:00 am | Address: 3491 Henry Ford Avenue, Tulsa, OK, Oklahoma, 74120</p>
+        <hr>
+    
+        <label>Name [text name]</label>
+        <label>Phone [text phone]</label>
+        <label>Email [text email]</label>
+        <label>Food Type [checkbox food-type class:uacf7-checkbox "Vegan" "Non - Vegan"]</label>
+        <label>How many people will you come with? [select number-of-guest class:uacf7-select include_blank "One" "Two" "Three" "Four" "Five"]</label>
+    
+        <label>Your Special Comments (If any) [textarea special-comments]</label>
+    
+        <div class="uacf7-submint">
+            [submit "Submit"]
+        </div>
+    </div>';
+    break;
     // End Form from -Masum Billah
 
 	case "multistep":
