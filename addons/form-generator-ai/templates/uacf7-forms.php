@@ -3604,6 +3604,43 @@ case "product-order-form":
     </div>
     ';
     break;
+    case "handicap-parking-request":
+        $form = '<div class="uacf7-wrapper-default">
+        [uacf7-row]
+            [uacf7-col col:6] 
+                <label>First Name [text first-name]</label>
+            [/uacf7-col]
+            [uacf7-col col:6] 
+                <label>Last Name [text last-name]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Email [email email]</label>
+        <label>Address </label>
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1 [text* address-line-1]</label>
+                <label>City* [text* city]</label>
+                <label>Zip Code * [text* zip-code]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Address Line 2 [text* address-line-2]</label>
+                <label>State * [text* state]</label>
+                <label>Country * [text* country]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Phone [tel phone]</label>
+        <label>Date of Birth: [date* date-of-birth]</label>
+        <label>Driving License Number [text driving-license]</label>
+        <label>[select application-type class:uacf7-select include_blank "Permanent Placard" "Temporary Placard" "Travel Parking Placard" "Disabled Person License Plate"]</label>
+        <label>Please attach document from state licensed medical physician to certify disability. [file essential-files]</label>
+        [acceptance terms] 	
+        The information I have entered is truthful to the best of my knowledge. [/acceptance]
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>
+    ';
+    break;
     // End Form from -Masum Billah
 
 	case "multistep":
