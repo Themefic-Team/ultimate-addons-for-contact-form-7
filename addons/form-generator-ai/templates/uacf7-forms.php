@@ -2881,6 +2881,33 @@ case "product-order-form":
 
     </div>';
     break;
+    case "book-a-room":
+        $form = '<div class="uacf7-wrapper-default">
+        <h3>Book a Room</h3>
+        <hr>
+        [Add Your Hotel Logo]
+        [Add Your Hotel Name]
+        [Add Your Hotel Address]
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>First Name [text first-name placeholder]</label>
+            [/uacf7-col]
+            [uacf7-col col:6]
+                <label>Last Name [text last-name placeholder]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+        <label>Email [email email]</label>
+        <label>Room Type [select room-type class:uacf7-select include_blank "Standard room (1 to 2 people)" "Family room (1 to 4 people)" "Private room (1 to 3 people)" "Only female room"]</label>
+        <label>Arrival Date [date arrival-date]</label>
+        <label>Departure Date [date departure-date]</label>
+        <label>No. of people [number number-of-people]</label>
+        <label>Special Requests [textarea special-request]</label>
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    </div>
+    ';
+    break;
   
     // End Form from -Masum Billah
 
