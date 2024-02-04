@@ -3265,6 +3265,302 @@ case "product-order-form":
         </div>
     </div>';
     break;
+    case "vehicle-inspection":
+        $form = '<div class="uacf7-wrapper-default">
+
+        <label> Inspection Date & Time *
+            [date* inspection-date]
+        </label>
+    
+        [uacf7-row]
+            [uacf7-col col:6] 
+                <label>First Name [text first-name]</label>
+            [/uacf7-col]
+            [uacf7-col col:6] 
+                <label>Last Name [text last-name]</label>
+            [/uacf7-col]
+        [/uacf7-row]
+    
+        <label>Email * [email* email]</label>    
+    
+        <label>Address </label>
+    
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Address Line 1
+                    [text address-line-1 ]
+                </label>
+    
+                <label>City*
+                    [text* city ]
+                </label>
+    
+                <label>Zip Code *
+                    [text* zip-code ]
+                </label>
+            [/uacf7-col]
+    
+            [uacf7-col col:6]
+                <label>Address Line 2
+                    [text* address-line-2 ]
+                </label>
+    
+                <label>State *
+                    [text* state]
+                </label>
+    
+                <label>Country *
+                    [text* country]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+    
+        <label>Vehicle Information</label>
+    
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>VIN Number
+                    [text vin-number ]
+                </label>
+    
+                <label>License/Registration Number *
+                    [text* vehicle-license-or-reg]
+                </label>
+    
+                <label>Vehicle Year *
+                    [text* vehicle-year ]
+                </label>
+            [/uacf7-col]
+    
+            [uacf7-col col:6]
+                <label>Vehicle Make
+                    [text* vehicle-make ]
+                </label>
+    
+                <label>Vehicle Mileage
+                    [text* vehicle-mileage]
+                </label>
+    
+                <label>Driving License *
+                    [text* driving-license]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+    
+        <label>Others Information</label>
+    
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Front Bumper
+                    [radio front-bumper class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Back Bumper
+                    [radio back-bumper class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Leaks under vehicle
+                    [radio leaks-under-vehicle class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Tire pressure
+                    [radio tire-pressure class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Windows
+                    [radio windows class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Doors
+                    [radio doors class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Side mirrors
+                    [radio side-mirrors class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Warning lights
+                    [radio warning-lights class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+            [/uacf7-col]
+    
+            [uacf7-col col:6]
+                <label>Clean interior
+                    [radio clean-interior class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Floor free of hazards
+                    [radio floor-free-of-hazards class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Seat belts condition
+                    [radio seat-belts-condition class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Mirrors
+                    [radio mirrors class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Brake functionality
+                    [radio brake-functionality class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Heat
+                    [radio heat class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>A/C
+                    [radio ac class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+    
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Under The Hood</label>
+    
+                <label>Oil level
+                    [radio oil-level class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Wiper fluid level
+                    [radio wiper-fluid-level class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Belts
+                    [radio belts class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Hoses
+                    [radio hoses class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Battery
+                    [radio battery class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Brake fluid
+                    [radio brake-fluid class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Power steering fluid
+                    [radio power-steering-fluid class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Coolant level
+                    [radio coolant-level class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+            [/uacf7-col]
+    
+            [uacf7-col col:6]
+                <label> Electrical </label>
+    
+                <label>Left turn signal
+                    [radio left-turn-signal class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Right turn signal
+                    [radio right-turn-signal class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>High beams
+                    [radio high-beams class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Low beams
+                    [radio low-beams class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Emergency flashers
+                    [radio emergency-flashers class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Horn
+                    [radio horny class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Windshield wipers
+                    [radio windshield-wipers class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Brake lights
+                    [radio brake-lights class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+    
+        [uacf7-row]
+            [uacf7-col col:6]
+                <label>Safety Equipment</label>
+    
+                <label>Reflective triangles or flares
+                    [radio reflective-triangles-or-flares class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>First aid kit
+                    [radio first-aid-kit class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Bio-hazard kit
+                    [radio bio-hazard-kit class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Seatbelt cutter
+                    [radio seatbelt-cutter class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+            [/uacf7-col]
+    
+            [uacf7-col col:6]
+                <label>Accessiblity Equipment (if applicable)</label>
+    
+                <label>Cycle lift
+                    [radio cycle-lift class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Proper number of seat belts
+                    [radio proper-number-of-seat-belts class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Emergency handle
+                    [radio emergency-handle class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+    
+                <label>Hydraulic fluid
+                    [radio hydraulic-fluid class:uacf7-radio default:1 "Pass" "Fail"]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+    
+        <label>Notes (If any) [textarea notes]</label>
+        <label>Upload Relevant Files [file relevant-file]</label>
+    
+        <h3>Signature </h3>
+        <hr>
+    
+        [uacf7_signature vehicle-owner-sign]
+    
+        <label>Inspector Name: </label>
+    
+        [uacf7-row]
+            [uacf7-col col:6] 
+                <label> First Name 
+                    [text inspector-first-name]
+                </label>
+            [/uacf7-col]
+            [uacf7-col col:6] 
+                <label> Last Name 
+                    [text inspector-last-name]
+                </label>
+            [/uacf7-col]
+        [/uacf7-row]
+    
+        <div class="uacf7-submint">
+            [submit "Submit Form"]
+        </div>
+    
+    </div>
+    ';
+    break;
     // End Form from -Masum Billah
 
 	case "multistep":
