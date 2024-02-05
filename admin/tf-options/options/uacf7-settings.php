@@ -277,20 +277,6 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'demo_link' => '#',
 						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/contact-form-7-webhook/',
 					),
-
-					'uacf7_enable_material_design_field' => array(
-						'id'                 => 'uacf7_enable_material_design_field',
-						'type'               => 'switch',
-						'label'              => __( 'Material Design', 'ultimate-addons-cf7' ),
-						'image_url'          => UACF7_URL . 'assets/admin/images/addons/material-design.png',
-						'subtitle'           => __( 'This feature will help you to add Material Design for forms', 'ultimate-addons-cf7' ),
-						'label_on'           => __( 'Yes', 'ultimate-addons-cf7' ),
-						'label_off'          => __( 'No', 'ultimate-addons-cf7' ),
-						'default'            => false,
-						'demo_link'          => 'https://cf7addons.com/preview/material-design-for-contact-form-7/',
-						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/material-design//',
-						
-					),
 				),
 			),
 			'extra_fields_addons' => array(
@@ -394,16 +380,17 @@ UACF7_Settings::option( 'uacf7_settings', array(
 
 					),
 					'uacf7_enable_ip_geo_fields' => array(
-						'id'        => 'uacf7_enable_ip_geo_fields',
-						'type'      => 'switch',
-						'label'     => __( 'IP Geo Fields (Autocomplete Country, City, State, Zip Fields)', 'ultimate-addons-cf7' ),
+						'id' => 'uacf7_enable_ip_geo_fields',
+						'child_field' => 'uacf7_enable_country_dropdown_field',
+						'type' => 'switch',
+						'label' => __( 'IP Geo Fields (Autocomplete Country, City, State, Zip Fields)', 'ultimate-addons-cf7' ),
 						'image_url' => UACF7_URL . 'assets/admin/images/addons/IP-Geolocation@2x.png',
 						'default' => false,
 						'subtitle' => __( 'Set up IP Geolocation-based Auto Completion for Country, City, State, Zip Fields. ', 'ultimate-addons-cf7' ),
 						'demo_link' => 'https://cf7addons.com/preview/contact-form-7-autocomplete/',
 						'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-autocomplete/',
 						'is_pro' => true,
-					),  
+					),
 					'uacf7_enable_spam_protection_field' => array(
 						'id'        => 'uacf7_enable_spam_protection_field',
 						'child_field' => 'uacf7_enable_spam_protection_pro',
@@ -432,7 +419,7 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'documentation_link' => 'https://cf7addons.com/preview/contact-form-7-autocomplete/', 
 						'field_width' => 33,
 						'is_pro' => true,
-					),    
+					),  
 				),
 			),
 			'wooCommerce_integration' => array(
