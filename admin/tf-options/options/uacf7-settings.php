@@ -277,6 +277,19 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'demo_link' => '#',
 						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/contact-form-7-webhook/',
 					),
+					'uacf7_enable_material_design_field' => array(
+						'id'                 => 'uacf7_enable_material_design_field',
+						'type'               => 'switch',
+						'label'              => __( 'Material Design', 'ultimate-addons-cf7' ),
+						'image_url'          => UACF7_URL . 'assets/admin/images/addons/material-design.png',
+						'subtitle'           => __( 'This feature will help you to add Material Design for forms', 'ultimate-addons-cf7' ),
+						'label_on'           => __( 'Yes', 'ultimate-addons-cf7' ),
+						'label_off'          => __( 'No', 'ultimate-addons-cf7' ),
+						'default'            => false,
+						'demo_link'          => 'https://cf7addons.com/preview/material-design-for-contact-form-7/',
+						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/material-design//',
+
+					),
 				),
 			),
 			'extra_fields_addons' => array(
