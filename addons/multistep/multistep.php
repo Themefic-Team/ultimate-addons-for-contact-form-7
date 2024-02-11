@@ -1051,7 +1051,7 @@ class UACF7_MULTISTEP {
                                         }
                                      
                                         
-                                        if( $uacf7_progressbar_style != 'style-3' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-11'){ 
+                                        if($uacf7_progressbar_style != 'default' && $uacf7_progressbar_style != 'style-3' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-11'){ 
 
                                             do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
                                         }

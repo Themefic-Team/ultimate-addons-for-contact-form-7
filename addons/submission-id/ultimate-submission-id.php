@@ -37,7 +37,6 @@ class UACF7_SUBMISSION_ID{
             'icon'   => 'fa-solid fa-fingerprint',
             'fields' => array(
                 'uacf7_submission_id_heading' => array(
-<<<<<<< HEAD
                     'id'    => 'uacf7_submission_id_heading',
                     'type'  => 'heading', 
                     'label' => __( 'Unique Submission ID Settings', 'ultimate-addons-cf7' ),
@@ -55,18 +54,6 @@ class UACF7_SUBMISSION_ID{
                             '<a href="https://themefic.com/docs/uacf7/free-addons/unique-id-for-contact-form-7/" target="_blank" rel="noopener">Submission ID</a>'
                         )
                       ),
-=======
-                    'id'      => 'uacf7_submission_id_heading',
-                    'type'    => 'notice',
-                    'notice'  => 'info',
-                    'label'   => __( 'Unique Submission ID Settings', 'ultimate-addons-cf7' ),
-                    'title'   => __( 'This addon will help you to track submission data into the database.', 'ultimate-addons-cf7' ),
-                    'content' => sprintf( 
-                        __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/unique-submission-id/" target="_blank">documentation</a>'
-                    )
-                ),
->>>>>>> f3ddd0cb3c95929c0bad416239610ce792f233a7
              
                 'uacf7_submission_id_enable' => array(
                     'id'        => 'uacf7_submission_id_enable',
