@@ -66,7 +66,7 @@ class UACF7_range_Slider {
                     'id'        => 'uacf7_range_handle_width',
                     'type'      => 'number',
                     'label'     => __( ' Slider Handle Width', 'ultimate-addons-cf7' ),
-                    'placeholder'     => __( ' px', 'ultimate-addons-cf7' ),
+                    'placeholder'     => __( 'E.g. 5 (Do not add px or em)', 'ultimate-addons-cf7' ),
                     'field_width' => 50
         
                 ),
@@ -74,7 +74,7 @@ class UACF7_range_Slider {
                     'id'        => 'uacf7_range_handle_height',
                     'type'      => 'number',
                     'label'     => __( ' Slider Handle Height', 'ultimate-addons-cf7' ),
-                    'placeholder'     => __( ' px', 'ultimate-addons-cf7' ),
+                    'placeholder'     => __( 'E.g. 10 (Do not add px or em)', 'ultimate-addons-cf7' ),
                     'field_width' => 50
         
                 ),
@@ -83,7 +83,7 @@ class UACF7_range_Slider {
                     'id'        => 'uacf7_range_handle_border_radius',
                     'type'      => 'number',
                     'label'     => __( ' Handle Border Radius', 'ultimate-addons-cf7' ),
-                    'placeholder'     => __( ' px', 'ultimate-addons-cf7' ),
+                    'placeholder'     => __( 'E.g. 8 (Do not add px or em)', 'ultimate-addons-cf7' ),
                     'field_width' => 50
         
                 ),
@@ -91,7 +91,7 @@ class UACF7_range_Slider {
                     'id'        => 'uacf7_range_slider_height',
                     'type'      => 'number',
                     'label'     => __( ' Slider Height (px)', 'ultimate-addons-cf7' ),
-                    'placeholder'     => __( ' px', 'ultimate-addons-cf7' ),
+                    'placeholder'     => __( 'E.g. 20 (Do not add px or em)', 'ultimate-addons-cf7' ),
                     'field_width' => 50
         
                 ),
@@ -265,6 +265,7 @@ class UACF7_range_Slider {
                         <th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-name' ); ?>"><?php echo esc_html( __( 'Name', 'ultimate-addons-cf7' ) ); ?></label></th>
                         <td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr( $args['content'] . '-name' ); ?>" /></td>
                     </tr>
+                    <tr class="uacf7-spacer"></tr>
                     <tr>
                         <th scope="row"><label for="tag-generator-panel-text-handle"><?php echo esc_html__( 'Show Values', 'ultimate-addons-cf7' ); ?></label></th>
                         <td>
@@ -272,6 +273,7 @@ class UACF7_range_Slider {
                             <label for="show_value_off"><input type="radio" name="show_value" class="option" id="show_value_off" value="off"/> <?php echo esc_html( 'Off' ); ?></label>
                         </td>
                     </tr>
+                    <tr class="uacf7-spacer"></tr>
                     <tr>
                         <th scope="row"><label for="tag-generator-panel-text-handle"><?php echo esc_html__( 'Slider Type', 'ultimate-addons-cf7' ); ?></label></th>
                         <td>
@@ -279,6 +281,7 @@ class UACF7_range_Slider {
                             <label for="double_handle"><input type="radio" name="handle" class="option" id="double_handle" value="2"/> <?php echo esc_html( 'Double Handle' ); ?></label>
                         </td>
                     </tr>
+                    <tr class="uacf7-spacer"></tr>
                     <?php ob_start() ?>
                         <tr class="">   
                             <th><label for="tag-generator-panel-range-style"><?php echo esc_html__( 'Range Slider Style', 'ultimate-addons-cf7' ); ?></label></th>                     
@@ -340,11 +343,11 @@ class UACF7_range_Slider {
                     </tr>
                 </tbody>
                 </table>
-                <div class="uacf7-doc-notice uacf7-guide"><?php echo esc_attr( __( 'You can set the styles of the slider from "UACF7 Range Slider" tab.', 'ultimate-addons-cf7' ) ); ?></div>
+                <div class="uacf7-doc-notice uacf7-guide"><?php echo esc_attr( __( "You can configure the slider's styles using the 'Range Slider' tab located below.", 'ultimate-addons-cf7' ) ); ?></div>
                 <div class="uacf7-doc-notice"> 
                     <?php echo sprintf( 
                         __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank">documentation</a>'
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank">Range Slider</a>'
                     ); ?> 
                 </div>
             </fieldset>

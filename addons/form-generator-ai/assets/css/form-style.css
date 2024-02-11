@@ -126,6 +126,9 @@ textarea:focus-visible {
 .uacf7-wrapper-default .uacf7-radio span input {
   margin-right: 10px;
 }
+.uacf7-wrapper-default .uacf7-rating label span{
+  display: inline-block;
+}
 
 /* Form Submit Button */
 .uacf7-wrapper-default .uacf7-submint {
@@ -206,4 +209,14 @@ textarea:focus-visible {
   background: #115e99!important;
   color: #ffffff!important;
   border-color: #115e99!important;
+}
+.uacf7-wrapper-default .uacf7-order-bump-form .wpcf7-submit{
+  background-color: #E6A23C!important;
+  border-radius: 6px;
+  font-size: 18px;
+  line-height: 1.5;
+  padding: 8px 16px;
+}
+.uacf7-wrapper-default .uacf7-order-bump-form .wpcf7-submit:hover{
+  background-color: #EBB563!important;
 }
