@@ -134,10 +134,12 @@ class UACF7_MULTISTEP {
                         'default' 				=> array(
                             'title'			=> 'Default',
                             'url' 			=> UACF7_ADDONS."/multistep/assets/img/default.png", 
+                         
                         ), 
                         'style-1' 				=> array(
                             'title'			=> 'Style 1',
                             'url' 			=> UACF7_ADDONS."/multistep/assets/img/skin-1.png", 
+                            'is_pro' => true, 
                         ), 
                         'style-2' 				=> array(
                             'title'			=> 'Style 2',
@@ -1037,7 +1039,7 @@ class UACF7_MULTISTEP {
                                                 echo '<p>' . $multistep_meta['step_desc_' . $step_name[$step_count]] . '</p>';
                                             }
 
-                                     
+                                    
                                             do_action( 'uacf7_progressbar_banner', $step_name[$step_count], $cfform->id() );
                                             echo '</div>';
                                         }elseif($uacf7_progressbar_style == 'style-10'){ 
@@ -1049,7 +1051,7 @@ class UACF7_MULTISTEP {
                                         }
                                      
                                         
-                                        if($uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-11'){ 
+                                        if( $uacf7_progressbar_style != 'style-3' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-11'){ 
 
                                             do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
                                         }
@@ -1067,7 +1069,7 @@ class UACF7_MULTISTEP {
                                             }
                                         
                                     }else {
-                                        if(  $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-10' && $uacf7_progressbar_style != 'style-11' ){
+                                        if( $uacf7_progressbar_style != 'style-2' &&  $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-6' && $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-10' && $uacf7_progressbar_style != 'style-11' ){
 
                                             echo esc_attr($step_id);
                                         }
@@ -1077,7 +1079,7 @@ class UACF7_MULTISTEP {
 
 
                                     if( $uacf7_multistep_use_step_labels != true  && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-10' && $uacf7_progressbar_style != 'style-11' ) { 
-                                        // echo '<p>'.esc_html($content).'</p>'; 
+                                        echo '<p>'.esc_html($content).'</p>'; 
                                     } 
                                 ?>
                             </div>
