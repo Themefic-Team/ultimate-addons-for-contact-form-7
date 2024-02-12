@@ -128,8 +128,12 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
             require_once( 'material-design/ultimate-material-design.php');
         }
         //Addon - Form Submit Later
-        if( isset($option['uacf7_form_submit_later_global_enable']) && $option['uacf7_form_submit_later_global_enable'] == true ){  
+        if( isset($option['uacf7_enable_form_submit_later_field']) && $option['uacf7_enable_form_submit_later_field'] == true ){  
             require_once( 'submit-later/ultimate-submit-later.php');
+        }
+        //Addon - Form Submit Later
+        if( isset($option['uacf7_enable_form_submit_later_field']) && $option['uacf7_enable_form_submit_later_field'] == true ){  
+            // require_once( 'form-preview/ultimate-form-preview.php');
         }
 	
     }

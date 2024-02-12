@@ -290,8 +290,8 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/material-design//',
 
 					),
-					'uacf7_form_submit_later_global_enable' => array(
-						'id'                 => 'uacf7_form_submit_later_global_enable',
+					'uacf7_enable_form_submit_later_field' => array(
+						'id'                 => 'uacf7_enable_form_submit_later_field',
 						'type'               => 'switch',
 						'label'              => __( 'Form Submit Later', 'ultimate-addons-cf7' ),
 						'image_url'          => UACF7_URL . 'assets/admin/images/addons/material-design.png',
@@ -301,7 +301,18 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'default'            => false,
 						'demo_link'          => 'https://cf7addons.com/preview/form-submit-later-for-contact-form-7/',
 						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/form-submit-later//',
-
+					),
+					'uacf7_enable_form_preview_field' => array(
+						'id'                 => 'uacf7_enable_form_preview_field',
+						'type'               => 'switch',
+						'label'              => __( 'Form Preview', 'ultimate-addons-cf7' ),
+						'image_url'          => UACF7_URL . 'assets/admin/images/addons/material-design.png',
+						'subtitle'           => __( 'Allow you to preview the form before Submission.', 'ultimate-addons-cf7' ),
+						'label_on'           => __( 'Yes', 'ultimate-addons-cf7' ),
+						'label_off'          => __( 'No', 'ultimate-addons-cf7' ),
+						'default'            => false,
+						'demo_link'          => 'https://cf7addons.com/preview/form-preview/',
+						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/form-preview//',
 					),
 					
 				),
