@@ -9,7 +9,7 @@
     class ULTIMATE_SUBMIT_LATER{
 
         public function __construct(){
-            add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submit_later'), 24, 2 ); 
+            add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submit_later'), 21, 2 ); 
         }
 
         public function uacf7_post_meta_options_submit_later($value, $post_id){
@@ -39,10 +39,19 @@
                     'uacf7_form_submit_later_enable' => array(
                         'id'        => 'uacf7_form_submit_later_enable',
                         'type'      => 'switch',
-                        'label'     => __( ' Enable Submit Form Later', 'ultimate-addons-cf7' ),
+                        'label'     => __( ' Enable Form Submit Later', 'ultimate-addons-cf7' ),
                         'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
                         'label_off' => __( 'No', 'ultimate-addons-cf7' ),
                         'default'   => false,
+                    ),
+                       
+                    'uacf7_form_submit_later_keep_active_for' => array(
+                        'id'        => 'uacf7_form_submit_later_keep_active_for',
+                        'type'      => 'number',
+                        'label'     => __( ' Keep For (hours)', 'ultimate-addons-cf7' ),
+                        'placeholder'     => __( ' 168 ', 'ultimate-addons-cf7' ),
+                        'description'     => __( 'Enter how many hours you want, The default, 168 hours / 7 Days.', 'ultimate-addons-cf7' ),
+                        'default'   => 168,
                     ),
                
                 ),
