@@ -9,16 +9,47 @@
     class ULTIMATE_SUBMIT_LATER{
 
         public function __construct(){
-            add_action('wp_enqueue_scripts', [$this, 'uacf7_form_submit_later_public_assets_loading']); 
+            add_action('wp_enqueue_scripts', [$this, 'uacf7_form_submit_later_public_assets_loading']);
+
+            add_action( 'wp_ajax_uacf7_submit_later_action', [$this, 'uacf7_submit_later_ajax_cb'] );
+            add_action( 'wp_ajax_nopriv_uacf7_submit_later_action', [$this, 'uacf7_submit_later_ajax_cb'] );  
+
             add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submit_later'), 21, 2 ); 
         }
 
         public function uacf7_form_submit_later_public_assets_loading(){
+
+            /** Enable / Disable Submit Later*/
+            
+            $wpcf7                      = WPCF7_ContactForm::get_current();
+            $formid                     = $wpcf7->id();
+            $submission                 = uacf7_get_form_option( $formid, 'submit_later' );
+            $uacf7_form_submit_later_enable = isset($submission['uacf7_form_submit_later_enable']) ? $submission['uacf7_form_submit_later_enable'] : false;
+            
+            if($uacf7_form_submit_later_enable != true){
+                return;
+            }
             wp_enqueue_script('submit_later_public_js', UACF7_URL . '/addons/submit-later/assets/public/js/public-submit-later.js', ['jquery'], 'WPCF7_VERSION', true);
-            wp_enqueue_style('submit_later_public_css', UACF7_URL . '/addons/submit-later/assets/public/css/public-submit-later.css', [], 'UAFC7_VERSION', true, 'all');
+            // wp_enqueue_style('submit_later_public_css', UACF7_URL . '/addons/submit-later/assets/public/css/public-submit-later.css', [], 'UAFC7_VERSION', true, 'all');
             wp_localize_script( 'submit_later_public_js', 'uacf7_submit_later_obj', [
                 "ajaxurl" => admin_url( 'admin-ajax.php' ),
                 'nonce'   => wp_create_nonce( 'uacf7-submit-later-nonce' ),
+            ] );
+        }
+
+        public function uacf7_submit_later_ajax_cb(){
+            if ( !wp_verify_nonce($_POST['ajax_nonce'], 'uacf7-submit-later-nonce')) {
+                exit(esc_html__("Security error", 'ultimate-addons-cf7'));
+            } 
+
+            $form_id      = $_POST['form_id'];
+            $submit_later = uacf7_get_form_option( $form_id, 'submit_later' );
+            $is_enabled   = isset($submit_later['uacf7_form_submit_later_enable']) ? $submit_later['uacf7_form_submit_later_enable'] : 0;
+            $keep_for   = isset($submit_later['uacf7_form_submit_later_keep_active_for']) ? $submit_later['uacf7_form_submit_later_keep_active_for'] : 0;
+            
+            echo wp_send_json( [
+                'form_id'    => $form_id,
+                'keep_for'   => $keep_for
             ] );
         }
 

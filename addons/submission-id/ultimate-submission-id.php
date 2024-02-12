@@ -146,7 +146,6 @@ public function submission_id_public_assets_loading(){
    
  }
 
-
 /**
  * Submission ID Update into Database
  */
