@@ -506,6 +506,31 @@ UACF7_Settings::option( 'uacf7_settings', array(
 					),
 				),
 			),
+			/**
+			 * General 
+			 */
+
+			 'uacf7_general_accessories_settings' => array(
+				'title' => __( 'Accessories', 'ultimate-addons-cf7' ),
+				'icon' => 'fa-solid fa-hat-wizard',
+				'fields' => array(
+				),
+			),
+			'uacf7_form_global_save_later' => array(
+				'title' => __( 'Submit Later', 'ultimate-addons-cf7' ),
+				'parent' => 'uacf7_general_accessories_settings',
+				'icon' => 'fa fa-clock',
+				'fields' => array(
+					'uacf7_form_submit_later_global_enable' => array(
+						'id' => 'uacf7_form_submit_later_global_enable',
+						'type' => 'switch',
+						'label'     => __( ' Enable Form Submit Later', 'ultimate-addons-cf7' ),
+						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
+						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+						'default'   => false,
+					),
+				),
+			),
 
 			/**
 			 * Import/Export
