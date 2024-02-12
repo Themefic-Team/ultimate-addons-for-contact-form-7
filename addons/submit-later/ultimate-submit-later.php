@@ -16,6 +16,10 @@
         public function uacf7_form_submit_later_public_assets_loading(){
             wp_enqueue_script('submit_later_public_js', UACF7_URL . '/addons/submit-later/assets/public/js/public-submit-later.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_style('submit_later_public_css', UACF7_URL . '/addons/submit-later/assets/public/css/public-submit-later.css', [], 'UAFC7_VERSION', true, 'all');
+            wp_localize_script( 'submit_later_public_js', 'uacf7_submit_later_obj', [
+                "ajaxurl" => admin_url( 'admin-ajax.php' ),
+                'nonce'   => wp_create_nonce( 'uacf7-submit-later-nonce' ),
+            ] );
         }
 
         public function uacf7_post_meta_options_submit_later($value, $post_id){
