@@ -290,6 +290,20 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/material-design//',
 
 					),
+					'uacf7_form_submit_later_global_enable' => array(
+						'id'                 => 'uacf7_form_submit_later_global_enable',
+						'type'               => 'switch',
+						'label'              => __( 'Form Submit Later', 'ultimate-addons-cf7' ),
+						'image_url'          => UACF7_URL . 'assets/admin/images/addons/material-design.png',
+						'subtitle'           => __( 'Allow your visitor to submit form later, If want to postpone the submission for the time being. It will keep save the filled data to the form.', 'ultimate-addons-cf7' ),
+						'label_on'           => __( 'Yes', 'ultimate-addons-cf7' ),
+						'label_off'          => __( 'No', 'ultimate-addons-cf7' ),
+						'default'            => false,
+						'demo_link'          => 'https://cf7addons.com/preview/form-submit-later-for-contact-form-7/',
+						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/form-submit-later//',
+
+					),
+					
 				),
 			),
 			'extra_fields_addons' => array(
@@ -506,31 +520,8 @@ UACF7_Settings::option( 'uacf7_settings', array(
 					),
 				),
 			),
-			/**
-			 * General 
-			 */
 
-			 'uacf7_general_accessories_settings' => array(
-				'title' => __( 'Accessories', 'ultimate-addons-cf7' ),
-				'icon' => 'fa-solid fa-hat-wizard',
-				'fields' => array(
-				),
-			),
-			'uacf7_form_global_save_later' => array(
-				'title' => __( 'Submit Later', 'ultimate-addons-cf7' ),
-				'parent' => 'uacf7_general_accessories_settings',
-				'icon' => 'fa fa-clock',
-				'fields' => array(
-					'uacf7_form_submit_later_global_enable' => array(
-						'id' => 'uacf7_form_submit_later_global_enable',
-						'type' => 'switch',
-						'label'     => __( ' Enable Form Submit Later', 'ultimate-addons-cf7' ),
-						'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
-						'label_off' => __( 'No', 'ultimate-addons-cf7' ),
-						'default'   => false,
-					),
-				),
-			),
+		
 
 			/**
 			 * Import/Export
