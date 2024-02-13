@@ -1,0 +1,33 @@
+.dialog-container {
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 400px; /* Adjust width as needed */
+    margin: 0 auto; /* Center the dialog horizontally */
+}
+
+/* Style for the list */
+.dialog-container ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+/* Style for list items */
+.dialog-container li {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    position: relative;
+}
+
+/* Style for strong tags within list items */
+.dialog-container li strong {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Additional styling for alternating background color */
+.dialog-container li:nth-child(even) {
+    background-color: #e9e9e9;
+}

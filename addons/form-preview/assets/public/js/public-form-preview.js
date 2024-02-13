@@ -1,56 +1,46 @@
 ;(function ($) {
 
         $('.wpcf7-form').each(function () {
-        var form = $(this);
-        var formId = form.find('input[name="_wpcf7"]').val();
-
-        $(document).ready(function () {
-            // var keep_for;
-        
-            // Receive Webmaster Given Time
-            // $.ajax({
-            //     url: uacf7_submit_later_obj.ajaxurl,
-            //     type: 'POST',
-            //     data: {
-            //         action: 'uacf7_submit_later_action',
-            //         form_id: formId,
-            //         ajax_nonce: uacf7_submit_later_obj.nonce,
-            //     },
-            //     success: function(data) {
-            //         keep_for = data.keep_for;
-            //     }
-            // });
+            var form = $(this);
+            var formId = form.find('input[name="_wpcf7"]').val();
+            // closest('div').find('label')
 
             $(document).ready(function () {
-                $('#preview-btn').click(function () {
-                    var formData = {};
-                    $('.wpcf7-form input, .wpcf7-form textarea, .wpcf7-form select').each(function () {
-                        var fieldName = $(this).attr('name');
-                        var fieldValue = $(this).val();
-                        formData[fieldName] = fieldValue;
+
+                $('#preview-btn').click(function (e) {
+                    e.preventDefault();
+                    var formData = $('.wpcf7-form').serializeArray();
+                    var previewContent = '<div><ul>';
+            
+                    $.each(formData, function(index, field) {
+                        var fieldElement = $('[name="' + field.name + '"]');
+                        if (fieldElement.attr('type') !== 'hidden' && field.value !== '') {
+                            previewContent += '<li><strong>' + field.name + ':</strong> ' + field.value + '</li>';
+                        }
                     });
-                    showPreviewPopup(formData);
+            
+                    previewContent += '</ul></div>';
+            
+                    $(previewContent).dialog({
+                        modal: true,
+                        title: 'Form Preview',
+                        width: 400,
+                        height: 'auto',
+                        resizable: false,
+                        closeOnEscape: true, 
+                        closeOnOverlayClick: true
+                    });
+                    $(dialog.parent()).on('click', function(event) {
+                        if ($(event.target).hasClass('ui-widget-overlay')) {
+                            dialog.dialog('close');
+                        }
+                    });
+
                 });
-            });
-            
-            function showPreviewPopup(formData) {
-                var previewHtml = '<div class="preview-popup">';
-                for (var field in formData) {
-                    if (formData.hasOwnProperty(field)) {
-                        previewHtml += '<p><strong>' + field + ':</strong> ' + formData[field] + '</p>';
-                    }
-                }
-                previewHtml += '</div>';
-                
-                $('.preview-popup').remove(); 
-                $('body').append(previewHtml);
-                $('.preview-popup').fadeIn();
-            }
-            
+        
+                });
         
         });
-        
-        
-    });
+
 
 })(jQuery);

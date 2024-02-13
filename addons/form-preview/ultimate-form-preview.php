@@ -61,16 +61,19 @@
 
                 /** Enable / Disable Form Preview*/
             
-                $wpcf7                      = WPCF7_ContactForm::get_current();
-                $formid                     = $wpcf7->id();
-                $form_preview                 = uacf7_get_form_option( $formid, 'form_preview' );
-                $uacf7_form_preview_enable = isset($form_preview['uacf7_form_preview_enable']) ? $form_preview['uacf7_form_preview_enable'] : false;
+                // $wpcf7                      = WPCF7_ContactForm::get_current();
+                // $formid                     = $wpcf7->id();
+                // $form_preview                 = uacf7_get_form_option( $formid, 'form_preview' );
+                // $uacf7_form_preview_enable = isset($form_preview['uacf7_form_preview_enable']) ? $form_preview['uacf7_form_preview_enable'] : false;
                 
-                if($uacf7_form_preview_enable != true){
-                    return;
-                }
-                wp_enqueue_script('preview_form_public_js', UACF7_URL . '/addons/form-preview/assets/public/js/public-form-preview.js', ['jquery'], 'WPCF7_VERSION', true);
-                // wp_enqueue_style('submit_later_public_css', UACF7_URL . '/addons/submit-later/assets/public/css/public-submit-later.css', [], 'UAFC7_VERSION', true, 'all');
+                // if($uacf7_form_preview_enable != true){
+                //     return;
+                // }
+
+                wp_enqueue_script('preview_form_public_js', UACF7_URL . 'addons/form-preview/assets/public/js/public-form-preview.js', ['jquery'], 'UAFC7_VERSION', true);
+                wp_enqueue_script('preview_form_app_js', UACF7_URL . 'addons/form-preview/assets/public/js/app.js', [], 'UAFC7_VERSION', true);
+               
+                wp_enqueue_style('form_preview_public_css', UACF7_URL . 'addons/form-preview/assets/public/css/public-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
                 // wp_localize_script( 'submit_later_public_js', 'uacf7_submit_later_obj', [
                 //     "ajaxurl" => admin_url( 'admin-ajax.php' ),
                 //     'nonce'   => wp_create_nonce( 'uacf7-submit-later-nonce' ),
