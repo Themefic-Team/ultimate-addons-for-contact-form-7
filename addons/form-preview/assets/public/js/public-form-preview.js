@@ -6,6 +6,7 @@
 
             $(document).ready(function () {
                 var preview_heading = window.uacf7_preview_form_obj.preview_heading;
+                var preview_labels = window.uacf7_preview_form_obj.preview_labels;
             
                 $('#uacf7-preview-btn').click(function (e) {
                     e.preventDefault();
@@ -15,7 +16,16 @@
                     $.each(formData, function(index, field) {
                         var fieldElement = $('[name="' + field.name + '"]');
                         if (fieldElement.attr('type') !== 'hidden' && field.value !== '') {
-                            previewContent += '<tr><td><strong>' + field.name + ':</strong></td><td>' + field.value + '</td></tr>';
+                            var label = '';
+                            $.each(preview_labels, function(i, previewLabel) {
+                                if (previewLabel.field_name === field.name) {
+                                    label = previewLabel.field_label;
+                                    return false; 
+                                }
+                            });
+                    
+                            var displayName = label || field.name;
+                            previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + field.value + '</td></tr>';
                         }
                     });
             

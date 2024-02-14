@@ -65,6 +65,31 @@
                     'description'     => __( 'Copy the code and paste anywhere of Form. Please Note: The button ID can not be changed. You can change the button text. <button class="ucaf7-form-preview-layout">Copy Layout</button>', 'ultimate-addons-cf7' ),
                     'class' => 'uacf7-form-preview-layout'
                     ),
+                    'uacf7_form_preview_label_placeholder' => array(
+                        'id' => 'uacf7_form_preview_label_placeholder',
+                        'type' => 'repeater',
+                        'label' => 'Select Pre-Populate Field',
+                        'subtitle'     => __( 'The data inserted on these fields will be forwarded to the other form.', 'ultimate-addons-cf7' ),
+                        'class' => 'tf-field-class',
+                        'fields' => array(
+                            'field_name' => array(
+                                'id' => 'field_name',
+                                'type' => 'select',
+                                'options'  => 'uacf7',
+                                'query_args' => array(
+                                    'post_id'      => $post_id,  
+                                    'exclude'      => ['submit'], 
+                                ), 
+                            ),
+                            'field_label' => array(
+                                'id' => 'field_label',
+                                'type' => 'text',
+                                'label' => 'Prview Label',
+                                'subtitle'     => __( 'This label will be show to Form Preview', 'ultimate-addons-cf7' ),
+
+                            )
+                         ),
+                    )
                        
                 ),   
         
@@ -82,7 +107,9 @@
                 $form_preview              = uacf7_get_form_option( $formid, 'form_preview' );
                 $uacf7_form_preview_title = isset($form_preview['uacf7_form_preview_title']) ? $form_preview['uacf7_form_preview_title'] : 'Form Preview';
                 $uacf7_form_preview_enable = isset($form_preview['uacf7_form_preview_enable']) ? $form_preview['uacf7_form_preview_enable'] : false;
-                
+                $preview_labels = isset($form_preview['uacf7_form_preview_label_placeholder']) ? $form_preview['uacf7_form_preview_label_placeholder'] : false;
+        
+
                 if($uacf7_form_preview_enable != true){ ?>
                 <style>
                     #uacf7-preview-btn{display: none}
@@ -95,7 +122,8 @@
                 wp_enqueue_style('form_preview_public_css', UACF7_URL . 'addons/form-preview/assets/public/css/public-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
                
                 wp_localize_script( 'preview_form_public_js', 'uacf7_preview_form_obj', [
-                    'preview_heading'   => __(  $uacf7_form_preview_title, 'ultimate-addons-cf7')
+                    'preview_heading'   => __(  $uacf7_form_preview_title, 'ultimate-addons-cf7'),
+                    'preview_labels'   => __(  $preview_labels, 'ultimate-addons-cf7'),
                 ] );
         }
 
