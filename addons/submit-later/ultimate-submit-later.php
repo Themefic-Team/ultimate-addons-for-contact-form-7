@@ -19,16 +19,6 @@
 
         public function uacf7_form_submit_later_public_assets_loading(){
 
-            /** Enable / Disable Submit Later*/
-            
-            $wpcf7                      = WPCF7_ContactForm::get_current();
-            $formid                     = $wpcf7->id();
-            $submission                 = uacf7_get_form_option( $formid, 'submit_later' );
-            $uacf7_form_submit_later_enable = isset($submission['uacf7_form_submit_later_enable']) ? $submission['uacf7_form_submit_later_enable'] : false;
-            
-            if($uacf7_form_submit_later_enable != true){
-                return;
-            }
             wp_enqueue_script('submit_later_public_js', UACF7_URL . 'addons/submit-later/assets/public/js/public-submit-later.js', ['jquery'], 'UAFC7_VERSION', true);
             wp_localize_script( 'submit_later_public_js', 'uacf7_submit_later_obj', [
                 "ajaxurl" => admin_url( 'admin-ajax.php' ),
@@ -41,11 +31,15 @@
                 exit(esc_html__("Security error", 'ultimate-addons-cf7'));
             } 
 
-            $form_id      = $_POST['form_id'];
+            $form_id      = isset($_POST['form_id']) ? $_POST['form_id'] : '';
             $submit_later = uacf7_get_form_option( $form_id, 'submit_later' );
             $is_enabled   = isset($submit_later['uacf7_form_submit_later_enable']) ? $submit_later['uacf7_form_submit_later_enable'] : 0;
-            $keep_for   = isset($submit_later['uacf7_form_submit_later_keep_active_for']) ? $submit_later['uacf7_form_submit_later_keep_active_for'] : 0;
+            $keep_for     = isset($submit_later['uacf7_form_submit_later_keep_active_for']) ? $submit_later['uacf7_form_submit_later_keep_active_for'] : 0;
             
+            if($is_enabled != true){
+                return;
+            }
+
             echo wp_send_json( [
                 'form_id'    => $form_id,
                 'keep_for'   => $keep_for
