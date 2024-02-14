@@ -10,12 +10,14 @@
     class ULTIMATE_FORM_PREVIEW{
 
         public function __construct(){
-            add_action('wp_enqueue_scripts', [$this, 'uacf7_form_preview_public_assets_loading']);
 
-            // add_action( 'wp_ajax_uacf7_submit_later_action', [$this, 'uacf7_submit_later_ajax_cb'] );
-            // add_action( 'wp_ajax_nopriv_uacf7_submit_later_action', [$this, 'uacf7_submit_later_ajax_cb'] );  
+            add_action('wp_enqueue_scripts', [$this, 'uacf7_form_preview_public_assets_loading']); 
 
             add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_form_preview'), 24, 2 ); 
+
+            $file_path = plugin_dir_path(__FILE__) . 'inc/uacf7-form-preview.php';
+
+            include_once($file_path);
         }
 
         public function uacf7_post_meta_options_form_preview($value, $post_id){
@@ -48,6 +50,14 @@
                     'label'              => __( 'Enable Form Preview', 'ultimate-addons-cf7' ),
                     'default' => false
                     ),
+         
+                   'uacf7_form_preview_button_layout' => array(
+                    'id'    => 'uacf7_form_preview_button_layout',
+                    'type'               => 'heading',
+                    'label'              => __( 'Preview Button Layout', 'ultimate-addons-cf7' ),
+                    'description'     => __( 'Copy the code and paste anywhere of Form. Please Note: The button ID can not be changed. You can change the button text. <button class="ucaf7-form-preview-layout">Copy Layout</button>', 'ultimate-addons-cf7' ),
+                    'class' => 'uacf7-form-preview-layout'
+                    ),
                        
                 ),   
         
@@ -60,24 +70,25 @@
         public function uacf7_form_preview_public_assets_loading(){
 
                 /** Enable / Disable Form Preview*/
-            
-                // $wpcf7                      = WPCF7_ContactForm::get_current();
-                // $formid                     = $wpcf7->id();
-                // $form_preview                 = uacf7_get_form_option( $formid, 'form_preview' );
-                // $uacf7_form_preview_enable = isset($form_preview['uacf7_form_preview_enable']) ? $form_preview['uacf7_form_preview_enable'] : false;
+                $wpcf7                     = WPCF7_ContactForm::get_current();
+                $formid                    = $wpcf7->id();
+                $form_preview              = uacf7_get_form_option( $formid, 'form_preview' );
+                $uacf7_form_preview_enable = isset($form_preview['uacf7_form_preview_enable']) ? $form_preview['uacf7_form_preview_enable'] : false;
                 
-                // if($uacf7_form_preview_enable != true){
-                //     return;
-                // }
+                if($uacf7_form_preview_enable != true){ ?>
+                <style>
+                    #uacf7-preview-btn{display: none}
+                </style>
+                <?php  return;
+                }
 
                 wp_enqueue_script('preview_form_public_js', UACF7_URL . 'addons/form-preview/assets/public/js/public-form-preview.js', ['jquery'], 'UAFC7_VERSION', true);
-                wp_enqueue_script('preview_form_app_js', UACF7_URL . 'addons/form-preview/assets/public/js/app.js', [], 'UAFC7_VERSION', true);
                
                 wp_enqueue_style('form_preview_public_css', UACF7_URL . 'addons/form-preview/assets/public/css/public-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
-                // wp_localize_script( 'submit_later_public_js', 'uacf7_submit_later_obj', [
-                //     "ajaxurl" => admin_url( 'admin-ajax.php' ),
-                //     'nonce'   => wp_create_nonce( 'uacf7-submit-later-nonce' ),
-                // ] );
+               
+                wp_localize_script( 'preview_form_public_js', 'uacf7_preview_form_obj', [
+                    'preview_heading'   => __('Form Preview', 'ultimate-addons-cf7')
+                ] );
         }
 
        
