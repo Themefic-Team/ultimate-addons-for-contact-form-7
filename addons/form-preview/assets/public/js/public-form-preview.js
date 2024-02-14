@@ -8,9 +8,9 @@
                 var preview_heading = window.uacf7_preview_form_obj.preview_heading;
                 var preview_labels = window.uacf7_preview_form_obj.preview_labels;
             
-                $('#uacf7-preview-btn').click(function (e) {
+                $(form).find('#uacf7-preview-btn').click(function (e) {
                     e.preventDefault();
-                    var formData = $('.wpcf7-form').serializeArray();
+                    var formData = $(this).closest('.wpcf7-form').serializeArray();
                     var previewContent = '<div><table>';
             
                     $.each(formData, function(index, field) {
