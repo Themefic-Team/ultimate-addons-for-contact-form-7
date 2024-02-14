@@ -50,6 +50,13 @@
                     'label'              => __( 'Enable Form Preview', 'ultimate-addons-cf7' ),
                     'default' => false
                     ),
+                   'uacf7_form_preview_title' => array(
+                    'id'    => 'uacf7_form_preview_title',
+                    'type'               => 'text',
+                    'label'              => __( 'Form Preview Title', 'ultimate-addons-cf7' ),
+                    'placeholder'              => __( 'Form Preview', 'ultimate-addons-cf7' ),
+                    'default' => 'Form Preview'
+                    ),
          
                    'uacf7_form_preview_button_layout' => array(
                     'id'    => 'uacf7_form_preview_button_layout',
@@ -73,6 +80,7 @@
                 $wpcf7                     = WPCF7_ContactForm::get_current();
                 $formid                    = $wpcf7->id();
                 $form_preview              = uacf7_get_form_option( $formid, 'form_preview' );
+                $uacf7_form_preview_title = isset($form_preview['uacf7_form_preview_title']) ? $form_preview['uacf7_form_preview_title'] : 'Form Preview';
                 $uacf7_form_preview_enable = isset($form_preview['uacf7_form_preview_enable']) ? $form_preview['uacf7_form_preview_enable'] : false;
                 
                 if($uacf7_form_preview_enable != true){ ?>
@@ -87,7 +95,7 @@
                 wp_enqueue_style('form_preview_public_css', UACF7_URL . 'addons/form-preview/assets/public/css/public-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
                
                 wp_localize_script( 'preview_form_public_js', 'uacf7_preview_form_obj', [
-                    'preview_heading'   => __('Form Preview', 'ultimate-addons-cf7')
+                    'preview_heading'   => __(  $uacf7_form_preview_title, 'ultimate-addons-cf7')
                 ] );
         }
 
