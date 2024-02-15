@@ -5,7 +5,7 @@
         $('.wpcf7-form').each(function () {
             var form   = $(this);
             var formId = form.find('input[name="_wpcf7"]').val();
-            
+
             $.ajax({
                 url : uacf7_form_preview_obj.ajaxurl,
                 type: 'POST',
@@ -53,6 +53,10 @@
                                 resizable          : true,
                                 closeOnEscape      : true,
                                 closeOnOverlayClick: true
+                            });
+                   
+                            $('.ui-widget-overlay').on('click', function () {
+                                $(".ui-dialog-content").dialog("close");
                             });
                     
                         });
