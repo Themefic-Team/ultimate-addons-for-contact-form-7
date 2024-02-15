@@ -24,7 +24,7 @@
                         $(form).find('#uacf7-preview-btn').click(function (e) {
                             e.preventDefault();
                             var formData = $(this).closest('.wpcf7-form').serializeArray();
-                            var previewContent = '<div><table>';
+                            var previewContent = '<div class="uacf7-form-preview-dialog"><table id="dialog-table">';
                     
                             $.each(formData, function(index, field) {
                                 var fieldElement = $('[name="' + field.name + '"]');
@@ -38,7 +38,7 @@
                                     });
                             
                                     var displayName = label || field.name;
-                                    previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + field.value + '</td></tr>';
+                                    previewContent += '<tr style="border-bottom: 3px solid red;"><td><strong>' + displayName + ':</strong></td><td>' + field.value + '</td></tr>';
                                 }
                             });
                     
@@ -47,12 +47,12 @@
                             $(previewContent).dialog({
                                 modal              : true,
                                 title              : preview_heading ||'Form Preview',
-                                width              : 'auto',
-                                height             : 'auto',
+                                height             : 350,
                                 minHeight          : 200,
+                                minWidth           : 200,
                                 resizable          : true,
                                 closeOnEscape      : true,
-                                closeOnOverlayClick: true
+                                closeOnOverlayClick: true,
                             });
                    
                             $('.ui-widget-overlay').on('click', function () {
