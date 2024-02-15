@@ -328,7 +328,6 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 				$field_style = 'width:calc(' . $field_width . '% - 10px);';
 			}
 			?>
-
 			<div class="tf-field tf-field-<?php echo esc_attr( $field['type'] ); ?> <?php echo esc_attr( $class ); ?> <?php echo ! empty( $visible ) ? $visible : ''; ?>"
 				<?php echo ! empty( $depend ) ? $depend : ''; ?> style="<?php echo esc_attr( $field_style ); ?>">
 				<div class="tf-field-wrap">
@@ -351,7 +350,7 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 					<?php if ( ! empty( $field['subtitle'] ) ) : ?>
 						<span class="tf-field-sub-title"> 
 							<?php 
-								if($field['id'] == 'styler_heading_label'){ 
+								if($field['id'] == 'styler_heading_label' || $field['id'] == 'uacf7_form_preview_button_layout' ){ 
 									echo esc_html( $field['subtitle'] );
 								}else{
 									echo wp_kses_post( $field['subtitle'] );
