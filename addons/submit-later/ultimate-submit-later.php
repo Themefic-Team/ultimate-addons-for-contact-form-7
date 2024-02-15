@@ -30,17 +30,13 @@
             if ( !wp_verify_nonce($_POST['ajax_nonce'], 'uacf7-submit-later-nonce')) {
                 exit(esc_html__("Security error", 'ultimate-addons-cf7'));
             } 
-
             $form_id      = isset($_POST['form_id']) ? $_POST['form_id'] : '';
             $submit_later = uacf7_get_form_option( $form_id, 'submit_later' );
             $is_enabled   = isset($submit_later['uacf7_form_submit_later_enable']) ? $submit_later['uacf7_form_submit_later_enable'] : 0;
             $keep_for     = isset($submit_later['uacf7_form_submit_later_keep_active_for']) ? $submit_later['uacf7_form_submit_later_keep_active_for'] : 0;
-            
-            if($is_enabled != true){
-                return;
-            }
 
             echo wp_send_json( [
+                'is_enabled' => $is_enabled,
                 'form_id'    => $form_id,
                 'keep_for'   => $keep_for
             ] );
