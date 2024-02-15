@@ -38,7 +38,7 @@
                                     });
                             
                                     var displayName = label || field.name;
-                                    previewContent += '<tr style="border-bottom: 3px solid red;"><td><strong>' + displayName + ':</strong></td><td>' + field.value + '</td></tr>';
+                                    previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + field.value + '</td></tr>';
                                 }
                             });
                     
