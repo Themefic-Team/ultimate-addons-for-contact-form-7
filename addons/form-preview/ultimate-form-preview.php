@@ -63,7 +63,7 @@
                     'id'    => 'uacf7_form_preview_button_layout',
                     'type'               => 'heading',
                     'label'              => __( 'Preview Button Layout', 'ultimate-addons-cf7' ),
-                    'subtitle'              => '<button id="uacf7-preview-btn"> Preview </button>  Copy the code and paste anywhere of Form. Please Note: The button ID  can not be changed. You can change the button text. ',
+                    'subtitle'              => 'Copy the code and paste anywhere of Form. Please Note: The button ID  can not be changed. You can change the button text. ',
                     'description'     => __( '<button class="ucaf7-form-preview-layout">Copy Layout</button>', 'ultimate-addons-cf7' ),
                     'class' => 'uacf7-form-preview-layout'
                     ),
@@ -103,8 +103,6 @@
         
 
         public function uacf7_form_preview_ajax_cb(){
-            
-            #uacf7-preview-btn{display: none;
         
             if ( !wp_verify_nonce($_POST['ajax_nonce'], 'uacf7-form-preview-nonce')) {
                 exit(esc_html__("Security error", 'ultimate-addons-cf7'));
