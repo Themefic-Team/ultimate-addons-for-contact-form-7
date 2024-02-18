@@ -24,10 +24,8 @@
     
                         $(form).find('#uacf7-preview-btn').click(function (e) {
                             e.preventDefault();
-                            $('body').css('overflow', 'auto');
                             var formData = $(this).closest('.wpcf7-form').serializeArray();
                             var previewContent = '<div class="uacf7-form-preview-dialog"><table id="dialog-table">';
-                    
                             $.each(formData, function(index, field) {
                                 var fieldElement = $('[name="' + field.name + '"]');
                                 if (fieldElement.attr('type') !== 'hidden' && field.value !== '') {
@@ -45,6 +43,8 @@
                             });
                     
                             previewContent += '</table></div>';
+
+
                     
                             $(previewContent).dialog({
                                 modal              : true,
@@ -55,6 +55,22 @@
                                 resizable          : true,
                                 closeOnEscape      : true,
                                 closeOnOverlayClick: true,
+                                position           : {
+                                    my: "center",
+                                    at: "center",
+                                    of: window
+                                },
+                                create: function(event, ui) {
+                                    $(event.target).parent().css('position', 'fixed');
+                                },
+                                drag: function(event, ui) {
+                            
+                                    $(this).dialog('option', 'position', { my: 'center', at: 'center', of: window });
+                                },
+                                resize: function(event, ui) {
+                          
+                                    $(this).dialog('option', 'position', { my: 'center', at: 'center', of: window });
+                                }
                                 
                             });
                    
@@ -75,3 +91,10 @@
 
 
 })(jQuery);
+
+
+window.addEventListener('scroll', function() {
+
+  
+});
+  
