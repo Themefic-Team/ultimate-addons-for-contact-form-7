@@ -17,12 +17,14 @@
                 success: function(data) {
                     var is_enabled      = data.is_enabled;
                     var preview_heading = data.preview_heading;
+                    var default_heading = data.form_preview_default_heading;
                     var preview_labels  = data.preview_labels;
 
                     if (form.find('#uacf7-preview-btn').length > 0 && is_enabled === '1') {
     
                         $(form).find('#uacf7-preview-btn').click(function (e) {
                             e.preventDefault();
+                            $('body').css('overflow', 'auto');
                             var formData = $(this).closest('.wpcf7-form').serializeArray();
                             var previewContent = '<div class="uacf7-form-preview-dialog"><table id="dialog-table">';
                     
@@ -46,13 +48,14 @@
                     
                             $(previewContent).dialog({
                                 modal              : true,
-                                title              : preview_heading ||'Form Preview',
+                                title              : preview_heading ||default_heading,
                                 height             : 350,
                                 minHeight          : 200,
                                 minWidth           : 200,
                                 resizable          : true,
                                 closeOnEscape      : true,
                                 closeOnOverlayClick: true,
+                                
                             });
                    
                             $('.ui-widget-overlay').on('click', function () {

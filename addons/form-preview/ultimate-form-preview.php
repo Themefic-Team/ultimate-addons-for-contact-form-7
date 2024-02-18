@@ -106,22 +106,24 @@
         
             if ( !wp_verify_nonce($_POST['ajax_nonce'], 'uacf7-form-preview-nonce')) {
                 exit(esc_html__("Security error", 'ultimate-addons-cf7'));
-            } 
-
-            $form_id         = isset($_POST['form_id']) ? $_POST['form_id'] : '';
-            $form_preview    = uacf7_get_form_option( $form_id, 'form_preview' );
-            $is_enabled      = isset($form_preview['uacf7_form_preview_enable']) ? $form_preview['uacf7_form_preview_enable'] : 0;
-            $preview_heading = isset($form_preview['uacf7_form_preview_title']) ? $form_preview['uacf7_form_preview_title'] : 0;
-            $preview_labels  = isset($form_preview['uacf7_form_preview_label_placeholder']) ? $form_preview['uacf7_form_preview_label_placeholder'] : 0;
+            }
+            
+            $form_preview_default_heading = esc_html__('Form Preview', 'ultimate-addons-cf7');
+            $form_id                      = isset($_POST['form_id']) ? $_POST['form_id'] : '';
+            $form_preview                 = uacf7_get_form_option( $form_id, 'form_preview' );
+            $is_enabled                   = isset($form_preview['uacf7_form_preview_enable']) ? $form_preview['uacf7_form_preview_enable'] : 0;
+            $preview_heading              = isset($form_preview['uacf7_form_preview_title']) ? $form_preview['uacf7_form_preview_title'] : 0;
+            $preview_labels               = isset($form_preview['uacf7_form_preview_label_placeholder']) ? $form_preview['uacf7_form_preview_label_placeholder'] : 0;
             
             if($is_enabled != true){
                 return;
             }
 
             echo wp_send_json( [
-                'is_enabled'      => $is_enabled,
-                'preview_labels'  => $preview_labels,
-                'preview_heading' => $preview_heading
+                'is_enabled'                   => $is_enabled,
+                'preview_labels'               => $preview_labels,
+                'preview_heading'              => $preview_heading,
+                'form_preview_default_heading' => $form_preview_default_heading
             ] );
         }
 
