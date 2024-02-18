@@ -97,6 +97,14 @@ class UACF7_PDF_GENERATOR {
                     'field_width' => 50,
             
                 ),
+                'uacf7_pdf_custom_font' => array(
+                    'id'        => 'uacf7_pdf_custom_font',
+                    'type'      => 'text',
+                    'label'     => __( 'PDF Custom Font ', 'ultimate-addons-cf7' ),
+                    'subtitle'     => __( "Set a Font that you like most", 'ultimate-addons-cf7' ),
+                    'field_width' => 50,
+            
+                ),
                 'pdf_send_to' => array(
                     'id'        => 'pdf_send_to',
                     'type'      => 'select',
