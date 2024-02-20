@@ -12,6 +12,7 @@ class UACF7_DATABASE {
 	 * Construct function
 	 */
 	public function __construct() {
+		add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_uacf7_database'), 28, 2 );  
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'wp_enqueue_admin_script' ) );
 		add_action( 'wpcf7_before_send_mail', array( $this, 'uacf7_save_to_database' ) );
@@ -21,6 +22,48 @@ class UACF7_DATABASE {
 		add_action( 'admin_init', array( $this, 'uacf7_create_database_table' ) );
 		add_filter( 'wpcf7_load_js', '__return_false' );
 
+	}
+
+	public function uacf7_post_meta_options_uacf7_database($value, $post_id){
+		$database = apply_filters('uacf7_post_meta_options_uacf7_database_pro', $data = array(
+            'title'  => __( 'Database', 'ultimate-addons-cf7' ),
+            'icon'   => 'fa-solid fa-database',
+            'fields' => array(
+                'uacf7_database_label' => array(
+                'id'    => 'uacf7_database_label',
+                'type'  => 'heading', 
+                'label' => __( 'UACF7 Database Settings', 'ultimate-addons-cf7' ),
+                'subtitle' => sprintf(
+                    __( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
+                        '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
+                                )
+                ),
+                array(
+                    'id'      => 'pdf-database-docs',
+                    'type'    => 'notice',
+                    'style'   => 'success',
+                    'content' => sprintf( 
+                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-pdf-generator/" target="_blank" rel="noopener">PDF Generator</a>'
+                    )
+                ),
+                'uacf7_enable_duplicate_submission' => array(
+                    'id'        => 'uacf7_enable_duplicate_submission',
+                    'type'      => 'switch',
+                    'label'     => __( ' Enable Duplicate Submission ', 'ultimate-addons-cf7' ),
+                    'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
+                    'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+                    'default'   => false,
+                    'field_width' => 50,
+                ),
+
+            ),
+                
+    
+        ), $post_id);
+    
+        $value['database'] = $database; 
+        return $value;
 	}
 
 	//Create Ulimate Database   
@@ -246,6 +289,10 @@ class UACF7_DATABASE {
 			}
 		}
 
+		$is_enable_prevent_duplication = uacf7_get_form_option( $form->id(), 'uacf7_enable_duplicate_submission' );
+
+		// var_dump($is_enable_prevent_duplication);
+
 		$contact_form_data = $submission->get_posted_data();
 
 		$emailValue = null;
@@ -328,7 +375,8 @@ class UACF7_DATABASE {
 				}
 			}
 		}
-		
+
+		//Check Condition whether the duplication happens
 		if ($email_exists) {
 			return;
 		} else {
