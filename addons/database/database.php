@@ -44,13 +44,13 @@ class UACF7_DATABASE {
                     'style'   => 'success',
                     'content' => sprintf( 
                         __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-pdf-generator/" target="_blank" rel="noopener">PDF Generator</a>'
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/database/" target="_blank" rel="noopener">Database</a>'
                     )
                 ),
                 'uacf7_enable_duplicate_submission' => array(
                     'id'        => 'uacf7_enable_duplicate_submission',
                     'type'      => 'switch',
-                    'label'     => __( ' Enable Duplicate Submission ', 'ultimate-addons-cf7' ),
+                    'label'     => __( ' Prevent Duplicate Submission ', 'ultimate-addons-cf7' ),
                     'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
                     'label_off' => __( 'No', 'ultimate-addons-cf7' ),
                     'default'   => false,
@@ -289,9 +289,9 @@ class UACF7_DATABASE {
 			}
 		}
 
-		$is_enable_prevent_duplication = uacf7_get_form_option( $form->id(), 'uacf7_enable_duplicate_submission' );
+		$database_duplication = uacf7_get_form_option( $form->id(), 'database' );
+		$is_enable_prevent_duplication = $database_duplication['uacf7_enable_duplicate_submission'];
 
-		// var_dump($is_enable_prevent_duplication);
 
 		$contact_form_data = $submission->get_posted_data();
 
@@ -376,9 +376,12 @@ class UACF7_DATABASE {
 			}
 		}
 
+
 		//Check Condition whether the duplication happens
-		if ($email_exists) {
-			return;
+		if ($is_enable_prevent_duplication === '1' && $email_exists == true) {
+	
+				return;
+			
 		} else {
 			$data = [ 
 				'status' => 'unread',
