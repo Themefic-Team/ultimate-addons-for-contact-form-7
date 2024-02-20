@@ -19,7 +19,7 @@ class UACF7_DATABASE {
 		add_action( 'wp_ajax_uacf7_ajax_database_popup', array( $this, 'uacf7_ajax_database_popup' ) );
 		add_action( 'wp_ajax_uacf7_ajax_database_export_csv', array( $this, 'uacf7_ajax_database_export_csv' ) );
 		add_action( 'admin_init', array( $this, 'uacf7_create_database_table' ) );
-		// add_filter( 'wpcf7_load_js', '__return_false' );
+		add_filter( 'wpcf7_load_js', '__return_false' );
 
 	}
 
@@ -247,6 +247,20 @@ class UACF7_DATABASE {
 		}
 
 		$contact_form_data = $submission->get_posted_data();
+
+		$emailValue = null;
+
+		foreach ($tags as $tag) {
+			if ($tag->type === 'email' || $tag->type === 'email*') {
+		
+				if (array_key_exists($tag->name, $contact_form_data)) {
+					$emailValue .= $contact_form_data[$tag->name];	
+				}	
+		
+				break;
+			}
+		}
+
 		$files = $submission->uploaded_files();
 		$upload_dir = wp_upload_dir();
 		$dir = $upload_dir['basedir'];
@@ -290,40 +304,74 @@ class UACF7_DATABASE {
 			}
 		}
 
+		
+		// Retrieve all row data from the table
+		$rows = $wpdb->get_results("SELECT * FROM $table_name", ARRAY_A);
+		
+		$email_to_check = $emailValue; // Email to check for existence
+		
+		$email_exists = false;
+		
+		if ($rows) {
+			foreach ($rows as $row) {
+				$form_value = json_decode($row['form_value'], true);
+		
+				foreach ($form_value as $key => $value) {
+	
+					if (stripos($key, 'email') !== false) {
 
-		$data = [ 
-			'status' => 'unread',
-		];
-		$data = array_merge( $data, $contact_form_data );
-		$insert_data = [];
-		foreach ( $data as $key => $value ) {
-			if ( ! in_array( $key, $skip_tag_insert ) ) {
-
-				if ( is_array( $value ) ) {
-					$insert_data[ $key ] = array_map( 'esc_html', $value );
-
-				} else {
-					$insert_data[ $key ] = esc_html( $value );
+						if ($value === $email_to_check) {
+							$email_exists = true;
+							break 2; 
+						}
+					}
 				}
 			}
 		}
+		
+		if ($email_exists) {
+			return;
+		} else {
+			$data = [ 
+				'status' => 'unread',
+			];
+			$data = array_merge( $data, $contact_form_data );
+	
+			$insert_data = [];
+			foreach ( $data as $key => $value ) {
+				if ( ! in_array( $key, $skip_tag_insert ) ) {
+	
+					if ( is_array( $value ) ) {
+						$insert_data[ $key ] = array_map( 'esc_html', $value );
+	
+					} else {
+						$insert_data[ $key ] = esc_html( $value );
+					}
+				}
+			}
+	
+			$insert_data = json_encode( $insert_data );
+	
+			$wpdb->insert( $table_name, array(
+				'form_id' => $form->id(),
+				'form_value' => $insert_data,
+				'form_date' => current_time( 'Y-m-d H:i:s' ),
+			) );
+			$uacf7_db_insert_id = $wpdb->insert_id;
 
-		$insert_data = json_encode( $insert_data );
+			
+			if ( isset( $uacf7_db_insert_id ) && ! empty( $uacf7_db_insert_id ) ) {
+		
+				do_action( 'uacf7_checkout_order_traking', $uacf7_db_insert_id, $form->id() );
+			}
+			if ( isset( $uacf7_db_insert_id ) && ! empty( $uacf7_db_insert_id ) ) {
 
-		$wpdb->insert( $table_name, array(
-			'form_id' => $form->id(),
-			'form_value' => $insert_data,
-			'form_date' => current_time( 'Y-m-d H:i:s' ),
-		) );
-		$uacf7_db_insert_id = $wpdb->insert_id;
+				do_action( 'uacf7_submission_id_insert', $uacf7_db_insert_id, $form->id(), $contact_form_data, $tags );
+			}
+			
+		}
+		
 
-		//  print_r($uacf7_enable_track_order);
-
-		// Order tracking Action
-		do_action( 'uacf7_checkout_order_traking', $uacf7_db_insert_id, $form->id() );
-
-		// submission id Action
-		do_action( 'uacf7_submission_id_insert', $uacf7_db_insert_id, $form->id(), $contact_form_data, $tags );
 
 	}
 

@@ -328,7 +328,7 @@ class UACF7_PDF_GENERATOR {
         $pdf_header_upload_image = !empty($pdf_header_upload_image) ? '<img src="'.esc_attr( $pdf_header_upload_image ).'" style="height: 60; max-width: 100%; ">' : '';
         $uacf7_pdf_custom_font   = !empty($pdf['uacf7_pdf_custom_font']) ? $pdf['uacf7_pdf_custom_font'] : '';
        
-        
+    
         $mpdf = new \Mpdf\Mpdf([ 
             'fontdata' => [ // lowercase letters only in font key
                 'dejavuserifcond' => [
