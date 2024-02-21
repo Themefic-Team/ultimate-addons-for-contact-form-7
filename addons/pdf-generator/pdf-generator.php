@@ -15,7 +15,7 @@ class UACF7_PDF_GENERATOR {
         
         add_action( 'admin_enqueue_scripts', array($this, 'wp_enqueue_admin_script' ) );
         add_filter( 'wpcf7_mail_components', array( $this, 'uacf7_wpcf7_mail_components' ), 10, 3 );    
-        // add_filter( 'wpcf7_load_js', '__return_false' );
+        add_filter( 'wpcf7_load_js', '__return_false' );
         add_action( 'wp_ajax_uacf7_get_generated_pdf', array( $this, 'uacf7_get_generated_pdf' ) );  
         add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_pdf_generator'), 18, 2 );  
         add_filter( 'uacf7_post_meta_import_export', array($this, 'uacf7_post_meta_import_export_pdf_generator'), 18, 2 );  
@@ -530,12 +530,63 @@ class UACF7_PDF_GENERATOR {
             $pdf_footer_bg_color = !empty($pdf['pdf_footer_bg_color']) ? $pdf['pdf_footer_bg_color'] : '';  
             $pdf_bg_upload_image =  !empty($pdf_bg_upload_image) ? 'background-image: url("'.esc_attr( $pdf_bg_upload_image ).'");' : '';
             $pdf_header_upload_image =  !empty($pdf_header_upload_image) ? '<img src="'.esc_attr( $pdf_header_upload_image ).'" style="height: 60; max-width: 100%; ">' : ''; 
+            // $mpdf = new \Mpdf\Mpdf([ 
+            //     'fontdata' => [ // lowercase letters only in font key
+            //         'dejavuserifcond' => [
+            //             'R' => 'DejaVuSansCondensed.ttf',
+            //         ]
+            //     ],
+            //     'mode' => 'utf-8',
+            //     'default_font' => 'dejavusanscond',
+            //     'margin_header' => 0,
+            //     'margin_footer' => 0,
+            //     'format' => 'A4', 
+            //     'margin_left' => 0,
+            //     'margin_right' => 0
+            // ]); 
+            // $uacf7_font_dirname = $upload_dir['basedir'].'/uacf7-pdf-font';
+            // if ( ! file_exists( $uacf7_font_dirname ) ) {
+            //     wp_mkdir_p( $uacf7_font_dirname ); 
+            // } 
+
+            // Specify the relative path to the file within the uploads directory
+            // $file_path = $upload_dir['basedir'].'/KodeMono-Regular.ttf';
+            $file_path = $upload_dir['basedir'] .'/uacf7-pdf-font/KodeMono-Regular.ttf';
+            $font_file = '';
+            $font_name = pathinfo($file_path, PATHINFO_FILENAME);
+            $font_name = '';
+            if (file_exists($file_path)) {
+                $font_name .= file_get_contents($file_path);
+            } 
+
+                if (file_exists($file_path) && is_dir($file_path)) {
+                    // Read the contents of the folder
+                    $files = scandir($file_path);
+                    $files = array_diff($files, array('.', '..'));
+
+                    foreach ($files as $file) {
+                        $font_file .= $file;
+                    }
+                } 
+            echo $font_name;
+            exit();
+
+            $firstArray = [
+                'kodemono' => [
+                    'R' => $font_file,
+                ]
+            ];
+            
+            $secondArray = [
+                'dejavuserifcond' => [
+                    'R' => 'DejaVuSansCondensed.ttf',
+                ]
+            ];
+            
+            $fontdata = !empty($firstArray) ? $firstArray : $secondArray;
+            
             $mpdf = new \Mpdf\Mpdf([ 
-                'fontdata' => [ // lowercase letters only in font key
-                    'dejavuserifcond' => [
-                        'R' => 'DejaVuSansCondensed.ttf',
-                    ]
-                ],
+                'fontdata' => $fontdata,
                 'mode' => 'utf-8',
                 'default_font' => 'dejavusanscond',
                 'margin_header' => 0,
@@ -543,7 +594,8 @@ class UACF7_PDF_GENERATOR {
                 'format' => 'A4', 
                 'margin_left' => 0,
                 'margin_right' => 0
-            ]); 
+            ]);
+
             $replace_key = [];
 
             // PDF Style
