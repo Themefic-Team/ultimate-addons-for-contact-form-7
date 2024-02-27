@@ -1,5 +1,5 @@
 (function ($) {
     $(document).ready(function () {
-        // alert()
+        console.log(window.uacf7_google_sheet_obj.ajaxurl)
     });
 })(jQuery);

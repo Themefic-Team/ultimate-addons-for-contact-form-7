@@ -92,8 +92,29 @@
 
             $posted_data = $submission->get_posted_data();
 
-            var_dump($uacf7_enable_google_sheet);
-            exit();
+            $client_id = '722191084144-fpds0ou31v91ui13et8pekf5dnlges2e.apps.googleusercontent.com';
+            $client_secret = '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';
+            $spreadsheet_id = '14_8nzBtlZYsa2g8awrDU8V7lhmIIIQ5iRM_Rdktb5aU';
+        
+            // Create an instance of the Google Sheets Connector
+            $google_sheets_connector = new CF7_Google_Sheets_Connector( $client_id, $client_secret );
+        
+            // Connect to Google Sheets
+            $google_sheets_connector->connect();
+        
+            // Check if connected successfully
+            if ( $google_sheets_connector->is_connected() ) {
+                // Map form fields to Google Sheets columns
+                $mapped_data = array(
+                    'Column1' => $posted_data['your-name'],
+                    'Column2' => $posted_data['your-email'],
+                    'Column3' => $posted_data['your-subject'],
+                    'Column4' => $posted_data['your-message'],
+                );
+        
+                // Insert data into Google Sheets
+                $google_sheets_connector->insert_row( $spreadsheet_id, $mapped_data );
+            }
         }
         
     }
