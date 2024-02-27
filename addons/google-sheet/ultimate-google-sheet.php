@@ -9,7 +9,10 @@
         public function __construct(){
             add_action('wp_enqueue_scripts', [$this, 'uacf7_google_sheet_public_assets_loading']);
             
-            add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_google_sheet'), 21, 2 ); 
+            add_filter( 'uacf7_post_meta_options', [$this, 'uacf7_post_meta_options_google_sheet'], 21, 2 ); 
+            add_action( 'wpcf7_mail_sent',  [$this,'uacf7_google_sheets_send_submission'], 10, 1 );
+            add_filter( 'wpcf7_load_js', '__return_false' );
+
         }
 
         public function uacf7_google_sheet_public_assets_loading(){
@@ -31,7 +34,7 @@
                         'label' => __( 'Google Sheet Connector', 'ultimate-addons-cf7' ),
                         'subtitle' => sprintf(
                             __( 'You can store your form submission data to Google Sheet. See Demo %1s.', 'ultimate-addons-cf7' ),
-                             '<a href="https://cf7addons.com/preview/form-google-sheet-and-continue/" target="_blank" rel="noopener">Example</a>'
+                             '<a href="https://cf7addons.com/preview/form-google-sheet/" target="_blank" rel="noopener">Example</a>'
                                       )
                           ),
                           array(
@@ -40,7 +43,7 @@
                             'style'   => 'success',
                             'content' => sprintf( 
                                 __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                                '<a href="https://themefic.com/docs/uacf7/free-addons/submit-form-later-and-continue/" target="_blank" rel="noopener">Submit Later</a>'
+                                '<a href="https://themefic.com/docs/uacf7/free-addons/google-sheet/" target="_blank" rel="noopener">Submit Later</a>'
                             )
                           ),
                  
@@ -70,6 +73,31 @@
             $value['google_sheet'] = $google_sheet; 
             return $value;
         }
-    }
 
+        public function uacf7_google_sheets_send_submission($contact_form){
+
+            $submission = WPCF7_Submission::get_instance();
+            $formid = $contact_form->id();
+
+            if ( ! $submission ) {
+                return;
+            }
+      
+            $google_sheet              = uacf7_get_form_option($formid, 'google_sheet');
+            $uacf7_enable_google_sheet = $google_sheet['uacf7_form_google_sheet_enable'];
+
+            if($uacf7_enable_google_sheet != '1'){
+                return;
+            }
+
+            $posted_data = $submission->get_posted_data();
+
+            var_dump($uacf7_enable_google_sheet);
+            exit();
+        }
+        
+    }
+    
     new ULTIMATE_GOOGLE_SHEET();
+
+  
