@@ -114,18 +114,18 @@ switch ( $uacf7_default[1] ) {
 
 	case 'survey-form':
 		$form = '<div class="uacf7-wrapper-default">
-    <h3>Client Satisfaction Survey</h3>
+    <h3>Survey for Client Satisfaction</h3>
     <hr>
     <br>
-    <label> Which product did you purchase? *
+    <label>What product did you buy? *
         [select* product-list class:uacf7-drop-down "Office Accessories" "Home appliance" "Digital Product" "Garage Hardware"] </label>
-    <label> What was your primary reason for purchasing the product? *
+    <label> What motivated you to purchase the product? *
         [textarea* primary-reason] </label>
-    <label> What three features are most important to you? *
+    <label> Which three features do you prioritize the most? *
         [checkbox* question-1 class:uacf7-checkbox "Custom responses" "Custom integrations" "Expanded functionality" "Easy to navigate" "Offline capabilities"] </label>
-    <label> How can we improve our products/services? *
+    <label> In what ways do you think we could enhance our products or services? *
         [textarea* improvements] </label>
-    <label> Would you use our product / service in the future?
+    <label> Do you foresee yourself utilizing our product/service again in the future?
         [radio question-2 class:uacf7-radio default:1 "Definitely" "Probably" "Not Sure" "Probably Not"] </label>
     <div class="uacf7-submint">
         [submit "Submit Form"]

@@ -52,4 +52,4 @@ Thumbs.db
 
 # Temporary Ignore
 
-addons/google-sheet
+./third-party/../addons/google-sheet
