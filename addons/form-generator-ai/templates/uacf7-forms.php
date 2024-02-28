@@ -134,7 +134,7 @@ switch ( $uacf7_default[1] ) {
 		break;
 	case 'complaint-form':
 		$form = '<div class="uacf7-wrapper-default">
-    <h3>Customer Information</h3>
+    <h3>Could you please provide the necessary customer information?</h3>
     <hr>
     <br>
     [uacf7-row]
@@ -194,14 +194,14 @@ switch ( $uacf7_default[1] ) {
                 [email* your-email autocomplete:email placeholder "Email Address"] </label> [/uacf7-col]
     [/uacf7-row]
 
-    <h3>Complaint Information</h3>
+    <h3>Provide the nature of the complaint?</h3>
     <hr>
     <br>
     <label> Complaint Date *
         [date* complaint-date min:2019-01-16] </label>
     <label> Complaint Details:
         [textarea complaint-details] </label>
-    <label> What action needs to be taken to resolve this issue?
+    <label>What steps do you believe should be taken to address and resolve this issue?
         [textarea complaint-action] </label>
     <div class="uacf7-submint fill">
         [submit "Submit Form"]
