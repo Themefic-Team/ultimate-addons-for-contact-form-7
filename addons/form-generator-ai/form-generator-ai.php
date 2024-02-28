@@ -143,7 +143,7 @@ class UACF7_FORM_GENERATOR {
 			apply_filters( 'uacf7_repeater_ai_form_dropdown', [ "value" => "repeater", "label" => "Repeater (Pro)" ] ),
 			apply_filters( 'uacf7_blog_submission_ai_form_dropdown', [ "value" => "blog", "label" => "Blog Submission (Pro)" ] ),
 			[ "value" => "feedback", "label" => "Feedback" ],
-			[ "value" => "support-form", "label" => "Support form" ],
+			[ "value" => "support-form", "label" => "Support Form" ],
 			[ "value" => "application", "label" => "Application" ],
 			[ "value" => "inquiry", "label" => "Inquiry" ],
 			[ "value" => "survey", "label" => "Survey" ],

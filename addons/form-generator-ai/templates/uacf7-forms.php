@@ -35,8 +35,8 @@ switch ( $uacf7_default[1] ) {
 
 	case 'newslettertow':
 		$form = '<div class="uacf7-wrapper-default">
-    <h3 style="text-align: center;">Subscribe to our newsletter</h3>
-    <p style="text-align: center;">Welcome to our Newsletter Subscription Center. Sign up in the newsletter form below to receive the latest news and updates from our company.</p>
+    <h3 style="text-align: center;">Sign up for our newsletter to receive the latest updates and news.</h3>
+    <p style="text-align: center;">Join our Newsletter Subscription Center to stay up-to-date with the latest news and updates from our company. Simply fill out the form below to subscribe.</p>
     <hr>
     [uacf7-row]
         [uacf7-col col:6]
@@ -59,11 +59,11 @@ switch ( $uacf7_default[1] ) {
     [uacf7-row]
         [uacf7-col col:6]
             <span>
-                [email* email-address autocomplete:email placeholder "Your Mail Address"] </span> 
+                [email* email-address autocomplete:email placeholder "Mail Address"] </span> 
         [/uacf7-col]
         [uacf7-col col:6]
             <div class="uacf7-submint fill full-width">
-                [submit "Subscribe"]
+                [submit "Join"]
             </div>
         [/uacf7-col]
     [/uacf7-row]
@@ -83,13 +83,13 @@ switch ( $uacf7_default[1] ) {
     <label> Email *
         [email* your-email autocomplete:email placeholder "Email Address"] </label>
     <label> Department *
-    [select* department "Web Design" "Web Development" "WordPress Development" "WordPress Plugin"] </label>
+    [select* department "Data Science" "Web Dev" "WordPress Design" "WordPress Plugin"] </label>
     <label> Subject *
         [text* your-subject placeholder "Subject"] </label>
     <label> Description *
         [textarea* your-message placeholder "Your Message"] </label>
     <div class="uacf7-submint">
-        [submit "Subscribe"]
+        [submit "Send Message"]
     </div>
 </div>';
 		break;
@@ -103,11 +103,11 @@ switch ( $uacf7_default[1] ) {
         <label> Which game you want to play? *
             [checkbox* question-1 class:uacf7-checkbox "Football" "Cricket" "Hocky"]</label>
         <label> Time of the match?
-            [radio question-2 class:uacf7-radio default:1 "Morning" "Afternoon" "Any time"]</label>
+            [radio question-2 class:uacf7-radio default:1 "Morning" "Afternoon" "Midnight" "Any time"]</label>
         <label> Put your suggestion  (optional)
             [textarea your-suggestion] </label>
         <div class="uacf7-submint">
-            [submit "Submit Your opinion"]
+            [submit "Submit Your Opinion"]
         </div>
     </div>';
 	break;
