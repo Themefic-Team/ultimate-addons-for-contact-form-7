@@ -11,18 +11,18 @@
 class UACF7_SUBMISSION_ID{
 
     public function __construct(){
-        add_action('wp_enqueue_scripts', [$this, 'submission_id_public_assets_loading']); 
+        add_action('wp_enqueue_scripts', array($this, 'submission_id_public_assets_loading')); 
 
-        add_action('admin_init', [$this, 'submission_tag_generator']);
-        add_action('wpcf7_init', [$this, 'submission_id_add_shortcodes']);
-        add_action( 'wp_ajax_uacf7_update_submission_id', [$this, 'uacf7_update_submission_id'] );
-        add_action( 'wp_ajax_nopriv_uacf7_update_submission_id', [$this, 'uacf7_update_submission_id'] );
+        add_action('admin_init', array($this, 'submission_tag_generator'));
+        add_action('wpcf7_init', array($this, 'submission_id_add_shortcodes'));
+        add_action( 'wp_ajax_uacf7_update_submission_id', array($this, 'uacf7_update_submission_id') );
+        add_action( 'wp_ajax_nopriv_uacf7_update_submission_id', array($this, 'uacf7_update_submission_id') );
         
-        add_filter('wpcf7_mail_sent', [$this, 'submission_id_update']);
-        add_filter('wpcf7_mail_components', [$this, 'submission_id_custom_cf7_mail_subject'], 10, 2);
+        add_filter('wpcf7_mail_sent', array($this, 'submission_id_update'));
+        add_filter('wpcf7_mail_components', array($this, 'submission_id_custom_cf7_mail_subject'), 10, 2);
 
         // Submission ID Update into Database
-        add_action('uacf7_submission_id_insert', [$this, 'uacf7_submission_id_insert_callback'], 10, 4);
+        add_action('uacf7_submission_id_insert', array($this, 'uacf7_submission_id_insert_callback'), 10, 4);
         add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submission_id'), 20, 2 ); 
 
         require_once 'inc/submission-id.php';

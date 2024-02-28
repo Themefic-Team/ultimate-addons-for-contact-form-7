@@ -9,8 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class UACF7_SUBMISSION_ID_PANEL{
 
   public function __construct(){  
-    add_action( 'admin_init', [$this, 'uacf7_create_submission_id_database_col'] );
-    add_filter( 'tf_metabox_before_save_option', [$this, 'tf_metabox_before_save_option_submission_id_callback'], 10, 2 );
+    add_action( 'admin_init', array($this, 'uacf7_create_submission_id_database_col') );
+    add_filter( 'tf_metabox_before_save_option', array($this, 'tf_metabox_before_save_option_submission_id_callback'), 10, 2 );
 
   }
 

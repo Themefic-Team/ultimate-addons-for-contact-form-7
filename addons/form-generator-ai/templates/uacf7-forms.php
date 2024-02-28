@@ -201,7 +201,7 @@ switch ( $uacf7_default[1] ) {
         [date* complaint-date min:2019-01-16] </label>
     <label> Complaint Details:
         [textarea complaint-details] </label>
-    <label>What steps do you believe should be taken to address and resolve this issue?
+    <label>How do you propose we tackle and resolve this matter?
         [textarea complaint-action] </label>
     <div class="uacf7-submint fill">
         [submit "Submit Form"]
@@ -226,7 +226,7 @@ switch ( $uacf7_default[1] ) {
     [uacf7-row]
         [uacf7-col col:6]
             <label> Choose Service *
-                [checkbox* question-1 class:uacf7-checkbox "Service Items 1 - $10/ Hour" "Service Items 2 - $15/ Hour" "Service Items 3 - $20/ Hour"] </label>
+                [checkbox* question-1 class:uacf7-checkbox "Service Items 1 - $50/ Hour" "Service Items 2 - $65/ Hour" "Service Items 3 - $80/ Hour"] </label>
         [/uacf7-col]
         [uacf7-col col:6]
             <label> How many hours *
