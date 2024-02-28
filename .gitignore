@@ -49,7 +49,3 @@ Thumbs.db
 *.wmv
 *.map
 
-
-# Temporary Ignore
-
-./third-party/../addons/google-sheet
