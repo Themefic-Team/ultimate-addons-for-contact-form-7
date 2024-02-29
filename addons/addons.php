@@ -135,10 +135,7 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
         if( isset($option['uacf7_enable_form_preview_field']) && $option['uacf7_enable_form_preview_field'] == true ){  
             require_once( 'form-preview/ultimate-form-preview.php');
         }
-        //Addon - Form Preview
-        if( isset($option['uacf7_enable_google_sheet_field']) && $option['uacf7_enable_google_sheet_field'] == true ){  
-            require_once( 'google-sheet/ultimate-google-sheet.php');
-        }
+     
 	
     }
 }
