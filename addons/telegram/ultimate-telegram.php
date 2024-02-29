@@ -1,4 +1,4 @@
-<?php 
+array( <?php 
 if(!defined('ABSPATH')){
   exit();
 }
@@ -12,8 +12,8 @@ class UACF7_TELEGRAM {
 
     require_once 'inc/telegram.php';
 
-    add_action('wpcf7_before_send_mail', [$this, 'uacf7_send_contact_form_data_to_telegram']);
-    add_action('admin_enqueue_scripts', [$this, 'uacf7_telegram_admin_js_script']);
+    add_action('wpcf7_before_send_mail', array( $this, 'uacf7_send_contact_form_data_to_telegram'));
+    add_action('admin_enqueue_scripts', array( $this, 'uacf7_telegram_admin_js_script'));
     add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_telegram'), 21, 2 ); 
 
   }

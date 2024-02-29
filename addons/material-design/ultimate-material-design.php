@@ -9,9 +9,11 @@ if (!defined('ABSPATH')) {
 
 class ULTIMATE_MATERIAL_DESIGN {
     public function __construct(){
-        add_filter( 'uacf7_post_meta_options', [ $this, 'uacf7_post_meta_options_material_design'], 26, 2 ); 
-        add_action( 'wp_enqueue_scripts', [$this, 'uacf7_material_design_scripts']);
-        add_filter( 'wpcf7_contact_form_properties', array( $this, 'uacf7_material_design_form_properties' ), 10, 2 );
+
+        add_filter( 'uacf7_post_meta_options', array( $this, 'uacf7_post_meta_options_material_design'), 26, 2); 
+        add_action( 'wp_enqueue_scripts', array($this, 'uacf7_material_design_scripts'));
+        add_filter( 'wpcf7_contact_form_properties', array( $this, 'uacf7_material_design_form_properties' ), 10, 2);
+
     }
 
     public function uacf7_material_design_scripts(){
@@ -19,7 +21,6 @@ class ULTIMATE_MATERIAL_DESIGN {
         wp_register_script('uacf7-md-script-outlined', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-outlined-script.js', ['jquery'], 'WPCF7_VERSION', true);
         wp_register_script('uacf7-md-script-filled', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-filled-script.js', ['jquery'], 'WPCF7_VERSION', true);
         wp_register_script('uacf7-md-script-dark', UACF7_URL . 'addons/material-design/assets/js/uacf7-md-dark-script.js', ['jquery'], 'WPCF7_VERSION', true);
-
 
         wp_register_style( 'md-option-css-outlined', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-outlined.css', [], time(), 'all' );
         wp_register_style( 'md-option-css-filled', UACF7_URL . 'addons/material-design/assets/css/uacf7-md-filled.css', [], time(), 'all' );

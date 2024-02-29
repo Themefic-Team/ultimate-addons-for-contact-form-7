@@ -35,8 +35,8 @@ switch ( $uacf7_default[1] ) {
 
 	case 'newslettertow':
 		$form = '<div class="uacf7-wrapper-default">
-    <h3 style="text-align: center;">Subscribe to our newsletter</h3>
-    <p style="text-align: center;">Welcome to our Newsletter Subscription Center. Sign up in the newsletter form below to receive the latest news and updates from our company.</p>
+    <h3 style="text-align: center;">Sign up for our newsletter to receive the latest updates and news.</h3>
+    <p style="text-align: center;">Join our Newsletter Subscription Center to stay up-to-date with the latest news and updates from our company. Simply fill out the form below to subscribe.</p>
     <hr>
     [uacf7-row]
         [uacf7-col col:6]
@@ -59,11 +59,11 @@ switch ( $uacf7_default[1] ) {
     [uacf7-row]
         [uacf7-col col:6]
             <span>
-                [email* email-address autocomplete:email placeholder "Your Mail Address"] </span> 
+                [email* email-address autocomplete:email placeholder "Mail Address"] </span> 
         [/uacf7-col]
         [uacf7-col col:6]
             <div class="uacf7-submint fill full-width">
-                [submit "Subscribe"]
+                [submit "Join"]
             </div>
         [/uacf7-col]
     [/uacf7-row]
@@ -83,13 +83,13 @@ switch ( $uacf7_default[1] ) {
     <label> Email *
         [email* your-email autocomplete:email placeholder "Email Address"] </label>
     <label> Department *
-    [select* department "Web Design" "Web Development" "WordPress Development" "WordPress Plugin"] </label>
+    [select* department "Data Science" "Web Dev" "WordPress Design" "WordPress Plugin"] </label>
     <label> Subject *
         [text* your-subject placeholder "Subject"] </label>
     <label> Description *
         [textarea* your-message placeholder "Your Message"] </label>
     <div class="uacf7-submint">
-        [submit "Subscribe"]
+        [submit "Send Message"]
     </div>
 </div>';
 		break;
@@ -103,29 +103,29 @@ switch ( $uacf7_default[1] ) {
         <label> Which game you want to play? *
             [checkbox* question-1 class:uacf7-checkbox "Football" "Cricket" "Hocky"]</label>
         <label> Time of the match?
-            [radio question-2 class:uacf7-radio default:1 "Morning" "Afternoon" "Any time"]</label>
+            [radio question-2 class:uacf7-radio default:1 "Morning" "Afternoon" "Midnight" "Any time"]</label>
         <label> Put your suggestion  (optional)
             [textarea your-suggestion] </label>
         <div class="uacf7-submint">
-            [submit "Submit Your opinion"]
+            [submit "Submit Your Opinion"]
         </div>
     </div>';
 	break;
 
 	case 'survey-form':
 		$form = '<div class="uacf7-wrapper-default">
-    <h3>Client Satisfaction Survey</h3>
+    <h3>Survey for Client Satisfaction</h3>
     <hr>
     <br>
-    <label> Which product did you purchase? *
+    <label>What product did you buy? *
         [select* product-list class:uacf7-drop-down "Office Accessories" "Home appliance" "Digital Product" "Garage Hardware"] </label>
-    <label> What was your primary reason for purchasing the product? *
+    <label> What motivated you to purchase the product? *
         [textarea* primary-reason] </label>
-    <label> What three features are most important to you? *
+    <label> Which three features do you prioritize the most? *
         [checkbox* question-1 class:uacf7-checkbox "Custom responses" "Custom integrations" "Expanded functionality" "Easy to navigate" "Offline capabilities"] </label>
-    <label> How can we improve our products/services? *
+    <label> In what ways do you think we could enhance our products or services? *
         [textarea* improvements] </label>
-    <label> Would you use our product / service in the future?
+    <label> Do you foresee yourself utilizing our product/service again in the future?
         [radio question-2 class:uacf7-radio default:1 "Definitely" "Probably" "Not Sure" "Probably Not"] </label>
     <div class="uacf7-submint">
         [submit "Submit Form"]
@@ -134,7 +134,7 @@ switch ( $uacf7_default[1] ) {
 		break;
 	case 'complaint-form':
 		$form = '<div class="uacf7-wrapper-default">
-    <h3>Customer Information</h3>
+    <h3>Could you please provide the necessary customer information?</h3>
     <hr>
     <br>
     [uacf7-row]
@@ -194,14 +194,14 @@ switch ( $uacf7_default[1] ) {
                 [email* your-email autocomplete:email placeholder "Email Address"] </label> [/uacf7-col]
     [/uacf7-row]
 
-    <h3>Complaint Information</h3>
+    <h3>Provide the nature of the complaint?</h3>
     <hr>
     <br>
     <label> Complaint Date *
         [date* complaint-date min:2019-01-16] </label>
     <label> Complaint Details:
         [textarea complaint-details] </label>
-    <label> What action needs to be taken to resolve this issue?
+    <label>How do you propose we tackle and resolve this matter?
         [textarea complaint-action] </label>
     <div class="uacf7-submint fill">
         [submit "Submit Form"]
@@ -226,7 +226,7 @@ switch ( $uacf7_default[1] ) {
     [uacf7-row]
         [uacf7-col col:6]
             <label> Choose Service *
-                [checkbox* question-1 class:uacf7-checkbox "Service Items 1 - $10/ Hour" "Service Items 2 - $15/ Hour" "Service Items 3 - $20/ Hour"] </label>
+                [checkbox* question-1 class:uacf7-checkbox "Service Items 1 - $50/ Hour" "Service Items 2 - $65/ Hour" "Service Items 3 - $80/ Hour"] </label>
         [/uacf7-col]
         [uacf7-col col:6]
             <label> How many hours *
