@@ -61,6 +61,7 @@ class UACF7_MAILCHIMP
     $mailchimp = apply_filters('uacf7_post_meta_options_mailchimp_pro', $data = array(
         'title'  => __( 'Mailchimp', 'ultimate-addons-cf7' ),
         'icon'   => 'fa-brands fa-mailchimp',
+        'checked_field'   => 'uacf7_mailchimp_form_enable',
         'fields' => array(
             'uacf7_mailchimp_label' => array(
               'id'    => 'uacf7_mailchimp_label',
@@ -71,8 +72,8 @@ class UACF7_MAILCHIMP
                  '<a href="https://cf7addons.com/preview/mailchimp-for-contact-form-7/" target="_blank" rel="noopener">Example</a>'
                           )
               ),
-              array(
-                'id'      => 'mailchimp-docs',
+              'mailchimp_docs' => array(
+                'id'      => 'mailchimp_docs',
                 'type'    => 'notice',
                 'style'   => 'success',
                 'content' => sprintf( 
@@ -93,7 +94,11 @@ class UACF7_MAILCHIMP
                 ),
                 'default'   => false
             ),
-            
+            'uacf7_mailchimp_form_options_heading' => array(
+                'id'        => 'uacf7_mailchimp_form_options_heading',
+                'type'      => 'heading',
+                'label'     => __( 'Mailchimp Option ', 'ultimate-addons-cf7' ),
+            ),
            
             'uacf7_mailchimp_form_type' => array(
               'id'        => 'uacf7_mailchimp_form_type',

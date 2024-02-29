@@ -47,6 +47,7 @@ class UACF7_PDF_GENERATOR {
         $pdf_generator = apply_filters('uacf7_post_meta_options_pdf_generator_pro', $data = array(
             'title'  => __( 'PDF Generator', 'ultimate-addons-cf7' ),
             'icon'   => 'fa-solid fa-file-pdf',
+            'checked_field'   => 'uacf7_enable_pdf_generator',
             'fields' => array(
                 'uacf7_pdf_label' => array(
                 'id'    => 'uacf7_pdf_label',
@@ -57,8 +58,8 @@ class UACF7_PDF_GENERATOR {
                         '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
                                 )
                 ),
-                array(
-                    'id'      => 'pdf-generator-docs',
+                'pdf_generator_docs' => array(
+                    'id'      => 'pdf_generator_docs',
                     'type'    => 'notice',
                     'style'   => 'success',
                     'content' => sprintf( 
@@ -73,9 +74,13 @@ class UACF7_PDF_GENERATOR {
                     'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
                     'label_off' => __( 'No', 'ultimate-addons-cf7' ),
                     'default'   => false,
-                    'field_width' => 50,
+                    'field_width' => 100,
+                ), 
+                'pdf_generator_form_options_heading' => array(
+                    'id'        => 'pdf_generator_form_options_heading',
+                    'type'      => 'heading',
+                    'label'     => __( 'PDF Option ', 'ultimate-addons-cf7' ),
                 ),
-
                 'uacf7_pdf_disable_header_footer' => array(
                     'id'        => 'uacf7_pdf_disable_header_footer',
                     'type'      => 'checkbox',
@@ -84,7 +89,7 @@ class UACF7_PDF_GENERATOR {
                         'header' => 'Disable Header',
                         'footer' => 'Disable Footer'
                     ),
-                    'field_width' => '50',
+                    'field_width' => 100,
                     'inline'      => true
                 ),
               
@@ -407,20 +412,20 @@ class UACF7_PDF_GENERATOR {
             </div>
             ');
         }
-        
+      
 
         // PDF Footer
         if( $disable_footer != true ){
             $mpdf->SetHTMLFooter('<div class="pdf-footer">'.$customize_pdf_footer.'</div>');
         }
-        
+       
         $replace_key = [];
         $repeaters = [];
         $repeater_value = [];
         $replace_value = []; 
         $uploaded_files = [];
         
-       $form_value =  json_decode($data->form_value); 
+       $form_value =  json_decode($data->form_value);  
         foreach($form_value as $key => $value){
             // Repeater value gate
             if (strpos($key, '__') !== false) {
@@ -450,22 +455,30 @@ class UACF7_PDF_GENERATOR {
             }
             $replace_value[] = $value;
         }   
-
+               
+      
         // Repeater value
         if(isset($repeaters) || is_array($repeaters)){
             $repeater_data = apply_filters('uacf7_pdf_generator_replace_data', $repeater_value, $repeaters, $customize_pdf); 
             $customize_pdf = str_replace($repeater_data['replace_re_key'], $repeater_data['replace_re_value'], $customize_pdf); 
         }  
 
+       
         $pdf_content = str_replace($replace_key, $replace_value, $customize_pdf);
- 
+        $pdf_content = apply_filters('uacf7_pdf_generator_replace_condition_data', $pdf_content, $form_id,  $form_value );
+   
         $mpdf->SetTitle($uacf7_pdf_name);
 
         // PDF Footer Content
         $mpdf->WriteHTML($pdf_style.'<div class="pdf-content">'.nl2br($pdf_content).'   </div>');
-        
+        // 
+        // make directory 
+        if ( ! file_exists( $dir.'/uacf7-uploads' ) ) {
+            wp_mkdir_p( $dir.'/uacf7-uploads' ); 
+        }
         $pdf_dir = $dir.'/uacf7-uploads/'.$uacf7_pdf_name.'_db_.pdf';
         $pdf_url = $url.'/uacf7-uploads/'.$uacf7_pdf_name.'_db_.pdf';
+        
         $mpdf->Output($pdf_dir, 'F'); // Dwonload
         
         wp_send_json( 
@@ -721,7 +734,10 @@ class UACF7_PDF_GENERATOR {
             } 
 
             $pdf_content = str_replace($replace_key, $replace_value, $customize_pdf);
-           
+            // Replace extranal data using this content;
+
+            $pdf_content = apply_filters('uacf7_pdf_generator_replace_condition_data', $pdf_content, $wpcf7->id(), $contact_form_data );
+ 
             // Replace PDF Name
             $uacf7_pdf_name = str_replace($replace_key, $replace_value, $uacf7_pdf_name);
          

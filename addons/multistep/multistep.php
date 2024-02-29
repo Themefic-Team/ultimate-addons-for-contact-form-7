@@ -65,6 +65,7 @@ class UACF7_MULTISTEP {
         $multistep = apply_filters('uacf7_post_meta_options_multistep_pro', $data = array(
 			'title'  => __( 'Multi-step Form', 'ultimate-addons-cf7' ),
 			'icon'   => 'fa-solid fa-stairs',
+            'checked_field'   => 'uacf7_multistep_is_multistep',
 			'fields' => array(
                 'placeholder_heading' => array(
 					'id'    => 'placeholder_heading',
@@ -75,8 +76,8 @@ class UACF7_MULTISTEP {
                          '<a href="https://cf7addons.com/preview/contact-form-7-multi-step-forms/" target="_blank">Example</a>'
                     )
 				),
-                array(
-					'id'      => 'multistep-form-docs',
+                'multistep_form_docs' => array(
+					'id'      => 'multistep_form_docs',
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
@@ -92,7 +93,12 @@ class UACF7_MULTISTEP {
 					'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 					'default'   => false,
-                    'field_width' => 50,
+                    'field_width' => 100,
+                ),
+                'uacf7_multistep_form_options_heading' => array(
+                    'id'        => 'uacf7_multistep_form_options_heading',
+                    'type'      => 'heading',
+                    'label'     => __( 'Multistep Option ', 'ultimate-addons-cf7' ),
                 ),
                 'uacf7_enable_multistep_progressbar' => array(
 					'id'        => 'uacf7_enable_multistep_progressbar',
@@ -226,7 +232,15 @@ class UACF7_MULTISTEP {
                     'options' => array(
                         'default' => 'Default',
                         'equal-height' => 'Equal height'
-                    )
+                    ),
+                    'dependency' => array(
+                        array('uacf7_progressbar_style', '!=', 'default'),
+                        array('uacf7_progressbar_style', '!=', 'style-1'),
+                        array('uacf7_progressbar_style', '!=', 'style-2'),
+                        array('uacf7_progressbar_style', '!=', 'style-4'),
+                        array('uacf7_progressbar_style', '!=', 'style-5'),
+
+                    ),
                 ),
 
                 'uacf7_multistep_progressbar_color_option' => array(
@@ -830,6 +844,10 @@ class UACF7_MULTISTEP {
                         'placeholder'     => __( 'Description title', 'ultimate-addons-cf7' ), 
                         'is_pro' => true,
                         'field_width' => 50,
+                        'dependency' => array( 
+                            array('uacf7_progressbar_style', '==', 'style-6'), 
+    
+                        ),
                     );
                     $fields['step_desc_'.$step->name.''] = array(
                         'id'        => 'step_desc_'.$step->name.'',
@@ -837,6 +855,10 @@ class UACF7_MULTISTEP {
                         'label'     => __( 'Step description', 'ultimate-addons-cf7' ),
                         'placeholder'     => __( 'Step description', 'ultimate-addons-cf7' ), 
                         'is_pro' => true,
+                        'dependency' => array( 
+                            array('uacf7_progressbar_style', '==', 'style-6'), 
+    
+                        ),
                     );
 
                     $step_count++;
@@ -1026,10 +1048,6 @@ class UACF7_MULTISTEP {
                         $step_id    = 1;
                         $step_count = 0;
                         $step_name  = apply_filters('uacf7_multistep_steps_names', '', $all_steps);
-
-                   
-
-
                     
                         foreach ($all_steps as $step) {
                             // $content = $step->values[0];
@@ -1129,7 +1147,6 @@ class UACF7_MULTISTEP {
                             $step_count++; 
                         }
                     
-                    
                         ?>
                     </div>
                 </div>
@@ -1175,8 +1192,8 @@ class UACF7_MULTISTEP {
         $count = '1';
         for ($x = 0; $x < count($validation_fields); $x++) {
             $field = explode(':', $validation_fields[$x]); 
-            $name = $field[1];
-            $name_array =  explode("__",$field[1]); 
+            $name = isset($field[1]) ? $field[1] : '';
+            $name_array =  explode("__",$name); 
             $replace = '__'.$count.''; 
             $tag_name[] =  $name_array[0];
             $tag_validation[$field[0].$x] =  $name;
@@ -1256,6 +1273,8 @@ class UACF7_MULTISTEP {
         } 
         if(!empty($invalid_fields)){
             $is_valid = false;
+        }else{
+            $invalid_fields = false;
         }
         echo(json_encode( array(
                     'is_valid' => $is_valid,
