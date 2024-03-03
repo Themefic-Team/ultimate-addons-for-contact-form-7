@@ -128,11 +128,14 @@
         }
 
         public function uacf7_form_preview_public_assets_loading(){
-
+           
+                wp_enqueue_script('preview_form_jquery_ui_js', UACF7_URL . 'addons/form-preview/assets/public/js/jquery-ui.js', ['jquery'], 'UAFC7_VERSION', true);
                 wp_enqueue_script('preview_form_public_js', UACF7_URL . 'addons/form-preview/assets/public/js/public-form-preview.js', ['jquery'], 'UAFC7_VERSION', true);
                
-                wp_enqueue_style('form_preview_public_css', UACF7_URL . 'addons/form-preview/assets/public/css/public-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
+                wp_enqueue_style('form_preview_jquery_ui_css', UACF7_URL . 'addons/form-preview/assets/public/css/jquery-ui.css', [], 'UAFC7_VERSION', true, 'all');
+                // wp_enqueue_style('form_preview_public_css', UACF7_URL . 'addons/form-preview/assets/public/css/public-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
                
+                wp_enqueue_style('jquery-ui-theme', 'https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css');
                 wp_localize_script( 'preview_form_public_js', 'uacf7_form_preview_obj', [
                     "ajaxurl" => admin_url( 'admin-ajax.php' ),
                     'nonce'   => wp_create_nonce( 'uacf7-form-preview-nonce' ),
