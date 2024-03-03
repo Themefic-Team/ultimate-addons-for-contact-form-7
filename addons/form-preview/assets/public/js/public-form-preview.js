@@ -1,11 +1,5 @@
 ;(function ($) {  
     
-    $(document).ready(function () {
-
-        $('#uacf7-preview-btn').on('click', function (e){
-            e.preventDefault();
-        });
-
         $('.wpcf7-form').each(function () {
             var form   = $(this);
             var formId = form.find('input[name="_wpcf7"]').val();
@@ -90,9 +84,6 @@
             });
             
         });            
-        
-    });
-
 
 })(jQuery);
 
