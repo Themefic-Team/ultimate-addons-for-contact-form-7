@@ -37,7 +37,6 @@ class ULTIMATE_MATERIAL_DESIGN {
             $uacf7_material_design_enable = isset($uacf7_material_design['uacf7_material_design_enable']) ? $uacf7_material_design['uacf7_material_design_enable'] : 0;
             $class                        = !empty($uacf7_material_design_type) ? ' uacf7-material-design-'. $uacf7_material_design_type : '';
 
-
             if($uacf7_material_design_enable == true){
                 if ( $uacf7_material_design_type != '') { 
                     wp_enqueue_style('md-option-css-'.$uacf7_material_design_type);

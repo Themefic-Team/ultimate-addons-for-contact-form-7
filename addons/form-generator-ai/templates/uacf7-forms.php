@@ -38,14 +38,10 @@ switch ( $uacf7_default[1] ) {
     <h3 style="text-align: center;">Sign up for our newsletter to receive the latest updates and news.</h3>
     <p style="text-align: center;">Join our Newsletter Subscription Center to stay up-to-date with the latest news and updates from our company. Simply fill out the form below to subscribe.</p>
     <hr>
-    [uacf7-row]
-        [uacf7-col col:6]
-            <label> First Name
-                [text* first-name autocomplete:name] </label>  [/uacf7-col]
-        [uacf7-col col:6]
-            <label> Last Name
-                [text* last-name autocomplete:last-name] </label>  [/uacf7-col]
-    [/uacf7-row]
+
+    <label>  Name
+        [text* name autocomplete:name] </label> 
+
     <label> Email
         [email* your-email autocomplete:email] </label>
     <div class="uacf7-submint end fill">
@@ -96,12 +92,12 @@ switch ( $uacf7_default[1] ) {
 
 	case 'polling':
 		$form = '<div class="uacf7-wrapper-default">
-        <label> Full Name *
-            [text* full-name autocomplete:name placeholder "Full Name"] </label>
+        <label> Name *
+            [text* name autocomplete:name placeholder "Name"] </label>
         <label> Email *
             [email* your-email autocomplete:email placeholder "Email Address"] </label>
         <label> Which game you want to play? *
-            [checkbox* question-1 class:uacf7-checkbox "Football" "Cricket" "Hocky"]</label>
+            [checkbox* question-1 class:uacf7-checkbox "Rugbey" "Cricket" "Hocky"]</label>
         <label> Time of the match?
             [radio question-2 class:uacf7-radio default:1 "Morning" "Afternoon" "Midnight" "Any time"]</label>
         <label> Put your suggestion  (optional)
@@ -118,7 +114,7 @@ switch ( $uacf7_default[1] ) {
     <hr>
     <br>
     <label>What product did you buy? *
-        [select* product-list class:uacf7-drop-down "Office Accessories" "Home appliance" "Digital Product" "Garage Hardware"] </label>
+        [select* product-list class:uacf7-drop-down "Office Accessories" "Kitchen appliance" "Digital Product" "Garage Tools"] </label>
     <label> What motivated you to purchase the product? *
         [textarea* primary-reason] </label>
     <label> Which three features do you prioritize the most? *
@@ -134,7 +130,7 @@ switch ( $uacf7_default[1] ) {
 		break;
 	case 'complaint-form':
 		$form = '<div class="uacf7-wrapper-default">
-    <h3>Customer Information</h3>
+    <h3>Customer Information (During Purchase)</h3>
     <hr>
     <br>
     [uacf7-row]
@@ -199,7 +195,7 @@ switch ( $uacf7_default[1] ) {
     <br>
     <label> Complaint Date *
         [date* complaint-date min:2019-01-16] </label>
-    <label> Complaint Details:
+    <label> Complaint Details (Please explain to the point):
         [textarea complaint-details] </label>
     <label> What action needs to be taken to resolve this issue?
         [textarea complaint-action] </label>
@@ -220,17 +216,17 @@ switch ( $uacf7_default[1] ) {
                 [text* your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
     [/uacf7-row]
 
-        <label> Email *
+        <label> Your Email *
             [email* your-email autocomplete:email placeholder "Email Address"] </label>
 
     [uacf7-row]
         [uacf7-col col:6]
             <label> Choose Service *
-                [checkbox* question-1 class:uacf7-checkbox "Service Items 1 - $10/ Hour" "Service Items 2 - $15/ Hour" "Service Items 3 - $20/ Hour"] </label>
+                [checkbox* question-1 class:uacf7-checkbox "Items 1 - $50/ Hour" "Items 2 - $85/ Hour" "Items 3 - $150/ Hour"] </label>
         [/uacf7-col]
         [uacf7-col col:6]
-            <label> How many hours *
-                [number* how-hours] </label>
+            <label> Your message (Including how many hours of services) *
+                [textarea* message] </label>
         [/uacf7-col]
     [/uacf7-row]
 
@@ -255,26 +251,24 @@ switch ( $uacf7_default[1] ) {
         [text* job-title] </label>
     <label> Company Name *
         [text* company-name] </label>
-    <label> Biography
-        [textarea biography] </label>
+    <label> Personal Narrative
+        [textarea personal-narrative] </label>
     <label> Email *
         [email* your-email autocomplete:email] </label>
     <label> Proposal Title
         [text proposal-title] </label>
     <label> Short Description
         [textarea short-disc] </label>
-    <label> Abstract
-        [textarea abstract] </label>
-    <label> Topics
+    <label> Interested Topic
         [radio topics class:uacf7-radio default:1 "Topics 1" "Topics 2" "Topics 3" "Topics 4"] </label>
-    <label> Session Type
+    <label> Type of Session
         [select session-type class:uacf7-drop-down "Panel" "Work shop" "Presentation" "Other"] </label>
-    <label> Audience Level
-        [select audience-level class:uacf7-drop-down "Novice" "Intermediate" "Expert"] </label>
+    <label> Level of Audience
+        [select audience-level class:uacf7-drop-down "Newbie" "Intermediate" "Expert"] </label>
     <label> Video URL
         [url* video-url] </label>
-    <label> Additional Information
-        [textarea dditional-info] </label>
+    <label> Extra Information
+        [textarea extra-info] </label>
 
     <div class="uacf7-submint fill end">
         [submit "Submit Order Form"]
@@ -286,18 +280,18 @@ switch ( $uacf7_default[1] ) {
 	case 'volunteer-sign-up-form':
 		$form = '<div class="uacf7-wrapper-default">
     <h3 style="text-align: center;">Volunteer Sign Up</h3>
-    <p style="text-align: center;">Come with us and help out your local community!</p>
+    <p style="text-align: center;">Join us in supporting your neighborhood!</p>
     <br>
     <hr>
     <br>
 
-    <label> Where would you like to volunteer (Check any that apply) *
-        [checkbox* question-1 class:uacf7-checkbox "Food bank" "Animal shelter" "Preschool" "City lawn care" "Community Service"] </label>
+    <label> Please indicate your volunteering preferences by checking any options that apply. *
+        [checkbox* volunteering-preferences class:uacf7-checkbox "Food bank" "Animal shelter" "Preschool" "City lawn care" "Community Service"] </label>
 
-    <label> How many hours a week can you dedicate?
-        [text how-many-week] </label>
+    <label> How many hours per week are you available to commit?
+        [text how-many-hours-in-week] </label>
 
-    <label> When are you available to start?
+    <label> When would you be able to begin?
         [text starting-time] </label>
 
     [uacf7-row]
@@ -330,7 +324,7 @@ switch ( $uacf7_default[1] ) {
 
 	case 'donation-form':
 		$form = '<div class="uacf7-wrapper-default">
-    <p style="text-align: center;"><strong>Fillup this form to add to our doner list. </strong></p>
+    <p style="text-align: center;"><strong>Please fill out this form to be added to our donor list.</strong></p>
     <hr>
     <br>
 
@@ -383,14 +377,14 @@ switch ( $uacf7_default[1] ) {
         [/uacf7-col]
     [/uacf7-row]
 
-    <label> Amount you would like to donate
+    <label> How much would you like to donate?
         [number donate-amount placeholder "e.g.: $10"] </label>
 
-    <label> Your Preferred Method of Donation *
-        [checkbox* question-1 class:uacf7-checkbox "Credit Card" "PayPal" "CashApp" "Wire Transfer" "Check"] </label>
+    <label> Please specify your preferred method of donation. *
+        [checkbox* preferred-paying-method class:uacf7-checkbox "Credit Card" "PayPal" "CashApp" "Wire Transfer" "Check"] </label>
 
-    <label> How repeatedly do you want to donate? *
-        [checkbox* question-2 class:uacf7-checkbox "One Time" "Yearly" "Monthly" "Weekly" "Daily"] </label>
+    <label> How frequently would you like to make donations? *
+        [checkbox* donation-round class:uacf7-checkbox "One Time" "Yearly" "Monthly" "Weekly" "Daily"] </label>
 
     <div class="uacf7-submint">
         [submit "Submit Form"]
@@ -405,8 +399,8 @@ switch ( $uacf7_default[1] ) {
     // Start Form from -Masum Billah
     case "blood-donation":
         $form = '<div class="uacf7-wrapper-default">
-            <h3 style="text-align: center;">Blood Donation Form</h3>
-            <p style="text-align: center;">Donate blood save life!</p>
+            <h3 style="text-align: center;">Blood Donation Registration Form</h3>
+            <p style="text-align: center;">Give blood, save a life!</p>
             <br>
             <hr>
             <br>
@@ -469,7 +463,7 @@ switch ( $uacf7_default[1] ) {
     case "charity-dinner":
         $form = '<div class="uacf7-wrapper-default">
         <h2 style="text-align: center; color:#115e99;">Charity Dinner</h2>
-        <p style="text-align: center; color: #115e99;">Charity dinner for refugee children!</p>
+        <p style="text-align: center; color: #115e99;">Refugee Children\'s Charity Dinner</p>
         <br>
         <hr>
         <br>
@@ -486,12 +480,12 @@ switch ( $uacf7_default[1] ) {
         [/uacf7-row]
         [uacf7-row]
             [uacf7-col col:6]
-                <label> Phone
+                <label> Phone Number
                     [tel donors-phone placeholder "Phone Number"] 
                 </label>
             [/uacf7-col]
             [uacf7-col col:6] 
-                <label>Email
+                <label>Email Address
                     [email donors-email placeholder "Email"] 
                 </label>
             [/uacf7-col]
@@ -502,11 +496,11 @@ switch ( $uacf7_default[1] ) {
                 [radio will-donor-attend class:uacf7-radio default:1 "Yes" "No"] 
             </label>
             
-            <label> Number of Guests
+            <label> Number of Guests (optional)
                 [number total-guest min:1 placeholder "1-3"]  
             </label> 
     
-            <label> Special Request
+            <label> Special Request (optional)
                 [textarea* donor-special-request]  
             </label> 
     
@@ -579,16 +573,16 @@ switch ( $uacf7_default[1] ) {
                 [text* volunteer-zip] 
             </label>
             
-            <label> Working Days
+            <label> Your Working Days
                 [checkbox volunteer-working-days class:uacf7-checkbox "Sunday" "Satarday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday"] 
             </label>
             
-            <label> Area of Interest/ skills
+            <label> Area of Interest / Skills
                 [textarea* volunteer-interest]  
             </label>
             
-            <label> Comments (optional)
-                [textarea* volunteer-comments]  
+            <label> Message (optional)
+                [textarea* volunteer-message]  
             </label>
             
             <div class="uacf7-submint">
@@ -629,7 +623,7 @@ switch ( $uacf7_default[1] ) {
                 [date your-date placeholder] 
             </label>
             
-            <label> What can I help you with?
+            <label> You can help me by providing more context or specifying what you need assistance with.
                 [radio your-services class:uacf7-radio default:1 "Social Media Publication" "Prints & Illustrations" "Website Design" "Other"]
             </label>
             
@@ -637,7 +631,7 @@ switch ( $uacf7_default[1] ) {
                 [textarea* your-message placeholder "Type your message here...."] 
             </label>
             
-            <label> When do you need the graphic designer? *
+            <label> The timing for needing a graphic designer depends on the project\'s timeline and requirements.*
                 [date* your-needing-date] 
             </label>
             
@@ -650,8 +644,8 @@ switch ( $uacf7_default[1] ) {
     case "hardware-request-form":
         $form = '
         <div class="uacf7-wrapper-default">
-            <h3 style="text-align: center"> Hardware Request Form </h3>
-            <p style="text-align: center"> This form will be used to request if any new hardware is needed in any department.</p>
+            <h3 style="text-align: center"> Hardware Service Request Form </h3>
+            <p style="text-align: center"> This form will serve as a request for any new hardware needed in any department.</p>
             
             [uacf7-row]
                 [uacf7-col col:6]
@@ -679,26 +673,22 @@ switch ( $uacf7_default[1] ) {
             </label>
             
             <label> What type of hardware do you need?
-                [select item-type include_blank "New Desktop" "New Laptop" "Laptop Table" "Accessories" "Others"] 
+                [select item-type include_blank "New Desktop" "PC Monitor" "Laptop Table" "Accessories" "Others"] 
             </label>
             
-            <label> If you choose other, please write the name.
+            <label> If you select "Other",  please specify the name.
                 [text your-other-choice] 
             </label>
             
-            <label> Choose Software to be pre-installed     
+            <label> Select the software you would like to have pre-installed.   
                 [checkbox other-adobe-products class:uacf7-checkbox "Microsoft Office" "Adobe Products" "3D Software"] 
             </label>
             
-            <label> Other Software / Instruction *
-                [textarea* other-soft-instruction placeholder "Type your message here...."] 
+            <label> Reason for the Request (To the Point) *
+                [textarea* other-soft-instruction placeholder "Type your reason here...."] 
             </label>
             
-            <label> Reason for the Request (Be Specific) *
-                [textarea* other-soft-instruction placeholder "Type your message here...."] 
-            </label>
-            
-            <label> Date Submitted
+            <label> Submitted Date
                 [date* your-needing-date] 
             </label>
             
@@ -710,7 +700,7 @@ switch ( $uacf7_default[1] ) {
     case "it-service-req":
         $form = '
         <div class="uacf7-wrapper-default">
-            <p style="text-align: center; font-weight: bold;">Please fill out this form, and an IT service team member will be in touch with you shortly.</p>
+            <p style="text-align: center; font-weight: bold;">Kindly complete this form, and a member of our IT service team will reach out to you shortly.</p>
             
             [uacf7-row]
                 [uacf7-col col:6]
@@ -734,7 +724,7 @@ switch ( $uacf7_default[1] ) {
                 [text* your-dept] 
             </label>
             
-            <label>What are you having issues with?
+            <label>What specific challenges are you currently experiencing?
                 [checkbox issue-with class:uacf7-checkbox "Computer" "Projector" "Internet Connection" "Others"] 
             </label>
             
@@ -744,7 +734,7 @@ switch ( $uacf7_default[1] ) {
                 </label>
             [/conditional]
             
-            <label>Any details we should know about?
+            <label>Is there any additional information or specific details that would be helpful for us to know?
                 [textarea your-other-details] 
             </label>
             
@@ -818,15 +808,15 @@ switch ( $uacf7_default[1] ) {
                 [/uacf7-col]
             [/uacf7-row]
             
-            <label>Enter Your Email Address  *
+            <label>Email Address  *
                 [email* your-email autocomplete:email placeholder "Email Address"] 
             </label>
             
-            <label>Title of the Issue *
-                [text* your-issue-title] 
+            <label>Exact Issue *
+                [text* your-issue] 
             </label>
             
-            <label>Problem Status *
+            <label>Problem Current Status *
                 [select* your-problem-status include_blank "Open" "Hold" "Fixed" "Closed" "Invalid" "Others"] 
             </label>
             
@@ -836,18 +826,10 @@ switch ( $uacf7_default[1] ) {
                 </label>
             [/conditional]
             
-            <label>Summary of the Information *
+            <label>Summary of the Bug *
                 [textarea* your-bug-summery] 
             </label>
-            
-            <label>Steps to Reproduce *
-                [textarea* your-reproduce-steps] 
-            </label>
-            
-            <label>Results *
-                [textarea* your-step-result] 
-            </label>
-            
+
             <label>Regression
                 [textarea your-regression] 
             </label>
@@ -881,8 +863,8 @@ switch ( $uacf7_default[1] ) {
     case "check-request":
         $form = '
         <div class="uacf7-wrapper-default">
-            <h2 style="text-align:center;">Check Request</h2>
-            <p style="text-align:center;">If you are in need of funds, please fill out the following check request. We will reach out to you once the request has been approved. If this is an emergency, please contact the financial department directly.</p>
+            <h2 style="text-align:center;">Check Request Form</h2>
+            <p style="text-align:center;">If you require funds, kindly complete the following check request form. Once approved, we will promptly reach out to you. For urgent matters, please contact the financial department directly.</p>
             
             <h3>Requested By :</h3>
             
@@ -904,7 +886,7 @@ switch ( $uacf7_default[1] ) {
                 [email* your-email autocomplete:email placeholder "Email Address"] 
             </label>
             
-            <label>Date Requested 
+            <label>Requested Date
                 [date date-requested] 
             </label>
             
@@ -980,7 +962,7 @@ switch ( $uacf7_default[1] ) {
                 [/uacf7-col]
             [/uacf7-row]
             
-            [acceptance acceptance-terms] I have read and agree to the Terms and Conditions and Privacy Policy [/acceptance]
+            [acceptance acceptance-terms] I acknowledge that I have reviewed and consent to abide by the Terms and Conditions as well as the Privacy Policy. [/acceptance]
             
             <div class="uacf7-submint">
                 [submit "Submit Bug Report"]
@@ -1049,8 +1031,8 @@ switch ( $uacf7_default[1] ) {
                     [radio leave-type class:uacf7-radio default:1 "Vacation" "Sick" "Quitting" "Maternity/Paternity" "Other"] 
                 </label>
                 
-                <label>Comments *
-                    [textarea* your-comments] 
+                <label>Reason *
+                    [textarea* your-reason] 
                 </label>
                 
                 <div class="uacf7-submint end fill">
@@ -1088,11 +1070,11 @@ switch ( $uacf7_default[1] ) {
                     [text company placeholder "company name"] 
                 </label>
                 
-                <label>Website
-                    [url your-website placeholder "https://google.com"] 
+                <label>Website URL
+                    [url your-website placeholder "https://domain.com"] 
                 </label>
                 
-                <label>Message (if any)
+                <label>Message (Optional)
                     [textarea your-message] 
                 </label>
                 
@@ -1136,12 +1118,10 @@ switch ( $uacf7_default[1] ) {
         case "accident-report-form":
             $form = '
             <div class="uacf7-wrapper-default">
+            <h2 style="text-align:center;">Accident Report Form</h2>
                 <label>I am reporting a:
                     [checkbox accident-type class:uacf7-checkbox "Loss of time/injury" "Work vehicle accident" "Work accident" "First aid incident" "Observation"]
-                </label>
-                
-                <h3>Person Reporting Incident</h3>
-                
+                </label>  
                 [uacf7-row]
                     [uacf7-col col:6]
                         <label> First Name *
@@ -1156,7 +1136,7 @@ switch ( $uacf7_default[1] ) {
                     [/uacf7-col]
                 [/uacf7-row]
                 
-                <h3>Person Involved in Incident</h3>
+                <h3>Person Involved who in Incident</h3>
                 
                 [uacf7-row]
                     [uacf7-col col:6]
@@ -1184,23 +1164,23 @@ switch ( $uacf7_default[1] ) {
                     [textarea your-incident-details] 
                 </label>
                 
-                <label>Was damage done to the property?
+                <label>Was there any damage to the property?
                     [radio is-damaged class:uacf7-radio default:1 "Yes" "No"]
                 </label>
                 
-                <label>How many hours were lost because of this incident?
+                <label>How many hours were lost as a result of this incident?
                     [text incident-hours-lost ] 
                 </label>
                 
-                <label>What first aid measures were needed?
+                <label>What first aid measures were necessary?
                     [textarea your-incident-aid] 
                 </label>
                 
-                <label>Could this incident have been avoided?
+                <label>Was it possible to prevent this incident?
                     [radio could-avoided class:uacf7-radio default:1 "Yes" "No"]
                 </label>
                 
-                [acceptance acceptance-terms optional] I certify that the information I have provided is truthful to the best of my knowledge. [/acceptance]
+                [acceptance acceptance-terms optional] I confirm that the information I have provided is accurate and truthful to the best of my knowledge. [/acceptance]
                 
                 <div class="uacf7-submint">
                     [submit "Send Message"]
@@ -1222,37 +1202,7 @@ switch ( $uacf7_default[1] ) {
                 </div>
             </div>';
             break;
-        case "request-a-leave":
-            $form = '<div class="uacf7-wrapper-default">
-            [uacf7-row]
-            [uacf7-col col:6]
-            <label> First Name *
-                [text* your-first-name autocomplete:name ] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-            <label> Last Name *
-            [text* your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
-            [/uacf7-row]
-            <label> Email *
-            [email* your-email] </label>
-            <label> Contact No *
-            [tel* your-contact-no] </label>
-            <label> Position *
-            [text* your-position] </label>
-            <label> Manager *
-            [tel* your-manager] </label>
-            <label> Leave Start *
-            [date* your-leave-start] </label>
-            <label> Leave End *
-            [date* your-leave-end] </label>
-            <label> Leave Type *
-                [radio leave-type class:uacf7-radio default:1 "Vacation" "Sick" "Quitting" "Maternity/Paternity" "Other"] </label>
-                <label> Comments *
-                [textarea* your-comments] </label>
-            <div class="uacf7-submint end fill">
-            [submit "Apply for Leave"]
-            </div>
-        </div>';  
-        break;
+       
         case "event-registration":
             $form = '<div class="uacf7-wrapper-default">
             [uacf7-row]
@@ -1270,7 +1220,7 @@ switch ( $uacf7_default[1] ) {
             <label> Company
                 [text company placeholder "company name" ] </label>
             <label> Website
-                [url your-website placeholder "https://google.com"] </label>
+                [url your-website placeholder "https://domain.com"] </label>
             <label> Message (if any)
                 [textarea your-message] </label>
                 <div class="uacf7-submint">
@@ -1278,75 +1228,10 @@ switch ( $uacf7_default[1] ) {
             </div>
             </div>';
             break; 
-        case "tell-a-friend":
-            $form = '<div class="uacf7-wrapper-default">
-                [uacf7-row]
-                [uacf7-col col:6]
-                    <label> First Name *
-                        [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-                [uacf7-col col:6] 
-                    <label> Last Name 
-                        [text your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-                [/uacf7-row]
-                <label> To *
-                    [text* message-to ] </label>
-                <label> Message
-                    [textarea your-message] </label>
-                <div class="uacf7-submint">
-                [submit "Send Message"]
-                </div>
-            </div>';
-            break;
-        case "accident-report-form":
-            $form = '<div class="uacf7-wrapper-default">
-            <label> I am reporting a :
-            [checkbox accident-type class:uacf7-checkbox "Loss of time/injury" "Work vehicle accident" "Work accident" "First aid incident" "Observation"]
-            </label>
-            <h3> Person Reporting Incident </h3>
-            [uacf7-row]
-            [uacf7-col col:6]
-            <label> First Name *
-            [text* your-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-            <label> Last Name 
-            [text your-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-            [/uacf7-row]
-            <h3> Person Involved in Incident </h3>
-            [uacf7-row]
-            [uacf7-col col:6]
-            <label> First Name *
-            [text* involved-first-name autocomplete:name placeholder "First Name"] </label> [/uacf7-col]
-            [uacf7-col col:6] 
-            <label> Last Name 
-            [text involved-last-name autocomplete:last-name placeholder "Last Name"] </label>  [/uacf7-col]
-            [/uacf7-row]
-            <label> Incident Date and Time *
-            [date* accident-date-time ] </label>
-            <label> Location of Incident
-            [text* location-of-incident ] 
-            <label> Please describe the event in detail.
-            [textarea your-incident-details] </label>
-            <label> Was damage done to the property?
-            [radio is-damaged class:uacf7-radio default:1 "Yes" "No"]
-            </label>
-            <label> How many hours were lost because of this incident?
-                [text incident-hours-lost ] 
-            </label>
-            <label> What first aid measures were needed?
-            [textarea your-incident-aid] </label>
-            <label> Could this incident have been avoided?
-            [radio could-avoided class:uacf7-radio default:1 "Yes" "No"]
-            </label>
-            [acceptance acceptance-terms optional] I certify that the information I have provided is truthful to the best of my knowledge. [/acceptance]
-                <div class="uacf7-submint">
-                [submit "Send Message"]
-                </div>
-            </div>';
-            break;
     
         case "complaint-form-2":
             $form = '<div class="uacf7-wrapper-default">
-            <h4 style="text-align:center"> Please fill out the following form with your complaint. We will review your request and follow up with you as soon as possible. </h4>
+            <h4 style="text-align:center"> Please complete the following form with your complaint. We will review your request and follow up with you as soon as possible. </h4>
             [uacf7-row]
             
                 [uacf7-col col:6]
@@ -1361,7 +1246,7 @@ switch ( $uacf7_default[1] ) {
         
                 [text your-last-name autocomplete:last-name ] </label>  [/uacf7-col]
         
-                [/uacf7-row]
+            [/uacf7-row]
             <label> Email
             [email* your-email autocomplete:email] </label>
             <label> Address </label>
@@ -1392,13 +1277,13 @@ switch ( $uacf7_default[1] ) {
             <label> Date of incident 
             [date date-of-incident]
             </label>
-            <label> Please describe the incident you would like to report.
+            <label> Please provide details about the incident you wish to report.
             [textarea incident-details]
             </label>
-            <label> How would you like to see this incident resolved?
+            <label> What outcome are you seeking for the resolution of this incident?
             [textarea incident-resolved-details]
             </label>
-            [acceptance acceptance-terms optional] All the data I submitted is truthfull, and I am responsible for that. [/acceptance]
+            [acceptance acceptance-terms optional] I confirm that all the information I have submitted is accurate, and I take responsibility for its truthfulness. [/acceptance]
                 <div class="uacf7-submint">
                 [submit "Submit Form"]
                 </div>
@@ -1419,7 +1304,7 @@ switch ( $uacf7_default[1] ) {
             [text* your-username] </label>
             <label> Site Address*
             [text* your-site-address] </label>
-                <label> Do you want to share your password?
+                <label> Would you like to disclose your password?
             [radio wanna-share-password class:uacf7-radio default:2 "Yes" "No"] </label>
                 <div class="uacf7-submint">
                 [submit "Submit Informations"]
@@ -1475,7 +1360,7 @@ switch ( $uacf7_default[1] ) {
                     [text if-quit ] </label>
             <label> Do you drink alcohol?
                     [text if-alcohol] </label>
-            <label> Personal opinion
+            <label> Subjective viewpoint
                     [textarea personal-opinion] </label>
             <div class="uacf7-submint">
                 [submit "Submit Form"]
@@ -1485,18 +1370,18 @@ switch ( $uacf7_default[1] ) {
     
         case "market-research-survey":
             $form = '<div class="uacf7-wrapper-default">
-            <h3>Market Research Survey</h3>
+            <h3>Market Research Survey or Consumer Insight Poll</h3>
             <hr>
             <br>
             
             [uacf7_step_start uacf7_step_start-367]   
-                <label>How often do you use our product? 
+                <label>How frequently do you utilize our product?
                     [checkbox how-often-use class:uacf7-checkbox "More than once a week" " Once a week" " Monthly" " Every other month" " A few times a year"] 
                 </label>
             [uacf7_step_end end]
             
             [uacf7_step_start uacf7_step_start-368]
-                <label>What similar products do you use? (by name and brand)
+                <label>What similar products do you use? (Brand or Name)
                     [textarea about-similar-product]
                 </label>
             [uacf7_step_end end]
@@ -1508,7 +1393,7 @@ switch ( $uacf7_default[1] ) {
             [uacf7_step_end end]
             
             [uacf7_step_start uacf7_step_start-370]
-                <label>What similar products do you use? (by name and brand)
+                <label>What similar products do you use? (Brand or Name)
                     [textarea about-similar-product-2]
                 </label>
             [uacf7_step_end end]
@@ -1549,7 +1434,7 @@ switch ( $uacf7_default[1] ) {
                 <label>What is your age range?
                     [radio age-range class:uacf7-radio default:1 "18 or younger" " 19 - 24" " 25 - 34" " 35 - 44" " 45 - 54" " 55 or older"] 
                 </label> 
-                <label>What country are you from?
+                <label>Which country do you reside in?
                     [text* country] 
                 </label>
             [uacf7_step_end end]
@@ -1605,10 +1490,10 @@ switch ( $uacf7_default[1] ) {
                     [/uacf7-col]
                 [/uacf7-row]
         
-                <label> Describe your current issues/needs * 
+                <label> Describe your current issues * 
                     [textarea* current-issue ] </label>
         
-                <label> Describe your current system if applicable *
+                <label> Describe your current system (if applicable) *
                     [textarea* current-system] </label>
         
                 <label> What is your expertise with managing your database?
@@ -1618,7 +1503,7 @@ switch ( $uacf7_default[1] ) {
                     [radio if-internet-need class:uacf7-radio"Yes" "No"] </label>
         
                 <label> Software Type
-                    [select software-type class:uacf7-select include_blank "Accounting and Financial Management" "Asset Management" "Business Intelligence and Data Management Customer" "Relationship Management (CRM)" "Enterprise Resource Planning (ERP)" "Human Capital Management (HCM)" "Information Management and Collaboration" "Product Lifecycle Management (PLM)" "Project and Process Management" "Supply Chain Management (SCM)"] </label>
+                    [select software-type class:uacf7-select include_blank "Financial Management" "Hospital Management" "Business Intelligence and Data Management Customer" "Relationship Management (CRM)" "Enterprise Resource Planning (ERP)" "Human Capital Management (HCM)" "Information Management and Collaboration" "Product Lifecycle Management (PLM)" "Project and Process Management" "Supply Chain Management (SCM)"] </label>
         
                 <label> Business Area
                     [select business-area class:uacf7-select include_blank "Sales and Marketing" "Professional Services and Support" "Production and Distribution" "IT Management and Development" "Data Management and Analysis" "Back Office and Operation"] </label>
@@ -1635,7 +1520,7 @@ switch ( $uacf7_default[1] ) {
                 <label> What is your budget? *
                     [number* your-budget min:1] </label>
         
-                <label>Will this system be sold as third party software?
+                <label>Is there a plan to sell this system as third-party software?
                     [radio third-party-software class:uacf7-radio"Yes" "No"] </label>
         
                 <label>Will you need back up services?
@@ -1662,21 +1547,21 @@ switch ( $uacf7_default[1] ) {
                     [uacf7_step_end end]
                     [uacf7_step_start uacf7_step_start-754]
                         <label> Which plan are you subscribed to?* 
-                            [radio subscribe-plan class:uacf7-radio default:1 "Plan A" "Plan B" "Plan C"] 
+                            [radio subscribe-plan class:uacf7-radio default:1 "Starter" "Agency" "Agency Pro"] 
                         </label> 
                     [uacf7_step_end end]
                     [uacf7_step_start uacf7_step_start-755]
-                        <label> How long have you been a customer? *
+                        <label>For how many years have you been a customer? *
                             [radio how-long-as-customer class:uacf7-radio default:1 "Less than a month" " 1-6 months" " 6 months to 1 year" " 1-3 years" " More than 3 years"] 
                         </label> 
                     [uacf7_step_end end]
                     [uacf7_step_start uacf7_step_start-756]
-                        <label> What do you like about our service?
+                        <label> What aspects of our service do you appreciate?
                             [textarea about-our-services]
                         </label> 
                     [uacf7_step_end end]
                     [uacf7_step_start uacf7_step_start-757]
-                        <label>What do you dislike about our service?
+                        <label>What aspects of our service do you find unsatisfactory?
                             [textarea why-dislike]
                         </label> 
                     [uacf7_step_end end]
