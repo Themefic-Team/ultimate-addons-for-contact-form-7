@@ -1585,9 +1585,9 @@ switch ( $uacf7_default[1] ) {
             
             case "workshop-registration":
                 $form = '<div class="uacf7-wrapper-default">
-                    <h2 style="text-align: center; color:#3838b0"> Workshop Registration </h2>
-                    <label style="text-align: center;"> You can Add a Logo </label>
-                    <h5 style="text-align: center; color:#3838b0"> Date : December 05, 2020                 Time: 10:00 am           Address : 3491 Henry Ford Avenue, Tulsa, OK, Oklahoma, 74120 </h5>
+                    <h2 style="text-align: center; color:#3838b0"> Workshop Registration Form</h2>
+                    <label style="text-align: center;"> You can Add your Logo </label>
+                    <h5 style="text-align: center; color:#3838b0"> Date : December 15, 2024                 Time: 10:45 pm           Address : 420 Hero Alom Avenue, Tulsa, OK, USA, 6007 </h5>
                     <label> Name 
                         [text name]
                     </label> 
@@ -1624,8 +1624,8 @@ switch ( $uacf7_default[1] ) {
                             </label>
                         [/uacf7-col]
                     [/uacf7-row]
-                    <label> How did you hear about the workshop?
-                        [checkbox where-from-heard class:uacf7-checkbox "Website" "Friend/Colleague" "Online Search"]
+                    <label> Where did you learn about the workshop?
+                        [checkbox where-from-heard class:uacf7-checkbox "Website" "Friend" "Online Search" "Ads"]
                     </label>
                     <div class="uacf7-submint">
                         [submit "Submit Form"]
@@ -1682,7 +1682,7 @@ case "product-order-form":
             [radio payment-method class:uacf7-radio "Pay with Card (Stripe)" "Pay with Paypal" "Test Payment"]
         </label>
         <div class="uacf7-submint">
-            [submit "Purchase"]
+            [submit "Purchase the Product"]
         </div>
     </div>';
     break;
@@ -1716,7 +1716,7 @@ case "product-order-form":
                 [radio payment-method class:uacf7-radio default:1 "Pay with Card (Stripe)" "Pay with Paypal" "Offline Payment"]
             </label>
             <div class="uacf7-submint">
-                [submit "Donate Now"]
+                [submit "Donate Instant"]
             </div>
         </div>';
         break;
@@ -1735,14 +1735,14 @@ case "product-order-form":
                     </label> 
                 [/uacf7-col]
             [/uacf7-row]
-            <label> Your Awesome Product <br> Price: $49</label> 
+            <label> Introducing Our Outstanding Product <br> Price: $99/label> 
             <label> Payment Method 
                 [radio payment-method class:uacf7-radio default:1 "Pay with Card (Stripe)" "Pay with Paypal" "Offline Payment"]
             </label>
             <div> 
                 <p style="margin: 0;"><span style="text-decoration: underline;"><strong>One-time offer:</strong></span> I would also like to get over-the-shoulder videos that walk me through every single step of the passive profits system for only $19 extra (a $97 value)</p>
             </div>
-            [acceptance acceptance-terms optional] Yes, I want access $19 extra [/acceptance]
+            [acceptance acceptance-terms optional] Yes, I want access $55 extra [/acceptance]
             <div class="uacf7-submint uacf7-order-bump-form">
                 [submit  "Purchase Now"]
             </div>
@@ -1766,19 +1766,19 @@ case "product-order-form":
                 [/uacf7-row]
                 <label> Email*
                     [email* email ] 
-                    <h3> How important is it that we provide you with the following?</h3> 
-                    <label> Variety of student organizations *
+                    <h3> How important is it for us to provide you with the following? </h3> 
+                    <label> Diversity of student groups *
                         [radio student-org class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
                     </label>
-                    <label> Plenty of professor office hours *
+                    <label> Abundance of professor office hours *
                         [radio prof-office-hrs class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
                     </label>
-                    <label> Internship opportunities *
+                    <label> Availability of internship opportunities *
                         [radio internship-opportunities class:uacf7-radio default:1 "Not important at all" "Somewhat important" "Very Important" "Essential"]
                     </label>
             [uacf7_step_end end]
             [uacf7_step_start uacf7_step_start-631]
-                <h3> How important is it that we provide you with the following? </h3>
+                <h3> How important is it for us to provide you with the following? </h3>
                 <label> Get a job to help pay for college expenses *
                     [radio college-expenses class:uacf7-radio default:1 "Not at all likely" "Somewhat likely" "Very Likely"]
                 </label>
@@ -1807,8 +1807,7 @@ case "product-order-form":
         case "classroom-observation":
             $form = '<div class="uacf7-wrapper-default">
                 [uacf7_step_start uacf7_step_start-170]
-                    <h2 style="text-align:center;">Classroom Observation</h2>
-                    <p style="text-align:center;">Please use the following form to evaluate the teacher\'s performance in the classroom. Your feedback is valuable and helps us ensure success for all teachers and students. Please answer each question honestly.</p>
+                    <h2 style="text-align:center;">Classroom Observation Form</h2>
                     <label> Teacher\'s Name 
                         [text teacher-name ] 
                     </label> 
@@ -1820,33 +1819,33 @@ case "product-order-form":
                     </label> 
                 [uacf7_step_end end]
                 [uacf7_step_start uacf7_step_start-171]
-                    <label> Teacher was prepared for the lesson.
+                    <label> Was the teacher prepared for the lesson?
                         [radio is-teacher-prepared class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
                     </label> 
-                    <label> Teacher encouraged student participation.
+                    <label> Did the teacher encourage student participation?
                         [radio is-teacher-encouraged class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
                     </label> 
-                    <label> Teacher explained the lesson thoroughly.
+                    <label> Did the teacher explain the lesson thoroughly?
                         [radio is-teacher-explained class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
                     </label> 
-                    <label> Teacher interacted with all students.
+                    <label> Did the teacher interact with all students?
                         [radio is-teacher-interacted class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
                     </label> 
-                    <label> Teacher was able to control the entire classroom.
+                    <label> Was the teacher able to control the entire classroom?
                         [radio is-teacher-control class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
                     </label> 
-                    <label> Teacher effectively used technology.
+                    <label> Did the teacher effectively use technology?
                         [radio is-teacher-use-technology class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
                     </label> 
-                    <label> Teacher used time efficiently.
+                    <label> Did the teacher use time efficiently?
                         [radio is-teacher-use-time-efficiently class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
                     </label> 
-                    <label> Teacher responded appropriately to student questions.
+                    <label> Did the teacher respond appropriately to student questions?
                         [radio is-teacher-responded-appropriately class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
                     </label> 
-                    <label> Teacher used a variety of teaching methods.
+                    <label> Did the teacher use a variety of teaching methods?
                         [radio is-teacher-used-teaching-methods class:uacf7-radio default:1 "Strongly Agree" "Agree" "Neutral" "Disagree" "Strongly Disagree"] 
-                    </label> 
+                    </label>
                 [uacf7_step_end end]
                 [uacf7_step_start uacf7_step_start-172]
                     <label> Based on this observation, would you pass or fail this teacher?
@@ -1876,7 +1875,7 @@ case "product-order-form":
             $form = '
             <div class="uacf7-wrapper-default">
                 [uacf7_step_start uacf7_step_start-170]
-                    <p style="text-align:center;">Please answer all required questions. Only complete this evaluation if you will be completing the course.</p>
+                    <p style="text-align:center;">Please respond to all mandatory inquiries. Proceed with this assessment only if you intend to finish the course.</p>
                     <h4>Course Data</h4>
                     <label> Course Name *
                         [text* course-name ] 
@@ -1895,22 +1894,22 @@ case "product-order-form":
                     <h4>Evaluation</h4>
                     <p>Your Evaluations are important, so please do it carefully</p>
                     <hr>
-                    <label> Level of effort you put into the course. *
+                    <label> How much effort did you put into the course? *
                         [radio leave-of-effort class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
                     </label> 
-                    <label> Your level of knowledge at the beginning of the course. *
+                    <label> What was your level of knowledge at the beginning of the course? *
                         [radio label-of-knowledge-beginning class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
                     </label> 
-                    <label> Your level of knowledge at the end of the course.  *
+                    <label> What was your level of knowledge at the end of the course?  *
                         [radio label-of-knowledge-end class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
                     </label> 
-                    <label> I understood the objectives of the course.  *
+                    <label> Did you understand the objectives of the course?  *
                         [radio objectives class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
                     </label> 
-                    <label> The length of the course was appropriate to cover content.  *
+                    <label> Was the length of the course appropriate to cover content?  *
                         [radio length-was-appropriate class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
                     </label>
-                    <label> The course provided me with new information.  *
+                    <label> Did the course provide you with new information?  *
                         [radio provided-new-information class:uacf7-radio default:1 "Very Good" "Good" "Fair" "Poor" "Very Poor"] 
                     </label>
                 [uacf7_step_end end]
@@ -1938,19 +1937,19 @@ case "product-order-form":
                     </label> 
                 [uacf7_step_end end]
                 [uacf7_step_start uacf7_step_start-173]  
-                    <label> Would you recommend this course to other students?                        
-                        [radio will-recommend class:uacf7-radio default:1 "Yes" "No"] 
-                    </label>
-                    <label> Why did you choose this course?                        
-                        [radio why-choose class:uacf7-radio default:1 "Degree requirement" "Time offered" "Interest"] 
-                    </label>
-                    <label> Your class standing.                        
-                        [radio your-class-standing class:uacf7-radio default:1 "Freshman" "Sophomore" "Junior" "Senior" "Graduate"] 
-                    </label>
+                <label> Would you suggest this course to other students?                        
+                    [radio will-recommend class:uacf7-radio default:1 "Yes" "No"] 
+                </label>
+                <label> What influenced your decision to enroll in this course?                        
+                    [radio why-choose class:uacf7-radio default:1 "Degree requirement" "Time offered" "Interest"] 
+                </label>
+                <label> Your academic status.                        
+                    [radio your-class-standing class:uacf7-radio default:1 "Freshman" "Sophomore" "Junior" "Senior" "Graduate"] 
+                </label>
                 [uacf7_step_end end]
                 [uacf7_step_start uacf7_step_start-174] 
                     [uacf7-row][uacf7-col col:6] 
-                        <label> Please identify aspects of the course you found useful.                
+                        <label> Please ensure aspects of the course you found useful.                
                             [textarea is-useful-feedback] 
                         </label> 
                     [/uacf7-col][uacf7-col col:6] 
@@ -2248,7 +2247,7 @@ case "product-order-form":
                 [checkbox* source-of-data class:uacf7-checkbox "Record Review" " Scatterplot" " ABC Logs" " Other"]
             </label>
             <label>Information Reported By *
-                [checkbox* info-reported-by class:uacf7-checkbox "Teacher" " Parent" " Student" " Other"]
+                [checkbox* info-reported-by class:uacf7-checkbox "Teacher" " Parent" " Student" "Other"]
             </label>
             <label> Describe your role.
                 [textarea* your-role]
@@ -2265,7 +2264,7 @@ case "product-order-form":
                     </label>
                 [/uacf7-col]
             [/uacf7-row]
-            <h3> Problem Behaviors </h3>
+            <h3> Challenging Behaviors </h3>
             <hr>
             <label> Describe behaviors in specific and observable terms.
                 [text* term-desc]
@@ -2331,10 +2330,10 @@ case "product-order-form":
             </label>
             <h3> Communication Summary </h3>
             <hr>
-            <label> Does the student have difficulty in expressing any of these basic communication functions?
+            <label> Does the student struggle to convey any of these fundamental communication functions?
                 [checkbox* basic-communication-functions class:uacf7-checkbox "Gaining adult attention" " Gaining attention of peers" " Dealing with a difficult task" " Expressing frustration or confusion" " Requesting things of others" " Rejecting or protesting something" " Indicating preferences or making choices" " Requesting assistance"]
             </label>
-            <label> Use the summary below to think about and identify possible replacement behaviors for instruction. Number separate issues in each of the following fields to clearly connect problem behavior to communication function and replacement behavior. Target Problem Behavior(s)
+            <label> Please refer to the summary below to consider and pinpoint potential replacement behaviors for instruction. Number the distinct issues in each of the following fields to establish a clear connection between problem behavior, communication function, and replacement behavior. Target Problem Behavior(s)
                 [textarea* possible-replacement-behaviors]
             </label>
             <label> Related Communication Function(s)
@@ -2347,25 +2346,25 @@ case "product-order-form":
         [uacf7_step_start uacf7_step_start-535]
             <h3> Consequence Analysis </h3>
             <hr>
-            <label> Thinking about the last few times the behavior occurred, what typically actually happens immediately afterward?
+            <label> Reflecting on the recent instances when the behavior occurred, what typically takes place immediately afterward?
                 [text* thinking-about-last-behavior-occurred]
             </label>
-            <label> Are demands typically altered after the target behavior?
+            <label> Are demands usually adjusted following the target behavior?
                 [text* targeted-behavior]
             </label>
-            <label> Does someone usually intervene to help the student after the target behavior?
+            <label> Is there typically an intervention to assist the student after the target behavior?
                 [text* intervene-targeted-behavior]
             </label>
-            <label> Does the student gain access to something that he/she appears to want?
+            <label> Does the student acquire access to something they seem to desire?
                 [textarea* does-student-gain-access]
             </label>
-            <label> Does the behavior appear pleasurable to the student apart from what else is going on around him/her?
+            <label> Does the behavior seem enjoyable to the student regardless of the surrounding circumstances?
                 [textarea* behavior-appear-pleasurable]
             </label>
-            <label> Does the behavior appear to give the student control of others or the situation? Explain.
+            <label> Does the behavior seem to grant the student control over others or the situation? Please elaborate.
                 [textarea* behavior-situation-explain]
             </label>
-            <label> Does the behavior, or do related behaviors, appear to be compulsive (i.e., repetitive, internally driven)? Explain.
+            <label> Does the behavior, or related behaviors, seem compulsive (i.e., repetitive, internally driven)? Please provide further explanation.
                 [textarea* behavior-compulsive]
             </label>
             <div class="uacf7-submint">
@@ -2398,7 +2397,7 @@ case "product-order-form":
             [radio gender class:uacf7-radio default:1 "Male" "Female" "Others"]
         </label>
         <label>Select section *
-            [select* section include_blank class:uacf7-select "Section - A" "Section - B" "Section - C"]
+            [select* section include_blank class:uacf7-select "100-A" "100-B" "100-C"]
         </label>
         <label> Apply for Class *
             [radio apply-for-class class:uacf7-radio default:1 "O Level" "A Level"]
@@ -2412,7 +2411,7 @@ case "product-order-form":
         <label> Upload Your Photo *
             [file* your-photo]
         </label>
-        <label> Comments (Optional)
+        <label> Comments (if applicable)
             [textarea your-comments]
         </label>
         <div class="uacf7-submint">
@@ -2459,24 +2458,23 @@ case "product-order-form":
         $form = '<div class="uacf7-wrapper-default">
         <h3>Software Survey</h3>
         <hr>
-    
         <label>How did you hear about ...?
-            [checkbox* where-from-heard class:uacf7-checkbox "Our Website" "Friends" "Social Media" "Ads" "Generic Search"]
+        [checkbox* where-from-heard class:uacf7-checkbox "Our Website" "Friends" "Social Media" "Ads" "Generic Search"]
         </label>
-    
-        <label>Which platform do you use?
+        
+        <label>Which operating system do you use?
             [checkbox* which-platform class:uacf7-checkbox "Mac OS" "Linux" "Windows" "Other"]
         </label>
-    
-        <label>How would you rate our software?
+        
+        <label>Rate our software:
             [uacf7_star_rating* rating icon:star1 "default"]
         </label>
-    
-        <label>Did you purchase any of our software?
+        
+        <label>Have you purchased any of our software?
             [radio did-you-purchased class:uacf7-radio default:1 "Yes" "No"]
         </label>
-    
-        <label>Please let us know if you have any suggestions for us.
+        
+        <label>If you have any suggestions for us, please share them here:
             [textarea your-comments]
         </label>
     
@@ -2488,23 +2486,28 @@ case "product-order-form":
     break;
     case "website-feedback":
         $form = '<div class="uacf7-wrapper-default">
-        <h3>Website Feedback</h3>
+        <h3>Website Feedback Form</h3>
         <hr>
         <label>Your Full Name *
-            [text* your-name]
+        [text* your-name]
         </label>
+        
         <label>Your Email *
             [email* your-email]
         </label>
-        <label>Is this the first time you have visited the website?
+        
+        <label>Is this your first time visiting the website?
             [radio is-this-first-time-visit class:uacf7-radio default:1 "Yes" "No"]
         </label>
-        <label>What is the PRIMARY reason you came to the site?
+        
+        <label>What is the PRIMARY reason for your visit to the site?
             [textarea your-reason-of-visit]
         </label>
-        <label>Did you find what you needed? *
+        
+        <label>Did you find what you were looking for? *
             [checkbox* did-you-find-what-you-needed class:uacf7-checkbox "Yes, all of it" "Yes, some of it" "No, none of it"]
         </label>
+        
         <label>User Friendliness
             [uacf7_star_rating* how-much-user-friendly "default"]
         </label>
@@ -2517,7 +2520,7 @@ case "product-order-form":
     case "partnership-application":
         $form = '<div class="uacf7-wrapper-default">
         <h3>Partnership Application Form</h3>
-        <p>Thank you for your interests in our company. We are excited to have you on board as one of our esteemed partners. To get started, please complete all fields accordingly. We will review and get in touch with you shortly. If you are unsure about any of the answers, please use an estimation.</p>
+        <p>Thank you for your interest in our company. We\'re thrilled to welcome you aboard as one of our esteemed partners. To begin, kindly fill out all fields accurately. We\'ll review your submission and reach out to you promptly</p>
         <hr>
         [uacf7-row][uacf7-col col:6] 
             <label>Company Name
@@ -2537,13 +2540,13 @@ case "product-order-form":
         <label>Place of Business 
             [select place-of-business include_blank "USA" "UK" "Singapore" "Palestine"]
         </label>
-        <label>Current Demand Generation Activities (you can select more than one)
+        <label>Current Demand Generation Initiatives (multiple selections allowed)
             [checkbox currently-demanded-activities class:uacf7-checkbox "Direct Mailer" "Website Optimization" "Email/Mobile Marketing" "Media Advertisement" "Social Media" "Paid Search / SEO" "Trade show/Workshop"]
         </label>
-        <label>Do you want us to publish your profile on our site?
+        <label>Would you like us to feature your profile on our website?
             [radio wanna-publish-profile class:uacf7-radio default:1 "Yes" "No"]
         </label>
-        <label>Your Company Profile (less than 150 words)
+        <label>Your Company Profile (less than 250 words)
             [textarea your-company-profile]
         </label>
         <label>Company Specialization Keywords (Separated by comma)
@@ -2756,7 +2759,7 @@ case "product-order-form":
         </label>
         [/uacf7-col][/uacf7-row]
         [acceptance terms] By clicking the submit button, I agree to terms & conditions [/acceptance]
-        <label>I authorize the XXX to make whatever inquires it deems necessary in connection with this credit application and in the course of review or collection of any credit extended in reliance on this application. I further authorized any person or YYY to complete and finish to the XXX any information that it may have or obtain in response to such inquires and agree that such information along with this application shall remain the XXX\'s property, whether or not credit is extended. All information stated in this application is declared to be a true representation of the facts and made for the purpose of obtaining the credit request. I HAVE REVIEWED THE ABOVE DISCLOSURE.
+        <label>I authorize ABC to conduct any inquiries it deems necessary regarding this credit application and during the review or collection of any credit extended based on this application. Additionally, I authorize any person or XYZ to provide ABC with any information obtained in response to such inquiries. I acknowledge that this information, along with this application, remains the property of ABC, regardless of whether credit is granted. All information provided in this application is true and accurate, and is submitted for the purpose of obtaining credit. I HAVE REVIEWED THE ABOVE DISCLOSURE.
         </label>
         <div class="uacf7-submint">
 
@@ -2907,7 +2910,7 @@ case "product-order-form":
         <label>Loan Reason [checkbox loan-reason class:uacf7-checkbox "Construction" "Asset Purchase" "Refinancing" "Other"]</label>
         <label>Project Gross Value [text project-gross-value]</label>
         <label>Loan Amount [text loan-amount]</label>
-        <p>The information provided in this application shall not be shared with anyone else and is kept confidential</p>
+        <p>The details provided in this application will remain confidential and will not be shared with any third parties.</p>
         [acceptance acceptance] I agree that the information herein is true and correct [/acceptance]
         <div class="uacf7-submint">
             [submit "Submit Application Form"]
@@ -2918,7 +2921,7 @@ case "product-order-form":
     case "personal-loan":
         $form = '<div class="uacf7-wrapper-default">
         [uacf7_step_start uacf7_step_start-303]
-        <h3>Personal Information</h3>
+        <h3>Personal Information Form</h3>
         <hr>
         <label>Title * [select* title include_blank "Mr" "Mrs" "Ms"]</label>
         [uacf7-row]
@@ -2950,13 +2953,13 @@ case "product-order-form":
         [uacf7_step_end end]
         [uacf7_step_start uacf7_step_start-304]
         <h3 style="text-align:center">Employment Information</h3>
-        <p style="text-align:center">Put Your Employment Information below, Please fill all the required. </p>
+        <p style="text-align:center">Please provide your employment details below. Kindly complete all required fields.</p>
         <hr>
         <label>Present Employer* [text* present-employer]</label>
         <label>Occupation* [text* occupation]</label>
-        <label>Experience of work (years)* [checkbox* experience-of-work class:uacf7-checkbox "0-1 years" "1-2 years" "2-3 years" "3-4 years" "5+ years"]</label>
-        <label>Gross monthly income * [text* gross-monthly-income]</label>
-        <label>Monthly rent/mortgage * [text* monthly-mortgage]</label>
+        <label>Years of Work Experience* [checkbox* experience-of-work class:uacf7-checkbox "0-1 years" "1-2 years" "2-3 years" "3-4 years" "5+ years"]</label>
+        <label>Gross Monthly Income * [text* gross-monthly-income]</label>
+        <label>Monthly Rent/Mortgage * [text* monthly-mortgage]</label>
         <label>Down Payment Amount * [text* down-payment-amount]</label>
         <label>Comments [text your-comments]</label>
         [acceptance acceptance] I have read and agree to the Terms and Conditions and Privacy Policy [/acceptance]
@@ -2969,7 +2972,7 @@ case "product-order-form":
     break;
     case "employee-evaluation":
         $form = '<div class="uacf7-wrapper-default">
-        <p style="text-align: center; font-weight:bold">Please remember that the form will be confidential and will be used for only internally; so, feel free to submit your data however you feel to submit;</p>
+        <p style="text-align: center; font-weight:bold">Please be aware that this form is confidential and will only be used internally. Feel free to submit your data in any manner you\'re comfortable with.</p>
         <hr>
         [uacf7-row]
             [uacf7-col col:6]
@@ -2992,7 +2995,7 @@ case "product-order-form":
                 <label>Review type: [radio review-type class:uacf7-radio default:1 "90-Day Review" "Annual/Raise Review"]</label>
             [/uacf7-col]
         [/uacf7-row]
-        <p>How would you rate the employee...</p>
+        <p>Please rate the employee on the following criteria:</p>
         <label>Attendance? [radio attendance class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
         <label>Professionalism? [radio professionalism class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
         <label>Attire? [radio attire class:uacf7-radio default:1 "Very Poor" "Poor" "Average" "Good" "Very Good"]</label>
@@ -3045,13 +3048,13 @@ case "product-order-form":
             [/uacf7-row]
         [uacf7_step_end end]
         [uacf7_step_start uacf7_step_start-594]
-            <label>May I know where do you work? [text working-place]</label>
+            <label>Can you please provide your current workplace? [text working-place]</label>
         [uacf7_step_end end]
         [uacf7_step_start uacf7_step_start-595]
-            <label>Which position do you want to sponsor? [text sponsor-position]</label>
+            <label>Which role are you interested in sponsoring? [text sponsor-position]</label>
         [uacf7_step_end end]
         [uacf7_step_start uacf7_step_start-596]
-            <label>Special Request [textarea special-request]</label>
+            <label>Any special requests? [textarea special-request]</label>
             <div class="uacf7-submint">
                 [submit "Submit"]
             </div>
@@ -3083,13 +3086,13 @@ case "product-order-form":
                     <label>Department / Division [text company-dept]</label>
                     <label>Position Title [text position-title]</label>
                     <label>Reference Number [text ref-number]</label>
-                    <label>Job Posting Url [url job-posting-url]</label>
+                    <label>Job Posting URL [url job-posting-url]</label>
                     <label>Salary Details [text salary-details]</label>
-                    [acceptance salary-nego optional]Salary Negotiable[/acceptance]
+                    [acceptance salary-negotiable optional]Salary Negotiable[/acceptance]
                     <label>Type of Employment [select type-of-employment class:uacf7-select include_blank "Full Time" "Part Time"]</label>
                     <label>Type of Contract [select type-of-contract class:uacf7-select include_blank "Permanent" "Term" "Locum"]</label>
                     <label>Type of Position [select type-of-position class:uacf7-select include_blank "Academic" "Administrative" "Obstetrics" "Gynaecology" "Obstetrics/Gynaecology" "Other"]</label>
-                    <label>Job Summary [textarea job-summery]</label>
+                    <label>Job Summary [textarea job-summary]</label>
                     <label>Roles and Responsibilities [textarea job-roles]</label>
                     <label>Skills and Competencies [textarea job-skills]</label>
                     <label>Education and Experience [textarea education-and-experience]</label>
@@ -3101,7 +3104,7 @@ case "product-order-form":
                 [uacf7_step_start uacf7_step_start-591]
                     <h3>Payment Information</h3>
                     <hr>
-                    <label>Salary Amount [radio salary-amount class:uacf7-radio default:1 "$ 400.00 - 1 Month Posting Duration" "$ 600.00 - 2 Month Posting Duration" "$ 900.00 - 3 Month Posting Duration" "Other"]</label>
+                    <label>Salary Amount [radio salary-amount class:uacf7-radio default:1 "$ 345.00 - 1 Month Posting Duration" "$ 646.00 - 2 Month Posting Duration" "$ 7564.00 - 3 Month Posting Duration" "Other"]</label>
                     [conditional conditional-946]
                         <label>Type your Amount [text custom-salary-amount]</label>
                     [/conditional]   
@@ -3115,14 +3118,14 @@ case "product-order-form":
     case "party-invite":
         $form = '<div class="uacf7-wrapper-default">
         <h6 style="text-align:center">You\'re Invited!</h6>
-        <h6 style="text-align:center">Come get cool at our pool this 4th of July!</h6>
-        <p style="text-align:center">[You can add an Image/Logo Here]</p>
-        <p style="text-align:center">Time: July 4th, 2020</p>
+        <h6 style="text-align:center">Join us for a cool pool party this 4th of July!</h6>
+        <p style="text-align:center">[You can insert an Image/Logo Here]</p>
+        <p style="text-align:center">Date: July 4th, 2020</p>
         <p style="text-align:center">Address: 2611 Ash Avenue, SAN DIEGO, CA, California, 92152</p>
         <hr>
-        <label>Are you coming? * [radio are-you-coming class:uacf7-radio default:1 "Yes" "No"]</label>
-        <label>Will you bring a guest with you? * [radio bringing-guest class:uacf7-radio default:1 "Yes" "No"]</label>
-        <label>Are you bringing any food? (e.g., wine, sandwich, pizza, etc.) * [radio bringing-food class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Will you attend? * [radio are-you-coming class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Will you bring a guest? * [radio bringing-guest class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Will you bring any food? (e.g., wine, sandwich, pizza, etc.) * [radio bringing-food class:uacf7-radio default:1 "Yes" "No"]</label>
         <label>Your Special Comments (If any) [textarea special-comments]</label>
         <div class="uacf7-submint">
             [submit "Submit"]
@@ -3132,17 +3135,17 @@ case "product-order-form":
     break;
     case "birthday-party":
         $form = '<div class="uacf7-wrapper-default">
-        <h3 style="text-align:center; color:#14B8E5; font-weight:bold">Join Birthday Party!</h3>
-        <p style="text-align:center">[You can add an Image/Logo Here]</p>
+        <h3 style="text-align:center; color:#14B8E5; font-weight:bold">Join the Birthday Party!</h3>
+        <p style="text-align:center">[You can insert an Image/Logo Here]</p>
         <p style="text-align:center; color:#382673; font-weight:bold">Date: December 05, 2019 | Time: 12:00 am | Address: 3491 Henry Ford Avenue, Tulsa, OK, Oklahoma, 74120</p>
         <hr>
-    
+        
         <label>Name [text name]</label>
         <label>Phone [text phone]</label>
         <label>Email [text email]</label>
         <label>Food Type [checkbox food-type class:uacf7-checkbox "Vegan" "Non - Vegan"]</label>
         <label>How many people will you come with? [select number-of-guest class:uacf7-select include_blank "One" "Two" "Three" "Four" "Five"]</label>
-    
+        
         <label>Your Special Comments (If any) [textarea special-comments]</label>
     
         <div class="uacf7-submint">
@@ -3479,8 +3482,8 @@ case "product-order-form":
                 <label>Date Checked [date* date-checked]</label>
             [/uacf7-col]
         [/uacf7-row]
-        <label>Items Discussed During Visit: [textarea items-discussed]</label>
-        <label>Notes & Comments: [textarea notes-comments]</label>
+        <label>Topics Covered During Appointment: [textarea items-discussed]</label>
+        <label>Notes or Comments: [textarea notes-comments]</label>
         <label>Today\'s Date: [date todays-date]</label>
         [acceptance terms] I certify that this home meets the standards for approval as described in this form. [/acceptance]
         <div class="uacf7-submint">
@@ -3517,9 +3520,9 @@ case "product-order-form":
         <label>Date of Birth: [date* date-of-birth]</label>
         <label>Driving License Number [text driving-license]</label>
         <label>[select application-type class:uacf7-select include_blank "Permanent Placard" "Temporary Placard" "Travel Parking Placard" "Disabled Person License Plate"]</label>
-        <label>Please attach document from state licensed medical physician to certify disability. [file essential-files]</label>
+        <label>Please provide a document from a state-licensed medical physician to certify the disability. [file essential-files]</label>
         [acceptance terms] 	
-        The information I have entered is truthful to the best of my knowledge. [/acceptance]
+        The information provided is accurate and truthful to the best of my knowledge. [/acceptance]
         <div class="uacf7-submint">
             [submit "Submit Form"]
         </div>
@@ -3579,14 +3582,14 @@ case "product-order-form":
             [/uacf7-col]
         [/uacf7-row]
         [uacf7-row]
-            [uacf7-col col:6]
-                <label>Race [radio race class:uacf7-radio default:1 "White" "Black" "Asian" "Native American" "Pacific Islander" "Other"]</label>
-                <label>Social Security Number [text social-security-number ]</label>
-            [/uacf7-col]
-            [uacf7-col col:6]
-                <label>Ethnicity [radio ethnicity class:uacf7-radio default:1 "Hispanic" "Non-Hispanic"]</label>
-                <label>Gender [radio gender class:uacf7-radio default:1 "Male" "Female" "Transgender, Male-Female" "Transgender, Female-Male"]</label>
-            [/uacf7-col]
+        [uacf7-col col:6]
+            <label>Race [radio race class:uacf7-radio default:1 "White" "Black" "Asian" "Native American" "Pacific Islander" "Other"]</label>
+            <label>Social Security Number [text social-security-number ]</label>
+        [/uacf7-col]
+        [uacf7-col col:6]
+            <label>Ethnicity [radio ethnicity class:uacf7-radio default:1 "Hispanic" "Non-Hispanic"]</label>
+            <label>Gender [radio gender class:uacf7-radio default:1 "Male" "Female" "Transgender, Male-Female" "Transgender, Female-Male"]</label>
+        [/uacf7-col]
         [/uacf7-row]
         <p>Parent/Guardian Name:</p>
         [uacf7-row]
@@ -3611,8 +3614,8 @@ case "product-order-form":
             [/uacf7-col]
         [/uacf7-row]
         <label>Symptoms [textarea symptoms]</label>
-        <label>Was laboratory testing ordered? [radio lab-test-ordered class:uacf7-radio default:1 "Yes" "No"]</label>
-        <label>What the patient treated? [radio patient-treated class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Were laboratory tests ordered? [radio lab-test-ordered class:uacf7-radio default:1 "Yes" "No"]</label>
+        <label>Was the patient treated? [radio patient-treated class:uacf7-radio default:1 "Yes" "No"]</label>
         <label>Description of other illnesses/treatments [textarea other-illnesses]</label>
         <div class="uacf7-submint">
             [submit "Submit Form"]
@@ -3622,8 +3625,8 @@ case "product-order-form":
     break;
     case "swimming-competition-enrollment":
         $form = '<div class="uacf7-wrapper-default">
-        <h3 style="text-align:center; color:#382673">Swimming Competition Enrollment</h3>
-        <p style="text-align:center; color:#382673">Please fill this form out to enter into the competition </p>
+        <h3 style="text-align:center; color:#382673">Swimming Competition Registration</h3>
+        <p style="text-align:center; color:#382673">Please complete this form to enroll in the competition. </p>
         <p style="text-align:center;">[Add an awesome image here]</p>
         <hr>
         [uacf7-row]
@@ -3702,60 +3705,60 @@ case "product-order-form":
 		break;
 
 	case "conditional":
-		$form = '<h4>Condition for Field Type: <strong>Text</strong></h4>
-Write name <strong>"John Doe"</strong> or <strong>"Abul Mia"</strong> to test it out 
-<label> Your Name </label> 
-[conditional namefield]
-<label> Is your Father name Jonathan Doe?
-    [select menu-655 include_blank "Yes" "No"] </label>
-<div class="clear"></div>
-[/conditional] 
-<hr /> 
-<h4>Condition for Field Type: <strong>Dropdown</strong></h4>
-Select <strong>"Yes"</strong> or <strong>"No"</strong> to test it out 
-<label> Do you have any Physical Address?
-    [select* menu-654 include_blank "Yes" "No"] </label> 
-[conditional address]
-<label> Insert Your Address </label>
-<div class="clear"></div>
-[/conditional] 
-[conditional email]
-<label> Insert Your Alternate E-mail
-    [email your-email] </label>
-<div class="clear"></div>
-[/conditional] 
-<hr /> 
-<h4>Condition for Field Type: <strong>Radio Buttons</strong></h4>
-Select <strong>"Option Two"</strong> or <strong>"Option Three"</strong> to test it out 
-<label>Choose your preference</label>
-    [radio radio-269 use_label_element default:1 "Option One" "Option Two" "Option Three"]
-<div class="clear"></div>
-[conditional radio]
-<label> Why did you select option two? </label>
-<div class="clear"></div>
-[/conditional] 
-[conditional radio-two]
-<label> Why did you select option three? </label>
-<div class="clear"></div>
-[/conditional] 
-<hr /> 
-<h4>Condition for Field Type: <strong>Checkboxes</strong></h4>
-Select <strong>"Option Two"</strong> or <strong>"Option Three"</strong> to test it out 
-<label>Choose your preference</label>
-[checkbox checkbox-266 use_label_element "Option One" "Option Two" "Option Three"]
-<div class="clear"></div>
-[conditional checkbox]
-<label> Why did you select option two? </label>
-<div class="clear"></div>
-[/conditional] 
-[conditional checkbox-two]
-<label> Why did you select option three? </label>
-<div class="clear"></div>
-[/conditional] 
-<hr /> 
-<label> Insert Your E-mail
-[email* your-email-two] </label> 
-[submit "Submit"]';
+	$form = '<h4>Condition for Field Type: <strong>Text</strong></h4>
+    Write name <strong>"John Doe"</strong> or <strong>"Abul Mia"</strong> to test it out 
+    <label> Your Name </label> 
+    [conditional namefield]
+    <label> Is your Father name Jonathan Doe?
+        [select menu-655 include_blank "Yes" "No"] </label>
+    <div class="clear"></div>
+    [/conditional] 
+    <hr /> 
+    <h4>Condition for Field Type: <strong>Dropdown</strong></h4>
+    Select <strong>"Yes"</strong> or <strong>"No"</strong> to test it out 
+    <label> Do you have any Physical Address?
+        [select* menu-654 include_blank "Yes" "No"] </label> 
+    [conditional address]
+    <label> Insert Your Address </label>
+    <div class="clear"></div>
+    [/conditional] 
+    [conditional email]
+    <label> Insert Your Alternate E-mail
+        [email your-email] </label>
+    <div class="clear"></div>
+    [/conditional] 
+    <hr /> 
+    <h4>Condition for Field Type: <strong>Radio Buttons</strong></h4>
+    Select <strong>"Option Two"</strong> or <strong>"Option Three"</strong> to test it out 
+    <label>Choose your preference</label>
+        [radio radio-269 use_label_element default:1 "Option One" "Option Two" "Option Three"]
+    <div class="clear"></div>
+    [conditional radio]
+    <label> Why did you select option two? </label>
+    <div class="clear"></div>
+    [/conditional] 
+    [conditional radio-two]
+    <label> Why did you select option three? </label>
+    <div class="clear"></div>
+    [/conditional] 
+    <hr /> 
+    <h4>Condition for Field Type: <strong>Checkboxes</strong></h4>
+    Select <strong>"Option Two"</strong> or <strong>"Option Three"</strong> to test it out 
+    <label>Choose your preference</label>
+    [checkbox checkbox-266 use_label_element "Option One" "Option Two" "Option Three"]
+    <div class="clear"></div>
+    [conditional checkbox]
+    <label> Why did you select option two? </label>
+    <div class="clear"></div>
+    [/conditional] 
+    [conditional checkbox-two]
+    <label> Why did you select option three? </label>
+    <div class="clear"></div>
+    [/conditional] 
+    <hr /> 
+    <label> Insert Your E-mail
+    [email* your-email-two] </label> 
+    [submit "Submit"]';
 		break;
 
 	case "subscription":
@@ -3904,25 +3907,26 @@ Select <strong>"Option Two"</strong> or <strong>"Option Three"</strong> to test 
 		break;
 
 	case "product-review":
-		$form = '<label> Your Name
-    [text* your-name placeholder "Jane Smith"] </label> 
-<label> Your Email
-    [email* your-email placeholder "jane.smith@example.com"] </label> 
-<label> Select Product
-    [uacf7_product_dropdown* select-product] </label> 
-<label> Purchase Date
-    [date purchase-date] </label> 
-<label> Overall Rating
-    [uacf7_star_rating* rating selected:3 star1:1 star2:2 star3:3 star4:4 star5:5 "default"] </label> 
-<label> Your Review Title
-    [text review-title placeholder "A quick summary of your thoughts"] </label> 
-<label> Detailed Review
-    [textarea detailed-review placeholder "What did you like or dislike?"] </label> 
-<label> Product Image 
-    [file product-image filetypes:jpg|jpeg|png limit:2mb] </label> 
-<label> Would you purchase this product again?
-    [checkbox purchase-again "Yes"] </label> 
-[submit "Submit Your Review"]';
+	$form = '<label> Your Name
+    <label> Your Name
+        [text* your-name placeholder "Jane Smith"] </label> 
+    <label> Your Email
+        [email* your-email placeholder "jane.smith@example.com"] </label> 
+    <label> Select Product
+        [uacf7_product_dropdown* select-product] </label> 
+    <label> Purchase Date
+        [date purchase-date] </label> 
+    <label> Overall Rating
+        [uacf7_star_rating* rating selected:3 star1:1 star2:2 star3:3 star4:4 star5:5 "default"] </label> 
+    <label> Your Review Title
+        [text review-title placeholder "A quick summary of your thoughts"] </label> 
+    <label> Detailed Review
+        [textarea detailed-review placeholder "What did you like or dislike?"] </label> 
+    <label> Product Image 
+        [file product-image filetypes:jpg|jpeg|png limit:2mb] </label> 
+    <label> Would you purchase this product again?
+        [checkbox purchase-again "Yes"] </label> 
+    [submit "Submit Your Review"]';
 		break;
 	case "service-booking":
 	case "appointment-form":
@@ -3950,7 +3954,6 @@ Select <strong>"Option Two"</strong> or <strong>"Option Three"</strong> to test 
 		break;
 
 	case "conversational-appointment-form":
-	case "conversational-interview-form":
 		$form = apply_filters( 'uacf7_conversational_form_ai_generator', esc_html( 'To generate this form, please download “ultimate Conversational Form Addon” from our client portal and activate ultimate repeater Addon first' ), $uacf7_default );
 
 		break;
