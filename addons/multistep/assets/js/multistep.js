@@ -4,17 +4,16 @@ jQuery(document).ready(function () {
         // Is Repeater Use in form
         var repeater_count = jQuery(this).find('.uacf7-repeater-count').val();  
         
-  var uacf7_sid   = 1;
-  var form_id     = jQuery(this).find("input[name=_wpcf7]").val();
-  var uacf7_next  = jQuery(this).find('.uacf7-next[data-form-id="' + form_id + '"]');
-  var uacf7_prev  = jQuery(this).find('.uacf7-prev[data-form-id="' + form_id + '"]');
-  var uacf7_step  = '.uacf7-step-'+form_id;
-  var total_steps = jQuery(uacf7_step, this).length;
+		var uacf7_sid = 1;
+        var form_id =jQuery(this).find("input[name=_wpcf7]").val();
+        var uacf7_next = jQuery(this).find('.uacf7-next[data-form-id="' + form_id + '"]');
+        var uacf7_prev = jQuery(this).find('.uacf7-prev[data-form-id="' + form_id + '"]');
+        var uacf7_step = '.uacf7-step-'+form_id; 
+        var total_steps = jQuery(uacf7_step, this).length;  
 
 		jQuery(uacf7_step, this).each(function () {
 			var $this = jQuery(this); 
 			$this.attr('id', form_id+'step-' + uacf7_sid);
-			$this.attr('step-id', uacf7_sid);
 
 			if( uacf7_sid == 1 ) {
 				$this.addClass('step-start');
@@ -41,9 +40,8 @@ jQuery(document).ready(function () {
 
 
 
-    function uacf7_step_validation($this, uacf7_step, form_id, repeater_count) {  
+    function uacf7_step_validation($this, uacf7_step, form_id, repeater_count) { 
         var uacf7_current_step = jQuery($this).closest(uacf7_step); 
-        var uacf7_next_step =  1 + parseInt(uacf7_current_step.attr('step-id'));
       
         /*
         * Cheeck current step fields. Expect Checkbox, Radio button and hidden fields
@@ -159,21 +157,7 @@ jQuery(document).ready(function () {
                             curStepBtn = curStep.attr("id"),
                             nextStepWizard = jQuery('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a");
 
-                        // nextStepWizard.removeAttr('disabled').trigger('click');
-                        // nextStepWizard.removeAttr('disabled').trigger('click');
-                        jQuery('.steps-step').find('a[data-form-id="'+form_id+'"]').removeClass('uacf7-btn-active');
-                        uacf7_current_step.hide();
-                        uacf7_current_step.addClass('completed');
-                        jQuery('#'+form_id+'step-' + uacf7_next_step).show();
-                   
-                        jQuery('.steps-step').find('a[href="#'+curStepBtn+'"]').addClass('completed');
-                        jQuery('.steps-step').find('a[href="#'+form_id+'step-' + uacf7_next_step+'"]').addClass('uacf7-btn-active');
-                        jQuery('.steps-step').find('a[href="#'+form_id+'step-' + uacf7_next_step+'"]').parent().addClass('step-complete');
-
-                        // Hide All steps Title:
-                        jQuery('.uacf7-form-'+form_id).find('.step-title').hide();
-                        // Show Next Step Title:
-                        jQuery('.uacf7-form-'+form_id).find('.step-title.step-'+uacf7_next_step).show();
+                        nextStepWizard.removeAttr('disabled').trigger('click');
      
                     } else {
 						

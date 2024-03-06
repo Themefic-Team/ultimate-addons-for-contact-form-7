@@ -11,37 +11,23 @@
                 
                 allWells.hide();
 
-                navListItems.click(function (e) { 
+                navListItems.click(function (e) {
                     e.preventDefault();
                     var $target = $($(this).attr('href')),
                         title   = $($(this).attr('title-id')),
                         $item   = $(this);
-                    if(!$item.hasClass('completed')){
 
-                        var validated_steps =  parseInt($item.attr('data-current-steps')) - 1 ;
-                        if(!$('#'+form_id+'step-'+validated_steps+'').hasClass('completed')){
-                            $('#'+form_id+'step-'+validated_steps+'').find('.uacf7-next').trigger('click');
-                        }else{
+                    if (!$item.hasClass('disabled')) {
+                        // if(!$(this).closest('.uacf7-common-pb').hasClass('style-8')){
                             navListItems.removeClass('uacf7-btn-active').addClass('uacf7-btn-default');
                             $item.addClass('uacf7-btn-active');
-                            allWells.hide();
-                            $target.show();
-                            allStepTitle.hide();
-                            title.show();
-                            $target.find('input:eq(0)').focus();
-                        }
-                    }else{
-                        if (!$item.hasClass('disabled')) {
-                            navListItems.removeClass('uacf7-btn-active').addClass('uacf7-btn-default');
-                            $item.addClass('uacf7-btn-active');
-                            allWells.hide();
-                            $target.show();
-                            allStepTitle.hide();
-                            title.show();
-                            $target.find('input:eq(0)').focus();
-                        }
-                     }
-                   
+                        // }
+                        allWells.hide();
+                        $target.show();
+                        allStepTitle.hide();
+                        title.show();
+                        $target.find('input:eq(0)').focus();
+                    }
                 });
 
                 allPrevBtn.click(function () {
@@ -52,7 +38,7 @@
                     prevStepSteps.removeAttr('disabled').trigger('click');
                 });
 
-                allNextBtn.click(function () { 
+                allNextBtn.click(function () {
                     var curStep = $(this).closest(".uacf7-step"),
                         curStepBtn = curStep.attr("id"),
                         nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
