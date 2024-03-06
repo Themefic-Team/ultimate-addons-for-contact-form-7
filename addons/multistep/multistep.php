@@ -713,7 +713,10 @@ class UACF7_MULTISTEP {
                          'default' => 'image',
                          'inline' => true, 
                         'is_pro' => true, 
-                        'dependency' => array( 'uacf7_progressbar_style', '!=', 'style-1'),
+                        'dependency' => array( 
+                            array( 'uacf7_progressbar_style', '!=', 'style-1' ),
+                 
+                        ),
                     );
                     
                     $fields['uacf7_progressbar_image_'.$step->name.''] = array(
@@ -724,7 +727,10 @@ class UACF7_MULTISTEP {
                         'multiple' => false,
                         'inline' => true, 
                         'is_pro' => true, 
-                        'dependency' => array( 'uacf7_progressbar_icon_type'.$step->name.'', '==', 'image' ),
+                        'dependency' => array( 
+                            array('uacf7_progressbar_icon_type'.$step->name.'', '==', 'image'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-1' ),
+                        ),
                     );
 
 
@@ -747,7 +753,10 @@ class UACF7_MULTISTEP {
                         'multiple' => false,
                         'inline' => true, 
                         'is_pro' => true, 
-                        'dependency' => array( 'uacf7_progressbar_icon_type'.$step->name.'', '==', 'icon' ),
+                        'dependency' => array(
+                            array( 'uacf7_progressbar_icon_type'.$step->name.'', '==', 'icon' ),
+                            array( 'uacf7_progressbar_style', '!=', 'style-1' ),
+                        ),
                     );
                    
                     if($step_count == 1){
