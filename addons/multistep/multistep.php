@@ -699,6 +699,7 @@ class UACF7_MULTISTEP {
                         'multiple' => false,
                         'inline' => true, 
                         'dependency' => array( 'uacf7_progressbar_style', '==', 'style-1'),
+                     
                     );
 
                     $fields['uacf7_progressbar_icon_type'.$step->name.''] = array(
@@ -712,6 +713,7 @@ class UACF7_MULTISTEP {
                          'default' => 'image',
                          'inline' => true, 
                         'is_pro' => true, 
+                        'dependency' => array( 'uacf7_progressbar_style', '!=', 'style-1'),
                     );
                     
                     $fields['uacf7_progressbar_image_'.$step->name.''] = array(
@@ -1052,7 +1054,7 @@ class UACF7_MULTISTEP {
                                                 echo '<p><i class="' . esc_attr($icon_class) . '"></i></p>';
                                                 
                                             }
-                                            
+
                                             if (isset($content)) {
                             
                                                 echo '<p>' . $content . '</p>';
