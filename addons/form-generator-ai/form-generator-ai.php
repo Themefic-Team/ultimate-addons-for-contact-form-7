@@ -23,9 +23,6 @@ class UACF7_FORM_GENERATOR {
 
 		// Ai form Get Tag Ajax Function
 		add_action( 'wp_ajax_uacf7_form_generator_ai_get_tag', array( $this, 'uacf7_form_generator_ai_get_tag' ) );
-
-		// Form Default Style
-		wp_enqueue_style( 'uacf7-form-ai-generator-form-style', UACF7_ADDONS . '/form-generator-ai/assets/css/form-style.css' );
 	}
 
 
@@ -36,6 +33,10 @@ class UACF7_FORM_GENERATOR {
 		// wp_enqueue_style( 'uacf7-form-generator-ai-choices-css', UACF7_ADDONS . '/form-generator-ai/assets/css/choices.css' ); 
 		wp_enqueue_style( 'uacf7-form-generator-ai-admin-css', UACF7_ADDONS . '/form-generator-ai/assets/css/admin-form-generator-ai.css' );
 
+
+		//Form Default Styles
+		
+		wp_enqueue_style( 'uacf7-form-ai-generator-form-style', UACF7_ADDONS . '/form-generator-ai/assets/css/form-style.css' );
 		wp_localize_script( 'uacf7-form-generator-ai-admin-js', 'uacf7_form_ai',
 			array(
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
