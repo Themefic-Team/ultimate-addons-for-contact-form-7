@@ -409,7 +409,6 @@ class UACF7_MULTISTEP {
                   
                 ),
 
-
                 'uacf7_progressbar_size_option' => array(
                     'id'      => 'uacf7_progressbar_size_option',
                     'type'    => 'heading',
@@ -421,7 +420,6 @@ class UACF7_MULTISTEP {
                     'id'    => 'uacf7_multistep_step_height',
                     'type'  => 'select',
                     'label' => __( 'Progressbar Height', 'ultimate-addons-cf7' ),
-                      // 'placeholder'     => __( 'width', 'ultimate-addons-cf7' ),  
                     'options' => array(
                         'default'      => 'Default',
                         'equal-height' => 'Equal height'
@@ -1080,7 +1078,7 @@ class UACF7_MULTISTEP {
                                             
                                             }
                                         
-                                            if($uacf7_progressbar_style != 'default' && $uacf7_progressbar_style != 'style-3' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-11'){ 
+                                            if($uacf7_progressbar_style != '' && $uacf7_progressbar_style != 'style-3' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-11'){ 
 
                                                 do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
                                             }
@@ -1105,7 +1103,10 @@ class UACF7_MULTISTEP {
                                             if( $uacf7_progressbar_style != 'style-2' &&  $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-6' && $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-10' && $uacf7_progressbar_style != 'style-11' ){
                                                 echo esc_attr($step_id);
                                             }
-                                        } ?>
+                                        
+                                        }
+                                        
+                                        ?>
                                     </a>
                                     <?php 
 
