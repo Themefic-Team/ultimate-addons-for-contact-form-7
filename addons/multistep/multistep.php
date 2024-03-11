@@ -1110,7 +1110,7 @@ class UACF7_MULTISTEP {
                                     </a>
                                     <?php 
 
-                                        if( $uacf7_multistep_use_step_labels != true  && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-10' && $uacf7_progressbar_style != 'style-11' ) { 
+                                        if( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != ''  && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-10' && $uacf7_progressbar_style != 'style-11' ) { 
                                             echo '<p>'.esc_html($content).'</p>'; 
                                         } 
                                     ?>
