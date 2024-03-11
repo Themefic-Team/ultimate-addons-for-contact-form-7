@@ -606,7 +606,7 @@ class UACF7_MULTISTEP {
                         <tr>
                             <th scope="row"><label><?php echo esc_html( __( 'Label', 'ultimate-addons-cf7' ) ); ?></label></th>
                             <td>
-                               <input type="text" name="values" class="oneline"> 
+                               <input type="text" name="values" class="oneline" value="Step Label"> 
                             </td>
                         </tr>
                         <tr>
