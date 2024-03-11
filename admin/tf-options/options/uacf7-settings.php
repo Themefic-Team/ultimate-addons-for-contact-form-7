@@ -8,6 +8,7 @@ if ( file_exists( UACF7_PATH . 'admin/tf-options/options/tf-menu-icon.php' ) ) {
 } else {
 	$menu_icon = 'dashicons-palmtree';
 }
+
 UACF7_Settings::option( 'uacf7_settings', array(
 	'title' => __( 'Ultimate Addons', 'ultimate-addons-cf7' ),
 	'icon' => $menu_icon,
@@ -274,7 +275,7 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'image_url' => UACF7_URL . 'assets/admin/images/addons/Zapier(Webhook).png',
 						'default' => false,
 						'subtitle' => __( 'Transfer form data to third-party services like Pabbly or Zapier via webhooks. ', 'ultimate-addons-cf7' ),
-						'demo_link' => '#',
+						'demo_link' => 'https://cf7addons.com/preview/pabbly-zapier-webhook/',
 						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/contact-form-7-webhook/',
 					),
 					'uacf7_enable_material_design_field' => array(
@@ -503,6 +504,9 @@ UACF7_Settings::option( 'uacf7_settings', array(
 					),
 				),
 			),
+
+
+
 			'api_integration' => array(
 				'title' => __( 'API Integration', 'ultimate-addons-cf7' ),
 				'icon' => 'fa fa-circle-nodes',
@@ -545,18 +549,41 @@ UACF7_Settings::option( 'uacf7_settings', array(
 				'fields' => array(
 				),
 			),
-			'uacf7_import_export' => array(
-				'title' => __( 'Import/Export', 'ultimate-addons-cf7' ),
+			// 'uacf7_import_export' => array(
+			// 	'title' => __( 'Import/Export', 'ultimate-addons-cf7' ),
+			// 	'parent' => 'uacf7_import_export_data',
+			// 	'icon' => 'fa fa-download',
+			// 	'fields' => array(
+			// 		'uacf7_import_export_backup' => array(
+			// 			'id' => 'uacf7_import_export_backup',
+			// 			'type' => 'backup',
+			// 			'label' => __( 'Import/Export', 'ultimate-addons-cf7' ),
+			// 			'subtitle' => sprintf(
+			// 				__( 'Import and export all options associated with this settings panel. Please save it first in order to generate the export file. ', 'ultimate-addons-cf7' )
+			// 			)
+			// 		),
+			// 	),
+			// ),
+			'uacf7_load_cdn' => array(
+				'title' => __( 'Optimize Assets', 'ultimate-addons-cf7' ),
 				'parent' => 'uacf7_import_export_data',
-				'icon' => 'fa fa-download',
+				'icon' => 'fa fa-arrow-trend-up',
 				'fields' => array(
-					'uacf7_import_export_backup' => array(
-						'id' => 'uacf7_import_export_backup',
-						'type' => 'backup',
-						'label' => __( 'Import/Export', 'ultimate-addons-cf7' ),
-						'subtitle' => sprintf(
-							__( 'Import and export all options associated with this settings panel. Please save it first in order to generate the export file. ', 'ultimate-addons-cf7' )
-						)
+					'uacf7_enable_cdn_load_css' => array(
+						'id' => 'uacf7_enable_cdn_load_css',
+						'type' => 'switch',
+						'save_empty' => true,
+						'label' => __( 'Enable CSS Libraries Loading from CDN', 'ultimate-addons-cf7' ),
+						'subtitle' => __( 'To optimize CSS performance, consider loading all assets from the CDN to reduce latency and enhance user experience.', 'ultimate-addons-cf7' )
+						
+					),
+					'uacf7_enable_cdn_load_js' => array(
+						'id' => 'uacf7_enable_cdn_load_js',
+						'type' => 'switch',
+						'save_empty' => true,
+						'label' => __( 'Enable JavaScript Libraries Loading from CDN', 'ultimate-addons-cf7' ),
+						'subtitle' => __( 'To maximize JavaScript performance, consider loading all assets from the CDN to reduce quiescence and faster user experience.', 'ultimate-addons-cf7' )
+						
 					),
 				),
 			),

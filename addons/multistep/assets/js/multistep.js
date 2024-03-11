@@ -178,7 +178,7 @@ jQuery(document).ready(function () {
                 } catch (e) {
                     console.log("error: " + e);
                 }
-                if(typeof  uacf7_multistep_scroll !== 'undefined' &&  uacf7_multistep_scroll.scroll_top == 'on'){
+                if(typeof  uacf7_multistep_scroll !== 'undefined' &&  uacf7_multistep_scroll.scroll_top == 1){
                     multistep_scroll_to_top($this.parents('form'));
                 }
             },
