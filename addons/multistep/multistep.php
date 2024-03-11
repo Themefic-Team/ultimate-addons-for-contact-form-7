@@ -63,32 +63,47 @@ class UACF7_MULTISTEP {
     public function uacf7_post_meta_options_multistep( $value, $post_id){
 
         $multistep = apply_filters('uacf7_post_meta_options_multistep_pro', $data = array(
-			'title'  => __( 'Multistep', 'ultimate-addons-cf7' ),
+			'title'  => __( 'Multi-step Form', 'ultimate-addons-cf7' ),
 			'icon'   => 'fa-solid fa-stairs',
+            'checked_field'   => 'uacf7_multistep_is_multistep',
 			'fields' => array(
-                'placeholder_headding' => array(
-					'id'    => 'placeholder_headding',
+                'placeholder_heading' => array(
+					'id'    => 'placeholder_heading',
 					'type'  => 'heading', 
-					'label' => __( 'Multistep', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'This addon will help you to create the Multistep Form.', 'ultimate-addons-cf7' ),
-                    'content' => sprintf( 
-                        __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">documentation</a>'
+					'label' => __( 'Multi-step Form Settings', 'ultimate-addons-cf7' ),
+					'subtitle' => sprintf(
+                        __( 'Create stunning multi-step forms with Contact Form 7. Ideal solution for long forms. See Demo %1s.', 'ultimate-addons-cf7' ),
+                         '<a href="https://cf7addons.com/preview/contact-form-7-multi-step-forms/" target="_blank">Example</a>'
                     )
-				),   
+				),
+                'multistep_form_docs' => array(
+					'id'      => 'multistep_form_docs',
+					'type'    => 'notice',
+					'style'   => 'success',
+					'content' => sprintf( 
+                        __( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">Multi-step Form</a>',
+                        '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-multi-step-form-pro/" target="_blank">Multi-step Form (Pro)</a>'
+                    )
+				),
 				'uacf7_multistep_is_multistep' => array(
 					'id'        => 'uacf7_multistep_is_multistep',
 					'type'      => 'switch',
-					'label'     => __( ' Is It Multistep Form? ', 'ultimate-addons-cf7' ),
+					'label'     => __( ' Enable Multistep', 'ultimate-addons-cf7' ),
 					'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 					'default'   => false,
-                    'field_width' => 50,
+                    'field_width' => 100,
+                ),
+                'uacf7_multistep_form_options_heading' => array(
+                    'id'        => 'uacf7_multistep_form_options_heading',
+                    'type'      => 'heading',
+                    'label'     => __( 'Multistep Option ', 'ultimate-addons-cf7' ),
                 ),
                 'uacf7_enable_multistep_progressbar' => array(
 					'id'        => 'uacf7_enable_multistep_progressbar',
 					'type'      => 'switch',
-					'label'     => __( ' Multistep Progressbar ', 'ultimate-addons-cf7' ),
+					'label'     => __( ' Enable Progressbar ', 'ultimate-addons-cf7' ),
 					'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 					'default'   => false,
@@ -97,8 +112,8 @@ class UACF7_MULTISTEP {
                 'uacf7_enable_multistep_scroll' => array(
 					'id'        => 'uacf7_enable_multistep_scroll',
 					'type'      => 'switch',
-					'label'     => __( 'Form Auto Scrolling ', 'ultimate-addons-cf7' ),
-					'description'     => __( 'Auto scroll to top after clicking on the next button ', 'ultimate-addons-cf7' ),
+					'label'     => __( 'Enable Form Auto Scrolling ', 'ultimate-addons-cf7' ),
+					'description'     => __( 'Auto scroll to top after clicking the next button.', 'ultimate-addons-cf7' ),
 					'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
 					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 					'default'   => false,
@@ -108,7 +123,7 @@ class UACF7_MULTISTEP {
                 'uacf7_multistep_use_step_labels' => array(
                     'id'        => 'uacf7_multistep_use_step_labels',
                     'type'      => 'switch',
-                    'label'     => __( ' Hide Progressbar Labels ', 'ultimate-addons-cf7' ),
+                    'label'     => __( 'Hide Progressbar Labels ', 'ultimate-addons-cf7' ),
                     'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
                     'label_off' => __( 'No', 'ultimate-addons-cf7' ),
                     'default'   => false,
