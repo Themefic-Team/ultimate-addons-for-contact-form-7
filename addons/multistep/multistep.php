@@ -229,6 +229,16 @@ class UACF7_MULTISTEP {
                 
                 ),
 
+                'uacf7_multistep_circle_active_icon_color' => array(
+                    'id'       => 'uacf7_multistep_circle_active_icon_color',
+                    'type'     => 'color',
+                    'label'    => __( 'Circle Active Icon Color', 'ultimate-addons-cf7' ),
+                    'multiple' => false,
+                    'field_width' => 50,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-8' ),
+                
+                ),
+
 
                 'uacf7_multistep_circle_font_hover_color' => array(
                     'id'       => 'uacf7_multistep_circle_font_hover_color',
@@ -698,6 +708,7 @@ class UACF7_MULTISTEP {
                         'class' => 'tf-field-class', 
                         'multiple' => false,
                         'inline' => true, 
+                        'default' => 'fa fa-tree', 
                         'dependency' => array( 'uacf7_progressbar_style', '==', 'style-1'),
                      
                     );
@@ -710,7 +721,7 @@ class UACF7_MULTISTEP {
                             'image' => 'Image',
                             'icon' => 'Icon ',
                          ),
-                         'default' => 'image',
+                         'default' => 'icon',
                          'inline' => true, 
                         'is_pro' => true, 
                         'dependency' => array( 
@@ -753,6 +764,7 @@ class UACF7_MULTISTEP {
                         'multiple' => false,
                         'inline' => true, 
                         'is_pro' => true, 
+                        'default' => 'fa fa-check', 
                         'dependency' => array(
                             array( 'uacf7_progressbar_icon_type'.$step->name.'', '==', 'icon' ),
                             array( 'uacf7_progressbar_style', '!=', 'style-1' ),
@@ -796,10 +808,11 @@ class UACF7_MULTISTEP {
                     $fields['desc_title_'.$step->name.''] = array(
                         'id'        => 'desc_title_'.$step->name.'',
                         'type'      => 'text',
-                        'label'     => __( 'Description title', 'ultimate-addons-cf7' ),
-                        'placeholder'     => __( 'Description title', 'ultimate-addons-cf7' ), 
+                        'label'     => __( 'Step title', 'ultimate-addons-cf7' ),
+                        'placeholder'     => __( 'Step title', 'ultimate-addons-cf7' ), 
                         'is_pro' => true,
                         'field_width' => 50,
+                        'default' => 'Step Title'
                     );
                     $fields['step_desc_'.$step->name.''] = array(
                         'id'        => 'step_desc_'.$step->name.'',
@@ -807,6 +820,7 @@ class UACF7_MULTISTEP {
                         'label'     => __( 'Step description', 'ultimate-addons-cf7' ),
                         'placeholder'     => __( 'Step description', 'ultimate-addons-cf7' ), 
                         'is_pro' => true,
+                        'default' => 'Step Description'
                     );
 
                     $step_count++;
