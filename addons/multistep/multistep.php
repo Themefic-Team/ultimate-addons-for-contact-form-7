@@ -333,7 +333,7 @@ class UACF7_MULTISTEP {
                     'id'          => 'uacf7_multistep_circle_active_icon_color',
                     'type'        => 'color',
                     'label'       => __( ' Step Active Icon Color', 'ultimate-addons-cf7' ),
-                    'field_width' => 100,
+                    'field_width' => 50,
                     'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-11' ),
                 ),
                 'uacf7_multistep_circle_filled_icon_color' => array(
@@ -914,9 +914,7 @@ class UACF7_MULTISTEP {
                 $uacf7_progressbar_style = $multistep_meta['uacf7_progressbar_style'];
                 do_action( 'uacf7_multistep_before_form', $cfform->id() );
             ?>
-            <?php 
-
-                        
+            <?php         
                 $uacf7_multistep_progress_bg_color        = isset($multistep_meta['uacf7_multistep_progress_bg_color']) && $multistep_meta['uacf7_multistep_progress_bg_color']               !== '' ? $multistep_meta['uacf7_multistep_progress_bg_color']: '#ffffff';
                 $uacf7_multistep_circle_bg_color          = isset($multistep_meta['uacf7_multistep_circle_bg_color']) && $multistep_meta['uacf7_multistep_circle_bg_color']                   !== '' ? $multistep_meta['uacf7_multistep_circle_bg_color']: '#ffffff';
                 $uacf7_multistep_circle_bg_active_color   = isset($multistep_meta['uacf7_multistep_circle_bg_active_color']) && $multistep_meta['uacf7_multistep_circle_bg_active_color']     !== '' ? $multistep_meta['uacf7_multistep_circle_bg_active_color']: '#EBF2FF';
@@ -936,8 +934,7 @@ class UACF7_MULTISTEP {
                 $uacf7_multistep_button_border_color  = isset($multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_border_color']) && $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_border_color'] !== '' ? $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_border_color']: '';
                 $uacf7_multistep_button_hover_bg      = isset($multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_bg']) && $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_bg']         !== '' ? $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_bg']: '#2264d1';
                 $uacf7_multistep_button_hover_color   = isset($multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_color']) && $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_color']   !== '' ? $multistep_meta['uacf7_multistep_next_prev_option']['uacf7_multistep_button_hover_color']: '#ffffff';
-                $uacf7_multistep_button_border_radius = isset($multistep_meta['uacf7_multistep_button_border_radius']) && $multistep_meta['uacf7_multistep_button_border_radius']                                                                       !== '' ? $multistep_meta['uacf7_multistep_button_border_radius']: '4';
-                        
+                $uacf7_multistep_button_border_radius = isset($multistep_meta['uacf7_multistep_button_border_radius']) && $multistep_meta['uacf7_multistep_button_border_radius']                                                                       !== '' ? $multistep_meta['uacf7_multistep_button_border_radius']: '4';            
                 
            $uacf7_multistep_progressbar_title_color = isset($multistep_meta['uacf7_multistep_progressbar_title_color']) ? $multistep_meta['uacf7_multistep_progressbar_title_color'] : '';
             if($uacf7_progressbar_style == 'default' && !empty($uacf7_multistep_progressbar_title_color))                                        : 
@@ -982,7 +979,6 @@ class UACF7_MULTISTEP {
                 .progressbar-style-1 .steps-row .steps-step .btn-circle:not(.uacf7-btn-active){
                     
                     background  : <?php echo esc_attr($uacf7_multistep_circle_bg_color); ?>;
-                   
                   }
 
                 .progressbar-style-1 .steps-row .steps-step{
@@ -995,7 +991,7 @@ class UACF7_MULTISTEP {
                 }
                 
                 .style-1 + .uacf7-multisetp-form button.uacf7-next,       .style-1 + .uacf7-multisetp-form button.uacf7-prev,      .style-1 + .uacf7-multisetp-form .wpcf7-submit {
-                    
+        
                     background: <?php echo esc_attr($uacf7_multistep_button_bg); ?>; ;
                     padding: <?php echo esc_attr($uacf7_multistep_button_padding_tb); ?>px <?php echo esc_attr($uacf7_multistep_button_padding_lr); ?>px;
                     width: 123px;
@@ -1014,7 +1010,6 @@ class UACF7_MULTISTEP {
         
             </style>
             <?php endif; ?>
-
                 <?php if(!empty($all_steps)): ?>
                     <div class="<?php echo isset($uacf7_progressbar_style) ? $uacf7_progressbar_style . " uacf7-common-pb" : "default-skin-style"; ?>">
                     <div class="uacf7-steps steps-form <?php if($uacf7_progressbar_style == 'style-1'){echo 'progressbar-style-1';} ?>">
@@ -1103,7 +1098,6 @@ class UACF7_MULTISTEP {
                                             
                                         }else {
                                             if( $uacf7_progressbar_style != 'style-2' &&  $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-6' && $uacf7_progressbar_style != 'style-7' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-10' && $uacf7_progressbar_style != 'style-11' ){
-
                                                 echo esc_attr($step_id);
                                             }
                                         } ?>

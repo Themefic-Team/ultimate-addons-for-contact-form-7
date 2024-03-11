@@ -10,6 +10,7 @@
         cursor: n-resize;
         border-radius: 5px;
         width: 31%;
+        margin: 3px;
 
         .tf-image-title{ 
             display: flex;
@@ -27,7 +28,7 @@
             object-position: top;
             height: 180px;
             transition: object-position 2s ease-in-out, border-color 0.3s ease-in-out;
-
+          
             &:hover {
                 object-position: bottom;
             }
@@ -39,8 +40,12 @@
 
         .tf-image-checkbox > img {
             cursor: pointer;
-            border: 3px solid transparent;
+            // border: 3px solid transparent;
             width: 100%;
+            border: 2px solid #F6EEF2;
+            border-radius: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
         }
 
         .tf-image-checkbox > input:checked + img {
