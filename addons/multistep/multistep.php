@@ -1065,7 +1065,6 @@ class UACF7_MULTISTEP {
                                             
                                             }
                                         
-                                            
                                             if($uacf7_progressbar_style != 'default' && $uacf7_progressbar_style != 'style-3' && $uacf7_progressbar_style != 'style-9' && $uacf7_progressbar_style != 'style-11'){ 
 
                                                 do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
@@ -1078,11 +1077,9 @@ class UACF7_MULTISTEP {
                                                 echo '<p><i class="' . esc_attr($icon_class) . '"></i></p>';
                                                 
                                             }
-
-                                            if (isset($content)) {
-                            
-                                                echo '<p>' . $content . '</p>';
-                                            }
+                                                if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
+                                                    echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                                }
 
                                                 if( $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-10'){
 
