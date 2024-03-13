@@ -1102,8 +1102,8 @@ class UACF7_MULTISTEP {
                                                 echo '<p><i class="' . esc_attr($icon_class) . '"></i></p>';
                                                 
                                             }
-                                                if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
-                                                    echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                                if( isset($content)){
+                                                    echo '<p>' . $content . '</p>';
                                                 }
 
                                                 if( $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-10'){
