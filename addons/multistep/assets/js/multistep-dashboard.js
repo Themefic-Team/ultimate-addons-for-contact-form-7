@@ -7,7 +7,7 @@
             customizeLayer.find('button').click(function(e) {
                 e.preventDefault();
                 $('html, body').animate({
-                    scrollTop: $('label[for="uacf7_form_opt[progressbar_styling]"]').last().offset().top + $('label[for="uacf7_form_opt[progressbar_styling]"]').first().outerHeight() - $(window).height()
+                    scrollTop: $('label[for="uacf7_form_opt[progressbar_styling]"]').last().offset().top + $('label[for="uacf7_form_opt[progressbar_styling]"]').first().outerHeight() - $(window).height() + 500
                 }, 1000);});
         }
     }
