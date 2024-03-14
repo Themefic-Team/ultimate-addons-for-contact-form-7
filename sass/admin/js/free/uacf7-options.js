@@ -1607,7 +1607,7 @@ var frame, gframe;
         $(document).ready(function() {
             $('.tf-image-radio-group input[type=radio]').each(function () {
                 if ($(this).is(':checked')) {
-                    $(this).closest('label').find('.tf-overlay').addClass('tf-overlay-show');
+                    $(this).closest('li').find('.tf-overlay').addClass('tf-overlay-show');
                 }
 
             });
@@ -1624,10 +1624,10 @@ var frame, gframe;
 
         $(document).on('load change', '.tf-image-radio-group input[type=radio]', function() {
             if ($(this).is(':checked')) {
-                $(this).closest('label').find('.tf-overlay').addClass('tf-overlay-show');
+                $(this).closest('li').find('.tf-overlay').addClass('tf-overlay-show');
             }
 
-            $('.tf-image-radio-group').find('.tf-overlay').not($(this).parent().find('.tf-overlay')).removeClass('tf-overlay-show');
+            $('.tf-image-radio-group').find('li').find('.tf-overlay').not($(this).closest('li').find('.tf-overlay')).removeClass('tf-overlay-show');
         });
 
 

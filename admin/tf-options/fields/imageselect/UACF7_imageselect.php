@@ -25,23 +25,27 @@ if ( ! class_exists( 'UACF7_imageselect' ) ) {
 					} 
                     ?>
                     <li>
+					<?php
+
+						if(isset( $this->field['overlay']) &&  $this->field['overlay'] == true) {
+
+						?>
+							<div class="tf-overlay"><button class="tf-overlay-button"><?php echo esc_html( __('Customize', 'ultimate-addons-cf7') ) ?></button></div>  
+
+						<?php
+							} 
+					?>
                     <label class="tf-image-checkbox <?php echo esc_attr($class) ?>">
                     <?php echo '<input type="radio" id="' . $this->field_name() . '[' . $key . ']" '.esc_attr($disabled).' name="' . $this->field_name() . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . $this->parent_field . '" value="' . esc_attr( $key ) . '" ' . $checked . ' '. $this->field_attributes() .'/>';
                     ?>
                         <img src="<?php echo esc_url($value['url']); ?>" alt="<?php echo esc_attr($value['title']); ?>">
+						
 						<span class="tf-image-title">
 							<?php echo esc_html($value['title']); ?>
 							<?php echo $tf_pro; ?>
 						</span>
-						<?php
 
-						if(isset( $this->field['overlay']) &&  $this->field['overlay'] == true) {
-							?>
-							<div class="tf-overlay"><button class="tf-overlay-button"><?php echo esc_html( __('Customize', 'ultimate-addons-cf7') ) ?></button></div>  
-                   
-							<?php
-						} 
-					?>
+						
                     </label>
 					 </li>
 
