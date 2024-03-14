@@ -139,7 +139,7 @@ class UACF7_PROMO_NOTICE {
                     <img  style="width: 100%;" src="<?php echo esc_attr($image_url) ?>" alt="">
                 </a> 
                 <?php if( isset($this->uacf7_promo_option['dasboard_dismiss']) && $this->uacf7_promo_option['dasboard_dismiss'] == true): ?>
-                <button type="button" class="notice-dismiss tf_black_friday_notice_dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this notice.', 'ultimate-addons-cf7' ) ?></span></button>
+                <button type="button" class="notice-dismiss tf_black_friday_notice_dismiss"><span class="screen-reader-text"><?php echo esc_html(__('Dismiss this notice.', 'ultimate-addons-cf7' )) ?></span></button>
                 <?php  endif; ?>
             </div>
             <script>

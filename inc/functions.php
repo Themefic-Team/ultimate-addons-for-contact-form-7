@@ -154,101 +154,7 @@ if( !function_exists('uacf7_get_form_option') ){
 }
 
 
-/*
- * Hook: uacf7_multistep_pro_features
- * Multistep pro features demo
- */
-add_action( 'uacf7_multistep_pro_features', 'uacf7_multistep_pro_features_demo', 5, 2 );
-function uacf7_multistep_pro_features_demo( $all_steps, $form_id ){ 
-    if(!isset($all_steps[0])) return;
-    if( empty(array_filter($all_steps))) return;
-    ?>
-    <div class="multistep_fields_row" style="display: flex; flex-direction: column;">
-    <?php
-    $step_count = 1;
-    foreach( $all_steps as $step ) {
-        ?>
-        <h3><strong>Step <?php echo $step_count; ?> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a></strong></h3>
-        <?php
-        if( $step_count == 1 ){
-            ?>
-            <div>
-               <p><label for="<?php echo 'next_btn_'.$step->name; ?>"><?php echo __('Change next button text for this Step', 'ultimate-addons-cf7' ) ?></label></p>
-               <input id="<?php echo 'next_btn_'.$step->name; ?>" type="text" name="" value="" placeholder="<?php echo esc_html__('Next','ultimate-addons-cf7-pro') ?>">
-            </div>
-            <?php
-        } else {
-
-				if ( count( $all_steps ) == $step_count ) {
-					?>
-					<div>
-						<p><label for="<?php echo 'prev_btn_' . $step->name; ?>">
-								<?php echo __( 'Change previous button text for this Step', 'ultimate-addons-cf7' ) ?>
-							</label></p>
-						<input id="<?php echo 'prev_btn_' . $step->name; ?>" type="text" name="" value=""
-							placeholder="<?php echo esc_html__( 'Previous', 'ultimate-addons-cf7-pro' ) ?>">
-					</div>
-					<?php
-
-				} else {
-					?>
-					<div class="multistep_fields_row-">
-						<div class="multistep_field_column">
-							<p><label for="<?php echo 'prev_btn_' . $step->name; ?>">
-									<?php echo __( 'Change previous button text for this Step', 'ultimate-addons-cf7' ) ?>
-								</label></p>
-							<input id="<?php echo 'prev_btn_' . $step->name; ?>" type="text" name="" value=""
-								placeholder="<?php echo esc_html__( 'Previous', 'ultimate-addons-cf7-pro' ) ?>">
-						</div>
-
-						<div class="multistep_field_column">
-							<p><label for="<?php echo 'next_btn_' . $step->name; ?>">
-									<?php echo __( 'Change next button text for this Step', 'ultimate-addons-cf7' ) ?>
-								</label></p>
-							<input id="<?php echo 'next_btn_' . $step->name; ?>" type="text" name="" value=""
-								placeholder="<?php echo esc_html__( 'Next', 'ultimate-addons-cf7-pro' ) ?>">
-						</div>
-					</div>
-					<?php
-				}
-
-			}
-			?>
-			<div class="uacf7_multistep_progressbar_image_row">
-				<p><label for="<?php echo esc_attr( 'uacf7_progressbar_image_' . $step->name ); ?>">
-						<?php echo __( 'Add progressbar image for this step', 'ultimate-addons-cf7' ) ?>
-					</label></p>
-				<input class="uacf7_multistep_progressbar_image"
-					id="<?php echo esc_attr( 'uacf7_progressbar_image_' . $step->name ); ?>" type="url" name="" value=""> <a
-					class="button-primary" href="#">
-					<?php echo __( 'Add or Upload Image', 'ultimate-addons-cf7' ) ?>
-				</a>
-
-				<div class="multistep_fields_row step-title-description col-50">
-					<div class="multistep_field_column">
-						<p><label for="<?php echo 'step_desc_' . $step->name; ?>">
-								<?php echo __( 'Step description', 'ultimate-addons-cf7' ) ?>
-							</label></p>
-						<textarea id="<?php echo 'step_desc_' . $step->name; ?>" type="text" name="" cols="40" rows="3"
-							placeholder="<?php echo esc_html__( 'Step description', 'ultimate-addons-cf7-pro' ) ?>"></textarea>
-					</div>
-
-					<div class="multistep_field_column">
-						<p><label for="<?php echo 'desc_title_' . $step->name; ?>">
-								<?php echo __( 'Description title', 'ultimate-addons-cf7' ) ?>
-							</label></p>
-						<input id="<?php echo 'desc_title_' . $step->name; ?>" type="text" name="" value=""
-							placeholder="<?php echo esc_html__( 'Description title', 'ultimate-addons-cf7-pro' ) ?>">
-					</div>
-				</div>
-			</div>
-			<?php
-			$step_count++;
-		}
-		?>
-	</div>
-	<?php
-}
+ 
 
 /*
  * Progressbar style
@@ -270,14 +176,14 @@ function uacf7_multistep_progressbar_style( $form_id ) {
     .steps-form .steps-row .steps-step .btn-circle {
         <?php if(!empty($uacf7_multistep_circle_width)) echo 'width: '.esc_attr($uacf7_multistep_circle_width).'px;'; ?>
         <?php if(!empty($uacf7_multistep_circle_height)) echo 'height: '.esc_attr($uacf7_multistep_circle_height).'px;'; ?>
-        <?php if($uacf7_multistep_circle_border_radious != '' ) echo 'border-radius: '.$uacf7_multistep_circle_border_radious.'px;'; ?>
+        <?php if($uacf7_multistep_circle_border_radious != '' ) echo 'border-radius: '.esc_attr($uacf7_multistep_circle_border_radious).'px;'; ?>
         <?php if(!empty($uacf7_multistep_circle_height)) echo 'line-height: '.esc_attr($uacf7_multistep_circle_height).'px;'; ?>
         <?php if(!empty($uacf7_multistep_circle_bg_color)) echo 'background-color: '.esc_attr($uacf7_multistep_circle_bg_color).' !important;'; ?>
         <?php if(!empty($uacf7_multistep_circle_font_color)) echo 'color: '.esc_attr($uacf7_multistep_circle_font_color).' !important;'; ?>
         <?php if(!empty($uacf7_multistep_font_size)) echo 'font-size: '.esc_attr($uacf7_multistep_font_size).'px;'; ?>
     }
 	.steps-form .steps-row .steps-step .btn-circle img {
-		<?php if( $uacf7_multistep_circle_border_radious != 0 ) echo 'border-radius: '.$uacf7_multistep_circle_border_radious.'px !important;'; ?>
+		<?php if( $uacf7_multistep_circle_border_radious != 0 ) echo 'border-radius: '.esc_attr($uacf7_multistep_circle_border_radious).'px !important;'; ?>
 	}
     .steps-form .steps-row .steps-step .btn-circle.uacf7-btn-active,
     .steps-form .steps-row .steps-step .btn-circle:hover,
@@ -309,7 +215,7 @@ function uacf7_add_wrapper_to_cf7_form( $properties, $cfform ) {
 
 		$form = $properties['form'];
 		ob_start();
-		echo '<div class="uacf7-form-' . $cfform->id() . '">' . $form . '</div>';
+		echo '<div class="uacf7-form-' . esc_attr($cfform->id()) . '">' . wp_kses_post( $form ) . '</div>';
 		$properties['form'] = ob_get_clean();
 
 	}
@@ -339,21 +245,26 @@ if(!function_exists('uacf7_review_notice')){
             $current_user = wp_get_current_user();
         ?>
             <div class="notice notice-info themefic_review_notice"> 
-               
-                <?php echo sprintf( 
-                        __( ' <p>Hey %1$s 👋, You have been using <b>%2$s</b> for quite a while. If you feel %2$s is helping your business to grow in any way, would you please help %2$s to grow by simply leaving a 5* review on the WordPress Forum?', 'ultimate-addons-cf7' ),
-                        $current_user->display_name,
-                        'Ultimate Addons for Contact Form 7'
-                    ); ?> 
                 
+                <p>
+                    <?php  
+                        printf( 
+                            /* translators: %1$: Current user Display Name,  %2$: Plugins Name, */
+                            esc_html__( ' Hey %1$s 👋, You have been using %2$s for quite a while. If you feel %2$s is helping your business to grow in any way, would you please help %2$s to grow by simply leaving a 5* review on the WordPress Forum?', 'ultimate-addons-cf7' ),
+                            esc_html( $current_user->display_name ),
+                            '<b>Ultimate Addons for Contact Form 7</b>'
+                        );  
+                    ?> 
+                </p>
+                 
                 <ul>
-                    <li><a target="_blank" href="<?php echo esc_url('https://wordpress.org/plugins/ultimate-addons-for-contact-form-7/#reviews') ?>" class=""><span class="dashicons dashicons-external"></span><?php _e(' Ok, you deserve it!', 'ultimate-addons-cf7' ) ?></a></li>
-                    <li><a href="#" class="already_done" data-status="already"><span class="dashicons dashicons-smiley"></span> <?php _e('I already did', 'ultimate-addons-cf7') ?></a></li>
-                    <li><a href="#" class="later" data-status="later"><span class="dashicons dashicons-calendar-alt"></span> <?php _e('Maybe Later', 'ultimate-addons-cf7') ?></a></li>
-                    <li><a target="_blank"  href="<?php echo esc_url('https://themefic.com/docs/ultimate-addons-for-contact-form-7/') ?>" class=""><span class="dashicons dashicons-sos"></span> <?php _e('I need help', 'ultimate-addons-cf7') ?></a></li>
-                    <li><a href="#" class="never" data-status="never"><span class="dashicons dashicons-dismiss"></span><?php _e('Never show again', 'ultimate-addons-cf7') ?> </a></li> 
+                    <li><a target="_blank" href="<?php echo esc_url('https://wordpress.org/plugins/ultimate-addons-for-contact-form-7/#reviews') ?>" class=""><span class="dashicons dashicons-external"></span><?php echo esc_html( __(' Ok, you deserve it!', 'ultimate-addons-cf7' ) ) ?></a></li>
+                    <li><a href="#" class="already_done" data-status="already"><span class="dashicons dashicons-smiley"></span> <?php echo esc_html( __('I already did', 'ultimate-addons-cf7' ) ) ?> </a></li>
+                    <li><a href="#" class="later" data-status="later"><span class="dashicons dashicons-calendar-alt"></span> <?php echo esc_html( __('Maybe Later', 'ultimate-addons-cf7' ) ) ?></a></li>
+                    <li><a target="_blank"  href="<?php echo esc_url('https://themefic.com/docs/ultimate-addons-for-contact-form-7/') ?>" class=""><span class="dashicons dashicons-sos"></span> <?php echo esc_html( __('I need help', 'ultimate-addons-cf7' ) ) ?></a></li>
+                    <li><a href="#" class="never" data-status="never"><span class="dashicons dashicons-dismiss"></span><?php echo esc_html( __('Never show again', 'ultimate-addons-cf7' ) ) ?></a></li> 
                 </ul>
-                <button type="button" class="notice-dismiss review_notice_dismiss"><span class="screen-reader-text"><?php _e('Dismiss this notice.', 'ultimate-addons-cf7') ?></span></button>
+                <button type="button" class="notice-dismiss review_notice_dismiss"><span class="screen-reader-text"><?php echo esc_html( __('Dismiss this notice.', 'ultimate-addons-cf7' ) ) ?></span></button>
             </div>
 
 			<!--   Themefic Plugin Review Admin Notice Script -->
@@ -1169,6 +1080,7 @@ function uacf7_plugin_update_message( $plugin_data, $response ) {
 	// var_dump( $new_version );
 
 	if ( isset( $new_version ) && version_compare( $new_version, $plugin_data['Version'], '>' ) && $new_version === '3.3.0' ) {
+        
 		echo sprintf(
 			__( '
 				<div class="uacf7_plugin_page_notices" >

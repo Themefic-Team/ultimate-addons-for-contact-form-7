@@ -159,7 +159,7 @@ class UACF7_DATABASE {
 									<?php
 									foreach ( $list_forms as $form ) {
 										$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d", $form->ID ) );  // count number of data
-										echo '<option value="' . esc_attr( $form->ID ) . '">' . esc_attr( $form->post_title ) . ' ( ' . $count . ' )</option>';
+										echo '<option value="' . esc_attr( $form->ID ) . '">' . esc_attr( $form->post_title ) . ' ( ' . esc_html($count) . ' )</option>';
 									}
 									?>
 								</select>
@@ -447,7 +447,7 @@ class UACF7_DATABASE {
 			$wpdb->update( $table_name, $data, $where );
 		}
 
-		echo $html; // return all data
+		echo  wp_kses_post( $html );
 
 		wp_die();
 	}
@@ -739,7 +739,7 @@ class uacf7_form_List_Table extends WP_List_Table {
 
 	public function single_row( $item ) {
 		$cssClass = ( $item['status'] == 'unread' ) ? 'unread' : 'read';
-		echo '<tr class="' . $cssClass . '">';
+		echo '<tr class="' . esc_html($cssClass) . '">';
 		$this->single_row_columns( $item );
 		echo '</tr>';
 	}
