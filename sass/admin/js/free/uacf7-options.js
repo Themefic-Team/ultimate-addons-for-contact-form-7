@@ -26,7 +26,6 @@
         
 
 
-
         // Field: code_editor
 
         var TF = TF || {};
@@ -97,6 +96,7 @@
                 });
             });
         });
+
 
         // Create an instance of Notyf
         const notyf = new Notyf({
@@ -1602,6 +1602,33 @@ var frame, gframe;
         });
     });
 
+
+    // Field: ImageSelect - Overlay Button
+        $(document).ready(function() {
+            $('.tf-image-radio-group input[type=radio]').each(function () {
+                if ($(this).is(':checked')) {
+                    $(this).closest('label').find('.tf-overlay').addClass('tf-overlay-show');
+                }
+
+            });
+
+              //Scroll To Styles
+              $('.tf-overlay').find('button').click(function(e) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $('label[for="uacf7_form_opt[progressbar_styling]"]').last().offset().top + $('label[for="uacf7_form_opt[progressbar_styling]"]').first().outerHeight() - $(window).height() + 500
+                }, 1000);});
+
+        });
+    
+
+        $(document).on('load change', '.tf-image-radio-group input[type=radio]', function() {
+            if ($(this).is(':checked')) {
+                $(this).closest('label').find('.tf-overlay').addClass('tf-overlay-show');
+            }
+
+            $('.tf-image-radio-group').find('.tf-overlay').not($(this).parent().find('.tf-overlay')).removeClass('tf-overlay-show');
+        });
 
 
 })(jQuery);

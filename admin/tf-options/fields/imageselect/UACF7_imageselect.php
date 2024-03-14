@@ -33,8 +33,17 @@ if ( ! class_exists( 'UACF7_imageselect' ) ) {
 							<?php echo esc_html($value['title']); ?>
 							<?php echo $tf_pro; ?>
 						</span>
-                    </label>  
-                    </li>
+						<?php
+
+						if(isset( $this->field['overlay']) &&  $this->field['overlay'] == true) {
+							?>
+							<div class="tf-overlay"><button class="tf-overlay-button"><?php echo esc_html( __('Customize', 'ultimate-addons-cf7') ) ?></button></div>  
+                   
+							<?php
+						} 
+					?>
+                    </label>
+					 </li>
 
                 <?php
 				}

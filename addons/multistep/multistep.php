@@ -12,7 +12,6 @@ class UACF7_MULTISTEP {
     */
     public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'uacf7_multistep_admin_script' ) );
         add_action( 'admin_init', array( $this, 'tag_generator' ) );        
         add_action( 'wp_ajax_check_fields_validation', array( $this, 'check_fields_validation' ) );
         add_action( 'wp_ajax_nopriv_check_fields_validation', array( $this, 'check_fields_validation' ) );
@@ -27,11 +26,6 @@ class UACF7_MULTISTEP {
         add_filter( 'uacf7_post_meta_options_multistep_pro', array( $this, 'uacf7_post_meta_options_multistep_pro' ), 10, 2 );  
         add_filter( 'uacf7_multistep_steps_names', array( $this, 'uacf7_multistep_steps_names' ), 10, 2 );  
         add_filter( 'uacf7_multistep_step_title', array( $this, 'uacf7_multistep_step_title' ), 10, 2 );   
-    }
-
-    public function uacf7_multistep_admin_script(){
-
-        wp_enqueue_script( 'uacf7-multistep-admin', UACF7_ADDONS . '/multistep/assets/js/multistep-dashboard.js', array('jquery'), null, true );
     }
     
     public function enqueue_script() {
@@ -142,6 +136,7 @@ class UACF7_MULTISTEP {
 					'description'     => __( 'See live demo examples here: <a href="URL_TO_LIVE_DEMO" target="_blank">Live demo</a>. Check our step by step <a href="URL_TO_DOCUMENTATION" target="_blank">documentation</a>.', 'ultimate-addons-cf7' ),
                     'multiple' 		=> true,
                     'inline'   		=> true,
+                    'overlay'   	=> true,
                     'options' => array(
                         'default' 				=> array(
                             'title'			=> 'Default',
