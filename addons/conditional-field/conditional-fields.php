@@ -343,12 +343,12 @@ class UACF7_CF {
 
 					array_push( $stack, $tag_html_type );
 
-					echo '<' . $tag_html_type . ' class="uacf7_conditional ' . esc_attr( $tag_id ) . '">';
+					echo '<' . esc_attr($tag_html_type) . ' class="uacf7_conditional ' . esc_attr( $tag_id ) . '">';
 				} else if ( $form_part == '[/conditional]' ) {
-					echo '</' . array_pop( $stack ) . '>';
+					echo '</' . esc_attr(array_pop( $stack )) . '>';
 				} else {
-					echo $form_part;
-				}
+					echo wp_kses_post( $form_part );
+				} 
 			}
 
 			$properties['form'] = ob_get_clean();

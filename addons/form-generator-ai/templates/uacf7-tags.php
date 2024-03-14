@@ -121,7 +121,7 @@ ob_start();
             }
         }
     }
-    echo $field;
+    echo wp_kses_post($field);
     
 
 

@@ -293,6 +293,6 @@ $form =  '<label> Name
 }
 
 ob_clean(); 
-echo $form;
+echo wp_kses_post($form);
 return ob_get_clean();
 ?>

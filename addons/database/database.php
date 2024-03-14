@@ -795,9 +795,9 @@ class uacf7_form_List_Table extends WP_List_Table {
 			return;
 		}
 
-		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . __( 'Select bulk action' ) . '</label>';
-		echo '<select name="action' . $two . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
-		echo '<option value="-1">' . __( 'Bulk actions' ) . "</option>\n";
+		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . esc_html(__( 'Select bulk action', 'ultimate-addons-cf7' ) ) . '</label>';
+		echo '<select name="action' . esc_attr($two) . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
+		echo '<option value="-1">' . esc_html( __( 'Bulk actions', 'ultimate-addons-cf7' ) )  . "</option>\n";
 
 		foreach ( $this->_actions as $key => $value ) {
 			if ( is_array( $value ) ) {
@@ -806,13 +806,13 @@ class uacf7_form_List_Table extends WP_List_Table {
 				foreach ( $value as $name => $title ) {
 					$class = ( 'edit' === $name ) ? ' class="hide-if-no-js"' : '';
 
-					echo "\t\t" . '<option value="' . esc_attr( $name ) . '"' . $class . '>' . $title . "</option>\n";
+					echo "\t\t" . '<option value="' . esc_attr( $name ) . '"' . esc_attr($class) . '>' . esc_html($title) . "</option>\n";
 				}
 				echo "\t" . "</optgroup>\n";
 			} else {
 				$class = ( 'edit' === $key ) ? ' class="hide-if-no-js"' : '';
 
-				echo "\t" . '<option value="' . esc_attr( $key ) . '"' . $class . '>' . $value . "</option>\n";
+				echo "\t" . '<option value="' . esc_attr( $key ) . '"' . esc_attr($class) . '>' . esc_html($value) . "</option>\n";
 			}
 		}
 
