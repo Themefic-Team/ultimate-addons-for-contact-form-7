@@ -1081,20 +1081,17 @@ function uacf7_plugin_update_message( $plugin_data, $response ) {
 
 	if ( isset( $new_version ) && version_compare( $new_version, $plugin_data['Version'], '>' ) && $new_version === '3.3.0' ) {
         
-		echo sprintf(
-			__( '
-				<div class="uacf7_plugin_page_notices" >
-					<div class="uacf7_info_wrap">
-						<h3>Heads up, Please backup upgrade!</h3>
-						<p>The latest update includes some substantial changes across different areas of the plugin. We highly recommend <b> backing up your site </b> before proceeding with the upgrade.</p>
-					</div>
-					<div class="uacf7_compa_wrap">
-						<p><b>Compatibility Alert</b> - Please ensure that your Contact Form 7 plugin is updated to version <b>5.8.5</b> or higher. </p>
-					</div>
-				</div>
-				', 'ultimate-addons-cf7' ),
-			'ultimate-addons-cf7'
-		);
+		 ?>
+         <div class="uacf7_plugin_page_notices" >
+            <div class="uacf7_info_wrap">
+                <h3><?php echo esc_html('Heads up, Please backup upgrade!') ?></h3>
+                <p><?php echo esc_html('The latest update includes some substantial changes across different areas of the plugin. We highly recommend') ?> <b> <?php echo esc_html('backing up your site') ?> </b> <?php echo esc_html('before proceeding with the upgrade.') ?></p>
+            </div>
+            <div class="uacf7_compa_wrap">
+                <p><b><?php echo esc_html('Compatibility Alert') ?></b> <?php echo esc_html('- Please ensure that your Contact Form 7 plugin is updated to version') ?> <b> <?php echo esc_html('5.8.5') ?></b> <?php echo esc_html('or higher.') ?> </p>
+            </div>
+        </div>
+         <?php
 	}
 
 	return $plugin_data;

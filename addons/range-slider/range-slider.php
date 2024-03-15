@@ -224,7 +224,7 @@ class UACF7_range_Slider {
         ?>
         
         <span>
-            <?php echo $validation_error; ?>
+            <?php echo wp_kses_post($validation_error); ?>
         </span>
         <?php
         $default_layout = ob_get_clean(); 
@@ -258,11 +258,11 @@ class UACF7_range_Slider {
                 <table class="form-table">
                 <tbody>
                     <tr>
-                        <th scope="row"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></th>
+                        <th scope="row"><?php echo esc_html( __( 'Field Type', 'ultimate-addons-cf7' ) );?></th>
                         <td>
                             <fieldset>
-                                <legend class="screen-reader-text"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></legend>
-                                <label><input type="checkbox" name="required" value="on"><?php _e( 'Required Field', 'ultimate-addons-cf7' );?></label>
+                                <legend class="screen-reader-text"><?php echo esc_html( __( 'Field Type', 'ultimate-addons-cf7' ) );?></legend>
+                                <label><input type="checkbox" name="required" value="on"><?php echo esc_html( __( 'Required Field', 'ultimate-addons-cf7' ) );?></label>
                             </fieldset>
                         </td>
                     </tr>
@@ -329,7 +329,7 @@ class UACF7_range_Slider {
                        
                     <?php 
                         $range_style = ob_get_clean();
-                        echo apply_filters( 'uacf7_range_slider_style_field', $range_style );
+                        echo wp_kses_post( apply_filters( 'uacf7_range_slider_style_field', $range_style ) );
                     ?>
                     <tr>
                         <th scope="row"><label for="tag-generator-panel-text-min"><?php echo esc_html__( 'Minimum range', 'ultimate-addons-cf7' ); ?></label></th>
@@ -351,9 +351,10 @@ class UACF7_range_Slider {
                 </table>
                 <div class="uacf7-doc-notice uacf7-guide"><?php echo esc_attr( __( "You can configure the slider's styles using the 'Range Slider' tab located below.", 'ultimate-addons-cf7' ) ); ?></div>
                 <div class="uacf7-doc-notice"> 
-                    <?php echo sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank">Range Slider</a>'
+                    <?php printf( 
+                        // Translators: %1$s is a link to the documentation
+                        esc_html__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-cf7' ),
+                        '<a href="'.esc_url('https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/').'" target="_blank">Range Slider</a>'
                     ); ?> 
                 </div>
             </fieldset>
@@ -448,7 +449,7 @@ class UACF7_range_Slider {
 
             <?php
 
-            echo '<div class="uacf7-form-' . $cf->id() . '">' . $form . '</div>';
+            echo '<div class="uacf7-form-' . esc_attr($cf->id()) . '">' .wp_kses_post( $form ). '</div>';
             $properties['form'] = ob_get_clean();
 
         }

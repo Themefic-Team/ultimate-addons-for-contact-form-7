@@ -29,7 +29,7 @@ if ( ! class_exists( 'UACF7_code_editor' ) ) {
         ?>
         <div class="tf-field-textarea tf-field-code-editor">
             <?php
-                echo '<textarea name="'. esc_attr( $this->field_name() ) .'"'. esc_attr($this->field_attributes()) .' data-editor="'. esc_attr( json_encode( $settings ) ) .'">'. wp_kses_post( $this->value ) .'</textarea>';
+                echo '<textarea name="'. esc_attr( $this->field_name() ) .'"'. wp_kses_post($this->field_attributes()) .' data-editor="'. esc_attr( json_encode( $settings ) ) .'">'. wp_kses_post( $this->value ) .'</textarea>';
             ?>
 
         </div>

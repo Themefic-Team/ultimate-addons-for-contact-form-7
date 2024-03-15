@@ -52,37 +52,38 @@ class UACF7_SIGNATURE_PANEL{
       <h2><?php echo esc_html__( 'Signature Settings', 'ultimate-addons-cf7' ); ?></h2>  
       <p><?php echo esc_html__('This feature will help you to add the signature in form .','ultimate-addons-cf7'); ?>  </p>
       <div class="uacf7-doc-notice"> 
-            <?php echo sprintf( 
-                __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/" target="_blank">Digital Signature</a>'
+            <?php printf( 
+              // Translators: %1$s: Documentation URL
+                esc_html__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-cf7' ),
+                '<a href="'.esc_url('https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/').'" target="_blank">Digital Signature</a>'
             ); ?> 
         </div>
 
       <label for="uacf7_signature_enable"> 
-      <input class="uacf7_signature_enable" id="uacf7_signature_enable" name="uacf7_signature_enable" type="checkbox" <?php checked( 'on',  $this->uacf7_signature_enable, true ); ?>> <?php _e( 'Enable Signature for Form', 'ultimate-addons-cf7' ); ?>
+      <input class="uacf7_signature_enable" id="uacf7_signature_enable" name="uacf7_signature_enable" type="checkbox" <?php checked( 'on',  $this->uacf7_signature_enable, true ); ?>> <?php echo esc_html(__( 'Enable Signature for Form', 'ultimate-addons-cf7' )); ?>
       </label>
 
       <div class="uacf7_signature_wrapper">
         <fieldset>
-        <h3><?php _e('Signature Pad Background Color', 'ultimate-addons-cf7' ) ?></h3>
-            <input type="text" id="uacf7_signature_bg_color" name="uacf7_signature_bg_color" class="uacf7-color-picker" value="<?php echo esc_attr_e($this->uacf7_signature_bg_color? $this->uacf7_signature_bg_color : '#dddddd'); ?>" placeholder="<?php echo esc_html__( 'Background Color', 'ultimate-addons-cf7' ); ?>"><br>
+        <h3><?php echo esc_html(__('Signature Pad Background Color', 'ultimate-addons-cf7' )) ?></h3>
+            <input type="text" id="uacf7_signature_bg_color" name="uacf7_signature_bg_color" class="uacf7-color-picker" value="<?php echo esc_attr($this->uacf7_signature_bg_color ? $this->uacf7_signature_bg_color : '#dddddd'); ?>" placeholder="<?php echo esc_html__( 'Background Color', 'ultimate-addons-cf7' ); ?>"><br>
  
-            <small><?php _e(' E.g. Default is #dddddd', 'ultimate-addons-cf7' ) ?></small>
+            <small><?php echo esc_html(__(' E.g. Default is #dddddd', 'ultimate-addons-cf7' )) ?></small>
            
-            <h3><?php _e('Signature Pen Color', 'ultimate-addons-cf7' ) ?></h3>
-            <input type="text" id="uacf7_signature_pen_color" name="uacf7_signature_pen_color" class="uacf7-color-picker" value="<?php echo esc_attr_e($this->uacf7_signature_pen_color? $this->uacf7_signature_pen_color : '#000000'); ?>" placeholder="<?php echo esc_html__( 'Pen Color', 'ultimate-addons-cf7' ); ?>"><br>
+            <h3><?php echo esc_html(__('Signature Pen Color', 'ultimate-addons-cf7' )) ?></h3>
+            <input type="text" id="uacf7_signature_pen_color" name="uacf7_signature_pen_color" class="uacf7-color-picker" value="<?php echo esc_attr($this->uacf7_signature_pen_color? $this->uacf7_signature_pen_color : '#000000'); ?>" placeholder="<?php echo esc_html__( 'Pen Color', 'ultimate-addons-cf7' ); ?>"><br>
     
-            <small><?php _e(' E.g. Default is #000000', 'ultimate-addons-cf7' ) ?></small> 
+            <small><?php echo esc_html(__(' E.g. Default is #000000', 'ultimate-addons-cf7' )) ?></small> 
 
-            <h3><?php _e('Signature Pad Width', 'ultimate-addons-cf7' ) ?></h3>
-            <input type="text" id="uacf7_signature_pad_width" name="uacf7_signature_pad_width" value="<?php echo esc_attr_e($this->uacf7_signature_pad_width? $this->uacf7_signature_pad_width : '300'); ?>" placeholder="<?php echo esc_html__( 'Pad Width', 'ultimate-addons-cf7' ); ?>"><br>
+            <h3><?php echo esc_html(__('Signature Pad Width', 'ultimate-addons-cf7' )) ?></h3>
+            <input type="text" id="uacf7_signature_pad_width" name="uacf7_signature_pad_width" value="<?php echo esc_attr($this->uacf7_signature_pad_width? $this->uacf7_signature_pad_width : '300'); ?>" placeholder="<?php echo esc_html__( 'Pad Width', 'ultimate-addons-cf7' ); ?>"><br>
     
-            <small><?php _e(' E.g. There is no need to include units such as "px" or "rem".', 'ultimate-addons-cf7' ) ?></small> 
+            <small><?php echo esc_html(__(' E.g. There is no need to include units such as "px" or "rem".', 'ultimate-addons-cf7' ) ) ?></small> 
 
-            <h3><?php _e('Signature Pad Height', 'ultimate-addons-cf7' ) ?></h3>
+            <h3><?php echo esc_html(__('Signature Pad Height', 'ultimate-addons-cf7' )) ?></h3>
             <input type="text" id="uacf7_signature_pad_height" name="uacf7_signature_pad_height" value="<?php echo esc_attr_e($this->uacf7_signature_pad_height? $this->uacf7_signature_pad_height : '100'); ?>" placeholder="<?php echo esc_html__( 'Pad Height', 'ultimate-addons-cf7' ); ?>"><br>
     
-            <small><?php _e(' E.g. There is no need to include units such as "px" or "rem".', 'ultimate-addons-cf7' ) ?></small> 
+            <small><?php echo esc_html(__(' E.g. There is no need to include units such as "px" or "rem".', 'ultimate-addons-cf7' ) ) ?></small> 
         </fieldset> 
       </div>
      

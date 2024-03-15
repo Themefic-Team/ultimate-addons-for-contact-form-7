@@ -413,20 +413,20 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 			}
 			?>
 
-			<div class="tf-field tf-field-<?php echo esc_attr( $field['type'] ); ?> <?php echo esc_attr( $class ); ?> <?php echo ! empty( $visible ) ? $visible : ''; ?>"
-				<?php echo ! empty( $depend ) ? $depend : ''; ?> style="<?php echo esc_attr( $field_style ); ?>">
+			<div class="tf-field tf-field-<?php echo esc_attr( $field['type'] ); ?> <?php echo esc_attr( $class ); ?> <?php echo ! empty( $visible ) ? esc_attr( $visible ) : ''; ?>"
+				<?php echo ! empty( $depend ) ? esc_attr($depend) : ''; ?> style="<?php echo esc_attr( $field_style ); ?>">
 				<div class="tf-field-wrap">
 					<?php if ( ! empty( $field['label'] ) ) : ?>
 						<label for="<?php echo esc_attr( $id ) ?>" class="tf-field-label">
 							<?php echo esc_html( $field['label'] ) ?>
 							<?php if ( $is_pro ) : ?>
 								<div class="tf-csf-badge"><span class="tf-pro">
-										<?php _e( "Pro", "ultimate-addons-cf7" ); ?>
+										<?php echo esc_html(__( "Pro", "ultimate-addons-cf7" )); ?>
 									</span></div>
 							<?php endif; ?>
 							<?php if ( $badge_up ) : ?>
 								<div class="tf-csf-badge"><span class="tf-upcoming">
-										<?php _e( "Upcoming", "ultimate-addons-cf7" ); ?>
+										<?php echo esc_html(__( "Upcoming", "ultimate-addons-cf7" )); ?>
 									</span></div>
 							<?php endif; ?>
 						</label>
@@ -451,7 +451,7 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 							$_field = new $fieldClass( $field, $value, $settings_id, $parent, $section_key );
 							$_field->render();
 						} else {
-							echo '<p>' . __( 'Field not found!', 'ultimate-addons-cf7' ) . '</p>';
+							echo '<p>' . esc_html(__( 'Field not found!', 'ultimate-addons-cf7' )) . '</p>';
 						}
 						?>
 					</div>

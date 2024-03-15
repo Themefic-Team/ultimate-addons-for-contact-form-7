@@ -120,49 +120,49 @@ class UACF7_STAR_RATING {
 		}    
         ?> 
         <span data-name="<?php echo esc_attr($tag->name); ?>" class="wpcf7-form-control-wrap <?php echo esc_attr($tag->name); ?>">
-             <span <?php echo $atts; ?> > 
+             <span <?php echo esc_attr($atts); ?> > 
                 <label>
                     <input type="radio"  name="<?php echo esc_attr($tag->name); ?>" value="<?php echo esc_attr($star1); ?>" <?php checked( $selected, '1', true ); ?> />
-                    <span class="icon"><?php echo $rating_icon; ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
                 </label>
                 <label>
                     <input type="radio" name="<?php echo esc_attr($tag->name); ?>" value="<?php echo esc_attr($star2); ?>" <?php checked( $selected, '2', true ); ?> />
-                    <span class="icon"><?php echo $rating_icon; ?></span>
-                    <span class="icon"><?php echo $rating_icon; ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
                 </label>
                 <label>
                     <input type="radio" name="<?php echo esc_attr($tag->name); ?>" value="<?php echo esc_attr($star3); ?>" <?php checked( $selected, '3', true ); ?> />
-                    <span class="icon"><?php echo $rating_icon; ?></span>
-                    <span class="icon"><?php echo $rating_icon; ?></span>
-                    <span class="icon"><?php echo $rating_icon; ?></span>   
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>   
                 </label>
                 <label>
                     <input type="radio" name="<?php echo esc_attr($tag->name); ?>" value="<?php echo esc_attr($star4); ?>" <?php checked( $selected, '4', true ); ?> />
-                    <span class="icon"><?php echo $rating_icon; ?></span>
-                    <span class="icon"><?php echo $rating_icon; ?></span>
-                    <span class="icon"><?php echo $rating_icon; ?></span>
-                    <span class="icon"><?php echo $rating_icon; ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
                 </label>
                 <label>
                     <input type="radio" name="<?php echo esc_attr($tag->name); ?>" value="<?php echo esc_attr($star5); ?>" <?php checked( $selected, '5', true ); ?> />
-                    <span class="icon"><?php echo $rating_icon; ?></span>
-                    <span class="icon"><?php echo $rating_icon; ?></span>
-                    <span class="icon"><?php echo $rating_icon; ?></span>
-                    <span class="icon"><?php echo $rating_icon; ?></span>
-                    <span class="icon"><?php echo $rating_icon; ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
+                    <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
                 </label> 
                 
             </span>
         </span> 
         <span>
             <?php 
-                echo $validation_error;
+                echo wp_kses_post( $validation_error ) ;
             ?>
         </span>
         
         <?php
          $default_star_style =  ob_get_clean();
-         return apply_filters( 'uacf7_star_rating_style_pro_feature',  $default_star_style, $tag );
+         return wp_kses_post( apply_filters( 'uacf7_star_rating_style_pro_feature',  $default_star_style, $tag ) );
        
     }
     /*
@@ -185,24 +185,25 @@ class UACF7_STAR_RATING {
         <div class="control-box">
             <fieldset> 
             <div class="uacf7-doc-notice">
-                <?php echo sprintf( 
-                    __( 'Confused? Check our Documentation on %1s.', 'ultimate-addons-cf7' ),
-                    '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-star-rating-field/" target="_blank">Star Rating</a>'
+                <?php printf( 
+                    // Translators: %1$s - Link to documentation
+                    esc_html__( 'Confused? Check our Documentation on %1$s.', 'ultimate-addons-cf7' ),
+                    '<a href="'.esc_url('https://themefic.com/docs/uacf7/free-addons/contact-form-7-star-rating-field/').'" target="_blank">Star Rating</a>'
                 ); ?>  
             </div>               
                 <table class="form-table">
                    <tbody>
                         <tr>
-                            <th scope="row"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></th>
+                            <th scope="row"><?php echo esc_html(__('Field Type', 'ultimate-addons-cf7' ));?></th>
                             <td>
                                 <fieldset>
-                                    <legend class="screen-reader-text"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></legend>
-                                    <label><input type="checkbox" name="required" value="on"><?php _e( 'Required Field', 'ultimate-addons-cf7' );?></label>
+                                    <legend class="screen-reader-text"><?php echo esc_html(__( 'Field Type', 'ultimate-addons-cf7' ) );?></legend>
+                                    <label><input type="checkbox" name="required" value="on"><?php echo esc_html(__( 'Required Field', 'ultimate-addons-cf7' ) );?></label>
                                 </fieldset>
                             </td>
                         </tr> 
                         <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-name"><?php _e( 'Name', 'ultimate-addons-cf7' );?></label></th>
+                            <th scope="row"><label for="tag-generator-panel-text-name"><?php echo esc_html(__( 'Name', 'ultimate-addons-cf7' ) );?></label></th>
                             <td><input type="text" name="name" class="tg-name oneline" value="rating" id="tag-generator-panel-text-name"></td>
                         </tr>
                         
@@ -224,64 +225,64 @@ class UACF7_STAR_RATING {
 							</td>
 						</tr>
 						<tr>
-							<th><label for="tag-generator-panel-text-star-class"><?php _e( 'Icon Class', 'ultimate-addons-cf7' );?></label></th>
+							<th><label for="tag-generator-panel-text-star-class"><?php echo esc_html(__( 'Icon Class', 'ultimate-addons-cf7' ) );?></label></th>
 							<td><input id="tag-generator-panel-text-star-class" type="text" placeholder="e.g: fa fa-star" disabled><a href="https://cf7addons.com/preview/star-rating/pro" style="color:red">(Pro)</a></td>
 						</tr>
 						<?php
 					    $icon_field = ob_get_clean();
-						echo apply_filters( 'uacf7_star_rating_tg_field', $icon_field );
+						echo wp_kses_post( apply_filters( 'uacf7_star_rating_tg_field', $icon_field ) );
 					    ?>
                         <?php ob_start() ?>
                         <tr class="">   
-                            <th><label for="tag-generator-panel-range-style"><?php _e( 'Star Rating Style', 'ultimate-addons-cf7' );?></label></th>                     
+                            <th><label for="tag-generator-panel-range-style"><?php echo esc_html(__( 'Star Rating Style', 'ultimate-addons-cf7' ) );?></label></th>                     
                             <td>
                                 <select  name="values" disabled class="values" id="tag-generator-panel-range-style">
-                                    <option value="default"><?php _e( 'Default', 'ultimate-addons-cf7' );?></option>
+                                    <option value="default"><?php echo esc_html(__( 'Default', 'ultimate-addons-cf7' ) );?></option>
                                 </select>
                                  <a href="https://cf7addons.com/preview/star-rating/pro" style="color:red">(Pro)</a>
                             </td>
                         </tr> 
                         <?php
                             $rating_style = ob_get_clean();
-                            echo apply_filters( 'uacf7_star_rating_style_field', $rating_style );
+                            echo wp_kses_post( apply_filters( 'uacf7_star_rating_style_field', $rating_style ) );
                         ?>
                        
                         <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-selected"><?php _e( 'Default Star Rating', 'ultimate-addons-cf7' );?></label></th>
+                            <th scope="row"><label for="tag-generator-panel-text-selected"><?php echo esc_html(__( 'Default Star Rating', 'ultimate-addons-cf7' ) );?></label></th>
                             <td>
                             <input name="selected" id="tag-generator-panel-text-selected" class="tg-name oneline option" placeholder="5" />
                             <br>
-                            <p><?php _e( 'Change the values of star. Default value: 1,2,3,4,5', 'ultimate-addons-cf7' );?></p>
+                            <p><?php echo esc_html(__( 'Change the values of star. Default value: 1,2,3,4,5', 'ultimate-addons-cf7' ) );?></p>
                             </td>
                         </tr>
                         
                         <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-star1"><?php _e( 'Star 1', 'ultimate-addons-cf7' );?></label></th>
+                            <th scope="row"><label for="tag-generator-panel-text-star1"><?php echo esc_html(__( 'Star 1', 'ultimate-addons-cf7' ) );?></label></th>
                             <td><input type="text" name="star1" class="tg-name oneline option" value="" id="tag-generator-panel-text-star1"></td>
                         </tr>
                         
                         <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-star2"><?php _e( 'Star 2', 'ultimate-addons-cf7' );?></label></th>
+                            <th scope="row"><label for="tag-generator-panel-text-star2"><?php echo esc_html(__( 'Star 2', 'ultimate-addons-cf7' ) );?></label></th>
                             <td><input type="text" name="star2" class="tg-name oneline option" value="" id="tag-generator-panel-text-star2"></td>
                         </tr>
                         
                         <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-star3"><?php _e( 'Star 3', 'ultimate-addons-cf7' );?></label></th>
+                            <th scope="row"><label for="tag-generator-panel-text-star3"><?php echo esc_html(__( 'Star 3', 'ultimate-addons-cf7' ) );?></label></th>
                             <td><input type="text" name="star3" class="tg-name oneline option" value="" id="tag-generator-panel-text-star3"></td>
                         </tr>
                         
                         <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-star4"><?php _e( 'Star 4', 'ultimate-addons-cf7' );?></label></th>
+                            <th scope="row"><label for="tag-generator-panel-text-star4"><?php echo esc_html(__( 'Star 4', 'ultimate-addons-cf7' ) );?></label></th>
                             <td><input type="text" name="star4" class="tg-name oneline option" value="" id="tag-generator-panel-text-star3"></td>
                         </tr>
                         
                         <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-star5"><?php _e( 'Star 5', 'ultimate-addons-cf7' );?></label></th>
+                            <th scope="row"><label for="tag-generator-panel-text-star5"><?php echo esc_html(__( 'Star 5', 'ultimate-addons-cf7' ) ) ;?></label></th>
                             <td><input type="text" name="star5" class="tg-name oneline option" value="" id="tag-generator-panel-text-star4"></td>
                         </tr>
                         
                         <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-class"><?php _e( 'Class attribute', 'ultimate-addons-cf7' );?></label></th>
+                            <th scope="row"><label for="tag-generator-panel-text-class"><?php echo esc_html(__( 'Class attribute', 'ultimate-addons-cf7' ) );?></label></th>
                             <td><input type="text" name="class" class="classvalue oneline option" id="tag-generator-panel-text-class"></td>
                         </tr>
                     </tbody>

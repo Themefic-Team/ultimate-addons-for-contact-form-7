@@ -157,7 +157,7 @@ class UACF7_PRE_POPULATE {
                 'pre_populate_form' => $pre_populate_form,
             ];
             
-            echo wp_send_json($data);
+            wp_send_json($data);
         }else{
             echo false;
         }  
