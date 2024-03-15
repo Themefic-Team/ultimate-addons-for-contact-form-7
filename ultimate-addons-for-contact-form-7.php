@@ -100,10 +100,7 @@ class Ultimate_Addons_CF7 {
 	 */
 	public function uacf7_init() {
 
-
-		//Require admin menu
-		// require_once( 'admin/admin-menu.php' );
-
+ 
 		//Require ultimate addons
 		require_once( 'addons/addons.php' );
 

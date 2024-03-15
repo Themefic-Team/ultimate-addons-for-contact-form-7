@@ -18,14 +18,13 @@ if ( ! class_exists( 'UACF7_Backup' ) ) {
                 $form_id = 0;
             }
             $current_settings = isset($current_settings) && !empty($current_settings) ? json_encode($current_settings) : '';        
-          
             $placeholder = ( ! empty( $this->field['placeholder'] ) ) ? 'placeholder="' . $this->field['placeholder'] . '"' : '';
-            echo '<textarea class="tf-exp-imp-field" cols="50" rows="15" data-form-id="'.esc_attr( $form_id ).'" name="tf_import_option" id="' . esc_attr( $this->field_name() ) . '"' . $placeholder . ' '. $this->field_attributes() .'> </textarea>';
+            echo '<textarea class="tf-exp-imp-field" cols="50" rows="15" data-form-id="'.esc_attr( $form_id ).'" name="tf_import_option" id="' . esc_attr( $this->field_name() ) . '"' . esc_attr($placeholder) . ' '.esc_attr( $this->field_attributes()) .'> </textarea>';
             // echo '<a href="#" class="tf-import-btn button button-primary">' . __( 'Import', 'ultimate-addons-cf7' ) . '</a>';
-            echo '<button type="submit" class="tf-import-btn tf-admin-btn tf-btn-secondary" data-option="'.esc_attr( $this->settings_id ).'" data-submit-type="tf_import_data">' . __( 'Import', 'ultimate-addons-cf7' ) . '</button>';
+            echo '<button type="submit" class="tf-import-btn tf-admin-btn tf-btn-secondary" data-option="'.esc_attr( $this->settings_id ).'" data-submit-type="tf_import_data">' . esc_html(__( 'Import', 'ultimate-addons-cf7' )) . '</button>';
             echo '<hr>';
-            echo '<textarea cols="50" rows="15" class="tf-exp-imp-field"  data-option="'.esc_attr( $this->settings_id ).'" name="tf_export_option" id="' . esc_attr( $this->field_name() ) . '"' . $placeholder . ' '. $this->field_attributes() .'disabled >' . $current_settings . '</textarea>';
-            echo '<a href="#" class="tf-export-btn tf-admin-btn tf-btn-secondary">' . __( 'Export', 'ultimate-addons-cf7' ) . '</a>';
+            echo '<textarea cols="50" rows="15" class="tf-exp-imp-field"  data-option="'.esc_attr( $this->settings_id ).'" name="tf_export_option" id="' . esc_attr( $this->field_name() ) . '"' . esc_attr($placeholder) . ' disabled '.esc_attr( $this->field_attributes()) .'>' . esc_html($current_settings) . '</textarea>';
+            echo '<a href="#" class="tf-export-btn tf-admin-btn tf-btn-secondary">' . esc_html(__( 'Export', 'ultimate-addons-cf7' )) . '</a>';
 
         }
     }
