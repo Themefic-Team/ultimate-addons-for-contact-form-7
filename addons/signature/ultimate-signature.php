@@ -56,6 +56,7 @@ class UACF7_SIGNATURE{
                   'type'  => 'heading', 
                   'label' => __( 'Signature Settings', 'ultimate-addons-cf7' ),
                   'subtitle' => sprintf(
+                    /* Translators: %1$s is a placeholder for the link to the example. */
                     __( 'Add a digital signature feature to your forms. See Demo %1s.', 'ultimate-addons-cf7' ),
                      '<a href="https://cf7addons.com/preview/contact-form-7-signature-addon/" target="_blank" rel="noopener">Example</a>'
                               )
@@ -65,6 +66,7 @@ class UACF7_SIGNATURE{
                     'type'    => 'notice',
                     'style'   => 'success',
                     'content' => sprintf( 
+                         /* Translators: %1$s is a placeholder for the link to the example. */
                         __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/" target="_blank" rel="noopener">Digital Signature</a>'
                     )
@@ -234,6 +236,7 @@ class UACF7_SIGNATURE{
                   <tbody>
                         <div class="uacf7-doc-notice">
                             <?php echo sprintf(
+                                 /* Translators: %1$s is a placeholder for the link to the example. */
                                   __('Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7'),
                                   '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/" target="_blank">Digital Signature</a>'
                               ); ?>
