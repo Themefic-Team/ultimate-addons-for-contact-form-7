@@ -35,6 +35,7 @@ class UACF7_range_Slider {
                     'type'  => 'heading', 
                     'label' => __( 'Range Slider Settings', 'ultimate-addons-cf7' ),
                     'subtitle' => sprintf(
+                         /* Translators: %1$s is a placeholder for the link to the example. */
                         __( 'Add beautiful Range slider fields to Contact Form 7, with multiple preview layouts available on Pro. See Demo %1s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/contact-form-7-range-slider/" target="_blank" rel="noopener">Example</a>'
                                   )
@@ -44,7 +45,8 @@ class UACF7_range_Slider {
                         'type'    => 'notice',
                         'style'   => 'success',
                         'content' => sprintf( 
-                            __( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
+                            /* Translators: %1$s is a placeholder for the link to the example, %2$s is a placeholder for the link to the pro version. */
+                            __( 'Confused? Check our Documentation on %1$s and %2$s.', 'ultimate-addons-cf7' ),
                             '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank" rel="noopener">Range Slider</a>',
                             '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-range-slider-pro/" target="_blank" rel="noopener">Range Slider (Pro)</a>'
                         )
@@ -352,6 +354,7 @@ class UACF7_range_Slider {
                 <div class="uacf7-doc-notice uacf7-guide"><?php echo esc_attr( __( "You can configure the slider's styles using the 'Range Slider' tab located below.", 'ultimate-addons-cf7' ) ); ?></div>
                 <div class="uacf7-doc-notice"> 
                     <?php echo sprintf( 
+                         /* Translators: %1$s is a placeholder for the link to the example. */
                         __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank">Range Slider</a>'
                     ); ?> 

@@ -54,6 +54,7 @@ class UACF7_PDF_GENERATOR {
                 'type'  => 'heading', 
                 'label' => __( 'PDF Generator Settings', 'ultimate-addons-cf7' ),
                 'subtitle' => sprintf(
+                     /* Translators: %1$s is a placeholder for the link to the example. */
                     __( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
                                 )
@@ -63,6 +64,7 @@ class UACF7_PDF_GENERATOR {
                     'type'    => 'notice',
                     'style'   => 'success',
                     'content' => sprintf( 
+                         /* Translators: %1$s is a placeholder for the link to the example. */
                         __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-pdf-generator/" target="_blank" rel="noopener">PDF Generator</a>'
                     )
