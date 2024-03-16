@@ -18,7 +18,7 @@ class UACF7_PROMO_NOTICE {
 
     public function __construct() {
 
-        if(in_array(date('F'), $this->months) && !class_exists('Ultimate_Addons_CF7_PRO')){ 
+        if(in_array(gmdate('F'), $this->months) && !class_exists('Ultimate_Addons_CF7_PRO')){ 
             add_filter('cron_schedules', array($this, 'uacf7_custom_cron_interval'));
         
             if (!wp_next_scheduled('uacf7_promo__schudle')) {
@@ -58,7 +58,7 @@ class UACF7_PROMO_NOTICE {
             'plugin' => 'uacf7', 
         );
         $response = wp_remote_post($this->api_url, array(
-            'body'    => json_encode($query_params),
+            'body'    => wp_json_encode($query_params),
             'headers' => array('Content-Type' => 'application/json'),
         )); 
         if (is_wp_error($response)) {

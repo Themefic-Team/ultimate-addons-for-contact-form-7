@@ -36,7 +36,8 @@ class UACF7_WEB_HOOK {
 					'type' => 'heading',
 					'label' => __( 'Webhook (Pabbly/Zapier) Settings', 'ultimate-addons-cf7' ),
 					'subtitle' => sprintf(
-                        __( 'Transfer form data to third-party services like Pabbly or Zapier via webhooks. See Demo %1s.', 'ultimate-addons-cf7' ),
+						// translators: %1$s: link to the demo page
+                        esc_html__( 'Transfer form data to third-party services like Pabbly or Zapier via webhooks. See Demo %1$s.', 'ultimate-addons-cf7' ),
                          '<a href="#" target="_blank">Example</a>'
                     )
 				],
@@ -45,7 +46,8 @@ class UACF7_WEB_HOOK {
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+						// translators: %1$s: link to the documentation
+                        esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-webhook/" target="_blank">Webhook Setup</a>'
                     )
 				],
@@ -258,7 +260,7 @@ class UACF7_WEB_HOOK {
 
 		// Set up the request arguments
 		$request_args = array(
-			'body' => json_encode( $body_data ),
+			'body' => wp_json_encode( $body_data ),
 			'headers' => array_merge(
 				//Need loop for additional input
 				[ 'Content-Type' => 'application/json' ],

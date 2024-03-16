@@ -68,7 +68,8 @@ class UACF7_CF {
 					'type' => 'heading', 
 					'label' => __( 'Conditional Fields Settings', 'ultimate-addons-cf7' ),
 					'subtitle' => sprintf(
-                        __( 'Show or hide Contact Form 7 fields based on Conditional Logic. See Demo %1s.', 'ultimate-addons-cf7' ),
+						// translators: %1$s: Conditional Fields Documentation URL
+                        esc_html__( 'Show or hide Contact Form 7 fields based on Conditional Logic. See Demo %1$s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/contact-form-7-conditional-fields/" target="_blank">Example</a>'
                     )
 				),
@@ -77,7 +78,8 @@ class UACF7_CF {
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
+						// translators: %1$s & %2$s: Conditional Fields Documentation URL
+                        esc_html__( 'Confused? Check our Documentation on  %1$s and %2$s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-conditional-fields/" target="_blank">Conditional Fields</a>',
                         '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-conditional-fields-pro/" target="_blank">Conditional Fields (Pro)</a>'
                     )

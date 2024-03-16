@@ -310,7 +310,7 @@ class UACF7_DATABASE {
 			}
 		}
 
-		$insert_data = json_encode( $insert_data );
+		$insert_data = wp_json_encode( $insert_data );
 
 		$wpdb->insert( $table_name, array(
 			'form_id' => $form->id(),
@@ -436,7 +436,7 @@ class UACF7_DATABASE {
 		// Update data as read
 		if ( $data->status == 'unread' ) {
 			$data->status = 'read';
-			$data = json_encode( $data );
+			$data = wp_json_encode( $data );
 			$table_name = $wpdb->prefix . 'uacf7_form';
 			$data = array(
 				'form_value' => $data,
@@ -469,7 +469,7 @@ class UACF7_DATABASE {
 		if ( isset( $_POST['form_id'] ) && 0 < $_POST['form_id'] ) {
 			global $wpdb;
 			$form_id = intval( $_POST['form_id'] );
-			$today = date( "Y-m-d" );
+			$today = gmdate( "Y-m-d" );
 			$upload_dir = wp_upload_dir();
 			$dir = $upload_dir['baseurl'];
 			$replace_dir = '/uacf7-uploads/';

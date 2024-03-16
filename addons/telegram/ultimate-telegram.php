@@ -40,7 +40,8 @@ class UACF7_TELEGRAM {
               'type'  => 'heading', 
               'label' => __( 'Telegram Integration', 'ultimate-addons-cf7' ),
               'subtitle' => sprintf(
-                __( 'Forward form submission data to Telegram automatically. See Demo %1s.', 'ultimate-addons-cf7' ),
+                // translators: %1$s: link to the demo page
+                esc_html__( 'Forward form submission data to Telegram automatically. See Demo %1$s.', 'ultimate-addons-cf7' ),
                  '<a href="https://cf7addons.com/preview/contact-form-7-telegram/" target="_blank" rel="noopener">Example</a>'
                           )
               ),
@@ -50,7 +51,8 @@ class UACF7_TELEGRAM {
                 'type'    => 'notice',
                 'style'   => 'success',
                 'content' => sprintf( 
-                    __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                  // translators: %1$s: link to the documentation
+                    __( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-cf7' ),
                     '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-telegram/" target="_blank" rel="noopener">Telegram Integration</a>'
                 )
               ),
@@ -161,7 +163,7 @@ class UACF7_TELEGRAM {
   
   
         $response = wp_remote_post($api_url, array(
-            'body'    => json_encode($args),
+            'body'    => wp_json_encode($args),
             'headers' => array('Content-Type' => 'application/json'),
         ));
   

@@ -17,7 +17,7 @@ if ( ! class_exists( 'UACF7_Backup' ) ) {
                 $current_settings = get_option($this->settings_id); 
                 $form_id = 0;
             }
-            $current_settings = isset($current_settings) && !empty($current_settings) ? json_encode($current_settings) : '';        
+            $current_settings = isset($current_settings) && !empty($current_settings) ? wp_json_encode($current_settings) : '';        
             $placeholder = ( ! empty( $this->field['placeholder'] ) ) ? 'placeholder="' . $this->field['placeholder'] . '"' : '';
             echo '<textarea class="tf-exp-imp-field" cols="50" rows="15" data-form-id="'.esc_attr( $form_id ).'" name="tf_import_option" id="' . esc_attr( $this->field_name() ) . '"' . esc_attr($placeholder) . ' '.wp_kses_post( $this->field_attributes()) .'> </textarea>';
             // echo '<a href="#" class="tf-import-btn button button-primary">' . __( 'Import', 'ultimate-addons-cf7' ) . '</a>';

@@ -42,7 +42,8 @@ class UACF7_SUBMISSION_ID{
                     'type'  => 'heading', 
                     'label' => __( 'Unique Submission ID Settings', 'ultimate-addons-cf7' ),
                     'subtitle' => sprintf(
-                        __( 'Add an unique id to every form submission to keep a record of each submission. The ID can be added on the "Subject Line" of your form. See Demo %1s.', 'ultimate-addons-cf7' ),
+                        // translators: %1$s: link to the demo page
+                        esc_html__( 'Add an unique id to every form submission to keep a record of each submission. The ID can be added on the "Subject Line" of your form. See Demo %1$s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/unique-id-for-contact-form-7/" target="_blank" rel="noopener">Example</a>'
                                   )
                       ),
@@ -52,7 +53,8 @@ class UACF7_SUBMISSION_ID{
                         'type'    => 'notice',
                         'style'   => 'success',
                         'content' => sprintf( 
-                            __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                            // translators: %1$s: link to the documentation
+                            esc_html__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-cf7' ),
                             '<a href="https://themefic.com/docs/uacf7/free-addons/unique-id-for-contact-form-7/" target="_blank" rel="noopener">Submission ID</a>'
                         )
                       ),
@@ -170,10 +172,10 @@ public function uacf7_submission_id_insert_callback( $uacf7_db_id, $form_id, $in
             $table_name = $wpdb->prefix.'uacf7_form';
             $id = $uacf7_db_id;   
    
-            // update submission id existing database
+            /// Prepare the SQL query with placeholders
             $sql = $wpdb->prepare("UPDATE $table_name SET submission_id= %s WHERE id= %s", $submission_value, $id ); 
             
-        
+            // Execute the prepared query
             $wpdb->query( $sql );  
         }  
     }

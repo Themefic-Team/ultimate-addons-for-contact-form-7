@@ -456,7 +456,8 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'type' => 'text',
 						'label' => __( 'Mailchimp API', 'ultimate-addons-cf7' ),
 						'subtitle' => sprintf(
-							__( 'Please enter your Mailchimp API key. If you are not sure how to get the API Key, follow this %1s.', 'ultimate-addons-cf7' ),
+							// Translators: %1$s is a Documentation link.
+							esc_html__( 'Please enter your Mailchimp API key. If you are not sure how to get the API Key, follow this %1s.', 'ultimate-addons-cf7' ),
 							 '<a href="https://mailchimp.com/help/about-api-keys/" target="_blank" rel="noopener">article</a>'
 						)
 					),

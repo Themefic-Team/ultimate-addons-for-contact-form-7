@@ -39,7 +39,8 @@ class UACF7_PRE_POPULATE {
                     'type'  => 'heading', 
                     'label' => __( 'Pre-Populate Field Settings', 'ultimate-addons-cf7' ),
                     'subtitle' => sprintf(
-                        __( 'Sends data from one form to another, after the first form submission. See Demo %1s.', 'ultimate-addons-cf7' ),
+                        // translators: %1$s: link to the demo page
+                        esc_html__( 'Sends data from one form to another, after the first form submission. See Demo %1$s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/contact-form-7-pre-populate-fields/" target="_blank" rel="noopener">Example</a>'
                                   )
                       ),
@@ -48,7 +49,8 @@ class UACF7_PRE_POPULATE {
                         'type'    => 'notice',
                         'style'   => 'success',
                         'content' => sprintf( 
-                            __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                            // translators: %1$s: link to the documentation
+                            esc_html__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-cf7' ),
                             '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-pre-populate-fields/" target="_blank" rel="noopener">Pre-populate Field</a>'
                         )
                       ),

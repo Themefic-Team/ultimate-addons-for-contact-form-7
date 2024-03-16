@@ -160,7 +160,7 @@ class UACF7_DYNAMIC_TEXT {
                
                 printf(
                 /* Translators: %1$s is a placeholder for the link to the documentation.*/
-                    __( 'Confused? Check our Documentation on %1$s.', 'ultimate-addons-cf7' ),
+                    esc_html__( 'Confused? Check our Documentation on %1$s.', 'ultimate-addons-cf7' ),
                     '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-dynamic-text-extension/" target="_blank">Dynamic Text</a>'
                 );
                 ?>
