@@ -80,10 +80,14 @@ class UACF7_COLUMN {
                    <h3><?php echo esc_html__('Contact form 7 columns / Grid Layout','ultimate-addons-cf7'); ?></h3>
                    <p><?php echo esc_html__('You can easily create two columns, three Columns even Four columns form with Contact form 7 using this feature. Just insert tag you need from below list.','ultimate-addons-cf7'); ?></p>
                    <div class="uacf7-doc-notice"> 
-                        <?php echo sprintf( 
-                            __( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
-                            '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-columns/" target="_blank">Columns / Grid</a>', '<a href="https://themefic.com/docs/uacf7/pro-addons/custom-columns-for-contact-form-7/" target="_blank">Custom Columns</a>'
-                        ); ?> 
+                   <?php
+                        echo sprintf(
+                            /* Translators: %1$s is a placeholder for the first link, %2$s is a placeholder for the second link. */
+                            __( 'Confused? Check our Documentation on %1$s and %2$s.', 'ultimate-addons-cf7' ),
+                            '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-columns/" target="_blank">Columns / Grid</a>',
+                            '<a href="https://themefic.com/docs/uacf7/pro-addons/custom-columns-for-contact-form-7/" target="_blank">Custom Columns</a>'
+                        );
+                    ?>
                     </div>
                    <p></p>
                     <tbody>
