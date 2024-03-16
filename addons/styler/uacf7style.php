@@ -754,10 +754,10 @@ class UACF7_uacf7style {
                         background-color: <?php echo esc_attr($btn_background_color_hover); ?>;
                         border-color: <?php echo esc_attr($btn_border_color_hover); ?>;
                     }
-                    <?php echo $ua_custom_css ?>
+                    <?php echo esc_attr($ua_custom_css) ?>
                 </style>
                 <?php
-                echo '<div class="uacf7-uacf7style uacf7-uacf7style-'.esc_attr($cfform->id()).'">'.$form.'</div>';
+                echo '<div class="uacf7-uacf7style uacf7-uacf7style-'.esc_attr($cfform->id()).'">'.wp_kses_post( $form ).'</div>';
                 $properties['form'] = ob_get_clean();
             endif;
         }

@@ -225,7 +225,7 @@ class UACF7_Placeholder {
 					}
 				</style>
 				<?php
-				echo $form;
+				echo  wp_kses_post( $form );
 				$properties['form'] = ob_get_clean();
 
 			endif;

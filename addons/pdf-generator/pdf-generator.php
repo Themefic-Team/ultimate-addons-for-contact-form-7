@@ -452,7 +452,7 @@ class UACF7_PDF_GENERATOR {
                 $extension = strtolower( $pathInfo['extension'] );
 
                 ob_start(); 
-                echo $uacf7_DB->decrypt_and_display( $dir . $value, $encryptionKey );
+                echo esc_html($uacf7_DB->decrypt_and_display( $dir . $value, $encryptionKey ));
                 $decryptedData = ob_get_clean();  
 
                 if ( $decryptedData !== null ) {

@@ -88,7 +88,12 @@ class Ultimate_Addons_CF7 {
 		<div class="notice notice-error">
 			<p>
 				<?php printf(
-					__( '%s requires %s to be installed and active. You can install and activate it from %s', 'ultimate-addons-cf7' ), '<strong>Ultimate Addons for Contact Form 7</strong>', '<strong>Contact form 7</strong>', '<a href="' . admin_url( 'plugin-install.php?tab=search&s=contact+form+7' ) . '">here</a>.'
+					 /* translators: %1$s &  %2$s: plugins Name , %3$s : Plugins Link" */ 
+					esc_html__( '%1$s requires %2$s to be installed and active. You can install and activate it from %3$s', 
+					'ultimate-addons-cf7' ), 
+					'<strong>Ultimate Addons for Contact Form 7</strong>', 
+					'<strong>Contact form 7</strong>', 
+					'<a href="' . esc_url(admin_url( 'plugin-install.php?tab=search&s=contact+form+7' )) . '">here</a>.'
 				); ?>
 			</p>
 		</div>
@@ -100,20 +105,14 @@ class Ultimate_Addons_CF7 {
 	 */
 	public function uacf7_init() {
 
-
-		//Require admin menu
-		// require_once( 'admin/admin-menu.php' );
-
+ 
 		//Require ultimate addons
 		require_once( 'addons/addons.php' );
 
 		//  Update UACF7 Plugin Version
 		if ( UACF7_VERSION != get_option( 'uacf7_version' ) ) {
 			update_option( 'uacf7_version', UACF7_VERSION );
-		}
-
-
-
+		} 
 
 	}
 

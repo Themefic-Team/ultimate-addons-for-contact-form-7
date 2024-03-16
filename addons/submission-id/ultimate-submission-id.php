@@ -145,7 +145,7 @@ public function submission_id_public_assets_loading(){
     $submission = uacf7_get_form_option( $form_id, 'submission_id' );
     $meta_data = isset($submission['uacf7_submission_id']) ? $submission['uacf7_submission_id'] : 0;
     
-    echo wp_send_json( [
+    wp_send_json( [
     'form_id' => $form_id,
     'meta_data' => $meta_data
     ] );
@@ -278,8 +278,8 @@ public function uacf7_submission_id_tag_handler_callback($tag){
     ?> 
     <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
 
-        <input hidden id="uacf7_<?php echo esc_attr($tag->name); ?>" <?php echo $atts;?> >
-        <span><?php echo $validation_error; ?></span>
+        <input hidden id="uacf7_<?php echo esc_attr($tag->name); ?>" <?php echo esc_attr($atts);?> >
+        <span><?php echo wp_kses_post($validation_error) ?></span>
     </span>
 
    <?php 
@@ -313,9 +313,10 @@ public static function tg_pane_submission_id($contact_form, $args = ''){
             <table class="form-table">
                <tbody>
                     <div class="uacf7-doc-notice"> 
-                        <?php echo sprintf( 
-                            __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                            '<a href="https://themefic.com/docs/uacf7/free-addons/unique-id-for-contact-form-7/" target="_blank">Unique Submission ID</a>'
+                        <?php printf( 
+                            // Translators: %1$s: Documentation URL
+                            esc_html__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-cf7' ),
+                            '<a href="'.esc_url('https://themefic.com/docs/uacf7/free-addons/unique-id-for-contact-form-7/').'" target="_blank">Unique Submission ID</a>'
                         ); ?> 
                     </div>
                     <tr>

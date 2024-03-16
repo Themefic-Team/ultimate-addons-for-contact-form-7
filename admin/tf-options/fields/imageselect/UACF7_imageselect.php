@@ -26,12 +26,12 @@ if ( ! class_exists( 'UACF7_imageselect' ) ) {
                     ?>
                     <li>
                     <label class="tf-image-checkbox <?php echo esc_attr($class) ?>">
-                    <?php echo '<input type="radio" id="' . $this->field_name() . '[' . $key . ']" '.esc_attr($disabled).' name="' . $this->field_name() . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . $this->parent_field . '" value="' . esc_attr( $key ) . '" ' . $checked . ' '. $this->field_attributes() .'/>';
+                    <?php echo '<input type="radio" id="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']" '.esc_attr($disabled).' name="' . esc_attr($this->field_name()) . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . esc_attr($this->parent_field) . '" value="' . esc_attr( $key ) . '" ' . esc_attr( $checked ) . ' '. wp_kses_post($this->field_attributes()) .'/>';
                     ?>
                         <img src="<?php echo esc_url($value['url']); ?>" alt="<?php echo esc_attr($value['title']); ?>">
 						<span class="tf-image-title">
 							<?php echo esc_html($value['title']); ?>
-							<?php echo $tf_pro; ?>
+							<?php echo wp_kses_post($tf_pro); ?>
 						</span>
                     </label>  
                     </li>

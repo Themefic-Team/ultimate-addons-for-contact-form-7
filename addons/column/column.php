@@ -217,12 +217,12 @@ class UACF7_COLUMN {
 					
                     $html = '<div class="'.esc_attr($ucaf7_column_class).'">';
 					
-					echo apply_filters( 'uacf7_column_custom_width', $html, $ucaf7_column_class, $uacf7_column_custom_width );
+					echo wp_kses_post( apply_filters( 'uacf7_column_custom_width', $html, $ucaf7_column_class, $uacf7_column_custom_width ) );
 					
                 } else if ($form_part == '[/uacf7-col]') {
                     echo '</div>';
                 } else {
-                    echo $form_part;
+                    echo wp_kses_post( $form_part );
                 }
             }
 
@@ -251,7 +251,7 @@ class UACF7_COLUMN {
                 } else if ($form_part == '[/uacf7-row]') {
                     echo '</div>';
                 } else {
-                    echo $form_part;
+                    echo wp_kses_post( $form_part );
                 }
             }
 

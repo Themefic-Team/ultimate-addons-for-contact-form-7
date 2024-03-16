@@ -191,14 +191,14 @@ class UACF7_SIGNATURE{
          ob_start();
  
          ?>
-         <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
-             <input hidden type="file" class="img_id_special" <?php echo $atts; ?>  >
+         <span  class="wpcf7-form-control-wrap <?php echo esc_attr($tag->name); ?>" data-name="<?php echo esc_attr($tag->name); ?>">
+             <input hidden type="file" class="img_id_special" <?php echo esc_attr($atts); ?>  >
              <div>
-               <div  class="signature-pad" data-field-name="<?php echo sanitize_html_class($tag->name); ?>">
-                 <canvas id="<?php echo sanitize_html_class($tag->name); ?>" data-field-name="<?php echo sanitize_html_class($tag->name); ?>" width="<?php echo $canvas_width; ?>" height="<?php echo $canvas_height; ?>"></canvas>
+               <div  class="signature-pad" data-field-name="<?php echo esc_attr($tag->name); ?>">
+                 <canvas id="<?php echo esc_attr($tag->name); ?>" data-field-name="<?php echo esc_attr($tag->name); ?>" width="<?php echo esc_attr( $canvas_width ); ?>" height="<?php echo esc_attr($canvas_height); ?>"></canvas>
                </div>
                 <div class="control_div">
-                   <button data-field-name="<?php echo sanitize_html_class($tag->name); ?>" class="clear-button">Clear</button>
+                   <button data-field-name="<?php echo esc_attr($tag->name); ?>" class="clear-button">Clear</button>
                 </div>
              </div>
          </span>
@@ -242,11 +242,11 @@ class UACF7_SIGNATURE{
                               ); ?>
                         </div>
                         <tr>
-                            <th scope="row"><?php _e('Field Type', 'ultimate-addons-cf7');?></th>
+                            <th scope="row"><?php echo esc_html( __('Field Type', 'ultimate-addons-cf7') );?></th>
                             <td>
                                 <fieldset>
-                                    <legend class="screen-reader-text"><?php _e('Field Type', 'ultimate-addons-cf7');?></legend>
-                                    <label><input type="checkbox" name="required" value="on"><?php _e('Required Field', 'ultimate-addons-cf7');?></label>
+                                    <legend class="screen-reader-text"><?php echo esc_html( __('Field Type', 'ultimate-addons-cf7') );?></legend>
+                                    <label><input type="checkbox" name="required" value="on"><?php echo esc_html( __('Required Field', 'ultimate-addons-cf7') );?></label>
                                 </fieldset>
                             </td>
                         </tr>
