@@ -19,7 +19,7 @@ class UACF7_PRODUCT_DROPDOWN {
     
     public function admin_enqueue_script() { 
 
-        wp_enqueue_script( 'uacf7-product-dropdown', UACF7_ADDONS . '/product-dropdown/assets/admin-script.js', array('jquery'), null, true );
+        wp_enqueue_script( 'uacf7-product-dropdown', UACF7_ADDONS . '/product-dropdown/assets/admin-script.js', array('jquery'), UACF7_VERSION, true );
     }
   
     

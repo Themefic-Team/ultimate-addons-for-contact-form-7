@@ -120,12 +120,12 @@ class Ultimate_Addons_CF7 {
 	//Enquene admin scripts
 	public function enqueue_admin_scripts() {
 
-		wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css', 'sadf' );
+		wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css', array(), UACF7_VERSION );
 
 		// // wp_enqueue_media();
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_script( 'uacf7-admin-script', UACF7_URL . 'assets/js/admin-script.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'uacf7-admin-script', UACF7_URL . 'assets/js/admin-script.js', array( 'jquery' ), UACF7_VERSION, true );
 
 
 
@@ -145,7 +145,7 @@ class Ultimate_Addons_CF7 {
 
     //Enquene admin scripts
     public function uacf7_frontend_scripts(){ 
-        wp_enqueue_style( 'uacf7-frontend-style', UACF7_URL . 'assets/css/uacf7-frontend.css', '' ); 
+        wp_enqueue_style( 'uacf7-frontend-style', UACF7_URL . 'assets/css/uacf7-frontend.css', array(), UACF7_VERSION); 
     }
 
 	/**

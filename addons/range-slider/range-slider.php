@@ -463,8 +463,8 @@ class UACF7_range_Slider {
      */
     public function enqueue_slider_scripts() { 
         wp_enqueue_script( 'uacf7-range-slider', UACF7_URL . 'addons/range-slider/js/range-slider.js', array( 'jquery', 'jquery-ui' ), UACF7_VERSION, true );
-        wp_enqueue_style( 'jquery-ui-style', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' );
-        wp_enqueue_style( 'range-slider-style', UACF7_URL . 'addons/range-slider/css/style.css' );
+        wp_enqueue_style( 'jquery-ui-style', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', array(), UACF7_VERSION);
+        wp_enqueue_style( 'range-slider-style', UACF7_URL . 'addons/range-slider/css/style.css', array(), UACF7_VERSION);
         wp_register_script( 'jquery-ui', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array( 'jquery' ), UACF7_VERSION, true );
         wp_register_script( 'touch-punch', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js', array( 'jquery' ), UACF7_VERSION, true );
         wp_enqueue_script( 'jquery-ui' );

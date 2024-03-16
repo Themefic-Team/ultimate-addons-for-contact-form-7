@@ -19,8 +19,8 @@ class UACF7_WEB_HOOK {
 
 
 	public function enqueue_webhook_style() {
-		wp_enqueue_style( 'uacf7-web-hook', UACF7_ADDONS . '/web-hook/css/web-hook.css' );
-		wp_enqueue_script( 'uacf7-web-hook-script', UACF7_ADDONS . '/web-hook/js/web-hook.js', array( 'jquery' ), '', true );
+		wp_enqueue_style( 'uacf7-web-hook', UACF7_ADDONS . '/web-hook/css/web-hook.css', array(), UACF7_VERSION);
+		wp_enqueue_script( 'uacf7-web-hook-script', UACF7_ADDONS . '/web-hook/js/web-hook.js', array( 'jquery' ), UACF7_VERSION, true );
 	}
 
 	// Add Web Hook Options

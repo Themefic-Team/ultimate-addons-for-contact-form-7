@@ -47,8 +47,8 @@ class UACF7_DATABASE {
 	 */
 
 	public function wp_enqueue_admin_script() {
-		wp_enqueue_style( 'database-admin-style', UACF7_ADDONS . '/database/assets/css/database-admin.css' );
-		wp_enqueue_script( 'database-admin', UACF7_ADDONS . '/database/assets/js/database-admin.js', array( 'jquery' ), null, true );
+		wp_enqueue_style( 'database-admin-style', UACF7_ADDONS . '/database/assets/css/database-admin.css', array(), UACF7_VERSION );
+		wp_enqueue_script( 'database-admin', UACF7_ADDONS . '/database/assets/js/database-admin.js', array( 'jquery' ), UACF7_VERSION, true );
 		wp_localize_script( 'database-admin', 'database_admin_url',
 			array(
 				'admin_url' => get_admin_url() . '/admin.php',

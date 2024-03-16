@@ -756,7 +756,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				}
             }
 
-            echo json_encode( $response );
+            echo wp_json_encode( $response );
             wp_die();
 		}
 

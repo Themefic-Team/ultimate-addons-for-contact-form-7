@@ -115,7 +115,7 @@ class UACF7_PRE_POPULATE {
     */
     
     public function wp_enqueue_script() {
-		wp_enqueue_script( 'pre-populate-script', UACF7_ADDONS . '/pre-populate-field/assets/js/pre-populate.js', array('jquery'), null, true ); 
+		wp_enqueue_script( 'pre-populate-script', UACF7_ADDONS . '/pre-populate-field/assets/js/pre-populate.js', array('jquery'), UACF7_VERSION, true ); 
         wp_localize_script( 'pre-populate-script', 'pre_populate_url',
             array( 
                     'ajaxurl' => admin_url( 'admin-ajax.php' ),

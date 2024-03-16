@@ -26,9 +26,9 @@ class UACF7_MULTISTEP {
     }
     
     public function enqueue_script() {
-        wp_enqueue_script( 'uacf7-multistep', UACF7_ADDONS . '/multistep/assets/js/multistep.js', array('jquery'), null, true );
-        wp_enqueue_script( 'uacf7-progressbar', UACF7_ADDONS . '/multistep/assets/js/progressbar.js', array('jquery'), null, true );
-        wp_enqueue_style( 'uacf7-multistep-style', UACF7_ADDONS . '/multistep/assets/css/multistep.css' );
+        wp_enqueue_script( 'uacf7-multistep', UACF7_ADDONS . '/multistep/assets/js/multistep.js', array('jquery'), UACF7_VERSION, true );
+        wp_enqueue_script( 'uacf7-progressbar', UACF7_ADDONS . '/multistep/assets/js/progressbar.js', array('jquery'), UACF7_VERSION, true );
+        wp_enqueue_style( 'uacf7-multistep-style', UACF7_ADDONS . '/multistep/assets/css/multistep.css', array(), UACF7_VERSION);
 
         
         wp_localize_script('uacf7-multistep', 'uacf7_multistep_obj', array(
@@ -819,7 +819,7 @@ class UACF7_MULTISTEP {
         }else{
             $invalid_fields = false;
         }
-        echo(json_encode( array(
+        echo(wp_json_encode( array(
                     'is_valid' => $is_valid,
                     'invalid_fields' => $invalid_fields,
                 )

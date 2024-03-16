@@ -30,11 +30,11 @@ class UACF7_COUNTRY_DROPDOWN {
     
     public function wp_enqueue_script() {
 
-		wp_enqueue_style( 'uacf7-country-select-main', UACF7_ADDONS . '/country-dropdown/assets/css/countrySelect.min.css' );
-		wp_enqueue_style( 'uacf7-country-select-style', UACF7_ADDONS . '/country-dropdown/assets/css/style.css' );
+		wp_enqueue_style( 'uacf7-country-select-main', UACF7_ADDONS . '/country-dropdown/assets/css/countrySelect.min.css', array(), UACF7_VERSION);
+		wp_enqueue_style( 'uacf7-country-select-style', UACF7_ADDONS . '/country-dropdown/assets/css/style.css', array(), UACF7_VERSION);
 		
-		wp_enqueue_script( 'uacf7-country-select-library', UACF7_ADDONS . '/country-dropdown/assets/js/countrySelect.js', array('jquery'), null, true );
-		wp_enqueue_script( 'uacf7-country-select-script', UACF7_ADDONS . '/country-dropdown/assets/js/script.js', array('jquery','uacf7-country-select-library'), null, true );
+		wp_enqueue_script( 'uacf7-country-select-library', UACF7_ADDONS . '/country-dropdown/assets/js/countrySelect.js', array('jquery'), UACF7_VERSION, true );
+		wp_enqueue_script( 'uacf7-country-select-script', UACF7_ADDONS . '/country-dropdown/assets/js/script.js', array('jquery','uacf7-country-select-library'), UACF7_VERSION, true );
     }
     
     /*

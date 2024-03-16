@@ -31,7 +31,7 @@ class UACF7_PDF_GENERATOR {
     
     public function wp_enqueue_admin_script() { 
          
-		wp_enqueue_script( 'pdf-generator-admin', UACF7_ADDONS . '/pdf-generator/assets/js/pdf-generator-admin.js', array('jquery'),  true ); 
+		wp_enqueue_script( 'pdf-generator-admin', UACF7_ADDONS . '/pdf-generator/assets/js/pdf-generator-admin.js', array('jquery'), UACF7_VERSION,  true ); 
         $pdf_settings['codeEditor'] = wp_enqueue_code_editor(array('type' => 'text/css'));
         $pdf_settings['ajaxurl'] = admin_url( 'admin-ajax.php' );
         $pdf_settings['nonce'] = wp_create_nonce('uacf7-pdf-generator');

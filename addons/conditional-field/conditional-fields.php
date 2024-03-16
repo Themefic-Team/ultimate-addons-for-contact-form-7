@@ -45,11 +45,11 @@ class UACF7_CF {
 	}
 
 	public function enqueue_cf_admin_script() {
-		wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/cf-script.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/cf-script.js', array( 'jquery' ), UACF7_VERSION, true );
 	}
 
 	public function enqueue_cf_frontend_script() {
-		wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/uacf7-cf-script.js', array( 'jquery' ) );
+		wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/uacf7-cf-script.js', array( 'jquery' ), UACF7_VERSION, true );
 		wp_localize_script( 'uacf7-cf-script', 'uacf7_cf_object', $this->get_forms() );
 	}
 

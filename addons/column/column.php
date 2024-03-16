@@ -24,12 +24,12 @@ class UACF7_COLUMN {
     }
     
     public function admin_column_enqueue_script() {
-        wp_enqueue_script( 'uacf7-column', UACF7_ADDONS . '/column/assets/js/column-admin.js', array('jquery'), null, true );
-        wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/assets/css/column-admin.css' );
+        wp_enqueue_script( 'uacf7-column', UACF7_ADDONS . '/column/assets/js/column-admin.js', array('jquery'), UACF7_VERSION, true );
+        wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/assets/css/column-admin.css', array(), UACF7_VERSION);
     }
     
     public function enqueue_column_style() {
-        wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/grid/columns.css' );
+        wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/grid/columns.css', array(), UACF7_VERSION);
     }
     
     /*
