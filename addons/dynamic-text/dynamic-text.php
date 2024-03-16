@@ -156,10 +156,14 @@ class UACF7_DYNAMIC_TEXT {
         ?>
         <div class="control-box">
             <div class="uacf7-doc-notice">
-                <?php echo sprintf( 
-                    __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+            <?php
+               
+                printf(
+                /* Translators: %1$s is a placeholder for the link to the documentation.*/
+                    __( 'Confused? Check our Documentation on %1$s.', 'ultimate-addons-cf7' ),
                     '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-dynamic-text-extension/" target="_blank">Dynamic Text</a>'
-                ); ?>  
+                );
+                ?>
             </div>
          
             <fieldset>                
