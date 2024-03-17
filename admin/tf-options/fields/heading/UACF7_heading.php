@@ -24,7 +24,7 @@ if ( ! class_exists( 'UACF7_heading' ) ) {
                         <h3><?php echo esc_html( $this->field['title'] ); ?></h3>
 					<?php endif; ?>
 					<?php if ( ! empty( $this->field['sub_title'] ) ): ?>
-                        <span class="tf-field-sub-title"><?php echo esc_html( $this->field['sub_title'] ); ?></span>
+                        <span class="tf-field-sub-title"><?php echo wp_kses_post( $this->field['sub_title'] ); ?></span>
 					<?php endif; ?>
 					<?php if ( ! empty( $this->field['content'] ) ): ?>
                         <div class="tf-field-heading-main-content"><?php echo wp_kses_post( $this->field['content'] ); ?></div>

@@ -185,14 +185,19 @@ class UACF7_SIGNATURE{
          $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
  
          $atts['name'] = $tag->name;
- 
+
+         $allowed_attributes = array(); 
+         foreach ($atts as $key => $value) {
+             $allowed_attributes[$key] = true;
+         }
+         
          $atts = wpcf7_format_atts($atts);
  
          ob_start();
  
          ?>
          <span  class="wpcf7-form-control-wrap <?php echo esc_attr($tag->name); ?>" data-name="<?php echo esc_attr($tag->name); ?>">
-             <input hidden type="file" class="img_id_special" <?php echo esc_attr($atts); ?>  >
+             <input hidden type="file" class="img_id_special" <?php echo wp_kses($atts, $allowed_attributes); ?>  >
              <div>
                <div  class="signature-pad" data-field-name="<?php echo esc_attr($tag->name); ?>">
                  <canvas id="<?php echo esc_attr($tag->name); ?>" data-field-name="<?php echo esc_attr($tag->name); ?>" width="<?php echo esc_attr( $canvas_width ); ?>" height="<?php echo esc_attr($canvas_height); ?>"></canvas>

@@ -273,6 +273,12 @@ public function uacf7_submission_id_tag_handler_callback($tag){
 
     $atts['name'] = $tag->name;
 
+     // Escape all attributes.
+     $allowed_attributes = array(); 
+     foreach ($atts as $key => $value) {
+         $allowed_attributes[$key] = true;
+     }  
+
     $atts = wpcf7_format_atts($atts);
 
     ob_start();
@@ -280,7 +286,7 @@ public function uacf7_submission_id_tag_handler_callback($tag){
     ?> 
     <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
 
-        <input hidden id="uacf7_<?php echo esc_attr($tag->name); ?>" <?php echo esc_attr($atts);?> >
+        <input hidden id="uacf7_<?php echo esc_attr($tag->name); ?>" <?php echo wp_kses($atts, $allowed_attributes); ?> >
         <span><?php echo wp_kses_post($validation_error) ?></span>
     </span>
 

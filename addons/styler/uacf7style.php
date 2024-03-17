@@ -757,7 +757,7 @@ class UACF7_uacf7style {
                     <?php echo esc_attr($ua_custom_css) ?>
                 </style>
                 <?php
-                echo '<div class="uacf7-uacf7style uacf7-uacf7style-'.esc_attr($cfform->id()).'">'.wp_kses_post( $form ).'</div>';
+                echo '<div class="uacf7-uacf7style uacf7-uacf7style-'.esc_attr($cfform->id()).'">'.wp_kses( $form, uacf7_custom_wp_kses_allow_tags() ).'</div>';
                 $properties['form'] = ob_get_clean();
             endif;
         }

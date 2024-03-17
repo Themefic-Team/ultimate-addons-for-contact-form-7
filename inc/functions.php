@@ -39,6 +39,146 @@ function uacf7_post_meta_options_import_export($value, $post_id){
 		return $value; 
     }
 }
+if(!function_exists('uacf7_custom_wp_kses_allow_tags')){ 
+    function uacf7_custom_wp_kses_allow_tags() {
+        // Allow all HTML tags and attributes
+        $allowed_tags = wp_kses_allowed_html('post');
+    
+        // Add form-related tags to the allowed tags
+        $allowed_tags['form'] = array(
+            'action' => true,
+            'method' => true,
+            'enctype' => true,
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        $allowed_tags['input'] = array(
+            'type' => true,
+            'name' => true,
+            'value' => true,
+            'placeholder' => true,
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        $allowed_tags['select'] = array(
+            'name' => true,
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        $allowed_tags['option'] = array(
+            'value' => true,
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        $allowed_tags['textarea'] = array(
+            'name' => true,
+            'rows' => true,
+            'cols' => true,
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        $allowed_tags['button'] = array(
+            'type' => true,
+            'name' => true,
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        $allowed_tags['label'] = array(
+            'for' => true,
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        $allowed_tags['fieldset'] = array(
+            'name' => true,
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        $allowed_tags['legend'] = array(
+            'name' => true,
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        $allowed_tags['optgroup'] = array(
+            'label' => true,
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        $allowed_tags['span'] = array( 
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+        $allowed_tags['div'] = array( 
+            'class' => true,
+            'id' => true,
+            'data' => true,
+        );
+    
+        // $allowed_tags['script'] = array(
+        //     'src' => true,
+        //     'type' => true,
+        //     'class' => true,
+        //     'id' => true,
+        // );
+    
+        $allowed_tags["svg"] = array(
+            'class'           => true,
+            'aria-hidden'     => true,
+            'aria-labelledby' => true,
+            'role'            => true,
+            'xmlns'           => true,
+            'width'           => true,
+            'height'          => true,
+            'viewbox'         => true,
+            'fill' 			  => true,
+        );
+    
+        $allowed_tags['g'] = array( 'fill' => true, "clip-path" => true );
+        $allowed_tags['title'] = array( 'title' => true );
+        $allowed_tags['rect'] = array( 'x' => true, 'y' => true, 'width' => true, 'height' => true, 'fill' => true );
+        $allowed_tags['path'] = array(
+            'd'    			  => true,
+            'fill' 			  => true,
+            'stroke'		  => true,
+            'stroke-width'    => true,
+            'stroke-linecap'  => true,
+            "stroke-linejoin" => true,
+        );
+        $allowed_tags['defs'] = array(
+            'd' => true
+        );
+        $allowed_tags['clipPath'] = array(
+            'd' => true
+        );
+        $allowed_tags['style'] = array(
+            'type' => true,
+            'true' => true // Allow all attributes for the 'style' tag
+        );
+    
+        return $allowed_tags;
+    }
+}
+
 
 // Uacf7 Import Export File Upload
 if(!function_exists('uacf7_import_export_file_upload')){

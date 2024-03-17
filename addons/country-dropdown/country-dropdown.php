@@ -97,28 +97,33 @@ class UACF7_COUNTRY_DROPDOWN {
 
 		
         $country_atts =  apply_filters('uacf7_get_country_attr', $atts, $tag);  
+        $allowed_attributes = array(); 
+        foreach ($atts as $key => $value) {
+            $allowed_attributes[$key] = true;
+        }
         $atts = wpcf7_format_atts( $country_atts );
         
-        ob_start(); ?>
-        <select <?php  echo esc_attr($atts); ?>  id="uacf7_country_api" >
-            <option value=""><?php echo esc_html( __('Select a Country', 'ultimate-addons-cf7') ) ?></option>
-        </select>
-	<?php
-        $api_country = ob_get_clean(); 
-		ob_start(); 
+            ob_start(); 
+        ?>
+            <select <?php echo wp_kses($atts, $allowed_attributes); ?> id="uacf7_country_api" >
+                <option value=""><?php echo esc_html( __('Select a Country', 'ultimate-addons-cf7') ) ?></option>
+            </select>
+	    <?php
+            $api_country = ob_get_clean(); 
+            ob_start(); 
 		?>
 
         <?php if($ds_country ){?> 
             <span id="uacf7_country_select" class="wpcf7-form-control-wrap  <?php echo sanitize_html_class( $tag->name ); ?>">
 
-                <?php echo wp_kses_post( apply_filters( 'uacf7_api_based_country_filter', $api_country, $atts ) ) ?>
+                <?php echo apply_filters( 'uacf7_api_based_country_filter', $api_country, $atts ) ?>
 
             </span>  
         <?php }else{ ?>
  
         <span id="uacf7_country_select" class="wpcf7-form-control-wrap  <?php echo sanitize_html_class( $tag->name ); ?>">
 
-            <input id="uacf7_countries_<?php  echo esc_attr($tag->name); ?>" type="text" <?php  echo esc_attr($atts); ?> >
+            <input id="uacf7_countries_<?php  echo esc_attr($tag->name); ?>" type="text" <?php  echo wp_kses($atts, $allowed_attributes); ?> >
              
 			<span><?php echo wp_kses_post( $validation_error ); ?> </span>
            
@@ -207,7 +212,7 @@ class UACF7_COUNTRY_DROPDOWN {
                         * Tag generator field: auto complete
                         */
 
-                        echo wp_kses_post( apply_filters('uacf7_tag_generator_country_autocomplete_field', $autocomplete_html) );
+                        echo wp_kses( apply_filters('uacf7_tag_generator_country_autocomplete_field', $autocomplete_html), uacf7_custom_wp_kses_allow_tags() );
                         ?>
 
                         <?php ob_start(); ?>
@@ -221,7 +226,7 @@ class UACF7_COUNTRY_DROPDOWN {
                         /*
                         * Tag generator field: Dynamic Selection
                         */
-                        echo wp_kses_post( apply_filters('uacf7_tag_generator_dynamic_selection', $dynamic_selection) )
+                        echo wp_kses( apply_filters('uacf7_tag_generator_dynamic_selection', $dynamic_selection), uacf7_custom_wp_kses_allow_tags() )
                         ?>
 
                         <!-- Dynamic Selection Starts-->
@@ -237,7 +242,7 @@ class UACF7_COUNTRY_DROPDOWN {
                         /*
                         * Tag generator field: auto complete
                         */
-                        echo wp_kses_post( apply_filters('uacf7_tag_generator_default_country_field', $default_country) );
+                        echo wp_kses( apply_filters('uacf7_tag_generator_default_country_field', $default_country), uacf7_custom_wp_kses_allow_tags() );
                         ?>
                         <!-- Dynamic Selection Ends -->
  

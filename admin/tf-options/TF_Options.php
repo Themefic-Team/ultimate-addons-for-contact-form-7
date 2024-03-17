@@ -414,7 +414,7 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 			?>
 
 			<div class="tf-field tf-field-<?php echo esc_attr( $field['type'] ); ?> <?php echo esc_attr( $class ); ?> <?php echo ! empty( $visible ) ? esc_attr( $visible ) : ''; ?>"
-				<?php echo ! empty( $depend ) ? esc_attr($depend) : ''; ?> style="<?php echo esc_attr( $field_style ); ?>">
+				<?php echo ! empty( $depend ) ? wp_kses_post($depend) : ''; ?> style="<?php echo esc_attr( $field_style ); ?>">
 				<div class="tf-field-wrap">
 					<?php if ( ! empty( $field['label'] ) ) : ?>
 						<label for="<?php echo esc_attr( $id ) ?>" class="tf-field-label">

@@ -23,7 +23,7 @@ if ( ! class_exists( 'UACF7_notice' ) ) {
 
                 <div class="tf-field-notice-content <?php echo !empty( $this->field['content']) ? 'has-content' : '' ?>">
 					<?php if ( ! empty( $this->field['title'] ) ): ?>
-                        <h6><?php echo esc_html( $this->field['title'] ); ?></h6>
+                        <h6><?php echo wp_kses_post( $this->field['title'] ); ?></h6>
 					<?php endif; ?>
 					<?php if(! empty($this->field['content'])): ?>
 						<p><?php echo wp_kses_post( $this->field['content'] ); ?></p>

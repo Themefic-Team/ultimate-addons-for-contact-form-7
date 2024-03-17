@@ -200,11 +200,17 @@ class UACF7_PRODUCT_DROPDOWN {
             $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
             $atts['name'] = $tag->name . ( $multiple ? '[]' : '' );
 
+            // Escape all attributes.
+            $allowed_attributes = array(); 
+            foreach ($atts as $key => $value) {
+                $allowed_attributes[$key] = true;
+            }  
+            // Format the attributes.
             $atts = wpcf7_format_atts( $atts );
 
             $dropdown = sprintf(
                 '<span class="wpcf7-form-control-wrap %1$s"  data-name="%1$s"><select %2$s>%3$s</select></span><span>%4$s</span>',
-                sanitize_html_class( $tag->name ), $atts, $dropdown, $validation_error
+                sanitize_html_class( $tag->name ), wp_kses($atts, $allowed_attributes), $dropdown, $validation_error
             );
             
         if($tag->has_option( 'layout:grid' )){ // Grid Layout

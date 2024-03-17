@@ -607,8 +607,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			$option = get_option( $this->option_id );
 			$option_request  = ( ! empty( $_POST[ $this->option_id ] ) ) ? $_POST[ $this->option_id ] : array(); 
 			$uacf7_current_page  = ( ! empty( $_POST[ 'uacf7_current_page' ] ) ) ? $_POST[ 'uacf7_current_page' ] : ''; 
-
-			if(isset($_POST['tf_import_option']) && !empty(wp_unslash( trim( $_POST['tf_import_option']) ))){
+			$tf_import_option = isset($_POST['tf_import_option']) ? json_decode( wp_unslash( trim( $_POST['tf_import_option']) ), true ) : '';
+			if(is_array($tf_import_option) && !empty(wp_unslash( trim( $_POST['tf_import_option']) ))){
 				
 				$tf_import_option = json_decode( wp_unslash( trim( $_POST['tf_import_option']) ), true );  
 
@@ -734,16 +734,18 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
                 if(isset($_POST['tf_import_option']) && !empty(wp_unslash( trim( $_POST['tf_import_option']) )) ){
 
 					$tf_import_option = json_decode( wp_unslash( trim( $_POST['tf_import_option']) ), true );
-					 if(empty($tf_import_option) || !is_array($tf_import_option)){
-						$response    = [
-							'status'  => 'error',
-							'message' => __( 'Your imported data is not valid', 'tourfic' ),
-						];
-					 }else{
+					 if(!empty($tf_import_option) && is_array($tf_import_option)){ 
+						
 						$this->save_options();
 						$response = [
 							'status'  => 'success',
 							'message' => __( 'Options imported successfully!', 'tourfic' ),
+						];
+						
+					 }else{
+						$response    = [
+							'status'  => 'error',
+							'message' => __( 'Your imported data is not valid', 'tourfic' ),
 						];
 					 }
 				}else{

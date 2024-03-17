@@ -86,6 +86,11 @@ class UACF7_STAR_RATING {
 
         $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
 
+        $allowed_attributes = array(); 
+        foreach ($atts as $key => $value) {
+            $allowed_attributes[$key] = true;
+        }
+
         $atts = wpcf7_format_atts( $atts );
         
         $selected = !empty($tag->get_option('selected', '', true)) ? $tag->get_option('selected', '', true) : '5'; 
@@ -120,7 +125,7 @@ class UACF7_STAR_RATING {
 		}    
         ?> 
         <span data-name="<?php echo esc_attr($tag->name); ?>" class="wpcf7-form-control-wrap <?php echo esc_attr($tag->name); ?>">
-             <span <?php echo esc_attr($atts); ?> > 
+             <span <?php echo wp_kses($atts, $allowed_attributes); ?> >
                 <label>
                     <input type="radio"  name="<?php echo esc_attr($tag->name); ?>" value="<?php echo esc_attr($star1); ?>" <?php checked( $selected, '1', true ); ?> />
                     <span class="icon"><?php echo wp_kses_post( $rating_icon ); ?></span>
@@ -162,7 +167,7 @@ class UACF7_STAR_RATING {
         
         <?php
          $default_star_style =  ob_get_clean();
-         return wp_kses_post( apply_filters( 'uacf7_star_rating_style_pro_feature',  $default_star_style, $tag ) );
+         return apply_filters( 'uacf7_star_rating_style_pro_feature',  $default_star_style, $tag );   
        
     }
     /*
@@ -230,7 +235,8 @@ class UACF7_STAR_RATING {
 						</tr>
 						<?php
 					    $icon_field = ob_get_clean();
-						echo wp_kses_post( apply_filters( 'uacf7_star_rating_tg_field', $icon_field ) );
+                        echo wp_kses(apply_filters( 'uacf7_star_rating_tg_field', $icon_field ), uacf7_custom_wp_kses_allow_tags()); 
+						 
 					    ?>
                         <?php ob_start() ?>
                         <tr class="">   
@@ -244,7 +250,7 @@ class UACF7_STAR_RATING {
                         </tr> 
                         <?php
                             $rating_style = ob_get_clean();
-                            echo wp_kses_post( apply_filters( 'uacf7_star_rating_style_field', $rating_style ) );
+                            echo wp_kses(apply_filters( 'uacf7_star_rating_style_field', $rating_style ), uacf7_custom_wp_kses_allow_tags()); 
                         ?>
                        
                         <tr>
