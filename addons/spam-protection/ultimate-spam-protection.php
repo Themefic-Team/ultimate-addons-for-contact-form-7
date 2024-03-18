@@ -36,6 +36,7 @@
                         'label'   => __( 'Spam Protection Settings', 'ultimate-addons-cf7' ),
                         'title'   => __( 'This feature will help you to protect your form submission from Spam attack.', 'ultimate-addons-cf7' ),
                         'content' => sprintf( 
+                            /* Translators: %s is a placeholder for the step number. */
                             __( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
                             '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection-for-contact-form-7/" target="_blank">Spam Protection for Contact Form 7</a>',
                            
@@ -88,6 +89,7 @@
                         'type'        => 'textarea',
                         'label'       => __( 'Country Block', 'ultimate-addons-cf7' ),
                         'subtitle'    => sprintf(
+                             /* Translators: %s is a placeholder for the step number. */
                             __( 'Enlist the the Country or Countries that you want to Ban / Block. Separate the Countries %s using a Comma', 'ultimate-addons-cf7' ),
                             '<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" target="_blank">' . __('iso2 name', 'ultimate-addons-cf7') . '</a>'
                         ),
@@ -152,6 +154,7 @@
                     <tbody>
                             <div class="uacf7-doc-notice"> 
                                 <?php echo sprintf( 
+                                    /* Translators: %s is a placeholder for the step number. */
                                     __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
                                     '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection/" target="_blank">documentation</a>'
                                 ); ?> 

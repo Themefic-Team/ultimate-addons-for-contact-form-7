@@ -72,6 +72,7 @@ class UACF7_MULTISTEP {
 					'type'  => 'heading', 
 					'label' => __( 'Multi-step Form Settings', 'ultimate-addons-cf7' ),
 					'subtitle' => sprintf(
+                        /* Translators: %s is a placeholder for the username. */
                         __( 'Create stunning multi-step forms with Contact Form 7. Ideal solution for long forms. See Demo %1s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/contact-form-7-multi-step-forms/" target="_blank">Example</a>'
                     )
@@ -80,11 +81,13 @@ class UACF7_MULTISTEP {
 					'id'      => 'multistep_form_docs',
 					'type'    => 'notice',
 					'style'   => 'success',
-					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
+                    'content' => sprintf( 
+                        /* Translators: %1$s is a placeholder for the first link, %2$s is a placeholder for the second link. */
+                        __( 'Confused? Check our Documentation on %1$s and %2$s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">Multi-step Form</a>',
                         '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-multi-step-form-pro/" target="_blank">Multi-step Form (Pro)</a>'
                     )
+                    
 				),
 				'uacf7_multistep_is_multistep' => array(
 					'id'        => 'uacf7_multistep_is_multistep',
@@ -643,6 +646,7 @@ class UACF7_MULTISTEP {
                 </div>
                 <div class="uacf7-doc-notice">
                      <?php echo sprintf( 
+                        /* Translators: %s is a placeholder for the username. */
                         __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">documentation</a>'
                     ); ?> 
@@ -712,10 +716,15 @@ class UACF7_MULTISTEP {
                 $step_count = 1;
                 foreach( $all_steps as $step ) { 
 
-                    $fields['uacf7_multistep_step_'.$step_count.''] = array(
-                        'id'    => 'uacf7_multistep_step_'.$step_count.'',
-                        'type'  => 'heading',
-                        'label' => __( 'Step '.$step_count.'', 'ultimate-addons-cf7' ), 
+                    /* Translators: %d is a placeholder for the step number. */
+                    $label_text = sprintf( __( 'Step %d', 'ultimate-addons-cf7' ), $step_count );
+
+
+                    // Concatenate the string outside of the translation function
+                    $fields['uacf7_multistep_step_' . $step_count] = array(
+                        'id'     => 'uacf7_multistep_step_' . $step_count,
+                        'type'   => 'heading',
+                        'label'  =>  $label_text, 
                         'is_pro' => true,
                     );
 

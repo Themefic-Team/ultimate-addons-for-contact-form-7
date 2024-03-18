@@ -70,6 +70,7 @@ class ULTIMATE_MATERIAL_DESIGN {
                     'label'   => __( 'Material Design Settings', 'ultimate-addons-cf7' ),
                     'title'   => __( 'This feature will help you to design your form Beautifully', 'ultimate-addons-cf7' ),
                     'content' => sprintf( 
+                        /* Translators: %s is a placeholder for the step number. */
                         __( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/material-design-for-contact-form-7/" target="_blank">Material Design for Contact Form 7</a>',
                        

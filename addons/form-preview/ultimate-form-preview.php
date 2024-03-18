@@ -31,6 +31,7 @@
                         'type'  => 'heading', 
                         'label' => __( 'Form Preview', 'ultimate-addons-cf7' ),
                         'subtitle' => sprintf(
+                            /* Translators: %s is a placeholder for the step number. */
                             __( 'Allow you to preview the form before Submission. See Demo %1s.', 'ultimate-addons-cf7' ),
                              '<a href="https://cf7addons.com/preview/form-submit-later-and-continue/" target="_blank" rel="noopener">Example</a>'
                                       )
@@ -39,7 +40,8 @@
                             'id'      => 'submit-form-preview-docs',
                             'type'    => 'notice',
                             'style'   => 'success',
-                            'content' => sprintf( 
+                            'content' => sprintf(
+                                /* Translators: %s is a placeholder for the step number. */ 
                                 __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                                 '<a href="https://themefic.com/docs/uacf7/free-addons/submit-form-later-and-continue/" target="_blank" rel="noopener">Submit Later</a>'
                             )
@@ -59,14 +61,15 @@
                     'default' => 'Form Preview'
                     ),
          
-                   'uacf7_form_preview_button_layout' => array(
-                    'id'    => 'uacf7_form_preview_button_layout',
-                    'type'               => 'heading',
-                    'label'              => __( 'Preview Button Layout', 'ultimate-addons-cf7' ),
-                    'subtitle'              => 'Copy the code and paste anywhere of Form. Please Note: The button ID  can not be changed. You can change the button text. ',
-                    'description'     => __( '<button class="ucaf7-form-preview-layout">Copy Layout</button>', 'ultimate-addons-cf7' ),
-                    'class' => 'uacf7-form-preview-layout'
+                    'uacf7_form_preview_button_layout' => array(
+                        'id'          => 'uacf7_form_preview_button_layout',
+                        'type'        => 'heading',
+                        'label'       => __( 'Preview Button Layout', 'ultimate-addons-cf7' ),
+                        'subtitle'    => __( 'Copy the code and paste anywhere of Form. Please Note: The button ID can not be changed. You can change the button text.', 'ultimate-addons-cf7' ),
+                        'description' => '<button class="ucaf7-form-preview-layout">' . __( 'Copy Layout', 'ultimate-addons-cf7' ) . '</button>',
+                        'class'       => 'uacf7-form-preview-layout'
                     ),
+                    
                     'uacf7_form_preview_label_placeholder' => array(
                         'id' => 'uacf7_form_preview_label_placeholder',
                         'type' => 'repeater',

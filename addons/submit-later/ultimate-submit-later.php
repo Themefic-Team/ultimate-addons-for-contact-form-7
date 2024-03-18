@@ -52,6 +52,7 @@
                         'type'  => 'heading', 
                         'label' => __( 'Form Submit Later', 'ultimate-addons-cf7' ),
                         'subtitle' => sprintf(
+                            /* Translators: %s is a placeholder for the step number. */
                             __( 'Allow your visitor to submit form later, If want to postpone the submission for the time being. It will keep save the filled data to the form. See Demo %1s.', 'ultimate-addons-cf7' ),
                              '<a href="https://cf7addons.com/preview/form-submit-later-and-continue/" target="_blank" rel="noopener">Example</a>'
                                       )
@@ -61,6 +62,7 @@
                             'type'    => 'notice',
                             'style'   => 'success',
                             'content' => sprintf( 
+                                /* Translators: %s is a placeholder for the step number. */ 
                                 __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                                 '<a href="https://themefic.com/docs/uacf7/free-addons/submit-form-later-and-continue/" target="_blank" rel="noopener">Submit Later</a>'
                             )
