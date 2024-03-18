@@ -355,7 +355,7 @@ function uacf7_add_wrapper_to_cf7_form( $properties, $cfform ) {
 
 		$form = $properties['form'];
 		ob_start();
-		echo '<div class="uacf7-form-' . esc_attr($cfform->id()) . '">' . wp_kses_post( $form ) . '</div>';
+		echo '<div class="uacf7-form-' . esc_attr($cfform->id()) . '">' . wp_kses( $form, uacf7_custom_wp_kses_allow_tags() ) . '</div>';
 		$properties['form'] = ob_get_clean();
 
 	}

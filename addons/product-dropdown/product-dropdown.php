@@ -296,7 +296,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         /*
                         * Tag generator field after field type
                         */
-                        echo wp_kses_post(apply_filters('uacf7_tag_generator_multiple_select_field', $multiple_attr));
+                        echo wp_kses(apply_filters('uacf7_tag_generator_multiple_select_field', $multiple_attr), uacf7_custom_wp_kses_allow_tags());
                         ?>
                         
                         <?php ob_start(); ?>
@@ -312,7 +312,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         /*
                         * Tag generator field after field type
                         */
-                        echo wp_kses_post( apply_filters('uacf7_tag_generator_display_price_field', $display_price) );
+                        echo wp_kses( apply_filters('uacf7_tag_generator_display_price_field', $display_price), uacf7_custom_wp_kses_allow_tags() );
                         ?>
                         
                         <tr>
@@ -335,7 +335,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         <tr class="uacf7-spacer"></tr>
                         <?php 
                         $product_by = ob_get_clean();
-                        echo wp_kses_post( apply_filters('uacf7_tag_generator_product_by_field',$product_by) );
+                        echo wp_kses( apply_filters('uacf7_tag_generator_product_by_field',$product_by), uacf7_custom_wp_kses_allow_tags() );
                         ?>
 
                         <?php ob_start(); ?>
@@ -352,7 +352,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         <tr class="uacf7-spacer"></tr>
                         <?php
                         $order_by = ob_get_clean();
-                       echo wp_kses_post( apply_filters('uacf7_tag_generator_order_by_field', $order_by) ) ;
+                       echo wp_kses( apply_filters('uacf7_tag_generator_order_by_field', $order_by), uacf7_custom_wp_kses_allow_tags() ) ;
                         ?>
                        
                         <?php ob_start(); ?>
@@ -367,7 +367,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         /*
                         * Tag generator field after name attribute.
                         */
-                        echo wp_kses_post( apply_filters('uacf7_tag_generator_product_id_field',$product_id_html) );
+                        echo wp_kses( apply_filters('uacf7_tag_generator_product_id_field',$product_id_html), uacf7_custom_wp_kses_allow_tags() );
                         ?>
                         
                         <?php ob_start(); ?>
@@ -406,7 +406,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         /*
                         * Tag generator field after name attribute.
                         */
-                        echo wp_kses_post( apply_filters('uacf7_tag_generator_product_category_field',$product_dropdown_html) );
+                        echo wp_kses( apply_filters('uacf7_tag_generator_product_category_field',$product_dropdown_html), uacf7_custom_wp_kses_allow_tags()  );
                        ?>
 
                         <?php ob_start(); ?>
@@ -445,7 +445,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         /*
                         * Tag generator field after name attribute.
                         */
-                        echo wp_kses_post( apply_filters('uacf7_tag_generator_product_tag_field',$product_tag_html) );
+                        echo wp_kses( apply_filters('uacf7_tag_generator_product_tag_field',$product_tag_html), uacf7_custom_wp_kses_allow_tags()  );
                        ?>
 
                         <?php ob_start(); ?>
@@ -466,7 +466,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         
                         $select_layout_style = ob_get_clean();
 
-                        echo wp_kses_post( apply_filters('uacf7_tag_generator_product_layout_style_by_field', $select_layout_style) );
+                        echo wp_kses( apply_filters('uacf7_tag_generator_product_layout_style_by_field', $select_layout_style), uacf7_custom_wp_kses_allow_tags()  );
                         ?>
 
                         <tr>

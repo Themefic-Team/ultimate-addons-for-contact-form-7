@@ -106,7 +106,7 @@ class UACF7_MAILCHIMP
               'id'        => 'uacf7_mailchimp_form_type',
               'type'      => 'radio',
               'label'     => __( 'Type of Form', 'ultimate-addons-cf7' ),
-              'field_width' => '50',
+              'field_width' => '100',
               'options' => array(
                 'subscribe' => 'Subscription Form',
                 // 'unsubscribe' => 'Unsubscribe Form',
@@ -118,7 +118,7 @@ class UACF7_MAILCHIMP
               'id'        => 'uacf7_mailchimp_audience',
               'type'      => 'select',
               'label'     => __( ' Select Mailchimp Audience ', 'ultimate-addons-cf7' ),
-              'field_width' => '25',
+              'field_width' => '50',
               'options' => $audience,
             ),
             'uacf7_mailchimp_subscriber_email' => array(
@@ -130,7 +130,7 @@ class UACF7_MAILCHIMP
                 'specific'      => 'email', 
               ), 
               'options'   => 'uacf7',
-              'field_width' => '25'
+              'field_width' => '50'
             ),
             'uacf7_mailchimp_subscriber_fname' => array(
               'id'        => 'uacf7_mailchimp_subscriber_fname',
@@ -141,7 +141,7 @@ class UACF7_MAILCHIMP
                 'specific'      => 'text', 
               ), 
               'options'   => 'uacf7',
-              'field_width' => '25'
+              'field_width' => '50'
           ),
             'uacf7_mailchimp_subscriber_lname' => array(
               'id'        => 'uacf7_mailchimp_subscriber_lname',
@@ -152,7 +152,7 @@ class UACF7_MAILCHIMP
                 'specific'      => 'text', 
               ), 
               'options'   => 'uacf7',
-              'field_width' => '25'
+              'field_width' => '50'
           ),
           // 'uacf7_mailchimp_custom_field_heading' => array(
           //   'id'        => 'uacf7_mailchimp_custom_field_heading',
@@ -258,6 +258,9 @@ class UACF7_MAILCHIMP
   /* Mailchimp config set */
   private function set_config($api_key = '', $path = '')
   {
+    if ($api_key == '') {
+      return;
+    }
     $server_prefix = explode("-",$api_key);
     $server_prefix = $server_prefix[1];
 

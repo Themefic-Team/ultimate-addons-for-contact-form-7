@@ -331,7 +331,7 @@ class UACF7_range_Slider {
                        
                     <?php 
                         $range_style = ob_get_clean();
-                        echo wp_kses_post( apply_filters( 'uacf7_range_slider_style_field', $range_style ) );
+                        echo wp_kses( apply_filters( 'uacf7_range_slider_style_field', $range_style ), uacf7_custom_wp_kses_allow_tags()  );
                     ?>
                     <tr>
                         <th scope="row"><label for="tag-generator-panel-text-min"><?php echo esc_html__( 'Minimum range', 'ultimate-addons-cf7' ); ?></label></th>
@@ -451,7 +451,7 @@ class UACF7_range_Slider {
 
             <?php
 
-            echo '<div class="uacf7-form-' . esc_attr($cf->id()) . '">' .wp_kses_post( $form ). '</div>';
+            echo '<div class="uacf7-form-' . esc_attr($cf->id()) . '">' .wp_kses( $form, uacf7_custom_wp_kses_allow_tags() ). '</div>';
             $properties['form'] = ob_get_clean();
 
         }
