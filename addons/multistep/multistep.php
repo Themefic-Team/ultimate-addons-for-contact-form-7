@@ -646,7 +646,7 @@ class UACF7_MULTISTEP {
                 </div>
                 <div class="uacf7-doc-notice">
                      <?php echo sprintf( 
-                        /* Translators: %s is a placeholder for the username. */
+                        /*Translators: %s is a placeholder for the username. */
                         __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">documentation</a>'
                     ); ?> 
@@ -716,17 +716,15 @@ class UACF7_MULTISTEP {
                 $step_count = 1;
                 foreach( $all_steps as $step ) { 
 
-                    /* Translators: %d is a placeholder for the step number. */
-                    $label_text = sprintf( __( 'Step %d', 'ultimate-addons-cf7' ), $step_count );
+                // Concatenate the string outside of the translation function
+                $fields['uacf7_multistep_step_' . $step_count] = array(
+                    'id'     => 'uacf7_multistep_step_' . $step_count,
+                    'type'   => 'heading',
+                    'label'  => __( 'Step ' . $step_count, 'ultimate-addons-cf7' ), // Concatenate the string directly within __()
+                    'is_pro' => true,
+                );
+                
 
-
-                    // Concatenate the string outside of the translation function
-                    $fields['uacf7_multistep_step_' . $step_count] = array(
-                        'id'     => 'uacf7_multistep_step_' . $step_count,
-                        'type'   => 'heading',
-                        'label'  =>  $label_text, 
-                        'is_pro' => true,
-                    );
 
                     $fields['uacf7_progressbar_icon_free_'.$step->name.''] = array(
                         'id'        => 'uacf7_progressbar_icon_free_'.$step->name.'',

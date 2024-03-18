@@ -109,7 +109,6 @@
         public function uacf7_spam_protection_validation_filter($result, $tag){
 
 
-        
             $name = $tag->name;
 
             if ( isset( $_POST[$name] )
@@ -153,18 +152,19 @@
                     <table class="form-table">
                     <tbody>
                             <div class="uacf7-doc-notice"> 
-                                <?php echo sprintf( 
+                            <?php echo sprintf( 
                                     /* Translators: %s is a placeholder for the step number. */
-                                    __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
-                                    '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection/" target="_blank">documentation</a>'
-                                ); ?> 
+                                    esc_html( __( 'Not sure how to set this? Check our step by step %1s.', 'ultimate-addons-cf7' ) ),
+                                    '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection/" target="_blank">' . esc_html__( 'documentation', 'ultimate-addons-cf7' ) . '</a>'
+                                ); ?>
+
                             </div>
                             <tr>
-                            <th scope="row"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></th>
+                            <th scope="row"><?php esc_html_e( 'Field Type', 'ultimate-addons-cf7' );?></th>
                                 <td>
                                     <fieldset>
-                                        <legend class="screen-reader-text"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></legend>
-                                        <label><input type="checkbox" name="required" value="on"><?php _e( 'Required Field', 'ultimate-addons-cf7' );?></label>
+                                        <legend class="screen-reader-text"><?php esc_html_e( 'Field Type', 'ultimate-addons-cf7' );?></legend>
+                                        <label><input type="checkbox" name="required" value="on"><?php esc_html_e( 'Required Field', 'ultimate-addons-cf7' );?></label>
                                     </fieldset>
                                 </td>
                             </tr> 
@@ -225,14 +225,24 @@
             $atts = array();
 
           
+            // $ip = $_SERVER['REMOTE_ADDR'];
+		    // $addr = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
             $ip = $_SERVER['REMOTE_ADDR'];
-		    $addr = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+            $api_url = 'http://ip-api.com/php/' . $ip;
 
-            $atts['iso2']              = isset($addr['countryCode']);
-            $atts['class']             = $tag->get_class_option($class);
-            $atts['class']             = 'uacf7_spam_protection';
-            $atts['protection-method'] = $uacf7_spam_protection['uacf7_spam_protection_type'];
-            $atts['id']                = $tag->get_id_option();
+            $response = wp_remote_get( $api_url );
+
+            if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
+                $body = wp_remote_retrieve_body( $response );
+                $addr = @unserialize( $body );
+        
+                $atts['iso2']              = isset($addr['countryCode']);
+                $atts['class']             = $tag->get_class_option($class);
+                $atts['class']             = 'uacf7_spam_protection';
+                $atts['protection-method'] = $uacf7_spam_protection['uacf7_spam_protection_type'];
+                $atts['id']                = $tag->get_id_option();
+            }
+
 
 
 
@@ -265,7 +275,7 @@
         
             ?> 
                 <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name);  ?>" >
-                    <div class="uacf7_spam_recognation" <?php echo ($atts);  ?>>
+                    <div class="uacf7_spam_recognation" <?php echo esc_attr($atts);  ?>>
                         <?php if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'arithmathic_recognation'){ ?>
                             <div id="arithmathic_recognation">
          
