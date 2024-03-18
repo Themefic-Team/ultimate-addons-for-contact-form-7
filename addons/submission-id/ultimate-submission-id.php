@@ -171,12 +171,10 @@ public function uacf7_submission_id_insert_callback( $uacf7_db_id, $form_id, $in
             global $wpdb;  
             $table_name = $wpdb->prefix.'uacf7_form';
             $id = $uacf7_db_id;   
-   
-            /// Prepare the SQL query with placeholders
-            $sql = $wpdb->prepare("UPDATE $table_name SET submission_id= %s WHERE id= %s", $submission_value, $id ); 
+    
             
             // Execute the prepared query
-            $wpdb->query( $sql );  
+            $wpdb->query( $wpdb->prepare("UPDATE {$wpdb->prefix}uacf7_form SET submission_id= %s WHERE id= %s", $submission_value, $id ) );  
         }  
     }
     
