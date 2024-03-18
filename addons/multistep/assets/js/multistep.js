@@ -102,8 +102,7 @@ jQuery(document).ready(function () {
                     fields_to_check_serialized += "&" + jQuery(this).attr('name') + "_size=" + file_size; 
                 }
             });
-        }
-        // console.log( console.log(fields_to_check_serialized))
+        } 
         
         var validation_fields = []; 
         for (let i = 0; i < uacf7_current_step_fields.length; i++) {
