@@ -68,8 +68,15 @@
           id: id,
         },
         success: function (data) {
-          $("#db_view_wrap").html(data);
           $(".uacf7_popup_preview").fadeIn(0);
+          $("#db_view_wrap").html(data.rawData);
+
+          // Update the image source dynamically
+          $('.signature_view_pops_img').attr('src', data.srcAttribute);
+
+          // Update the download button link dynamically
+          $('.signature_bownload_btn').attr('href', data.srcAttribute).attr('download', data.fileNameWithoutExtension);
+
           $this.html('View');
           $this.closest('tr').removeClass('unread');
 
