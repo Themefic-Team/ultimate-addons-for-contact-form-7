@@ -212,6 +212,7 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Progressbar Background Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-3' )
                 
                 ),
                 'uacf7_multistep_circle_bg_color' => array(
@@ -229,6 +230,9 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Circle Background Active Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
+                    'dependency'  => array(
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' )
+                    )
                 
                 ),
 
@@ -238,7 +242,10 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Circle Background Hover Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
-                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-2' )
+                    'dependency'  => array(
+                        array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' )
+                    )
                 
                 ),
 
@@ -286,7 +293,10 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Circle Font Hover Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
-                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-2' )
+                    'dependency'  => array(
+                        array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' )
+                    )
                 
                 ),
                 'uacf7_multistep_circle_active_font_color' => array(
@@ -295,7 +305,10 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Circle Active Font Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
-                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-2' )
+                    'dependency'  => array(
+                        array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+                    )
                 
                 ),
                 'uacf7_multistep_progress_line_color' => array(
@@ -316,13 +329,26 @@ class UACF7_MULTISTEP {
                     'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-2' ),
                 
                 ),
+            
+                'uacf7_multistep_progress_step_color_style_3' => array(
+                    'id'       => 'uacf7_multistep_progress_step_color_style_3',
+                    'type'     => 'color',
+                    'label'    => __( 'Circle Step Color', 'ultimate-addons-cf7' ),
+                    'multiple' => false,
+                    'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-3' ),
+                
+                ),
 
                 'uacf7_multistep_circle_border_color' => array(
                     'id'        => 'uacf7_multistep_circle_border_color',
                     'type'      => 'color',
                     'label'     => __( ' Circle Border Color', 'ultimate-addons-cf7' ),   
                     'field_width' => 33,
-                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-2' )
+                    'dependency'  => array(
+                        array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' )
+                    )
                 ),
             
                 'uacf7_multistep_circle_border_color_when_filled' => array(
