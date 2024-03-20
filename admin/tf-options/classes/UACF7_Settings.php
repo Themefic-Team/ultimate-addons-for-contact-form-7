@@ -686,6 +686,22 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										$data = isset( $option_request[ $field['id'] ] ) ? $option_request[ $field['id'] ] : '';
 									}
 								}
+								// if(isset($_FILES) && !empty($_FILES['file'])){
+								// 	$tf_upload_dir = wp_upload_dir();
+								// 	if ( ! empty( $tf_upload_dir['basedir'] ) ) {
+								// 		$tf_itinerary_fonts = $tf_upload_dir['basedir'].'/itinerary-fonts';
+								// 		if ( ! file_exists( $tf_itinerary_fonts ) ) {
+								// 			wp_mkdir_p( $tf_itinerary_fonts );
+								// 		}
+								// 		$tf_fonts_extantions = array('application/octet-stream');
+								// 		for($i = 0; $i < count($_FILES['file']['name']); $i++) {
+								// 			if (in_array($_FILES['file']['type'][$i], $tf_fonts_extantions)) {
+								// 				$tf_font_filename = $_FILES['file']['name'][$i];
+								// 				move_uploaded_file($_FILES['file']['tmp_name'][$i], $tf_itinerary_fonts .'/'. $tf_font_filename);
+								// 			}
+								// 		}
+								// 	}
+								// }
 								if(isset($_FILES) && !empty($_FILES['file'])){
 									$tf_upload_dir = wp_upload_dir();
 									if ( ! empty( $tf_upload_dir['basedir'] ) ) {
@@ -697,7 +713,13 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										for($i = 0; $i < count($_FILES['file']['name']); $i++) {
 											if (in_array($_FILES['file']['type'][$i], $tf_fonts_extantions)) {
 												$tf_font_filename = $_FILES['file']['name'][$i];
-												move_uploaded_file($_FILES['file']['tmp_name'][$i], $tf_itinerary_fonts .'/'. $tf_font_filename);
+												$uploaded_file_tmp = $_FILES['file']['tmp_name'][$i];
+												$destination_path = $tf_itinerary_fonts .'/'. $tf_font_filename;
+												if (copy($uploaded_file_tmp, $destination_path)) {
+													// File copied successfully, you can perform further actions if needed
+												} else {
+													// Handle error if copy operation failed
+												}
 											}
 										}
 									}

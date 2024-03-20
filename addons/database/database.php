@@ -180,7 +180,17 @@ class UACF7_DATABASE {
 	}
 
 	public function encrypt_file( $inputFile, $outputFile, $key ) {
-		$inputData = file_get_contents( $inputFile );
+		// $inputData = file_get_contents( $inputFile );
+
+		$response = wp_remote_get( $inputFile );
+
+		$inputData;
+
+		if ( is_wp_error( $response ) ) {
+			// Handle error.
+		} else {
+			$inputData .= wp_remote_retrieve_body( $response );
+		}
 
 		// Generate an Initialization Vector (IV)
 		$iv = openssl_random_pseudo_bytes( openssl_cipher_iv_length( 'aes-256-cbc' ) );
@@ -192,7 +202,27 @@ class UACF7_DATABASE {
 		$encryptedFileContent = $iv . $encryptedData;
 
 		// Save the encrypted content to the output file
-		file_put_contents( $outputFile, $encryptedFileContent );
+
+		// file_put_contents( $outputFile, $encryptedFileContent );
+
+		// Initialize the WP_Filesystem
+		if ( ! function_exists( 'WP_Filesystem' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/file.php';
+		}
+		WP_Filesystem();
+
+		// Check if WP_Filesystem is initialized
+		global $wp_filesystem;
+		if ( ! is_wp_error( $wp_filesystem ) ) {
+			// Use WP_Filesystem methods to write to a file
+			$result = $wp_filesystem->put_contents( $outputFile, $encryptedFileContent );
+			if ( false === $result ) {
+				// Handle error
+			}
+		} else {
+			// WP_Filesystem initialization failed, handle error
+		}
+
 	}
 
 	public function decrypt_and_display( $inputFile, $key ) {
@@ -202,11 +232,29 @@ class UACF7_DATABASE {
 		}
 
 		// Read the encrypted content
-		$encryptedFileContent = file_get_contents( $inputFile );
+		// $encryptedFileContent = file_get_contents( $inputFile );
 
-		if ( $encryptedFileContent === false ) {
-			die ( "Error: Unable to read file content." );
+		// if ( $encryptedFileContent === false ) {
+		// 	die ( "Error: Unable to read file content." );
+		// }
+
+		$response = wp_remote_get( $inputFile );
+		$encryptedFileContent;
+
+		if ( is_wp_error( $response ) ) {
+			wp_die ( "Error: Unable to read file content." );
+		} else {
+			$response_code = wp_remote_retrieve_response_code( $response );
+			if ( 200 === $response_code ) {
+				$encryptedFileContent .= wp_remote_retrieve_body( $response );
+			} else {
+				wp_die ( "Error: Request Failed." );
+			}
 		}
+
+
+
+
 
 		// Extract IV
 		$ivSize = openssl_cipher_iv_length( 'aes-256-cbc' );
@@ -664,9 +712,17 @@ class uacf7_form_List_Table extends WP_List_Table {
 		$data = [];
 		if ( isset ( $search ) && ! empty ( $search ) ) {
 
+			// $form_data = $wpdb->get_results(
+			// 	$wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d AND form_value LIKE '%$search%' ORDER BY id DESC", $form_id )
+			// );
 			$form_data = $wpdb->get_results(
-				$wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d AND form_value LIKE '%$search%' ORDER BY id DESC", $form_id )
+				$wpdb->prepare( 
+					"SELECT * FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d AND form_value LIKE %s ORDER BY id DESC", 
+					$form_id,
+					'%' . $wpdb->esc_like( $search ) . '%'
+				)
 			);
+			
 		} else {
 			$form_data = $wpdb->get_results(
 				$wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d ORDER BY id DESC", $form_id )

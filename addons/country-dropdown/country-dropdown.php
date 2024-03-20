@@ -116,7 +116,8 @@ class UACF7_COUNTRY_DROPDOWN {
         <?php if($ds_country ){?> 
             <span id="uacf7_country_select" class="wpcf7-form-control-wrap  <?php echo sanitize_html_class( $tag->name ); ?>">
 
-                <?php echo apply_filters( 'uacf7_api_based_country_filter', $api_country, $atts ) ?>
+            <?php echo esc_html( apply_filters( 'uacf7_api_based_country_filter', $api_country, $atts ) ); ?>
+            <?php echo wp_kses( apply_filters( 'uacf7_api_based_country_filter', $api_country, $atts ), uacf7_custom_wp_kses_allow_tags()); ?>
 
             </span>  
         <?php }else{ ?>

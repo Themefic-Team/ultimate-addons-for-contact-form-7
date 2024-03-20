@@ -184,7 +184,16 @@ if(!function_exists('uacf7_custom_wp_kses_allow_tags')){
 if(!function_exists('uacf7_import_export_file_upload')){
     function uacf7_import_export_file_upload($imported_file){
         // Download the image file
-        $qr_logo_image_data = file_get_contents( $imported_file );
+        // $qr_logo_image_data = file_get_contents( $imported_file );
+        $response = wp_remote_get( $imported_file );
+        $qr_logo_image_data;
+
+        if ( is_wp_error( $response ) ) {
+            wp_die('Error: request failed');
+        } else {
+            $qr_logo_image_data .= wp_remote_retrieve_body( $response );
+        }
+
     
         // Create a unique filename for the image
         $qr_logo_filename   = basename( $imported_file );
@@ -192,7 +201,23 @@ if(!function_exists('uacf7_import_export_file_upload')){
         $qr_logo_image_path = $qr_logo_upload_dir['path'] . '/' . $qr_logo_filename;
 
         // Save the image file to the uploads directory
-        file_put_contents( $qr_logo_image_path, $qr_logo_image_data );
+        // file_put_contents( $qr_logo_image_path, $qr_logo_image_data );
+
+        // Initialize the WP_Filesystem
+        if ( ! function_exists( 'WP_Filesystem' ) ) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+        }
+        WP_Filesystem();
+        global $wp_filesystem;
+        if ( ! is_wp_error( $wp_filesystem ) ) {
+            $result = $wp_filesystem->put_contents( $qr_logo_image_path, $qr_logo_image_data );
+            if ( false === $result ) {
+                // Handle error
+            }
+        } else {
+            // WP_Filesystem initialization failed, handle error
+        }
+
         // Check if the image was downloaded successfully.
         if (file_exists($qr_logo_image_path)) {
             // Create the attachment for the uploaded image
