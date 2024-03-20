@@ -70,8 +70,8 @@
                     'uacf7_form_preview_label_placeholder' => array(
                         'id' => 'uacf7_form_preview_label_placeholder',
                         'type' => 'repeater',
-                        'label' => 'Select Pre-Populate Field',
-                        'subtitle'     => __( 'The data inserted on these fields will be forwarded to the other form.', 'ultimate-addons-cf7' ),
+                        'label' => 'Set Front End Label for Form Input Field',
+                        'subtitle'     => __( 'It will help to show a beautiful preview of each field', 'ultimate-addons-cf7' ),
                         'class' => 'tf-field-class',
                         'fields' => array(
                             'field_name' => array(

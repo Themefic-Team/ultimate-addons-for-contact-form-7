@@ -238,6 +238,7 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Circle Background Hover Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-2' )
                 
                 ),
 
@@ -259,6 +260,24 @@ class UACF7_MULTISTEP {
                     'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-8' ),
                 
                 ),
+                'uacf7_multistep_circle_icon_color_style_2' => array(
+                    'id'       => 'uacf7_multistep_circle_icon_color_style_2',
+                    'type'     => 'color',
+                    'label'    => __( 'Circle Icon Color', 'ultimate-addons-cf7' ),
+                    'multiple' => false,
+                    'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-2' ),
+                
+                ),
+                'uacf7_multistep_circle_icon_active_color_style_2' => array(
+                    'id'       => 'uacf7_multistep_circle_icon_active_color_style_2',
+                    'type'     => 'color',
+                    'label'    => __( 'Circle Icon Active Color', 'ultimate-addons-cf7' ),
+                    'multiple' => false,
+                    'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-2' ),
+                
+                ),
 
 
                 'uacf7_multistep_circle_font_hover_color' => array(
@@ -267,6 +286,7 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Circle Font Hover Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-2' )
                 
                 ),
                 'uacf7_multistep_circle_active_font_color' => array(
@@ -275,6 +295,7 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Circle Active Font Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-2' )
                 
                 ),
                 'uacf7_multistep_progress_line_color' => array(
@@ -283,6 +304,16 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Progressbar Line Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+                
+                ),
+                'uacf7_multistep_progress_line_color_style_2' => array(
+                    'id'       => 'uacf7_multistep_progress_line_color_style_2',
+                    'type'     => 'color',
+                    'label'    => __( 'Progressbar Line Color', 'ultimate-addons-cf7' ),
+                    'multiple' => false,
+                    'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-2' ),
                 
                 ),
 
@@ -291,6 +322,7 @@ class UACF7_MULTISTEP {
                     'type'      => 'color',
                     'label'     => __( ' Circle Border Color', 'ultimate-addons-cf7' ),   
                     'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-2' )
                 ),
             
                 'uacf7_multistep_circle_border_color_when_filled' => array(
@@ -767,7 +799,7 @@ class UACF7_MULTISTEP {
                     $fields['uacf7_progressbar_banner_'.$step->name.''] = array(
                         'id'        => 'uacf7_progressbar_banner_'.$step->name.'',
                         'type' => 'image',
-                        'label'     => __( 'Add progressbar Banner for this step', 'ultimate-addons-cf7' ),  
+                        'label'     => __( 'Add progressbar Left Banner for this step', 'ultimate-addons-cf7' ),  
                         'class' => 'tf-field-class', 
                         'multiple' => false,
                         'inline' => true, 
