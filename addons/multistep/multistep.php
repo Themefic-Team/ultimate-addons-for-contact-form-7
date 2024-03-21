@@ -214,7 +214,8 @@ class UACF7_MULTISTEP {
                     'field_width' => 33,
                     'dependency'  => array(
                         array( 'uacf7_progressbar_style', '!=', 'style-3' ),
-                        array( 'uacf7_progressbar_style', '!=', 'style-4' )
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-5' )
                     )
                 
                 ),
@@ -224,6 +225,9 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Circle Background Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
+                    'dependency'  => array(
+                        array( 'uacf7_progressbar_style', '!=', 'style-5' )
+                    )
                 
                 ),
 
@@ -235,7 +239,8 @@ class UACF7_MULTISTEP {
                     'field_width' => 33,
                     'dependency'  => array(
                         array( 'uacf7_progressbar_style', '!=', 'style-3' ),
-                        array( 'uacf7_progressbar_style', '!=', 'style-4' )
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-5' )
                     )
                 
                 ),
@@ -249,7 +254,8 @@ class UACF7_MULTISTEP {
                     'dependency'  => array(
                         array( 'uacf7_progressbar_style', '!=', 'style-2' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-3' ),
-                        array( 'uacf7_progressbar_style', '!=', 'style-4' )
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-5' )
                     )
                 
                 ),
@@ -310,7 +316,8 @@ class UACF7_MULTISTEP {
                     'dependency'  => array(
                         array( 'uacf7_progressbar_style', '!=', 'style-2' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-3' ),
-                        array( 'uacf7_progressbar_style', '!=', 'style-4' )
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-5' )
                     )
                 
                 ),
@@ -324,6 +331,7 @@ class UACF7_MULTISTEP {
                         array( 'uacf7_progressbar_style', '!=', 'style-2' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-3' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-4' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-5' ),
                     )
                 
                 ),
@@ -333,7 +341,10 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Progressbar Line Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
-                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+                    'dependency'  => array(
+                        array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-5' ),
+                    ),
                 
                 ),
                 'uacf7_multistep_progress_line_color_style_2' => array(
