@@ -212,7 +212,10 @@ class UACF7_MULTISTEP {
                     'label'    => __( 'Progressbar Background Color', 'ultimate-addons-cf7' ),
                     'multiple' => false,
                     'field_width' => 33,
-                    'dependency'  => array( 'uacf7_progressbar_style', '!=', 'style-3' )
+                    'dependency'  => array(
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' )
+                    )
                 
                 ),
                 'uacf7_multistep_circle_bg_color' => array(
@@ -231,7 +234,8 @@ class UACF7_MULTISTEP {
                     'multiple' => false,
                     'field_width' => 33,
                     'dependency'  => array(
-                        array( 'uacf7_progressbar_style', '!=', 'style-3' )
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' )
                     )
                 
                 ),
@@ -244,7 +248,8 @@ class UACF7_MULTISTEP {
                     'field_width' => 33,
                     'dependency'  => array(
                         array( 'uacf7_progressbar_style', '!=', 'style-2' ),
-                        array( 'uacf7_progressbar_style', '!=', 'style-3' )
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' )
                     )
                 
                 ),
@@ -276,6 +281,15 @@ class UACF7_MULTISTEP {
                     'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-2' ),
                 
                 ),
+                'uacf7_multistep_circle_icon_color_style_4' => array(
+                    'id'       => 'uacf7_multistep_circle_icon_color_style_4',
+                    'type'     => 'color',
+                    'label'    => __( 'Circle Icon Color', 'ultimate-addons-cf7' ),
+                    'multiple' => false,
+                    'field_width' => 33,
+                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-4' ),
+                
+                ),
                 'uacf7_multistep_circle_icon_active_color_style_2' => array(
                     'id'       => 'uacf7_multistep_circle_icon_active_color_style_2',
                     'type'     => 'color',
@@ -295,7 +309,8 @@ class UACF7_MULTISTEP {
                     'field_width' => 33,
                     'dependency'  => array(
                         array( 'uacf7_progressbar_style', '!=', 'style-2' ),
-                        array( 'uacf7_progressbar_style', '!=', 'style-3' )
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' )
                     )
                 
                 ),
@@ -308,6 +323,7 @@ class UACF7_MULTISTEP {
                     'dependency'  => array(
                         array( 'uacf7_progressbar_style', '!=', 'style-2' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' ),
                     )
                 
                 ),
@@ -347,7 +363,8 @@ class UACF7_MULTISTEP {
                     'field_width' => 33,
                     'dependency'  => array(
                         array( 'uacf7_progressbar_style', '!=', 'style-2' ),
-                        array( 'uacf7_progressbar_style', '!=', 'style-3' )
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' )
                     )
                 ),
             
