@@ -200,10 +200,25 @@ class UACF7_MULTISTEP {
                    
                     ),
 
+                
+
                 'progressbar_styling' => array(
                     'id'    => 'progressbar_styling',
                     'type'  => 'heading', 
                     'label' => __( 'Progressbar Styles', 'ultimate-addons-cf7' ),
+                ),
+
+                'uacf7_multistep_skin_11_margin_top' => array(
+                    'id'       => 'uacf7_multistep_skin_11_margin_top',
+                    'type'     => 'number',
+                    'label'    => __( 'Margin Top (From Progressbar Lavel)', 'ultimate-addons-cf7' ),
+                    'description' => __( ' E.g. 206 (Do not add px or em ). Use 1 to match the lavel', 'ultimate-addons-cf7' ),
+                    'field_width' => 100,
+                    'default' => 206,
+                    'dependency'  => array(
+                        array( 'uacf7_progressbar_style', '==', 'style-11' )
+                    )
+                
                 ),
 
                 'uacf7_multistep_progress_bg_color' => array(
