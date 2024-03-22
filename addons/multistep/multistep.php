@@ -231,8 +231,8 @@ class UACF7_MULTISTEP {
                         array( 'uacf7_progressbar_style', '!=', 'style-3' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-4' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-5' ),
-                        array( 'uacf7_progressbar_style', '!=', 'style-6' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-8' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-9' ),
                     )
                 
                 ),
@@ -243,7 +243,9 @@ class UACF7_MULTISTEP {
                     'multiple' => false,
                     'field_width' => 33,
                     'dependency'  => array(
-                        array( 'uacf7_progressbar_style', '!=', 'style-5' )
+                        array( 'uacf7_progressbar_style', '!=', 'style-5' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-8' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-10' ),
                     )
                 
                 ),
@@ -275,6 +277,9 @@ class UACF7_MULTISTEP {
                         array( 'uacf7_progressbar_style', '!=', 'style-5' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-6' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-8' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-9' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-10' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-11' ),
                     )
                 
                 ),
@@ -358,6 +363,9 @@ class UACF7_MULTISTEP {
                         array( 'uacf7_progressbar_style', '!=', 'style-5' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-6' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-8' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-9' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-10' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-11' ),
                     )
                 
                 ),
@@ -385,6 +393,8 @@ class UACF7_MULTISTEP {
                     'dependency'  => array(
                         array( 'uacf7_progressbar_style', '!=', 'style-2' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-5' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-9' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-10' ),
                     ),
                 
                 ),
@@ -419,6 +429,8 @@ class UACF7_MULTISTEP {
                         array( 'uacf7_progressbar_style', '!=', 'style-4' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-6' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-8' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-10' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-11' ),
                     )
                 ),
             
@@ -529,16 +541,16 @@ class UACF7_MULTISTEP {
                     'field_width' => 33,
                     'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-8' ),
                 ),
-                'uacf7_multistep_circel_bg_color_when_filled' => array(
-                    'id'          => 'uacf7_multistep_circel_bg_color_when_filled',
+                'uacf7_multistep_circel_bg_color_when_filled_style_8' => array(
+                    'id'          => 'uacf7_multistep_circel_bg_color_when_filled_style_8',
                     'type'        => 'color',
                     'label'       => __( ' Circle Background Filled Color', 'ultimate-addons-cf7' ),
                     'field_width' => 33,
                     'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-8' ),
                   
                 ),
-                'uacf7_multistep_circel_bg_color_when_filled' => array(
-                    'id'          => 'uacf7_multistep_circel_bg_color_when_filled',
+                'uacf7_multistep_circel_bg_color_when_filled_style_9' => array(
+                    'id'          => 'uacf7_multistep_circel_bg_color_when_filled_style_9',
                     'type'        => 'color',
                     'label'       => __( ' Circle Background Filled Color', 'ultimate-addons-cf7' ),
                     'field_width' => 33,
