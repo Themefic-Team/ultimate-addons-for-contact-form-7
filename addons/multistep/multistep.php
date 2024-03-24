@@ -69,21 +69,23 @@ class UACF7_MULTISTEP {
 					'type'  => 'heading', 
 					'label' => __( 'Multi-step Form Settings', 'ultimate-addons-cf7' ),
 					'subtitle' => sprintf(
-                        /* Translators: %1$s is a placeholder for the link to the example. */
-                        __( 'Create stunning multi-step forms with Contact Form 7. Ideal solution for long forms. See Demo %1s.', 'ultimate-addons-cf7' ),
-                         '<a href="https://cf7addons.com/preview/contact-form-7-multi-step-forms/" target="_blank">Example</a>'
+                        // translators: %1$s is a placeholder for the link to the demo.
+                        __( 'Create stunning multi-step forms with Contact Form 7. Ideal solution for long forms. See Demo %1$s.', 'ultimate-addons-cf7' ),
+                        '<a href="https://cf7addons.com/preview/contact-form-7-multi-step-forms/" target="_blank">Example</a>'
                     )
+                    
 				),
                 'multistep_form_docs' => array(
 					'id'      => 'multistep_form_docs',
 					'type'    => 'notice',
 					'style'   => 'success',
-                    'content' => sprintf(
-                    /* Translators: %1$s is a placeholder for the link to the documentation on Multi-step Form, %2$s is a placeholder for the link to the documentation on Multi-step Form (Pro).*/
-                    __( 'Confused? Check our Documentation on %1$s and %2$s.', 'ultimate-addons-cf7' ),
-                    '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">Multi-step Form</a>',
-                    '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-multi-step-form-pro/" target="_blank">Multi-step Form (Pro)</a>'
+                    'content' => sprintf( 
+                        // translators: %1$s is a placeholder for the link to the free multi-step form documentation, and %2$s is a placeholder for the link to the pro multi-step form documentation.
+                        __( 'Confused? Check our Documentation on %1$s and %2$s.', 'ultimate-addons-cf7' ),
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">Multi-step Form</a>',
+                        '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-multi-step-form-pro/" target="_blank">Multi-step Form (Pro)</a>'
                     )
+                    
                     
 				),
 				'uacf7_multistep_is_multistep' => array(
@@ -359,7 +361,7 @@ class UACF7_MULTISTEP {
 					if(is_array($step_name)) {
 						do_action( 'uacf7_progressbar_image', $step_name[$step_count], $form_current->id() );
 					}
-					echo esc_html( apply_filters( 'uacf7_progressbar_step', esc_attr( $step_id ), $uacf7_multistep_use_step_labels, $content )); ?></a><p><?php if( $uacf7_multistep_use_step_labels != 'on' ) { echo esc_html($content); } ?></p></div>
+					echo wp_kses( apply_filters( 'uacf7_api_based_country_filter', esc_attr($step_id), $uacf7_multistep_use_step_labels, $content ), uacf7_custom_wp_kses_allow_tags()); ?>?></a><p><?php if( $uacf7_multistep_use_step_labels != 'on' ) { echo esc_attr($content); } ?></p></div>
 					<?php
 					$step_id++;
 					$step_count++;
@@ -420,11 +422,12 @@ class UACF7_MULTISTEP {
                     
                 </div>
                 <div class="uacf7-doc-notice">
-                     <?php echo sprintf(
-                        /* Translators: %1$s is a placeholder for the link to the example. */
-                        esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">Multi-step Form</a>'
-                    ); ?> 
+                <?php echo sprintf( 
+                    // translators: %1$s is a placeholder for the link to the documentation.
+                    __( 'Confused? Check our Documentation on %1s.', 'ultimate-addons-cf7' ),
+                    '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">Multi-step Form</a>'
+                ); ?>
+
                 </div>
             </fieldset>
         </div>
@@ -494,10 +497,11 @@ class UACF7_MULTISTEP {
                     $fields['uacf7_multistep_step_'.$step_count.''] = array(
                         'id'    => 'uacf7_multistep_step_'.$step_count.'',
                         'type'  => 'heading',
-                        /* Translators: %1$s is a placeholder for the link to the example. */
-                        'label' => sprintf( __( 'Step %d', 'ultimate-addons-cf7' ), $step_count ),
+                        // translators: %d is a placeholder for the step count.
+                        'label' => sprintf( __( 'Step %d', 'ultimate-addons-cf7' ), $step_count ), 
                         'is_pro' => true,
-                    );                    
+                    );
+
                     
                     $fields['uacf7_progressbar_image_'.$step->name.''] = array(
                         'id'        => 'uacf7_progressbar_image_'.$step->name.'',
@@ -613,7 +617,7 @@ class UACF7_MULTISTEP {
                     $padding_right = ''; 
                 }
                 $next_prev_style = '<style>.uacf7-prev, .uacf7-next, .wpcf7-submit{'.$padding_top.' '.$padding_bottom.' '.$padding_left.' '.$padding_right.'}  </style>';
-                echo wp_kses($next_prev_style, uacf7_custom_wp_kses_allow_tags()); 
+                echo $next_prev_style;
 
 
                 if(!empty($all_steps)):
@@ -676,7 +680,7 @@ class UACF7_MULTISTEP {
                                     }
                                     if( $uacf7_progressbar_style == 'style-1' ){
                                         if( $uacf7_multistep_use_step_labels != true ) {
-                                            echo esc_html($content);
+                                            echo $content;
                                         }else { 
                                             echo esc_attr($step_id);
                                         }
@@ -686,7 +690,7 @@ class UACF7_MULTISTEP {
                                 </a>
                                 <?php 
                                     if( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' ) { 
-                                        echo '<p>'.esc_html($content).'</p>'; 
+                                        echo '<p>'.esc_attr($content).'</p>'; 
                                     } 
                                 ?>
                             </div>
@@ -705,15 +709,15 @@ class UACF7_MULTISTEP {
             
             $progressbar = ob_get_clean();
 			ob_start();
-            echo wp_kses( apply_filters( 'uacf7_progressbar_html', $progressbar, $form, $cfform->id(), $all_steps ), uacf7_custom_wp_kses_allow_tags() );
+			echo apply_filters( 'uacf7_progressbar_html', $progressbar, $form, $cfform->id(), $all_steps );
 			ob_start();
 			?>
 			<div class="uacf7-multisetp-form">
-				<?php echo wp_kses($form, uacf7_custom_wp_kses_allow_tags()); ?>
+				<?php echo $form; ?>
 			</div>
 			<?php
 			$form_html = ob_get_clean();
-			echo wp_kses(apply_filters( 'uacf7_form_html', $form_html ), uacf7_custom_wp_kses_allow_tags());
+			echo apply_filters( 'uacf7_form_html', $form_html );
 			$multistep_form = ob_get_clean();
             $properties['form'] = $multistep_form;
             }else {

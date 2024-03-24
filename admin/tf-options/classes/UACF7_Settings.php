@@ -276,9 +276,23 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								//  Short as Alphabetically
 								usort($fields, array($this, 'uacf7_setup_wizard_sorting'));
 								foreach ($fields as $field_key => $field ):
-									$id = $this->option_id.'['.$field['id'].']';
+									$id = $this->option_id;
+									if ( isset( $field['id'] ) ) {
+										$id .= '[' . $field['id'] . ']';
+									} else {
+										// Handle case where 'id' key is missing
+										// For example, provide a default value or error handling
+										$id .= '[undefined]';
+									}
+
 							?>
-								<div class="uacf7-single-addon-setting uacf7-fields-<?php echo esc_attr($field['id']) ?>" data-parent="<?php echo esc_attr($section_key) ?>" data-filter="<?php echo esc_html( strtolower($field['label']) ) ?>">
+								<div class="uacf7-single-addon-setting uacf7-fields-<?php echo isset($field['id']) ? esc_attr($field['id']) : ''; ?>" 
+									data-parent="<?php echo esc_attr($section_key) ?>" 
+									<?php if (isset($field['label'])) : ?>
+									data-filter="<?php echo esc_html(strtolower($field['label'])) ?>"
+								<?php endif; ?>>
+
+
 								<?php 
 									$label_class = '';
 									if(isset($field['is_pro'])){
@@ -289,9 +303,23 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 									}
 									$child = isset($field['child_field']) ? $field['child_field'] : '';
 									$is_pro = isset($field['is_pro']) ? 'pro' : '';
-									$default = $field['default'] == true ? 'checked' : '';
-									$default = isset($data[$field['id']]) && $data[$field['id']] == 1  ? 'checked' : $default;
-									$value = isset($data[$field['id']]) ? $data[$field['id']] : 0;
+				
+									$default = '';
+									if (isset($field['default'])) {
+										$default = $field['default'] ? 'checked' : '';
+									}
+
+									$default = $default; 
+
+									if (isset($field['id'])) {
+										$default = isset($data[$field['id']]) && $data[$field['id']] == 1 ? 'checked' : $default;
+									}
+
+									$value = 0; 
+									if (isset($field['id']) && isset($data[$field['id']])) {
+										$value = $data[$field['id']];
+									}
+
 									$demo_link = isset($field['demo_link']) ? $field['demo_link'] : '#';
 									$documentation_link = isset($field['documentation_link']) ? $field['documentation_link'] : '#';
 
@@ -301,7 +329,15 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										<?php if(isset($field['image_url']) && !empty($field['image_url'])): ?>
 											<img src="<?php echo esc_url($field['image_url']); ?>" alt="">
 										<?php endif; ?>
-										<h2 class="uacf7-single-addon-title"><?php echo esc_html( $field['label'] ) ?></h2>
+									
+										<h2 class="uacf7-single-addon-title">
+											<?php
+											if ( isset( $field['label'] ) ) {
+												echo esc_html( $field['label'] );
+											}
+											?>
+										</h2>
+
 										<p class="uacf7-single-addon-desc"><?php echo isset($field['subtitle']) ?  esc_html($field['subtitle']) : '';  ?> 
 										<?php echo '<a href="'.esc_url($documentation_link).'" target="_blank">'.esc_html(__( 'Documentation', 'ultimate-addons-cf7' )) .'</a>' ?></p>
 										
@@ -339,9 +375,15 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 		// Custom comparison function based on 'label' value
 		public function uacf7_setup_wizard_sorting($a, $b) {
-			$labelA = $a['label'][0];
-    		$labelB = $b['label'][0];
-			return strcmp($labelA, $labelB);
+			if (isset($a['label'][0], $b['label'][0])) {
+				$labelA = $a['label'][0];
+				$labelB = $b['label'][0];
+				return strcmp($labelA, $labelB);
+			} else {
+				// Handle case where 'label' key is missing or null in one of the arrays
+				// For example, you could compare based on another key or provide a default sorting behavior
+				return 0; // No preference, or you could use another sorting method
+			}
 		}
 
 		/**
