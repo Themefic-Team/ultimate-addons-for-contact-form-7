@@ -20,7 +20,7 @@ class UACF7_SIGNATURE{
 
         add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_signature'), 30, 2 ); 
 
-        //  add_filter( 'wpcf7_load_js', '__return_false' );
+        // add_filter( 'wpcf7_load_js', '__return_false' );
     }
 
     /** Loading Scripts */

@@ -15,7 +15,7 @@ class UACF7_PDF_GENERATOR {
         
         add_action( 'admin_enqueue_scripts', array($this, 'wp_enqueue_admin_script' ) );
         add_filter( 'wpcf7_mail_components', array( $this, 'uacf7_wpcf7_mail_components' ), 10, 3 );    
-        add_filter( 'wpcf7_load_js', '__return_false' );
+        // add_filter( 'wpcf7_load_js', '__return_false' );
         add_action( 'wp_ajax_uacf7_get_generated_pdf', array( $this, 'uacf7_get_generated_pdf' ) );  
         add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_pdf_generator'), 18, 2 );  
         add_filter( 'uacf7_post_meta_import_export', array($this, 'uacf7_post_meta_import_export_pdf_generator'), 18, 2 );  
