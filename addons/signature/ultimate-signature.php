@@ -1,4 +1,4 @@
-array(<?php
+<?php
 
 /** Prevent direct access */
 if (!defined('ABSPATH')) {
