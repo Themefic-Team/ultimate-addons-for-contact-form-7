@@ -4076,7 +4076,7 @@ Select <strong>"Option Two"</strong> or <strong>"Option Three"</strong> to test 
 		break;
 }
 
-ob_clean();
-echo $form;
+ob_clean(); 
+echo wp_kses_post($form);
 return ob_get_clean();
 ?>

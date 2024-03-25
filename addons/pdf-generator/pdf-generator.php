@@ -15,7 +15,7 @@ class UACF7_PDF_GENERATOR {
         
         add_action( 'admin_enqueue_scripts', array($this, 'wp_enqueue_admin_script' ) );
         add_filter( 'wpcf7_mail_components', array( $this, 'uacf7_wpcf7_mail_components' ), 10, 3 );    
-        add_filter( 'wpcf7_load_js', '__return_false' );
+        // add_filter( 'wpcf7_load_js', '__return_false' );
         add_action( 'wp_ajax_uacf7_get_generated_pdf', array( $this, 'uacf7_get_generated_pdf' ) );  
         add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_pdf_generator'), 18, 2 );  
         add_filter( 'uacf7_post_meta_import_export', array($this, 'uacf7_post_meta_import_export_pdf_generator'), 18, 2 );  
@@ -31,7 +31,7 @@ class UACF7_PDF_GENERATOR {
     
     public function wp_enqueue_admin_script() { 
          
-		wp_enqueue_script( 'pdf-generator-admin', UACF7_ADDONS . '/pdf-generator/assets/js/pdf-generator-admin.js', array('jquery'),  true ); 
+		wp_enqueue_script( 'pdf-generator-admin', UACF7_ADDONS . '/pdf-generator/assets/js/pdf-generator-admin.js', array('jquery'), UACF7_VERSION,  true ); 
         $pdf_settings['codeEditor'] = wp_enqueue_code_editor(array('type' => 'text/css'));
         $pdf_settings['ajaxurl'] = admin_url( 'admin-ajax.php' );
         $pdf_settings['nonce'] = wp_create_nonce('uacf7-pdf-generator');
@@ -54,6 +54,7 @@ class UACF7_PDF_GENERATOR {
                 'type'  => 'heading', 
                 'label' => __( 'PDF Generator Settings', 'ultimate-addons-cf7' ),
                 'subtitle' => sprintf(
+                     /* Translators: %1$s is a placeholder for the link to the example. */
                     __( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
                                 )
@@ -63,6 +64,7 @@ class UACF7_PDF_GENERATOR {
                     'type'    => 'notice',
                     'style'   => 'success',
                     'content' => sprintf( 
+                         /* Translators: %1$s is a placeholder for the link to the example. */
                         __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-pdf-generator/" target="_blank" rel="noopener">PDF Generator</a>'
                     )
@@ -461,7 +463,7 @@ class UACF7_PDF_GENERATOR {
                 $extension = strtolower( $pathInfo['extension'] );
 
                 ob_start(); 
-                echo $uacf7_DB->decrypt_and_display( $dir . $value, $encryptionKey );
+                echo esc_html($uacf7_DB->decrypt_and_display( $dir . $value, $encryptionKey ));
                 $decryptedData = ob_get_clean();  
 
                 if ( $decryptedData !== null ) {

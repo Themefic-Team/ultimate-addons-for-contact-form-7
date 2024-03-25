@@ -42,7 +42,8 @@ class UACF7_SUBMISSION_ID{
                     'type'  => 'heading', 
                     'label' => __( 'Unique Submission ID Settings', 'ultimate-addons-cf7' ),
                     'subtitle' => sprintf(
-                        __( 'Add an unique id to every form submission to keep a record of each submission. The ID can be added on the "Subject Line" of your form. See Demo %1s.', 'ultimate-addons-cf7' ),
+                        // translators: %1$s: link to the demo page
+                        esc_html__( 'Add an unique id to every form submission to keep a record of each submission. The ID can be added on the "Subject Line" of your form. See Demo %1$s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/unique-id-for-contact-form-7/" target="_blank" rel="noopener">Example</a>'
                                   )
                       ),
@@ -52,7 +53,8 @@ class UACF7_SUBMISSION_ID{
                         'type'    => 'notice',
                         'style'   => 'success',
                         'content' => sprintf( 
-                            __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                            // translators: %1$s: link to the documentation
+                            esc_html__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-cf7' ),
                             '<a href="https://themefic.com/docs/uacf7/free-addons/unique-id-for-contact-form-7/" target="_blank" rel="noopener">Submission ID</a>'
                         )
                       ),
@@ -145,7 +147,7 @@ public function submission_id_public_assets_loading(){
     $submission = uacf7_get_form_option( $form_id, 'submission_id' );
     $meta_data = isset($submission['uacf7_submission_id']) ? $submission['uacf7_submission_id'] : 0;
     
-    echo wp_send_json( [
+    wp_send_json( [
     'form_id' => $form_id,
     'meta_data' => $meta_data
     ] );
@@ -168,12 +170,10 @@ public function uacf7_submission_id_insert_callback( $uacf7_db_id, $form_id, $in
             global $wpdb;  
             $table_name = $wpdb->prefix.'uacf7_form';
             $id = $uacf7_db_id;   
-   
-            // update submission id existing database
-            $sql = $wpdb->prepare("UPDATE $table_name SET submission_id= %s WHERE id= %s", $submission_value, $id ); 
+    
             
-        
-            $wpdb->query( $sql );  
+            // Execute the prepared query
+            $wpdb->query( $wpdb->prepare("UPDATE {$wpdb->prefix}uacf7_form SET submission_id= %s WHERE id= %s", $submission_value, $id ) );  
         }  
     }
     
@@ -270,6 +270,12 @@ public function uacf7_submission_id_tag_handler_callback($tag){
 
     $atts['name'] = $tag->name;
 
+     // Escape all attributes.
+     $allowed_attributes = array(); 
+     foreach ($atts as $key => $value) {
+         $allowed_attributes[$key] = true;
+     }  
+
     $atts = wpcf7_format_atts($atts);
 
     ob_start();
@@ -277,8 +283,8 @@ public function uacf7_submission_id_tag_handler_callback($tag){
     ?> 
     <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
 
-        <input hidden id="uacf7_<?php echo esc_attr($tag->name); ?>" <?php echo $atts;?> >
-        <span><?php echo $validation_error; ?></span>
+        <input hidden id="uacf7_<?php echo esc_attr($tag->name); ?>" <?php echo wp_kses($atts, $allowed_attributes); ?> >
+        <span><?php echo wp_kses_post($validation_error) ?></span>
     </span>
 
    <?php 
@@ -312,9 +318,10 @@ public static function tg_pane_submission_id($contact_form, $args = ''){
             <table class="form-table">
                <tbody>
                     <div class="uacf7-doc-notice"> 
-                        <?php echo sprintf( 
-                            __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                            '<a href="https://themefic.com/docs/uacf7/free-addons/unique-id-for-contact-form-7/" target="_blank">Unique Submission ID</a>'
+                        <?php printf( 
+                            // Translators: %1$s: Documentation URL
+                            esc_html__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-cf7' ),
+                            '<a href="'.esc_url('https://themefic.com/docs/uacf7/free-addons/unique-id-for-contact-form-7/').'" target="_blank">Unique Submission ID</a>'
                         ); ?> 
                     </div>
                     <tr>

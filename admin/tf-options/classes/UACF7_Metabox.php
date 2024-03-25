@@ -109,12 +109,12 @@ if ( ! class_exists( 'UACF7_Metabox' ) ) {
 						<?php if($this->metabox_post_type == 'uacf7' ):?>
 							<div class="tf-metabox-title">
 								<h3>
-									<?php echo esc_html( 'Ultimate Addons for CF7 Options', 'ultimate-addons-cf7' ) ?>
+									<?php echo esc_html( __('Ultimate Addons for CF7 Options', 'ultimate-addons-cf7' )) ?>
 								</h3>
 
 								<span>
-									<?php echo esc_html( 'VERSION : ', 'ultimate-addons-cf7' ); ?>
-									<?php echo UACF7_VERSION ?>
+									<?php echo esc_html( __( 'VERSION : ', 'ultimate-addons-cf7') ); ?>
+									<?php echo esc_attr(UACF7_VERSION) ?>
 								</span>
 							</div>
 						<?php endif; ?>
@@ -190,20 +190,10 @@ if ( ! class_exists( 'UACF7_Metabox' ) ) {
 		 * Save Metabox
 		 * @author Foysal
 		 */
-		public function save_metabox( $post_id ) {
-			// Add nonce for security and authentication.
-			$nonce_name = isset( $_POST['tf_meta_box_nonce'] ) ? $_POST['tf_meta_box_nonce'] : '';
-			$nonce_action = 'tf_meta_box_nonce_action';
-
-			// $post_id = $form->id();
-
-			// Check if a nonce is set.
-			if ( ! isset( $nonce_name ) ) {
-				return;
-			}
+		public function save_metabox( $post_id ) { 
 
 			// Check if a nonce is valid.
-			if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) ) {
+			if ( ! isset( $_POST['tf_meta_box_nonce'] ) || ! wp_verify_nonce( $_POST['tf_meta_box_nonce'], 'tf_meta_box_nonce_action' ) ) {
 				return;
 			}
 

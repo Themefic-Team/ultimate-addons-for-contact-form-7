@@ -19,7 +19,7 @@ class UACF7_PRODUCT_DROPDOWN {
     
     public function admin_enqueue_script() { 
 
-        wp_enqueue_script( 'uacf7-product-dropdown', UACF7_ADDONS . '/product-dropdown/assets/admin-script.js', array('jquery'), null, true );
+        wp_enqueue_script( 'uacf7-product-dropdown', UACF7_ADDONS . '/product-dropdown/assets/admin-script.js', array('jquery'), UACF7_VERSION, true );
     }
   
     
@@ -200,11 +200,17 @@ class UACF7_PRODUCT_DROPDOWN {
             $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
             $atts['name'] = $tag->name . ( $multiple ? '[]' : '' );
 
+            // Escape all attributes.
+            $allowed_attributes = array(); 
+            foreach ($atts as $key => $value) {
+                $allowed_attributes[$key] = true;
+            }  
+            // Format the attributes.
             $atts = wpcf7_format_atts( $atts );
 
             $dropdown = sprintf(
                 '<span class="wpcf7-form-control-wrap %1$s"  data-name="%1$s"><select %2$s>%3$s</select></span><span>%4$s</span>',
-                sanitize_html_class( $tag->name ), $atts, $dropdown, $validation_error
+                sanitize_html_class( $tag->name ), wp_kses($atts, $allowed_attributes), $dropdown, $validation_error
             );
             
         if($tag->has_option( 'layout:grid' )){ // Grid Layout
@@ -290,7 +296,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         /*
                         * Tag generator field after field type
                         */
-                        echo apply_filters('uacf7_tag_generator_multiple_select_field', $multiple_attr);
+                        echo wp_kses(apply_filters('uacf7_tag_generator_multiple_select_field', $multiple_attr), uacf7_custom_wp_kses_allow_tags());
                         ?>
                         
                         <?php ob_start(); ?>
@@ -306,7 +312,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         /*
                         * Tag generator field after field type
                         */
-                        echo apply_filters('uacf7_tag_generator_display_price_field', $display_price);
+                        echo wp_kses( apply_filters('uacf7_tag_generator_display_price_field', $display_price), uacf7_custom_wp_kses_allow_tags() );
                         ?>
                         
                         <tr>
@@ -329,7 +335,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         <tr class="uacf7-spacer"></tr>
                         <?php 
                         $product_by = ob_get_clean();
-                        echo apply_filters('uacf7_tag_generator_product_by_field',$product_by);
+                        echo wp_kses( apply_filters('uacf7_tag_generator_product_by_field',$product_by), uacf7_custom_wp_kses_allow_tags() );
                         ?>
 
                         <?php ob_start(); ?>
@@ -346,7 +352,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         <tr class="uacf7-spacer"></tr>
                         <?php
                         $order_by = ob_get_clean();
-                       echo apply_filters('uacf7_tag_generator_order_by_field', $order_by);
+                       echo wp_kses( apply_filters('uacf7_tag_generator_order_by_field', $order_by), uacf7_custom_wp_kses_allow_tags() ) ;
                         ?>
                        
                         <?php ob_start(); ?>
@@ -361,7 +367,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         /*
                         * Tag generator field after name attribute.
                         */
-                        echo apply_filters('uacf7_tag_generator_product_id_field',$product_id_html);
+                        echo wp_kses( apply_filters('uacf7_tag_generator_product_id_field',$product_id_html), uacf7_custom_wp_kses_allow_tags() );
                         ?>
                         
                         <?php ob_start(); ?>
@@ -382,13 +388,13 @@ class UACF7_PRODUCT_DROPDOWN {
                                         }
                                         $output.='</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
 
-                                        echo $output;
+                                        echo wp_kses_post($output);
                                     endif;
                                 else:
                                     $output = '<select id="tag-generator-panel-product-category">';
                                     $output .= '<option value="">All</option>';
                                     $output.='</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
-                                    echo $output;
+                                    echo wp_kses_post($output);
                                     echo '<p style="color:red">Please install and activate WooCommerce plugin.</p>';
                                 endif;
                             ?>
@@ -400,7 +406,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         /*
                         * Tag generator field after name attribute.
                         */
-                        echo apply_filters('uacf7_tag_generator_product_category_field',$product_dropdown_html);
+                        echo wp_kses( apply_filters('uacf7_tag_generator_product_category_field',$product_dropdown_html), uacf7_custom_wp_kses_allow_tags()  );
                        ?>
 
                         <?php ob_start(); ?>
@@ -421,13 +427,13 @@ class UACF7_PRODUCT_DROPDOWN {
                                     }
                                     $output.='</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
 
-                                    echo $output; 
+                                    echo wp_kses_post($output);
                                 endif;
                             else:
                                 $output = '<select id="tag-generator-panel-product-tag">';
                                 $output .= '<option value="">All</option>';
                                 $output.='</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
-                                echo $output;
+                                echo wp_kses_post($output);
                                 echo '<p style="color:red">Please install and activate WooCommerce plugin.</p>';
                             endif;
                             ?>
@@ -439,7 +445,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         /*
                         * Tag generator field after name attribute.
                         */
-                        echo apply_filters('uacf7_tag_generator_product_tag_field',$product_tag_html);
+                        echo wp_kses( apply_filters('uacf7_tag_generator_product_tag_field',$product_tag_html), uacf7_custom_wp_kses_allow_tags()  );
                        ?>
 
                         <?php ob_start(); ?>
@@ -460,7 +466,7 @@ class UACF7_PRODUCT_DROPDOWN {
                         
                         $select_layout_style = ob_get_clean();
 
-                        echo apply_filters('uacf7_tag_generator_product_layout_style_by_field', $select_layout_style);
+                        echo wp_kses( apply_filters('uacf7_tag_generator_product_layout_style_by_field', $select_layout_style), uacf7_custom_wp_kses_allow_tags()  );
                         ?>
 
                         <tr>

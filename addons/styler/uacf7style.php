@@ -27,6 +27,7 @@ class UACF7_uacf7style {
 					'type' => 'heading',
 					'label' => __( 'Single Form Styler Settings', 'ultimate-addons-cf7' ),
                     'subtitle' => sprintf(
+                         /* Translators: %1$s is a placeholder for the link to the example. */
                         __( 'Style your entire form without any CSS coding, including colors, margins, button styles, and font sizes. These options overrides Global Form Styler Settings. See Demo %1s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/contact-form-7-style-addon/" target="_blank">Example</a>'
                     )
@@ -36,7 +37,8 @@ class UACF7_uacf7style {
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
+                        /* Translators: %1$s is a placeholder for the first link, %2$s is a placeholder for the second link. */
+                        __( 'Confused? Check our Documentation on %1$s and %2$s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-style/" target="_blank">Single Form Styler</a>',
                         '<a href="https://themefic.com/docs/uacf7/pro-addons/global-form-styler-for-contact-form-7/" target="_blank">Global Form Styler</a>'
                     )
@@ -666,96 +668,96 @@ class UACF7_uacf7style {
                 $ua_custom_css = $form_meta['uacf7_uacf7style_ua_custom_css'];
                 ?>
                 <style>
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> label {
-                        color: <?php echo esc_attr_e($label_color); ?>;
-                        background-color: <?php echo esc_attr_e($label_background_color); ?>;
-                        font-size: <?php echo esc_attr_e($label_font_size).'px'; ?>;
-                        font-family: <?php echo esc_attr_e($label_font_family); ?>;
-                        font-style: <?php echo esc_attr_e($label_font_style); ?>;
-                        font-weight: <?php echo esc_attr_e($label_font_weight); ?>;
-                        padding-top: <?php echo esc_attr_e($label_padding_top).'px'; ?>;
-                        padding-right: <?php echo esc_attr_e($label_padding_right).'px'; ?>;
-                        padding-bottom: <?php echo esc_attr_e($label_padding_bottom).'px'; ?>;
-                        padding-left: <?php echo esc_attr_e($label_padding_left).'px'; ?>;
-                        margin-top: <?php echo esc_attr_e($label_margin_top).'px'; ?>;
-                        margin-right: <?php echo esc_attr_e($label_margin_right).'px'; ?>;
-                        margin-bottom: <?php echo esc_attr_e($label_margin_bottom).'px'; ?>;
-                        margin-left: <?php echo esc_attr_e($label_margin_left).'px'; ?>;
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> label {
+                        color: <?php echo esc_attr($label_color); ?>;
+                        background-color: <?php echo esc_attr($label_background_color); ?>;
+                        font-size: <?php echo esc_attr($label_font_size).'px'; ?>;
+                        font-family: <?php echo esc_attr($label_font_family); ?>;
+                        font-style: <?php echo esc_attr($label_font_style); ?>;
+                        font-weight: <?php echo esc_attr($label_font_weight); ?>;
+                        padding-top: <?php echo esc_attr($label_padding_top).'px'; ?>;
+                        padding-right: <?php echo esc_attr($label_padding_right).'px'; ?>;
+                        padding-bottom: <?php echo esc_attr($label_padding_bottom).'px'; ?>;
+                        padding-left: <?php echo esc_attr($label_padding_left).'px'; ?>;
+                        margin-top: <?php echo esc_attr($label_margin_top).'px'; ?>;
+                        margin-right: <?php echo esc_attr($label_margin_right).'px'; ?>;
+                        margin-bottom: <?php echo esc_attr($label_margin_bottom).'px'; ?>;
+                        margin-left: <?php echo esc_attr($label_margin_left).'px'; ?>;
                     }
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="email"],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="number"],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="password"],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="search"],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="tel"],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="text"],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="url"],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="date"],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> select,
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> textarea {
-                        color: <?php echo esc_attr_e($input_color); ?>;
-                        background-color: <?php echo esc_attr_e($input_background_color); ?>;
-                        font-size: <?php echo esc_attr_e($input_font_size).'px'; ?>;
-                        font-family: <?php echo esc_attr_e($input_font_family); ?>;
-                        font-style: <?php echo esc_attr_e($input_font_style); ?>;
-                        font-weight: <?php echo esc_attr_e($input_font_weight); ?>;
-                        height: <?php echo esc_attr_e($input_height).'px'; ?>;
-                        border-width: <?php echo esc_attr_e($input_border_width).'px'; ?>;
-                        border-color: <?php echo esc_attr_e($input_border_color); ?>;
-                        border-style: <?php echo esc_attr_e($input_border_style); ?>;
-                        border-radius: <?php echo esc_attr_e($input_border_radius).'px'; ?>;
-                        padding-top: <?php echo esc_attr_e($input_padding_top).'px'; ?>;
-                        padding-right: <?php echo esc_attr_e($input_padding_right).'px'; ?>;
-                        padding-bottom: <?php echo esc_attr_e($input_padding_bottom).'px'; ?>;
-                        padding-left: <?php echo esc_attr_e($input_padding_left).'px'; ?>;
-                        margin-top: <?php echo esc_attr_e($input_margin_top).'px'; ?>;
-                        margin-right: <?php echo esc_attr_e($input_margin_right).'px'; ?>;
-                        margin-bottom: <?php echo esc_attr_e($input_margin_bottom).'px'; ?>;
-                        margin-left: <?php echo esc_attr_e($input_margin_left).'px'; ?>;
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="email"],
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="number"],
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="password"],
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="search"],
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="tel"],
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="text"],
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="url"],
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="date"],
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> select,
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> textarea {
+                        color: <?php echo esc_attr($input_color); ?>;
+                        background-color: <?php echo esc_attr($input_background_color); ?>;
+                        font-size: <?php echo esc_attr($input_font_size).'px'; ?>;
+                        font-family: <?php echo esc_attr($input_font_family); ?>;
+                        font-style: <?php echo esc_attr($input_font_style); ?>;
+                        font-weight: <?php echo esc_attr($input_font_weight); ?>;
+                        height: <?php echo esc_attr($input_height).'px'; ?>;
+                        border-width: <?php echo esc_attr($input_border_width).'px'; ?>;
+                        border-color: <?php echo esc_attr($input_border_color); ?>;
+                        border-style: <?php echo esc_attr($input_border_style); ?>;
+                        border-radius: <?php echo esc_attr($input_border_radius).'px'; ?>;
+                        padding-top: <?php echo esc_attr($input_padding_top).'px'; ?>;
+                        padding-right: <?php echo esc_attr($input_padding_right).'px'; ?>;
+                        padding-bottom: <?php echo esc_attr($input_padding_bottom).'px'; ?>;
+                        padding-left: <?php echo esc_attr($input_padding_left).'px'; ?>;
+                        margin-top: <?php echo esc_attr($input_margin_top).'px'; ?>;
+                        margin-right: <?php echo esc_attr($input_margin_right).'px'; ?>;
+                        margin-bottom: <?php echo esc_attr($input_margin_bottom).'px'; ?>;
+                        margin-left: <?php echo esc_attr($input_margin_left).'px'; ?>;
                     }
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> .wpcf7-radio span,
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> .wpcf7-checkbox span {
-                        color: <?php echo esc_attr_e($input_color); ?>;
-                        font-size: <?php echo esc_attr_e($input_font_size).'px'; ?>;
-                        font-family: <?php echo esc_attr_e($input_font_family); ?>;
-                        font-style: <?php echo esc_attr_e($input_font_style); ?>;
-                        font-weight: <?php echo esc_attr_e($input_font_weight); ?>;
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> .wpcf7-radio span,
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> .wpcf7-checkbox span {
+                        color: <?php echo esc_attr($input_color); ?>;
+                        font-size: <?php echo esc_attr($input_font_size).'px'; ?>;
+                        font-family: <?php echo esc_attr($input_font_family); ?>;
+                        font-style: <?php echo esc_attr($input_font_style); ?>;
+                        font-weight: <?php echo esc_attr($input_font_weight); ?>;
                     }
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> textarea {
-                        height: <?php echo esc_attr_e($textarea_input_height).'px'; ?>;
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> textarea {
+                        height: <?php echo esc_attr($textarea_input_height).'px'; ?>;
                     }
                     .wpcf7-form-control-wrap select {
                         width: 100%;
                     }
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="submit"] {
-                        color: <?php echo esc_attr_e($btn_color); ?>;
-                        background-color: <?php echo esc_attr_e($btn_background_color); ?>;
-                        font-size: <?php echo esc_attr_e($btn_font_size).'px'; ?>;
-                        font-family: <?php echo esc_attr_e($input_font_family); ?>;
-                        font-style: <?php echo esc_attr_e($btn_font_style); ?>;
-                        font-weight: <?php echo esc_attr_e($btn_font_weight); ?>;
-                        border-width: <?php echo esc_attr_e($btn_border_width).'px'; ?>;
-                        border-color: <?php echo esc_attr_e($btn_border_color); ?>;
-                        border-style: <?php echo esc_attr_e($btn_border_style); ?>;
-                        border-radius: <?php echo esc_attr_e($btn_border_radius).'px'; ?>;
-                        width: <?php echo esc_attr_e($btn_width); ?>;
-                        padding-top: <?php echo esc_attr_e($btn_padding_top).'px'; ?>;
-                        padding-right: <?php echo esc_attr_e($btn_padding_right).'px'; ?>;
-                        padding-bottom: <?php echo esc_attr_e($btn_padding_bottom).'px'; ?>;
-                        padding-left: <?php echo esc_attr_e($btn_padding_left).'px'; ?>;
-                        margin-top: <?php echo esc_attr_e($btn_margin_top).'px'; ?>;
-                        margin-right: <?php echo esc_attr_e($btn_margin_right).'px'; ?>;
-                        margin-bottom: <?php echo esc_attr_e($btn_margin_bottom).'px'; ?>;
-                        margin-left: <?php echo esc_attr_e($btn_margin_left).'px'; ?>;
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="submit"] {
+                        color: <?php echo esc_attr($btn_color); ?>;
+                        background-color: <?php echo esc_attr($btn_background_color); ?>;
+                        font-size: <?php echo esc_attr($btn_font_size).'px'; ?>;
+                        font-family: <?php echo esc_attr($input_font_family); ?>;
+                        font-style: <?php echo esc_attr($btn_font_style); ?>;
+                        font-weight: <?php echo esc_attr($btn_font_weight); ?>;
+                        border-width: <?php echo esc_attr($btn_border_width).'px'; ?>;
+                        border-color: <?php echo esc_attr($btn_border_color); ?>;
+                        border-style: <?php echo esc_attr($btn_border_style); ?>;
+                        border-radius: <?php echo esc_attr($btn_border_radius).'px'; ?>;
+                        width: <?php echo esc_attr($btn_width); ?>;
+                        padding-top: <?php echo esc_attr($btn_padding_top).'px'; ?>;
+                        padding-right: <?php echo esc_attr($btn_padding_right).'px'; ?>;
+                        padding-bottom: <?php echo esc_attr($btn_padding_bottom).'px'; ?>;
+                        padding-left: <?php echo esc_attr($btn_padding_left).'px'; ?>;
+                        margin-top: <?php echo esc_attr($btn_margin_top).'px'; ?>;
+                        margin-right: <?php echo esc_attr($btn_margin_right).'px'; ?>;
+                        margin-bottom: <?php echo esc_attr($btn_margin_bottom).'px'; ?>;
+                        margin-left: <?php echo esc_attr($btn_margin_left).'px'; ?>;
                     }
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="submit"]:hover {
-                        color: <?php echo esc_attr_e($btn_color_hover); ?>;
-                        background-color: <?php echo esc_attr_e($btn_background_color_hover); ?>;
-                        border-color: <?php echo esc_attr_e($btn_border_color_hover); ?>;
+                    .uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="submit"]:hover {
+                        color: <?php echo esc_attr($btn_color_hover); ?>;
+                        background-color: <?php echo esc_attr($btn_background_color_hover); ?>;
+                        border-color: <?php echo esc_attr($btn_border_color_hover); ?>;
                     }
-                    <?php echo $ua_custom_css ?>
+                    <?php echo esc_attr($ua_custom_css) ?>
                 </style>
                 <?php
-                echo '<div class="uacf7-uacf7style uacf7-uacf7style-'.esc_attr($cfform->id()).'">'.$form.'</div>';
+                echo '<div class="uacf7-uacf7style uacf7-uacf7style-'.esc_attr($cfform->id()).'">'.wp_kses( $form, uacf7_custom_wp_kses_allow_tags() ).'</div>';
                 $properties['form'] = ob_get_clean();
             endif;
         }

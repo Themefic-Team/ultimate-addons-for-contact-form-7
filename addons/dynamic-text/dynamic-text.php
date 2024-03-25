@@ -91,6 +91,11 @@ class UACF7_DYNAMIC_TEXT {
              $shortcode =  do_shortcode('['.esc_attr($values[0]).' attr="'.esc_attr($key).'"]'); 
         } 
 		$atts['value'] = esc_attr($shortcode);
+        
+        $allowed_attributes = array(); 
+        foreach ($atts as $key => $value) {
+            $allowed_attributes[$key] = true;
+        }  
 
         $atts = wpcf7_format_atts( $atts );
 		ob_start();
@@ -98,8 +103,8 @@ class UACF7_DYNAMIC_TEXT {
 		?>
 		<span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class( $tag->name ); ?>" data-name="<?php echo sanitize_html_class( $tag->name ); ?>">
 		
-			<input id="uacf7_<?php echo esc_attr($tag->name); ?>" <?php echo $atts; ?>  >
-			<span><?php echo $validation_error; ?></span> 
+			<input id="uacf7_<?php echo esc_attr($tag->name); ?>" <?php echo wp_kses($atts, $allowed_attributes); ?>  >
+			<span><?php echo wp_kses_post($validation_error) ?></span> 
 		</span>
 		<?php
 		
@@ -156,10 +161,14 @@ class UACF7_DYNAMIC_TEXT {
         ?>
         <div class="control-box">
             <div class="uacf7-doc-notice">
-                <?php echo sprintf( 
-                    __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+            <?php
+               
+                printf(
+                /* Translators: %1$s is a placeholder for the link to the documentation.*/
+                    esc_html__( 'Confused? Check our Documentation on %1$s.', 'ultimate-addons-cf7' ),
                     '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-dynamic-text-extension/" target="_blank">Dynamic Text</a>'
-                ); ?>  
+                );
+                ?>
             </div>
          
             <fieldset>                

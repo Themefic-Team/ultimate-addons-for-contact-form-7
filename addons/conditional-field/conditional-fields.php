@@ -45,11 +45,11 @@ class UACF7_CF {
 	}
 
 	public function enqueue_cf_admin_script() {
-		wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/cf-script.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/cf-script.js', array( 'jquery' ), UACF7_VERSION, true );
 	}
 
 	public function enqueue_cf_frontend_script() {
-		wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/uacf7-cf-script.js', array( 'jquery' ) );
+		wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/uacf7-cf-script.js', array( 'jquery' ), UACF7_VERSION, true );
 		wp_localize_script( 'uacf7-cf-script', 'uacf7_cf_object', $this->get_forms() );
 	}
 
@@ -68,7 +68,8 @@ class UACF7_CF {
 					'type' => 'heading', 
 					'label' => __( 'Conditional Fields Settings', 'ultimate-addons-cf7' ),
 					'subtitle' => sprintf(
-                        __( 'Show or hide Contact Form 7 fields based on Conditional Logic. See Demo %1s.', 'ultimate-addons-cf7' ),
+						// translators: %1$s: Conditional Fields Documentation URL
+                        esc_html__( 'Show or hide Contact Form 7 fields based on Conditional Logic. See Demo %1$s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/contact-form-7-conditional-fields/" target="_blank">Example</a>'
                     )
 				),
@@ -77,7 +78,8 @@ class UACF7_CF {
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
+						// translators: %1$s & %2$s: Conditional Fields Documentation URL
+                        esc_html__( 'Confused? Check our Documentation on  %1$s and %2$s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-conditional-fields/" target="_blank">Conditional Fields</a>',
                         '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-conditional-fields-pro/" target="_blank">Conditional Fields (Pro)</a>'
                     )
@@ -298,9 +300,9 @@ class UACF7_CF {
 								],
 							];
 
-							if (isset($item['uacf7_cf_conditions']) && is_array($item['uacf7_cf_conditions'])) {
-								foreach ($item['uacf7_cf_conditions'] as $condition) {
-									if (isset($condition['uacf7_cf_tn'], $condition['uacf7_cf_operator'], $condition['uacf7_cf_val'])) {
+							foreach ( $item as $key => $value ) {
+								if ( isset( $value['uacf7_cf_conditions'] ) && is_array( $value['uacf7_cf_conditions'] ) ) {
+									foreach ( $value['uacf7_cf_conditions'] as $condition ) {
 										$newItem['uacf7_cf_conditions']['uacf7_cf_tn'][] = $condition['uacf7_cf_tn'];
 										$newItem['uacf7_cf_conditions']['uacf7_cf_operator'][] = $condition['uacf7_cf_operator'];
 										$newItem['uacf7_cf_conditions']['uacf7_cf_val'][] = $condition['uacf7_cf_val'];
@@ -348,12 +350,12 @@ class UACF7_CF {
 
 					array_push( $stack, $tag_html_type );
 
-					echo '<' . $tag_html_type . ' class="uacf7_conditional ' . esc_attr( $tag_id ) . '">';
+					echo '<' . esc_attr($tag_html_type) . ' class="uacf7_conditional ' . esc_attr( $tag_id ) . '">';
 				} else if ( $form_part == '[/conditional]' ) {
-					echo '</' . array_pop( $stack ) . '>';
+					echo '</' . esc_attr(array_pop( $stack )) . '>';
 				} else {
-					echo $form_part;
-				}
+					echo wp_kses_post( $form_part );
+				} 
 			}
 
 			$properties['form'] = ob_get_clean();
