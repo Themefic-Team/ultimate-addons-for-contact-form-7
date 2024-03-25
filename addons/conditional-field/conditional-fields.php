@@ -319,7 +319,6 @@ class UACF7_CF {
 					}
 				}
 
-
 			endwhile;
 			wp_reset_postdata();
 		endif;
