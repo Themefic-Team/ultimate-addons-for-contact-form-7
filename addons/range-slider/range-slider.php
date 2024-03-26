@@ -21,8 +21,6 @@ class UACF7_range_Slider {
     } 
 
 
-
-
     public function uacf7_post_meta_options_range_slider( $value, $post_id){
 
         $range_silder = apply_filters('uacf7_post_meta_options_range_slider_pro', $data = array(
