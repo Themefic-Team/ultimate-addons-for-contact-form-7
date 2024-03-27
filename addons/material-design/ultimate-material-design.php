@@ -47,7 +47,7 @@ class ULTIMATE_MATERIAL_DESIGN {
 
                 ob_start();
                 
-                echo '<div class="'.esc_attr(  $class ).'">'.$form.'</div>';
+                echo '<div class="'.esc_attr(  $class ).'">'.esc_html($form).'</div>';
     
                 $properties['form'] = ob_get_clean();
             }

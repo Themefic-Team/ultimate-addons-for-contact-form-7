@@ -573,34 +573,26 @@ class UACF7_PDF_GENERATOR {
             $pdf_footer_bg_color = !empty($pdf['pdf_footer_bg_color']) ? $pdf['pdf_footer_bg_color'] : '';  
             $pdf_bg_upload_image =  !empty($pdf_bg_upload_image) ? 'background-image: url("'.esc_attr( $pdf_bg_upload_image ).'");' : '';
             $pdf_header_upload_image =  !empty($pdf_header_upload_image) ? '<img src="'.esc_attr( $pdf_header_upload_image ).'" style="height: 60; max-width: 100%; ">' : ''; 
-            // $mpdf = new \Mpdf\Mpdf([ 
-            //     'fontdata' => [ // lowercase letters only in font key
-            //         'dejavuserifcond' => [
-            //             'R' => 'DejaVuSansCondensed.ttf',
-            //         ]
-            //     ],
-            //     'mode' => 'utf-8',
-            //     'default_font' => 'dejavusanscond',
-            //     'margin_header' => 0,
-            //     'margin_footer' => 0,
-            //     'format' => 'A4', 
-            //     'margin_left' => 0,
-            //     'margin_right' => 0
-            // ]); 
-            // $uacf7_font_dirname = $upload_dir['basedir'].'/uacf7-pdf-font';
-            // if ( ! file_exists( $uacf7_font_dirname ) ) {
-            //     wp_mkdir_p( $uacf7_font_dirname ); 
-            // } 
-
-            // Specify the relative path to the file within the uploads directory
-            // $file_path = $upload_dir['basedir'].'/KodeMono-Regular.ttf';
+        
             $file_path = $upload_dir['basedir'] .'/uacf7-pdf-font/KodeMono-Regular.ttf';
             $font_file = '';
             $font_name = pathinfo($file_path, PATHINFO_FILENAME);
+            // $font_name = '';
+            // if (file_exists($file_path)) {
+            //     $font_name .= file_get_contents($file_path);
+            // } 
             $font_name = '';
             if (file_exists($file_path)) {
-                $font_name .= file_get_contents($file_path);
-            } 
+                $response = wp_remote_get($file_path);
+                if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+                    $font_name .= wp_remote_retrieve_body($response);
+                } else {
+                    // Handle error
+                    $error_message = is_wp_error($response) ? $response->get_error_message() : 'Unknown error occurred.';
+                    // You may want to log or display the error message
+                }
+            }
+
 
                 if (file_exists($file_path) && is_dir($file_path)) {
                     // Read the contents of the folder

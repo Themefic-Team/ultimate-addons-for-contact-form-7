@@ -121,12 +121,12 @@
                 return;
             }
 
-            echo wp_send_json( [
+            echo wp_kses_post(wp_send_json( [
                 'is_enabled'                   => $is_enabled,
                 'preview_labels'               => $preview_labels,
                 'preview_heading'              => $preview_heading,
                 'form_preview_default_heading' => $form_preview_default_heading
-            ] );
+            ] ));
         }
 
         public function uacf7_form_preview_public_assets_loading(){

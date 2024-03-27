@@ -204,7 +204,7 @@ class UACF7_DATABASE {
 									<?php
 									foreach ( $list_forms as $form ) {
 										$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d", $form->ID ) );  // count number of data
-										echo '<option value="' . esc_attr( $form->ID ) . '">' . esc_attr( $form->post_title ) . ' ( ' . $count . ' )</option>';
+										echo '<option value="' . esc_attr( $form->ID ) . '">' . esc_attr( $form->post_title ) . ' ( ' . esc_html($count ). ' )</option>';
 									}
 									?>
 								</select>
@@ -548,7 +548,7 @@ class UACF7_DATABASE {
 			$wpdb->update( $table_name, $data, $where );
 		}
 
-		echo $html; // return all data
+		echo wp_kses($html, uacf7_custom_wp_kses_allow_tags()); // return all data
 
 		wp_die();
 	}
@@ -840,7 +840,7 @@ class uacf7_form_List_Table extends WP_List_Table {
 
 	public function single_row( $item ) {
 		$cssClass = ( $item['status'] == 'unread' ) ? 'unread' : 'read';
-		echo '<tr class="' . $cssClass . '">';
+		echo '<tr class="' . esc_attr($cssClass) . '">';
 		$this->single_row_columns( $item );
 		echo '</tr>';
 	}
@@ -896,9 +896,9 @@ class uacf7_form_List_Table extends WP_List_Table {
 			return;
 		}
 
-		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . __( 'Select bulk action' ) . '</label>';
-		echo '<select name="action' . $two . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
-		echo '<option value="-1">' . __( 'Bulk actions' ) . "</option>\n";
+		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . esc_html__( 'Select bulk action' ) . '</label>';
+		echo '<select name="action' . esc_attr($two ). '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
+		echo '<option value="-1">' . esc_html__( 'Bulk actions' ) . "</option>\n";
 
 		foreach ( $this->_actions as $key => $value ) {
 			if ( is_array( $value ) ) {
@@ -907,13 +907,13 @@ class uacf7_form_List_Table extends WP_List_Table {
 				foreach ( $value as $name => $title ) {
 					$class = ( 'edit' === $name ) ? ' class="hide-if-no-js"' : '';
 
-					echo "\t\t" . '<option value="' . esc_attr( $name ) . '"' . $class . '>' . $title . "</option>\n";
+					echo "\t\t" . '<option value="' . esc_attr( $name ) . '"' . esc_attr($class) . '>' . esc_html($title) . "</option>\n";
 				}
 				echo "\t" . "</optgroup>\n";
 			} else {
 				$class = ( 'edit' === $key ) ? ' class="hide-if-no-js"' : '';
 
-				echo "\t" . '<option value="' . esc_attr( $key ) . '"' . $class . '>' . $value . "</option>\n";
+				echo "\t" . '<option value="' . esc_attr( $key ) . '"' . esc_attr($class) . '>' . esc_html($value). "</option>\n";
 			}
 		}
 

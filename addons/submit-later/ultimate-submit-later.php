@@ -52,7 +52,8 @@
                         'type'  => 'heading', 
                         'label' => __( 'Form Submit Later', 'ultimate-addons-cf7' ),
                         'subtitle' => sprintf(
-                            __( 'Allow your visitor to submit form later, If want to postpone the submission for the time being. It will keep save the filled data to the form. See Demo %1s.', 'ultimate-addons-cf7' ),
+                             // translators: %1$s is replaced with a link to an example.
+                             esc_html__( 'Allow your visitor to submit form later, If want to postpone the submission for the time being. It will keep save the filled data to the form. See Demo %1s.', 'ultimate-addons-cf7' ),
                              '<a href="https://cf7addons.com/preview/form-submit-later-and-continue/" target="_blank" rel="noopener">Example</a>'
                                       )
                           ),
@@ -60,8 +61,9 @@
                             'id'      => 'submit-form-later-docs',
                             'type'    => 'notice',
                             'style'   => 'success',
-                            'content' => sprintf( 
-                                __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                            'content' => sprintf(
+                                // translators: %1$s is replaced with a link to an example. 
+                                esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                                 '<a href="https://themefic.com/docs/uacf7/free-addons/submit-form-later-and-continue/" target="_blank" rel="noopener">Submit Later</a>'
                             )
                           ),

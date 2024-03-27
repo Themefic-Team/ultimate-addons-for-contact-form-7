@@ -226,7 +226,17 @@
 
           
             $ip = $_SERVER['REMOTE_ADDR'];
-		    $addr = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+		    // $addr = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+
+            $addr;
+            $response = wp_remote_get('http://ip-api.com/php/' . $ip);
+
+            if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+                $addr .= @unserialize(wp_remote_retrieve_body($response));
+            } else {
+                $error_message = is_wp_error($response) ? $response->get_error_message() : 'Unknown error occurred.';
+            }
+
 
             $atts['iso2']              = isset($addr['countryCode']);
             $atts['class']             = $tag->get_class_option($class);

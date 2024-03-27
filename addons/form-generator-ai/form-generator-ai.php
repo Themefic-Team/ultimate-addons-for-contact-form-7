@@ -61,14 +61,14 @@ class UACF7_FORM_GENERATOR {
 						<div class="uacf7-form-input-wrap">
 
 							<h4>
-								<?php echo _e( 'Create a', 'ultimate-addons-cf7' ); ?>
+								<?php echo esc_html_e( 'Create a', 'ultimate-addons-cf7' ); ?>
 							</h4>
 							<div class="uacf7-form-input-inner">
 								<select class="form-control uacf7-choices" data-trigger name="uacf7-form-generator-ai"
 									id="uacf7-form-generator-ai" placeholder="This is a placeholder" multiple>
 								</select>
 								<button class="uacf7_ai_search_button">
-									<?php echo _e( 'Generate With AI', 'ultimate-addons-cf7' ); ?>
+									<?php echo esc_html_e( 'Generate With AI', 'ultimate-addons-cf7' ); ?>
 								</button>
 							</div>
 
@@ -85,13 +85,13 @@ class UACF7_FORM_GENERATOR {
 						<div class="uacf7-ai-codeblock">
 							<div class="uacf7-ai-navigation">
 								<span class="uacf7-ai-code-reset">
-									<?php echo _e( 'Reset', 'ultimate-addons-cf7' ); ?>
+									<?php echo esc_html_e( 'Reset', 'ultimate-addons-cf7' ); ?>
 								</span>
 								<span class="uacf7-ai-code-copy">
-									<?php echo _e( 'Copy', 'ultimate-addons-cf7' ); ?>
+									<?php echo esc_html_e( 'Copy', 'ultimate-addons-cf7' ); ?>
 								</span>
 								<span class="uacf7-ai-code-insert">
-									<?php echo _e( 'Insert', 'ultimate-addons-cf7' ); ?>
+									<?php echo esc_html_e( 'Insert', 'ultimate-addons-cf7' ); ?>
 								</span>
 							</div>
 							<textarea name="uacf7_ai_code_content" id="uacf7_ai_code_content"></textarea>
@@ -102,7 +102,7 @@ class UACF7_FORM_GENERATOR {
 			</div>
 		</div>
 		<?php
-		echo ob_get_clean();
+		echo wp_kses_post(ob_get_clean());
 	}
 
 	public function uacf7_form_generator_ai_get_tag() {
@@ -217,7 +217,7 @@ class UACF7_FORM_GENERATOR {
 			'value_form' => $secend_option_form,
 		];
 
-		echo wp_send_json( $data );
+		echo wp_kses(wp_send_json( $data ), uacf7_custom_wp_kses_allow_tags());
 		die();
 
 	}
@@ -239,7 +239,7 @@ class UACF7_FORM_GENERATOR {
 			'status' => 'success',
 			'value' => $value,
 		];
-		echo wp_send_json( $data );
+		echo wp_kses(wp_send_json( $data ),uacf7_custom_wp_kses_allow_tags());
 		die();
 	}
 }
