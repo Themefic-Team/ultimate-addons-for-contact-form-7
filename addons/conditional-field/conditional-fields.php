@@ -39,7 +39,7 @@ class UACF7_CF {
 		add_filter( 'uacf7_post_meta_options', array( $this, 'uacf7_post_meta_options_conditional_field' ), 11, 2 );
 		add_filter( 'uacf7_pdf_generator_replace_condition_data', array( $this, 'uacf7_condition_replace_pdf' ), 11, 3 );
 
-		//    add_filter( 'wpcf7_load_js', '__return_false' );
+		//add_filter( 'wpcf7_load_js', '__return_false' );
 
 
 	}
@@ -55,7 +55,6 @@ class UACF7_CF {
 
 
 	public function uacf7_post_meta_options_conditional_field( $value, $post_id ) {
-
 
 
 		$conditional = apply_filters( 'uacf7_post_meta_options_conditional_field_pro', $data = array(
