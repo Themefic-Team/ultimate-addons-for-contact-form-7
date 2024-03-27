@@ -803,19 +803,12 @@ class UACF7_MULTISTEP {
                     
                 </div>
                 <div class="uacf7-doc-notice">
-<<<<<<< HEAD
-                     <?php echo sprintf( 
-                        __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">documentation</a>'
-                    ); ?> 
-=======
                 <?php echo sprintf( 
                     // translators: %1$s is a placeholder for the link to the documentation.
                     __( 'Confused? Check our Documentation on %1s.', 'ultimate-addons-cf7' ),
                     '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">Multi-step Form</a>'
                 ); ?>
 
->>>>>>> 333f15a0c020ff876c6c875dbbb301647425d113
                 </div>
             </fieldset>
         </div>

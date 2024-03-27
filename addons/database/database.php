@@ -34,17 +34,19 @@ class UACF7_DATABASE {
                 'type'  => 'heading', 
                 'label' => __( 'UACF7 Database Settings', 'ultimate-addons-cf7' ),
                 'subtitle' => sprintf(
-                    __( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
+					// translators: %1$s is replaced with a link to an example.
+                    esc_html__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
+                    '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
                                 )
                 ),
                 array(
                     'id'      => 'pdf-database-docs',
                     'type'    => 'notice',
                     'style'   => 'success',
-                    'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/database/" target="_blank" rel="noopener">Database</a>'
+                    'content' => sprintf(
+					// translators: %1$s is replaced with a link to an example. 
+					esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+					'<a href="https://themefic.com/docs/uacf7/free-addons/database/" target="_blank" rel="noopener">Database</a>'
                     )
                 ),
                 'uacf7_enable_duplicate_submission' => array(
