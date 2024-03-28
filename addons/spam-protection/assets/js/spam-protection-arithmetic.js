@@ -71,14 +71,14 @@
                   if (userInput == return_total_num()) {
                     
                     refreshButton.trigger('click');
-                    resultDiv.text("CAPTCHA validated successfully!");
+                    resultDiv.text("CAPTCHA validated successfully!").css("color", "#46b450");
 
                 
                   } else {
  
                     e.preventDefault();
                     refreshButton.trigger('click');
-                    resultDiv.text("CAPTCHA validation failed. Please try again.");
+                    resultDiv.text("CAPTCHA validation failed. Please try again.").css("color", "#DC2626");;
                   }
 
                 });

@@ -25,6 +25,7 @@
             $form_preview = apply_filters('uacf7_post_meta_options_form_preview_pro', $data = array(
                 'title'  => __( 'Form Preview', 'ultimate-addons-cf7' ),
                 'icon'   => 'fa-solid fa-magnifying-glass',
+                'checked_field'   => 'uacf7_form_preview_enable',
                 'fields' => array(
                     'uacf7_form_preview_heading' => array(
                         'id'    => 'uacf7_form_preview_heading',
@@ -32,7 +33,7 @@
                         'label' => __( 'Form Preview', 'ultimate-addons-cf7' ),
                         'subtitle' => sprintf(
                             __( 'Allow you to preview the form before Submission. See Demo %1s.', 'ultimate-addons-cf7' ),
-                             '<a href="https://cf7addons.com/preview/form-submit-later-and-continue/" target="_blank" rel="noopener">Example</a>'
+                             '<a href="https://cf7addons.com/preview/form-preview/" target="_blank" rel="noopener">Example</a>'
                                       )
                           ),
                           array(
@@ -41,7 +42,7 @@
                             'style'   => 'success',
                             'content' => sprintf( 
                                 __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                                '<a href="https://themefic.com/docs/uacf7/free-addons/submit-form-later-and-continue/" target="_blank" rel="noopener">Submit Later</a>'
+                                '<a href="https://themefic.com/docs/uacf7/free-addons/form-preview/" target="_blank" rel="noopener">Form Preview</a>'
                             )
                           ),
          

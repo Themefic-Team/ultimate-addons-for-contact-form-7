@@ -28,23 +28,35 @@
             $spam_protection = apply_filters('uacf7_post_meta_options_spam_protection_pro', $data = array(
                 'title'  => __( 'Spam Protection', 'ultimate-addons-cf7' ),
                 'icon'   => 'fa-solid fa-spaghetti-monster-flying',
+                'checked_field'   => 'uacf7_spam_protection_enable',
+
                 'fields' => array(
                     'uacf7_spam_protection_heading' => array(
                         'id'      => 'uacf7_spam_protection_heading',
-                        'type'    => 'notice',
-                        'notice'  => 'info',
+                        'type'  => 'heading', 
                         'label'   => __( 'Spam Protection Settings', 'ultimate-addons-cf7' ),
-                        'title'   => __( 'This feature will help you to protect your form submission from Spam attack.', 'ultimate-addons-cf7' ),
-                        'content' => sprintf( 
-                            __( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
-                            '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection-for-contact-form-7/" target="_blank">Spam Protection for Contact Form 7</a>',
+                        'subtitle' => sprintf( 
+                            __( 'This feature will help you to protect your form submission from Spam attack.  %s .', 'ultimate-addons-cf7' ),
+                            '<a href="https://cf7addons.com/preview/spam-protection-for-contact-form-7/" target="_blank">Example.</a>',
                            
                         ),
                     ),
+                      
+                        array(
+                            'id'      => 'spam-protection-docs',
+                            'type'    => 'notice',
+                            'style'   => 'success',
+                            'content' => sprintf( 
+                                __( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
+                                '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection-for-contact-form-7/" target="_blank">Spam Protection</a>',
+                               
+                            ),
+                    ),
+                   
                     'uacf7_spam_protection_enable' => array(
                         'id'        => 'uacf7_spam_protection_enable',
                         'type'      => 'switch',
-                        'label'     => __( ' Enable/Disable Spam Protection', 'ultimate-addons-cf7' ),
+                        'label'     => __( ' Enable Spam Protection', 'ultimate-addons-cf7' ),
                         'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
                         'label_off' => __( 'No', 'ultimate-addons-cf7' ),
                         'default'   => false
@@ -64,15 +76,16 @@
                         'type'        => 'number',
                         'label'       => __( 'Each Submission Difference', 'ultimate-addons-cf7' ),
                         'subtitle'    => __( 'You can avoid some spamming bot by setting a time limit to prevent too much frequient submission. Put in seconds', 'ultimate-addons-cf7' ),
-                        'placeholder' => __( 'Default: 0 seconds', 'ultimate-addons-cf7' ),
+                        'placeholder' => __( 'Default: 5 seconds', 'ultimate-addons-cf7' ),
+                        'default'     => 5,
                         'is_pro'      => true
                     ),
                     'uacf7_word_filter' => array(
                         'id'          => 'uacf7_word_filter',
                         'type'        => 'textarea',
                         'label'       => __( 'Word Filter', 'ultimate-addons-cf7' ),
-                        'subtitle'    => __( 'Enlist the words you want to avoid from Spammer, Separeate the words using a Comma', 'ultimate-addons-cf7' ),
-                        'placeholder' => __( 'E.g. sex, porn, earn money', 'ultimate-addons-cf7' ),
+                        'subtitle'    => __( 'Enlist the words you want to avoid from Spammer, Separeate the words using a Comma. If that word/s found in the message it will skip to the email (email will not send to mail)', 'ultimate-addons-cf7' ),
+                        'placeholder' => __( 'E.g. evil, earn money, scam', 'ultimate-addons-cf7' ),
                         'is_pro'      => true
                     ),
                     'uacf7_ip_block'    => array(

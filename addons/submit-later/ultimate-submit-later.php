@@ -46,6 +46,7 @@
             $submit_later = apply_filters('uacf7_post_meta_options_submit_later_pro', $data = array(
                 'title'  => __( 'Submit Form Later', 'ultimate-addons-cf7' ),
                 'icon'   => 'fa-solid fa-clock',
+                'checked_field'   => 'uacf7_form_submit_later_enable',
                 'fields' => array(
                     'uacf7_form_submit_later_heading' => array(
                         'id'    => 'uacf7_form_submit_later_heading',

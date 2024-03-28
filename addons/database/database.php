@@ -54,7 +54,7 @@ class UACF7_DATABASE {
                     'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
                     'label_off' => __( 'No', 'ultimate-addons-cf7' ),
                     'default'   => false,
-                    'field_width' => 50,
+                    'field_width' => 100,
                 ),
 
             ),
