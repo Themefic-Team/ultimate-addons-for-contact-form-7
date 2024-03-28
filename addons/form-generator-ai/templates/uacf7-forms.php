@@ -4077,6 +4077,6 @@ Select <strong>"Option Two"</strong> or <strong>"Option Three"</strong> to test 
 }
 
 ob_clean();
-echo $form;
+echo wp_kses_post($form);
 return ob_get_clean();
 ?>

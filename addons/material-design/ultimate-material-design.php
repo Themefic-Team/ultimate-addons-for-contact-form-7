@@ -47,7 +47,7 @@ class ULTIMATE_MATERIAL_DESIGN {
 
                 ob_start();
                 
-                echo '<div class="'.esc_attr(  $class ).'">'.$form.'</div>';
+                echo '<div class="'.esc_attr(  $class ).'">'.esc_html($form).'</div>';
     
                 $properties['form'] = ob_get_clean();
             }
@@ -69,8 +69,9 @@ class ULTIMATE_MATERIAL_DESIGN {
                     'notice'  => 'info',
                     'label'   => __( 'Material Design Settings', 'ultimate-addons-cf7' ),
                     'title'   => __( 'This feature will help you to design your form Beautifully', 'ultimate-addons-cf7' ),
-                    'content' => sprintf( 
-                        __( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
+                    'content' => sprintf(
+                        // Translators: %1$s is replaced with the link to documentation. 
+                        esc_html__( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/material-design-for-contact-form-7/" target="_blank">Material Design for Contact Form 7</a>',
                        
                     ),

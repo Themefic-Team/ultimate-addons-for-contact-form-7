@@ -58,6 +58,7 @@
                                     at: "center",
                                     of: window
                                 },
+                                zIndex: 9999,
                                 create: function(event, ui) {
                                     $(event.target).parent().css('position', 'fixed');
                                 },

@@ -62,36 +62,40 @@ class UACF7_FORM_GENERATOR {
 						<div class="uacf7-form-input-wrap">
 
 							<h4>
-								<?php echo _e( 'Create a', 'ultimate-addons-cf7' ); ?>
+								<?php echo esc_html_e( 'Create a', 'ultimate-addons-cf7' ); ?>
 							</h4>
 							<div class="uacf7-form-input-inner">
 								<select class="form-control uacf7-choices" data-trigger name="uacf7-form-generator-ai"
 									id="uacf7-form-generator-ai" placeholder="This is a placeholder" multiple>
 								</select>
 								<button class="uacf7_ai_search_button">
-									<?php echo _e( 'Generate With AI', 'ultimate-addons-cf7' ); ?>
+									<?php echo esc_html_e( 'Generate With AI', 'ultimate-addons-cf7' ); ?>
 								</button>
 							</div>
 
 						</div>
 						<div class="uacf7-doc-notice">
-							<?php echo sprintf(
-								__( 'Not sure how to use this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
+						<?php
+							echo sprintf(
+								// Translators: %1$s is replaced with the link to documentation.
+								esc_html__( 'Not sure how to use this? Check our step by step %1s.', 'ultimate-addons-cf7' ),
 								'<a href="https://themefic.com/docs/uacf7/free-addons/ai-form-generator/" target="_blank">documentation</a>'
-							); ?>
+							);
+							?>
+
 						</div>
 					</div>
 					<div class="uacf7-ai-form-column">
 						<div class="uacf7-ai-codeblock">
 							<div class="uacf7-ai-navigation">
 								<span class="uacf7-ai-code-reset">
-									<?php echo _e( 'Reset', 'ultimate-addons-cf7' ); ?>
+									<?php echo esc_html_e( 'Reset', 'ultimate-addons-cf7' ); ?>
 								</span>
 								<span class="uacf7-ai-code-copy">
-									<?php echo _e( 'Copy', 'ultimate-addons-cf7' ); ?>
+									<?php echo esc_html_e( 'Copy', 'ultimate-addons-cf7' ); ?>
 								</span>
 								<span class="uacf7-ai-code-insert">
-									<?php echo _e( 'Insert', 'ultimate-addons-cf7' ); ?>
+									<?php echo esc_html_e( 'Insert', 'ultimate-addons-cf7' ); ?>
 								</span>
 							</div>
 							<textarea name="uacf7_ai_code_content" id="uacf7_ai_code_content"></textarea>
@@ -217,7 +221,7 @@ class UACF7_FORM_GENERATOR {
 			'value_form' => $secend_option_form,
 		];
 
-		echo wp_send_json( $data );
+		wp_send_json( $data );
 		die();
 
 	}
@@ -239,7 +243,7 @@ class UACF7_FORM_GENERATOR {
 			'status' => 'success',
 			'value' => $value,
 		];
-		echo wp_send_json( $data );
+			wp_send_json( $data );
 		die();
 	}
 }

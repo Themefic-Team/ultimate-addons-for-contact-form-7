@@ -34,19 +34,20 @@ class UACF7_DATABASE {
                 'type'  => 'heading', 
                 'label' => __( 'UACF7 Database Settings', 'ultimate-addons-cf7' ),
                 'subtitle' => sprintf(
-					// translators: %1$s is replaced with a link to an example.
-                    esc_html__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
-                    '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
-                                )
+					// Translators: %1$s is replaced with the link to the example.
+					esc_html__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
+					'<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
+					)
+					
                 ),
                 array(
-                    'id'      => 'pdf-database-docs',
+					'id'      => 'pdf-database-docs',
                     'type'    => 'notice',
                     'style'   => 'success',
-                    'content' => sprintf(
-					// translators: %1$s is replaced with a link to an example. 
-					esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-					'<a href="https://themefic.com/docs/uacf7/free-addons/database/" target="_blank" rel="noopener">Database</a>'
+                    'content' => sprintf( 
+						// Translators: %1$s is replaced with the link to the example.
+                        esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/database/" target="_blank" rel="noopener">Database</a>'
                     )
                 ),
                 'uacf7_enable_duplicate_submission' => array(
@@ -204,7 +205,7 @@ class UACF7_DATABASE {
 									<?php
 									foreach ( $list_forms as $form ) {
 										$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d", $form->ID ) );  // count number of data
-										echo '<option value="' . esc_attr( $form->ID ) . '">' . esc_attr( $form->post_title ) . ' ( ' . esc_html($count ). ' )</option>';
+										echo '<option value="' . esc_attr( $form->ID ) . '">' . esc_attr( $form->post_title ) . ' ( ' . esc_html($count) . ' )</option>';
 									}
 									?>
 								</select>
@@ -225,7 +226,17 @@ class UACF7_DATABASE {
 	}
 
 	public function encrypt_file( $inputFile, $outputFile, $key ) {
-		$inputData = file_get_contents( $inputFile );
+		// $inputData = file_get_contents( $inputFile );
+		$inputData;
+
+		$response = wp_remote_get( $inputFile );
+
+		if ( is_wp_error( $response ) ) {
+			// Handle error
+		} else {
+			$inputData .= wp_remote_retrieve_body( $response );
+		}
+
 
 		// Generate an Initialization Vector (IV)
 		$iv = openssl_random_pseudo_bytes( openssl_cipher_iv_length( 'aes-256-cbc' ) );
@@ -237,7 +248,24 @@ class UACF7_DATABASE {
 		$encryptedFileContent = $iv . $encryptedData;
 
 		// Save the encrypted content to the output file
-		file_put_contents( $outputFile, $encryptedFileContent );
+		// file_put_contents( $outputFile, $encryptedFileContent );
+		global $wp_filesystem;
+
+		// Initialize the WordPress filesystem.
+		if ( ! is_object( $wp_filesystem ) || ! is_a( $wp_filesystem, 'WP_Filesystem_Base' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/file.php';
+			WP_Filesystem();
+		}
+
+		// Check if the file system is initialized.
+		if ( ! $wp_filesystem ) {
+			// Handle error
+			return;
+		}
+
+		// Write the encrypted content to the output file.
+		$wp_filesystem->put_contents( $outputFile, $encryptedFileContent, FS_CHMOD_FILE );
+
 	}
 
 	public function decrypt_and_display( $inputFile, $key ) {
@@ -247,7 +275,16 @@ class UACF7_DATABASE {
 		}
 
 		// Read the encrypted content
-		$encryptedFileContent = file_get_contents( $inputFile );
+		// $encryptedFileContent = file_get_contents( $inputFile );
+		$encryptedFileContent;
+		$response = wp_remote_get( $inputFile );
+
+		if ( is_wp_error( $response ) ) {
+			// Handle error
+		} else {
+			$encryptedFileContent .= wp_remote_retrieve_body( $response );
+		}
+
 
 		if ( $encryptedFileContent === false ) {
 			die( "Error: Unable to read file content." );
@@ -548,7 +585,7 @@ class UACF7_DATABASE {
 			$wpdb->update( $table_name, $data, $where );
 		}
 
-		echo wp_kses($html, uacf7_custom_wp_kses_allow_tags()); // return all data
+		echo esc_html($html); // return all data
 
 		wp_die();
 	}
@@ -897,7 +934,7 @@ class uacf7_form_List_Table extends WP_List_Table {
 		}
 
 		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . esc_html__( 'Select bulk action' ) . '</label>';
-		echo '<select name="action' . esc_attr($two ). '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
+		echo '<select name="action' . esc_attr($two) . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
 		echo '<option value="-1">' . esc_html__( 'Bulk actions' ) . "</option>\n";
 
 		foreach ( $this->_actions as $key => $value ) {
@@ -913,7 +950,7 @@ class uacf7_form_List_Table extends WP_List_Table {
 			} else {
 				$class = ( 'edit' === $key ) ? ' class="hide-if-no-js"' : '';
 
-				echo "\t" . '<option value="' . esc_attr( $key ) . '"' . esc_attr($class) . '>' . esc_html($value). "</option>\n";
+				echo "\t" . '<option value="' . esc_attr( $key ) . '"' . esc_attr($class) . '>' . esc_html($value) . "</option>\n";
 			}
 		}
 
