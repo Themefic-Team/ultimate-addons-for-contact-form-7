@@ -24,7 +24,7 @@ ob_start();
     if(isset($uacf7_default[1]) && !empty($uacf7_default[1])){
         $form_label = isset($uacf7_default[2]) ? $uacf7_default[2] : 0;
         $required = isset($uacf7_default[3]) ? $uacf7_default[3] : '';
-        $number = wp_rand(100, 999);
+        $number = rand(100, 999);
         
         switch($uacf7_default[1]){
             case 'text':
@@ -121,7 +121,7 @@ ob_start();
             }
         }
     }
-    echo wp_kses_post($field);
+    echo $field;
     
 
 

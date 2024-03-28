@@ -31,8 +31,7 @@
                         'type'  => 'heading', 
                         'label' => __( 'Form Preview', 'ultimate-addons-cf7' ),
                         'subtitle' => sprintf(
-                            // translators: %1$s is replaced with a link to an example.
-                            esc_html__( 'Allow you to preview the form before Submission. See Demo %1s.', 'ultimate-addons-cf7' ),
+                            __( 'Allow you to preview the form before Submission. See Demo %1s.', 'ultimate-addons-cf7' ),
                              '<a href="https://cf7addons.com/preview/form-submit-later-and-continue/" target="_blank" rel="noopener">Example</a>'
                                       )
                           ),
@@ -40,9 +39,8 @@
                             'id'      => 'submit-form-preview-docs',
                             'type'    => 'notice',
                             'style'   => 'success',
-                            'content' => sprintf(
-                                // translators: %1$s is replaced with a link to an example. 
-                                esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                            'content' => sprintf( 
+                                __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                                 '<a href="https://themefic.com/docs/uacf7/free-addons/submit-form-later-and-continue/" target="_blank" rel="noopener">Submit Later</a>'
                             )
                           ),
@@ -121,12 +119,12 @@
                 return;
             }
 
-            echo wp_kses_post(wp_send_json( [
+            echo wp_send_json( [
                 'is_enabled'                   => $is_enabled,
                 'preview_labels'               => $preview_labels,
                 'preview_heading'              => $preview_heading,
                 'form_preview_default_heading' => $form_preview_default_heading
-            ] ));
+            ] );
         }
 
         public function uacf7_form_preview_public_assets_loading(){

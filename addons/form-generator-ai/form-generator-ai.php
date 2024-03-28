@@ -28,10 +28,11 @@ class UACF7_FORM_GENERATOR {
 
 	// Add Admin Scripts
 	public function admin_scripts() {
-		
-		wp_enqueue_script( 'uacf7-form-generator-ai-choices-js', UACF7_ADDONS . '/form-generator-ai/assets/js/choices.min.js', array(), UACF7_VERSION, true );  
-        wp_enqueue_script( 'uacf7-form-generator-ai-admin-js', UACF7_ADDONS . '/form-generator-ai/assets/js/admin-form-generator-ai.js', array('jquery'), UACF7_VERSION, true );
-		wp_enqueue_style( 'uacf7-form-generator-ai-admin-css', UACF7_ADDONS . '/form-generator-ai/assets/css/admin-form-generator-ai.css', array(), UACF7_VERSION);
+		wp_enqueue_script( 'uacf7-form-generator-ai-choices-js', UACF7_ADDONS . '/form-generator-ai/assets/js/choices.min.js', array(), null, true );
+		wp_enqueue_script( 'uacf7-form-generator-ai-admin-js', UACF7_ADDONS . '/form-generator-ai/assets/js/admin-form-generator-ai.js', array( 'jquery' ), null, true );
+		// wp_enqueue_style( 'uacf7-form-generator-ai-choices-css', UACF7_ADDONS . '/form-generator-ai/assets/css/choices.css' ); 
+		wp_enqueue_style( 'uacf7-form-generator-ai-admin-css', UACF7_ADDONS . '/form-generator-ai/assets/css/admin-form-generator-ai.css' );
+
 
 		//Form Default Styles
 		
@@ -61,22 +62,21 @@ class UACF7_FORM_GENERATOR {
 						<div class="uacf7-form-input-wrap">
 
 							<h4>
-								<?php echo esc_html_e( 'Create a', 'ultimate-addons-cf7' ); ?>
+								<?php echo _e( 'Create a', 'ultimate-addons-cf7' ); ?>
 							</h4>
 							<div class="uacf7-form-input-inner">
 								<select class="form-control uacf7-choices" data-trigger name="uacf7-form-generator-ai"
 									id="uacf7-form-generator-ai" placeholder="This is a placeholder" multiple>
 								</select>
 								<button class="uacf7_ai_search_button">
-									<?php echo esc_html_e( 'Generate With AI', 'ultimate-addons-cf7' ); ?>
+									<?php echo _e( 'Generate With AI', 'ultimate-addons-cf7' ); ?>
 								</button>
 							</div>
 
 						</div>
 						<div class="uacf7-doc-notice">
 							<?php echo sprintf(
-								// translators: %1$s is replaced with a link to an example.
-								esc_html__( 'Not sure how to use this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
+								__( 'Not sure how to use this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
 								'<a href="https://themefic.com/docs/uacf7/free-addons/ai-form-generator/" target="_blank">documentation</a>'
 							); ?>
 						</div>
@@ -85,13 +85,13 @@ class UACF7_FORM_GENERATOR {
 						<div class="uacf7-ai-codeblock">
 							<div class="uacf7-ai-navigation">
 								<span class="uacf7-ai-code-reset">
-									<?php echo esc_html_e( 'Reset', 'ultimate-addons-cf7' ); ?>
+									<?php echo _e( 'Reset', 'ultimate-addons-cf7' ); ?>
 								</span>
 								<span class="uacf7-ai-code-copy">
-									<?php echo esc_html_e( 'Copy', 'ultimate-addons-cf7' ); ?>
+									<?php echo _e( 'Copy', 'ultimate-addons-cf7' ); ?>
 								</span>
 								<span class="uacf7-ai-code-insert">
-									<?php echo esc_html_e( 'Insert', 'ultimate-addons-cf7' ); ?>
+									<?php echo _e( 'Insert', 'ultimate-addons-cf7' ); ?>
 								</span>
 							</div>
 							<textarea name="uacf7_ai_code_content" id="uacf7_ai_code_content"></textarea>
@@ -102,7 +102,7 @@ class UACF7_FORM_GENERATOR {
 			</div>
 		</div>
 		<?php
-		echo wp_kses_post(ob_get_clean());
+		echo ob_get_clean();
 	}
 
 	public function uacf7_form_generator_ai_get_tag() {
@@ -217,7 +217,7 @@ class UACF7_FORM_GENERATOR {
 			'value_form' => $secend_option_form,
 		];
 
-		echo wp_kses(wp_send_json( $data ), uacf7_custom_wp_kses_allow_tags());
+		echo wp_send_json( $data );
 		die();
 
 	}
@@ -239,7 +239,7 @@ class UACF7_FORM_GENERATOR {
 			'status' => 'success',
 			'value' => $value,
 		];
-		echo wp_kses(wp_send_json( $data ),uacf7_custom_wp_kses_allow_tags());
+		echo wp_send_json( $data );
 		die();
 	}
 }
