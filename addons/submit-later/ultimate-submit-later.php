@@ -14,7 +14,7 @@
             add_action( 'wp_ajax_uacf7_submit_later_action', array( $this, 'uacf7_submit_later_ajax_cb') );
             add_action( 'wp_ajax_nopriv_uacf7_submit_later_action', array( $this, 'uacf7_submit_later_ajax_cb'));  
 
-            add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submit_later'), 21, 2); 
+            add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submit_later'), 31, 2); 
         }
 
         public function uacf7_form_submit_later_public_assets_loading(){

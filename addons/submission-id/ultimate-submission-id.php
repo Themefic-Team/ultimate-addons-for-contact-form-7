@@ -23,7 +23,7 @@ class UACF7_SUBMISSION_ID{
 
         // Submission ID Update into Database
         add_action('uacf7_submission_id_insert', array($this, 'uacf7_submission_id_insert_callback'), 10, 4);
-        add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submission_id'), 20, 2 ); 
+        add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submission_id'), 33, 2 ); 
 
         require_once 'inc/submission-id.php';
 

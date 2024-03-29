@@ -14,7 +14,7 @@
             add_action('wp_ajax_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_cb']); 
             add_action('wp_ajax_nopriv_uacf7_form_preview_action', [$this, 'uacf7_form_preview_ajax_cb']); 
 
-            add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_form_preview'), 24, 2 ); 
+            add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_form_preview'), 36, 2 ); 
 
             $file_path = plugin_dir_path(__FILE__) . 'inc/uacf7-form-preview.php';
 

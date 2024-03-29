@@ -11,7 +11,7 @@
             add_action( 'admin_init',  array( $this, 'uacf7_spam_protection_tag_generator' ));
             add_filter( 'wpcf7_validate_uacf7_spam_protection', array($this, 'uacf7_spam_protection_validation_filter'), 10, 2 );
             add_filter( 'wpcf7_validate_uacf7_spam_protection*', array($this,'uacf7_spam_protection_validation_filter'), 10, 2 );
-            add_filter( 'uacf7_post_meta_options',  array( $this, 'uacf7_post_meta_options_spam_protection'), 24, 2 ); 
+            add_filter( 'uacf7_post_meta_options',  array( $this, 'uacf7_post_meta_options_spam_protection'), 34, 2 ); 
             add_action( 'wp_enqueue_scripts',  array($this, 'uacf7_spam_protection_scripts'));
         }
 
@@ -239,8 +239,6 @@
 		    $addr = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 
             $atts['iso2']              = isset($addr['countryCode']);
-            $atts['class']             = $tag->get_class_option($class);
-            $atts['class']             = 'uacf7_spam_protection';
             $atts['protection-method'] = $uacf7_spam_protection['uacf7_spam_protection_type'];
             $atts['id']                = $tag->get_id_option();
 
@@ -267,14 +265,13 @@
             $value                = $tag->values;
             $default_value        = $tag->get_default_option($value);
             $atts['value']        = $value;
-            $atts['name']         = $tag->name;
             $atts                 = wpcf7_format_atts($atts);
 
     
             ob_start();
         
             ?> 
-                <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name);  ?>" >
+                <span  class="wpcf7-form-control-wrap <?php echo $tag->get_class_option($class) .' '. sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name);  ?>" >
                     <div class="uacf7_spam_recognation" <?php echo ($atts);  ?>>
                         <?php if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'arithmathic_recognation'){ ?>
                             <div id="arithmathic_recognation">
