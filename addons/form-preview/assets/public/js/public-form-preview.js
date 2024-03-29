@@ -26,7 +26,7 @@
                             var previewContent = '<div class="uacf7-form-preview-dialog"><table id="dialog-table">';
                             $.each(formData, function(index, field) {
                                 var fieldElement = $('[name="' + field.name + '"]');
-                                if (fieldElement.attr('type') !== 'hidden' && field.value !== '') {
+                                if (fieldElement.attr('type') !== 'hidden' && field.value !== '' && !fieldElement.hasClass('uacf7-product-quantity')) {
                                     var label = '';
                                     $.each(preview_labels, function(i, previewLabel) {
                                         if (previewLabel.field_name === field.name) {
@@ -49,7 +49,7 @@
                                 title              : preview_heading ||default_heading,
                                 height             : 350,
                                 minHeight          : 200,
-                                minWidth           : 300,
+                                minWidth           : 430,
                                 resizable          : true,
                                 closeOnEscape      : true,
                                 closeOnOverlayClick: true,
@@ -68,6 +68,13 @@
                                 resize: function(event, ui) {
                           
                                     $(this).dialog('option', 'position', { my: 'center', at: 'center', of: window });
+                                },
+                                width: function() {
+                                    if ($(window).width() <= 767) {
+                                        return $(window).width();
+                                    } else {
+                                        return 430;
+                                    }
                                 }
                                 
                             });

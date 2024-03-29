@@ -884,7 +884,19 @@ class UACF7_MULTISTEP {
                         'multiple' => false,
                         'inline' => true, 
                         'default' => 'fa fa-tree', 
-                        'dependency' => array( 'uacf7_progressbar_style', '==', 'style-1'),
+                        'dependency' => array(
+                            array( 'uacf7_progressbar_style', '!=', 'default'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-2'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-3'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-4'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-5'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-6'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-7'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-8'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-9'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-10'),
+                            array( 'uacf7_progressbar_style', '!=', 'style-11'),
+                        ),
                      
                     );
 
