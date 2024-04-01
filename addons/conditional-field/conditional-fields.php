@@ -298,11 +298,16 @@ class UACF7_CF {
 								],
 							];
 
-							foreach ( $item['uacf7_cf_conditions'] as $condition ) {
-								$newItem['uacf7_cf_conditions']['uacf7_cf_tn'][] = $condition['uacf7_cf_tn'];
-								$newItem['uacf7_cf_conditions']['uacf7_cf_operator'][] = $condition['uacf7_cf_operator'];
-								$newItem['uacf7_cf_conditions']['uacf7_cf_val'][] = $condition['uacf7_cf_val'];
+							if (isset($item['uacf7_cf_conditions']) && is_array($item['uacf7_cf_conditions'])) {
+								foreach ($item['uacf7_cf_conditions'] as $condition) {
+									if (isset($condition['uacf7_cf_tn'], $condition['uacf7_cf_operator'], $condition['uacf7_cf_val'])) {
+										$newItem['uacf7_cf_conditions']['uacf7_cf_tn'][] = $condition['uacf7_cf_tn'];
+										$newItem['uacf7_cf_conditions']['uacf7_cf_operator'][] = $condition['uacf7_cf_operator'];
+										$newItem['uacf7_cf_conditions']['uacf7_cf_val'][] = $condition['uacf7_cf_val'];
+									}
+								}
 							}
+							
 
 							$data[] = $newItem;
 						}

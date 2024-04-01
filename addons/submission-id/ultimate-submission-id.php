@@ -1,29 +1,29 @@
 <?php
 
 /** Prevent direct access */
-if (!defined('ABSPATH')) {
-    echo "You are not allowed to access directly";
-    exit();
-}
+    if (!defined('ABSPATH')) {
+        echo "You are not allowed to access directly";
+        exit();
+    }
 
 
 
 class UACF7_SUBMISSION_ID{
 
     public function __construct(){
-        add_action('wp_enqueue_scripts', [$this, 'submission_id_public_assets_loading']); 
+        add_action('wp_enqueue_scripts', array($this, 'submission_id_public_assets_loading')); 
 
-        add_action('admin_init', [$this, 'submission_tag_generator']);
-        add_action('wpcf7_init', [$this, 'submission_id_add_shortcodes']);
-        add_action( 'wp_ajax_uacf7_update_submission_id', [$this, 'uacf7_update_submission_id'] );
-        add_action( 'wp_ajax_nopriv_uacf7_update_submission_id', [$this, 'uacf7_update_submission_id'] );
+        add_action('admin_init', array($this, 'submission_tag_generator'));
+        add_action('wpcf7_init', array($this, 'submission_id_add_shortcodes'));
+        add_action( 'wp_ajax_uacf7_update_submission_id', array($this, 'uacf7_update_submission_id') );
+        add_action( 'wp_ajax_nopriv_uacf7_update_submission_id', array($this, 'uacf7_update_submission_id') );
         
-        add_filter('wpcf7_mail_sent', [$this, 'submission_id_update']);
-        add_filter('wpcf7_mail_components', [$this, 'submission_id_custom_cf7_mail_subject'], 10, 2);
+        add_filter('wpcf7_mail_sent', array($this, 'submission_id_update'));
+        add_filter('wpcf7_mail_components', array($this, 'submission_id_custom_cf7_mail_subject'), 10, 2);
 
         // Submission ID Update into Database
-        add_action('uacf7_submission_id_insert', [$this, 'uacf7_submission_id_insert_callback'], 10, 4);
-        add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submission_id'), 20, 2 ); 
+        add_action('uacf7_submission_id_insert', array($this, 'uacf7_submission_id_insert_callback'), 10, 4);
+        add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submission_id'), 33, 2 ); 
 
         require_once 'inc/submission-id.php';
 
@@ -152,13 +152,12 @@ public function submission_id_public_assets_loading(){
    
  }
 
-
 /**
  * Submission ID Update into Database
  */
 public function uacf7_submission_id_insert_callback( $uacf7_db_id, $form_id, $insert_data, $tags){
 
-    $submission = uacf7_get_form_option( $form_id, 'submission_id' );
+    $submission                 = uacf7_get_form_option( $form_id, 'submission_id' );
     $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false;
 
     if($uacf7_submission_id_enable == true){
@@ -182,13 +181,13 @@ public function uacf7_submission_id_insert_callback( $uacf7_db_id, $form_id, $in
 
 public function submission_id_update($form){
 
-    $submission = uacf7_get_form_option( $form->id(), 'submission_id' );
-    $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false; 
+    $submission                 = uacf7_get_form_option( $form->id(), 'submission_id' );
+    $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false;
 
     if($uacf7_submission_id_enable == true){
           
         $getCurrentData = isset($submission['uacf7_submission_id']) ? $submission['uacf7_submission_id'] : 0;
-        $step_counter = isset($submission['uacf7_submission_id_step']) ? $submission['uacf7_submission_id_step'] : 0;
+        $step_counter   = isset($submission['uacf7_submission_id_step']) ? $submission['uacf7_submission_id_step'] : 0;
 
 
 
@@ -222,10 +221,10 @@ public function uacf7_submission_id_tag_handler_callback($tag){
     }
      
     /** Enable / Disable Submission ID */
-    $wpcf7 = WPCF7_ContactForm::get_current(); 
-    $formid = $wpcf7->id();
-    $submission = uacf7_get_form_option( $formid, 'submission_id' );
-    $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false; 
+    $wpcf7                      = WPCF7_ContactForm::get_current();
+    $formid                     = $wpcf7->id();
+    $submission                 = uacf7_get_form_option( $formid, 'submission_id' );
+    $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false;
     
     if($uacf7_submission_id_enable != true){
         return;
@@ -242,8 +241,8 @@ public function uacf7_submission_id_tag_handler_callback($tag){
 
     $atts = array();
 
-    $atts['class'] = $tag->get_class_option($class);
-    $atts['id'] = $tag->get_id_option();
+    $atts['class']    = $tag->get_class_option($class);
+    $atts['id']       = $tag->get_id_option();
     $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
 
     if ($tag->is_required()) {

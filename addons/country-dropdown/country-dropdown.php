@@ -23,18 +23,25 @@ class UACF7_COUNTRY_DROPDOWN {
 		add_action( 'wp_enqueue_scripts', array($this, 'wp_enqueue_script' ) );
         
         
-        /** Dynamic Selection JS Validation */
-        // add_action( 'wp_ajax_uacf7_dynamic_selection', [$this, 'uacf7_dynamic_selection'] );
-        // add_action( 'wp_ajax_nopriv_uacf7_dynamic_selection', [$this, 'uacf7_dynamic_selection'] );
+        add_filter( 'wpcf7_validate_uacf7_phone_number', array($this, 'phone_number_fields_validation_filter'), 10, 2 );
+        add_filter( 'wpcf7_validate_uacf7_phone_number*', array($this,'phone_number_fields_validation_filter'), 10, 2 );
     }
     
     public function wp_enqueue_script() {
 
 		wp_enqueue_style( 'uacf7-country-select-main', UACF7_ADDONS . '/country-dropdown/assets/css/countrySelect.min.css' );
 		wp_enqueue_style( 'uacf7-country-select-style', UACF7_ADDONS . '/country-dropdown/assets/css/style.css' );
-		
+        wp_enqueue_style( 'uacf7-tel-styles', UACF7_ADDONS . '/country-dropdown/assets/css/intlTelInput.css' , array(), null, 'all' );
+
 		wp_enqueue_script( 'uacf7-country-select-library', UACF7_ADDONS . '/country-dropdown/assets/js/countrySelect.js', array('jquery'), null, true );
 		wp_enqueue_script( 'uacf7-country-select-script', UACF7_ADDONS . '/country-dropdown/assets/js/script.js', array('jquery','uacf7-country-select-library'), null, true );
+          wp_enqueue_script( 'uacf7-intelphonenumber-script', UACF7_ADDONS . '/country-dropdown/assets/js/intlTelInput.js', array('jquery'), null, true );
+        wp_localize_script( 'uacf7-country-select-script', 'uacf7_localize_obj',
+        array(  
+                'plugin_dir_url' => plugin_dir_url( __FILE__ ),
+                'phone_number_validation_message' => __('Not a Valid Number', 'ultimate-addons-cf7'),
+            )
+         );
     }
     
     /*
@@ -44,6 +51,71 @@ class UACF7_COUNTRY_DROPDOWN {
         
         wpcf7_add_form_tag( array( 'uacf7_country_dropdown', 'uacf7_country_dropdown*'),
         array( $this, 'tag_handler_callback' ), array( 'name-attr' => true ) );
+
+        wpcf7_add_form_tag( array( 'uacf7_phone_number', 'uacf7_phone_number*'),
+        array( $this, 'tag_handler_phone_number' ), array( 'name-attr' => true ) );
+    }
+
+    public function tag_handler_phone_number( $tag ) {
+        
+        if ( empty( $tag->name ) ) {
+            return '';
+        }
+		
+        $validation_error = wpcf7_get_validation_error( $tag->name );
+
+        $class = wpcf7_form_controls_class( $tag->type );
+
+        if ( $validation_error ) {
+            $class .= ' wpcf7-not-valid';
+        }
+
+        $atts = array();
+
+        $atts['class'] = $tag->get_class_option( $class );
+        $atts['id'] = $tag->get_id_option();
+        $atts['tabindex'] = $tag->get_option( 'tabindex', 'signed_int', true );
+        $atts['phone-tag-name'] = $tag->name; 
+
+
+        if ( $tag->is_required() ) {
+            $atts['aria-required'] = 'true';
+        }
+
+        $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
+
+        $atts['name'] = $tag->name;
+		
+		$size = $tag->get_option( 'size', 'int', true );
+
+		if ( $size ) {
+			$atts['size'] = $size;
+		} else {
+			//$atts['size'] = 40;
+		}
+		
+        $placeholder = $tag->get_option( 'placeholder');
+        if(!empty($placeholder)){
+            $placeholder = $placeholder[0];
+        }else{
+            $placeholder = '';
+        }
+
+        $atts = wpcf7_format_atts( $atts );
+
+		ob_start();
+		?>
+		<span data-name="<?php echo esc_attr($tag->name); ?>"  class="uacf7_phone_number" class="wpcf7-form-control-wrap <?php echo sanitize_html_class( $tag->name ); ?>">
+            <input <?php  echo $atts; ?> type="tel" id="phone_<?php echo esc_attr($tag->name); ?>"  class="form-control">
+            <span class="uacf7_phone_validation"></span>
+            <span><?php echo $validation_error; ?></span>
+		
+		</span>
+		<?php
+		
+		$uacf7_phone_number = ob_get_clean();
+		
+        return $uacf7_phone_number;
     }
     
     public function tag_handler_callback( $tag ) {
@@ -133,6 +205,27 @@ class UACF7_COUNTRY_DROPDOWN {
     }
 
 
+    public function wpcf7_fields_validation_filter( $result, $tag ) {
+        $name = $tag->name;
+
+        if ( isset( $_POST[$name] )
+        and is_array( $_POST[$name] ) ) {
+            foreach ( $_POST[$name] as $key => $value ) {
+                if ( '' === $value ) {
+                    unset( $_POST[$name][$key] );
+                }
+            }
+        }
+
+        $empty = ! isset( $_POST[$name] ) || empty( $_POST[$name] ) && '0' !== $_POST[$name];
+
+        if ( $tag->is_required() and $empty ) {
+            $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+        }
+
+        return $result;
+    }
+
  
     public function wpcf7_country_dropdown_validation_filter( $result, $tag ) {
         $name = $tag->name;
@@ -155,6 +248,19 @@ class UACF7_COUNTRY_DROPDOWN {
         return $result;
     }
 
+
+    public function phone_number_fields_validation_filter($result, $tag){
+        $name = $tag->name;
+
+        $empty = !isset($_FILES[$name]['name']) || empty($_FILES[$name]['name']) && '0' !== $_FILES[$name]['name'];
+
+        if ($tag->is_required() and $empty) {
+            $result->invalidate($tag, wpcf7_get_message('invalid_required'));
+        }
+
+        return $result;
+    }
+
     /*
     * Generate tag - conditional
     */
@@ -168,6 +274,54 @@ class UACF7_COUNTRY_DROPDOWN {
             array($this, 'tg_pane_country_dropdown')
         );
 
+        wpcf7_add_tag_generator('uacf7_phone_number',
+        __('Phone Number', 'ultimate-addons-cf7'),
+        'uacf7-tg-pane-phone-number',
+        array($this, 'tg_pane_phone_number')
+         );
+
+    }
+
+    static function tg_pane_phone_number( $contact_form, $args = '' ) {
+        $args = wp_parse_args( $args, array() );
+        $uacf7_field_type = 'uacf7_phone_number';
+        ?>
+        <div class="control-box">
+            <fieldset>                
+                <table class="form-table">
+                   <tbody>
+                        <tr>
+                            <th scope="row">Field type</th>
+                            <td>
+                                <fieldset>
+                                <legend class="screen-reader-text">Field type</legend>
+                                <label><input type="checkbox" name="required" value="on"> Required field</label>
+                                </fieldset>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-name' ); ?>"><?php echo esc_html( __( 'Name', 'ultimate-addons-cf7' ) ); ?></label></th>
+                            <td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr( $args['content'] . '-name' ); ?>" /></td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="row"><label for="tag-generator-panel-text-class">Class attribute</label></th>
+                            <td><input type="text" name="class" class="classvalue oneline option" id="tag-generator-panel-text-class"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+
+        <div class="insert-box">
+            <input type="text" name="<?php echo esc_attr($uacf7_field_type); ?>" class="tag code" readonly="readonly" onfocus="this.select()" />
+
+            <div class="submitbox">
+                <input type="button" class="button button-primary insert-tag" value="<?php echo esc_attr( __( 'Insert Tag', 'ultimate-addons-cf7' ) ); ?>" />
+            </div>
+        </div>
+        <?php
     }
     
     static function tg_pane_country_dropdown( $contact_form, $args = '' ) {

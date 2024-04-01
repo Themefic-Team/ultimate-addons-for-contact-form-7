@@ -10,17 +10,17 @@ class UACF7_SIGNATURE{
 
     public function __construct(){
         // require_once 'inc/signature.php';
-        add_action('wp_enqueue_scripts', [$this, 'uacf7_signature_public_scripts']);
+        add_action('wp_enqueue_scripts', array($this, 'uacf7_signature_public_scripts'));
 
-        add_action('admin_init', [$this, 'uacf7_signature_tag_generator']);
-        add_action('wpcf7_init', [$this, 'uacf7_signature_add_shortcodes']);
+        add_action('admin_init', array($this, 'uacf7_signature_tag_generator'));
+        add_action('wpcf7_init', array($this, 'uacf7_signature_add_shortcodes'));
 
-        add_filter('wpcf7_validate_uacf7_signature', [$this, 'uacf7_signature_validation_filter'], 10, 2);
-        add_filter('wpcf7_validate_uacf7_signature*', [$this, 'uacf7_signature_validation_filter'], 10, 2);
+        add_filter('wpcf7_validate_uacf7_signature', array($this, 'uacf7_signature_validation_filter'), 10, 2);
+        add_filter('wpcf7_validate_uacf7_signature*', array($this, 'uacf7_signature_validation_filter'), 10, 2);
 
         add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_signature'), 30, 2 ); 
 
-        //  add_filter( 'wpcf7_load_js', '__return_false' );
+        // add_filter( 'wpcf7_load_js', '__return_false' );
     }
 
     /** Loading Scripts */

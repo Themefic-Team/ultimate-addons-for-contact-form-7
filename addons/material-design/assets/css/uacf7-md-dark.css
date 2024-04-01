@@ -1,0 +1,409 @@
+  .uacf7-material-design-dark{
+    background-color: #141316;
+    padding         : 20px 10px;
+    border-radius   : 3px;
+    color           : #cac4cf;
+  }
+
+  .uacf7-material-design-dark  p,  .uacf7-material-design-dark   .uacf7-row .uacf7-col-6 > p {
+      font-size     : 16px;
+      position      : relative;
+      padding-bottom: 24px;
+      z-index       : 1;
+      font-family   : 'Roboto', sans-serif;
+    }
+
+    .uacf7-material-design-dark   .uacf7-material-acceptance .wpcf7-form-control-wrap,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 > .uacf7-material-acceptance .wpcf7-form-control-wrap{
+      padding: 10px 0px;
+    }
+    .uacf7-material-design-dark   .uacf7-material-checkbox .wpcf7-form-control-wrap,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 > .uacf7-material-checkbox .wpcf7-form-control-wrap{
+      padding: 10px 0px;
+    }
+    .uacf7-material-design-dark   .uacf7-material-radio .wpcf7-form-control-wrap,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 > .uacf7-material-radio .wpcf7-form-control-wrap{
+      padding: 10px 0px;
+    } 
+
+
+  .uacf7-material-design-dark label,  .uacf7-material-design-dark   .uacf7-row .uacf7-col-6 >label{
+    color           : #CAC4CF;
+  }
+
+    
+  .uacf7-material-design-dark  input[type="text"].wpcf7-not-valid, .uacf7-material-design-dark input[type="email"].wpcf7-not-valid, .uacf7-material-design-dark input[type="url"].wpcf7-not-valid, input[type="number"].wpcf7-not-valid, .uacf7-material-design-dark input[type="tel"].wpcf7-not-valid,.uacf7-material-design-dark input[type="date"].wpcf7-not-valid, .uacf7-material-design-dark input[type="file"].wpcf7-not-valid, .uacf7-material-design-dark input[type="select"].wpcf7-not-valid, .uacf7-material-design-dark input[type="textarea"].wpcf7-not-valid {
+    border-bottom: 2px solid #f7aea5;
+  }
+
+
+  .uacf7-material-design-dark  option {
+      font-size: 16px;
+      color    : #CAC4CF;
+    }
+
+
+  .uacf7-material-design-dark  label.hover-label,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.hover-label {
+    font-size       : 16px;
+    left            : 16px;
+    font-size       : 16px;
+    min-height      : 15px;
+    color           : #CAC4CF;
+    background-color: transparent;
+    max-width       : fit-content;
+    z-index         : 99;
+  }
+
+
+  .uacf7-material-design-dark  input[type="date"],     .uacf7-material-design-dark input[type="file"],     .uacf7-material-design-dark  .wpcf7-select{
+    height          : 50px;
+    padding         : 10px;
+    border          : none;
+    border-bottom   : 1px solid #CAC4CF;
+    color           : #CAC4CF;
+    width           : 100%;
+    background-color: #363438;
+    font-size       : 16px;
+    line-height     : 24px;
+    border-radius   : 4px 4px 0px 0px;
+    box-sizing      : border-box;
+  }
+
+
+  .uacf7-material-design-dark .wpcf7-select:hover{
+    border-bottom   : 1px solid #CAC4CF;
+    background-color: #444246;
+  }
+
+
+  .uacf7-material-design-dark  .wpcf7-select, .uacf7-material-design-dark  .wpcf7-date, .uacf7-material-design-dark input[type="text"],.uacf7-material-design-dark input[type="email"],.uacf7-material-design-dark  input[type="url"], .uacf7-material-design-dark input[type="number"],.uacf7-material-design-dark  input[type="tel"],.uacf7-material-design-dark input[type="file"]{
+    cursor          : pointer;
+    padding         : 0px 16px;
+    border          : none;
+    height          : 50px;
+    border-bottom   : 1px solid #CAC4CF;
+    color           : #cac4cf;
+    width           : 100%;
+    background-color: #363438;
+    font-size       : 16px;
+    line-height     : 24px;
+    border-radius   : 4px 4px 0px 0px;
+    box-sizing      : border-box;
+    left            : 16px;
+    padding-top     : 8px;
+    box-sizing      : border-box;
+  }
+
+  .uacf7-material-design-dark  textarea{
+    padding         : 15px 16px;
+    border          : none;
+    border-bottom   : 1px solid #cac4cf;
+    color           : #cac4cf;
+    width           : 100%;
+    background-color: #363438;
+    font-size       : 16px;
+    height          : 100px;
+    line-height     : 24px;
+    border-radius   : 4px 4px 0px 0px;
+    box-sizing      : border-box;
+  }
+
+  .uacf7-material-design-dark textarea:hover{
+    padding         : 15px 16px;
+    border          : none;
+    border-bottom   : 1px solid #cac4cf;
+    color           : #cac4cf;
+    width           : 100%;
+    background-color: #444246;
+    font-size       : 16px;
+    height          : 100px;
+    line-height     : 24px;
+    border-radius   : 4px 4px 0px 0px;
+    box-sizing      : border-box;
+    cursor          : pointer;
+  }
+
+  .uacf7-material-design-dark textarea:focus{
+    padding         : 15px 16px;
+    border          : none;
+    border-bottom   : 2px solid #cac4cf;
+    color           : #cac4cf;
+    width           : 100%;
+    background-color: #363438;
+    font-size       : 16px;
+    height          : 100px;
+    line-height     : 24px;
+    border-radius   : 4px 4px 0px 0px;
+    box-sizing      : border-box;
+    cursor          : pointer;
+    left            : 16px;
+  }
+
+
+  .uacf7-material-design-dark  p > label,  .uacf7-material-design-dark .uacf7-row .uacf7-col-6 > p label {
+    position        : absolute;
+    padding         : 15px 0px;
+    box-sizing      : border-box;
+    top             : 35%;
+    transform       : translateY(-50%);
+    pointer-events  : none;
+    font-weight     : 400;
+    transition      : top 0.2s;
+    color           : #cac4cf;
+    left            : 16px;
+    border-radius   : 4px;
+    z-index         : 1;
+    background-color: transparent;
+    letter-spacing  : 0.5px;
+  }
+
+
+  
+  .uacf7-material-design-dark  label.has-value,  .uacf7-material-design-dark .uacf7-row .uacf7-col-6 label.has-value  {
+    top             : 4px;
+    margin-top      : 8px;
+    color           : #CEBDFF!important;
+    font-size       : 12px!important;
+    left            : 16px;
+    font-size       : 16px;
+    min-height      : 15px;
+    line-height     : 15px;
+    background-color: transparent;
+    max-width       : fit-content;
+    z-index         : 99;
+    
+  }
+
+  .uacf7-material-design-dark  label.required-tip,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.required-tip  {
+    top             : 0%;
+    margin-top      : -1.5px;
+    left            : 16px;
+    font-size       : 16px;
+    min-height      : 15px;
+    line-height     : 15px;
+    max-width       : fit-content;
+    color           : #f7aea5;
+    
+  }
+
+  .uacf7-material-design-dark  input.required-tip,  .uacf7-material-design-dark .uacf7-row .uacf7-col-6 input.required-tip  {
+    border-bottom   : 2px solid #f7aea5;
+
+  }
+
+  .uacf7-material-design-dark  input[type=file]::file-selector-button {
+    margin-top   : 10px;
+    border-radius: .2em;
+    transition   : 1s;
+  }
+
+  .uacf7-material-design-dark  span > input.hover,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 span > input.hover {
+    color           : #cac4cf;
+    background-color: #444246;
+    box-sizing      : border-box;
+ 
+  }
+
+  .uacf7-material-design-dark   input.input-focus,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 input.input-focus {
+    border-bottom   : 2px solid #CEBDFF!important;
+    color           : #C9C5CA;
+  }
+
+   /*To add style the label of d = Date, f = File, s = Select, and t = Textarea input*/
+   .uacf7-material-design-dark  label.dfst,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.dfst  {
+    top             : 4px;
+    margin-top      : 8px;
+    font-size       : 12px!important;
+    left            : 16px;
+    font-size       : 16px;
+    min-height      : 15px;
+    line-height     : 15px;
+    background-color: transparent;
+    max-width       : fit-content;
+    z-index         : 99;  
+
+  }
+
+
+  .uacf7-material-design-dark  .wpcf7-select.focus-dfst,  .uacf7-material-design-dark  .wpcf7-file.focus-dfst,  .uacf7-material-design-dark  .wpcf7-date.focus-dfst,  .uacf7-material-design-dark  .wpcf7-select.wpcf7-textarea.focus-dfst{
+    border-bottom   : 2px solid #cac4cf!important;
+    color           : #cac4cf;
+  }
+
+  .uacf7-material-design-dark  .wpcf7-select.hover-dfst,  .uacf7-material-design-dark  .wpcf7-file.hover-dfst,  .uacf7-material-design-dark  .wpcf7-date.hover-dfst,  .uacf7-material-design-dark  .wpcf7-select.hover-dfst{
+    border-bottom   : 1px solid #cac4cf;
+    color           : #cac4cf;
+    background-color: #444246;
+
+    }
+
+  .uacf7-material-design-dark  .wpcf7-submit {
+    width           : 148px;
+    height          : 40px;
+    margin-top      : 32px;
+    border-radius   : 50px;
+    border-width    : 0px;
+    letter-spacing  : 2px;
+    font-size       : 14px;
+    text-transform  : uppercase;
+    background-color: #6747c1;
+    color           : #ffffff;
+    padding         : 10px, 24px, 10px, 24px;
+    transition      : all 300ms ease 0ms;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    padding: 10px 20px;
+
+  }
+
+  .uacf7-material-design-dark  .wpcf7-submit:hover{
+    cursor: pointer;
+  }
+  
+
+
+  .uacf7-material-design-dark  .wpcf7-not-valid-tip {
+    position   : absolute;
+    top        : 48px;
+    left       : 16px;
+    color      : #f7aea5;
+    font-size  : 12px;
+    padding-top: 4px;
+  
+  }
+
+
+ 
+/*For Acceptance, Checkbox and Radio Buttons*/
+.uacf7-material-design-dark    input[type="checkbox"],    .uacf7-material-design-dark  input[type="radio"]{
+  width     : 20px;
+  height    : 20px;
+  box-sizing: border-box;
+  position  : relative;
+}
+
+.uacf7-material-design-dark  .wpcf7-checkbox .wpcf7-list-item {
+    display    : inline-flex;
+    align-items: center;
+}
+
+.uacf7-material-design-dark  .wpcf7-checkbox .wpcf7-list-item input[type="checkbox"] {
+    margin-right: 16px; 
+}
+
+.uacf7-material-design-dark  .wpcf7-acceptance .wpcf7-list-item label {
+  display    : flex;
+  align-items: center;
+}
+
+.uacf7-material-design-dark  .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] {
+  margin-right: 16px;
+}
+
+
+.uacf7-material-design-dark  .wpcf7-radio .wpcf7-list-item label {
+  display    : flex;
+  align-items: center;
+}
+
+.uacf7-material-design-dark  .wpcf7-radio .wpcf7-list-item input[type="radio"] {
+  margin-right: 16px; 
+}
+
+
+.uacf7-material-design-dark input[type="checkbox"]:checked::before {
+  position           : absolute;
+  background-color   : #cebdff;
+  background-image   : url('../icons/check_small_dark.svg');
+  background-position: center;
+  border-radius      : 3px;
+  color              : #6747c1;
+  content            : "";
+  top                : 0;
+  bottom             : 0;
+  left               : 0;
+  width              : 100%;
+  height             : 100%;
+  display            : inline-flex;
+  align-items        : center;
+  padding-left       : 2px;
+  
+  }
+
+  .uacf7-material-design-dark input[type="checkbox"]:hover::before {
+  position           : absolute;
+  background-position: center;
+  border-radius      : 3px;
+  content            : "";
+  top                : 0;
+  bottom             : 0;
+  left               : 0;
+  width              : 100%;
+  height             : 100%;
+  display            : inline-flex;
+  align-items        : center;
+  padding-left       : 2px;
+  background-size    : cover;
+  box-shadow         : 0 0 0 5px #2e2c2f;
+  box-sizing         : border-box;
+  
+  }
+
+
+  .uacf7-material-design-dark input[type="radio"]:checked::before {
+  position           : absolute;
+  background-image   : url('../icons/radio-icon-dark.svg');
+  background-position: center;
+  color              : #ffffff;
+  content            : "";
+  top                : 0;
+  bottom             : 0;
+  left               : 0;
+  width              : 100%;
+  height             : 100%;
+  display            : inline-flex;
+  align-items        : center;
+  padding-left       : 2px;
+  background-size    : cover;
+  border-radius      : 100px;
+  background-color   : #141316;
+
+  }
+
+
+
+  .uacf7-material-design-dark input[type="radio"]:hover::before {
+  position           : absolute;
+  background-position: center;
+  content            : "";
+  top                : 0;
+  bottom             : 0;
+  left               : 0;
+  width              : 100%;
+  height             : 100%;
+  display            : inline-flex;
+  align-items        : center;
+  padding-left       : 2px;
+  background-size    : cover;
+  border-radius      : 100px;
+  box-shadow         : 0 0 0 5px #2e2c2f;
+  box-sizing         : border-box;
+  
+  }
+
+
+/* Date Field Styles */
+
+.uacf7-material-design-dark  input[type=date]::-webkit-datetime-edit-month-field{
+  left: 20px;
+  
+}
+
+.uacf7-material-design-dark .wpcf7-date::-webkit-calendar-picker-indicator { 
+
+  background-image: url('../icons/calendar-icon-for-dark.png');
+  background-color: #2a292c;
+  padding         : 10px;
+  background-color: #e7e2e7;
+  border-radius   : 50%;
+}
+
+

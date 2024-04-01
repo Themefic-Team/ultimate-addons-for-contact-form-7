@@ -22,14 +22,19 @@
                     }
                 },
                 error: function(xhr, status, error) {
-                  
+         
                 }
             });
         } catch (error) {
-           
+        
         }
     }
+
   
-    getBotUsername(token);
+    if(token){
+      getBotUsername(token);
+    }
+
+
   })(jQuery);
   

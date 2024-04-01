@@ -12,9 +12,9 @@ class UACF7_TELEGRAM {
 
     require_once 'inc/telegram.php';
 
-    add_action('wpcf7_before_send_mail', [$this, 'uacf7_send_contact_form_data_to_telegram']);
-    add_action('admin_enqueue_scripts', [$this, 'uacf7_telegram_admin_js_script']);
-    add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_telegram'), 21, 2 ); 
+    add_action('wpcf7_before_send_mail', array( $this, 'uacf7_send_contact_form_data_to_telegram'));
+    add_action('admin_enqueue_scripts', array( $this, 'uacf7_telegram_admin_js_script'));
+    add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_telegram'), 35, 2 ); 
 
   }
 
@@ -69,7 +69,7 @@ class UACF7_TELEGRAM {
               'label'     => __( 'Telegram Option ', 'ultimate-addons-cf7' ),
           ),
             'uacf7_telegram_enable_icon' => array(
-              'id'        => 'uacf7_telegram_enable_icon',
+              'id'       => 'uacf7_telegram_enable_icon',
               'type'     => 'callback',
               'function' => 'uacf7_telegram_active_status_callback',
               'argument' => $post_id, 
@@ -167,7 +167,7 @@ class UACF7_TELEGRAM {
   
      
         if (is_wp_error($response)) {
-            error_log('Telegram API request failed: ' . $response->get_error_message());
+            // error_log('Telegram API request failed: ' . $response->get_error_message());
         }
     }
     

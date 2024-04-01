@@ -12,6 +12,7 @@ class UACF7_DATABASE {
 	 * Construct function
 	 */
 	public function __construct() {
+		add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_uacf7_database'), 28, 2 );  
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'wp_enqueue_admin_script' ) );
 		add_action( 'wpcf7_before_send_mail', array( $this, 'uacf7_save_to_database' ) );
@@ -20,6 +21,48 @@ class UACF7_DATABASE {
 		add_action( 'wp_ajax_uacf7_ajax_database_export_csv', array( $this, 'uacf7_ajax_database_export_csv' ) );
 		add_action( 'admin_init', array( $this, 'uacf7_create_database_table' ) );
 		// add_filter( 'wpcf7_load_js', '__return_false' );
+	}
+
+	public function uacf7_post_meta_options_uacf7_database($value, $post_id){
+		$database = apply_filters('uacf7_post_meta_options_uacf7_database_pro', $data = array(
+            'title'  => __( 'Database', 'ultimate-addons-cf7' ),
+            'icon'   => 'fa-solid fa-database',
+            'fields' => array(
+                'uacf7_database_label' => array(
+                'id'    => 'uacf7_database_label',
+                'type'  => 'heading', 
+                'label' => __( 'UACF7 Database Settings', 'ultimate-addons-cf7' ),
+                'subtitle' => sprintf(
+                    __( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
+                        '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
+                                )
+                ),
+                array(
+                    'id'      => 'pdf-database-docs',
+                    'type'    => 'notice',
+                    'style'   => 'success',
+                    'content' => sprintf( 
+                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/database/" target="_blank" rel="noopener">Database</a>'
+                    )
+                ),
+                'uacf7_enable_duplicate_submission' => array(
+                    'id'        => 'uacf7_enable_duplicate_submission',
+                    'type'      => 'switch',
+                    'label'     => __( ' Prevent Duplicate Submission ', 'ultimate-addons-cf7' ),
+                    'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
+                    'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+                    'default'   => false,
+                    'field_width' => 100,
+                ),
+
+            ),
+                
+    
+        ), $post_id);
+    
+        $value['database'] = $database; 
+        return $value;
 	}
 
 	//Create Ulimate Database   
@@ -248,7 +291,25 @@ class UACF7_DATABASE {
 			}
 		}
 
+		$database_duplication = uacf7_get_form_option( $form->id(), 'database' );
+		$is_enable_prevent_duplication = $database_duplication['uacf7_enable_duplicate_submission'];
+
+
 		$contact_form_data = $submission->get_posted_data();
+
+		$emailValue = null;
+
+		foreach ($tags as $tag) {
+			if ($tag->type === 'email' || $tag->type === 'email*') {
+		
+				if (array_key_exists($tag->name, $contact_form_data)) {
+					$emailValue .= $contact_form_data[$tag->name];	
+				}	
+		
+				break;
+			}
+		}
+
 		$files = $submission->uploaded_files();
 		$upload_dir = wp_upload_dir();
 		$dir = $upload_dir['basedir'];
@@ -292,40 +353,78 @@ class UACF7_DATABASE {
 			}
 		}
 
+		
+		// Retrieve all row data from the table
+		$rows = $wpdb->get_results("SELECT * FROM $table_name", ARRAY_A);
+		
+		$email_to_check = $emailValue; // Email to check for existence
+		
+		$email_exists = false;
+		
+		if ($rows) {
+			foreach ($rows as $row) {
+				$form_value = json_decode($row['form_value'], true);
+		
+				foreach ($form_value as $key => $value) {
+	
+					if (stripos($key, 'email') !== false) {
 
-		$data = [ 
-			'status' => 'unread',
-		];
-		$data = array_merge( $data, $contact_form_data );
-		$insert_data = [];
-		foreach ( $data as $key => $value ) {
-			if ( ! in_array( $key, $skip_tag_insert ) ) {
-
-				if ( is_array( $value ) ) {
-					$insert_data[ $key ] = array_map( 'esc_html', $value );
-
-				} else {
-					$insert_data[ $key ] = esc_html( $value );
+						if ($value === $email_to_check) {
+							$email_exists = true;
+							break 2; 
+						}
+					}
 				}
 			}
 		}
 
-		$insert_data = json_encode( $insert_data );
 
-		$wpdb->insert( $table_name, array(
-			'form_id' => $form->id(),
-			'form_value' => $insert_data,
-			'form_date' => current_time( 'Y-m-d H:i:s' ),
-		) );
-		$uacf7_db_insert_id = $wpdb->insert_id;
+		//Check Condition whether the duplication happens
+		if ($is_enable_prevent_duplication === '1' && $email_exists == true) {
+	
+				return;
+			
+		} else {
+			$data = [ 
+				'status' => 'unread',
+			];
+			$data = array_merge( $data, $contact_form_data );
+	
+			$insert_data = [];
+			foreach ( $data as $key => $value ) {
+				if ( ! in_array( $key, $skip_tag_insert ) ) {
+	
+					if ( is_array( $value ) ) {
+						$insert_data[ $key ] = array_map( 'esc_html', $value );
+	
+					} else {
+						$insert_data[ $key ] = esc_html( $value );
+					}
+				}
+			}
+	
+			$insert_data = json_encode( $insert_data );
+	
+			$wpdb->insert( $table_name, array(
+				'form_id' => $form->id(),
+				'form_value' => $insert_data,
+				'form_date' => current_time( 'Y-m-d H:i:s' ),
+			) );
+			$uacf7_db_insert_id = $wpdb->insert_id;
 
-		//  print_r($uacf7_enable_track_order);
+			
+			if ( isset( $uacf7_db_insert_id ) && ! empty( $uacf7_db_insert_id ) ) {
+		
+				do_action( 'uacf7_checkout_order_traking', $uacf7_db_insert_id, $form->id() );
+			}
+			if ( isset( $uacf7_db_insert_id ) && ! empty( $uacf7_db_insert_id ) ) {
 
-		// Order tracking Action
-		do_action( 'uacf7_checkout_order_traking', $uacf7_db_insert_id, $form->id() );
+				do_action( 'uacf7_submission_id_insert', $uacf7_db_insert_id, $form->id(), $contact_form_data, $tags );
+			}
+			
+		}
+		
 
-		// submission id Action
-		do_action( 'uacf7_submission_id_insert', $uacf7_db_insert_id, $form->id(), $contact_form_data, $tags );
 
 	}
 
@@ -705,7 +804,7 @@ class uacf7_form_List_Table extends WP_List_Table {
 
 			// Checked Star Review Status
 			if ( $this->uacf7_star_review_status( $form_id ) == true ) {
-				$checked = $fdata->is_review == 1 ? 'checked' : '';
+				$checked = isset( $fdata->is_review) && $fdata->is_review == 1 ? 'checked' : '';
 				$f_data['review_publish'] = '<label class="uacf7-admin-toggle1 uacf7_star_label" for="uacf7_review_status_' . esc_attr( $fdata->id ) . '">
                 <input type="checkbox" class="uacf7-admin-toggle__input star_is_review" value="' . esc_attr( $fdata->id ) . '"  name="uacf7_review_status_' . esc_attr( $fdata->id ) . '" id="uacf7_review_status_' . esc_attr( $fdata->id ) . '" ' . esc_attr( $checked ) . '>
                 <span class="uacf7-admin-toggle-track"><span class="uacf7-admin-toggle-indicator"><span class="checkMark"><svg viewBox="0 0 24 24" id="ghq-svg-check" role="presentation" aria-hidden="true"><path d="M9.86 18a1 1 0 01-.73-.32l-4.86-5.17a1.001 1.001 0 011.46-1.37l4.12 4.39 8.41-9.2a1 1 0 111.48 1.34l-9.14 10a1 1 0 01-.73.33h-.01z"></path></svg></span></span></span>

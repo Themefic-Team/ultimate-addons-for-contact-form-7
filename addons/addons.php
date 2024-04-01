@@ -67,6 +67,7 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
 			require_once( 'mailchimp/mailchimp.php' );
 		}
 
+
 		//Addon - Dynamic Text
 		if ( isset( $option['uacf7_enable_dynamic_text'] ) && $option['uacf7_enable_dynamic_text'] == true ) {
 			require_once( 'dynamic-text/dynamic-text.php' );
@@ -82,12 +83,26 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
 			require_once( 'database/database.php' );
 		}
 
+		// if ( isset( $option['uacf7_enable_form_generator_ai_field'] ) && $option['uacf7_enable_form_generator_ai_field'] == true ) {
+		// 		require_once( 'database/database.php' );
+		// } else {
+		// 	$uacf7_options = get_option( 'uacf7_settings' );
+		// 	$update_form_generator_ai = get_option( 'update_form_generator_ai' );
+		// 	if ( ! isset( $uacf7_options['uacf7_enable_form_generator_ai_field'] ) && $update_form_generator_ai == false ) {
+		// 		$uacf7_options['uacf7_enable_form_generator_ai_field'] = 1;
+
+		// 		update_option( 'uacf7_settings', $uacf7_options );
+		// 		update_option( 'update_form_generator_ai', 1 );
+		// 	}
+
+		// }
+
 		//Addon - PDF Generator 
 		if ( isset( $option['uacf7_enable_pdf_generator_field'] ) && $option['uacf7_enable_pdf_generator_field'] == true ) {
 			require_once( 'pdf-generator/pdf-generator.php' );
 		}
 
-		//Addon - PDF Generator 
+		//Addon - Form Generator
 		if ( isset( $option['uacf7_enable_form_generator_ai_field'] ) && $option['uacf7_enable_form_generator_ai_field'] == true ) {
 			require_once( 'form-generator-ai/form-generator-ai.php' );
 		} else {
@@ -111,14 +126,32 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
 		if ( isset( $option['uacf7_enable_signature_field'] ) && $option['uacf7_enable_signature_field'] == true ) {
 			require_once( 'signature/ultimate-signature.php' );
 		}
+	
+        //Addon - Telegram
+        if( isset($option['uacf7_enable_telegram_field']) && $option['uacf7_enable_telegram_field'] == true ){  
+            require_once( 'telegram/ultimate-telegram.php');
+        }
 
+         //Addon - Spam Protection
+         if( isset($option['uacf7_enable_spam_protection_field']) && $option['uacf7_enable_spam_protection_field'] == true ){  
+            require_once( 'spam-protection/ultimate-spam-protection.php');
+        }
 
-		//Addon - Telegram
-		if ( isset( $option['uacf7_enable_telegram_field'] ) && $option['uacf7_enable_telegram_field'] == true ) {
-			require_once( 'telegram/ultimate-telegram.php' );
-		}
-
-	}
+        //Addon - Material Design
+        if( isset($option['uacf7_enable_material_design_field']) && $option['uacf7_enable_material_design_field'] == true ){  
+            require_once( 'material-design/ultimate-material-design.php');
+        }
+        //Addon - Form Submit Later
+        if( isset($option['uacf7_enable_form_submit_later_field']) && $option['uacf7_enable_form_submit_later_field'] == true ){  
+            require_once( 'submit-later/ultimate-submit-later.php');
+        }
+        //Addon - Form Preview
+        if( isset($option['uacf7_enable_form_preview_field']) && $option['uacf7_enable_form_preview_field'] == true ){  
+            require_once( 'form-preview/ultimate-form-preview.php');
+        }
+     
+	
+    }
 }
 
 uacf7_addons_included();
