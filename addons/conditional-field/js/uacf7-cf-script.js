@@ -283,6 +283,80 @@
 
 							}
 						}
+
+						// Add condition for 'include'
+
+						if ($uacf7_cf_conditions['uacf7_cf_operator'][x] == 'include') {
+
+							if (currentValue.includes($uacf7_cf_conditions['uacf7_cf_val'][x])) {
+
+								$conditions.push('true');
+
+							} else {
+
+								$conditions.push('false');
+
+							}
+						}
+
+						// Add condition for 'not include'
+
+						if ($uacf7_cf_conditions['uacf7_cf_operator'][x] == 'not_include') {
+
+							if (!currentValue.includes($uacf7_cf_conditions['uacf7_cf_val'][x])) {
+
+								$conditions.push('true');
+
+							} else {
+
+								$conditions.push('false');
+
+							}
+						}
+						// Add condition for 'starts with'
+
+						if ($uacf7_cf_conditions['uacf7_cf_operator'][x] == 'starts_with') {
+
+							if (currentValue.startsWith($uacf7_cf_conditions['uacf7_cf_val'][x])) {
+
+								$conditions.push('true');
+
+							} else {
+
+								$conditions.push('false');
+
+							}
+						}
+						// Add condition for 'ends with'
+
+						if ($uacf7_cf_conditions['uacf7_cf_operator'][x] == 'ends_with') {
+
+							if (currentValue.endsWith($uacf7_cf_conditions['uacf7_cf_val'][x])) {
+
+								$conditions.push('true');
+
+							} else {
+
+								$conditions.push('false');
+
+							}
+						}
+						// Add condition for 'regex match'
+
+						if ($uacf7_cf_conditions['uacf7_cf_operator'][x] == 'regex_match') {
+
+							var regex = new RegExp($uacf7_cf_conditions['uacf7_cf_val'][x]);
+
+							if (regex.test(currentValue)) {
+
+								$conditions.push('true');
+
+							} else {
+
+								$conditions.push('false');
+
+							}
+						}
 					  }
                        
 
