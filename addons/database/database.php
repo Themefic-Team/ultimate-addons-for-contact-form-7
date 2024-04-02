@@ -21,7 +21,6 @@ class UACF7_DATABASE {
 		add_action( 'wp_ajax_uacf7_ajax_database_export_csv', array( $this, 'uacf7_ajax_database_export_csv' ) );
 		add_action( 'admin_init', array( $this, 'uacf7_create_database_table' ) );
 		// add_filter( 'wpcf7_load_js', '__return_false' );
-
 	}
 
 	public function uacf7_post_meta_options_uacf7_database($value, $post_id){
@@ -94,7 +93,7 @@ class UACF7_DATABASE {
 		wp_enqueue_script( 'database-admin', UACF7_ADDONS . '/database/assets/js/database-admin.js', array( 'jquery' ), null, true );
 		wp_localize_script( 'database-admin', 'database_admin_url',
 			array(
-				'admin_url' => get_admin_url() . '/admin.php',
+				'admin_url' => get_admin_url() . 'admin.php',
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				'plugin_dir_url' => plugin_dir_url( __FILE__ ),
 				'nonce' => wp_create_nonce( 'uacf7-form-database-admin-nonce' ),
@@ -107,6 +106,7 @@ class UACF7_DATABASE {
 	 */
 
 	public function uacf7_add_db_menu() {
+
 		add_submenu_page(
 			'uacf7_settings',
 			__( 'Database', 'ultimate-addons-cf7' ),
