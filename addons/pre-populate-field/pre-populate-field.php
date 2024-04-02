@@ -39,7 +39,8 @@ class UACF7_PRE_POPULATE {
                     'type'  => 'heading', 
                     'label' => __( 'Pre-Populate Field Settings', 'ultimate-addons-cf7' ),
                     'subtitle' => sprintf(
-                        __( 'Sends data from one form to another, after the first form submission. See Demo %1s.', 'ultimate-addons-cf7' ),
+                        // translators: %1$s: link to the demo page
+                        esc_html__( 'Sends data from one form to another, after the first form submission. See Demo %1$s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/contact-form-7-pre-populate-fields/" target="_blank" rel="noopener">Example</a>'
                                   )
                       ),
@@ -48,7 +49,8 @@ class UACF7_PRE_POPULATE {
                         'type'    => 'notice',
                         'style'   => 'success',
                         'content' => sprintf( 
-                            __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                            // translators: %1$s: link to the documentation
+                            esc_html__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-cf7' ),
                             '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-pre-populate-fields/" target="_blank" rel="noopener">Pre-populate Field</a>'
                         )
                       ),
@@ -113,7 +115,7 @@ class UACF7_PRE_POPULATE {
     */
     
     public function wp_enqueue_script() {
-		wp_enqueue_script( 'pre-populate-script', UACF7_ADDONS . '/pre-populate-field/assets/js/pre-populate.js', array('jquery'), null, true ); 
+		wp_enqueue_script( 'pre-populate-script', UACF7_ADDONS . '/pre-populate-field/assets/js/pre-populate.js', array('jquery'), UACF7_VERSION, true ); 
         wp_localize_script( 'pre-populate-script', 'pre_populate_url',
             array( 
                     'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -157,7 +159,7 @@ class UACF7_PRE_POPULATE {
                 'pre_populate_form' => $pre_populate_form,
             ];
             
-            echo wp_send_json($data);
+            wp_send_json($data);
         }else{
             echo false;
         }  

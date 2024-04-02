@@ -32,9 +32,11 @@
                         'id'      => 'uacf7_spam_protection_heading',
                         'type'  => 'heading', 
                         'label'   => __( 'Spam Protection Settings', 'ultimate-addons-cf7' ),
-                        'subtitle' => sprintf( 
-                            __( 'This feature will help you to protect your form submission from Spam attack.  %s .', 'ultimate-addons-cf7' ),
-                            '<a href="https://cf7addons.com/preview/spam-protection-for-contact-form-7/" target="_blank">Example.</a>',
+                        'title'   => __( 'This feature will help you to protect your form submission from Spam attack.', 'ultimate-addons-cf7' ),
+                        'content' => sprintf( 
+                            // Translators: %1$s is replaced with the link to documentation.
+                            esc_html__( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
+                            '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection-for-contact-form-7/" target="_blank">Spam Protection for Contact Form 7</a>',
                            
                         ),
                     ),
@@ -44,7 +46,8 @@
                             'type'    => 'notice',
                             'style'   => 'success',
                             'content' => sprintf( 
-                                __( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
+                                // Translators: %1$s is replaced with the link to documentation. 
+                                esc_html__( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
                                 '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection-for-contact-form-7/" target="_blank">Spam Protection</a>',
                                
                             ),
@@ -98,7 +101,8 @@
                         'type'        => 'textarea',
                         'label'       => __( 'Country Block', 'ultimate-addons-cf7' ),
                         'subtitle'    => sprintf(
-                            __( 'Enlist the the Country or Countries that you want to Ban / Block. Separate the Countries %s using a Comma', 'ultimate-addons-cf7' ),
+                            // Translators: %1$s is replaced with the link to documentation.
+                            esc_html__( 'Enlist the the Country or Countries that you want to Ban / Block. Separate the Countries %s using a Comma', 'ultimate-addons-cf7' ),
                             '<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" target="_blank">' . __('iso2 name', 'ultimate-addons-cf7') . '</a>'
                         ),
                         'placeholder' => __( 'E.g. us,ca,uk', 'ultimate-addons-cf7' ),
@@ -136,12 +140,25 @@
                     <table class="form-table">
                     <tbody>
                             <div class="uacf7-doc-notice"> 
-                                <?php echo sprintf( 
-                                    __( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
+                                <?php echo sprintf(
+                                    // Translators: %1$s is replaced with the link to documentation. 
+                                    esc_html__( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
                                     '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection/" target="_blank">documentation</a>'
                                 ); ?> 
                             </div>
                             <tr>
+<<<<<<< HEAD
+=======
+                            <th scope="row"><?php esc_html_e( 'Field Type', 'ultimate-addons-cf7' );?></th>
+                                <td>
+                                    <fieldset>
+                                        <legend class="screen-reader-text"><?php esc_html_e( 'Field Type', 'ultimate-addons-cf7' );?></legend>
+                                        <label><input type="checkbox" name="required" value="on"><?php esc_html_e( 'Required Field', 'ultimate-addons-cf7' );?></label>
+                                    </fieldset>
+                                </td>
+                            </tr> 
+                            <tr>
+>>>>>>> 33e20d1224755daa7dfd74d59ba0747da6913c5a
                                 <th scope="row"><label for="<?php echo esc_attr($args['content'] . '-name'); ?>"><?php echo esc_html(__('Name', 'ultimate-addons-cf7')); ?></label></th>
                                 <td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr($args['content'] . '-name'); ?>" /></td>
                             </tr> 
@@ -198,8 +215,18 @@
             $atts = array();
 
           
+            // $ip = $_SERVER['REMOTE_ADDR'];
+		    // $addr = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+            $addr;
             $ip = $_SERVER['REMOTE_ADDR'];
-		    $addr = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+            $response = wp_remote_get( 'http://ip-api.com/php/' . $ip );
+
+            if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
+                $body = wp_remote_retrieve_body( $response );
+                $addr .= @unserialize( $body );
+            }
+
+
 
             $atts['iso2']              = isset($addr['countryCode']);
             $atts['protection-method'] = $uacf7_spam_protection['uacf7_spam_protection_type'];
@@ -234,8 +261,13 @@
             ob_start();
         
             ?> 
+<<<<<<< HEAD
                 <span  class="wpcf7-form-control-wrap <?php echo $tag->get_class_option($class) .' '. sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name);  ?>" >
                     <div class="uacf7_spam_recognation" <?php echo ($atts);  ?>>
+=======
+                <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name);  ?>" >
+                    <div class="uacf7_spam_recognation" <?php echo esc_attr($atts);  ?>>
+>>>>>>> 33e20d1224755daa7dfd74d59ba0747da6913c5a
                         <?php if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'arithmathic_recognation'){ ?>
                             <div id="arithmathic_recognation">
          

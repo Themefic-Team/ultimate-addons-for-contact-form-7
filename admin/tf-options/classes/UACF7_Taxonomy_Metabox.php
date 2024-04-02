@@ -109,18 +109,9 @@ if ( ! class_exists( 'UACF7_Taxonomy_Metabox' ) ) {
 		 * Save Metabox
 		 * @author Foysal
 		 */
-		public function save_taxonomy( $term_id ) {
-			// Add nonce for security and authentication.
-			$nonce_name   = isset( $_POST['tf_taxonomy_nonce'] ) ? $_POST['tf_taxonomy_nonce'] : '';
-			$nonce_action = 'tf_taxonomy_nonce_action';
-
-			// Check if a nonce is set.
-			if ( ! isset( $nonce_name ) ) {
-				return;
-			}
-
+		public function save_taxonomy( $term_id ) { 
 			// Check if a nonce is valid.
-			if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) ) {
+			if ( ! isset( $_POST['tf_taxonomy_nonce'] ) || ! wp_verify_nonce( $_POST['tf_taxonomy_nonce'], 'tf_taxonomy_nonce_action' ) ) {
 				return;
 			}
 

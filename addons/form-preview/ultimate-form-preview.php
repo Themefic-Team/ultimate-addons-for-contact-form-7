@@ -32,7 +32,8 @@
                         'type'  => 'heading', 
                         'label' => __( 'Form Preview', 'ultimate-addons-cf7' ),
                         'subtitle' => sprintf(
-                            __( 'Allow you to preview the form before Submission. See Demo %1s.', 'ultimate-addons-cf7' ),
+                            // Translators: %1$s is replaced with the link to documentation. 
+                            esc_html__( 'Allow you to preview the form before Submission. See Demo %1s.', 'ultimate-addons-cf7' ),
                              '<a href="https://cf7addons.com/preview/form-preview/" target="_blank" rel="noopener">Example</a>'
                                       )
                           ),
@@ -40,8 +41,9 @@
                             'id'      => 'submit-form-preview-docs',
                             'type'    => 'notice',
                             'style'   => 'success',
-                            'content' => sprintf( 
-                                __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                            'content' => sprintf(
+                                // Translators: %1$s is replaced with the link to documentation.  
+                                esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                                 '<a href="https://themefic.com/docs/uacf7/free-addons/form-preview/" target="_blank" rel="noopener">Form Preview</a>'
                             )
                           ),
@@ -49,14 +51,14 @@
                    'uacf7_form_preview_enable' => array(
                     'id'    => 'uacf7_form_preview_enable',
                     'type'               => 'switch',
-                    'label'              => __( 'Enable Form Preview', 'ultimate-addons-cf7' ),
+                    'label'              => esc_html__( 'Enable Form Preview', 'ultimate-addons-cf7' ),
                     'default' => false
                     ),
                    'uacf7_form_preview_title' => array(
                     'id'    => 'uacf7_form_preview_title',
                     'type'               => 'text',
-                    'label'              => __( 'Form Preview Title', 'ultimate-addons-cf7' ),
-                    'placeholder'              => __( 'Form Preview', 'ultimate-addons-cf7' ),
+                    'label'              => esc_html__( 'Form Preview Title', 'ultimate-addons-cf7' ),
+                    'placeholder'              => esc_html__( 'Form Preview', 'ultimate-addons-cf7' ),
                     'default' => 'Form Preview'
                     ),
          
@@ -72,7 +74,7 @@
                         'id' => 'uacf7_form_preview_label_placeholder',
                         'type' => 'repeater',
                         'label' => 'Set Front End Label for Form Input Field',
-                        'subtitle'     => __( 'It will help to show a beautiful preview of each field', 'ultimate-addons-cf7' ),
+                        'subtitle'     => esc_html__( 'It will help to show a beautiful preview of each field', 'ultimate-addons-cf7' ),
                         'class' => 'tf-field-class',
                         'fields' => array(
                             'field_name' => array(
@@ -88,7 +90,7 @@
                                 'id' => 'field_label',
                                 'type' => 'text',
                                 'label' => 'Prview Label',
-                                'subtitle'     => __( 'This label will be show to Form Preview', 'ultimate-addons-cf7' ),
+                                'subtitle'     => esc_html__( 'This label will be show to Form Preview', 'ultimate-addons-cf7' ),
 
                             )
                          ),
@@ -120,7 +122,7 @@
                 return;
             }
 
-            echo wp_send_json( [
+            wp_send_json( [
                 'is_enabled'                   => $is_enabled,
                 'preview_labels'               => $preview_labels,
                 'preview_heading'              => $preview_heading,
@@ -134,7 +136,7 @@
                 wp_enqueue_script('preview_form_public_js', UACF7_URL . 'addons/form-preview/assets/public/js/public-form-preview.js', ['jquery'], 'UAFC7_VERSION', true);
                
                 wp_enqueue_style('form_preview_jquery_ui_css', UACF7_URL . 'addons/form-preview/assets/public/css/jquery-ui.css', [], 'UAFC7_VERSION', true, 'all');
-                // wp_enqueue_style('form_preview_public_css', UACF7_URL . 'addons/form-preview/assets/public/css/public-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
+                wp_enqueue_style('form_preview_public_css', UACF7_URL . 'addons/form-preview/assets/public/css/public-form-preview.css', [], 'UAFC7_VERSION', true, 'all');
                
                 wp_enqueue_style('jquery-ui-theme', 'https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css');
                 wp_localize_script( 'preview_form_public_js', 'uacf7_form_preview_obj', [
