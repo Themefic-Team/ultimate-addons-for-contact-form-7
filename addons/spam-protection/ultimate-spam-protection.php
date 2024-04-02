@@ -147,18 +147,6 @@
                                 ); ?> 
                             </div>
                             <tr>
-<<<<<<< HEAD
-=======
-                            <th scope="row"><?php esc_html_e( 'Field Type', 'ultimate-addons-cf7' );?></th>
-                                <td>
-                                    <fieldset>
-                                        <legend class="screen-reader-text"><?php esc_html_e( 'Field Type', 'ultimate-addons-cf7' );?></legend>
-                                        <label><input type="checkbox" name="required" value="on"><?php esc_html_e( 'Required Field', 'ultimate-addons-cf7' );?></label>
-                                    </fieldset>
-                                </td>
-                            </tr> 
-                            <tr>
->>>>>>> 33e20d1224755daa7dfd74d59ba0747da6913c5a
                                 <th scope="row"><label for="<?php echo esc_attr($args['content'] . '-name'); ?>"><?php echo esc_html(__('Name', 'ultimate-addons-cf7')); ?></label></th>
                                 <td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr($args['content'] . '-name'); ?>" /></td>
                             </tr> 
@@ -215,16 +203,16 @@
             $atts = array();
 
           
-            // $ip = $_SERVER['REMOTE_ADDR'];
-		    // $addr = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
-            $addr;
             $ip = $_SERVER['REMOTE_ADDR'];
-            $response = wp_remote_get( 'http://ip-api.com/php/' . $ip );
+		    $addr = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+            // $addr;
+            // $ip = $_SERVER['REMOTE_ADDR'];
+            // $response = wp_remote_get( 'http://ip-api.com/php/' . $ip );
 
-            if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
-                $body = wp_remote_retrieve_body( $response );
-                $addr .= @unserialize( $body );
-            }
+            // if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
+            //     $body = wp_remote_retrieve_body( $response );
+            //     $addr .= @unserialize( $body );
+            // }
 
 
 
@@ -261,13 +249,8 @@
             ob_start();
         
             ?> 
-<<<<<<< HEAD
-                <span  class="wpcf7-form-control-wrap <?php echo $tag->get_class_option($class) .' '. sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name);  ?>" >
-                    <div class="uacf7_spam_recognation" <?php echo ($atts);  ?>>
-=======
                 <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name);  ?>" >
                     <div class="uacf7_spam_recognation" <?php echo esc_attr($atts);  ?>>
->>>>>>> 33e20d1224755daa7dfd74d59ba0747da6913c5a
                         <?php if($uacf7_spam_protection['uacf7_spam_protection_type'] === 'arithmathic_recognation'){ ?>
                             <div id="arithmathic_recognation">
          
