@@ -9,14 +9,11 @@
 
             add_action( 'wpcf7_init',  array( $this, 'uacf7_spam_protection_add_shortcodes' ));
             add_action( 'admin_init',  array( $this, 'uacf7_spam_protection_tag_generator' ));
-            add_filter( 'wpcf7_validate_uacf7_spam_protection', array($this, 'uacf7_spam_protection_validation_filter'), 10, 2 );
-            add_filter( 'wpcf7_validate_uacf7_spam_protection*', array($this,'uacf7_spam_protection_validation_filter'), 10, 2 );
             add_filter( 'uacf7_post_meta_options',  array( $this, 'uacf7_post_meta_options_spam_protection'), 34, 2 ); 
             add_action( 'wp_enqueue_scripts',  array($this, 'uacf7_spam_protection_scripts'));
         }
 
         public function uacf7_spam_protection_scripts(){
-
             wp_register_script('uacf7-spam-protection-arithmetic', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-arithmetic.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_register_script('uacf7-spam-protection-image', UACF7_URL . '/addons/spam-protection/assets/js/spam-protection-image.js', ['jquery'], 'WPCF7_VERSION', true);
             wp_enqueue_style('uacf7-spam-protection-css', UACF7_URL . '/addons/spam-protection/assets/css/spam-protection-style.css', [], 'WPCF7_VERSION', 'all');
@@ -117,31 +114,6 @@
         }
 
 
-        public function uacf7_spam_protection_validation_filter($result, $tag){
-
-
-        
-            $name = $tag->name;
-
-            if ( isset( $_POST[$name] )
-            and is_array( $_POST[$name] ) ) {
-                foreach ( $_POST[$name] as $key => $value ) {
-                    if ( '' === $value ) {
-                        unset( $_POST[$name][$key] );
-                    }
-                }
-            }
-    
-            $empty = ! isset( $_POST[$name] ) || empty( $_POST[$name] ) && '0' !== $_POST[$name];
-    
-            if ( $tag->is_required() and $empty ) {
-                $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
-            }
-
-            return $result;
-            
-        }
-
         public function uacf7_spam_protection_tag_generator(){
             if (!function_exists('wpcf7_add_tag_generator')) {
                 return;
@@ -169,15 +141,6 @@
                                     '<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection/" target="_blank">documentation</a>'
                                 ); ?> 
                             </div>
-                            <tr>
-                            <th scope="row"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></th>
-                                <td>
-                                    <fieldset>
-                                        <legend class="screen-reader-text"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></legend>
-                                        <label><input type="checkbox" name="required" value="on"><?php _e( 'Required Field', 'ultimate-addons-cf7' );?></label>
-                                    </fieldset>
-                                </td>
-                            </tr> 
                             <tr>
                                 <th scope="row"><label for="<?php echo esc_attr($args['content'] . '-name'); ?>"><?php echo esc_html(__('Name', 'ultimate-addons-cf7')); ?></label></th>
                                 <td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr($args['content'] . '-name'); ?>" /></td>

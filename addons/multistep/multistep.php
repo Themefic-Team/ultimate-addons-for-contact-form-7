@@ -231,6 +231,7 @@ class UACF7_MULTISTEP {
                         array( 'uacf7_progressbar_style', '!=', 'style-3' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-4' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-5' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-7' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-8' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-9' ),
                     )
@@ -244,6 +245,7 @@ class UACF7_MULTISTEP {
                     'field_width' => 33,
                     'dependency'  => array(
                         array( 'uacf7_progressbar_style', '!=', 'style-5' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-7' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-8' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-10' ),
                     )
@@ -276,6 +278,7 @@ class UACF7_MULTISTEP {
                         array( 'uacf7_progressbar_style', '!=', 'style-4' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-5' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-6' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-7' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-8' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-9' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-10' ),
@@ -362,6 +365,7 @@ class UACF7_MULTISTEP {
                         array( 'uacf7_progressbar_style', '!=', 'style-4' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-5' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-6' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-7' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-8' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-9' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-10' ),
@@ -429,6 +433,7 @@ class UACF7_MULTISTEP {
                         array( 'uacf7_progressbar_style', '!=', 'style-4' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-6' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-8' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-7' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-10' ),
                         array( 'uacf7_progressbar_style', '!=', 'style-11' ),
                     )
@@ -453,15 +458,19 @@ class UACF7_MULTISTEP {
                     'type'        => 'color',
                     'label'       => __( ' Progressbar Filled Line Color', 'ultimate-addons-cf7' ),
                     'field_width' => 33,
-                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-7' ),
+                    'dependency'  => array(
+                        array( 'uacf7_progressbar_style', '!=', 'style-1' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-4' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-5' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-6' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-8' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-9' ),
+                        array( 'uacf7_progressbar_style', '!=', 'style-10'),
+                    ),
                 ),
-                'uacf7_multistep_progress_filled_line_color' => array(
-                    'id'          => 'uacf7_multistep_progress_filled_line_color',
-                    'type'        => 'color',
-                    'label'       => __( ' Progressbar Filled Line Color', 'ultimate-addons-cf7' ),
-                    'field_width' => 33,
-                    'dependency'  => array( 'uacf7_progressbar_style', '==', 'style-11' ),
-                ),
+               
                 'uacf7_multistep_circle_bg_filled_color' => array(
                     'id'          => 'uacf7_multistep_circle_bg_filled_color',
                     'type'        => 'color',
@@ -1205,19 +1214,19 @@ class UACF7_MULTISTEP {
 
                                             if($uacf7_progressbar_style == 'style-7'){
                                                 echo '<div class="uacf7-ms-skin7-title-desc">';
-                                                echo '<p>' . $content . '</p>';
+                                                echo '<p>' .substr($content, 0 , 20) . '</p>';
                                                 if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
-                                                    echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                                    echo '<p>' . substr($multistep_meta['desc_title_' . $step_name[$step_count]], 0, 20 ). '</p>';
                                                 }
                                                 echo '</div>';
                                             }elseif ($uacf7_progressbar_style == 'style-11') {
                                                 do_action( 'uacf7_progressbar_image', $step_name[$step_count], $cfform->id() );
                                                 echo '<div class="uacf7-ms-skin11-title-desc">';
                                                 if( isset($content)){
-                                                    echo '<p>' . $content . '</p>';
+                                                    echo '<p>' . substr($content, 0, 20) . '</p>';
                                                 }
                                                 if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
-                                                    echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                                    echo '<p>' . substr($multistep_meta['desc_title_' . $step_name[$step_count]], 0,20) . '</p>';
                                                 }
                                                 echo '</div>';
                                             }elseif($uacf7_progressbar_style == 'style-8'){
@@ -1228,7 +1237,7 @@ class UACF7_MULTISTEP {
                                                 </div>
                                                 <?php if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
                                                     echo  '<div class="uacf7-ms-skin8-step-label">';
-                                                    echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                                    echo '<p>' . substr($multistep_meta['desc_title_' . $step_name[$step_count]], 0, 20) . '</p>';
                                                     echo  '</div>';
                                                 } 
                                                 echo '</div>';
@@ -1239,7 +1248,7 @@ class UACF7_MULTISTEP {
 
                                                 echo '<div class="uacf7-ms-skin9-title-desc">';
                                                 if (isset($multistep_meta['desc_title_' . $step_name[$step_count]]) && isset($content)) {
-                                                    echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                                    echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]]. '</p>';
                                                     echo '<p>' . $content . '</p>';
                                                 }
 
@@ -1248,7 +1257,7 @@ class UACF7_MULTISTEP {
                                             }elseif($uacf7_progressbar_style == 'style-10'){ 
 
                                                 if (isset($multistep_meta['desc_title_' . $step_name[$step_count]])) {
-                                                    echo '<p>' . $multistep_meta['desc_title_' . $step_name[$step_count]] . '</p>';
+                                                    echo '<p>' . substr($multistep_meta['desc_title_' . $step_name[$step_count]], 0 , 20) . '</p>';
                                                 }
                                             
                                             }
