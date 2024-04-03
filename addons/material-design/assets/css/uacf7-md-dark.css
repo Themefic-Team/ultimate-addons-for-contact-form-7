@@ -235,10 +235,9 @@
     }
 
   .uacf7-material-design-dark  .wpcf7-submit {
-    width           : 148px;
-    height          : 40px;
+    width: 148px;
     margin-top      : 32px;
-    border-radius   : 50px;
+    border-radius   : 50px!important;
     border-width    : 0px;
     letter-spacing  : 2px;
     font-size       : 14px;
@@ -306,6 +305,10 @@
 
 .uacf7-material-design-dark  .wpcf7-radio .wpcf7-list-item input[type="radio"] {
   margin-right: 16px; 
+}
+.wpcf7-list-item .wpcf7-list-item-label {
+  margin-top: -5px!important;
+  
 }
 
 

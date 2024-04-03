@@ -47,7 +47,7 @@ class ULTIMATE_MATERIAL_DESIGN {
 
                 ob_start();
                 
-                echo '<div class="'.esc_attr(  $class ).'">'.esc_html($form).'</div>';
+                echo '<div class="'.esc_attr(  $class ).'">'.wp_kses($form, uacf7_custom_wp_kses_allow_tags()).'</div>';
     
                 $properties['form'] = ob_get_clean();
             }
