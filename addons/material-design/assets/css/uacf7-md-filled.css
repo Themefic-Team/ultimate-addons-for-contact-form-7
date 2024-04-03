@@ -306,6 +306,10 @@
   align-items: center;
 }
 
+.wpcf7-select{
+  padding: 6px 16px!important;
+}
+
 
   .uacf7-material-design-filled input[type="checkbox"]:checked::before {
     position           : absolute;
