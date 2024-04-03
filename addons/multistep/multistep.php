@@ -1074,10 +1074,11 @@ class UACF7_MULTISTEP {
                 $next_prev_style = '<style>.uacf7-prev, .uacf7-next, .wpcf7-submit{'.$padding_top.' '.$padding_bottom.' '.$padding_left.' '.$padding_right.'}  </style>';
                 echo wp_kses($next_prev_style, uacf7_custom_wp_kses_allow_tags());
 
-
+            /*
                 if(!empty($all_steps)):
+                  
 			?> 
-                <div class="uacf7-steps steps-form" style="display:none">
+                <div class="uacf7-steps steps-form" style="display: none !important;">
                     <div class="steps-row setup-panel">
                         <?php
                             $step_id = 1;
@@ -1095,7 +1096,7 @@ class UACF7_MULTISTEP {
                         ?>
                     </div>
                 </div>
-            <?php endif; ?>
+            <?php endif; */ ?>
 
             <?php 
             if( $uacf7_enable_multistep_progressbar == true ) {

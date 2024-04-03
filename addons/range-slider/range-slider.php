@@ -34,7 +34,7 @@ class UACF7_range_Slider {
                     'label' => __( 'Range Slider Settings', 'ultimate-addons-cf7' ),
                     'subtitle' => sprintf(
                          /* Translators: %1$s is a placeholder for the link to the example. */
-                        __( 'Add beautiful Range slider fields to Contact Form 7, with multiple preview layouts available on Pro. See Demo %1s.', 'ultimate-addons-cf7' ),
+                        esc_html__( 'Add beautiful Range slider fields to Contact Form 7, with multiple preview layouts available on Pro. See Demo %1s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/contact-form-7-range-slider/" target="_blank" rel="noopener">Example</a>'
                                   )
                       ),
@@ -44,7 +44,7 @@ class UACF7_range_Slider {
                         'style'   => 'success',
                         'content' => sprintf( 
                             /* Translators: %1$s is a placeholder for the link to the example, %2$s is a placeholder for the link to the pro version. */
-                            __( 'Confused? Check our Documentation on %1$s and %2$s.', 'ultimate-addons-cf7' ),
+                            esc_html__( 'Confused? Check our Documentation on %1$s and %2$s.', 'ultimate-addons-cf7' ),
                             '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank" rel="noopener">Range Slider</a>',
                             '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-range-slider-pro/" target="_blank" rel="noopener">Range Slider (Pro)</a>'
                         )
