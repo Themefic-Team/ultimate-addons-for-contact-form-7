@@ -14,7 +14,6 @@ jQuery(document).ready(function($){
     var pad_bg_color = fileInput.attr('bg-color');
     var pen_color    = fileInput.attr('pen-color');
 
-
       $(form).find(".signature-pad").each(function(i, wrap){
 
           var canvas = $(wrap).find('canvas').get(0);
@@ -23,7 +22,6 @@ jQuery(document).ready(function($){
             backgroundColor : pad_bg_color,
             penColor: pen_color,
           });
-
         
             signs[k+'-'+i] = signaturePad;
             signs[k+'-'+i].addEventListener('endStroke', function(e){
@@ -56,8 +54,6 @@ jQuery(document).ready(function($){
                 image.remove();
 
               
-                
-              
               function dataURLtoBlob(dataUrl) {
         
                   const parts = dataUrl.split(';base64,');
@@ -76,13 +72,10 @@ jQuery(document).ready(function($){
                   return new Blob([uint8Array], { type: contentType });
                 }
 
-
-
-
-              
             });
 
             canvas.style.cursor = "crosshair";
+            canvas.style.borderRadius = "3px";
 
             //Clearing after form Submission
 
@@ -92,11 +85,7 @@ jQuery(document).ready(function($){
 
             });
 
-            
-          
           }); 
-
-
 
        
           $('.clear-button').click(function (e) {
@@ -105,7 +94,6 @@ jQuery(document).ready(function($){
               var canvas_file_input_field = $(this).closest('.wpcf7-form-control-wrap').find('input[type="file"]');
 
               canvas_file_input_field.val('');
-
 
               var signaturePadInstance = new SignaturePad(signature_canvas, {
                 includeBackgroundColor: true,
@@ -125,10 +113,6 @@ jQuery(document).ready(function($){
               e.preventDefault();
             });
     
-            
-
-            
-
       }); 
 
   });
