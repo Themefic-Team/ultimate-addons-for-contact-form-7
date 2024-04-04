@@ -9,7 +9,6 @@ if (!defined('ABSPATH')) {
 class UACF7_SIGNATURE{
 
     public function __construct(){
-        // require_once 'inc/signature.php';
         add_action('wp_enqueue_scripts', array($this, 'uacf7_signature_public_scripts'));
 
         add_action('admin_init', array($this, 'uacf7_signature_tag_generator'));
@@ -42,7 +41,6 @@ class UACF7_SIGNATURE{
     }
 
 
-
     public function uacf7_post_meta_options_signature( $value, $post_id){
 
         $signature = apply_filters('uacf7_post_meta_options_signature_pro', $data = array(
@@ -56,7 +54,8 @@ class UACF7_SIGNATURE{
                   'type'  => 'heading', 
                   'label' => __( 'Signature Settings', 'ultimate-addons-cf7' ),
                   'subtitle' => sprintf(
-                    __( 'Add a digital signature feature to your forms. See Demo %1s.', 'ultimate-addons-cf7' ),
+                    /* Translators: %1$s is a placeholder for the link to the example. */
+                    esc_html__( 'Add a digital signature feature to your forms. See Demo %1s.', 'ultimate-addons-cf7' ),
                      '<a href="https://cf7addons.com/preview/contact-form-7-signature-addon/" target="_blank" rel="noopener">Example</a>'
                               )
                   ),
@@ -65,7 +64,8 @@ class UACF7_SIGNATURE{
                     'type'    => 'notice',
                     'style'   => 'success',
                     'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                         /* Translators: %1$s is a placeholder for the link to the example. */
+                         esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/" target="_blank" rel="noopener">Digital Signature</a>'
                     )
                   ),
@@ -183,20 +183,25 @@ class UACF7_SIGNATURE{
          $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
  
          $atts['name'] = $tag->name;
- 
+
+         $allowed_attributes = array(); 
+         foreach ($atts as $key => $value) {
+             $allowed_attributes[$key] = true;
+         }
+         
          $atts = wpcf7_format_atts($atts);
  
          ob_start();
  
          ?>
-         <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
-             <input hidden type="file" class="img_id_special" <?php echo $atts; ?>  >
+         <span  class="wpcf7-form-control-wrap <?php echo esc_attr($tag->name); ?>" data-name="<?php echo esc_attr($tag->name); ?>">
+             <input hidden type="file" class="img_id_special" <?php echo wp_kses($atts, $allowed_attributes); ?>  >
              <div>
-               <div  class="signature-pad" data-field-name="<?php echo sanitize_html_class($tag->name); ?>">
-                 <canvas id="<?php echo sanitize_html_class($tag->name); ?>" data-field-name="<?php echo sanitize_html_class($tag->name); ?>" width="<?php echo $canvas_width; ?>" height="<?php echo $canvas_height; ?>"></canvas>
+               <div  class="signature-pad" data-field-name="<?php echo esc_attr($tag->name); ?>">
+                 <canvas id="<?php echo esc_attr($tag->name); ?>" data-field-name="<?php echo esc_attr($tag->name); ?>" width="<?php echo esc_attr( $canvas_width ); ?>" height="<?php echo esc_attr($canvas_height); ?>"></canvas>
                </div>
                 <div class="control_div">
-                   <button data-field-name="<?php echo sanitize_html_class($tag->name); ?>" class="clear-button">Clear</button>
+                   <button data-field-name="<?php echo esc_attr($tag->name); ?>" class="clear-button">Clear</button>
                 </div>
              </div>
          </span>
@@ -233,17 +238,18 @@ class UACF7_SIGNATURE{
                 <table class="form-table">
                   <tbody>
                         <div class="uacf7-doc-notice">
-                            <?php echo sprintf(
-                                  __('Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7'),
+                            <?php printf(
+                                 /* Translators: %1$s is a placeholder for the link to the example. */
+                                  esc_html__('Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7'),
                                   '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/" target="_blank">Digital Signature</a>'
                               ); ?>
                         </div>
                         <tr>
-                            <th scope="row"><?php _e('Field Type', 'ultimate-addons-cf7');?></th>
+                            <th scope="row"><?php echo esc_html( __('Field Type', 'ultimate-addons-cf7') );?></th>
                             <td>
                                 <fieldset>
-                                    <legend class="screen-reader-text"><?php _e('Field Type', 'ultimate-addons-cf7');?></legend>
-                                    <label><input type="checkbox" name="required" value="on"><?php _e('Required Field', 'ultimate-addons-cf7');?></label>
+                                    <legend class="screen-reader-text"><?php echo esc_html( __('Field Type', 'ultimate-addons-cf7') );?></legend>
+                                    <label><input type="checkbox" name="required" value="on"><?php echo esc_html( __('Required Field', 'ultimate-addons-cf7') );?></label>
                                 </fieldset>
                             </td>
                         </tr>

@@ -29,10 +29,9 @@ class UACF7_SUBMISSION_ID_PANEL{
       $value['submission_id']['uacf7_submission_id'] = $initial_value; 
     }else{ 
       
-      global $wpdb;
-      $table_name = $wpdb->prefix.'uacf7_form';
+      global $wpdb; 
       $last_item = $wpdb->get_row(
-        $wpdb->prepare("SELECT * FROM $table_name WHERE form_id= %d  ORDER BY submission_id DESC ", $form_id )
+        $wpdb->prepare("SELECT * FROM {$wpdb->prefix}uacf7_form WHERE form_id= %d  ORDER BY submission_id DESC ", $form_id )
       ); 
       
      
@@ -68,27 +67,30 @@ class UACF7_SUBMISSION_ID_PANEL{
   public function uacf7_create_submission_id_database_col() { 
     global $wpdb; 
     $table_name = $wpdb->prefix.'uacf7_form';
-    $table_exist = $wpdb->get_var( "SHOW TABLES LIKE '{$table_name}'" );
+    $table_exist = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}uacf7_form'" );
 
     if($table_exist == $table_name){ 
-      $charset_collate = $wpdb->get_charset_collate();
-
-      $tableName = $wpdb->prefix . 'leaguemanager_person_status';
-          $sql_checked = "SELECT *  FROM information_schema.COLUMNS  WHERE 
-                              TABLE_SCHEMA = '$wpdb->dbname' 
-                          AND TABLE_NAME = '$table_name' 
-                          AND COLUMN_NAME = 'submission_id'";
-
-      $checked_status = $wpdb->query( $sql_checked ); 
-      if($checked_status != true){ 
-        $sql = "ALTER TABLE $table_name 
-        MODIFY COLUMN form_date DATETIME NULL,
-        ADD submission_id bigint(20) DEFAULT 0 NULL AFTER form_value"; 
-        $wpdb->query( $sql );
+      $charset_collate = $wpdb->get_charset_collate(); 
+      $checked_status = $wpdb->query( 
+          $wpdb->prepare( 
+              "SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s AND COLUMN_NAME = %s", 
+              $wpdb->dbname, 
+              $table_name, 
+              'submission_id' 
+          )
+      ); 
+      if($checked_status != true){  
+        $wpdb->query( 
+          $wpdb->prepare( 
+              "ALTER TABLE {$wpdb->prefix}uacf7_form
+              MODIFY COLUMN form_date DATETIME NULL,
+              ADD submission_id bigint(20) DEFAULT %d NULL AFTER form_value",
+              0
+          ) 
+        );
       }
-    }
-    
-} 
+    } 
+  } 
 
 } 
 new UACF7_SUBMISSION_ID_PANEL();

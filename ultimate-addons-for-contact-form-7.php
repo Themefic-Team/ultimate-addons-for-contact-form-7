@@ -3,7 +3,7 @@
  * Plugin Name: Ultimate Addons for Contact Form 7
  * Plugin URI: https://cf7addons.com/
  * Description: 30+ Essential Addons for Contact Form 7 - Conditional Fields, Multi Step Forms, Redirection, Form Templates, Columns, WooCommerce, Mailchimp and more, all in one.
- * Version: 3.3.3
+ * Version: 3.3.6
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -28,7 +28,7 @@ class Ultimate_Addons_CF7 {
 		define( 'UACF7_URL', plugin_dir_url( __FILE__ ) );
 		define( 'UACF7_ADDONS', UACF7_URL . 'addons' );
 		define( 'UACF7_PATH', plugin_dir_path( __FILE__ ) );
-		define( 'UACF7_VERSION', '3.3.3' ); 
+		define( 'UACF7_VERSION', '3.3.6' ); 
 
 		if ( ! class_exists( 'Appsero\Client' ) ) {
 			require_once( __DIR__ . '/inc/app/src/Client.php' );
@@ -43,7 +43,6 @@ class Ultimate_Addons_CF7 {
 
 		// Initialize the appsero
 		$this->appsero_init_tracker_ultimate_addons_for_contact_form_7();
- 
 		 
 	}
 
@@ -88,7 +87,12 @@ class Ultimate_Addons_CF7 {
 		<div class="notice notice-error">
 			<p>
 				<?php printf(
-					__( '%s requires %s to be installed and active. You can install and activate it from %s', 'ultimate-addons-cf7' ), '<strong>Ultimate Addons for Contact Form 7</strong>', '<strong>Contact form 7</strong>', '<a href="' . admin_url( 'plugin-install.php?tab=search&s=contact+form+7' ) . '">here</a>.'
+					 /* translators: %1$s &  %2$s: plugins Name , %3$s : Plugins Link" */ 
+					esc_html__( '%1$s requires %2$s to be installed and active. You can install and activate it from %3$s', 
+					'ultimate-addons-cf7' ), 
+					'<strong>Ultimate Addons for Contact Form 7</strong>', 
+					'<strong>Contact form 7</strong>', 
+					'<a href="' . esc_url(admin_url( 'plugin-install.php?tab=search&s=contact+form+7' )) . '">here</a>.'
 				); ?>
 			</p>
 		</div>
@@ -100,20 +104,14 @@ class Ultimate_Addons_CF7 {
 	 */
 	public function uacf7_init() {
 
-
-		//Require admin menu
-		// require_once( 'admin/admin-menu.php' );
-
+ 
 		//Require ultimate addons
 		require_once( 'addons/addons.php' );
 
 		//  Update UACF7 Plugin Version
 		if ( UACF7_VERSION != get_option( 'uacf7_version' ) ) {
 			update_option( 'uacf7_version', UACF7_VERSION );
-		}
-
-
-
+		} 
 
 	}
 
@@ -121,12 +119,12 @@ class Ultimate_Addons_CF7 {
 	//Enquene admin scripts
 	public function enqueue_admin_scripts() {
 
-		wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css', 'sadf' );
+		wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css', array(), UACF7_VERSION );
 
 		// // wp_enqueue_media();
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_script( 'uacf7-admin-script', UACF7_URL . 'assets/js/admin-script.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'uacf7-admin-script', UACF7_URL . 'assets/js/admin-script.js', array( 'jquery' ), UACF7_VERSION, true );
 
 
 
@@ -146,7 +144,7 @@ class Ultimate_Addons_CF7 {
 
     //Enquene admin scripts
     public function uacf7_frontend_scripts(){ 
-        wp_enqueue_style( 'uacf7-frontend-style', UACF7_URL . 'assets/css/uacf7-frontend.css', '' ); 
+        wp_enqueue_style( 'uacf7-frontend-style', UACF7_URL . 'assets/css/uacf7-frontend.css', array(), UACF7_VERSION); 
     }
 
 	/**

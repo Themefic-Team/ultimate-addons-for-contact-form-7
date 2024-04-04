@@ -21,7 +21,6 @@ class UACF7_DATABASE {
 		add_action( 'wp_ajax_uacf7_ajax_database_export_csv', array( $this, 'uacf7_ajax_database_export_csv' ) );
 		add_action( 'admin_init', array( $this, 'uacf7_create_database_table' ) );
 		// add_filter( 'wpcf7_load_js', '__return_false' );
-
 	}
 
 	public function uacf7_post_meta_options_uacf7_database($value, $post_id){
@@ -34,16 +33,19 @@ class UACF7_DATABASE {
                 'type'  => 'heading', 
                 'label' => __( 'UACF7 Database Settings', 'ultimate-addons-cf7' ),
                 'subtitle' => sprintf(
-                    __( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
-                                )
+					// Translators: %1$s is replaced with the link to the example.
+					esc_html__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
+					'<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
+					)
+					
                 ),
                 array(
-                    'id'      => 'pdf-database-docs',
+					'id'      => 'pdf-database-docs',
                     'type'    => 'notice',
                     'style'   => 'success',
                     'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+						// Translators: %1$s is replaced with the link to the example.
+                        esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/database/" target="_blank" rel="noopener">Database</a>'
                     )
                 ),
@@ -94,7 +96,7 @@ class UACF7_DATABASE {
 		wp_enqueue_script( 'database-admin', UACF7_ADDONS . '/database/assets/js/database-admin.js', array( 'jquery' ), null, true );
 		wp_localize_script( 'database-admin', 'database_admin_url',
 			array(
-				'admin_url' => get_admin_url() . '/admin.php',
+				'admin_url' => get_admin_url() . 'admin.php',
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				'plugin_dir_url' => plugin_dir_url( __FILE__ ),
 				'nonce' => wp_create_nonce( 'uacf7-form-database-admin-nonce' ),
@@ -107,6 +109,7 @@ class UACF7_DATABASE {
 	 */
 
 	public function uacf7_add_db_menu() {
+
 		add_submenu_page(
 			'uacf7_settings',
 			__( 'Database', 'ultimate-addons-cf7' ),
@@ -202,7 +205,7 @@ class UACF7_DATABASE {
 									<?php
 									foreach ( $list_forms as $form ) {
 										$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d", $form->ID ) );  // count number of data
-										echo '<option value="' . esc_attr( $form->ID ) . '">' . esc_attr( $form->post_title ) . ' ( ' . $count . ' )</option>';
+										echo '<option value="' . esc_attr( $form->ID ) . '">' . esc_attr( $form->post_title ) . ' ( ' . esc_html($count) . ' )</option>';
 									}
 									?>
 								</select>
@@ -223,7 +226,17 @@ class UACF7_DATABASE {
 	}
 
 	public function encrypt_file( $inputFile, $outputFile, $key ) {
-		$inputData = file_get_contents( $inputFile );
+		// $inputData = file_get_contents( $inputFile );
+		$inputData;
+
+		$response = wp_remote_get( $inputFile );
+
+		if ( is_wp_error( $response ) ) {
+			// Handle error
+		} else {
+			$inputData .= wp_remote_retrieve_body( $response );
+		}
+
 
 		// Generate an Initialization Vector (IV)
 		$iv = openssl_random_pseudo_bytes( openssl_cipher_iv_length( 'aes-256-cbc' ) );
@@ -235,7 +248,24 @@ class UACF7_DATABASE {
 		$encryptedFileContent = $iv . $encryptedData;
 
 		// Save the encrypted content to the output file
-		file_put_contents( $outputFile, $encryptedFileContent );
+		// file_put_contents( $outputFile, $encryptedFileContent );
+		global $wp_filesystem;
+
+		// Initialize the WordPress filesystem.
+		if ( ! is_object( $wp_filesystem ) || ! is_a( $wp_filesystem, 'WP_Filesystem_Base' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/file.php';
+			WP_Filesystem();
+		}
+
+		// Check if the file system is initialized.
+		if ( ! $wp_filesystem ) {
+			// Handle error
+			return;
+		}
+
+		// Write the encrypted content to the output file.
+		$wp_filesystem->put_contents( $outputFile, $encryptedFileContent, FS_CHMOD_FILE );
+
 	}
 
 	public function decrypt_and_display( $inputFile, $key ) {
@@ -245,7 +275,16 @@ class UACF7_DATABASE {
 		}
 
 		// Read the encrypted content
-		$encryptedFileContent = file_get_contents( $inputFile );
+		// $encryptedFileContent = file_get_contents( $inputFile );
+		$encryptedFileContent;
+		$response = wp_remote_get( $inputFile );
+
+		if ( is_wp_error( $response ) ) {
+			// Handle error
+		} else {
+			$encryptedFileContent .= wp_remote_retrieve_body( $response );
+		}
+
 
 		if ( $encryptedFileContent === false ) {
 			die( "Error: Unable to read file content." );
@@ -546,7 +585,7 @@ class UACF7_DATABASE {
 			$wpdb->update( $table_name, $data, $where );
 		}
 
-		echo $html; // return all data
+		echo esc_html($html); // return all data
 
 		wp_die();
 	}
@@ -838,7 +877,7 @@ class uacf7_form_List_Table extends WP_List_Table {
 
 	public function single_row( $item ) {
 		$cssClass = ( $item['status'] == 'unread' ) ? 'unread' : 'read';
-		echo '<tr class="' . $cssClass . '">';
+		echo '<tr class="' . esc_attr($cssClass) . '">';
 		$this->single_row_columns( $item );
 		echo '</tr>';
 	}
@@ -894,9 +933,9 @@ class uacf7_form_List_Table extends WP_List_Table {
 			return;
 		}
 
-		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . __( 'Select bulk action' ) . '</label>';
-		echo '<select name="action' . $two . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
-		echo '<option value="-1">' . __( 'Bulk actions' ) . "</option>\n";
+		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . esc_html__( 'Select bulk action' ) . '</label>';
+		echo '<select name="action' . esc_attr($two) . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
+		echo '<option value="-1">' . esc_html__( 'Bulk actions' ) . "</option>\n";
 
 		foreach ( $this->_actions as $key => $value ) {
 			if ( is_array( $value ) ) {
@@ -905,13 +944,13 @@ class uacf7_form_List_Table extends WP_List_Table {
 				foreach ( $value as $name => $title ) {
 					$class = ( 'edit' === $name ) ? ' class="hide-if-no-js"' : '';
 
-					echo "\t\t" . '<option value="' . esc_attr( $name ) . '"' . $class . '>' . $title . "</option>\n";
+					echo "\t\t" . '<option value="' . esc_attr( $name ) . '"' . esc_attr($class) . '>' . esc_html($title) . "</option>\n";
 				}
 				echo "\t" . "</optgroup>\n";
 			} else {
 				$class = ( 'edit' === $key ) ? ' class="hide-if-no-js"' : '';
 
-				echo "\t" . '<option value="' . esc_attr( $key ) . '"' . $class . '>' . $value . "</option>\n";
+				echo "\t" . '<option value="' . esc_attr( $key ) . '"' . esc_attr($class) . '>' . esc_html($value) . "</option>\n";
 			}
 		}
 

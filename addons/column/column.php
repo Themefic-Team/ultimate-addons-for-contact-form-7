@@ -24,12 +24,12 @@ class UACF7_COLUMN {
     }
     
     public function admin_column_enqueue_script() {
-        wp_enqueue_script( 'uacf7-column', UACF7_ADDONS . '/column/assets/js/column-admin.js', array('jquery'), null, true );
-        wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/assets/css/column-admin.css' );
+        wp_enqueue_script( 'uacf7-column', UACF7_ADDONS . '/column/assets/js/column-admin.js', array('jquery'), UACF7_VERSION, true );
+        wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/assets/css/column-admin.css', array(), UACF7_VERSION);
     }
     
     public function enqueue_column_style() {
-        wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/grid/columns.css' );
+        wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/grid/columns.css', array(), UACF7_VERSION);
     }
     
     /*
@@ -80,10 +80,14 @@ class UACF7_COLUMN {
                    <h3><?php echo esc_html__('Contact form 7 columns / Grid Layout','ultimate-addons-cf7'); ?></h3>
                    <p><?php echo esc_html__('You can easily create two columns, three Columns even Four columns form with Contact form 7 using this feature. Just insert tag you need from below list.','ultimate-addons-cf7'); ?></p>
                    <div class="uacf7-doc-notice"> 
-                        <?php echo sprintf( 
-                            __( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
-                            '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-columns/" target="_blank">Columns / Grid</a>', '<a href="https://themefic.com/docs/uacf7/pro-addons/custom-columns-for-contact-form-7/" target="_blank">Custom Columns</a>'
-                        ); ?> 
+                   <?php
+                       printf(
+                            /* Translators: %1$s is a placeholder for the first link, %2$s is a placeholder for the second link. */
+                            esc_html__( 'Confused? Check our Documentation on %1$s and %2$s.', 'ultimate-addons-cf7' ),
+                            '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-columns/" target="_blank">Columns / Grid</a>',
+                            '<a href="https://themefic.com/docs/uacf7/pro-addons/custom-columns-for-contact-form-7/" target="_blank">Custom Columns</a>'
+                        );
+                    ?>
                     </div>
                    <p></p>
                     <tbody>
@@ -218,7 +222,7 @@ class UACF7_COLUMN {
                 } else if ($form_part == '[/uacf7-col]') {
                     echo '</div>';
                 } else {
-                    echo $form_part;
+                    echo wp_kses( $form_part,uacf7_custom_wp_kses_allow_tags() );
                 }
             }
 
@@ -247,7 +251,7 @@ class UACF7_COLUMN {
                 } else if ($form_part == '[/uacf7-row]') {
                     echo '</div>';
                 } else {
-                    echo $form_part;
+                    echo $form_part ;
                 }
             }
 

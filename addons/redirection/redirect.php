@@ -17,7 +17,7 @@ class UACF7_Redirection {
     
     public function enqueue_redirect_script() {
 		
-        wp_enqueue_script( 'uacf7-redirect-script', UACF7_URL . 'addons/redirection/js/redirect.js', array('jquery'), null, true );
+        wp_enqueue_script( 'uacf7-redirect-script', UACF7_URL . 'addons/redirection/js/redirect.js', array('jquery'), UACF7_VERSION, true );
 		wp_localize_script( 'uacf7-redirect-script', 'uacf7_redirect_object', $this->get_forms() );
         wp_localize_script( 'uacf7-redirect-script', 'uacf7_redirect_enable', $this->uacf7_redirect_enable() );
         
@@ -39,6 +39,7 @@ class UACF7_Redirection {
 					'type'  => 'heading', 
 					'label' => __( 'Redirection Settings', 'ultimate-addons-cf7' ),
 					'subtitle' => sprintf(
+						 /* Translators: %1$s is a placeholder for the link to the example. */
                         __( 'Redirect users to a Thank You or external page based on form submission, with an option to open in a new tab. See Demo %1s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/redirection-for-contact-form-7/" target="_blank">Example</a>'
                     )
@@ -48,11 +49,12 @@ class UACF7_Redirection {
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s, %2s and %3s .', 'ultimate-addons-cf7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/redirection-for-contact-form-7/" target="_blank">Redirect to a Page or External URL</a>',
-                        '<a href="https://themefic.com/docs/uacf7/pro-addons/conditional-redirect-for-contact-form-7/" target="_blank">Conditional Redirect</a>',
-                        '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-whatsapp-integration-and-tag-support/" target="_blank">Tag Support</a>'
-                    )
+						/* Translators: %1$s is a placeholder for the first link, %2$s is a placeholder for the second link, %3$s is a placeholder for the third link. */
+						__( 'Confused? Check our Documentation on %1$s, %2$s, and %3$s.', 'ultimate-addons-cf7' ),
+						'<a href="https://themefic.com/docs/uacf7/free-addons/redirection-for-contact-form-7/" target="_blank">Redirect to a Page or External URL</a>',
+						'<a href="https://themefic.com/docs/uacf7/pro-addons/conditional-redirect-for-contact-form-7/" target="_blank">Conditional Redirect</a>',
+						'<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-whatsapp-integration-and-tag-support/" target="_blank">Tag Support</a>'
+					)
 				),
 				'uacf7_redirect_enable' => array(
 					'id'        => 'uacf7_redirect_enable',

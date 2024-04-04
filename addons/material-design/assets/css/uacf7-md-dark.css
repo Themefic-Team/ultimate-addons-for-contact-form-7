@@ -79,7 +79,7 @@
     border          : none;
     height          : 50px;
     border-bottom   : 1px solid #CAC4CF;
-    color           : #cac4cf;
+    color           : #cac4cf!important;
     width           : 100%;
     background-color: #363438;
     font-size       : 16px;
@@ -95,7 +95,7 @@
     padding         : 15px 16px;
     border          : none;
     border-bottom   : 1px solid #cac4cf;
-    color           : #cac4cf;
+    color           : #cac4cf!important;
     width           : 100%;
     background-color: #363438;
     font-size       : 16px;
@@ -170,6 +170,12 @@
     z-index         : 99;
     
   }
+  .uacf7-material-design-dark  label.has-value input,  .uacf7-material-design-dark .uacf7-row .uacf7-col-6 label.has-value input {
+    padding-top: 24px;
+    padding: 8px;
+    
+  }
+
 
   .uacf7-material-design-dark  label.required-tip,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 label.required-tip  {
     top             : 0%;
@@ -203,6 +209,7 @@
 
   .uacf7-material-design-dark   input.input-focus,  .uacf7-material-design-dark  .uacf7-row .uacf7-col-6 input.input-focus {
     border-bottom   : 2px solid #CEBDFF!important;
+    padding-top: 20px;
     color           : #C9C5CA;
   }
 
@@ -235,10 +242,9 @@
     }
 
   .uacf7-material-design-dark  .wpcf7-submit {
-    width           : 148px;
-    height          : 40px;
+    width: 148px;
     margin-top      : 32px;
-    border-radius   : 50px;
+    border-radius   : 50px!important;
     border-width    : 0px;
     letter-spacing  : 2px;
     font-size       : 14px;
@@ -306,6 +312,14 @@
 
 .uacf7-material-design-dark  .wpcf7-radio .wpcf7-list-item input[type="radio"] {
   margin-right: 16px; 
+}
+.wpcf7-list-item .wpcf7-list-item-label {
+  margin-top: -5px!important;
+  
+}
+
+.wpcf7-select{
+  padding: 6px 16px!important;
 }
 
 

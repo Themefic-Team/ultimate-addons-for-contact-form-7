@@ -47,7 +47,7 @@ class ULTIMATE_MATERIAL_DESIGN {
 
                 ob_start();
                 
-                echo '<div class="'.esc_attr(  $class ).'">'.$form.'</div>';
+                echo '<div class="'.esc_attr(  $class ).'">'.wp_kses($form, uacf7_custom_wp_kses_allow_tags()).'</div>';
     
                 $properties['form'] = ob_get_clean();
             }
@@ -68,8 +68,9 @@ class ULTIMATE_MATERIAL_DESIGN {
                         'id'      => 'uacf7_material_design_heading',
                         'type'  => 'heading', 
                         'label'   => __( 'Material Design Settings', 'ultimate-addons-cf7' ),
-                        'subtitle' => sprintf( 
-                            __( 'This feature will help you to design your form Beautifully.  %s .', 'ultimate-addons-cf7' ),
+                        'subtitle' => sprintf(
+                                // Translators: %1$s is replaced with the link to documentation.  
+                                esc_html__( 'This feature will help you to design your form Beautifully.  %s .', 'ultimate-addons-cf7' ),
                             '<a href="https://cf7addons.com/preview/material-design/" target="_blank">Example.</a>',
                            
                         ),
@@ -79,8 +80,9 @@ class ULTIMATE_MATERIAL_DESIGN {
                             'id'      => 'material-design-docs',
                             'type'    => 'notice',
                             'style'   => 'success',
-                            'content' => sprintf( 
-                                __( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
+                            'content' => sprintf(
+                                // Translators: %1$s is replaced with the link to documentation.  
+                                esc_html__( 'Not sure how to set this? Check our step by step documentation on  %s .', 'ultimate-addons-cf7' ),
                                 '<a href="https://themefic.com/docs/uacf7/free-addons/material-design-for-contact-form-7/" target="_blank">Material Design</a>',
                                
                             ),
