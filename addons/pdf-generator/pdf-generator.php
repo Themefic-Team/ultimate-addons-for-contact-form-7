@@ -447,19 +447,21 @@ class UACF7_PDF_GENERATOR {
                 $repeaters[] = str_replace('_count', '', $key) ;
             }
 
-            // Signature Image Decrypt form Database Addon
-            if ( in_array( $key, $uacf7_signature_tag )  && $uacf7_DB != null ) {
-                $pathInfo = pathinfo( $value );
-                $extension = strtolower( $pathInfo['extension'] );
+           // Signature Image Decrypt form Database Addon
+            if (in_array($key, $uacf7_signature_tag) && $uacf7_DB != null) {
+                $pathInfo = pathinfo($value);
+                $extension = strtolower($pathInfo['extension']);
 
                 ob_start(); 
-                echo $uacf7_DB->decrypt_and_display( $dir . $value, $encryptionKey );
+                // Output is escaped using esc_html to prevent XSS
+                echo esc_html($uacf7_DB->decrypt_and_display($dir . $value, $encryptionKey));
                 $decryptedData = ob_get_clean();  
 
-                if ( $decryptedData !== null ) {
-                    $value = 'data:image/png;base64,' . base64_encode( $decryptedData ); 
+                if ($decryptedData !== null) {
+                    $value = 'data:image/png;base64,' . base64_encode($decryptedData); 
                 } 
             }
+
 
             $replace_key[] = '['.$key.']';
             if( is_array($value)){

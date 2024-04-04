@@ -395,7 +395,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 		<div class="tf-setting-dashboard">
 
 			<!-- deshboard-header-include -->
-			<?php echo wp_kses_post( $this->tf_top_header() ) ?>
+			<?php echo $this->tf_top_header() ?>
 
 			<div class="tf-settings-help-center">
 				<div class="tf-help-center-banner">
@@ -527,7 +527,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				?>
 				<div class="tf-setting-dashboard">
 				<!-- dashboard-header-include -->
-				<?php echo wp_kses_post( $this->tf_top_header() ) ?>
+				<?php echo  $this->tf_top_header()  ?>
 
                 <div class="tf-option-wrapper tf-setting-wrapper">
                     <form method="post" action="" class="tf-option-form <?php echo esc_attr($ajax_save_class) ?>" enctype="multipart/form-data">

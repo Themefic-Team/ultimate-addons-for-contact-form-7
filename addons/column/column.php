@@ -217,7 +217,7 @@ class UACF7_COLUMN {
 					
                     $html = '<div class="'.esc_attr($ucaf7_column_class).'">';
 					
-					echo apply_filters( 'uacf7_column_custom_width', $html, $ucaf7_column_class, $uacf7_column_custom_width );
+					echo wp_kses(apply_filters( 'uacf7_column_custom_width', $html, $ucaf7_column_class, $uacf7_column_custom_width ), uacf7_custom_wp_kses_allow_tags());
 					
                 } else if ($form_part == '[/uacf7-col]') {
                     echo '</div>';
@@ -251,7 +251,7 @@ class UACF7_COLUMN {
                 } else if ($form_part == '[/uacf7-row]') {
                     echo '</div>';
                 } else {
-                    echo $form_part ;
+                    echo wp_kses($form_part, uacf7_custom_wp_kses_allow_tags()) ;
                 }
             }
 
