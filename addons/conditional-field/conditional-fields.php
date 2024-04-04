@@ -352,7 +352,7 @@ class UACF7_CF {
 				} else if ( $form_part == '[/conditional]' ) {
 					echo '</' . esc_attr(array_pop( $stack )) . '>';
 				} else {
-					echo wp_kses_post( $form_part );
+					echo wp_kses( $form_part, uacf7_custom_wp_kses_allow_tags() );
 				} 
 			}
 
