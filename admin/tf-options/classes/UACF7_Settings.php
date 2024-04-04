@@ -235,7 +235,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			?>
 			<div class="tf-setting-dashboard">
 				<!-- deshboard-header-include -->
-				<?php echo wp_kses_post( $this->tf_top_header() ) ?>
+				<?php echo  $this->tf_top_header() ?>
 				<div class="uacf7-addons-settings-page">
 					<h1 class="uacf7-setting-title"><?php echo esc_html( __('Ultimate Addons for Contact Form 7 (UACF7) Settings', 'ultimate-addons-cf7') ) ?></h1>
 					<form method="post" action="" class="tf-option-form tf-ajax-save" enctype="multipart/form-data">

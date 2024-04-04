@@ -10,7 +10,7 @@
          
                 $(this).on('click', function (e) {
                     e.preventDefault();
-                    var customText = '<button id="uacf7-preview-btn"> Preview </button>';
+                    var customText = '<button id="uacf7-preview-btn" type="button">Preview</button>';
                     copyToClipboard(customText);
 
                     $(this).text('Copied to Clipboard !');
