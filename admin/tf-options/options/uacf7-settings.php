@@ -278,31 +278,7 @@ UACF7_Settings::option( 'uacf7_settings', array(
 						'demo_link' => 'https://cf7addons.com/preview/pabbly-zapier-webhook/',
 						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/contact-form-7-webhook/',
 					),
-					'uacf7_enable_material_design_field' => array(
-						'id'                 => 'uacf7_enable_material_design_field',
-						'type'               => 'switch',
-						'label'              => __( 'Material Design', 'ultimate-addons-cf7' ),
-						'image_url'          => UACF7_URL . 'assets/admin/images/addons/material-design.png',
-						'subtitle'           => __( 'This feature will help you to add Material Design for forms', 'ultimate-addons-cf7' ),
-						'label_on'           => __( 'Yes', 'ultimate-addons-cf7' ),
-						'label_off'          => __( 'No', 'ultimate-addons-cf7' ),
-						'default'            => false,
-						'demo_link'          => 'https://cf7addons.com/preview/material-design-for-contact-form-7/',
-						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/material-design//',
-
-					),
-					'uacf7_enable_form_submit_later_field' => array(
-						'id'                 => 'uacf7_enable_form_submit_later_field',
-						'type'               => 'switch',
-						'label'              => __( 'Form Submit Later', 'ultimate-addons-cf7' ),
-						'image_url'          => UACF7_URL . 'assets/admin/images/addons/form-submit-later.png',
-						'subtitle'           => __( 'Allow your visitor to submit form later, If want to postpone the submission for the time being. It will keep save the filled data to the form.', 'ultimate-addons-cf7' ),
-						'label_on'           => __( 'Yes', 'ultimate-addons-cf7' ),
-						'label_off'          => __( 'No', 'ultimate-addons-cf7' ),
-						'default'            => false,
-						'demo_link'          => 'https://cf7addons.com/preview/form-submit-later-for-contact-form-7/',
-						'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/form-submit-later//',
-					),
+			
 					'uacf7_enable_form_preview_field' => array(
 						'id'                 => 'uacf7_enable_form_preview_field',
 						'type'               => 'switch',
