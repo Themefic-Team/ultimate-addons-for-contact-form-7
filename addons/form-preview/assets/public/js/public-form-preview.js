@@ -66,11 +66,8 @@
                             }
                         });
                         
-                
                         previewContent += '</table></div>';
 
-
-                
                         $(previewContent).dialog({
                             modal              : true,
                             title              : preview_heading || default_heading,
@@ -112,7 +109,6 @@
                 
                     });
                 }
-
 
             }
         });
