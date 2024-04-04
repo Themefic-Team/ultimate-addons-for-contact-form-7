@@ -46,29 +46,19 @@
                                 // Check if the field is a file input
                                 if (fieldElement.attr('type') === 'file') {
                     
-                                var file = fieldElement[0].files[0]; 
+                                    previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + 'Preview only to the Database '+'<span style="font-size: 25px; font-weight: 700; color: #000000;cursor:pointer" onmouseover="this.style.color=\'red\' class="uacf7-form-preview-tooltip">?</span>' + '</td></tr>';
+                                    
+                                }else{
 
-                                if (file) {
-                                    var reader = new FileReader(); 
-
-                                    reader.onload = function(event) {
-
-                                        var img = $('<img>', { src: event.target.result, alt: 'Preview Image', style: 'max-width: 100px; max-height: 100px;' });
-                                        fieldValue = img.prop('outerHTML');
-                                    };
-                                    reader.readAsDataURL(file);
-                                }
-
+                                    previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + fieldValue + '</td></tr>';
                                 }
                                 
-                                previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + fieldValue + '</td></tr>';
                         
                             }
                         });
                         
                 
                         previewContent += '</table></div>';
-
 
                 
                         $(previewContent).dialog({
