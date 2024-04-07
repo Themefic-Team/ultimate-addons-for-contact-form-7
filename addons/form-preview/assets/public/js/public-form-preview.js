@@ -44,14 +44,13 @@
                                 var displayName = label || fieldName;
                         
                                 // Check if the field is a file input
-                                if (fieldElement.attr('type') === 'file') {
-                    
-                                    previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + 'Preview only to the Database '+'<span style="font-size: 25px; font-weight: 700; color: #000000;cursor:pointer" onmouseover="this.style.color=\'red\' class="uacf7-form-preview-tooltip">?</span>' + '</td></tr>';
-                                    
-                                }else{
-
+                                if (fieldElement.attr('type') === 'file' && fieldElement.hasClass('img_id_special')) {
+                                    previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + 'Signature Preview only to the Database' + '</td></tr>';
+                                } else if (fieldElement.attr('type') === 'file' && !fieldElement.hasClass('img_id_special')) {
+                                    previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + 'There is no Preview of Uploaded Files' + '</td></tr>';
+                                } else {
                                     previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + fieldValue + '</td></tr>';
-                                }
+                                }                                
                                 
                         
                             }
