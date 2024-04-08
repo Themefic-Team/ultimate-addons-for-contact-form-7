@@ -226,17 +226,7 @@ class UACF7_DATABASE {
 	}
 
 	public function encrypt_file( $inputFile, $outputFile, $key ) {
-		// $inputData = file_get_contents( $inputFile );
-		$inputData;
-
-		$response = wp_remote_get( $inputFile );
-
-		if ( is_wp_error( $response ) ) {
-			// Handle error
-		} else {
-			$inputData .= wp_remote_retrieve_body( $response );
-		}
-
+		$inputData = file_get_contents( $inputFile );
 
 		// Generate an Initialization Vector (IV)
 		$iv = openssl_random_pseudo_bytes( openssl_cipher_iv_length( 'aes-256-cbc' ) );
@@ -248,25 +238,9 @@ class UACF7_DATABASE {
 		$encryptedFileContent = $iv . $encryptedData;
 
 		// Save the encrypted content to the output file
-		// file_put_contents( $outputFile, $encryptedFileContent );
-		global $wp_filesystem;
-
-		// Initialize the WordPress filesystem.
-		if ( ! is_object( $wp_filesystem ) || ! is_a( $wp_filesystem, 'WP_Filesystem_Base' ) ) {
-			require_once ABSPATH . '/wp-admin/includes/file.php';
-			WP_Filesystem();
-		}
-
-		// Check if the file system is initialized.
-		if ( ! $wp_filesystem ) {
-			// Handle error
-			return;
-		}
-
-		// Write the encrypted content to the output file.
-		$wp_filesystem->put_contents( $outputFile, $encryptedFileContent, FS_CHMOD_FILE );
-
+		file_put_contents( $outputFile, $encryptedFileContent );
 	}
+
 
 	public function decrypt_and_display( $inputFile, $key ) {
 
@@ -275,16 +249,7 @@ class UACF7_DATABASE {
 		}
 
 		// Read the encrypted content
-		// $encryptedFileContent = file_get_contents( $inputFile );
-		$encryptedFileContent;
-		$response = wp_remote_get( $inputFile );
-
-		if ( is_wp_error( $response ) ) {
-			// Handle error
-		} else {
-			$encryptedFileContent .= wp_remote_retrieve_body( $response );
-		}
-
+		$encryptedFileContent = file_get_contents( $inputFile );
 
 		if ( $encryptedFileContent === false ) {
 			die( "Error: Unable to read file content." );
@@ -585,7 +550,12 @@ class UACF7_DATABASE {
 			$wpdb->update( $table_name, $data, $where );
 		}
 
-		echo esc_html($html); // return all data
+		// return all data
+        wp_send_json( array(
+            'rawData' => $html,
+            'srcAttribute' => $srcAttribute,
+            'fileNameWithoutExtension' => $fileNameWithoutExtension,
+        ));
 
 		wp_die();
 	}
