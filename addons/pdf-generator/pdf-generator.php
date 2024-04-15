@@ -15,7 +15,6 @@ class UACF7_PDF_GENERATOR {
         
         add_action( 'admin_enqueue_scripts', array($this, 'wp_enqueue_admin_script' ) );
         add_filter( 'wpcf7_mail_components', array( $this, 'uacf7_wpcf7_mail_components' ), 10, 3 );    
-        // add_filter( 'wpcf7_load_js', '__return_false' );
         add_action( 'wp_ajax_uacf7_get_generated_pdf', array( $this, 'uacf7_get_generated_pdf' ) );  
         add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_pdf_generator'), 18, 2 );  
         add_filter( 'uacf7_post_meta_import_export', array($this, 'uacf7_post_meta_import_export_pdf_generator'), 18, 2 );  
@@ -37,7 +36,6 @@ class UACF7_PDF_GENERATOR {
         $pdf_settings['nonce'] = wp_create_nonce('uacf7-pdf-generator');
         wp_localize_script('jquery', 'pdf_settings', $pdf_settings);
         
-        // require UACF7_PATH . 'third-party/vendor/autoload.php';
 
     } 
   
@@ -128,15 +126,7 @@ class UACF7_PDF_GENERATOR {
                     'label'     => __( 'PDF Header Settings', 'ultimate-addons-cf7' ),
                     
                 ),
-                // 'uacf7_pdf_generator_mpdf_tags' => array(
-                //     'id'        => 'uacf7_pdf_generator_mpdf_tags',
-                //     'type'      => 'notice',
-                //     'label'     => __( 'm-PDF Tags ', 'ultimate-addons-cf7' ),
-                //     'class' => 'tf-field-class',
-                //     'content' => '
-                //     {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}
-                //     ',
-                // ),
+              
                 'pdf_header_upload_image' => array(
                     'id'        => 'pdf_header_upload_image',
                     'type'      => 'image',
@@ -150,7 +140,6 @@ class UACF7_PDF_GENERATOR {
                     'label'     => __( 'Header Content Color ', 'ultimate-addons-cf7' ),
                     'field_width' => 50,
                     'class' => 'tf-field-class',
-                    // 'default' => '#ffffff',
                     'multiple' => false,
                     'inline' => true,   
                 ),
