@@ -109,7 +109,7 @@ class UACF7_COUNTRY_DROPDOWN {
 		ob_start();
 		?>
 		<span data-name="<?php echo esc_attr($tag->name); ?>"  class="uacf7_phone_number" class="wpcf7-form-control-wrap <?php echo sanitize_html_class( $tag->name ); ?>">
-            <input <?php  echo esc_attr($atts); ?> type="tel" id="phone_<?php echo esc_attr($tag->name); ?>"  class="form-control">
+            <input <?php  echo $atts; ?> type="tel" id="phone_<?php echo esc_attr($tag->name); ?>"  class="form-control">
             <span class="uacf7_phone_validation"></span>
             <span><?php echo esc_html($validation_error); ?></span>
 		
