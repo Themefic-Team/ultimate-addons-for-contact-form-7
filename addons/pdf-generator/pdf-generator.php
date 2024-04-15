@@ -54,19 +54,16 @@ class UACF7_PDF_GENERATOR {
                 'type'  => 'heading', 
                 'label' => __( 'PDF Generator Settings', 'ultimate-addons-cf7' ),
                 'subtitle' => sprintf(
-                    // Translators: %1$s is replaced with the link to the example.
-                    esc_html__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
-                    '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
-                    )
-                    
+                    __( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
+                        '<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
+                                )
                 ),
                 'pdf_generator_docs' => array(
                     'id'      => 'pdf_generator_docs',
                     'type'    => 'notice',
                     'style'   => 'success',
                     'content' => sprintf( 
-                        // Translators: %1$s is replaced with the link to the example.
-                        esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-pdf-generator/" target="_blank" rel="noopener">PDF Generator</a>'
                     )
                 ),
@@ -102,6 +99,14 @@ class UACF7_PDF_GENERATOR {
                     'label'     => __( 'PDF Name ', 'ultimate-addons-cf7' ),
                     'subtitle'     => __( "For instance, if you enter 'website-submission' as the file name, the resulting PDF will be named 'website-submission.pdf'.", 'ultimate-addons-cf7' ),
                     'placeholder'     => __( 'E.g. website-submission', 'ultimate-addons-cf7' ),
+                    'field_width' => 50,
+            
+                ),
+                'uacf7_pdf_custom_font' => array(
+                    'id'        => 'uacf7_pdf_custom_font',
+                    'type'      => 'file',
+                    'label'     => __( 'PDF Custom Font ', 'ultimate-addons-cf7' ),
+                    'subtitle'     => __( "Set a Font that you like most", 'ultimate-addons-cf7' ),
                     'field_width' => 50,
             
                 ),
@@ -306,40 +311,42 @@ class UACF7_PDF_GENERATOR {
         global $wpdb; 
         $data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."uacf7_form WHERE id = %s AND form_id = %s", $data_id, $form_id ) ); 
   
-        $uacf7_pdf_name = !empty($pdf['uacf7_pdf_name']) ? $pdf['uacf7_pdf_name'] : get_the_title( $form_id );
-        $disable_header = !empty($pdf['uacf7_pdf_disable_header_footer']) && in_array('header', $pdf['uacf7_pdf_disable_header_footer']) ? true : false;
-        $disable_footer = !empty($pdf['uacf7_pdf_disable_header_footer']) && in_array('footer', $pdf['uacf7_pdf_disable_header_footer']) ? true : false; 
-        $customize_pdf = !empty($pdf['customize_pdf']) ? $pdf['customize_pdf'] : '';
-        $pdf_bg_upload_image = !empty($pdf['pdf_bg_upload_image']) ? $pdf['pdf_bg_upload_image'] : '';
-        $customize_pdf_header = !empty($pdf['customize_pdf_header']) ? $pdf['customize_pdf_header'] : '';
+        $uacf7_pdf_name          = !empty($pdf['uacf7_pdf_name']) ? $pdf['uacf7_pdf_name'] : get_the_title( $form_id );
+        $disable_header          = !empty($pdf['uacf7_pdf_disable_header_footer']) && in_array('header', $pdf['uacf7_pdf_disable_header_footer']) ? true : false;
+        $disable_footer          = !empty($pdf['uacf7_pdf_disable_header_footer']) && in_array('footer', $pdf['uacf7_pdf_disable_header_footer']) ? true : false;
+        $customize_pdf           = !empty($pdf['customize_pdf']) ? $pdf['customize_pdf'] : '';
+        $pdf_bg_upload_image     = !empty($pdf['pdf_bg_upload_image']) ? $pdf['pdf_bg_upload_image'] : '';
+        $customize_pdf_header    = !empty($pdf['customize_pdf_header']) ? $pdf['customize_pdf_header'] : '';
         $pdf_header_upload_image = !empty($pdf['pdf_header_upload_image']) ? $pdf['pdf_header_upload_image'] : '';
-        $pdf_header_img_height = !empty($pdf['pdf_header_img_height']) ? $pdf['pdf_header_img_height'] : '';
-        $pdf_header_img_width = !empty($pdf['pdf_header_img_width']) ? $pdf['pdf_header_img_width'] : '';
-        $pdf_header_img_aline = !empty($pdf['pdf_header_img_aline']) ? $pdf['pdf_header_img_aline'] : '';
-        $customize_pdf_footer = !empty($pdf['customize_pdf_footer']) ? $pdf['customize_pdf_footer'] : '';
-        $custom_pdf_css = !empty($pdf['custom_pdf_css']) ? $pdf['custom_pdf_css'] : ''; 
-        $pdf_content_color = !empty($pdf['pdf_content_color']) ? $pdf['pdf_content_color'] : ''; 
-        $pdf_content_bg_color = !empty($pdf['pdf_content_bg_color']) ? $pdf['pdf_content_bg_color'] : '';  
-        $pdf_header_color = !empty($pdf['pdf_header_color']) ? $pdf['pdf_header_color'] : ''; 
-        $pdf_header_bg_color = !empty($pdf['pdf_header_bg_color']) ? $pdf['pdf_header_bg_color'] : '';  
-        $pdf_footer_color = !empty($pdf['pdf_footer_color']) ? $pdf['pdf_footer_color'] : ''; 
-        $pdf_footer_bg_color = !empty($pdf['pdf_footer_bg_color']) ? $pdf['pdf_footer_bg_color'] : '';  
-        $pdf_bg_upload_image =  !empty($pdf_bg_upload_image) ? 'background-image: url("'.esc_attr($pdf_bg_upload_image).'");' : '';
-        $pdf_header_upload_image =  !empty($pdf_header_upload_image) ? '<img src="'.esc_attr( $pdf_header_upload_image ).'" style="height: 60; max-width: 100%; ">' : '';
-        
+        $pdf_header_img_height   = !empty($pdf['pdf_header_img_height']) ? $pdf['pdf_header_img_height'] : '';
+        $pdf_header_img_width    = !empty($pdf['pdf_header_img_width']) ? $pdf['pdf_header_img_width'] : '';
+        $pdf_header_img_aline    = !empty($pdf['pdf_header_img_aline']) ? $pdf['pdf_header_img_aline'] : '';
+        $customize_pdf_footer    = !empty($pdf['customize_pdf_footer']) ? $pdf['customize_pdf_footer'] : '';
+        $custom_pdf_css          = !empty($pdf['custom_pdf_css']) ? $pdf['custom_pdf_css'] : '';
+        $pdf_content_color       = !empty($pdf['pdf_content_color']) ? $pdf['pdf_content_color'] : '';
+        $pdf_content_bg_color    = !empty($pdf['pdf_content_bg_color']) ? $pdf['pdf_content_bg_color'] : '';
+        $pdf_header_color        = !empty($pdf['pdf_header_color']) ? $pdf['pdf_header_color'] : '';
+        $pdf_header_bg_color     = !empty($pdf['pdf_header_bg_color']) ? $pdf['pdf_header_bg_color'] : '';
+        $pdf_footer_color        = !empty($pdf['pdf_footer_color']) ? $pdf['pdf_footer_color'] : '';
+        $pdf_footer_bg_color     = !empty($pdf['pdf_footer_bg_color']) ? $pdf['pdf_footer_bg_color'] : '';
+        $pdf_bg_upload_image     = !empty($pdf_bg_upload_image) ? 'background-image: url("'.esc_attr($pdf_bg_upload_image).'");' : '';
+        $pdf_header_upload_image = !empty($pdf_header_upload_image) ? '<img src="'.esc_attr( $pdf_header_upload_image ).'" style="height: 60; max-width: 100%; ">' : '';
+        $uacf7_pdf_custom_font   = !empty($pdf['uacf7_pdf_custom_font']) ? $pdf['uacf7_pdf_custom_font'] : '';
+       
+    
         $mpdf = new \Mpdf\Mpdf([ 
             'fontdata' => [ // lowercase letters only in font key
                 'dejavuserifcond' => [
-                    'R' => 'DejaVuSansCondensed.ttf',
+                    'R' => file_exists($uacf7_pdf_custom_font) ? $uacf7_pdf_custom_font : 'DejaVuSansCondensed.ttf',
                 ]
             ],
-            'mode' => 'utf-8',
-            'default_font' => 'dejavusanscond',
+            'mode'          => 'utf-8',
+            'default_font'  => 'dejavusanscond',
             'margin_header' => 0,
             'margin_footer' => 0,
-            'format' => 'A4', 
-            'margin_left' => 0,
-            'margin_right' => 0
+            'format'        => 'A4',
+            'margin_left'   => 0,
+            'margin_right'  => 0
         ]); 
         
 
@@ -349,6 +356,7 @@ class UACF7_PDF_GENERATOR {
                  '.esc_attr( $pdf_bg_upload_image ).'
                 background-repeat:no-repeat;
                 background-image-resize: 6; 
+        
             }
             .pdf-header{
                 height: 60px;   
@@ -447,21 +455,19 @@ class UACF7_PDF_GENERATOR {
                 $repeaters[] = str_replace('_count', '', $key) ;
             }
 
-           // Signature Image Decrypt form Database Addon
-            if (in_array($key, $uacf7_signature_tag) && $uacf7_DB != null) {
-                $pathInfo = pathinfo($value);
-                $extension = strtolower($pathInfo['extension']);
+            // Signature Image Decrypt form Database Addon
+            if ( in_array( $key, $uacf7_signature_tag )  && $uacf7_DB != null ) {
+                $pathInfo = pathinfo( $value );
+                $extension = strtolower( $pathInfo['extension'] );
 
                 ob_start(); 
-                // Output is escaped using esc_html to prevent XSS
-                echo esc_html($uacf7_DB->decrypt_and_display($dir . $value, $encryptionKey));
+                echo $uacf7_DB->decrypt_and_display( $dir . $value, $encryptionKey );
                 $decryptedData = ob_get_clean();  
 
-                if ($decryptedData !== null) {
-                    $value = 'data:image/png;base64,' . base64_encode($decryptedData); 
+                if ( $decryptedData !== null ) {
+                    $value = 'data:image/png;base64,' . base64_encode( $decryptedData ); 
                 } 
             }
-
 
             $replace_key[] = '['.$key.']';
             if( is_array($value)){
@@ -503,7 +509,7 @@ class UACF7_PDF_GENERATOR {
         
         $mpdf->Output($pdf_dir, 'F'); // Dwonload
         
-        wp_send_json( 
+        echo wp_send_json( 
             array(
                 'status' => 'success',
                 'url' => $pdf_url
@@ -513,7 +519,7 @@ class UACF7_PDF_GENERATOR {
         die();
     }
 
-    function uacf7_wpcf7_mail_components( $components, $form = null, $mail = null  ) { 
+ function uacf7_wpcf7_mail_components( $components, $form = null, $mail = null  ) { 
        
 
         $wpcf7 = WPCF7_ContactForm::get_current(); 
