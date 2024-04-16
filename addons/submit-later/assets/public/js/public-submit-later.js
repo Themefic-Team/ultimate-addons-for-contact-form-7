@@ -16,6 +16,7 @@
                     var formId = data.form_id;
                     var is_enabled = data.is_enabled;
                     var keep_for = data.keep_for;
+                    var link_to_submit_later = data.link_to_submit_later;
                    
                     function isExpired(timestamp) {
                         return Date.now() > timestamp;
@@ -102,6 +103,80 @@
                         localStorage.removeItem('contactFormData_' + formId);
                         localStorage.removeItem('contactFormDataExpiry_' + formId);
                     });
+
+                    var email_dialog = '<div id="emailDialog" title="Email Link">';
+                    email_dialog += '<label for="uacf7_sl_temp_link">Submit Later Link</label>';
+                    email_dialog += '<input type="text" disabled id="uacf7_sl_temp_link">';
+                    email_dialog += '<label for="uacf7submitLaterEmailAddress">Enter your email address:</label>';
+                    email_dialog += '<input type="email" id="uacf7submitLaterEmailAddress"><br>'; // Added <br> for spacing
+                            
+
+
+                    // Add "Save and Continue Later" button functionality
+                    form.append('<button type="button" id="saveAndContinue">Save and Continue Later</button>');
+                    $('#saveAndContinue').on('click', function() {
+                        saveFormData();
+                        var savedId = 'contactFormData_' + formId;
+                        var url = window.location.origin + window.location.pathname + '?savedId=' + savedId;
+                        // alert("Form data saved. You can continue later using the following link:\n" + url);
+                        // console.log(url);
+
+                        $('#uacf7_sl_temp_link').val(url);
+
+                        $(email_dialog).dialog({
+                            modal              : true,
+                            title              : link_to_submit_later,
+                            height             : 350,
+                            minHeight          : 200,
+                            minWidth           : 600,
+                            resizable          : true,
+                            closeOnEscape      : true,
+                            closeOnOverlayClick: true,
+                            buttons: {
+                                "Send Email": function() {
+                                    var emailAddress = $('#emailAddress').val();
+                                    var emailSubject = 'Save and Continue Later Link';
+                                    var emailBody = 'Here is the link to continue filling out the form:\n' + $('#emailLink').val();
+                                    window.location.href = 'mailto:' + emailAddress + '?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
+                                    $(this).dialog('close');
+                                },
+                                "Cancel": function() {
+                                    $(this).dialog('close');
+                                }
+                            },
+                            position           : {
+                                my: "center",
+                                at: "center",
+                                of: window
+                            },
+                            create: function(event, ui) {
+                                $(event.target).parent().css('position', 'fixed');
+                            },
+                            drag: function(event, ui) {
+                        
+                                $(this).dialog('option', 'position', { my: 'center', at: 'center', of: window });
+                            },
+                            resize: function(event, ui) {
+                      
+                                $(this).dialog('option', 'position', { my: 'center', at: 'center', of: window });
+                            },
+                            width: function() {
+                                if ($(window).width() <= 767) {
+                                    return $(window).width();
+                                } else {
+                                    return 600;
+                                }
+                            }
+                            
+                        });
+
+                        $('.ui-widget-overlay').on('click', function () {
+                            $(".ui-dialog-content").dialog("close");
+                        });
+
+                    });
+
+                   
                 }
             });
         });

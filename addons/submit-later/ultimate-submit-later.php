@@ -20,6 +20,7 @@
         public function uacf7_form_submit_later_public_assets_loading(){
 
             wp_enqueue_script('submit_later_public_js', UACF7_URL . 'addons/submit-later/assets/public/js/public-submit-later.js', ['jquery'], 'UAFC7_VERSION', true);
+            wp_enqueue_script('submit_later_jquery_ui_js', UACF7_URL . 'addons/submit-later/assets/public/js/jquery-ui.js', ['jquery'], 'UAFC7_VERSION', true);
             wp_localize_script( 'submit_later_public_js', 'uacf7_submit_later_obj', [
                 "ajaxurl" => admin_url( 'admin-ajax.php' ),
                 'nonce'   => wp_create_nonce( 'uacf7-submit-later-nonce' ),
@@ -30,6 +31,9 @@
             if ( !wp_verify_nonce($_POST['ajax_nonce'], 'uacf7-submit-later-nonce')) {
                 exit(esc_html__("Security error", 'ultimate-addons-cf7'));
             } 
+
+            $link_to_submit_later      = esc_html__('Link to Submit Later', 'ultimate-addons-cf7');
+
             $form_id      = isset($_POST['form_id']) ? $_POST['form_id'] : '';
             $submit_later = uacf7_get_form_option( $form_id, 'submit_later' );
             $is_enabled   = isset($submit_later['uacf7_form_submit_later_enable']) ? $submit_later['uacf7_form_submit_later_enable'] : 0;
@@ -38,7 +42,8 @@
             wp_send_json( [
                 'is_enabled' => $is_enabled,
                 'form_id'    => $form_id,
-                'keep_for'   => $keep_for
+                'keep_for'   => $keep_for,
+                'link_to_submit_later'   => $link_to_submit_later
             ] );
         }
 
