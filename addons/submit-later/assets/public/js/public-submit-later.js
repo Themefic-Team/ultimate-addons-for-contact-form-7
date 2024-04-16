@@ -104,11 +104,6 @@
                         localStorage.removeItem('contactFormDataExpiry_' + formId);
                     });
 
-                    var email_dialog = '<div id="emailDialog" title="Email Link">';
-                    email_dialog += '<label for="uacf7_sl_temp_link">Submit Later Link</label>';
-                    email_dialog += '<input type="text" disabled id="uacf7_sl_temp_link">';
-                    email_dialog += '<label for="uacf7submitLaterEmailAddress">Enter your email address:</label>';
-                    email_dialog += '<input type="email" id="uacf7submitLaterEmailAddress"><br>'; // Added <br> for spacing
                             
 
 
@@ -118,10 +113,14 @@
                         saveFormData();
                         var savedId = 'contactFormData_' + formId;
                         var url = window.location.origin + window.location.pathname + '?savedId=' + savedId;
-                        // alert("Form data saved. You can continue later using the following link:\n" + url);
-                        // console.log(url);
+                        
 
-                        $('#uacf7_sl_temp_link').val(url);
+                        //Dialog Markup
+                        var email_dialog = '<div id="emailDialog" title="Email Link">';
+                        email_dialog += '<label for="uacf7_sl_temp_link">Submit Later Link</label>';
+                        email_dialog += `<input type="url" disabled id="uacf7_sl_temp_link" value=${url}>`;
+                        email_dialog += '<label for="uacf7submitLaterEmailAddress">Enter your email address:</label>';
+                        email_dialog += '<input type="email" id="uacf7submitLaterEmailAddress"><br>';
 
                         $(email_dialog).dialog({
                             modal              : true,
@@ -134,9 +133,10 @@
                             closeOnOverlayClick: true,
                             buttons: {
                                 "Send Email": function() {
-                                    var emailAddress = $('#emailAddress').val();
+                                    var emailAddress = $('#uacf7submitLaterEmailAddress').val();
                                     var emailSubject = 'Save and Continue Later Link';
-                                    var emailBody = 'Here is the link to continue filling out the form:\n' + $('#emailLink').val();
+                                    var emailBody = 'Here is the link to continue filling out the form:\n' + $('#uacf7_sl_temp_link').val();
+                                   
                                     window.location.href = 'mailto:' + emailAddress + '?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
                                     $(this).dialog('close');
                                 },
