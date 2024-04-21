@@ -12,7 +12,7 @@ class UACF7_DATABASE {
 	 * Construct function
 	 */
 	public function __construct() {
-		add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_uacf7_database'), 28, 2 );  
+		add_filter( 'uacf7_post_meta_options', array( $this, 'uacf7_post_meta_options_uacf7_database' ), 28, 2 );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'wp_enqueue_admin_script' ) );
 		add_action( 'wpcf7_before_send_mail', array( $this, 'uacf7_save_to_database' ) );
@@ -23,49 +23,49 @@ class UACF7_DATABASE {
 		// add_filter( 'wpcf7_load_js', '__return_false' );
 	}
 
-	public function uacf7_post_meta_options_uacf7_database($value, $post_id){
-		$database = apply_filters('uacf7_post_meta_options_uacf7_database_pro', $data = array(
-            'title'  => __( 'Database', 'ultimate-addons-cf7' ),
-            'icon'   => 'fa-solid fa-database',
-            'fields' => array(
-                'uacf7_database_label' => array(
-                'id'    => 'uacf7_database_label',
-                'type'  => 'heading', 
-                'label' => __( 'UACF7 Database Settings', 'ultimate-addons-cf7' ),
-                'subtitle' => sprintf(
-					// Translators: %1$s is replaced with the link to the example.
-					esc_html__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
-					'<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
-					)
-					
-                ),
-                array(
-					'id'      => 'pdf-database-docs',
-                    'type'    => 'notice',
-                    'style'   => 'success',
-                    'content' => sprintf( 
+	public function uacf7_post_meta_options_uacf7_database( $value, $post_id ) {
+		$database = apply_filters( 'uacf7_post_meta_options_uacf7_database_pro', $data = array(
+			'title' => __( 'Database', 'ultimate-addons-cf7' ),
+			'icon' => 'fa-solid fa-database',
+			'fields' => array(
+				'uacf7_database_label' => array(
+					'id' => 'uacf7_database_label',
+					'type' => 'heading',
+					'label' => __( 'UACF7 Database Settings', 'ultimate-addons-cf7' ),
+					'subtitle' => sprintf(
 						// Translators: %1$s is replaced with the link to the example.
-                        esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/database/" target="_blank" rel="noopener">Database</a>'
-                    )
-                ),
-                'uacf7_enable_duplicate_submission' => array(
-                    'id'        => 'uacf7_enable_duplicate_submission',
-                    'type'      => 'switch',
-                    'label'     => __( ' Prevent Duplicate Submission ', 'ultimate-addons-cf7' ),
-                    'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
-                    'label_off' => __( 'No', 'ultimate-addons-cf7' ),
-                    'default'   => false,
-                    'field_width' => 100,
-                ),
+						esc_html__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
+						'<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
+					)
 
-            ),
-                
-    
-        ), $post_id);
-    
-        $value['database'] = $database; 
-        return $value;
+				),
+				array(
+					'id' => 'pdf-database-docs',
+					'type' => 'notice',
+					'style' => 'success',
+					'content' => sprintf(
+						// Translators: %1$s is replaced with the link to the example.
+						esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+						'<a href="https://themefic.com/docs/uacf7/free-addons/database/" target="_blank" rel="noopener">Database</a>'
+					)
+				),
+				'uacf7_enable_duplicate_submission' => array(
+					'id' => 'uacf7_enable_duplicate_submission',
+					'type' => 'switch',
+					'label' => __( ' Prevent Duplicate Submission ', 'ultimate-addons-cf7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
+					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'default' => false,
+					'field_width' => 100,
+				),
+
+			),
+
+
+		), $post_id );
+
+		$value['database'] = $database;
+		return $value;
 	}
 
 	//Create Ulimate Database   
@@ -83,7 +83,7 @@ class UACF7_DATABASE {
             PRIMARY KEY  (id)
         ) $charset_collate";
 
-		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		require_once ( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
 	}
 
@@ -205,7 +205,7 @@ class UACF7_DATABASE {
 									<?php
 									foreach ( $list_forms as $form ) {
 										$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d", $form->ID ) );  // count number of data
-										echo '<option value="' . esc_attr( $form->ID ) . '">' . esc_attr( $form->post_title ) . ' ( ' . esc_html($count) . ' )</option>';
+										echo '<option value="' . esc_attr( $form->ID ) . '">' . esc_attr( $form->post_title ) . ' ( ' . esc_html( $count ) . ' )</option>';
 									}
 									?>
 								</select>
@@ -226,7 +226,18 @@ class UACF7_DATABASE {
 	}
 
 	public function encrypt_file( $inputFile, $outputFile, $key ) {
-		$inputData = file_get_contents( $inputFile );
+		global $wp_filesystem;
+
+		if ( ! $wp_filesystem ) {
+			require_once ( ABSPATH . 'wp-admin/includes/file.php' );
+			WP_Filesystem();
+		}
+
+		if ( ! $wp_filesystem->is_file( $inputFile ) ) {
+			return new WP_Error( 'file_not_found', 'Input file not found' );
+		}
+
+		$inputData = $wp_filesystem->get_contents( $inputFile );
 
 		// Generate an Initialization Vector (IV)
 		$iv = openssl_random_pseudo_bytes( openssl_cipher_iv_length( 'aes-256-cbc' ) );
@@ -238,18 +249,24 @@ class UACF7_DATABASE {
 		$encryptedFileContent = $iv . $encryptedData;
 
 		// Save the encrypted content to the output file
-		file_put_contents( $outputFile, $encryptedFileContent );
+		$wp_filesystem->put_contents( $outputFile, $encryptedFileContent );
 	}
 
 
 	public function decrypt_and_display( $inputFile, $key ) {
+		global $wp_filesystem;
 
-		if ( ! file_exists( $inputFile ) ) {
-			die( "Error: The file does not exist." );
+		if ( ! $wp_filesystem ) {
+			require_once ( ABSPATH . 'wp-admin/includes/file.php' );
+			WP_Filesystem();
+		}
+
+		if ( ! $wp_filesystem->is_file( $inputFile ) ) {
+			return new WP_Error( 'file_not_found', 'Input file not found' );
 		}
 
 		// Read the encrypted content
-		$encryptedFileContent = file_get_contents( $inputFile );
+		$encryptedFileContent = $wp_filesystem->get_contents( $inputFile );
 
 		if ( $encryptedFileContent === false ) {
 			die( "Error: Unable to read file content." );
@@ -274,7 +291,7 @@ class UACF7_DATABASE {
 	 * Ultimate form save into the database
 	 */
 	public function uacf7_save_to_database( $form ) {
-		require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		require_once ( ABSPATH . 'wp-admin/includes/file.php' );
 		global $wpdb;
 		$encryptionKey = 'AES-256-CBC';
 		$table_name = $wpdb->prefix . 'uacf7_form';
@@ -303,13 +320,13 @@ class UACF7_DATABASE {
 
 		$emailValue = null;
 
-		foreach ($tags as $tag) {
-			if ($tag->type === 'email' || $tag->type === 'email*') {
-		
-				if (array_key_exists($tag->name, $contact_form_data)) {
-					$emailValue .= $contact_form_data[$tag->name];	
-				}	
-		
+		foreach ( $tags as $tag ) {
+			if ( $tag->type === 'email' || $tag->type === 'email*' ) {
+
+				if ( array_key_exists( $tag->name, $contact_form_data ) ) {
+					$emailValue .= $contact_form_data[ $tag->name ];
+				}
+
 				break;
 			}
 		}
@@ -357,25 +374,25 @@ class UACF7_DATABASE {
 			}
 		}
 
-		
-		// Retrieve all row data from the table
-		$rows = $wpdb->get_results("SELECT * FROM $table_name", ARRAY_A);
-		
-		$email_to_check = $emailValue; // Email to check for existence
-		
-		$email_exists = false;
-		
-		if ($rows) {
-			foreach ($rows as $row) {
-				$form_value = json_decode($row['form_value'], true);
-		
-				foreach ($form_value as $key => $value) {
-	
-					if (stripos($key, 'email') !== false) {
 
-						if ($value === $email_to_check) {
+		// Retrieve all row data from the table
+		$rows = $wpdb->get_results( "SELECT * FROM $table_name", ARRAY_A );
+
+		$email_to_check = $emailValue; // Email to check for existence
+
+		$email_exists = false;
+
+		if ( $rows ) {
+			foreach ( $rows as $row ) {
+				$form_value = json_decode( $row['form_value'], true );
+
+				foreach ( $form_value as $key => $value ) {
+
+					if ( stripos( $key, 'email' ) !== false ) {
+
+						if ( $value === $email_to_check ) {
 							$email_exists = true;
-							break 2; 
+							break 2;
 						}
 					}
 				}
@@ -384,31 +401,31 @@ class UACF7_DATABASE {
 
 
 		//Check Condition whether the duplication happens
-		if ($is_enable_prevent_duplication === '1' && $email_exists == true) {
-	
-				return;
-			
+		if ( $is_enable_prevent_duplication === '1' && $email_exists == true ) {
+
+			return;
+
 		} else {
 			$data = [ 
 				'status' => 'unread',
 			];
 			$data = array_merge( $data, $contact_form_data );
-	
+
 			$insert_data = [];
 			foreach ( $data as $key => $value ) {
 				if ( ! in_array( $key, $skip_tag_insert ) ) {
-	
+
 					if ( is_array( $value ) ) {
 						$insert_data[ $key ] = array_map( 'esc_html', $value );
-	
+
 					} else {
 						$insert_data[ $key ] = esc_html( $value );
 					}
 				}
 			}
-	
-			$insert_data = json_encode( $insert_data );
-	
+
+			$insert_data = wp_json_encode( $insert_data );
+
 			$wpdb->insert( $table_name, array(
 				'form_id' => $form->id(),
 				'form_value' => $insert_data,
@@ -416,18 +433,18 @@ class UACF7_DATABASE {
 			) );
 			$uacf7_db_insert_id = $wpdb->insert_id;
 
-			
+
 			if ( isset( $uacf7_db_insert_id ) && ! empty( $uacf7_db_insert_id ) ) {
-		
+
 				do_action( 'uacf7_checkout_order_traking', $uacf7_db_insert_id, $form->id() );
 			}
 			if ( isset( $uacf7_db_insert_id ) && ! empty( $uacf7_db_insert_id ) ) {
 
 				do_action( 'uacf7_submission_id_insert', $uacf7_db_insert_id, $form->id(), $contact_form_data, $tags );
 			}
-			
+
 		}
-		
+
 
 
 	}
@@ -539,7 +556,7 @@ class UACF7_DATABASE {
 		// Update data as read
 		if ( $data->status == 'unread' ) {
 			$data->status = 'read';
-			$data = json_encode( $data );
+			$data = wp_json_encode( $data );
 			$table_name = $wpdb->prefix . 'uacf7_form';
 			$data = array(
 				'form_value' => $data,
@@ -551,11 +568,11 @@ class UACF7_DATABASE {
 		}
 
 		// return all data
-        wp_send_json( array(
-            'rawData' => $html,
-            'srcAttribute' => $srcAttribute,
-            'fileNameWithoutExtension' => $fileNameWithoutExtension,
-        ));
+		wp_send_json( array(
+			'rawData' => $html,
+			'srcAttribute' => $srcAttribute,
+			'fileNameWithoutExtension' => $fileNameWithoutExtension,
+		) );
 
 		wp_die();
 	}
@@ -565,6 +582,11 @@ class UACF7_DATABASE {
 	 */
 
 	public function uacf7_ajax_database_export_csv() {
+		// Initialize WordPress filesystem
+		require_once ( ABSPATH . 'wp-admin/includes/file.php' );
+		WP_Filesystem();
+		global $wp_filesystem;
+
 		// Capability check
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( 'You do not have permission to perform this action.' );
@@ -577,7 +599,7 @@ class UACF7_DATABASE {
 		if ( isset( $_POST['form_id'] ) && 0 < $_POST['form_id'] ) {
 			global $wpdb;
 			$form_id = intval( $_POST['form_id'] );
-			$today = date( "Y-m-d" );
+			// $today = date( "Y-m-d" );
 			$upload_dir = wp_upload_dir();
 			$dir = $upload_dir['baseurl'];
 			$replace_dir = '/uacf7-uploads/';
@@ -626,22 +648,28 @@ class UACF7_DATABASE {
 
 
 			}
+
 			// Set the headers
 			ob_start();
 			header( 'Content-Type: text/csv' );
 			header( 'Content-Disposition: attachment; filename="' . $file_name . '"' );
+
 			$fp = fopen( 'php://output', 'w' );
 
 			foreach ( $list as $fields ) {
 				fputcsv( $fp, $fields );
 			}
+
 			fclose( $fp );
+
 			$csv_data = ob_get_clean();
+
 			$data = [ 
 				'status' => true,
 				'file_name' => $file_name,
 				'csv' => $csv_data,
 			];
+
 		} else {
 			$data = [ 
 				'status' => false,
@@ -662,7 +690,7 @@ class UACF7_DATABASE {
  */
 
 if ( ! class_exists( 'WP_List_Table' ) ) {
-	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+	require_once ( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
 /*
@@ -813,7 +841,7 @@ class uacf7_form_List_Table extends WP_List_Table {
 
 			// Checked Star Review Status
 			if ( $this->uacf7_star_review_status( $form_id ) == true ) {
-				$checked = isset( $fdata->is_review) && $fdata->is_review == 1 ? 'checked' : '';
+				$checked = isset( $fdata->is_review ) && $fdata->is_review == 1 ? 'checked' : '';
 				$f_data['review_publish'] = '<label class="uacf7-admin-toggle1 uacf7_star_label" for="uacf7_review_status_' . esc_attr( $fdata->id ) . '">
                 <input type="checkbox" class="uacf7-admin-toggle__input star_is_review" value="' . esc_attr( $fdata->id ) . '"  name="uacf7_review_status_' . esc_attr( $fdata->id ) . '" id="uacf7_review_status_' . esc_attr( $fdata->id ) . '" ' . esc_attr( $checked ) . '>
                 <span class="uacf7-admin-toggle-track"><span class="uacf7-admin-toggle-indicator"><span class="checkMark"><svg viewBox="0 0 24 24" id="ghq-svg-check" role="presentation" aria-hidden="true"><path d="M9.86 18a1 1 0 01-.73-.32l-4.86-5.17a1.001 1.001 0 011.46-1.37l4.12 4.39 8.41-9.2a1 1 0 111.48 1.34l-9.14 10a1 1 0 01-.73.33h-.01z"></path></svg></span></span></span>
@@ -847,7 +875,7 @@ class uacf7_form_List_Table extends WP_List_Table {
 
 	public function single_row( $item ) {
 		$cssClass = ( $item['status'] == 'unread' ) ? 'unread' : 'read';
-		echo '<tr class="' . esc_attr($cssClass) . '">';
+		echo '<tr class="' . esc_attr( $cssClass ) . '">';
 		$this->single_row_columns( $item );
 		echo '</tr>';
 	}
@@ -904,7 +932,7 @@ class uacf7_form_List_Table extends WP_List_Table {
 		}
 
 		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . esc_html__( 'Select bulk action' ) . '</label>';
-		echo '<select name="action' . esc_attr($two) . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
+		echo '<select name="action' . esc_attr( $two ) . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
 		echo '<option value="-1">' . esc_html__( 'Bulk actions' ) . "</option>\n";
 
 		foreach ( $this->_actions as $key => $value ) {
@@ -914,13 +942,13 @@ class uacf7_form_List_Table extends WP_List_Table {
 				foreach ( $value as $name => $title ) {
 					$class = ( 'edit' === $name ) ? ' class="hide-if-no-js"' : '';
 
-					echo "\t\t" . '<option value="' . esc_attr( $name ) . '"' . esc_attr($class) . '>' . esc_html($title) . "</option>\n";
+					echo "\t\t" . '<option value="' . esc_attr( $name ) . '"' . esc_attr( $class ) . '>' . esc_html( $title ) . "</option>\n";
 				}
 				echo "\t" . "</optgroup>\n";
 			} else {
 				$class = ( 'edit' === $key ) ? ' class="hide-if-no-js"' : '';
 
-				echo "\t" . '<option value="' . esc_attr( $key ) . '"' . esc_attr($class) . '>' . esc_html($value) . "</option>\n";
+				echo "\t" . '<option value="' . esc_attr( $key ) . '"' . esc_attr( $class ) . '>' . esc_html( $value ) . "</option>\n";
 			}
 		}
 
