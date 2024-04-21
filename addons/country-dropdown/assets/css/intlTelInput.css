@@ -13,8 +13,7 @@
  *     @import "bower_component/intl-tel-input/src/css/intlTelInput";
  */
 .intl-tel-input {
-  position: relative;
-  display: inline-block; }
+  position: relative; }
   .intl-tel-input * {
     box-sizing: border-box;
     -moz-box-sizing: border-box; }

@@ -32,7 +32,7 @@
                             var fieldValue = fieldElement.val(); 
                         
                             // Skip hidden fields, empty values, and fields with special class
-                            if (fieldElement.attr('type') !== 'hidden' && fieldElement.attr('type') !== 'submit' && fieldValue !== '' && !fieldElement.hasClass('uacf7-product-quantity')) {
+                            if (fieldElement.attr('type') !== 'hidden' && !fieldElement.hasClass('wpcf7-uacf7_submission_id') && fieldElement.attr('type') !== 'submit' && fieldValue !== '' && !fieldElement.hasClass('uacf7-product-quantity')) {
                                 var label = '';
                                 $.each(preview_labels, function(i, previewLabel) {
                                     if (previewLabel.field_name === fieldName) {
@@ -48,7 +48,14 @@
                                     previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + 'Signature Preview only to the Database' + '</td></tr>';
                                 } else if (fieldElement.attr('type') === 'file' && !fieldElement.hasClass('img_id_special')) {
                                     previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + 'There is no Preview of Uploaded Files' + '</td></tr>';
-                                } else {
+                                } else if(fieldElement.attr('type') === 'radio'){
+
+                                   var fieldValue = fieldElement.closest('.uacf7-star-ratting').find('.checked').length;
+
+                                    previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + fieldValue + '</td></tr>';
+
+                                 
+                                }else {
                                     previewContent += '<tr><td><strong>' + displayName + ':</strong></td><td>' + fieldValue + '</td></tr>';
                                 }                                
                                 

@@ -78,7 +78,7 @@
  
                     e.preventDefault();
                     refreshButton.trigger('click');
-                    resultDiv.text("CAPTCHA validation failed. Please try again.").css("color", "#DC2626");;
+                    resultDiv.text("CAPTCHA validation failed. Please try again.").css("color", "#DC2626");
                   }
 
                 });

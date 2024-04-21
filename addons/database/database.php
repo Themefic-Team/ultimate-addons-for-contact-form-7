@@ -53,6 +53,7 @@ class UACF7_DATABASE {
                     'id'        => 'uacf7_enable_duplicate_submission',
                     'type'      => 'switch',
                     'label'     => __( ' Prevent Duplicate Submission ', 'ultimate-addons-cf7' ),
+                    'subtitle'     => __( 'This prevents data submitted from the same mail address to be injected into the Database', 'ultimate-addons-cf7' ),
                     'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
                     'label_off' => __( 'No', 'ultimate-addons-cf7' ),
                     'default'   => false,
