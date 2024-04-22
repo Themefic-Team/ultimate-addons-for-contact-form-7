@@ -11,10 +11,15 @@
         public function __construct(){
 
             add_action('wp_enqueue_scripts', array( $this, 'uacf7_form_submit_later_public_assets_loading'));
+            add_action('admin_enqueue_scripts', array( $this, 'uacf7_form_submit_later_admin_assets_loading'));
             add_action( 'wp_ajax_uacf7_submit_later_action', array( $this, 'uacf7_submit_later_ajax_cb') );
             add_action( 'wp_ajax_nopriv_uacf7_submit_later_action', array( $this, 'uacf7_submit_later_ajax_cb'));  
 
             add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submit_later'), 31, 2); 
+        }
+
+        public function uacf7_form_submit_later_admin_assets_loading(){
+            wp_enqueue_script('submit_later_admin_js', UACF7_URL . 'addons/submit-later/assets/admin/js/admin-submit-later.js', ['jquery'], 'UAFC7_VERSION', true);
         }
 
         public function uacf7_form_submit_later_public_assets_loading(){
@@ -91,6 +96,14 @@
                         'description'     => __( 'Enter how many hours you want, The default, 168 hours / 7 Days.', 'ultimate-addons-cf7' ),
                         'default'   => 168,
                     ),
+                    'uacf7_save_and_continue_button_layout' => array(
+                        'id'    => 'uacf7_save_and_continue_button_layout',
+                        'type'               => 'heading',
+                        'label'              => __( 'Save and Continue Button Layout', 'ultimate-addons-cf7' ),
+                        'subtitle'              => 'Copy the code and paste anywhere of Form. Please Note: The button ID  can not be changed. You can change the button text. ',
+                        'description'     => __( '<button class="ucaf7-save-and-continue-layout">Copy Layout</button>', 'ultimate-addons-cf7' ),
+                        'class' => 'ucaf7-save-and-continue-layout'
+                        ),
                
                 ),
                 

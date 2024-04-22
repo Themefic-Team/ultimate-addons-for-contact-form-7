@@ -108,8 +108,7 @@
 
 
                     // Add "Save and Continue Later" button functionality
-                    form.append('<button type="button" id="saveAndContinue">Save and Continue Later</button>');
-                    $('#saveAndContinue').on('click', function() {
+                    $('#uacf7SaveAndContinue').on('click', function() {
                         saveFormData();
                         var savedId = 'contactFormData_' + formId;
                         var url = window.location.origin + window.location.pathname + '?savedId=' + savedId;
