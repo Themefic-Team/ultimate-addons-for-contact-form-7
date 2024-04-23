@@ -245,6 +245,10 @@
     margin-right: 8px!important;
 }
 
+.style-1 .uacf7-multisetp-form{
+    width: 100%;
+}
+
 .style-1 + .uacf7-multisetp-form button.uacf7-next,       .style-1 + .uacf7-multisetp-form button.uacf7-prev,      .style-1 + .uacf7-multisetp-form .wpcf7-submit {
     font-size     : 16px!important;
     letter-spacing: 0.5px!important;

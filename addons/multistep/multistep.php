@@ -12,6 +12,7 @@ class UACF7_MULTISTEP {
 	 */
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_script' ) );
 		add_action( 'admin_init', array( $this, 'tag_generator' ) );
 		add_action( 'wp_ajax_check_fields_validation', array( $this, 'check_fields_validation' ) );
 		add_action( 'wp_ajax_nopriv_check_fields_validation', array( $this, 'check_fields_validation' ) );
@@ -26,6 +27,11 @@ class UACF7_MULTISTEP {
 		add_filter( 'uacf7_post_meta_options_multistep_pro', array( $this, 'uacf7_post_meta_options_multistep_pro' ), 10, 2 );
 		add_filter( 'uacf7_multistep_steps_names', array( $this, 'uacf7_multistep_steps_names' ), 10, 2 );
 		add_filter( 'uacf7_multistep_step_title', array( $this, 'uacf7_multistep_step_title' ), 10, 2 );
+	}
+
+	public function admin_enqueue_script(){
+
+		wp_enqueue_script( 'uacf7-multistep-dashboard', UACF7_ADDONS . '/multistep/assets/js/multistep-dashboard.js', array( 'jquery' ), null, true );
 	}
 
 	public function enqueue_script() {
@@ -140,7 +146,7 @@ class UACF7_MULTISTEP {
 					'options' => array(
 						'default' => array(
 							'title' => 'Default',
-							'url' => UACF7_ADDONS . "/multistep/assets/img/default.png",
+							'url' => UACF7_ADDONS . "/multistep/assets/img/default-skin.png",
 						),
 						'style-1' => array(
 							'title' => 'Style 1',
@@ -228,6 +234,7 @@ class UACF7_MULTISTEP {
 					'multiple' => false,
 					'field_width' => 33,
 					'dependency' => array(
+						array( 'uacf7_progressbar_style', '!=', 'style-1' ),
 						array( 'uacf7_progressbar_style', '!=', 'style-3' ),
 						array( 'uacf7_progressbar_style', '!=', 'style-4' ),
 						array( 'uacf7_progressbar_style', '!=', 'style-5' ),
@@ -395,6 +402,7 @@ class UACF7_MULTISTEP {
 					'multiple' => false,
 					'field_width' => 33,
 					'dependency' => array(
+						array( 'uacf7_progressbar_style', '!=', 'style-1' ),
 						array( 'uacf7_progressbar_style', '!=', 'style-2' ),
 						array( 'uacf7_progressbar_style', '!=', 'style-5' ),
 						array( 'uacf7_progressbar_style', '!=', 'style-9' ),
@@ -942,6 +950,7 @@ class UACF7_MULTISTEP {
 						'inline' => true,
 						'is_pro' => true,
 						'dependency' => array(
+							array( 'uacf7_progressbar_style', '!=', 'default' ),
 							array( 'uacf7_progressbar_style', '!=', 'style-1' ),
 
 						),
@@ -984,6 +993,7 @@ class UACF7_MULTISTEP {
 						'default' => 'fa fa-check',
 						'dependency' => array(
 							array( 'uacf7_progressbar_icon_type' . $step->name . '', '==', 'icon' ),
+							array( 'uacf7_progressbar_style', '!=', 'default' ),
 							array( 'uacf7_progressbar_style', '!=', 'style-1' ),
 						),
 					);
@@ -1094,29 +1104,29 @@ class UACF7_MULTISTEP {
 				$next_prev_style = '<style>.uacf7-prev, .uacf7-next, .wpcf7-submit{' . $padding_top . ' ' . $padding_bottom . ' ' . $padding_left . ' ' . $padding_right . '}  </style>';
 				echo wp_kses( $next_prev_style, uacf7_custom_wp_kses_allow_tags() );
 
-				/*
-																	if(!empty($all_steps)):
-																	  
-																?> 
-																	<div class="uacf7-steps steps-form" style="display: none !important;">
-																		<div class="steps-row setup-panel">
-																			<?php
-																				$step_id = 1;
-																				$step_count = 0;
-																		
-																				$step_name = apply_filters('uacf7_multistep_steps_names', array(), $all_steps);
-																				foreach ($all_steps as $step) {
-																					$content = $step;
-																					?>
-																					<div class="steps-step"><a title-id=".step-<?php echo esc_attr($step_id); ?>" data-form-id="<?php echo esc_attr($cfform->id()); ?>" href="#<?php echo esc_attr($cfform->id()); ?>step-<?php echo esc_attr($step_id); ?>" type="button"></a></div>
-																					<?php
-																					$step_id++;
-																					$step_count++;
-																				}
-																			?>
-																		</div>
-																	</div>
-																<?php endif; */ ?>
+				
+				/*if(!empty($all_steps)):
+						
+				?> 
+					<div class="uacf7-steps steps-form" style="display: none !important;">
+						<div class="steps-row setup-panel">
+							<?php
+								$step_id = 1;
+								$step_count = 0;
+						
+								$step_name = apply_filters('uacf7_multistep_steps_names', array(), $all_steps);
+								foreach ($all_steps as $step) {
+									$content = $step;
+									?>
+									<div class="steps-step"><a title-id=".step-<?php echo esc_attr($step_id); ?>" data-form-id="<?php echo esc_attr($cfform->id()); ?>" href="#<?php echo esc_attr($cfform->id()); ?>step-<?php echo esc_attr($step_id); ?>" type="button"></a></div>
+									<?php
+									$step_id++;
+									$step_count++;
+								}
+							?>
+						</div>
+					</div>
+				<?php endif; */ ?>
 
 				<?php
 				if ( $uacf7_enable_multistep_progressbar == true ) {
@@ -1169,110 +1179,62 @@ class UACF7_MULTISTEP {
 
 					<!-- Styling Style 1 -->
 
-					<?php if ( $uacf7_progressbar_style === 'style-1' ) : ?>
-
+					<?php if ($uacf7_progressbar_style === 'style-1') : ?>
 						<style>
 							.progressbar-style-1 .steps-row .steps-step .uacf7-btn-active {
-								color:
-									<?php echo esc_attr( $uacf7_multistep_circle_active_font_color ); ?>
-									!important;
-								background:
-									<?php echo esc_attr( $uacf7_multistep_circle_bg_active_color ); ?>
-									!important;
-								border-bottom:
-									<?php echo esc_attr( $uacf7_multistep_circle_border ); ?>
-									px solid
-									<?php echo esc_attr( $uacf7_multistep_circle_border_color ); ?>
-									!important;
+								color: <?php echo esc_attr($uacf7_multistep_circle_active_font_color); ?> !important;
+								background: <?php echo esc_attr($uacf7_multistep_circle_bg_active_color); ?> !important;
+								border-bottom: <?php echo esc_attr($uacf7_multistep_circle_border); ?>px solid <?php echo esc_attr($uacf7_multistep_circle_border_color); ?> !important;
 							}
 
 							.progressbar-style-1 .steps-row .steps-step .style-1-filled {
-								color:
-									<?php echo esc_attr( $uacf7_multistep_circle_active_font_color ); ?>
-									!important;
+								color: <?php echo esc_attr($uacf7_multistep_circle_active_font_color); ?> !important;
 								background: #F5F8FF !important;
-								border-bottom:
-									<?php echo esc_attr( $uacf7_multistep_circle_border ); ?>
-									px solid #C4DAFF !important;
+								border-bottom: <?php echo esc_attr($uacf7_multistep_circle_border); ?>px solid #C4DAFF !important;
 							}
 
 							.progressbar-style-1 .steps-row .steps-step .btn-circle {
-								color:
-									<?php echo esc_attr( $uacf7_multistep_circle_font_color ); ?>
-								;
-								font-weight:
-									<?php echo esc_attr( $uacf7_multistep_circle_font_weight ); ?>
-									!important;
-								font-size:
-									<?php echo esc_attr( $uacf7_multistep_font_size ); ?>
-									px !important;
+								color: <?php echo esc_attr($uacf7_multistep_circle_font_color); ?>;
+								font-weight: <?php echo esc_attr($uacf7_multistep_circle_font_weight); ?> !important;
+								font-size: <?php echo esc_attr($uacf7_multistep_font_size); ?>px !important;
 							}
 
 							.progressbar-style-1 .steps-row .steps-step .btn-circle:not(.uacf7-btn-active) {
-
-								background:
-									<?php echo esc_attr( $uacf7_multistep_circle_bg_color ); ?>
-								;
+								background: <?php echo esc_attr($uacf7_multistep_circle_bg_color); ?>;
 							}
 
 							.progressbar-style-1 .steps-row .steps-step {
-								height:
-									<?php echo esc_attr( $uacf7_multistep_circle_height ); ?>
-									px !important;
+								height: <?php echo esc_attr($uacf7_multistep_circle_height); ?>px !important;
 							}
 
 							.progressbar-style-1 .steps-row .steps-step .uacf7-btn-default:hover:not(.uacf7-btn-active) {
-								color:
-									<?php echo esc_attr( $uacf7_multistep_circle_font_hover_color ); ?>
-									!important;
-								background:
-									<?php echo esc_attr( $uacf7_multistep_circle_bg_hover_color ); ?>
-									!important;
+								color: <?php echo esc_attr($uacf7_multistep_circle_font_hover_color); ?> !important;
+								background: <?php echo esc_attr($uacf7_multistep_circle_bg_hover_color); ?> !important;
 							}
 
-							.style-1+.uacf7-multisetp-form button.uacf7-next,
-							.style-1+.uacf7-multisetp-form button.uacf7-prev,
-							.style-1+.uacf7-multisetp-form .wpcf7-submit {
-
-								background:
-									<?php echo esc_attr( $uacf7_multistep_button_bg ); ?>
-								;
-								;
-								padding:
-									<?php echo esc_attr( $uacf7_multistep_button_padding_tb ); ?>
-									px
-									<?php echo esc_attr( $uacf7_multistep_button_padding_lr ); ?>
-									px;
+							.style-1 + .uacf7-multisetp-form button.uacf7-next,
+							.style-1 + .uacf7-multisetp-form button.uacf7-prev,
+							.style-1 + .uacf7-multisetp-form .wpcf7-submit {
+								background: <?php echo esc_attr($uacf7_multistep_button_bg); ?>;
+								padding: <?php echo esc_attr($uacf7_multistep_button_padding_tb); ?>px <?php echo esc_attr($uacf7_multistep_button_padding_lr); ?>px;
 								width: 123px;
 								height: 48px;
-								border-radius:
-									<?php echo esc_attr( $uacf7_multistep_button_border_radius ); ?>
-									px;
-								color:
-									<?php echo esc_attr( $uacf7_multistep_button_color ); ?>
-								;
-								border: 1px solid
-									<?php echo esc_attr( $uacf7_multistep_button_border_color ); ?>
-								;
-								display: flex-end;
+								border-radius: <?php echo esc_attr($uacf7_multistep_button_border_radius); ?>px;
+								color: <?php echo esc_attr($uacf7_multistep_button_color); ?>;
+								border: 1px solid <?php echo esc_attr($uacf7_multistep_button_border_color); ?>;
 								cursor: pointer;
 							}
 
-							.style-1+.uacf7-multisetp-form button.uacf7-next:hover,
-							.style-1+.uacf7-multisetp-form button.uacf7-prev:hover,
+							.style-1 + .uacf7-multisetp-form button.uacf7-next:hover,
+							.style-1 + .uacf7-multisetp-form button.uacf7-prev:hover,
 							.wpcf7-submit:hover {
-								background:
-									<?php echo esc_attr( $uacf7_multistep_button_hover_bg ); ?>
-								;
-								color:
-									<?php echo esc_attr( $uacf7_multistep_button_hover_color ); ?>
-								;
-								border: 1px solid
-									<?php echo esc_attr( $uacf7_multistep_button_border_hover_color ); ?>
-								;
+								background: <?php echo esc_attr($uacf7_multistep_button_hover_bg); ?>;
+								color: <?php echo esc_attr($uacf7_multistep_button_hover_color); ?>;
+								border: 1px solid <?php echo esc_attr($uacf7_multistep_button_border_hover_color); ?>;
 							}
 						</style>
 					<?php endif; ?>
+
 					<?php if ( ! empty( $all_steps ) ) : ?>
 						<div
 							class="<?php echo isset( $uacf7_progressbar_style ) ? wp_kses( $uacf7_progressbar_style, uacf7_custom_wp_kses_allow_tags() ) . " uacf7-common-pb" : "default-skin-style"; ?>">
