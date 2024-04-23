@@ -1252,6 +1252,7 @@ class UACF7_MULTISTEP {
 										<div class="steps-step">
 											<a title-id=".step-<?php echo esc_attr( $step_id ); ?>"
 												data-form-id="<?php echo esc_attr( $cfform->id() ); ?>"
+												data-step-id="step-<?php echo esc_attr($step_id) ?>"
 												href="#<?php echo esc_attr( $cfform->id() ); ?>step-<?php echo esc_attr( $step_id ); ?>"
 												type="button" class="btn <?php if ( $step_id == 1 ) {
 													echo esc_attr( 'uacf7-btn-active' );
