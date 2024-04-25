@@ -2,15 +2,11 @@
 
     $(document).ready(function () {
     
-        $('.ucaf7-save-and-continue-layout').each( function () {
-            $(this).css('marginTop', '10px');
-            $(this).hover(function () {
-                $(this).css('cursor', 'pointer');
-            });
+        $('.ucaf7-save-and-continue-layout-wrapper').each( function () {
      
-            $(this).on('click', function (e) {
+            $('.ucaf7-save-and-continue-layout').on('click', function (e) {
                 e.preventDefault();
-                var customText = '<button id="uacf7SaveAndContinue" type="button">Save and Continue</button>';
+                var customText = '<input type="submit" class="uacf7-save-and-continue" value="Save and Continue" />';
                 copyToClipboard(customText);
 
                 $(this).text('Copied to Clipboard !');
