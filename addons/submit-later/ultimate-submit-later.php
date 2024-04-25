@@ -141,7 +141,12 @@ class ULTIMATE_SUBMIT_LATER{
         //     exit;
         // }
 
-        include plugin_dir_path(__FILE__) . 'uacf7-continue-form-template.php';
+        // include plugin_dir_path(__FILE__) . 'uacf7-continue-form-template.php';
+
+        // $continue_form_page_url = get_permalink($continue_form_page_id);
+        // wp_redirect($continue_form_page_url);
+        $continue_form_page_url = get_permalink();
+        wp_redirect($continue_form_page_url);
     }
 
     public function uacf7_post_meta_options_submit_later($value, $post_id){
