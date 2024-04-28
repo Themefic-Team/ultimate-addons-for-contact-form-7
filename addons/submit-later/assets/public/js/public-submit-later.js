@@ -2,9 +2,33 @@
     $(document).ready(function () {
         $('.wpcf7-form').each(function () {
 
+        
+
+            // Handling Email Popup
+
+            $('#ucaf7-save-continue-email-overlay').on('click', function (){
+
+                $(this).closest('.wpcf7-form-control-wrap').find('#uacf7-save-continue-email-popup').css('display', 'none');
+                $(this).css('display', 'none');
+
+            });
+
+
             //Saving Data into Database
             $('.uacf7-save-and-continue').on('click', function(e) {
                 e.preventDefault();
+                
+                // Show uacf7-save-and-continue-loader
+                $('#uacf7-save-and-continue-loader').css('display', 'block');
+                $(this).closest('.wpcf7-form-control-wrap').find('#ucaf7-save-continue-email-overlay').css('display', 'block');
+
+                // Popup Show
+               setTimeout(() => {
+                $(this).closest('.wpcf7-form-control-wrap').find('#uacf7-save-continue-email-popup').css('display', 'block');
+               }, 5000);
+                
+                
+                
                 var $form = $(this).closest('.wpcf7-form');
                 var formId = $form.find('input[name="_wpcf7"]').val();
                 var formData = $form.serialize();
@@ -22,13 +46,18 @@
                         if (response.success) {
                             var link = window.location.origin + '/uacf7-form-save-and-continue?uid=' + response.unique_id;
                             
-                            console.log(link);
+                            $('#uacf7-save-continue-email-popup').find('#uacf7-sacf-url-input').val(link);
+                            console.log(this);
                         } else {
                             alert('Failed to save form data.');
                         }
                     },
                     error: function(xhr, status, error) {
                         console.error('Error: ' + xhr.responseText);
+                    },
+                    complete: function() {
+                        // Hide uacf7-save-and-continue-loader after AJAX call completes
+                        $('#uacf7-save-and-continue-loader').css('display', 'none');
                     }
                 });
             });
@@ -140,6 +169,40 @@
               });
     
         });
+
+            /**Send Mail */
+            $('.uacf7-sacf-send-mail-button').click(function(e) {
+
+                e.preventDefault();
+                var link = $(this).closest('.uacf7-sacf-form-container').find('#uacf7-sacf-url-input').val();
+                var email = $(this).closest('.uacf7-sacf-form-container').find('#uacf7-sacf-email-input').val();
+                
+                
+                // AJAX call to send data to PHP script
+                $.ajax({
+                    url: uacf7_submit_later_obj.ajax_url,
+                    type: 'POST',
+                    data: {
+                        action: 'uacf7_send_email_action',
+                        nonce: uacf7_submit_later_obj.nonce,
+                        link: link,
+                        email: email
+                    },
+                    success: function(response) {
+                        
+                        $('.uacf7-sacf-send-mail-message').text(response);
+
+                     setTimeout(() => {
+                        $('.uacf7-sacf-send-mail-message').text('');
+                     }, 3000);
+                     
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
     });
 })(jQuery);
 

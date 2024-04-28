@@ -9,18 +9,26 @@ class ULTIMATE_SUBMIT_LATER{
 
     public function __construct(){
 
+        add_action('admin_init', array($this, 'uacf7_submit_later_tag_generator'));
+        add_action('wpcf7_init', array($this, 'uacf7_submit_later_add_shortcode'));
+
         add_action('init', array( $this, 'uacf7_create_save_and_continue_table'));
         add_action('init', array( $this, 'uacf7_register_custom_endpoint'));
         add_filter('query_vars', array( $this,'uacf7_submit_later_add_query_vars'));
         add_action('template_redirect', array( $this, 'uacf7_load_continue_form_template'));
         add_action('wp_enqueue_scripts', array( $this, 'uacf7_form_submit_later_public_assets_loading'));
         add_action('admin_enqueue_scripts', array( $this, 'uacf7_form_submit_later_admin_assets_loading'));
+        //Data Save
         add_action( 'wp_ajax_uacf7_submit_later_action', array( $this, 'uacf7_submit_later_ajax_cb') );
         add_action( 'wp_ajax_nopriv_uacf7_submit_later_action', array( $this, 'uacf7_submit_later_ajax_cb')); 
 
-        
+        //Data Delete
         add_action('wp_ajax_uacf7_delete_form_data_action', array($this, 'uacf7_delete_form_data_ajax_cb'));
         add_action('wp_ajax_nopriv_uacf7_delete_form_data_action', array($this, 'uacf7_delete_form_data_ajax_cb'));
+
+        //Send Mail
+        add_action('wp_ajax_uacf7_send_email_action', array($this,'uacf7_send_email_cb'));
+        add_action('wp_ajax_nopriv_uacf7_send_email_action', array($this, 'uacf7_send_email_cb'));
 
  
 
@@ -63,6 +71,165 @@ class ULTIMATE_SUBMIT_LATER{
         ] );
     }
 
+
+    //Save and Continue Tag Generation
+    public function uacf7_submit_later_tag_generator(){
+        if (!function_exists('wpcf7_add_tag_generator')) {
+            return;
+        }
+    
+        wpcf7_add_tag_generator('uacf7_submit_later',
+            __('Save and Continue', 'ultimate-addons-cf7'),
+            'uacf7-tg-pane-save-and-continue',
+            array($this, 'tg_pane_submit_later')
+        );
+    }
+
+    public static function tg_pane_submit_later($contact_form, $args = ''){
+        $args = wp_parse_args($args, array());
+        $uacf7_field_type = 'uacf7_submit_later';
+        ?>
+      <div class="control-box">
+      <fieldset>
+                <table class="form-table">
+                   <tbody>
+                        <div class="uacf7-doc-notice"> 
+                            <?php printf( 
+                                // Translators: %1$s: Documentation URL
+                                esc_html__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-cf7' ),
+                                '<a href="'.esc_url('https://themefic.com/docs/uacf7/free-addons/save-and-continue-for-contact-form-7/').'" target="_blank">Save and Continue</a>'
+                            ); ?> 
+                        </div>
+                        <tr>
+                            <th scope="row"><label for="<?php echo esc_attr($args['content'] . '-name'); ?>"><?php echo esc_html(__('Name', 'ultimate-addons-cf7')); ?></label></th>
+                            <td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr($args['content'] . '-name'); ?>" /></td>
+                        </tr> 
+                        <tr>
+                            <th scope="row"><label for="tag-generator-panel-text-class"><?php echo esc_html__('Class attribute', 'ultimate-addons-cf7'); ?></label></th>
+                            <td><input type="text" name="class" class="classvalue oneline option" id="tag-generator-panel-text-class"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+      </div>
+    
+      <div class="insert-box">
+          <input type="text" name="<?php echo esc_attr($uacf7_field_type); ?>" class="tag code" readonly="readonly" onfocus="this.select()" />
+    
+          <div class="submitbox">
+              <input type="button" class="button button-primary insert-tag" id="prevent_multiple" value="<?php echo esc_attr(__('Insert Tag', 'ultimate-addons-cf7')); ?>" />
+          </div>
+      </div>
+      <?php
+    }
+
+    // Generate Shortcode
+
+    public function uacf7_submit_later_add_shortcode(){
+        wpcf7_add_form_tag(array('uacf7_submit_later', 'uacf7_submit_later*'),
+        array($this, 'uacf7_submit_later_tag_handler_callback'), array('name-attr' => true));
+    }
+    
+    public function uacf7_submit_later_tag_handler_callback($tag){
+        if (empty($tag->name)) {
+            return '';
+        }
+
+         /** Enable / Disable Submission ID */
+        // $wpcf7                      = WPCF7_ContactForm::get_current();
+        // $formid                     = $wpcf7->id();
+        // $submission                 = uacf7_get_form_option( $formid, 'submission_id' );
+        // $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false;
+        
+        // if($uacf7_submission_id_enable != true){
+        //     return;
+        // }
+
+        $validation_error = wpcf7_get_validation_error($tag->name);
+
+        $class = wpcf7_form_controls_class($tag->type);
+    
+    
+        if ($validation_error) {
+            $class .= 'wpcf7-not-valid';
+        }
+    
+        $atts = array();
+    
+        $atts['class']    = $tag->get_class_option($class);
+        $atts['id']       = $tag->get_id_option();
+        $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
+    
+        if ($tag->is_required()) {
+            $atts['aria-required'] = 'true';
+        }
+    
+        $atts['aria-invalid'] = $validation_error ? 'true' : 'false';
+    
+        $atts['name'] = $tag->name;
+
+        // input size
+        $size = $tag->get_option('size', 'int', true);
+        if ($size) {
+            $atts['size'] = $size;
+        } else {
+            $atts['size'] = 40;
+        } 
+        $value = $tag->values;
+        $default_value = $tag->get_default_option($value);
+
+
+        $value = isset($submission['uacf7_submission_id']) ? $submission['uacf7_submission_id'] : '';
+
+        $atts['value'] = $value;
+
+        $atts['name'] = $tag->name;
+
+        // Escape all attributes.
+        $allowed_attributes = array(); 
+        foreach ($atts as $key => $value) {
+            $allowed_attributes[$key] = true;
+        }  
+
+        $atts = wpcf7_format_atts($atts);
+
+        ob_start();
+
+        ?> 
+        <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
+            <div id="uacf7-save-and-continue-loader"></div>
+            <input type="submit" class="uacf7-save-and-continue" value="Save and Continue" />
+              <!-- Email Popup Starts -->
+            <div id="uacf7-save-continue-email-popup" class="popup">
+            <div class="uacf7-sacf-form-container">
+                <h2 class="uacf7-sacf-heading">Send URL via Email</h2>
+                <form id="uacf7-sacf-emailForm">
+                    <div class="uacf7-sacf-form-group">
+                        <label for="uacf7-sacf-url-input">URL:</label>
+                        <input disabled type="text" id="uacf7-sacf-url-input" name="uacf7-sacf-url-input">
+                    </div>
+                    <div class="uacf7-sacf-form-group">
+                        <label for="uacf7-sacf-email-input">Email:</label>
+                        <input type="email" id="uacf7-sacf-email-input" name="uacf7-sacf-email-input" required>
+                    </div>
+                    <button class="uacf7-sacf-send-mail-button">Send Email</button>
+                    <span class="uacf7-sacf-send-mail-message"></span>
+
+                </form>
+                </div>
+            </div>
+             <!-- Email Popup Ends-->
+            <div id="ucaf7-save-continue-email-overlay"></div>
+            </span>
+
+    <?php 
+
+        $submit_later_buffer = ob_get_clean();
+
+        return $submit_later_buffer;
+    
+    }
+
     //Save Form Data
     public function uacf7_submit_later_ajax_cb(){
         check_ajax_referer('uacf7-submit-later-nonce', 'nonce');
@@ -75,7 +242,7 @@ class ULTIMATE_SUBMIT_LATER{
 
         if( $enable_submit_later != true){ die; }
 
-        $form_data = $_POST['form_data'];
+        $form_data = isset($_POST['form_data']) ? $_POST['form_data'] : '';
         // Convert serialized form data to array
         $form_fields = array();
         parse_str($form_data, $form_fields);
@@ -86,7 +253,7 @@ class ULTIMATE_SUBMIT_LATER{
         $wpdb->insert(
             $table_name,
             array(
-                'form_id' => $form_id,
+                'form_id'   => $form_id,
                 'form_data' => $form_fields_json,
                 'unique_id' => $unique_id
             )
@@ -118,6 +285,28 @@ class ULTIMATE_SUBMIT_LATER{
         }
     
         wp_send_json_success('Form data deleted successfully');
+        wp_die();
+    }
+
+    // Send Mail
+
+    public function uacf7_send_email_cb() {
+        $link     = isset($_POST['link']) ? $_POST['link'] : '';    
+        $to_email = isset($_POST['email']) ? $_POST['email'] : ''; 
+
+        
+        // Send email using wp_mail()
+        $subject = 'New Email from ' . $link;
+        $message = 'Name: ' . $link . "\r\n" . 'Email: ' . $to_email;
+        
+        $sent = wp_mail($to_email, $subject, $message);
+        
+        if ($sent) {
+            echo 'Email sent successfully!';
+        } else {
+            echo 'Error sending email.';
+        }
+        
         wp_die();
     }
     

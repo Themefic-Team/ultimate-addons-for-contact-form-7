@@ -1,3 +1,35 @@
+/*Email Popup Body*/
+.uacf7-sacf-form-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.uacf7-sacf-heading {
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .uacf7-sacf-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .uacf7-sacf-form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .uacf7-sacf-form-group input {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+
+  
+  
+
+/*Save and Continue Template*/
 .uacf7-save-and-continue-temp-wrapper{
     width: 100%;
     border: 2px solid #dddddd;
@@ -12,7 +44,7 @@
 .ucaf7-save-and-continue-user-action .ucaf7-submit-later-clear-data-notice{
     font-size: 25px !important;
 }
-.ucaf7-save-and-continue-user-action .ucaf7-submit-later-clear-data { 
+.ucaf7-save-and-continue-user-action .ucaf7-submit-later-clear-data,  .uacf7-sacf-send-mail-button { 
     margin-top: 10px !important;
     width: 120px !important;
     height: 40px !important;
@@ -21,8 +53,9 @@
     cursor: pointer !important;
     border-radius: 5px !important;
     font-size: 16px !important;
+    border: 1px solid #473080;
 }
-.ucaf7-save-and-continue-user-action .ucaf7-submit-later-clear-data:hover { 
+.ucaf7-save-and-continue-user-action .ucaf7-submit-later-clear-data:hover,   .uacf7-sacf-send-mail-button:hover { 
     background-color: #140144 !important; 
 }
 .uacf7-save-and-continue-temp-wrapper .uacf7-save-and-continue-form-rerender{
@@ -60,7 +93,7 @@
 
 /*Popup Design*/
 
-#uacf7-save-continue-temp-popup {
+#uacf7-save-continue-temp-popup, #uacf7-save-continue-email-popup {
     display: none;
     position: fixed;
     top: 0;
@@ -76,8 +109,24 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 9999;
 }
+ #uacf7-save-continue-email-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 80%;
+    height: 100%;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
 
-#uacf7-save-continue-temp-popup .popup-content {
+#uacf7-save-continue-temp-popup .popup-content, #uacf7-save-continue-email-popup .popup-content {
     text-align: center;
     padding-top: 20px;
 }
@@ -102,7 +151,7 @@
 }
 
 
-#ucaf7-save-continue-temp-overlay {
+#ucaf7-save-continue-email-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -114,3 +163,42 @@
     backdrop-filter: blur(8px); 
     cursor: pointer;
 }
+
+
+/*Ajax Loader */
+
+#uacf7-save-and-continue-loader {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    z-index: 9999;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+
+  /*Mail Sent Message*/
+
+  .uacf7-sacf-send-mail-message{
+    font-size: 16px !important;
+    font-weight: 500;
+    color: #46b450 !important;
+  }
