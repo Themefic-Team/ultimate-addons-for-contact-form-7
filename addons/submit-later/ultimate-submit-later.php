@@ -214,6 +214,8 @@ class ULTIMATE_SUBMIT_LATER{
                     </div>
                     <button class="uacf7-sacf-send-mail-button">Send Email</button>
                     <span class="uacf7-sacf-send-mail-message"></span>
+                    <div class="uacf7-save-and-continue-mail-sending-loader"></div>
+
 
                 </form>
                 </div>

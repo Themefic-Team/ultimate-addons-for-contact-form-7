@@ -174,6 +174,9 @@
             $('.uacf7-sacf-send-mail-button').click(function(e) {
 
                 e.preventDefault();
+                // Showing Loader
+                $('.uacf7-save-and-continue-mail-sending-loader').css('display', 'block');
+
                 var link = $(this).closest('.uacf7-sacf-form-container').find('#uacf7-sacf-url-input').val();
                 var email = $(this).closest('.uacf7-sacf-form-container').find('#uacf7-sacf-email-input').val();
                 
@@ -189,6 +192,8 @@
                         email: email
                     },
                     success: function(response) {
+
+                $('.uacf7-save-and-continue-mail-sending-loader').css('display', 'none');
                         
                         $('.uacf7-sacf-send-mail-message').text(response);
 
