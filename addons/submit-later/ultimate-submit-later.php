@@ -124,7 +124,7 @@ class ULTIMATE_SUBMIT_LATER{
     
 
     public function uacf7_register_custom_endpoint(){
-        add_rewrite_rule('^uacf7-form/?', 'index.php?uacf7_continue_form=true', 'top');
+        add_rewrite_rule('^uacf7-form-save-and-continue/?', 'index.php?uacf7_continue_form=true', 'top');
     }
     
 
@@ -135,18 +135,13 @@ class ULTIMATE_SUBMIT_LATER{
 
     public function uacf7_load_continue_form_template(){
 
-        // $is_continue_form = get_query_var('uacf7_continue_form', false);
-        // if ($is_continue_form) {
-        //     include plugin_dir_path(__FILE__) . 'uacf7-continue-form-template.php';
-        //     exit;
-        // }
+        $current_url = $_SERVER['REQUEST_URI'];
 
-        // include plugin_dir_path(__FILE__) . 'uacf7-continue-form-template.php';
-
-        // $continue_form_page_url = get_permalink($continue_form_page_id);
-        // wp_redirect($continue_form_page_url);
-        $continue_form_page_url = get_permalink();
-        wp_redirect($continue_form_page_url);
+        if (strpos($current_url, 'uacf7-form') !== false) {
+            // Redirect to a new URL
+            include plugin_dir_path(__FILE__) . 'uacf7-continue-form-template.php';
+            exit(); 
+        }
     }
 
     public function uacf7_post_meta_options_submit_later($value, $post_id){

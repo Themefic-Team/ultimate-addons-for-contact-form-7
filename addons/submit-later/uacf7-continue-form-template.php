@@ -23,35 +23,58 @@ if (!empty($unique_id)) {
         $shortcode = '[contact-form-7 id="' . $form_id . '" title="Contact Form" html_id="continue-form"]'; 
         ?>
 
+        <!-- Confirm Popup Starts -->
+        <div id="uacf7-save-continue-temp-popup" class="popup">
+            <div class="popup-content">
+                <p>Are you sure you want to delete this form data?</p>
+                <button id="uacf7-save-continue-temp-popup-confirm">Yes</button>
+                <button id="uacf7-save-continue-temp-popup-cancel">No</button>
+            </div>
+        </div>
+        <div id="ucaf7-save-continue-temp-overlay"></div>
+        <!-- Confirm Popup Ends-->
+
         <!-- Render the form -->
         <div class="uacf7-save-and-continue-temp-wrapper">
-            <button class="ucaf7-submit-later-clear-data" data-unique-id='<?php echo esc_js($unique_id) ?>'> Clear Data </button>
-        </div>
+            <div class="ucaf7-save-and-continue-user-action">
+                <h2 class="ucaf7-submit-later-clear-data-notice">Note: This link will expire after 30 days or You can delete by yourself</h2>
+                <button class="ucaf7-submit-later-clear-data" data-unique-id='<?php echo esc_js($unique_id) ?>'><i class="fa-solid fa-trash"></i> Clear Data </button>
+            </div>
 
-        <?php
-        echo do_shortcode($shortcode);
+            <?php
+            echo '<div class="uacf7-save-and-continue-form-rerender"';
+            echo do_shortcode($shortcode);
 
-        // Add pre-filled values to form fields using JavaScript
-        ?>
-        <script>
-            jQuery(document).ready(function($) {
-                var formData = <?php echo json_encode($form_data); ?>;
-                $.each(formData, function(key, value) {
-                    var field = $('[name="' + key + '"]');
-                    if (field.length) {
-                        field.val(value);
-                    }
+            // Add pre-filled values to form fields using JavaScript
+            ?>
+            <script>
+                jQuery(document).ready(function($) {
+                    var formData = <?php echo json_encode($form_data); ?>;
+                    $.each(formData, function(key, value) {
+                        var field = $('[name="' + key + '"]');
+                        if (field.length) {
+                            field.val(value);
+                        }
+                    });
+
+                    
                 });
-
-                
-            });
-        </script>
+            </script>
+        </div>
         <?php
-    } else {
-        echo '<p>No saved form data found.</p>';
+    } else { ?>
+        <div class="uacf7-save-and-continue-deadlink">
+            <h2>This link seems to be wrong, either the link is dead or there is no data found for this link !</h2>
+        </div>
+    <?php
+        
     }
 } else {
-    echo '<p>No unique ID provided.</p>';
+    ?>
+    <div class="uacf7-save-and-continue-deadlink">
+        <h2>This link seems to be wrong, either the link is dead or there is no data found for this link !</h2>
+    </div>
+<?php
 }
 
 // Include WordPress footer
