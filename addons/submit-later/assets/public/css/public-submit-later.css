@@ -197,10 +197,15 @@
 
   /*Mail Sent Message*/
 
-  .uacf7-sacf-send-mail-message{
+  .uacf7-sacf-send-mail-message-success{
     font-size: 16px !important;
     font-weight: 500;
     color: #46b450 !important;
+  }
+  .uacf7-sacf-send-mail-message-failed{
+    font-size: 16px !important;
+    font-weight: 500;
+    color: #DC2626 !important;
   }
 
   .uacf7-save-and-continue-mail-sending-loader {

@@ -193,6 +193,8 @@
                     },
                     success: function(response) {
 
+                        console.log(response)
+
                 $('.uacf7-save-and-continue-mail-sending-loader').css('display', 'none');
                         
                         $('.uacf7-sacf-send-mail-message').text(response);

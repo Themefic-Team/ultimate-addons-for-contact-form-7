@@ -213,7 +213,8 @@ class ULTIMATE_SUBMIT_LATER{
                         <input type="email" id="uacf7-sacf-email-input" name="uacf7-sacf-email-input" required>
                     </div>
                     <button class="uacf7-sacf-send-mail-button">Send Email</button>
-                    <span class="uacf7-sacf-send-mail-message"></span>
+                    <span class="uacf7-sacf-send-mail-message-success"></span>
+                    <span class="uacf7-sacf-send-mail-message-failed"></span>
                     <div class="uacf7-save-and-continue-mail-sending-loader"></div>
 
 
@@ -304,9 +305,16 @@ class ULTIMATE_SUBMIT_LATER{
         $sent = wp_mail($to_email, $subject, $message);
         
         if ($sent) {
-            echo 'Email sent successfully!';
+
+            wp_send_json( [
+                'status' => 'success',
+                'message'=> 'Email sent successfully !'
+            ] );
         } else {
-            echo 'Error sending email.';
+            wp_send_json( [
+                'status' => 'failed',
+                'message'=> 'Email not sent !'
+            ] );
         }
         
         wp_die();
