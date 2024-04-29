@@ -17,7 +17,7 @@ class ULTIMATE_SUBMIT_LATER{
         add_filter('query_vars', array( $this,'uacf7_submit_later_add_query_vars'));
         add_action('template_redirect', array( $this, 'uacf7_load_continue_form_template'));
         add_action('wp_enqueue_scripts', array( $this, 'uacf7_form_submit_later_public_assets_loading'));
-        add_action('admin_enqueue_scripts', array( $this, 'uacf7_form_submit_later_admin_assets_loading'));
+        // add_action('admin_enqueue_scripts', array( $this, 'uacf7_form_submit_later_admin_assets_loading'));
         //Data Save
         add_action( 'wp_ajax_uacf7_submit_later_action', array( $this, 'uacf7_submit_later_ajax_cb') );
         add_action( 'wp_ajax_nopriv_uacf7_submit_later_action', array( $this, 'uacf7_submit_later_ajax_cb')); 
@@ -26,9 +26,18 @@ class ULTIMATE_SUBMIT_LATER{
         add_action('wp_ajax_uacf7_delete_form_data_action', array($this, 'uacf7_delete_form_data_ajax_cb'));
         add_action('wp_ajax_nopriv_uacf7_delete_form_data_action', array($this, 'uacf7_delete_form_data_ajax_cb'));
 
+
+        //Delete after Specific Time
+        add_action('wp_ajax_uacf7_delete_form_data_after_specific_date_action', array($this, 'uacf7_delete_form_data_after_specific_date_ajax_cb'));
+        add_action('wp_ajax_nopriv_uacf7_delete_form_data_after_specific_date_action', array($this, 'uacf7_delete_form_data_after_specific_date_ajax_cb'));
+
         //Send Mail
         add_action('wp_ajax_uacf7_send_email_action', array($this,'uacf7_send_email_cb'));
         add_action('wp_ajax_nopriv_uacf7_send_email_action', array($this, 'uacf7_send_email_cb'));
+
+        //Delete after Specific Time
+        // add_action('init', array($this, 'uacf7_save_and_continue_schedule_submission_cleanup'));
+        // add_action('cleanup_submissions', array($this, 'uacf7_save_and_continue_delete_old_submissions'));
 
  
 
@@ -47,17 +56,20 @@ class ULTIMATE_SUBMIT_LATER{
             form_id mediumint(9) NOT NULL,
             form_data text NOT NULL,
             unique_id varchar(255) NOT NULL,
+            submission_date timestamp DEFAULT CURRENT_TIMESTAMP,
             PRIMARY KEY (id)
         ) $charset_collate;";
     
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
     }
+    
 
     // Enqueue Admin Assets.
-    public function uacf7_form_submit_later_admin_assets_loading(){
-        wp_enqueue_script('submit_later_admin_js', UACF7_URL . 'addons/submit-later/assets/admin/js/admin-submit-later.js', ['jquery'], 'UAFC7_VERSION', true);
-    }
+    // public function uacf7_form_submit_later_admin_assets_loading(){
+    //     wp_enqueue_script('submit_later_admin_js', UACF7_URL . 'addons/submit-later/assets/admin/js/admin-submit-later.js', ['jquery'], 'UAFC7_VERSION', true);
+    // }
+
     // Enqueue Public Assets.
     public function uacf7_form_submit_later_public_assets_loading(){
 
@@ -135,15 +147,19 @@ class ULTIMATE_SUBMIT_LATER{
             return '';
         }
 
-         /** Enable / Disable Submission ID */
-        // $wpcf7                      = WPCF7_ContactForm::get_current();
-        // $formid                     = $wpcf7->id();
-        // $submission                 = uacf7_get_form_option( $formid, 'submission_id' );
-        // $uacf7_submission_id_enable = isset($submission['uacf7_submission_id_enable']) ? $submission['uacf7_submission_id_enable'] : false;
-        
-        // if($uacf7_submission_id_enable != true){
-        //     return;
-        // }
+        /** Enable Condition Check for Submit Later Addon */
+
+        $wpcf7               = WPCF7_ContactForm::get_current();
+        $form_id             = $wpcf7->id();
+
+        $submit_later        = uacf7_get_form_option( $form_id, 'submit_later' );
+        $enable_submit_later = isset($submit_later['uacf7_form_submit_later_enable']) ? $submit_later['uacf7_form_submit_later_enable'] : 0;
+       // Passing Days to form for Deleting Data
+        $days_after = isset($submit_later['uacf7_form_submit_later_delete_after']) ? $submit_later['uacf7_form_submit_later_delete_after'] : 0;
+
+        if($enable_submit_later != true){
+            return;
+        }
 
         $validation_error = wpcf7_get_validation_error($tag->name);
 
@@ -196,16 +212,22 @@ class ULTIMATE_SUBMIT_LATER{
         ob_start();
 
         ?> 
-        <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
+        <span  class="wpcf7-form-control-wrap <?php echo sanitize_html_class($tag->name); ?>" data-after="<?php echo esc_attr($days_after); ?>" data-name="<?php echo sanitize_html_class($tag->name); ?>">
             <div id="uacf7-save-and-continue-loader"></div>
-            <input type="submit" class="uacf7-save-and-continue" value="Save and Continue" />
+                <input type="submit" class="uacf7-save-and-continue" value="Save and Continue" />
               <!-- Email Popup Starts -->
             <div id="uacf7-save-continue-email-popup" class="popup">
             <div class="uacf7-sacf-form-container">
-                <h2 class="uacf7-sacf-heading">Send URL via Email</h2>
+                <div class="uacf7-sacf-heading-button-wrapper">
+                    <h2 class = "uacf7-sacf-heading">Link for resuming editing later</h2>
+                    <button class="uacf7-sacf-email-popup-close-button">Close <i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <p>Please utilize the following link to return and complete this form from any device..</p>
+                <p>Please Note: This link will expire after 30 days. </p>
+                <p> Enter your email address if you would like to receive the link via email.</p>
                 <form id="uacf7-sacf-emailForm">
                     <div class="uacf7-sacf-form-group">
-                        <label for="uacf7-sacf-url-input">URL:</label>
+                        <label for="uacf7-sacf-url-input">Link:</label>
                         <input disabled type="text" id="uacf7-sacf-url-input" name="uacf7-sacf-url-input">
                     </div>
                     <div class="uacf7-sacf-form-group">
@@ -217,13 +239,12 @@ class ULTIMATE_SUBMIT_LATER{
                     <span class="uacf7-sacf-send-mail-message-failed"></span>
                     <div class="uacf7-save-and-continue-mail-sending-loader"></div>
 
-
                 </form>
                 </div>
             </div>
              <!-- Email Popup Ends-->
             <div id="ucaf7-save-continue-email-overlay"></div>
-            </span>
+        </span>
 
     <?php 
 
@@ -237,14 +258,8 @@ class ULTIMATE_SUBMIT_LATER{
     public function uacf7_submit_later_ajax_cb(){
         check_ajax_referer('uacf7-submit-later-nonce', 'nonce');
         global $wpdb;
-        $form_id = intval($_POST['form_id']);
 
-        // Enable Submit Later functinality to Front End.
-        $submit_later = uacf7_get_form_option( $form_id, 'submit_later' );
-        $enable_submit_later = isset($submit_later['uacf7_form_submit_later_enable']) ? $submit_later['uacf7_form_submit_later_enable'] : 0;
-
-        if( $enable_submit_later != true){ die; }
-
+        $form_id = isset($_POST['form_id']) ? intval($_POST['form_id']) : 0;
         $form_data = isset($_POST['form_data']) ? $_POST['form_data'] : '';
         // Convert serialized form data to array
         $form_fields = array();
@@ -268,11 +283,9 @@ class ULTIMATE_SUBMIT_LATER{
     //Delete Form Data.
 
     public function uacf7_delete_form_data_ajax_cb(){
+
         check_ajax_referer('uacf7-submit-later-nonce', 'nonce');
-        if (!current_user_can('delete_posts')) {
-            wp_send_json_error('Unauthorized');
-        }
-    
+      
         if (!isset($_POST['unique_id'])) {
             wp_send_json_error('Unique ID not provided');
         }
@@ -287,9 +300,31 @@ class ULTIMATE_SUBMIT_LATER{
             wp_send_json_error('Failed to delete form data');
         }
     
-        wp_send_json_success('Form data deleted successfully');
+        wp_send_json_success('Form data deleted successfully' . $this->form_id);
         wp_die();
     }
+
+    // Delete after a Specific Time
+
+    public function uacf7_delete_form_data_after_specific_date_ajax_cb(){
+        check_ajax_referer('uacf7-submit-later-nonce', 'nonce');
+      
+        global $wpdb;
+
+        $days_after = isset($_POST['days_after']) ? intval($_POST['days_after']) : 1;
+        $table_name = $wpdb->prefix . 'uacf7_save_and_continue';
+        $date_column = 'submission_date';
+        $days_ago = date('Y-m-d H:i:s', strtotime('-' . $days_after . ' days'));
+        $wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE $date_column <= %s", $days_ago));
+        wp_die();
+    
+        if ($result === false) {
+            wp_send_json_error('Failed to delete form data');
+        }
+        wp_die();
+    }
+
+
 
     // Send Mail
 
@@ -336,7 +371,7 @@ class ULTIMATE_SUBMIT_LATER{
 
         $current_url = $_SERVER['REQUEST_URI'];
 
-        if (strpos($current_url, 'uacf7-form') !== false) {
+        if (strpos($current_url, 'uacf7-form-save-and-continue') !== false) {
             // Redirect to a new URL
             include plugin_dir_path(__FILE__) . 'uacf7-continue-form-template.php';
             exit(); 
@@ -356,7 +391,7 @@ class ULTIMATE_SUBMIT_LATER{
                     'subtitle' => sprintf(
                         // Translators: %1$s is replaced with the link to documentation.
                         esc_html__( 'Allow your visitor to submit form later, If want to postpone the submission for the time being. It will keep save the filled data to the form. See Demo %1s.', 'ultimate-addons-cf7' ),
-                         '<a href="https://cf7addons.com/preview/form-submit-later-and-continue/" target="_blank" rel="noopener">Example</a>'
+                         '<a href="https://cf7addons.com/preview/form-submit-later-with-save-and-continue/" target="_blank" rel="noopener">Example</a>'
                                   )
                       ),
                       array(
@@ -366,7 +401,7 @@ class ULTIMATE_SUBMIT_LATER{
                         'content' => sprintf(
                             // Translators: %1$s is replaced with the link to documentation. 
                             esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-                            '<a href="https://themefic.com/docs/uacf7/free-addons/submit-form-later-and-continue/" target="_blank" rel="noopener">Submit Later</a>'
+                            '<a href="https://themefic.com/docs/uacf7/free-addons/submit-form-later-with-save-and-continue/" target="_blank" rel="noopener">Submit Later</a>'
                         )
                       ),
              
@@ -379,22 +414,14 @@ class ULTIMATE_SUBMIT_LATER{
                     'default'   => false,
                 ),
                    
-                'uacf7_form_submit_later_keep_active_for' => array(
-                    'id'        => 'uacf7_form_submit_later_keep_active_for',
+                'uacf7_form_submit_later_delete_after' => array(
+                    'id'        => 'uacf7_form_submit_later_delete_after',
                     'type'      => 'number',
-                    'label'     => __( ' Keep For (hours)', 'ultimate-addons-cf7' ),
-                    'placeholder'     => __( ' 168 ', 'ultimate-addons-cf7' ),
-                    'description'     => __( 'Enter how many hours you want, The default, 168 hours / 7 Days.', 'ultimate-addons-cf7' ),
-                    'default'   => 168,
+                    'label'     => __( 'Delete After ( Days )', 'ultimate-addons-cf7' ),
+                    'placeholder'     => __( ' 30 ', 'ultimate-addons-cf7' ),
+                    'description'     => __( 'Enter the days of number you want to detele data automatically.', 'ultimate-addons-cf7' ),
+                    'default'   => 30,
                 ),
-                'uacf7_save_and_continue_button_layout' => array(
-                    'id'    => 'uacf7_save_and_continue_button_layout',
-                    'type'               => 'heading',
-                    'label'              => __( 'Save and Continue Button Layout', 'ultimate-addons-cf7' ),
-                    'subtitle'              => 'Copy the code and paste anywhere of Form. Please Note: The button CLASS can not be changed. You can change the button text. ',
-                    'description'     => __( '<button class="ucaf7-save-and-continue-layout">Copy Layout</button>', 'ultimate-addons-cf7' ),
-                    'class' => 'ucaf7-save-and-continue-layout-wrapper'
-                    ),
             ),    
 
         ), $post_id);
