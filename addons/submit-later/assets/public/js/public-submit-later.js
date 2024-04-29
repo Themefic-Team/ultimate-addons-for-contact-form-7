@@ -37,11 +37,10 @@
                // Selector for showing ajax success message.
                var uacf7_sacf_url = $(this).closest('.wpcf7-form-control-wrap').find('#uacf7-save-continue-email-popup').find('#uacf7-sacf-url-input');
                 
-                
-                
                 var $form = $(this).closest('.wpcf7-form');
                 var formId = $form.find('input[name="_wpcf7"]').val();
                 var formData = $form.serialize();
+
                 $.ajax({
                     url: uacf7_submit_later_obj.ajax_url,
                     type: 'POST',
@@ -54,7 +53,7 @@
                     },
                     success: function(response) {
                         if (response.success) {
-                            var link = window.location.origin + '/uacf7-form-save-and-continue?uid=' + response.unique_id;
+                            var link = window.location.origin + '/uacf7-form-save-and-continue?uacf7-token=' + response.unique_id;
                             uacf7_sacf_url.val(link);
                         } else {
                             alert('Failed to save form data.');

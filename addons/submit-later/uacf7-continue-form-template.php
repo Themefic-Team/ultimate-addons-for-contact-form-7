@@ -7,7 +7,7 @@ Template Name: Continue Form Template
 get_header();
 
 // Get the unique ID from the URL
-$unique_id = isset($_GET['uid']) ? sanitize_text_field($_GET['uid']) : '';
+$unique_id = isset($_GET['uacf7-token']) ? sanitize_text_field($_GET['uacf7-token']) : '';
 
 // Load the saved form data based on the unique ID from the database
 if (!empty($unique_id)) {
@@ -57,9 +57,10 @@ if (!empty($unique_id)) {
                             field.val(value);
                         }
                     });
-
-                    
+  
                 });
+
+                
             </script>
         </div>
         <?php

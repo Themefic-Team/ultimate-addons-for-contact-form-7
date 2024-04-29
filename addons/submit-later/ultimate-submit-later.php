@@ -17,7 +17,7 @@ class ULTIMATE_SUBMIT_LATER{
         add_filter('query_vars', array( $this,'uacf7_submit_later_add_query_vars'));
         add_action('template_redirect', array( $this, 'uacf7_load_continue_form_template'));
         add_action('wp_enqueue_scripts', array( $this, 'uacf7_form_submit_later_public_assets_loading'));
-        // add_action('admin_enqueue_scripts', array( $this, 'uacf7_form_submit_later_admin_assets_loading'));
+ 
         //Data Save
         add_action( 'wp_ajax_uacf7_submit_later_action', array( $this, 'uacf7_submit_later_ajax_cb') );
         add_action( 'wp_ajax_nopriv_uacf7_submit_later_action', array( $this, 'uacf7_submit_later_ajax_cb')); 
@@ -34,12 +34,6 @@ class ULTIMATE_SUBMIT_LATER{
         //Send Mail
         add_action('wp_ajax_uacf7_send_email_action', array($this,'uacf7_send_email_cb'));
         add_action('wp_ajax_nopriv_uacf7_send_email_action', array($this, 'uacf7_send_email_cb'));
-
-        //Delete after Specific Time
-        // add_action('init', array($this, 'uacf7_save_and_continue_schedule_submission_cleanup'));
-        // add_action('cleanup_submissions', array($this, 'uacf7_save_and_continue_delete_old_submissions'));
-
- 
 
         add_filter( 'uacf7_post_meta_options', array($this, 'uacf7_post_meta_options_submit_later'), 31, 2); 
     }
@@ -65,18 +59,12 @@ class ULTIMATE_SUBMIT_LATER{
     }
     
 
-    // Enqueue Admin Assets.
-    // public function uacf7_form_submit_later_admin_assets_loading(){
-    //     wp_enqueue_script('submit_later_admin_js', UACF7_URL . 'addons/submit-later/assets/admin/js/admin-submit-later.js', ['jquery'], 'UAFC7_VERSION', true);
-    // }
 
     // Enqueue Public Assets.
     public function uacf7_form_submit_later_public_assets_loading(){
 
         wp_enqueue_style( 'submit_later_public_styles', UACF7_URL.'addons/submit-later/assets/public/css/public-submit-later.css', array(), 'UAFC7_VERSION', 'all' );
-
         wp_enqueue_script('submit_later_public_js', UACF7_URL . 'addons/submit-later/assets/public/js/public-submit-later.js', ['jquery'], 'UAFC7_VERSION', true);
-        wp_enqueue_script('submit_later_jquery_ui_js', UACF7_URL . 'addons/submit-later/assets/public/js/jquery-ui.js', ['jquery'], 'UAFC7_VERSION', true);
         wp_localize_script( 'submit_later_public_js', 'uacf7_submit_later_obj', [
             "ajax_url" => admin_url( 'admin-ajax.php' ),
             'nonce'   => wp_create_nonce( 'uacf7-submit-later-nonce' ),
@@ -234,10 +222,13 @@ class ULTIMATE_SUBMIT_LATER{
                         <label for="uacf7-sacf-email-input">Email:</label>
                         <input type="email" id="uacf7-sacf-email-input" name="uacf7-sacf-email-input" required>
                     </div>
-                    <button class="uacf7-sacf-send-mail-button">Send Email</button>
-                    <span class="uacf7-sacf-send-mail-message-success"></span>
-                    <span class="uacf7-sacf-send-mail-message-failed"></span>
-                    <div class="uacf7-save-and-continue-mail-sending-loader"></div>
+                    <div class="uacf7-save-and-continue-email-btn-and-loader-wrapper">
+                        <button class="uacf7-sacf-send-mail-button">Send Email</button>
+                        <span class="uacf7-sacf-send-mail-message-success"></span>
+                        <span class="uacf7-sacf-send-mail-message-failed"></span>
+                        <span class="uacf7-save-and-continue-mail-sending-loader"></span>
+                    </div>
+                  
 
                 </form>
                 </div>
@@ -334,8 +325,8 @@ class ULTIMATE_SUBMIT_LATER{
 
         
         // Send email using wp_mail()
-        $subject = 'New Email from ' . $link;
-        $message = 'Name: ' . $link . "\r\n" . 'Email: ' . $to_email;
+        $subject = 'Received Save and Continue Link';
+        $message = 'Your Save and Continue Link is: ' . $link . "\r\n";
         
         $sent = wp_mail($to_email, $subject, $message);
         
