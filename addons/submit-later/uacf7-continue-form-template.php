@@ -37,7 +37,7 @@ if (!empty($unique_id)) {
         <!-- Render the form -->
         <div class="uacf7-save-and-continue-temp-wrapper">
             <div class="ucaf7-save-and-continue-user-action">
-                <h2 class="ucaf7-submit-later-clear-data-notice">Note: This link will expire after 30 days.</h2>
+                <h2 class="ucaf7-submit-later-clear-data-notice">Note: This link will expire after <span class="uacf7-save-continue-temp-expiry">30</span> day(s).</h2>
                 <span>You can clear the data by clicking here </span>
                 <button class="ucaf7-submit-later-clear-data" data-unique-id='<?php echo esc_js($unique_id) ?>'><i class="fa-solid fa-trash"></i> Clear Data </button>
             </div>

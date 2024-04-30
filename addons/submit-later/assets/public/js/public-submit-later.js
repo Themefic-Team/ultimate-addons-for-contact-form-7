@@ -1,9 +1,14 @@
 (function ($) {
     $(document).ready(function () {
+        
         $('.wpcf7-form').each(function () {
+            
+            //Showing Expiry Dates in Front End
+            var popup_expiry = $(this).find('#uacf7-save-and-continue-loader').closest('.wpcf7-form-control-wrap').data('after');
+            $('body').find('.uacf7-save-continue-temp-expiry').text(popup_expiry);
+            $(this).find('.uacf7-save-continue-email-popup-expiry').text(popup_expiry);
 
             // Handling Email Popup
-
             $('#ucaf7-save-continue-email-overlay').on('click', function (){
 
                 $(this).closest('.wpcf7-form-control-wrap').find('#uacf7-save-continue-email-popup').css('display', 'none');
@@ -12,11 +17,9 @@
             });
             $('.uacf7-sacf-email-popup-close-button').on('click', function (e){
                 e.preventDefault();
-
                 $(this).closest('#uacf7-save-continue-email-popup').css('display', 'none');
                 $(this).closest('.wpcf7-form-control-wrap').find('#ucaf7-save-continue-email-overlay').css('display', 'none');
-                $(this).closest('.wpcf7-form-control-wrap').find('#uacf7-save-and-continue-loader').css('display', 'none');
-                
+                $(this).closest('.wpcf7-form-control-wrap').find('#uacf7-save-and-continue-loader').css('display', 'none');   
 
             });
 
@@ -53,7 +56,7 @@
                     },
                     success: function(response) {
                         if (response.success) {
-                            var link = window.location.origin + '/uacf7-form-save-and-continue?uacf7-token=' + response.unique_id;
+                            var link = uacf7_submit_later_obj.site_url + '/uacf7-form-save-and-continue?uacf7-token=' + response.unique_id;
                             uacf7_sacf_url.val(link);
                         } else {
                             alert('Failed to save form data.');
@@ -199,17 +202,13 @@
                     setTimeout(() => {
                     success_message_area.text('');
                     failed_message_area.text('');
-                    }, 3000);
-                    
+                    }, 3000);         
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);
                 }
             });
-        });
-
-
-        
+        });  
 
     });
 

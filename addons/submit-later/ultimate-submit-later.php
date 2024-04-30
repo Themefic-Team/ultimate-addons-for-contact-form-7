@@ -67,7 +67,8 @@ class ULTIMATE_SUBMIT_LATER{
         wp_enqueue_script('submit_later_public_js', UACF7_URL . 'addons/submit-later/assets/public/js/public-submit-later.js', ['jquery'], 'UAFC7_VERSION', true);
         wp_localize_script( 'submit_later_public_js', 'uacf7_submit_later_obj', [
             "ajax_url" => admin_url( 'admin-ajax.php' ),
-            'nonce'   => wp_create_nonce( 'uacf7-submit-later-nonce' ),
+            'nonce'    => wp_create_nonce( 'uacf7-submit-later-nonce' ),
+            'site_url' => site_url(),
         ] );
     }
 
@@ -211,7 +212,7 @@ class ULTIMATE_SUBMIT_LATER{
                     <button class="uacf7-sacf-email-popup-close-button">Close <i class="fa-solid fa-xmark"></i></button>
                 </div>
                 <p>Please utilize the following link to return and complete this form from any device..</p>
-                <p>Please Note: This link will expire after 30 days. </p>
+                <p>Please Note: This link will expire after <span class="uacf7-save-continue-email-popup-expiry">30</span> day(s). </p>
                 <p> Enter your email address if you would like to receive the link via email.</p>
                 <form id="uacf7-sacf-emailForm">
                     <div class="uacf7-sacf-form-group">
@@ -358,15 +359,19 @@ class ULTIMATE_SUBMIT_LATER{
         return $vars;
     }
 
-    public function uacf7_load_continue_form_template(){
+    public function uacf7_load_continue_form_template() {
 
-        $current_url = $_SERVER['REQUEST_URI'];
-
+        // Get the current URL
+        $current_url = esc_url($_SERVER['REQUEST_URI']);
+        
+        // Check if the current URL contains the specified string
         if (strpos($current_url, 'uacf7-form-save-and-continue') !== false) {
             // Redirect to a new URL
             include plugin_dir_path(__FILE__) . 'uacf7-continue-form-template.php';
             exit(); 
         }
+
+    
     }
 
     public function uacf7_post_meta_options_submit_later($value, $post_id){
@@ -383,7 +388,7 @@ class ULTIMATE_SUBMIT_LATER{
                         // Translators: %1$s is replaced with the link to documentation.
                         esc_html__( 'Allow your visitor to submit form later, If want to postpone the submission for the time being. It will keep save the filled data to the form. See Demo %1s.', 'ultimate-addons-cf7' ),
                          '<a href="https://cf7addons.com/preview/form-submit-later-with-save-and-continue/" target="_blank" rel="noopener">Example</a>'
-                                  )
+                        )
                       ),
                       array(
                         'id'      => 'submit-form-later-docs',
