@@ -212,7 +212,7 @@ class ULTIMATE_SUBMIT_LATER{
                     <button class="uacf7-sacf-email-popup-close-button">Close <i class="fa-solid fa-xmark"></i></button>
                 </div>
                 <p>Please utilize the following link to return and complete this form from any device..</p>
-                <p>Please Note: This link will expire after <span class="uacf7-save-continue-email-popup-expiry">30</span> day(s). </p>
+                <p>Please Note: This link will expire after <span class="uacf7-save-continue-email-popup-expiry">7</span> day(s). </p>
                 <p> Enter your email address if you would like to receive the link via email.</p>
                 <form id="uacf7-sacf-emailForm">
                     <div class="uacf7-sacf-form-group">
@@ -414,9 +414,9 @@ class ULTIMATE_SUBMIT_LATER{
                     'id'        => 'uacf7_form_submit_later_delete_after',
                     'type'      => 'number',
                     'label'     => __( 'Delete After ( Days )', 'ultimate-addons-cf7' ),
-                    'placeholder'     => __( ' 30 ', 'ultimate-addons-cf7' ),
+                    'placeholder'     => __( ' 7 ', 'ultimate-addons-cf7' ),
                     'description'     => __( 'Enter the days of number you want to detele data automatically.', 'ultimate-addons-cf7' ),
-                    'default'   => 30,
+                    'default'   => 7,
                 ),
             ),    
 
