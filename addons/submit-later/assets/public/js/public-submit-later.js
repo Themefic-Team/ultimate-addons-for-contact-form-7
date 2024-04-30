@@ -12,6 +12,7 @@
             $('#ucaf7-save-continue-email-overlay').on('click', function (){
 
                 $(this).closest('.wpcf7-form-control-wrap').find('#uacf7-save-continue-email-popup').css('display', 'none');
+                $(this).closest('.wpcf7-form-control-wrap').find('#uacf7-save-and-continue-loader').css('display', 'none');
                 $(this).css('display', 'none');
 
             });
