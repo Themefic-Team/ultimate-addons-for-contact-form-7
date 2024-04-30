@@ -163,6 +163,11 @@ class UACF7_CF {
 										'less_than' => 'Less than',
 										'greater_than_or_equal_to' => 'Greater than or equal to',
 										'less_than_or_equal_to' => 'Less than or equal to',
+										'include' => 'Include',
+										'not_include' => 'Not Include',
+										'starts_with' => 'Starts With',
+										'ends_with' => 'Ends With',
+										'regex_match' => 'Regex Match'
 									),
 									'field_width' => '50',
 								),
@@ -532,7 +537,27 @@ class UACF7_CF {
 						$condition_status[] = 'true';
 					}
 					// Condition for Less than or equal to
-					else if ( $uacf7_cf_operator == 'less_than_or_equal_to' && $posted_value <= $uacf7_cf_val  ) {
+					else if ( $uacf7_cf_operator == 'greater_than_or_equal_to' && $posted_value >= $uacf7_cf_val  ) {
+						$condition_status[] = 'true';
+					}
+					// Condition for include
+					else if ( $uacf7_cf_operator == 'include' && in_array($posted_value, $uacf7_cf_val)  ) {
+						$condition_status[] = 'true';
+					} 
+					// Condition for not include
+					else if ( $uacf7_cf_operator == 'not_include' && !(in_array($posted_value, $uacf7_cf_val))  ) {
+						$condition_status[] = 'true';
+					} 
+					// Condition for Starts With
+					else if ( $uacf7_cf_operator == 'starts_with' && strpos($posted_value, $uacf7_cf_val) === 0  ) {
+						$condition_status[] = 'true';
+					} 
+					// Condition for Ends With
+					else if ( $uacf7_cf_operator == 'ends_with' && substr($posted_value, -strlen($uacf7_cf_val)) ) {
+						$condition_status[] = 'true';
+					}
+					// Condition for Regex Match
+					else if ( $uacf7_cf_operator == 'regex_match' && preg_match($uacf7_cf_val, $posted_value)) {
 						$condition_status[] = 'true';
 					} else {
 						$condition_status[] = 'false';

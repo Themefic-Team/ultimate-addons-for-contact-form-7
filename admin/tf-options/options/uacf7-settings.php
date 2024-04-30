@@ -262,6 +262,18 @@ UACF7_Settings::option( 'uacf7_settings', array(
 							'demo_link' => 'https://cf7addons.com/preview/contact-form-7-signature-addon/',
 							'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/',
 						),
+						'uacf7_enable_form_submit_later_field' => array(
+							'id'                 => 'uacf7_enable_form_submit_later_field',
+							'type'               => 'switch',
+							'label'              => __( 'Form Submit Later ( Save and Continue )', 'ultimate-addons-cf7' ),
+							'image_url'          => UACF7_URL . 'assets/admin/images/addons/form-submit-later.png',
+							'subtitle'           => __( 'Allow your visitor to submit form later, If want to postpone the submission for the time being. It will keep save the filled data to the form.', 'ultimate-addons-cf7' ),
+							'label_on'           => __( 'Yes', 'ultimate-addons-cf7' ),
+							'label_off'          => __( 'No', 'ultimate-addons-cf7' ),
+							'default'            => false,
+							'demo_link'          => 'https://cf7addons.com/preview/form-submit-later-for-contact-form-7/',
+							'documentation_link' => 'https://themefic.com/docs/uacf7/free-addons/form-submit-later//',
+						),
 						'uacf7_enable_opt_web_hook' => array(
 							'id' => 'uacf7_enable_opt_web_hook',
 							'type' => 'switch',
