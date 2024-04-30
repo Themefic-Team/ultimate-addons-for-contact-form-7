@@ -49,18 +49,35 @@ if (!empty($unique_id)) {
             // Add pre-filled values to form fields using JavaScript
             ?>
             <script>
-                jQuery(document).ready(function($) {
+              jQuery(document).ready(function($) {
                     var formData = <?php echo json_encode($form_data); ?>;
+                    
                     $.each(formData, function(key, value) {
                         var field = $('[name="' + key + '"]');
+                        
                         if (field.length) {
-                            field.val(value);
+                            // Handle checkboxes
+                            if (field.is(':checkbox')) {
+                                field.each(function() {
+                                    var checkboxValue = $(this).val();
+                                    if ($.inArray(checkboxValue, value) !== -1) {
+                                        $(this).prop('checked', true).closest('label').addClass('active');
+                                    }
+                                });
+                            }
+                            // Handle radio buttons
+                            else if (field.is(':radio')) {
+                                field.filter('[value="' + value + '"]').prop('checked', true).closest('label').addClass('active');
+                            }
+                            // Handle other input types
+                            else {
+                                field.val(value);
+                            }
                         }
                     });
-  
                 });
 
-                
+                    
             </script>
         </div>
         <?php

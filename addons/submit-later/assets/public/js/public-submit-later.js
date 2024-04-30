@@ -2,7 +2,7 @@
     $(document).ready(function () {
         
         $('.wpcf7-form').each(function () {
-            
+
             //Showing Expiry Dates in Front End
             var popup_expiry = $(this).find('#uacf7-save-and-continue-loader').closest('.wpcf7-form-control-wrap').data('after');
             $('body').find('.uacf7-save-continue-temp-expiry').text(popup_expiry);
@@ -42,7 +42,8 @@
                 
                 var $form = $(this).closest('.wpcf7-form');
                 var formId = $form.find('input[name="_wpcf7"]').val();
-                var formData = $form.serialize();
+                // var formData = $form.serialize();
+                var formData = $form.find(':input').not(':file').serialize();
 
                 $.ajax({
                     url: uacf7_submit_later_obj.ajax_url,
@@ -131,7 +132,6 @@
 
 
           // Clear Database after specific Time
-
           function uacf7_save_and_continute_overdated_data(){
 
             var days_after = $(this).find('#uacf7-save-and-continue-loader').closest('.wpcf7-form-control-wrap').data('after');
