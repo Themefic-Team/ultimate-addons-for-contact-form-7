@@ -4,7 +4,7 @@ Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 3.4.5
+Stable tag: 3.4.8
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -299,7 +299,6 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 * [Ultimate Before After Image Slider & Gallery - BEAF](https://wordpress.org/plugins/beaf-before-and-after-gallery)
 * [Tourfic – Ultimate Hotel Booking, Travel Booking & Apartment Booking WordPress Plugin](https://wordpress.org/plugins/tourfic/)
-* [Onepage / Direct Checkout for WooCommerce - Instantio](https://wordpress.org/plugins/instantio)
 
 = Credits =
 
@@ -413,6 +412,30 @@ Instantly forward form submissions to your Telegram channel for quick access. Ho
 
 == Changelog ==
 
+= 3.4.8 - 24/10/2024 =
+
+- Improved: Compatibility with Easy Table of Contents.
+- Fixed: Step header issue in the Multistep Addon.
+
+= 3.4.7 - 08/10/2024 =
+
+- Improved: Addons activation Notice
+- Improved: Submission ID label
+- Improved: Tag Panel style
+- Improved: Assets management
+- Improved: Column addon style
+- Improved: License issue fixed
+- Improved: Quick setup notice
+- Improved: ACF field clickable
+
+= 3.4.6 - 21/09/2024 =
+
+- Info: Banner info updated
+- Improvement: All addons page
+- Minor bug fixes and improvements
+
+- System stability improved
+
 = 3.4.5 - 12/09/2024 =
 
 - Introduced: Mailchimp Pro (Pro)
@@ -479,79 +502,6 @@ Instantly forward form submissions to your Telegram channel for quick access. Ho
 - Minor bug fixes and improvements
 - Fixed: Booking date issue
 - Compatibility: Compatible with WordPress 6.5.4
-
-= 3.3.12 – 27/05/2024 =
-
-- Fixed: Conditional Logic issue
-- Fixed: Dynamic field issue
-- Improved: Digital signature
-- Improved: Import/Export process
-- Improved: Repeater addon
-- Improved: Quick Setup wizard
-- Improved: Submission ID addon
-- Improved: Spam Protection
-- Improved: Column/Grid addon
-- Improved: PDF addon file system
-
-= 3.3.11 – 07/05/2024 =
-
-- Fixed: PDF file path issue
-
-= 3.3.10 – 04/05/2024 =
-
-- Updated readme.txt
-
-= 3.3.9 – 04/05/2024 =
-
-- Added: Spam protection feature introduced
-- Fixed: Minor Bugs
-- System stability improved
-
-= 3.3.8 – 28/04/2024 =
-
-- Compatible with Impreza Theme
-- Fixed: Minor Bugs
-- Added: Plugin dependency notice
-
-= 3.3.7 – 03/04/2024 =
-
-- Compatibility: Compatible with WordPress 6.5
-- Fixed: Minor Bugs
-
-= 3.3.6 – 25/03/2024 =
-
-- Fixed: Mailchimp warning issue
-- Fixed: Repeater limit issue( Pro )
-- Fixed: ACF conflict issue
-- Fixed: Booking issue( Pro )
-
-= 3.3.5 – 15/03/2024 =
-
-- Added: Disclaimer for Patchstack VDP
-- Updated: readme.txt
-
-= 3.3.4 – 14/03/2024 =
-
-- Fixed: Assets loading 404 issue
-- Fixed: Sweetalert2 patch resolved
-- Updated: Imported Data Converted into JSON
-
-= 3.3.3 – 06/03/2024 =
-
-- Fixed: Digital Signature Conflict with DB
-- Added: CDN and Local script Settings
-
-= 3.3.2 – 05/03/2024 =
-
-- Fixed: Auto Scrolling to the top for Multi-step form
-- Fixed: PDF both emails send issue
-- Fixed: PDF body content image tag visual issue
-- Fixed: Warning issue  headers already sent
-- Fixed: Conditional Checkbox issue
-- Fixed: Switcher empty saved issue fixed
-- Fixed: Digital signature conflict with DB and PDF generator 
-- Fixed: Placeholder Issue
-- Fixed: Styler addon border issue Issue
 
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 
