@@ -596,65 +596,76 @@ class UACF7_range_Slider {
 			$handle_dynamic_position = ( intval( $handle_height ) / 2 - intval( $range_slider_height ) / 2 ) + 1;
 
 			// Inline CSS specific to this form ID
-			$css = "
-            <style>
-                :root {
-                --uacf7-slider-Selection-Color: {$selection_color};
-                --uacf7-slider-handle-color: {$handle_color};
-                --uacf7-slider-handle-width: {$handle_width}px;
-                --uacf7-slider-handle-height: {$handle_height}px;
-                --uacf7-slider-handle-border-radius:{$handle_border_radius}px;
-                --uacf7-slider-range-slider-height: {$range_slider_height}px;
-                }
-                .uacf7-form-{$form_id} .ui-slider-horizontal .ui-slider-range {
-                    background-color: {$selection_color};
-                    height: {$range_slider_height}px;
-                }
-                .uacf7-form-{$form_id} .ui-widget.ui-widget-content {
-                    height: {$range_slider_height}px;
-                    border: 1px solid {$selection_color};
-                    background-color: #EEE;
-                }
-                .uacf7-form-{$form_id} .ui-state-default,
-                .ui-widget-content .ui-state-default {
-                    background-color: {$handle_color};
-                    width: {$handle_width}px;
-                    height: {$handle_height}px;
-                    border-radius: {$handle_border_radius}px;
-                    cursor: pointer;
-                    border: none !important;
-                    top: -8px;
-                    position: absolute;
-                }
-                .uacf7-form-{$form_id} .ui-slider-horizontal .ui-slider-handle {
-                    top: -{$handle_dynamic_position}px;
-                }
-                .uacf7-form-{$form_id} input[type=range] {
-                    background-color: {$selection_color};
-                    height: {$range_slider_height}px;
-                    border-radius: 5px;
-                }
-                .uacf7-form-{$form_id} .ui-slider-horizontal {
-                    height: {$range_slider_height}px;
-                }
-                .uacf7-form-{$form_id} .uacf7-slider::-webkit-slider-thumb {
-                    width: {$handle_width}px;
-                    height: {$handle_height}px;
-                    background: {$handle_color};
-                    border-radius: {$handle_border_radius}px;
-                    cursor: pointer;
-                }
-                .uacf7-form-{$form_id} .uacf7-slider::-moz-range-thumb {
-                    width: {$handle_width}px;
-                    height: {$handle_height}px;
-                    background: {$handle_color};
-                    border-radius: {$handle_border_radius}px;
-                    cursor: pointer;
-                }
-            </style>";
+			
+			echo $css = "
+				<style>
+					:root {
+					--uacf7-slider-Selection-Color: {$selection_color};
+					--uacf7-slider-handle-color: {$handle_color};
+					--uacf7-slider-handle-width: {$handle_width}px;
+					--uacf7-slider-handle-height: {$handle_height}px;
+					--uacf7-slider-handle-border-radius:{$handle_border_radius}px;
+					--uacf7-slider-range-slider-height: {$range_slider_height}px;
+					}
+					.uacf7-form-{$form_id} .ui-slider-horizontal .ui-slider-range {
+						background-color: {$selection_color};
+						height: {$range_slider_height}px;
+					}
+					.uacf7-form-{$form_id} .ui-widget.ui-widget-content {
+						height: {$range_slider_height}px;
+						border: 1px solid {$selection_color};
+						background-color: #EEE;
+					}
+					.uacf7-form-{$form_id} .ui-state-default,
+					.ui-widget-content .ui-state-default {
+						background-color: {$handle_color};
+						width: {$handle_width}px;
+						height: {$handle_height}px;
+						border-radius: {$handle_border_radius}px;
+						cursor: pointer;
+						border: none !important;
+						top: -8px;
+						position: absolute;
+					}
+					.uacf7-form-{$form_id} .ui-slider-horizontal .ui-slider-handle {
+						top: -{$handle_dynamic_position}px;
+					}
+					.uacf7-form-{$form_id} input[type=range] {
+						background-color: {$selection_color};
+						height: {$range_slider_height}px;
+						border-radius: 5px;
+					}
+					.uacf7-form-{$form_id} .ui-slider-horizontal {
+						height: {$range_slider_height}px;
+					}
+					.uacf7-form-{$form_id} .uacf7-slider::-webkit-slider-thumb {
+						width: {$handle_width}px;
+						height: {$handle_height}px;
+						background: {$handle_color};
+						border-radius: {$handle_border_radius}px;
+						cursor: pointer;
+					}
+					.uacf7-form-{$form_id} .uacf7-slider::-moz-range-thumb {
+						width: {$handle_width}px;
+						height: {$handle_height}px;
+						background: {$handle_color};
+						border-radius: {$handle_border_radius}px;
+						cursor: pointer;
+					}
+				</style>";
+
+			
+			
 
 			// Append the CSS to the form without altering the main form structure
-			$properties['form'] = $properties['form'] . $css;
+			// $properties['form'] = $properties['form'] . $css;
+			// Add inline style to the <head> section
+			add_action('wp_enqueue_scripts', function() use ($css) {
+				wp_add_inline_style('my-custom-style', $css);
+				wp_enqueue_style('my-custom-style'); // Ensure the stylesheet is enqueued
+				add_action('wp_head', $css);
+			});
+			
 		}
 
 		return $properties;
