@@ -174,7 +174,8 @@ class UACF7_STAR_RATING {
         wpcf7_add_tag_generator('uacf7_star_rating',
             __('Star Rating', 'ultimate-star-rating'),
             'uacf7-tg-pane-star-rating',
-            array($this, 'tg_pane_star_rating')
+            array($this, 'tg_pane_star_rating'),
+            array( 'version' => '2' )
         );
     }
     

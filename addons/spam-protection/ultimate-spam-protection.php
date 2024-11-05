@@ -147,7 +147,8 @@ class UACF7_SPAM_PROTECTION {
 			'uacf7_spam_protection',
 			__( 'Spam Protection', 'ultimate-addons-cf7' ),
 			'uacf7-tg-pane-spam-protection',
-			array( $this, 'tg_pane_spam_protection' )
+			array( $this, 'tg_pane_spam_protection' ),
+			array( 'version' => '2' )
 		);
 	}
 

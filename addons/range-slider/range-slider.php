@@ -267,7 +267,8 @@ class UACF7_range_Slider {
 			'uacf7_range_slider',
 			__( 'Range Slider', 'ultimate-addons-cf7' ),
 			'uacf7-tg-pane-range-slider',
-			array( $this, 'tg_panel_range_slider' )
+			array( $this, 'tg_panel_range_slider' ),
+			array( 'version' => '2' )
 		);
 
 	}

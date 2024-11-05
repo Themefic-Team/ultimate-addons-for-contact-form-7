@@ -203,7 +203,6 @@ class UACF7_SUBMISSION_ID {
 	/**
 	 * Submission ID Realtime update in the Frontend
 	 */
-
 	public function uacf7_update_submission_id() {
 
 		if ( ! wp_verify_nonce( $_POST['ajax_nonce'], 'uacf7-submission-id-nonce' ) ) {
@@ -364,7 +363,8 @@ class UACF7_SUBMISSION_ID {
 			'uacf7_submission_id',
 			__( 'Submission ID', 'ultimate-addons-cf7' ),
 			'uacf7-tg-pane-submission-id',
-			array( $this, 'tg_pane_submission_id' )
+			array( $this, 'tg_pane_submission_id' ),
+			array( 'version' => '2' )
 		);
 	}
 
