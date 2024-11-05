@@ -17,7 +17,7 @@ class UACF7_COLUMN {
 			}
 		}
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_column_style' ) );
-		add_action( 'wpcf7_init', array( __CLASS__, 'add_shortcodes' ) );
+		add_action( 'wpcf7_init', array( __CLASS__, 'add_shortcodes' ), 10, 0 );
 		add_action( 'admin_init', array( $this, 'tag_generator' ) );
 		add_filter( 'wpcf7_contact_form_properties', array( $this, 'uacf7_column_properties' ), 10, 2 );
 		add_filter( 'wpcf7_contact_form_properties', array( $this, 'uacf7_row_properties' ), 10, 2 );
@@ -63,7 +63,8 @@ class UACF7_COLUMN {
 		wpcf7_add_tag_generator( 'uacf7-col',
 			__( 'Add Column', 'ultimate-addons-cf7' ),
 			'uacf7-tg-pane-column',
-			array( $this, 'tg_pane_column' )
+			array( $this, 'tg_pane_column' ),
+			array( 'version' => '2' )
 		);
 
 	}

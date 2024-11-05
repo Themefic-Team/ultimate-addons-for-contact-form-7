@@ -213,7 +213,8 @@ class UACF7_CF {
 		wpcf7_add_tag_generator( 'conditional',
 			__( 'Conditional Wraper', 'ultimate-addons-cf7' ),
 			'uacf7-tg-pane-conditional',
-			array( $this, 'tg_pane_conditional' )
+			array( $this, 'tg_pane_conditional' ),
+			array( 'version' => '2' )
 		);
 
 	}

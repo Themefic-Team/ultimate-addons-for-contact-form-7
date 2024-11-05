@@ -165,7 +165,8 @@ class UACF7_COUNTRY_DROPDOWN {
         wpcf7_add_tag_generator('uacf7_country_dropdown',
             __('Country Dropdown', 'ultimate-addons-cf7'),
             'uacf7-tg-pane-country-dropdown',
-            array($this, 'tg_pane_country_dropdown')
+            array($this, 'tg_pane_country_dropdown'),
+            array( 'version' => '2' )
         );
 
     }

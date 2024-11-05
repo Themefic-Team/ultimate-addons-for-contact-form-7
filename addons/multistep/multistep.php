@@ -388,13 +388,15 @@ class UACF7_MULTISTEP {
 		wpcf7_add_tag_generator( 'uacf7_step_start',
 			__( 'Multistep Start', 'ultimate-addons-cf7' ),
 			'uacf7-tg-pane-step',
-			array( $this, 'tg_pane_step_start' )
+			array( $this, 'tg_pane_step_start' ),
+			array( 'version' => '2' )
 		);
 
 		wpcf7_add_tag_generator( 'uacf7_step_end',
 			__( 'Multistep End', 'ultimate-addons-cf7' ),
 			'wpcf7-tg-pane-step-end',
-			array( $this, 'tg_pane_step_end' )
+			array( $this, 'tg_pane_step_end' ),
+			array( 'version' => '2' )
 		);
 
 	}

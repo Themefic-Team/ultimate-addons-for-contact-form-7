@@ -144,7 +144,8 @@ class UACF7_DYNAMIC_TEXT {
         wpcf7_add_tag_generator('uacf7_dynamic_text',
             __('Dynamic Text', 'ultimate-addons-cf7'),
             'uacf7-tg-pane-dynamic-text',
-            array($this, 'tg_pane_uacf7_dynamic_text')
+            array($this, 'tg_pane_uacf7_dynamic_text'),
+            array( 'version' => '2' )
         );
 
     }

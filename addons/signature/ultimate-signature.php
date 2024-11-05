@@ -218,7 +218,8 @@ class UACF7_SIGNATURE {
 			'uacf7_signature',
 			__( 'Signature', 'ultimate-addons-cf7' ),
 			'uacf7-tg-pane-signature',
-			array( $this, 'tg_pane_signature' )
+			array( $this, 'tg_pane_signature' ),
+			array( 'version' => '2' )
 		);
 	}
 
