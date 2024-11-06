@@ -223,7 +223,7 @@ class UACF7_CF {
 		$args = wp_parse_args( $args, array() );
 		$uacf7_field_type = 'conditional';
 		?>
-		<div class="control-box">
+		<div class="control-box uacf7-control-box uacf7-conditional-field-control-box">
 			<fieldset>
 
 				<legend>

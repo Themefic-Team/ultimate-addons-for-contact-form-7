@@ -134,6 +134,8 @@ class Ultimate_Addons_CF7 {
 		//Require ultimate addons
 		require_once UACF7_PATH . 'addons/addons.php';
 
+
+
 		//  Update UACF7 Plugin Version
 		if ( UACF7_VERSION != get_option( 'uacf7_version' ) ) {
 			update_option( 'uacf7_version', UACF7_VERSION );

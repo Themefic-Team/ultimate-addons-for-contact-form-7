@@ -277,7 +277,7 @@ class UACF7_range_Slider {
 		$args = wp_parse_args( $args, array() );
 		$uacf7_field_type = 'uacf7_range_slider';
 		?>
-		<div class="control-box">
+		<div class="control-box uacf7-control-box">
 			<fieldset>
 				<table class="form-table">
 					<tbody>

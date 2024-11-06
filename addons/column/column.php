@@ -73,7 +73,7 @@ class UACF7_COLUMN {
 		$args = wp_parse_args( $args, array() );
 		$uacf7_field_type = 'uacf7-col';
 		?>
-		<div class="control-box uacf7-column-control-box">
+		<div class="control-box uacf7-control-box uacf7-column-control-box">
 			<fieldset>
 				<legend><?php echo esc_html__( "Generate tag: Column", "ultimate-addons-cf7" ); ?></legend>
 				<table class="form-table">

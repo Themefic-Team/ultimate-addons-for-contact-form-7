@@ -155,7 +155,7 @@ class UACF7_DYNAMIC_TEXT {
         $args = wp_parse_args( $args, array() );
         $uacf7_field_type = 'uacf7_dynamic_text';
         ?>
-        <div class="control-box">
+        <div class="control-box uacf7-control-box">
             <div class="uacf7-doc-notice">
                 <?php echo sprintf( 
                     __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),

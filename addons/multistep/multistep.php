@@ -404,7 +404,7 @@ class UACF7_MULTISTEP {
 		$args = wp_parse_args( $args, array() );
 		$uacf7_field_type = 'uacf7_step_start';
 		?>
-		<div class="control-box">
+		<div class="control-box uacf7-control-box">
 			<fieldset>
 				<legend><?php echo esc_html__( "Generate tag: Step", "ultimate-addons-cf7" ); ?></legend>
 				<table class="form-table">
@@ -454,7 +454,7 @@ class UACF7_MULTISTEP {
 		$args = wp_parse_args( $args, array() );
 		$uacf7_field_type = 'uacf7_step_end';
 		?>
-		<div class="control-box">
+		<div class="control-box uacf7-control-box">
 			<fieldset>
 				<legend><?php echo esc_html__( "Multistep end", "ultimate-addons-cf7" ); ?></legend>
 				<table class="form-table">
