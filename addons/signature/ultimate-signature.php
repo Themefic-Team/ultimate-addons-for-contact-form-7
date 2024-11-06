@@ -228,7 +228,7 @@ class UACF7_SIGNATURE {
 		$args = wp_parse_args( $args, array() );
 		$uacf7_field_type = 'uacf7_signature';
 		?>
-		<div class="control-box">
+		<div class="control-box uacf7-control-box">
 			<fieldset>
 				<table class="form-table">
 					<tbody>

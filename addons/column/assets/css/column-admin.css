@@ -39,3 +39,30 @@
 	cursor: pointer;
 	font-size: 15px
 }
+.uacf7-control-box fieldset {
+	margin-inline-start: 0em !important;
+}
+
+.uacf7-control-box fieldset legend {
+	margin-inline-start: 0em !important;
+}
+
+.tag-generator-dialog {
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+.uacf7-control-box {
+	overflow: unset !important;
+}
+
+.uacf7-control-box + .insert-box .tag {
+	width: 510px;
+	float: left;
+	background-color: transparent;
+	box-shadow: none;
+}
+
+.uacf7-control-box + .insert-box .submitbox input[type="button"] {
+	float: right;
+}
