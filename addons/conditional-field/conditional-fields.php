@@ -207,39 +207,58 @@ class UACF7_CF {
 	 * Generate tag - conditional
 	 */
 	public function tag_generator() {
-		if ( ! function_exists( 'wpcf7_add_tag_generator' ) )
-			return;
 
-		wpcf7_add_tag_generator( 'conditional',
-			__( 'Conditional Wraper', 'ultimate-addons-cf7' ),
-			'uacf7-tg-pane-conditional',
-			array( $this, 'tg_pane_conditional' ),
+		$tag_generator = WPCF7_TagGenerator::get_instance();
+
+		$tag_generator->add( 'conditional',
+			__( 'Conditional Wrapper', 'ultimate-addons-cf7' ),
+			array($this, 'tg_pane_conditional'),
 			array( 'version' => '2' )
 		);
 
 	}
 
-	static function tg_pane_conditional( $contact_form, $args = '' ) {
-		$args = wp_parse_args( $args, array() );
-		$uacf7_field_type = 'conditional';
-		?>
-		<div class="control-box uacf7-control-box uacf7-conditional-field-control-box">
-			<fieldset>
+	static function tg_pane_conditional( $contact_form, $options ) {
+		$field_types = array(
+			'conditional' => array(
+				'display_name' => __( 'Conditional Wrapper', 'ultimate-addons-cf7' ),
+				'heading' => __( 'Conditional Wrapper form-tag generator', 'ultimate-addons-cf7' ),
+				'description' => __( 'Generate a conditional tag to wrap the elements that can be shown conditionally.', 'ultimate-addons-cf7' ),
+			),
+		);
+	
+		$tgg = new WPCF7_TagGeneratorGenerator( $options['content'] );
 
-				<legend>
-					<?php echo esc_html__( "Generate a conditional tag to wrap the elements that can be shown conditionally.", "ultimate-addons-cf7" ); ?>
-				</legend>
-				<table class="form-table">
-					<tbody>
-						<tr>
-							<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-name' ); ?>">
-									<?php echo esc_html( __( 'Name', 'ultimate-addons-cf7' ) ); ?>
-								</label></th>
-							<td><input type="text" name="name" class="tg-name oneline"
-									id="<?php echo esc_attr( $args['content'] . '-name' ); ?>" /></td>
-						</tr>
-					</tbody>
-				</table>
+		?>
+		<header class="description-box">
+			<h3><?php
+				echo esc_html( $field_types['conditional']['heading'] );
+			?></h3>
+		
+			<p><?php
+				$description = wp_kses(
+					$field_types['conditional']['description'],
+					array(
+						'a' => array( 'href' => true ),
+						'strong' => array(),
+					),
+					array( 'http', 'https' )
+				);
+		
+				echo $description;
+			?></p>
+		</header>
+
+		<div class="control-box uacf7-control-box uacf7-conditional-field-control-box">
+			<?php
+			$tgg->print( 'field_type', array(
+				'select_options' => array(
+					'conditional' => $field_types['conditional']['display_name'],
+				),
+			) );
+			$tgg->print( 'field_name' );
+			?>
+			<fieldset>
 				<div class="uacf7-doc-notice uacf7-guide">
 					<?php echo esc_html__( 'Check "Conditional Fields" tab located under the Ultimate Addons for CF7 Options for additional settings. Make sure to set those, otherwise the conditions may not work correctly.', "ultimate-addons-cf7" ); ?>
 
@@ -250,17 +269,17 @@ class UACF7_CF {
 			</fieldset>
 		</div>
 
-		<div class="insert-box">
-			<input type="text" name="<?php echo esc_attr( $uacf7_field_type ); ?>" class="tag code" readonly="readonly"
-				onfocus="this.select()" />
+		<footer class="insert-box">
+			<?php
+				$tgg->print( 'insert_box_content' );
+		
+				$tgg->print( 'mail_tag_tip' );
+			?>
+		</footer>
 
-			<div class="submitbox">
-				<input type="button" class="button button-primary insert-tag"
-					value="<?php echo esc_attr( __( 'Insert Tag', 'ultimate-addons-cf7' ) ); ?>" />
-			</div>
-		</div>
 		<?php
 	}
+
 
 	public function get_forms() {
 		$args = array(
