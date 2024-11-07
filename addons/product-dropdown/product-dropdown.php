@@ -266,7 +266,7 @@ class UACF7_PRODUCT_DROPDOWN {
             $woo_activation = true;
         }
         ?>
-        <div class="control-box">
+        <div class="control-box uacf7-control-box">
             <fieldset>                
                 <table class="form-table">
                    <tbody>

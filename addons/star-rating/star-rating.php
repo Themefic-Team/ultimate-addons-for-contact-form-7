@@ -183,7 +183,7 @@ class UACF7_STAR_RATING {
         $args = wp_parse_args( $args, array() );
         $uacf7_field_type = 'uacf7_star_rating';
         ?>
-        <div class="control-box">
+        <div class="control-box uacf7-control-box">
             <fieldset> 
             <div class="uacf7-doc-notice">
                 <?php echo sprintf( 
