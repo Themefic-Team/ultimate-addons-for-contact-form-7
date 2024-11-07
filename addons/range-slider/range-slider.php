@@ -199,18 +199,18 @@ class UACF7_range_Slider {
 				<?php
 			}
 			?>
-                <span class="<?php echo esc_attr( $tag->name ) . '-value'; ?> uacf7-value"><?php echo esc_html( $default ) ?></span>
-                <span class="wpcf7-form-control-wrap uacf7-slidecontainer uacf7-slider-handle"
-                    data-separator="<?php echo esc_attr( $separator ); ?>" data-handle="<?php echo esc_attr( $handle ); ?>"
-                    data-min="<?php echo esc_attr( $min ); ?>" data-max="<?php echo esc_attr( $max ); ?>"
-                    data-default="<?php echo esc_attr( $default ); ?>">
-                    <input name="<?php echo esc_attr( $tag->name ); ?>" type="range" min="<?php echo esc_attr( $min ); ?>"
-                        max="<?php echo esc_attr( $max ); ?>" step="<?php echo esc_attr( $step ); ?>"
-                        value="<?php echo esc_attr( $default ); ?>" class="uacf7-slider uacf7-range">
-                </span>
-                <span>
-                    <?php echo $validation_error; ?>
-                </span>
+			<span class="<?php echo esc_attr( $tag->name ) . '-value'; ?> uacf7-value"><?php echo esc_html( $default ) ?></span>
+			<span class="wpcf7-form-control-wrap uacf7-slidecontainer uacf7-slider-handle"
+				data-separator="<?php echo esc_attr( $separator ); ?>" data-handle="<?php echo esc_attr( $handle ); ?>"
+				data-min="<?php echo esc_attr( $min ); ?>" data-max="<?php echo esc_attr( $max ); ?>"
+				data-default="<?php echo esc_attr( $default ); ?>">
+				<input name="<?php echo esc_attr( $tag->name ); ?>" type="range" min="<?php echo esc_attr( $min ); ?>"
+					max="<?php echo esc_attr( $max ); ?>" step="<?php echo esc_attr( $step ); ?>"
+					value="<?php echo esc_attr( $default ); ?>" class="uacf7-slider uacf7-range">
+			</span>
+			<span>
+				<?php echo $validation_error; ?>
+			</span>
 			</div>
 			<?php
 		} elseif ( $handle == 2 ) {
@@ -229,23 +229,23 @@ class UACF7_range_Slider {
 				<?php
 			}
 			?>
-                <div class="multistep">
-                    <span class="wpcf7-form-control-wrap"><span
-                            class="uacf7-amount"><?php echo esc_attr( $min . " $label " . " $separator " . $max . " $label " ); ?></span>
-                        <span class="uacf7-slider-handle" data-step="<?php echo esc_attr( $step ); ?>"
-                            data-separator="<?php echo esc_attr( $separator ); ?>" data-label="<?php echo esc_attr( $label ); ?>"
-                            data-handle="<?php echo esc_attr( $handle ); ?>" data-min="<?php echo esc_attr( $min ); ?>"
-                            data-max="<?php echo esc_attr( $max ); ?>" data-default="<?php echo esc_attr( $default ); ?>">
-                            <input step="<?php echo esc_attr( $step ); ?>" name="<?php echo esc_attr( $tag->name ) ?>" type="hidden"
-                                id="uacf7-amount" class="uacf7-slide_amount" readonly>
-                            <div id="uacf7-slider-range" class="multistep_slide"></div>
-                        </span>
-                        <!-- </span> -->
-                </div>
+			<div class="multistep">
+				<span class="wpcf7-form-control-wrap"><span
+						class="uacf7-amount"><?php echo esc_attr( $min . " $label " . " $separator " . $max . " $label " ); ?></span>
+					<span class="uacf7-slider-handle" data-step="<?php echo esc_attr( $step ); ?>"
+						data-separator="<?php echo esc_attr( $separator ); ?>" data-label="<?php echo esc_attr( $label ); ?>"
+						data-handle="<?php echo esc_attr( $handle ); ?>" data-min="<?php echo esc_attr( $min ); ?>"
+						data-max="<?php echo esc_attr( $max ); ?>" data-default="<?php echo esc_attr( $default ); ?>">
+						<input step="<?php echo esc_attr( $step ); ?>" name="<?php echo esc_attr( $tag->name ) ?>" type="hidden"
+							id="uacf7-amount" class="uacf7-slide_amount" readonly>
+						<div id="uacf7-slider-range" class="multistep_slide"></div>
+					</span>
+					<!-- </span> -->
+			</div>
 
-                <span>
-                    <?php echo $validation_error; ?>
-                </span>
+			<span>
+				<?php echo $validation_error; ?>
+			</span>
 			</div>
 			<?php
 		}
@@ -597,8 +597,8 @@ class UACF7_range_Slider {
 			$handle_dynamic_position = ( intval( $handle_height ) / 2 - intval( $range_slider_height ) / 2 ) + 1;
 
 			// Inline CSS specific to this form ID
-			
-			echo $css = "
+
+			$css = "
 				<style>
 					:root {
 					--uacf7-slider-Selection-Color: {$selection_color};
@@ -655,18 +655,18 @@ class UACF7_range_Slider {
 					}
 				</style>";
 
-			
-			
+
+
 
 			// Append the CSS to the form without altering the main form structure
-			// $properties['form'] = $properties['form'] . $css;
+			$properties['form'] = $properties['form'] . $css;
 			// Add inline style to the <head> section
-			add_action('wp_enqueue_scripts', function() use ($css) {
-				wp_add_inline_style('my-custom-style', $css);
-				wp_enqueue_style('my-custom-style'); // Ensure the stylesheet is enqueued
-				add_action('wp_head', $css);
-			});
-			
+			add_action( 'wp_enqueue_scripts', function () use ($css) {
+				wp_add_inline_style( 'my-custom-style', $css );
+				wp_enqueue_style( 'my-custom-style' ); // Ensure the stylesheet is enqueued
+				add_action( 'wp_head', $css );
+			} );
+
 		}
 
 		return $properties;
