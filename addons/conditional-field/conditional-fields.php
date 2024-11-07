@@ -221,9 +221,15 @@ class UACF7_CF {
 	static function tg_pane_conditional( $contact_form, $options ) {
 		$field_types = array(
 			'conditional' => array(
+<<<<<<< Updated upstream
 				'display_name' => __( 'Conditional Wrapper', 'ultimate-addons-cf7' ),
 				'heading' => __( 'Conditional Wrapper form-tag generator', 'ultimate-addons-cf7' ),
 				'description' => __( 'Generate a conditional tag to wrap the elements that can be shown conditionally.', 'ultimate-addons-cf7' ),
+=======
+				'display_name' => __( 'conditional area', 'ultimate-addons-cf7' ),
+				'heading' => __( 'Generate a conditional tag to wrap the elements that can be shown conditionally.', 'ultimate-addons-cf7' ),
+				'description' => __( 'Check "Conditional Fields" tab located under the Ultimate Addons for CF7 Options for additional settings. Make sure to set those, otherwise the conditions may not work correctly.', 'ultimate-addons-cf7' ),
+>>>>>>> Stashed changes
 			),
 		);
 	
