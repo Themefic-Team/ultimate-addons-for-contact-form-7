@@ -39,13 +39,6 @@
 	cursor: pointer;
 	font-size: 15px
 }
-.uacf7-control-box fieldset {
-	margin-inline-start: 0em !important;
-}
-
-.uacf7-control-box fieldset legend {
-	margin-inline-start: 0em !important;
-}
 
 .tag-generator-dialog {
 	padding-right: 0px;

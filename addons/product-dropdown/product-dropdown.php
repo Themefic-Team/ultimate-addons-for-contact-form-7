@@ -245,28 +245,76 @@ class UACF7_PRODUCT_DROPDOWN {
     * Generate tag - conditional
     */
     public function tag_generator() {
-        if (! function_exists( 'wpcf7_add_tag_generator')){
-            return;
-        }
-            wpcf7_add_tag_generator('uacf7_product_dropdown',
-            __('Product Dropdown', 'ultimate-addons-cf7'),
-            'uacf7-tg-pane-product-dropdown',
-            array($this, 'tg_pane_product_dropdown'),
-            array( 'version' => '2' )
-        );
+
+        $tag_generator = WPCF7_TagGenerator::get_instance();
+
+		$tag_generator->add(
+			'uacf7_product_dropdown',
+			__( 'Product Dropdown', 'ultimate-addons-cf7' ),
+			[ $this, 'tg_pane_product_dropdown' ],
+			array( 'version' => '2' )
+		);
 
     }
 
-    static function tg_pane_product_dropdown( $contact_form, $args = '' ) {
-        $args = wp_parse_args( $args, array() );
-        $uacf7_field_type = 'uacf7_product_dropdown'; 
+    static function tg_pane_product_dropdown( $contact_form, $options ) {
+
+        $field_types = array(
+			'uacf7_product_dropdown' => array(
+				'display_name' => __( 'Product Dropdown', 'ultimate-addons-cf7' ),
+				'heading'      => __( 'Generate Product Dropdown', 'ultimate-addons-cf7' ),
+				'description'  => __( '', 'ultimate-addons-cf7' ),
+			),
+		);
+
+		$tgg = new WPCF7_TagGeneratorGenerator( $options['content'] );
+
         if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) || version_compare( get_option( 'woocommerce_db_version' ), '2.5', '<' ) ) {
             $woo_activation = false;
         } else{
             $woo_activation = true;
         }
         ?>
+
+        <header class="description-box">
+			<h3><?php
+			echo esc_html( $field_types['uacf7_product_dropdown']['heading'] );
+			?></h3>
+
+			<p><?php
+			$description = wp_kses(
+				$field_types['uacf7_product_dropdown']['description'],
+				array(
+					'a' => array( 'href' => true ),
+					'strong' => array(),
+				),
+				array( 'http', 'https' )
+			);
+
+			echo $description;
+			?></p>
+			<div class="uacf7-doc-notice"> 
+                <?php echo sprintf( 
+                    __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                    '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-woocommerce/" target="_blank">Product Dropdown</a>'
+                ); ?> 
+            </div>
+		</header>
+
         <div class="control-box uacf7-control-box">
+            <?php
+
+                $tgg->print( 'field_type', array(
+                    'with_required' => true,
+                    'select_options' => array(
+                        'uacf7_product_dropdown' => $field_types['uacf7_product_dropdown']['display_name'],
+                    ),
+                ) );
+
+                $tgg->print( 'field_name' );
+
+            ?>
+
             <fieldset>                
                 <table class="form-table">
                    <tbody>
@@ -463,23 +511,21 @@ class UACF7_PRODUCT_DROPDOWN {
 
                         echo apply_filters('uacf7_tag_generator_product_layout_style_by_field', $select_layout_style);
                         ?>
-
-                        <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-class"><?php echo esc_attr( __( 'Class attribute', 'ultimate-addons-cf7' ) ); ?></label></th>
-                            <td><input type="text" name="class" class="classvalue oneline option" id="tag-generator-panel-text-class"></td>
-                        </tr>
                     </tbody>
                 </table>
             </fieldset>
+
+            <?php $tgg->print( 'class_attr' ); ?>
+
         </div>
 
-        <div class="insert-box">
-            <input type="text" name="<?php echo esc_attr($uacf7_field_type); ?>" class="tag code" readonly="readonly" onfocus="this.select()" />
+        <footer class="insert-box">
+			<?php
+			$tgg->print( 'insert_box_content' );
 
-            <div class="submitbox">
-                <input type="button" class="button button-primary insert-tag" value="<?php echo esc_attr( __( 'Insert Tag', 'ultimate-addons-cf7' ) ); ?>" />
-            </div>
-        </div>
+			$tgg->print( 'mail_tag_tip' );
+			?>
+		</footer>
         <?php
     }
     

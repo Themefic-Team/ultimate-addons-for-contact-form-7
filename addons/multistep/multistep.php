@@ -382,22 +382,6 @@ class UACF7_MULTISTEP {
 	 * Generate tag
 	 */
 	public function tag_generator() {
-		// if ( ! function_exists( 'wpcf7_add_tag_generator' ) )
-		// 	return;
-
-		// wpcf7_add_tag_generator( 'uacf7_step_start',
-		// 	__( 'Multistep Start', 'ultimate-addons-cf7' ),
-		// 	'uacf7-tg-pane-step',
-		// 	array( $this, 'tg_pane_step_start' ),
-		// 	array( 'version' => '2' )
-		// );
-
-		// wpcf7_add_tag_generator( 'uacf7_step_end',
-		// 	__( 'Multistep End', 'ultimate-addons-cf7' ),
-		// 	'wpcf7-tg-pane-step-end',
-		// 	array( $this, 'tg_pane_step_end' ),
-		// 	array( 'version' => '2' )
-		// );
 
 		$tag_generator = WPCF7_TagGenerator::get_instance();
 

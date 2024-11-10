@@ -169,43 +169,75 @@ class UACF7_STAR_RATING {
     * Generate tag
     */
     public function tag_generator() {
-        if (! function_exists('wpcf7_add_tag_generator'))
-            return;
-        wpcf7_add_tag_generator('uacf7_star_rating',
-            __('Star Rating', 'ultimate-star-rating'),
-            'uacf7-tg-pane-star-rating',
-            array($this, 'tg_pane_star_rating'),
-            array( 'version' => '2' )
-        );
+
+        $tag_generator = WPCF7_TagGenerator::get_instance();
+
+		$tag_generator->add(
+			'uacf7_star_rating',
+			__( 'Star Rating', 'ultimate-addons-cf7' ),
+			[ $this, 'tg_pane_star_rating' ],
+			array( 'version' => '2' )
+		);
+
     }
     
-    static function tg_pane_star_rating( $contact_form, $args = '' ) {
-        $args = wp_parse_args( $args, array() );
-        $uacf7_field_type = 'uacf7_star_rating';
+    static function tg_pane_star_rating( $contact_form, $options ) {
+
+        $field_types = array(
+			'uacf7_star_rating' => array(
+				'display_name' => __( 'Star Rating', 'ultimate-addons-cf7' ),
+				'heading' => __( 'Generate a Star Rating Field.', 'ultimate-addons-cf7' ),
+				'description' => __( '', 'ultimate-addons-cf7' ),
+			),
+		);
+
+		$tgg = new WPCF7_TagGeneratorGenerator( $options['content'] );
+
         ?>
-        <div class="control-box uacf7-control-box">
-            <fieldset> 
-            <div class="uacf7-doc-notice">
+
+        <header class="description-box">
+			<h3><?php
+			echo esc_html( $field_types['uacf7_star_rating']['heading'] );
+			?></h3>
+
+			<p><?php
+			$description = wp_kses(
+				$field_types['uacf7_star_rating']['description'],
+				array(
+					'a' => array( 'href' => true ),
+					'strong' => array(),
+				),
+				array( 'http', 'https' )
+			);
+
+			echo $description;
+			?></p>
+			<div class="uacf7-doc-notice">
                 <?php echo sprintf( 
                     __( 'Confused? Check our Documentation on %1s.', 'ultimate-addons-cf7' ),
                     '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-star-rating-field/" target="_blank">Star Rating</a>'
                 ); ?>  
-            </div>               
+            </div> 
+		</header>
+        <div class="control-box uacf7-control-box">
+
+        <?php
+
+			$tgg->print( 'field_type', array(
+                'with_required' => true,
+				'select_options' => array(
+					'uacf7_star_rating' => $field_types['uacf7_star_rating']['display_name'],
+				),
+			) );
+
+			$tgg->print( 'field_name' );
+
+		?>
+
+            <fieldset> 
+                          
                 <table class="form-table">
                    <tbody>
-                        <tr>
-                            <th scope="row"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></th>
-                            <td>
-                                <fieldset>
-                                    <legend class="screen-reader-text"><?php _e( 'Field Type', 'ultimate-addons-cf7' );?></legend>
-                                    <label><input type="checkbox" name="required" value="on"><?php _e( 'Required Field', 'ultimate-addons-cf7' );?></label>
-                                </fieldset>
-                            </td>
-                        </tr> 
-                        <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-name"><?php _e( 'Name', 'ultimate-addons-cf7' );?></label></th>
-                            <td><input type="text" name="name" class="tg-name oneline" value="rating" id="tag-generator-panel-text-name"></td>
-                        </tr>
                         
                         <?php
 					    ob_start();
@@ -280,24 +312,21 @@ class UACF7_STAR_RATING {
                             <th scope="row"><label for="tag-generator-panel-text-star5"><?php _e( 'Star 5', 'ultimate-addons-cf7' );?></label></th>
                             <td><input type="text" name="star5" class="tg-name oneline option" value="" id="tag-generator-panel-text-star4"></td>
                         </tr>
-                        
-                        <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-class"><?php _e( 'Class attribute', 'ultimate-addons-cf7' );?></label></th>
-                            <td><input type="text" name="class" class="classvalue oneline option" id="tag-generator-panel-text-class"></td>
-                        </tr>
                     </tbody>
                 </table>
                 
             </fieldset>
+            <?php $tgg->print( 'class_attr' ); ?>
         </div>
 
-        <div class="insert-box">
-            <input type="text" name="<?php echo esc_attr($uacf7_field_type); ?>" class="tag code" readonly="readonly" onfocus="this.select()" />
+        <footer class="insert-box">
+			<?php
+			$tgg->print( 'insert_box_content' );
 
-            <div class="submitbox">
-                <input type="button" class="button button-primary insert-tag" value="<?php echo esc_attr( __( 'Insert Tag', 'ultimate-post-submission' ) ); ?>" />
-            </div>
-        </div>
+			$tgg->print( 'mail_tag_tip' );
+			?>
+		</footer>
+
         <?php
     }
 }
