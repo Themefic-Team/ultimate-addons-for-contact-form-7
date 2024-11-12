@@ -70,7 +70,7 @@ class UACF7_COLUMN {
 	}
 
 	static function tg_pane_column( $contact_form, $options ) {
-
+		$uacf7_field_type = 'uacf7-col';
 		$field_types = array(
 			'uacf7-col' => array(
 				'display_name' => __( 'Add Column', 'ultimate-addons-cf7' ),
@@ -104,93 +104,96 @@ class UACF7_COLUMN {
 					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-columns/" target="_blank">Columns / Grid</a>', '<a href="https://themefic.com/docs/uacf7/pro-addons/custom-columns-for-contact-form-7/" target="_blank">Custom Columns</a>'
 				); ?>
 			</div>
+			<h3><?php echo esc_html__( "Generate tag: Column", "ultimate-addons-cf7" ); ?></h3>
 		</header>
-		<div class="control-box uacf7-control-box uacf7-column-control-box">
-			<fieldset>
-				<legend><?php echo esc_html__( "Generate tag: Column", "ultimate-addons-cf7" ); ?></legend>
-				<table class="form-table">
-					<tbody>
-						<tr class="column-1 uacf7-column-select example-active"
-							data-column-codes="[uacf7-row][uacf7-col col:12] --your code-- [/uacf7-col][/uacf7-row]">
-							<th>
-								<?php echo esc_html__( '1 Column', 'ultimate-addons-cf7' ); ?>
-								<a
-									class="button uacf7-column-button"><?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?></a>
-							</th>
-							<td class="uacf7_code">
-								<pre>
+		<div class="control-box">
+			
+			<fieldset class="uacf7-column-select example-active" data-column-codes="[uacf7-row][uacf7-col col:12] --your code-- [/uacf7-col][/uacf7-row]">
+				<legend>
+					<?php echo esc_html__( '1 Column', 'ultimate-addons-cf7' ); ?>
+					<a class="button uacf7-column-button">
+						<?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?>
+					</a>
+				</legend>
+					<pre>
 [uacf7-row]
 	[uacf7-col col:12] --your code-- [/uacf7-col]
-[/uacf7-row]
-								</pre>
-							</td>
-						</tr>
-						<tr class="column-2 uacf7-column-select"
-							data-column-codes="[uacf7-row][uacf7-col col:6] --your code-- [/uacf7-col][uacf7-col col:6] --your code-- [/uacf7-col][/uacf7-row]">
-							<th>
-								<?php echo esc_html__( '2 Column', 'ultimate-addons-cf7' ); ?>
-								<a
-									class="button uacf7-column-button"><?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?></a>
-							</th>
-							<td class="uacf7_code">
-								<pre>
+[/uacf7-row]37096  
+					</pre>
+			</fieldset>
+			
+			<fieldset class="uacf7-column-select" data-column-codes="[uacf7-row][uacf7-col col:6] --your code-- [/uacf7-col][uacf7-col col:6] --your code-- [/uacf7-col][/uacf7-row]">
+				<legend>
+					<?php echo esc_html__( '2 Column', 'ultimate-addons-cf7' ); ?>
+					<a class="button uacf7-column-button">
+						<?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?>
+					</a>
+				</legend>
+
+					<pre>
 [uacf7-row]
 	[uacf7-col col:6] --your code-- [/uacf7-col]
 	[uacf7-col col:6] --your code-- [/uacf7-col]
 [/uacf7-row]
-								</pre>
-							</td>
-						</tr>
-						<tr class="column-3 uacf7-column-select"
-							data-column-codes="[uacf7-row][uacf7-col col:4] --your code-- [/uacf7-col][uacf7-col col:4] --your code-- [/uacf7-col][uacf7-col col:4] --your code-- [/uacf7-col][/uacf7-row]">
-							<th>
-								<?php echo esc_html__( '3 Column', 'ultimate-addons-cf7' ); ?>
-								<a
-									class="button uacf7-column-button"><?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?></a>
-							</th>
-							<td class="uacf7_code">
-								<pre>
+					</pre>
+			</fieldset>
+
+			<fieldset class="uacf7-column-select" data-column-codes="[uacf7-row][uacf7-col col:4] --your code-- [/uacf7-col][uacf7-col col:4] --your code-- [/uacf7-col][uacf7-col col:4] --your code-- [/uacf7-col][/uacf7-row]">
+				<legend>
+					<?php echo esc_html__( '3 Column', 'ultimate-addons-cf7' ); ?>
+					<a class="button uacf7-column-button">
+						<?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?>
+					</a>
+				</legend>
+				<pre>
 [uacf7-row]
 	[uacf7-col col:4] --your code-- [/uacf7-col]
 	[uacf7-col col:4] --your code-- [/uacf7-col]
 	[uacf7-col col:4] --your code-- [/uacf7-col]
 [/uacf7-row]
-								</pre>
-							</td>
-						</tr>
-						<tr class="column-4 uacf7-column-select"
-							data-column-codes="[uacf7-row][uacf7-col col:3] --your code-- [/uacf7-col][uacf7-col col:3] --your code-- [/uacf7-col][uacf7-col col:3] --your code-- [/uacf7-col][uacf7-col col:3] --your code-- [/uacf7-col][/uacf7-row]">
-							<th>
-								<?php echo esc_html__( '4 Column', 'ultimate-addons-cf7' ); ?>
-								<a
-									class="button uacf7-column-button"><?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?></a>
-							</th>
-							<td class="uacf7_code">
-								<pre>
+				</pre>
+			</fieldset>
+
+			<fieldset class="uacf7-column-select" data-column-codes="[uacf7-row][uacf7-col col:3] --your code-- [/uacf7-col][uacf7-col col:3] --your code-- [/uacf7-col][uacf7-col col:3] --your code-- [/uacf7-col][uacf7-col col:3] --your code-- [/uacf7-col][/uacf7-row]">
+				<legend>
+					<?php echo esc_html__( '4 Column', 'ultimate-addons-cf7' ); ?>
+					<a class="button uacf7-column-button">
+						<?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?>
+					</a>
+				</legend>
+				<pre>
 [uacf7-row]
 	[uacf7-col col:3] --your code-- [/uacf7-col]
 	[uacf7-col col:3] --your code-- [/uacf7-col]
 	[uacf7-col col:3] --your code-- [/uacf7-col]
 	[uacf7-col col:3] --your code-- [/uacf7-col]
 [/uacf7-row]
-								</pre>
-							</td>
-						</tr>
-						<tr style="display:inherit" class="column-pro-feature">
-							<th class="column-1">
-								<?php echo esc_html__( 'Custom Column Width', 'ultimate-addons-cf7' ); ?> <span
-									class="pro-link"><a style="color:red" href="#">(Pro)</a></span>
-								<a
-									class="button uacf7-column-button uacf7-custom-column-insert"><?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?></a>
-							</th>
-							<td>
-								<span class="uacf7-custom-column"></span>
-								<span style="display:block"><button
-										class="add-custom-column button-primary"><?php echo esc_html__( '+Add Column', 'ultimate-addons-cf7' ); ?></button></span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				</pre>
+			</fieldset>
+			
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Custom Column Width', 'ultimate-addons-cf7' ); ?> <span class="pro-link">
+						<a style="color:red" href="#">
+							(Pro)
+						</a>
+					</span>
+				</legend>		
+				<div style="display:inherit" class="column-pro-feature">
+					<div class="column-1">
+						<a class="button uacf7-column-button uacf7-custom-column-insert">
+							<?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?>
+						</a>
+					</div>
+					<div>
+						<span class="uacf7-custom-column"></span>
+						<span style="display:block">
+							<button class="add-custom-column button-primary">
+								<?php echo esc_html__( '+Add Column', 'ultimate-addons-cf7' ); ?>
+							</button>
+						</span>
+					</div>
+				</div>
 			</fieldset>
 		</div>
 

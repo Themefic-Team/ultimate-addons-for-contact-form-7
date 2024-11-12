@@ -295,6 +295,11 @@ form.tag-generator-panel[data-version="2"] .control-box{
 
 #tag-generator-list button[data-target="tag-generator-panel-conditional"],
 #tag-generator-list button[data-target="tag-generator-panel-uacf7-col"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_city"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_state"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_zip"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_step_start"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_step_end"],
 #tag-generator-list button[data-target="tag-generator-panel-uacf7_country_dropdown"] {
     background: #473080 !important;
     color: #fff !important;

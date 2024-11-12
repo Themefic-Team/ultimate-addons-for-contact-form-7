@@ -273,15 +273,9 @@ class UACF7_CF {
 					   ?></legend>
 
 				<select data-tag-part="option" data-tag-option='visibility:' aria-labelledby="<?php echo esc_attr( $tgg->ref( 'visiable-option-legend' ) ); ?>">
-					<?php
-					   echo sprintf(
-					   	'<option %1$s>%2$s</option>',
-					   	wpcf7_format_atts( array(
-					   		'value' => ['show', 'disabled'],
-					   	) ),
-					   	esc_html( 'Show' )
-					   );
-					   ?>
+					<option value="show">Show</option>'
+					<option value="hide">Hide</option>'
+					<option value="visitable">Visitable</option>'
 				</select>
 				<br />
 				<label>

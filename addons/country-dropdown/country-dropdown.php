@@ -213,13 +213,12 @@ class UACF7_COUNTRY_DROPDOWN {
 
 			<fieldset class="uacf7-tag-wraper">
 				<?php ob_start(); ?>
-				<label>
+				<legend>
 					<?php echo esc_html( __( 'Auto complete', 'ultimate-addons-cf7' ) ); ?>
 					<a style="color:red" target="_blank" href="https://cf7addons.com/">(Pro)</a>
-				</label>
+				</legend>
 			
-				<input disabled type="checkbox" data-tag-part="option" data-tag-option="on"/>
-				<!-- <input disabled type="checkbox" class="option" /> -->
+				<input disabled type="checkbox" data-tag-part="option" data-tag-option="country_auto_complete"/>
 				<?php echo esc_html( __( "Autocomplete country using user's network IP.", "ultimate-addons-cf7" ) ); ?>
 				<?php
 				$autocomplete_html = ob_get_clean();
@@ -234,14 +233,13 @@ class UACF7_COUNTRY_DROPDOWN {
 
 			<fieldset class="uacf7-tag-wraper">
 				<?php ob_start(); ?>
-				<label>
+				<legend>
 					<?php echo esc_html( __( 'Dynamic Selection', 'ultimate-addons-cf7' ) ); ?>
 					<a style="color:red" target="_blank" href="https://cf7addons.com/">(Pro)</a>
-				</label>
-				<input disabled type="checkbox" class="option" />
+				</legend>
+				<input disabled type="checkbox" class="option" data-tag-part="option" data-tag-option="ds_country"/>
 				<?php echo esc_html( __( "Dynamically Populate Countries, States, and Cities", "ultimate-addons-cf7" ) ); ?>
 
-				<tr class="uacf7-spacer"></tr>
 				<?php
 				$dynamic_selection = ob_get_clean();
 				/*
@@ -255,23 +253,22 @@ class UACF7_COUNTRY_DROPDOWN {
 			<fieldset class="uacf7-tag-wraper">
 				<?php ob_start(); ?>
 
-				<label>
+				<legend>
 					<?php echo esc_html( __( 'Show Specific Countries', 'ultimate-addons-cf7' ) ); ?>
 					<a style="color:red" target="_blank" href="https://cf7addons.com/">(Pro)</a>
-				</label>
+				</legend>
 
 				<textarea class="values" name="" id="tag-generator-panel-product-id" cols="30" rows="10" disabled></textarea>
 
 				<br>
 				<?php echo _e( ' One ID per line. ', 'ultimate-addons-cf7' ) ?>
-
-
 				<?php
 				$default_country = ob_get_clean();
 				/*
 				 * Tag generator field: auto complete
 				 */
 				echo apply_filters( 'uacf7_tag_generator_default_country_field', $default_country );
+				 
 				?>
 			</fieldset>
 		</div>
