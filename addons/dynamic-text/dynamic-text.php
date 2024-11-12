@@ -138,48 +138,75 @@ class UACF7_DYNAMIC_TEXT {
     * Generate tag - conditional
     */
     public function tag_generator() {
-        if (! function_exists( 'wpcf7_add_tag_generator'))
-            return;
 
-        wpcf7_add_tag_generator('uacf7_dynamic_text',
-            __('Dynamic Text', 'ultimate-addons-cf7'),
-            'uacf7-tg-pane-dynamic-text',
-            array($this, 'tg_pane_uacf7_dynamic_text'),
-            array( 'version' => '2' )
-        );
+        $tag_generator = WPCF7_TagGenerator::get_instance();
+
+		$tag_generator->add(
+			'uacf7_dynamic_text',
+			__( 'Dynamic Text', 'ultimate-addons-cf7' ),
+			[ $this, 'tg_pane_uacf7_dynamic_text' ],
+			array( 'version' => '2' )
+		);
 
     }
 
 
-    static function tg_pane_uacf7_dynamic_text( $contact_form, $args = '' ) {
-        $args = wp_parse_args( $args, array() );
-        $uacf7_field_type = 'uacf7_dynamic_text';
+    static function tg_pane_uacf7_dynamic_text( $contact_form, $options ) {
+
+        $field_types = array(
+			'uacf7_dynamic_text' => array(
+				'display_name' => __( 'Dynamic Text', 'ultimate-addons-cf7' ),
+				'heading' => __( 'Generate a Dynamic Text.', 'ultimate-addons-cf7' ),
+				'description' => __( '', 'ultimate-addons-cf7' ),
+			),
+		);
+
+		$tgg = new WPCF7_TagGeneratorGenerator( $options['content'] );
+
         ?>
-        <div class="control-box uacf7-control-box">
+        <header class="description-box">
+			<h3><?php
+			echo esc_html( $field_types['uacf7_dynamic_text']['heading'] );
+			?></h3>
+
+			<p><?php
+			$description = wp_kses(
+				$field_types['uacf7_dynamic_text']['description'],
+				array(
+					'a' => array( 'href' => true ),
+					'strong' => array(),
+				),
+				array( 'http', 'https' )
+			);
+
+			echo $description;
+			?></p>
             <div class="uacf7-doc-notice">
                 <?php echo sprintf( 
                     __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
                     '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-dynamic-text-extension/" target="_blank">Dynamic Text</a>'
                 ); ?>  
             </div>
-         
+			
+		</header>
+
+        <div class="control-box uacf7-control-box">
+            <?php
+
+                $tgg->print( 'field_type', array(
+                    'with_required' => true,
+                    'select_options' => array(
+                        'uacf7_dynamic_text' => $field_types['uacf7_dynamic_text']['display_name'],
+                    ),
+                ) );
+
+                $tgg->print( 'field_name' );
+
+            ?>
+
             <fieldset>                
                 <table class="form-table">
                    <tbody>
-                        <tr>
-                            <th scope="row"><?php echo esc_html__( 'Field type', 'ultimate-addons-cf7' ); ?> </th>
-                            <td>
-                                <fieldset>
-                                <legend class="screen-reader-text"><?php echo esc_html__( 'Field type', 'ultimate-addons-cf7' ); ?> </legend>
-                                <label><input type="checkbox" name="required" value="on"> <?php echo esc_html__( 'Required field', 'ultimate-addons-cf7' ); ?></label>
-                                </fieldset>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-name' ); ?>"><?php echo esc_html( __( 'Name', 'ultimate-addons-cf7' ) ); ?></label></th>
-                            <td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr( $args['content'] . '-name' ); ?>" /></td>
-                        </tr>
-                        <tr class="uacf7-spacer"></tr>
                         <tr>
                             <th scope="row"><label for="visibility"><?php echo esc_html__( 'Field Visibility', 'ultimate-addons-cf7' ); ?>  </label></th>
                             <td>
@@ -189,7 +216,7 @@ class UACF7_DYNAMIC_TEXT {
                                 
                                 <label for="hidden"><input id="hidden" name="visibility" class="option" type="radio" value="hidden"> <?php echo esc_html__( 'Hidden', 'ultimate-addons-cf7' ); ?></label>
                             </td>
-                        </tr>  
+                        </tr>
                         <tr class="uacf7-spacer"></tr>
                         <tr class="">   
                             <th><label for="tag-generator-panel-star-style">Choose Field</label></th>                     
@@ -210,22 +237,31 @@ class UACF7_DYNAMIC_TEXT {
                             <th scope="row"><label for="tag-generator-panel-text-class"><?php echo esc_html__( 'Dynamic key', 'ultimate-addons-cf7' ); ?></label></th>
                             <td><input type="text" placeholder="Dynamic key" name="key" class="key oneline option" id="tag-generator-panel-text-key"></td>
                         </tr>
-                        <tr>
-                            <th scope="row"><label for="tag-generator-panel-text-class"><?php echo esc_html__( 'Class attribute', 'ultimate-addons-cf7' ); ?></label></th>
-                            <td><input type="text" name="class" class="classvalue oneline option" id="tag-generator-panel-text-class"></td>
-                        </tr>
                     </tbody>
                 </table>
             </fieldset>
+
+            <?php 
+
+                $tgg->print( 'default_value', array(
+                    'title'            => __( 'Dynamic key', 'ultimate-addons-cf7' ),
+                    'with_placeholder' => true,
+                    'use_content' => true,
+                ) );
+                
+                $tgg->print( 'class_attr' ); 
+                
+            ?>
          </div>
 
-        <div class="insert-box">
-            <input type="text" name="<?php echo esc_attr($uacf7_field_type); ?>" class="tag code" readonly="readonly" onfocus="this.select()" />
+        <footer class="insert-box">
+            <?php
+            $tgg->print( 'insert_box_content' );
 
-            <div class="submitbox">
-                <input type="button" class="button button-primary insert-tag" value="<?php echo esc_attr( __( 'Insert Tag', 'ultimate-addons-cf7' ) ); ?>" />
-            </div>
-        </div>
+            $tgg->print( 'mail_tag_tip' );
+            ?>
+        </footer>
+
         <?php
     }
 }

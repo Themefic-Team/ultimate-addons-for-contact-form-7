@@ -57,35 +57,58 @@ class UACF7_COLUMN {
 	 * Generate tag - conditional
 	 */
 	public function tag_generator() {
-		if ( ! function_exists( 'wpcf7_add_tag_generator' ) )
-			return;
 
-		wpcf7_add_tag_generator( 'uacf7-col',
+		$tag_generator = WPCF7_TagGenerator::get_instance();
+
+		$tag_generator->add(
+			'uacf7-col',
 			__( 'Add Column', 'ultimate-addons-cf7' ),
-			'uacf7-tg-pane-column',
-			array( $this, 'tg_pane_column' ),
+			[ $this, 'tg_pane_column' ],
 			array( 'version' => '2' )
 		);
 
 	}
 
-	static function tg_pane_column( $contact_form, $args = '' ) {
-		$args = wp_parse_args( $args, array() );
-		$uacf7_field_type = 'uacf7-col';
+	static function tg_pane_column( $contact_form, $options ) {
+
+		$field_types = array(
+			'uacf7-col' => array(
+				'display_name' => __( 'Add Column', 'ultimate-addons-cf7' ),
+				'heading' => __( 'Contact form 7 columns / Grid Layout', 'ultimate-addons-cf7' ),
+				'description' => __( 'You can easily create two columns, three Columns even Four columns form with Contact form 7 using this feature. Just insert tag you need from below list.', 'ultimate-addons-cf7' ),
+			),
+		);
+
+		$tgg = new WPCF7_TagGeneratorGenerator( $options['content'] );
 		?>
+		<header class="description-box">
+			<h3><?php
+			echo esc_html( $field_types['uacf7-col']['heading'] );
+			?></h3>
+
+			<p><?php
+			$description = wp_kses(
+				$field_types['uacf7-col']['description'],
+				array(
+					'a' => array( 'href' => true ),
+					'strong' => array(),
+				),
+				array( 'http', 'https' )
+			);
+
+			echo $description;
+			?></p>
+			<div class="uacf7-doc-notice">
+				<?php echo sprintf(
+					__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
+					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-columns/" target="_blank">Columns / Grid</a>', '<a href="https://themefic.com/docs/uacf7/pro-addons/custom-columns-for-contact-form-7/" target="_blank">Custom Columns</a>'
+				); ?>
+			</div>
+		</header>
 		<div class="control-box uacf7-control-box uacf7-column-control-box">
 			<fieldset>
 				<legend><?php echo esc_html__( "Generate tag: Column", "ultimate-addons-cf7" ); ?></legend>
 				<table class="form-table">
-					<h3><?php echo esc_html__( 'Contact form 7 columns / Grid Layout', 'ultimate-addons-cf7' ); ?></h3>
-					<p><?php echo esc_html__( 'You can easily create two columns, three Columns even Four columns form with Contact form 7 using this feature. Just insert tag you need from below list.', 'ultimate-addons-cf7' ); ?>
-					</p>
-					<div class="uacf7-doc-notice">
-						<?php echo sprintf(
-							__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
-							'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-columns/" target="_blank">Columns / Grid</a>', '<a href="https://themefic.com/docs/uacf7/pro-addons/custom-columns-for-contact-form-7/" target="_blank">Custom Columns</a>'
-						); ?>
-					</div>
 					<tbody>
 						<tr class="column-1 uacf7-column-select example-active"
 							data-column-codes="[uacf7-row][uacf7-col col:12] --your code-- [/uacf7-col][/uacf7-row]">

@@ -134,7 +134,6 @@ class UACF7_COUNTRY_DROPDOWN {
 	}
 
 
-
 	public function wpcf7_country_dropdown_validation_filter( $result, $tag ) {
 		$name = $tag->name;
 
@@ -283,17 +282,8 @@ class UACF7_COUNTRY_DROPDOWN {
 			$tgg->print( 'mail_tag_tip' );
 			?>
 		</footer>
-		<!-- <div class="insert-box">
-			<input type="text" name="<?php //echo esc_attr( $uacf7_field_type ); ?>" class="tag code" readonly="readonly"
-				onfocus="this.select()" />
 
-			<div class="submitbox">
-				<input type="button" class="button button-primary insert-tag"
-					value="<?php //echo esc_attr( __( 'Insert Tag', 'ultimate-addons-cf7' ) ); ?>" />
-			</div>
-		</div> -->
 		<?php
 	}
-
 }
 new UACF7_COUNTRY_DROPDOWN();

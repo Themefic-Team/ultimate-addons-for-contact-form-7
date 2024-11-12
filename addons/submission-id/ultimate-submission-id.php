@@ -365,7 +365,6 @@ class UACF7_SUBMISSION_ID {
 			array( 'version' => '2' )
 		);
 
-
 	}
 
 	public static function tg_pane_submission_id( $contact_form, $options ) {
