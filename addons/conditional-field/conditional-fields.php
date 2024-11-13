@@ -266,25 +266,6 @@ class UACF7_CF {
 
 			$tgg->print( 'field_name' );
 			?>
-
-			<fieldset>
-				<legend id="<?php echo esc_attr( $tgg->ref( 'visiable-option-legend' ) ); ?>"><?php
-					   echo esc_html( __( 'Field Visibility', 'contact-form-7' ) );
-					   ?></legend>
-
-				<select data-tag-part="option" data-tag-option='visibility:' aria-labelledby="<?php echo esc_attr( $tgg->ref( 'visiable-option-legend' ) ); ?>">
-					<option value="show">Show</option>'
-					<option value="hide">Hide</option>'
-					<option value="visitable">Visitable</option>'
-				</select>
-				<br />
-				<label>
-					<input type="checkbox" data-tag-part="option" data-tag-option="autofile" checked="checked" />
-					<?php echo esc_html( __( "This checkbox is optional.", 'contact-form-7' ) ); ?>
-				</label>
-			</fieldset>
-
-
 		</div>
 
 		<footer class="insert-box">

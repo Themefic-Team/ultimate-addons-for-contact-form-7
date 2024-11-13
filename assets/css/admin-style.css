@@ -287,6 +287,11 @@ span.status-error {
     transition: opacity 0.25s ease-in-out;
 }
 
+.uacf7_field_wraping{
+    display: flex;
+    flex-direction: column;
+}
+
 /* Addon tag button for version 2*/
 form.tag-generator-panel[data-version="2"] .control-box{
     overflow: auto !important;
@@ -300,6 +305,8 @@ form.tag-generator-panel[data-version="2"] .control-box{
 #tag-generator-list button[data-target="tag-generator-panel-uacf7_zip"],
 #tag-generator-list button[data-target="tag-generator-panel-uacf7_step_start"],
 #tag-generator-list button[data-target="tag-generator-panel-uacf7_step_end"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_dynamic_text"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_product_dropdown"],
 #tag-generator-list button[data-target="tag-generator-panel-uacf7_country_dropdown"] {
     background: #473080 !important;
     color: #fff !important;

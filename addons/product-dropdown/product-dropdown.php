@@ -306,8 +306,8 @@ class UACF7_PRODUCT_DROPDOWN {
 			$tgg->print( 'field_type', array(
 				'with_required' => true,
 				'select_options' => array(
-						'uacf7_product_dropdown' => $field_types['uacf7_product_dropdown']['display_name'],
-					),
+					'uacf7_product_dropdown' => $field_types['uacf7_product_dropdown']['display_name'],
+				),
 			) );
 
 			$tgg->print( 'field_name' );
@@ -319,215 +319,226 @@ class UACF7_PRODUCT_DROPDOWN {
 					<?php echo esc_html( __( 'Field Option', 'ultimate-addons-cf7' ) ); ?>
 				</legend>
 
+				<div class="uacf7_field_wraping">
+					<div>
+						<?php ob_start(); ?>
+						<input type="checkbox" data-tag-part="option" data-tag-option="" disabled />
+
+						<?php echo esc_attr( __( 'Allow multiple selections ', 'ultimate-addons-cf7' ) ); ?>
+
+						<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">
+							(Pro)
+						</a>
+
+						<?php $multiple_attr = ob_get_clean(); ?>
+						<?php
+						/*
+						 * Tag generator field after field type
+						 */
+						echo apply_filters( 'uacf7_tag_generator_multiple_select_field', $multiple_attr );
+						?>
+					</div>
+
+					<div>
+						<?php ob_start(); ?>
+						<input type="checkbox" data-tag-part="option" data-tag-option="" disabled />
+						<?php echo esc_attr( __( 'Display Total of Selected Product Price', 'ultimate-addons-cf7' ) ); ?>
+
+						<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
+						<?php $display_price = ob_get_clean(); ?>
+
+						<?php
+						/*
+						 * Tag generator field after field type
+						 */
+						echo apply_filters( 'uacf7_tag_generator_display_price_field', $display_price );
+						?>
+					</div>
+				</div>
+
+			</fieldset>
+
+			<fieldset>
 				<?php ob_start(); ?>
-				<input data-tag-part="option" data-tag-option='' id="tag-generator-panel-select-multiple" type="checkbox"
-					disabled />
+				<legend>
+					<?php echo esc_html( __( 'Show Product By', 'ultimate-addons-cf7' ) ); ?>
+					<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
+				</legend>
 
-				<?php echo esc_attr( __( 'Allow multiple selections ', 'ultimate-addons-cf7' ) ); ?>
+				<input id="byID" name="product_by" disabled type="radio" value="id" checked />
+				<?php echo esc_html( __( ' Product ID', 'ultimate-addons-cf7' ) ); ?>
 
+				<input id="byCategory" name="product_by" disabled type="radio" value="category" />
+				<?php echo esc_html( __( 'Category', 'ultimate-addons-cf7' ) ); ?>
+
+				<input id="byTag" name="product_by" disabled type="radio" value="tag" />
+				<?php echo esc_html( __( 'Tag', 'ultimate-addons-cf7' ) ); ?>
+
+				<?php
+				$product_by = ob_get_clean();
+				echo apply_filters( 'uacf7_tag_generator_product_by_field', $product_by );
+				?>
+			</fieldset>
+
+			<fieldset>
+				<?php ob_start(); ?>
+				<legend>
+					<?php echo esc_attr( __( 'Product Order By', 'ultimate-addons-cf7' ) ); ?>
+				</legend>
+
+				<label for="byDate">
+					<input id="byDate" name="order_by" class="" disabled type="radio" value="" checked>
+					<?php echo esc_html( __( ' Date (by Default)', 'ultimate-addons-cf7' ) ); ?></label>
+
+				<label for="byASC">
+					<input id="byASC" name="order_by" class="" disabled type="radio" value="asc">
+					<?php echo esc_html( __( 'ASC', 'ultimate-addons-cf7' ) ); ?>
+				</label>
+
+				<label for="byDSC">
+					<input id="byDSC" name="order_by" class="" disabled type="radio" value="dsc">
+					<?php echo esc_html( __( 'DSC', 'ultimate-addons-cf7' ) ); ?>
+				</label>
+				<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
+				<?php
+				$order_by = ob_get_clean();
+				echo apply_filters( 'uacf7_tag_generator_order_by_field', $order_by );
+				?>
+			</fieldset>
+
+			<fieldset class="tag-generator-panel-product-id">
+				<?php ob_start(); ?>
+				<legend for="tag-generator-panel-product-id">
+					<?php echo esc_attr( __( 'Product ID', 'ultimate-addons-cf7' ) ); ?>
+				</legend>
+
+
+				<textarea class="values" name="" id="tag-generator-panel-product-id" cols="30" rows="10" disabled></textarea>
+				<br>
+				One ID per line.
 				<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">
 					(Pro)
 				</a>
 
-				<?php $multiple_attr = ob_get_clean(); ?>
 				<?php
+				$product_id_html = ob_get_clean();
 				/*
-				 * Tag generator field after field type
+				 * Tag generator field after name attribute.
 				 */
-				echo apply_filters( 'uacf7_tag_generator_multiple_select_field', $multiple_attr );
+				echo apply_filters( 'uacf7_tag_generator_product_id_field', $product_id_html );
 				?>
-
-                <?php ob_start(); ?>
-                <input data-tag-part="option" data-tag-option='' type="checkbox" disabled>
-                <?php echo esc_attr( __( 'Display Total of Selected Product Price', 'ultimate-addons-cf7' ) ); ?>
-
-                <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
-                <?php $display_price = ob_get_clean(); ?>
-
-                <?php
-                    /*
-                    * Tag generator field after field type
-                    */
-                    echo apply_filters( 'uacf7_tag_generator_display_price_field', $display_price );
-                ?>
 			</fieldset>
 
-            <fieldset>
-                <?php ob_start(); ?>
-                <legend>
-                    <?php echo esc_html( __( 'Show Product By', 'ultimate-addons-cf7' ) ); ?>
-                    <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
-                </legend>
 
-                <input id="byID" name="product_by" class="" disabled type="radio" value="id" checked />
-                <?php echo esc_html( __( ' Product ID', 'ultimate-addons-cf7' ) ); ?>
+			<fieldset class="tag-generator-panel-product-category">
+				<?php ob_start(); ?>
 
-                <input id="byCategory" name="product_by" class="" disabled type="radio" value="category" />
-                <?php echo esc_html( __( 'Category', 'ultimate-addons-cf7' ) ); ?>
+				<legend for="tag-generator-panel-product-category">
+					<?php echo esc_attr( __( 'Product Category', 'ultimate-addons-cf7' ) ); ?>
+				</legend>
 
-                <input id="byTag" name="product_by" class="" disabled type="radio" value="tag" /> 
-                <?php echo esc_html( __( 'Tag', 'ultimate-addons-cf7' ) ); ?>
+				<div>
+					<?php
+					$taxonomies = get_terms( array(
+						'taxonomy' => 'product_cat',
+						'hide_empty' => false
+					) );
+					if ( $woo_activation == true ) :
+						if ( ! empty( array_filter( $taxonomies ) ) ) :
+							$output = '<select id="tag-generator-panel-product-category">';
+							$output .= '<option value="">All</option>';
+							foreach ( $taxonomies as $category ) {
+								$output .= '<option value="">' . esc_html( $category->name ) . '</option>';
+							}
+							$output .= '</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
 
-                <?php
-                    $product_by = ob_get_clean();
-                    echo apply_filters( 'uacf7_tag_generator_product_by_field', $product_by );
+							echo $output;
+						endif;
+					else :
+						$output = '<select id="tag-generator-panel-product-category">';
+						$output .= '<option value="">All</option>';
+						$output .= '</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
+						echo $output;
+						echo '<p style="color:red">Please install and activate WooCommerce plugin.</p>';
+					endif;
+					?>
+				</div>
+
+				<?php
+				$product_dropdown_html = ob_get_clean();
+
+				/*
+				 * Tag generator field after name attribute.
+				 */
+				// echo $product_dropdown_html;
+				echo apply_filters( 'uacf7_tag_generator_product_category_field', $product_dropdown_html );
 				?>
-            </fieldset>
+			</fieldset>
 
+			<fieldset class="tag-generator-panel-product-tag">
+				<?php ob_start(); ?>
+
+				<legend for="tag-generator-panel-product-tag">
+					<?php echo esc_attr( __( 'Product tag', 'ultimate-addons-cf7' ) ); ?>
+				</legend>
+
+				<div>
+					<?php
+					$taxonomies = get_terms( array(
+						'taxonomy' => 'product_tag',
+						'hide_empty' => false
+					) );
+					if ( $woo_activation == true ) :
+						if ( ! empty( array_filter( $taxonomies ) ) ) :
+							$output = '<select data-tag-part="value" id="tag-generator-panel-product-tag">';
+							$output .= '<option value="all">All</option>';
+							foreach ( $taxonomies as $tag ) {
+								$output .= '<option value="' . esc_attr( $tag->slug ) . '">' . esc_html( $tag->name ) . '</option>';
+							}
+							$output .= '</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
+
+							echo $output;
+						endif;
+					else :
+						$output = '<select id="tag-generator-panel-product-tag">';
+						$output .= '<option value="">All</option>';
+						$output .= '</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
+						echo $output;
+						echo '<p style="color:red">Please install and activate WooCommerce plugin.</p>';
+					endif;
+					?>
+				</div>
+
+				<?php
+				$product_tag_html = ob_get_clean();
+
+				/*
+				 * Tag generator field after name attribute.
+				 */
+				echo apply_filters( 'uacf7_tag_generator_product_tag_field', $product_tag_html );
+				?>
+			</fieldset>
 
 			<fieldset>
-				 
-						<?php ob_start(); ?>
-						<tr>
-							<th scope="row"><label
-									for="order_by"><?php echo esc_attr( __( 'Product Order By', 'ultimate-addons-cf7' ) ); ?></label>
-							</th>
-							<td>
-								<label for="byDate"><input id="byDate" name="order_by" class="" disabled type="radio" value=""
-										checked><?php echo esc_html( __( ' Date (by Default)', 'ultimate-addons-cf7' ) ); ?></label>
+				<?php ob_start(); ?>
+				<legend>
+					<?php echo esc_html( __( 'Layout Style', 'ultimate-addons-cf7' ) ); ?>
+				</legend>
 
-								<label for="byASC"><input id="byASC" name="order_by" class="" disabled type="radio"
-										value="asc"><?php echo esc_html( __( 'ASC', 'ultimate-addons-cf7' ) ); ?> </label>
+				<label for="layoutDropdown"><input id="layoutDropdown" name="layout" class="option" disabled type="radio"
+						value="dropdown"> Dropdown</label>
 
-								<label for="byDSC"><input id="byDSC" name="order_by" class="" disabled type="radio"
-										value="dsc"><?php echo esc_html( __( 'DSC', 'ultimate-addons-cf7' ) ); ?> </label> <a
-									style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
-							</td>
-						</tr>
-						<tr class="uacf7-spacer"></tr>
-						<?php
-						$order_by = ob_get_clean();
-						echo apply_filters( 'uacf7_tag_generator_order_by_field', $order_by );
-						?>
+				<label for="layoutGrid"><input id="uacf7-select2" name="layout" class="option" type="radio" disabled
+						value="select2"> Select 2</label>
+				<label for="layoutGrid"><input id="layoutGrid" name="layout" class="option" type="radio" disabled value="grid">
+					Grid</label>
+				<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
 
-						<?php ob_start(); ?>
-						<tr class="tag-generator-panel-product-id">
-							<th scope="row"><label
-									for="tag-generator-panel-product-id"><?php echo esc_attr( __( 'Product ID', 'ultimate-addons-cf7' ) ); ?></label>
-							</th>
-							<td>
-								<textarea class="values" name="" id="tag-generator-panel-product-id" cols="30" rows="10"
-									disabled></textarea> <br>One ID per line. <a style="color:red" target="_blank"
-									href="https://cf7addons.com/pricing/">(Pro)</a>
-							</td>
-						</tr>
-						<?php
-						$product_id_html = ob_get_clean();
-						/*
-						 * Tag generator field after name attribute.
-						 */
-						echo apply_filters( 'uacf7_tag_generator_product_id_field', $product_id_html );
-						?>
+				<?php
+				$select_layout_style = ob_get_clean();
+				echo apply_filters( 'uacf7_tag_generator_product_layout_style_by_field', $select_layout_style );
+				?>
 
-						<?php ob_start(); ?>
-						<tr class="tag-generator-panel-product-category">
-							<th><label
-									for="tag-generator-panel-product-category"><?php echo esc_attr( __( 'Product Category', 'ultimate-addons-cf7' ) ); ?></label>
-							</th>
-							<td>
-								<?php
-								$taxonomies = get_terms( array(
-									'taxonomy' => 'product_cat',
-									'hide_empty' => false
-								) );
-								if ( $woo_activation == true ) :
-									if ( ! empty( array_filter( $taxonomies ) ) ) :
-										$output = '<select id="tag-generator-panel-product-category">';
-										$output .= '<option value="">All</option>';
-										foreach ( $taxonomies as $category ) {
-											$output .= '<option value="">' . esc_html( $category->name ) . '</option>';
-										}
-										$output .= '</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
-
-										echo $output;
-									endif;
-								else :
-									$output = '<select id="tag-generator-panel-product-category">';
-									$output .= '<option value="">All</option>';
-									$output .= '</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
-									echo $output;
-									echo '<p style="color:red">Please install and activate WooCommerce plugin.</p>';
-								endif;
-								?>
-							</td>
-						</tr>
-						<?php
-						$product_dropdown_html = ob_get_clean();
-
-						/*
-						 * Tag generator field after name attribute.
-						 */
-						echo apply_filters( 'uacf7_tag_generator_product_category_field', $product_dropdown_html );
-						?>
-
-						<?php ob_start(); ?>
-						<tr class="tag-generator-panel-product-tag">
-							<th><label
-									for="tag-generator-panel-product-category"><?php echo esc_attr( __( 'Product tag', 'ultimate-addons-cf7' ) ); ?></label>
-							</th>
-							<td>
-								<?php
-								$taxonomies = get_terms( array(
-									'taxonomy' => 'product_tag',
-									'hide_empty' => false
-								) );
-								if ( $woo_activation == true ) :
-									if ( ! empty( array_filter( $taxonomies ) ) ) :
-										$output = '<select id="tag-generator-panel-product-tag">';
-										$output .= '<option value="">All</option>';
-										foreach ( $taxonomies as $tag ) {
-											$output .= '<option value="">' . esc_html( $tag->name ) . '</option>';
-										}
-										$output .= '</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
-
-										echo $output;
-									endif;
-								else :
-									$output = '<select id="tag-generator-panel-product-tag">';
-									$output .= '<option value="">All</option>';
-									$output .= '</select> <a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>';
-									echo $output;
-									echo '<p style="color:red">Please install and activate WooCommerce plugin.</p>';
-								endif;
-								?>
-							</td>
-						</tr>
-						<?php
-						$product_tag_html = ob_get_clean();
-
-						/*
-						 * Tag generator field after name attribute.
-						 */
-						echo apply_filters( 'uacf7_tag_generator_product_tag_field', $product_tag_html );
-						?>
-
-						<?php ob_start(); ?>
-						<tr class="uacf7-spacer"></tr>
-						<tr>
-							<th scope="row"><label
-									for="<?php echo esc_attr( $args['content'] . '-layout' ); ?>"><?php echo esc_html( __( 'Layout Style', 'ultimate-addons-cf7' ) ); ?></label>
-							</th>
-							<td>
-								<label for="layoutDropdown"><input id="layoutDropdown" name="layout" class="option" disabled
-										type="radio" value="dropdown"> Dropdown</label>
-
-								<label for="layoutGrid"><input id="uacf7-select2" name="layout" class="option" type="radio"
-										disabled value="select2"> Select 2</label>
-								<label for="layoutGrid"><input id="layoutGrid" name="layout" class="option" type="radio"
-										disabled value="grid"> Grid</label>
-								<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
-							</td>
-
-						</tr>
-						<tr class="uacf7-spacer"></tr>
-						<?php
-
-						$select_layout_style = ob_get_clean();
-
-						echo apply_filters( 'uacf7_tag_generator_product_layout_style_by_field', $select_layout_style );
-						?>
-					</tbody>
-				</table>
 			</fieldset>
 
 			<?php $tgg->print( 'class_attr' ); ?>
