@@ -215,7 +215,7 @@ class UACF7_PROMO_NOTICE {
     public function tf_black_friday_notice_dismiss_callback() {  
 
         $uacf7_promo_option = get_option( 'uacf7_promo__schudle_option' );
-        $restart = isset($uacf7_promo_option['dasboard_restart']) && $uacf7_promo_option['dasboard_restart'] != false ? $uacf7_promo_option['dasboard_restart'] : false; 
+	$restart = isset($uacf7_promo_option['dashboard_banner']['restart']) && $uacf7_promo_option['dashboard_banner']['restart'] != false ? $uacf7_promo_option['dashboard_banner']['restart'] : false;
         if($restart == false){
             update_option( 'tf_dismiss_admin_notice', strtotime($uacf7_promo_option['end_date']) ); 
         }else{
@@ -223,6 +223,8 @@ class UACF7_PROMO_NOTICE {
         } 
 		wp_die();
 	}
+
+
 
 
     public function uacf7_promo_side_notice_callback(){
