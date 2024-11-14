@@ -306,9 +306,9 @@ class UACF7_PROMO_NOTICE {
 	}
 
     public  function uacf7_promo_side_notice_cf7_dismiss_callback() {    
-        $ins_promo_option = get_option( 'uacf7_promo__schudle_option' );
-        $service_banner = isset($ins_promo_option['service_banner']) ? $ins_promo_option['service_banner'] : array();
-        $promo_banner = isset($ins_promo_option['promo_banner']) ? $ins_promo_option['promo_banner'] : '';
+        $uacf7_promo_option = get_option( 'uacf7_promo__schudle_option' );
+        $service_banner = isset($uacf7_promo_option['service_banner']) ? $uacf7_promo_option['service_banner'] : array();
+        $promo_banner = isset($uacf7_promo_option['promo_banner']) ? $uacf7_promo_option['promo_banner'] : '';
 
         $current_day = date('l'); 
         if($service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
