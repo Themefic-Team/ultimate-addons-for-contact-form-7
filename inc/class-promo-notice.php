@@ -305,10 +305,19 @@ class UACF7_PROMO_NOTICE {
         <?php
 	}
 
-    public  function uacf7_promo_side_notice_cf7_dismiss_callback() {   
-        $uacf7_promo_option = get_option( 'uacf7_promo__schudle_option' );
-        $start_date = isset($uacf7_promo_option['start_date']) ? strtotime($uacf7_promo_option['start_date']) : time();
-        $restart = isset($uacf7_promo_option['side_restart']) && $uacf7_promo_option['side_restart'] != false ? $uacf7_promo_option['side_restart'] : 5;
+    public  function uacf7_promo_side_notice_cf7_dismiss_callback() {    
+        $ins_promo_option = get_option( 'uacf7_promo__schudle_option' );
+        $service_banner = isset($ins_promo_option['service_banner']) ? $ins_promo_option['service_banner'] : array();
+        $promo_banner = isset($ins_promo_option['promo_banner']) ? $ins_promo_option['promo_banner'] : '';
+
+        $current_day = date('l'); 
+        if($service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
+            $start_date = $service_banner['start_date'];
+            $restart = isset($service_banner['restart']) && $service_banner['restart'] != false ? $service_banner['restart'] : 5;
+        }else{
+            $start_date = $promo_banner['start_date']; 
+            $restart = isset($promo_banner['restart']) && $promo_banner['restart'] != false ? $promo_banner['restart'] : 5;
+        }  
         update_option( 'uacf7_dismiss_post_notice', time() + (86400 * $restart) );  
         wp_die();
     }
