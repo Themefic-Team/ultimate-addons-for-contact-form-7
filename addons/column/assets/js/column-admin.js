@@ -14,8 +14,7 @@
 	});
 	
 	//Custom column
-	jQuery('.add-custom-column').on('click', function() {
-		
+	jQuery(document).on('click', '.add-custom-column', function() {
 		var field = '<div class="column-width-wraper"><input type="text" class="column-width" placeholder="Enter column width"> <span>(E.g: 50% or 200px)</span> <a class="remove-column">x</a></div>';
 		jQuery('.uacf7-custom-column').append( field );
 		

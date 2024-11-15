@@ -298,6 +298,19 @@ form.tag-generator-panel[data-version="2"] .control-box{
 }
 
 
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_booking_form_date"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_booking_form_time"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_conversational_start"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_conversational_end"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_mailchimp_acceptance"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_post_title"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_post_content"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_post_thumbnail"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_post_taxonomy"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_submission_id"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_signature"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_spam_protection"],
+#tag-generator-list button[data-target="tag-generator-panel-uarepeater"],
 #tag-generator-list button[data-target="tag-generator-panel-conditional"],
 #tag-generator-list button[data-target="tag-generator-panel-uacf7-col"],
 #tag-generator-list button[data-target="tag-generator-panel-uacf7_city"],
@@ -307,6 +320,8 @@ form.tag-generator-panel[data-version="2"] .control-box{
 #tag-generator-list button[data-target="tag-generator-panel-uacf7_step_end"],
 #tag-generator-list button[data-target="tag-generator-panel-uacf7_dynamic_text"],
 #tag-generator-list button[data-target="tag-generator-panel-uacf7_product_dropdown"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_range_slider"],
+#tag-generator-list button[data-target="tag-generator-panel-uacf7_star_rating"],
 #tag-generator-list button[data-target="tag-generator-panel-uacf7_country_dropdown"] {
     background: #473080 !important;
     color: #fff !important;

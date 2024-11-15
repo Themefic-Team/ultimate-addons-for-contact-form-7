@@ -171,27 +171,28 @@ class UACF7_COLUMN {
 				</pre>
 			</fieldset>
 			
-			<fieldset>
+			<fieldset class="column-pro-feature">
 				<legend>
-					<?php echo esc_html__( 'Custom Column Width', 'ultimate-addons-cf7' ); ?> <span class="pro-link">
+					<?php echo esc_html__( 'Custom Column Width', 'ultimate-addons-cf7' ); ?> 
+					<span class="pro-link">
 						<a style="color:red" href="#">
 							(Pro)
 						</a>
 					</span>
 				</legend>		
-				<div style="display:inherit" class="column-pro-feature">
+				<div style="display:inherit">
+					<div>
+						<span class="uacf7-custom-column"></span>
+						<span style="display:block">
+							<a class="add-custom-column button-primary">
+								<?php echo esc_html__( '+ Add Column', 'ultimate-addons-cf7' ); ?>
+							</a>
+						</span>
+					</div>
 					<div class="column-1">
 						<a class="button uacf7-column-button uacf7-custom-column-insert">
 							<?php echo esc_html__( 'Insert tag', 'ultimate-addons-cf7' ); ?>
 						</a>
-					</div>
-					<div>
-						<span class="uacf7-custom-column"></span>
-						<span style="display:block">
-							<button class="add-custom-column button-primary">
-								<?php echo esc_html__( '+Add Column', 'ultimate-addons-cf7' ); ?>
-							</button>
-						</span>
 					</div>
 				</div>
 			</fieldset>

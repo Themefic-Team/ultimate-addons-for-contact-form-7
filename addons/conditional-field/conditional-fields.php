@@ -231,9 +231,9 @@ class UACF7_CF {
 		?>
 
 		<header class="description-box">
-			<h3><?php
-			echo esc_html( $field_types['conditional']['heading'] );
-			?></h3>
+			<h3>
+				<?php echo esc_html( $field_types['conditional']['heading'] ); ?>
+			</h3>
 
 			<p><?php
 			$description = wp_kses(
