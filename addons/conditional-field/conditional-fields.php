@@ -218,7 +218,6 @@ class UACF7_CF {
 	}
 
 	static function tg_pane_conditional( $contact_form, $options ) {
-
 		$field_types = array(
 			'conditional' => array(
 				'display_name' => __( 'conditional area', 'contact-form-7' ),
@@ -232,9 +231,9 @@ class UACF7_CF {
 		?>
 
 		<header class="description-box">
-			<h3><?php
-			echo esc_html( $field_types['conditional']['heading'] );
-			?></h3>
+			<h3>
+				<?php echo esc_html( $field_types['conditional']['heading'] ); ?>
+			</h3>
 
 			<p><?php
 			$description = wp_kses(
@@ -256,7 +255,7 @@ class UACF7_CF {
 			</div>
 		</header>
 
-		<div class="control-box uacf7-control-box">
+		<div class="control-box uacf7-control-box version2">
 			<?php
 
 			$tgg->print( 'field_type', array(
@@ -266,7 +265,6 @@ class UACF7_CF {
 			) );
 
 			$tgg->print( 'field_name' );
-
 			?>
 		</div>
 
@@ -279,6 +277,7 @@ class UACF7_CF {
 		</footer>
 		<?php
 	}
+
 
 	public function get_forms() {
 		$args = array(

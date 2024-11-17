@@ -259,180 +259,205 @@ class UACF7_range_Slider {
 	 * Tag Generator
 	 */
 	public function tag_generator() {
-		if ( ! function_exists( 'wpcf7_add_tag_generator' ) ) {
-			return;
-		}
 
-		wpcf7_add_tag_generator(
+		$tag_generator = WPCF7_TagGenerator::get_instance();
+
+		$tag_generator->add(
 			'uacf7_range_slider',
 			__( 'Range Slider', 'ultimate-addons-cf7' ),
-			'uacf7-tg-pane-range-slider',
-			array( $this, 'tg_panel_range_slider' ),
+			[ $this, 'tg_panel_range_slider' ],
 			array( 'version' => '2' )
 		);
 
 	}
 
-	static function tg_panel_range_slider( $cf, $args = '' ) {
-		$args = wp_parse_args( $args, array() );
-		$uacf7_field_type = 'uacf7_range_slider';
+	static function tg_panel_range_slider( $cf, $options ) {
+
+		$field_types = array(
+			'uacf7_range_slider' => array(
+				'display_name' => __( 'Range Slider', 'ultimate-addons-cf7' ),
+				'heading' => __( 'Range Slider', 'ultimate-addons-cf7' ),
+				'description' => __( '', 'ultimate-addons-cf7' ),
+			),
+		);
+
+		$tgg = new WPCF7_TagGeneratorGenerator( $options['content'] );
 		?>
+		<header class="description-box">
+			<h3><?php
+			echo esc_html( $field_types['uacf7_range_slider']['heading'] );
+			?></h3>
+
+			<p><?php
+			$description = wp_kses(
+				$field_types['uacf7_range_slider']['description'],
+				array(
+					'a' => array( 'href' => true ),
+					'strong' => array(),
+				),
+				array( 'http', 'https' )
+			);
+
+			echo $description;
+			?></p>
+			<div class="uacf7-doc-notice">
+				<?php echo sprintf(
+					__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank">Range Slider</a>'
+				); ?>
+			</div>
+		</header>
 		<div class="control-box uacf7-control-box">
+
+			<?php
+
+			$tgg->print( 'field_type', array(
+				'with_required' => true,
+				'select_options' => array(
+					'uacf7_range_slider' => $field_types['uacf7_range_slider']['display_name'],
+				),
+			) );
+
+			$tgg->print( 'field_name' );
+
+			?>
 			<fieldset>
-				<table class="form-table">
-					<tbody>
-						<tr>
-							<th scope="row"><?php _e( 'Field Type', 'ultimate-addons-cf7' ); ?></th>
-							<td>
-								<fieldset>
-									<legend class="screen-reader-text"><?php _e( 'Field Type', 'ultimate-addons-cf7' ); ?>
-									</legend>
-									<label><input type="checkbox" name="required"
-											value="on"><?php _e( 'Required Field', 'ultimate-addons-cf7' ); ?></label>
-								</fieldset>
-							</td>
-						</tr>
+				<legend>
+					<?php echo esc_html__( 'Show Values', 'ultimate-addons-cf7' ); ?>
+				</legend>
 
-						<tr>
-							<th scope="row"><label
-									for="<?php echo esc_attr( $args['content'] . '-name' ); ?>"><?php echo esc_html( __( 'Name', 'ultimate-addons-cf7' ) ); ?></label>
-							</th>
-							<td><input type="text" name="name" class="tg-name oneline"
-									id="<?php echo esc_attr( $args['content'] . '-name' ); ?>" /></td>
-						</tr>
-						<tr class="uacf7-spacer"></tr>
-						<tr>
-							<th scope="row"><label
-									for="tag-generator-panel-text-handle"><?php echo esc_html__( 'Show Values', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td>
-								<label for="show_value_on"><input type="radio" name="show_value" class="option"
-										id="show_value_on" value="on" />
-									<?php echo esc_html( 'On', 'ultimate-addons-cf7' ); ?></label>
-								<label for="show_value_off"><input type="radio" name="show_value" class="option"
-										id="show_value_off" value="off" />
-									<?php echo esc_html( 'Off', 'ultimate-addons-cf7' ); ?></label>
-							</td>
-						</tr>
-						<tr class="uacf7-spacer"></tr>
-						<tr>
-							<th scope="row"><label
-									for="tag-generator-panel-text-handle"><?php echo esc_html__( 'Slider Type', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td>
-								<label for="single_handle"><input type="radio" name="handle" class="option" id="single_handle"
-										value="1" /> <?php echo esc_html( 'Single Handle', 'ultimate-addons-cf7' ); ?></label>
-								<label for="double_handle"><input type="radio" name="handle" class="option" id="double_handle"
-										value="2" /> <?php echo esc_html( 'Double Handle', 'ultimate-addons-cf7' ); ?></label>
-							</td>
-						</tr>
-						<tr class="uacf7-spacer"></tr>
-						<?php ob_start() ?>
-						<tr class="">
-							<th><label
-									for="tag-generator-panel-range-style"><?php echo esc_html__( 'Range Slider Style', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td>
-								<select name="values" disabled class="values" id="tag-generator-panel-range-style">
-									<option value="default">Default</option>
-								</select>
-								<a href="https://cf7addons.com/preview/range-slider/pro" style="color:red">(Pro)</a>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><label
-									for="tag-generator-panel-text-min"><?php echo esc_html__( 'Range Label', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td>
-								<input type="text" name="label" class="tg-range_label oneline option"
-									id="tag-generator-panel-text-min" placeholder="" disabled />
-								<a href="https://cf7addons.com/preview/range-slider/pro" style="color:red">(Pro)</a>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><label
-									for="tag-generator-panel-text-min"><?php echo esc_html__( 'Range Separator', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td>
-								<input type="text" name="separator" class="tg-range_separator oneline option"
-									id="tag-generator-panel-text-min" placeholder="-" disabled />
-								<a href="https://cf7addons.com/preview/range-slider/pro" style="color:red">(Pro)</a>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><label
-									for="tag-generator-panel-text-min"><?php echo esc_html__( 'Minimum Label', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td>
-								<input type="text" name="min_label" class="tg-min_label oneline option"
-									id="tag-generator-panel-text-min" placeholder="Min" disabled />
-								<a href="https://cf7addons.com/preview/range-slider/pro" style="color:red">(Pro)</a>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><label
-									for="tag-generator-panel-text-min"><?php echo esc_html__( 'Maximum Label', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td>
-								<input type="text" name="max_label" class="tg-max_label oneline option"
-									id="tag-generator-panel-text-min" placeholder="Max" disabled />
-								<a href="https://cf7addons.com/preview/range-slider/pro" style="color:red">(Pro)</a>
-							</td>
-						</tr>
+				<input type="radio" data-tag-part="option" data-tag-option="show_value:" name="show_value" id="show_value_on"
+					value="on" />
+				<?php echo esc_html( 'On', 'ultimate-addons-cf7' ); ?></label>
+				<input type="radio" data-tag-part="option" data-tag-option="show_value:" name="show_value" id="show_value_off"
+					value="off" />
+				<?php echo esc_html( 'Off', 'ultimate-addons-cf7' ); ?></label></table>
 
-						<?php
-						$range_style = ob_get_clean();
-						echo apply_filters( 'uacf7_range_slider_style_field', $range_style );
-						?>
-						<tr>
-							<th scope="row"><label
-									for="tag-generator-panel-text-min"><?php echo esc_html__( 'Minimum range', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td><input type="text" name="min" class="tg-min oneline option" id="tag-generator-panel-text-min"
-									placeholder="15" /></td>
-						</tr>
-						<tr>
-							<th scope="row"><label
-									for="tag-generator-panel-text-max"><?php echo esc_html__( 'Maximum range', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td><input type="text" name="max" class="tg-max oneline option" id="tag-generator-panel-text-max"
-									placeholder="100" /></td>
-						</tr>
-						<tr>
-							<th scope="row"><label
-									for="tag-generator-panel-text-default"><?php echo esc_html__( 'Default Value', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td><input type="text" name="default" class="tg-default oneline option"
-									id="tag-generator-panel-text-default" placeholder="50" /></td>
-						</tr>
-						<tr>
-							<th scope="row"><label
-									for="tag-generator-panel-text-step"><?php echo esc_html__( 'Range steps', 'ultimate-addons-cf7' ); ?></label>
-							</th>
-							<td><input type="text" name="step" class="tg-step oneline option" id="tag-generator-panel-text-step"
-									placeholder="1" /></td>
-						</tr>
-					</tbody>
-				</table>
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Slider Type', 'ultimate-addons-cf7' ); ?>
+				</legend>
+
+				<input type="radio" name="handle" data-tag-part="option" data-tag-option="handle:" id="single_handle"
+					value="1" />
+				<?php echo esc_html( 'Single Handle', 'ultimate-addons-cf7' ); ?>
+
+				<input type="radio" name="handle" data-tag-part="option" data-tag-option="handle:" id="double_handle"
+					value="2" />
+				<?php echo esc_html( 'Double Handle', 'ultimate-addons-cf7' ); ?>
+
+			</fieldset>
+
+			<!-- Pro Verion  -->
+			<?php ob_start() ?>
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Range Slider Style', 'ultimate-addons-cf7' ); ?>
+				</legend>
+				<select name="values" disabled data-tag-part="value" id="tag-generator-panel-range-style">
+					<option value="default">Default</option>
+				</select>
+				<a href="https://cf7addons.com/preview/range-slider/pro" style="color:red">(Pro)</a>
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Range Label', 'ultimate-addons-cf7' ); ?>
+				</legend>
+
+				<input type="text" name="label" class="tg-range_label oneline option" id="tag-generator-panel-text-min"
+					placeholder="" disabled />
+				<a href="https://cf7addons.com/preview/range-slider/pro" style="color:red">(Pro)</a>
+
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Range Separator', 'ultimate-addons-cf7' ); ?>
+				</legend>
+
+				<input type="text" name="separator" class="tg-range_separator oneline option" id="tag-generator-panel-text-min"
+					placeholder="-" disabled />
+				<a href="https://cf7addons.com/preview/range-slider/pro" style="color:red">(Pro)</a>
+
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Minimum Label', 'ultimate-addons-cf7' ); ?>
+				</legend>
+
+				<input type="text" name="min_label" class="tg-min_label oneline option" id="tag-generator-panel-text-min"
+					placeholder="Min" disabled />
+				<a href="https://cf7addons.com/preview/range-slider/pro" style="color:red">(Pro)</a>
+
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Maximum Label', 'ultimate-addons-cf7' ); ?>
+				</legend>
+
+				<input type="text" name="max_label" class="tg-max_label oneline option" id="tag-generator-panel-text-min"
+					placeholder="Max" disabled />
+
+				<a href="https://cf7addons.com/preview/range-slider/pro" style="color:red">(Pro)</a>
+
 				<div class="uacf7-doc-notice uacf7-guide">
 					<?php echo esc_attr( __( "You can configure the slider's styles using the 'Range Slider' tab located below.", 'ultimate-addons-cf7' ) ); ?>
 				</div>
-				<div class="uacf7-doc-notice">
-					<?php echo sprintf(
-						__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
-						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank">Range Slider</a>'
-					); ?>
-				</div>
 			</fieldset>
+			<?php
+			$range_style = ob_get_clean();
+			echo apply_filters( 'uacf7_range_slider_style_field', $range_style );
+			?>
+
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Minimum range', 'ultimate-addons-cf7' ); ?>
+				</legend>
+				<input type="number" data-tag-part="option" data-tag-option="min:" name="min" id="tag-generator-panel-text-min"
+					placeholder="15" />
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Maximum range', 'ultimate-addons-cf7' ); ?>
+				</legend>
+
+				<input type="number" data-tag-part="option" data-tag-option="max:" name="max" id="tag-generator-panel-text-max"
+					placeholder="100" />
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Default Value', 'ultimate-addons-cf7' ); ?>
+				</legend>
+
+				<input type="number" data-tag-part="option" data-tag-option="default:" name="default"
+					id="tag-generator-panel-text-default" placeholder="50" />
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					<?php echo esc_html__( 'Range steps', 'ultimate-addons-cf7' ); ?>
+				</legend>
+
+				<input type="number" data-tag-part="option" data-tag-option="step:" name="step"
+					id="tag-generator-panel-text-step" placeholder="1" /></td>
+			</fieldset>
+
+
 		</div>
-		<div class="insert-box">
-			<input type="text" name="<?php echo esc_attr( $uacf7_field_type ); ?>" class="tag code" readonly="readonly"
-				onfocus="this.select()" />
-			<div class="submitbox">
-				<input type="button" class="button button-primary insert-tag"
-					value="<?php echo esc_attr( __( 'Insert Tag', 'ultimate-addons-cf7' ) ); ?>" />
-			</div>
-		</div>
+		<footer class="insert-box">
+			<?php
+			$tgg->print( 'insert_box_content' );
+
+			$tgg->print( 'mail_tag_tip' );
+			?>
+		</footer>
 		<?php
 	}
 
