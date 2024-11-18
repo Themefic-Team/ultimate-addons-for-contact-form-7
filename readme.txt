@@ -302,7 +302,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = Credits =
 
-The icons used in this plugin are sourced from [Iconfinder](https://www.iconfinder.com").
+Icons source [Iconfinder](https://www.iconfinder.com").
 
 == Installation ==
 
@@ -500,22 +500,6 @@ Instantly forward form submissions to your Telegram channel for quick access. Ho
 - Fixed: Escaping and text-domain issue
 - Fixed: Notice close issue
 
-= 3.3.14 – 24/06/2024 =
-
-- Improvement: System stability
-- Minor bug fixes and improvements
-
-= 3.3.13 – 13/06/2024 =
-
-- Improvement: Country dropdown and repeater
-- Improvement: Star rating review submission 
-- Improvement: Quick setup design issue
-- Improvement: MailChimp addon upgraded
-- Improvement: Optimized CSS/JS code
-- Improvement: System stability
-- Minor bug fixes and improvements
-- Fixed: Booking date issue
-- Compatibility: Compatible with WordPress 6.5.4
 
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 
