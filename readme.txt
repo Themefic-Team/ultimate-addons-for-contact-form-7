@@ -414,9 +414,10 @@ Instantly forward form submissions to your Telegram channel for quick access. Ho
 
 == Changelog ==
 
-= 3.4.13 - 23/11/2024 =
+= 3.4.13 - 24/11/2024 =
 
 - Compatibility: Resolved translation notice issue for compatibility with WordPress 6.7.1.
+- Fix: Addressed minor bugs and implemented general improvements.
 
 = 3.4.12 - 21/11/2024 =
 

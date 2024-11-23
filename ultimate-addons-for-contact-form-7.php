@@ -43,7 +43,6 @@ class Ultimate_Addons_CF7 {
 
 		//enqueue scripts
 		add_action( 'admin_enqueue_scripts', [ $this, 'tf_tourfic_admin_denqueue_script' ], 20 );
-
 	}
 
 	/*
