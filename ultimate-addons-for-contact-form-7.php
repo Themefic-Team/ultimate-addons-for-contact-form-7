@@ -35,14 +35,11 @@ class Ultimate_Addons_CF7 {
 		}
 
 		//Plugin loaded
-		add_action( 'plugins_loaded', [ $this, 'uacf7_plugin_loaded' ], 5 );
+		add_action( 'init', [ $this, 'uacf7_plugin_loaded' ], 5 );
 
 		if ( defined( 'WPCF7_VERSION' ) && WPCF7_VERSION >= 5.7 ) {
 			add_filter( 'wpcf7_autop_or_not', '__return_false' );
 		}
-
-		// Initialize the appsero
-		$this->appsero_init_tracker_ultimate_addons_for_contact_form_7();
 
 		//enqueue scripts
 		add_action( 'admin_enqueue_scripts', [ $this, 'tf_tourfic_admin_denqueue_script' ], 20 );
@@ -56,7 +53,8 @@ class Ultimate_Addons_CF7 {
 		//Register text domain
 		load_plugin_textdomain( 'ultimate-addons-cf7', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
-
+		// Initialize the appsero
+		$this->appsero_init_tracker_ultimate_addons_for_contact_form_7();
 
 		//Enqueue admin scripts
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ), 2 );
