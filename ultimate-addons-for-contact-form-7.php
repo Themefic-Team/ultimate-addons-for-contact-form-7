@@ -35,7 +35,7 @@ class Ultimate_Addons_CF7 {
 		}
 
 		//Plugin loaded
-		add_action( 'init', [ $this, 'uacf7_plugin_loaded' ], 5 );
+		add_action( 'init', [ $this, 'uacf7_plugin_loaded' ], 9 );
 
 		if ( defined( 'WPCF7_VERSION' ) && WPCF7_VERSION >= 5.7 ) {
 			add_filter( 'wpcf7_autop_or_not', '__return_false' );
