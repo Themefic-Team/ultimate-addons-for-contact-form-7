@@ -326,6 +326,9 @@ form.tag-generator-panel[data-version="2"] .control-box{
     background: #473080 !important;
     color: #fff !important;
     border-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    height: auto;
 }
 
 /** Addon Tabs **/
