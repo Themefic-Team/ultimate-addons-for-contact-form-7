@@ -1,14 +1,10 @@
-
-
-.uacf7_code {
-	background: #ddd
-}
 .uacf7-column-select {
 	margin-bottom: 10px !important;
 	display: block;
 	cursor: pointer;
 	border: 1px solid transparent;
 	padding: 5px;
+	background: #ddd
 }
 .uacf7-column-button {
 	border: 1px dotted green !important;
@@ -38,11 +34,6 @@
 	color: red;
 	cursor: pointer;
 	font-size: 15px
-}
-
-.tag-generator-dialog {
-	padding-right: 0px;
-	padding-bottom: 0px;
 }
 
 .uacf7-control-box {
