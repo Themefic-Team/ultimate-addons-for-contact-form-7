@@ -14,6 +14,10 @@ jQuery(document).ready(function($) {
             var field = $(this);
             var fieldId = field.attr('id');
 
+            if($(this).parent().hasClass('quicktags-toolbar')){
+                console.log($($this));
+            }
+
             // Check for a label associated with the field
             var label = '';
             if (fieldId) {
@@ -30,6 +34,11 @@ jQuery(document).ready(function($) {
             }
 
             fieldValue = field.val();
+
+            // Skip fields that have a parent with the "quicktags-toolbar" class
+            if (field.closest('.quicktags-toolbar').length > 0) {
+                return true;
+            }
 
             // If the field is a signature canvas, capture the canvas data
             if (field.closest('label').find('canvas').length) {
@@ -106,34 +115,3 @@ jQuery(document).ready(function($) {
         });
     });
 });
-
-
-// jQuery(document).ready(function($) {
-//     $(document).on('click', '.uacf7-preview-btn', function(e) {
-//         e.preventDefault();
-
-//         var form = $(this).closest('form');
-        
-//         // Gather form data into an object
-//         var formData = form.serialize(); // Serialize all form fields
-
-//         $.ajax({
-//             url: '/your-ajax-handler', // Your AJAX handler URL (could be admin-ajax.php)
-//             method: 'POST',
-//             data: formData + '&action=cf7_form_preview', // Append action for the handler
-//             success: function(response) {
-//                 // Show modal with response (assumes server returns HTML table or similar)
-//                 var modalHTML = '<div class="uacf7-preview-modal"><div class="uacf7-preview-modal-content"><span class="uacf7-close-btn">&times;</span>' + response + '</div></div>';
-//                 $('body').append(modalHTML);
-//                 $('.uacf7-preview-modal').fadeIn();
-
-//                 // Close modal logic
-//                 $('.uacf7-close-btn').on('click', function() {
-//                     $('.uacf7-preview-modal').fadeOut(function() {
-//                         $(this).remove();
-//                     });
-//                 });
-//             }
-//         });
-//     });
-// });

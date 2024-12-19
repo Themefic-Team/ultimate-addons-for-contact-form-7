@@ -26,6 +26,11 @@ function uacf7_submission_preview_scripts() {
 
     wp_enqueue_style( 'uacf7-form-submission-preview', plugin_dir_url( __FILE__ ) . 'assets/submission-preview.css' );
     wp_enqueue_script( 'uacf7-form-submission-preview', plugin_dir_url( __FILE__ ) . 'assets/submission-preview.js', array('jquery'), null, true );
+
+    wp_localize_script( 'uacf7-form-submission-preview', 'submission_preview', [ 
+        "ajaxurl" => admin_url( 'admin-ajax.php' ),
+        'nonce' => wp_create_nonce( 'uacf7-form-submission-preview-nonce' ),
+    ] );
 }
 
 function add_preview_button_to_cf7_form( $form ) {
@@ -87,4 +92,4 @@ function uacf7_post_meta_options_form_submission_preview( $value, $post_id){
     $value['form_submission_preview'] = $post_submission; 
     return $value;
 }  
-add_filter( 'uacf7_post_meta_options', 'uacf7_post_meta_options_form_submission_preview', 16, 2 );  
+add_filter( 'uacf7_post_meta_options', 'uacf7_post_meta_options_form_submission_preview', 16, 2 );
