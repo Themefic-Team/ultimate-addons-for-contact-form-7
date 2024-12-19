@@ -190,7 +190,6 @@ UACF7_Settings::option(
 								'subtitle' => __( 'Check preview of form filled data before submit.', 'ultimate-addons-cf7' ),
 								'demo_link' => 'https://cf7addons.com/preview/contact-form-7-to-post-type/',
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-to-post-type/',
-								'is_pro' => true,
 							),
 							'uacf7_enable_mailchimp' => array(
 								'id' => 'uacf7_enable_mailchimp',

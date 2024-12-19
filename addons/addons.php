@@ -42,6 +42,11 @@ if ( ! function_exists( 'uacf7_addons_included' ) ) {
 			require_once ( 'styler/uacf7style.php' );
 		}
 
+		//Addon - Form Submission Preview
+		if ( isset( $option['uacf7_enable_form_submission_preview'] ) && $option['uacf7_enable_form_submission_preview'] == true ) {
+			require_once( 'submission-preview/submission-preview.php' );
+		}
+
 		// Addon - Ultimate Product Dropdown
 		if ( isset( $option['uacf7_enable_product_dropdown'] ) && $option['uacf7_enable_product_dropdown'] == true ) {
 			require_once ( 'product-dropdown/product-dropdown.php' );
