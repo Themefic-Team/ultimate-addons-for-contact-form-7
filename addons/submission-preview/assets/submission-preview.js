@@ -14,10 +14,6 @@ jQuery(document).ready(function($) {
             var field = $(this);
             var fieldId = field.attr('id');
 
-            if($(this).parent().hasClass('quicktags-toolbar')){
-                console.log($($this));
-            }
-
             // Check for a label associated with the field
             var label = '';
             if (fieldId) {
@@ -99,7 +95,7 @@ jQuery(document).ready(function($) {
 
         // "Submit" button functionality - submit the form
         $('.uacf7-submit-btn').on('click', function() {
-            form.find('.wpuacf7-submit').click();
+            form.find('.wpcf7-submit').click();
             $('.uacf7-preview-modal').fadeOut(function() {
                 $(this).remove();
             });
