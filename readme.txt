@@ -1,10 +1,10 @@
-=== Ultimate Addons for Contact Form 7 ===
+ === Ultimate Addons for Contact Form 7 ===
 Contributors: themefic, hasanet, hemelhasan, mdrejon, raihan143
 Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 3.4.8
+Stable tag: 3.4.15
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -299,10 +299,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 * [Ultimate Before After Image Slider & Gallery - BEAF](https://wordpress.org/plugins/beaf-before-and-after-gallery)
 * [Tourfic – Ultimate Hotel Booking, Travel Booking & Apartment Booking WordPress Plugin](https://wordpress.org/plugins/tourfic/)
+* [Hydra Booking – All in One Appointment Scheduling and Booking Calendar Solution](https://wordpress.org/plugins/hydra-booking)
+
 
 = Credits =
 
-The icons used in this plugin are sourced from [Iconfinder](https://www.iconfinder.com").
+Icons source [Iconfinder](https://www.iconfinder.com").
 
 == Installation ==
 
@@ -412,6 +414,43 @@ Instantly forward form submissions to your Telegram channel for quick access. Ho
 
 == Changelog ==
 
+= 3.4.15 - 11/12/2024 =
+
+- Added: label on the country dropdown field
+
+= 3.4.14 - 25/11/2024 =
+
+- Fix: Addressed minor bugs and resolved issues.
+- Improvement: Enhanced license and Pro update notice feature.
+- Improvement: Updated and refined tags tab styling in form settings.
+
+= 3.4.13 - 24/11/2024 =
+
+- Compatibility: Resolved translation notice issue for compatibility with WordPress 6.7.1.
+- Fix: Addressed minor bugs and implemented general improvements.
+
+= 3.4.12 - 21/11/2024 =
+
+- Update: Revised and updated the plugin's Readme.txt file information.
+
+= 3.4.11 - 19/11/2024 =
+
+- Compatibility: Fully compatible with WordPress 6.7
+
+= 3.4.10 - 18/11/2024 =
+
+- compatibility: Fully compatible with Contact Form 7 version 6.0.
+- Improvement: Optimized and improved the overall codebase for better performance.
+- Fix: Resolved issues with multi-step and form submission validation.
+- Fix: Addressed deprecation warnings and fixed.
+- Feature: Added support for multi-page PDFs.
+- Improvement: Enhanced range slider functionality.
+
+= 3.4.9 - 14/11/2024 =
+
+- Minor bug fixes & improvements
+- System stability improved
+
 = 3.4.8 - 24/10/2024 =
 
 - Improved: Compatibility with Easy Table of Contents.
@@ -427,81 +466,6 @@ Instantly forward form submissions to your Telegram channel for quick access. Ho
 - Improved: License issue fixed
 - Improved: Quick setup notice
 - Improved: ACF field clickable
-
-= 3.4.6 - 21/09/2024 =
-
-- Info: Banner info updated
-- Improvement: All addons page
-- Minor bug fixes and improvements
-
-- System stability improved
-
-= 3.4.5 - 12/09/2024 =
-
-- Introduced: Mailchimp Pro (Pro)
-- System stability improved
-- Minor bug fixes and improvements
-- Improvement: Submissions unique ID
-- Improvement: Database addon pro
-- Improvement: Conversational form
-
-= 3.4.4 - 02/09/2024 =
-
-- Improvement: Mailchimp API connection
-- System stability improved
-
-= 3.4.3 - 25/08/2024 =
-
-- Improvement: Post-submission thumbnail size adjusted
-- Improvement: Fixed past days booking issue
-- Improvement: Repeater field issue resolved
-- Improvement: Translation issues fixed
-
-= 3.4.2 - 11/08/2024 =
-
-- Improvement: Radio field validation for multistep.
-- Improvement: Radio field validation for repeater.
-
-= 3.4.1 - 02/08/2024 =
-
-- Compatible with Tourfic plugin
-- System stability improved
-
-= 3.4.0 - 29/07/2024 =
-
-- Introduced: Database Pro Addon( Pro )
-- Fixed: Issues with double slashes "//".
-- Fixed: Addon page reload issue.
-- Fixed: Color picker issue.
-
-= 3.3.16 - 17/07/2024 =
-
-- Compatible with WordPress 6.6
-- System stability improved
-
-= 3.3.15 - 07/07/2024 =
-
-- Improvement: System stability
-- Minor Bug fixes and improvements
-- Fixed: Escaping and text-domain issue
-- Fixed: Notice close issue
-
-= 3.3.14 – 24/06/2024 =
-
-- Improvement: System stability
-- Minor bug fixes and improvements
-
-= 3.3.13 – 13/06/2024 =
-
-- Improvement: Country dropdown and repeater
-- Improvement: Star rating review submission 
-- Improvement: Quick setup design issue
-- Improvement: MailChimp addon upgraded
-- Improvement: Optimized CSS/JS code
-- Improvement: System stability
-- Minor bug fixes and improvements
-- Fixed: Booking date issue
-- Compatibility: Compatible with WordPress 6.5.4
 
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 
