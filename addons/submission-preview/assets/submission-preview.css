@@ -81,3 +81,10 @@
 	border: 1px solid #000;
 	transition: 0.3s ease-in-out;
 }
+
+@media only screen and (max-width: 768px)  {
+	/* Modal Content */
+	.uacf7-preview-modal-content {
+		width: 95%;
+	}
+}
