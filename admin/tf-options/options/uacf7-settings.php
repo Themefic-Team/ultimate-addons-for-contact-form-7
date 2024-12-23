@@ -181,16 +181,6 @@ UACF7_Settings::option(
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-to-post-type/',
 								'is_pro' => true,
 							),
-							'uacf7_enable_form_submission_preview' => array(
-								'id' => 'uacf7_enable_form_submission_preview',
-								'type' => 'switch',
-								'label' => __( 'Form Submission Preview', 'ultimate-addons-cf7' ),
-								'image_url' => UACF7_URL . 'assets/admin/images/addons/Frontend-Post-Submission@2x.png',
-								'default' => false,
-								'subtitle' => __( 'Check preview of form filled data before submit.', 'ultimate-addons-cf7' ),
-								'demo_link' => 'https://cf7addons.com/preview/contact-form-7-to-post-type/',
-								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-to-post-type/',
-							),
 							'uacf7_enable_form_submission_preview_pro' => array(
 								'id' => 'uacf7_enable_form_submission_preview_pro',
 								'type' => 'switch',
