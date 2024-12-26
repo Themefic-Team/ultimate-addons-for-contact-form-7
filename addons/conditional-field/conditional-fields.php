@@ -376,29 +376,55 @@ class UACF7_CF {
 		}
 		return $properties;
 	}
+	
 
 	function skip_validation_for_hidden_fields( $result, $tags ) {
-
 		if ( isset( $_POST ) ) {
 			$this->set_hidden_fields_arrays( $_POST );
 		}
-
+	
 		$invalid_fields = $result->get_invalid_fields();
 		$return_result = new WPCF7_Validation();
-
+	
 		if ( count( $this->hidden_fields ) == 0 || ! is_array( $invalid_fields ) || count( $invalid_fields ) == 0 ) {
-			$return_result = $result;
-		} else {
-			foreach ( $invalid_fields as $invalid_field_key => $invalid_field_data ) {
-				if ( ! in_array( $invalid_field_key, $this->hidden_fields ) ) {
+			return $result;
+		}
+	
+		foreach ( $invalid_fields as $invalid_field_key => $invalid_field_data ) {
+			if ( ! in_array( $invalid_field_key, $this->hidden_fields ) ) {
+				$tag = array_filter($tags, function($t) use ($invalid_field_key) {
+					return $t->raw_name === $invalid_field_key;
+				});
+	
+				// If the tag exists and it's a checkbox, check if it's hidden
+				if (!empty($tag)) {
+					foreach ($tag as $ta) {
+						if ($ta->basetype === 'checkbox' || $ta->type === 'checkbox*') {
+							$checkbox_element = isset($_POST[$invalid_field_key]) ? $_POST[$invalid_field_key] : null;
+							// $is_hidden = in_array($invalid_field_key, $this->hidden_fields);
+							$is_hidden = in_array($invalid_field_key, $this->hidden_fields) || empty($checkbox_element);
+							// uacf7_print_r($is_hidden);
+							// Skip validation if the checkbox is hidden or unchecked
+							if ($is_hidden ) {
+								continue;
+							}
+						}
+					}
+				}
+	
+				if (in_array($invalid_field_key, $this->hidden_fields)) {
+					// Remove the required validation explicitly for hidden checkboxes
+					$return_result->invalidate( $invalid_field_key, '' );
+				} else {
 					$return_result->invalidate( $invalid_field_key, $invalid_field_data['reason'] );
 				}
 			}
 		}
-
+	
 		return apply_filters( 'uacf7_validate', $return_result, $tags );
-
 	}
+	
+	
 
 	public function uacf7_form_hidden_fields( $hidden_fields ) {
 
