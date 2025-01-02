@@ -188,8 +188,8 @@ UACF7_Settings::option(
 								'image_url' => UACF7_URL . 'assets/admin/images/addons/Frontend-Post-Submission@2x.png',
 								'default' => false,
 								'subtitle' => __( 'Check preview of form filled data before submit.', 'ultimate-addons-cf7' ),
-								'demo_link' => 'https://cf7addons.com/preview/contact-form-7-to-post-type/',
-								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-to-post-type/',
+								'demo_link' => 'https://cf7addons.com/preview/form-preview-submission/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/form-preview-submission/',
 								'is_pro' => true
 							),
 							'uacf7_enable_mailchimp' => array(
