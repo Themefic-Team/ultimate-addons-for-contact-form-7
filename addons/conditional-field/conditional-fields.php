@@ -32,7 +32,7 @@ class UACF7_CF {
 		add_filter( 'wpcf7_posted_data', array( $this, 'remove_hidden_post_data' ) );
 		add_filter( 'wpcf7_validate', array( $this, 'skip_validation_for_hidden_fields' ), 2, 2 );
 
-		add_action( 'wpcf7_validate_checkbox*', array($this, 'skip_hidden_checkbox_required') , 30, 2 );
+		add_action( 'wpcf7_validate_checkbox*', array($this, 'skip_hidden_checkbox_required') , 10, 2 );
 
 		add_filter( 'wpcf7_validate_file*', array( $this, 'skip_validation_for_hidden_file_field' ), 30, 3 );
 		add_filter( 'wpcf7_validate_multifile*', array( $this, 'skip_validation_for_hidden_file_field' ), 30, 3 );
@@ -414,50 +414,6 @@ class UACF7_CF {
 		
 		return apply_filters( 'uacf7_validate', $return_result, $tags );
 	}
-
-
-	// function skip_swv_add_checkbox_rules( $schema, $contact_form ) {
-
-	// 	$invalid_field_key = $this->invalid_field_key;
-	// 	// uacf7_print_r('key');
-
-	// 	$tags = $contact_form->scan_form_tags( array(
-	// 		'basetype' => array( 'checkbox', 'radio' ),
-	// 	) );
-		
-	
-	// 	foreach ( $tags as $tag ) {
-
-	// 		if ( $tag->basetype === 'checkbox' && $tag->is_required()  ) {
-	// 			// uacf7_print_r($tag->name);
-	// 			continue;
-	// 		}
-
-	// 		if ( $tag->is_required() or 'radio' === $tag->type ) {
-	// 			$schema->add_rule(
-	// 				wpcf7_swv_create_rule( 'required', array(
-	// 					'field' => $tag->name,
-	// 					'error' => wpcf7_get_message( 'invalid_required' ),
-	// 				) )
-	// 			);
-	// 		}
-	
-	// 		// For radio buttons or checkboxes with an 'exclusive' option, add maxitems rule
-	// 		if ( 'radio' === $tag->type || $tag->has_option( 'exclusive' ) ) {
-	// 			$schema->add_rule(
-	// 				wpcf7_swv_create_rule( 'maxitems', array(
-	// 					'field' => $tag->name,
-	// 					'threshold' => 1,
-	// 					'error' => $contact_form->filter_message(
-	// 						__( 'Too many items are selected.', 'contact-form-7' )
-	// 					),
-	// 				) )
-	// 			);
-	// 		}
-	// 	}
-	// }
-		
-
 	
 
 	public function uacf7_form_hidden_fields( $hidden_fields ) {
@@ -511,7 +467,7 @@ class UACF7_CF {
 		}
 
 		$invalid_field_keys = array_keys( $result->get_invalid_fields() );
-
+		
 		if ( isset( $this->hidden_fields ) && is_array( $this->hidden_fields ) && in_array( $tag->name. '[]', $this->hidden_fields ) ) {
 
 			return new WPCF7_Validation();

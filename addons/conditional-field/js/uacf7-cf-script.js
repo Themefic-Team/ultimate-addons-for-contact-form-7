@@ -379,16 +379,5 @@
 
 })(jQuery);
 
-// document.addEventListener('wpcf7beforesubmit', function(event) {
-//     var form = event.target;
-
-//     // Find all hidden checkboxes that have the 'required' validation
-//     form.querySelectorAll('.wpcf7-checkbox.wpcf7-validates-as-required').forEach(function(checkbox) {
-//         // If the checkbox is inside a hidden field (has 'uacf7-hidden' class), remove the required class
-//         if (checkbox.closest('.uacf7-hidden')) {
-//             checkbox.classList.remove('wpcf7-validates-as-required');
-//         }
-//     });
-// });
 
 
