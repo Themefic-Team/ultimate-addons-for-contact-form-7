@@ -31,9 +31,8 @@ class UACF7_CF {
 
 		add_filter( 'wpcf7_posted_data', array( $this, 'remove_hidden_post_data' ) );
 		add_filter( 'wpcf7_validate', array( $this, 'skip_validation_for_hidden_fields' ), 2, 2 );
-		add_action( 'wpcf7_swv_create_schema', array($this, 'skip_swv_add_checkbox_rules') , 99, 2 );
 
-		// add_action( 'wpcf7_validate_checkbox*', array($this, 'remove_checkbox_required') , 10, 2 );
+		add_action( 'wpcf7_validate_checkbox*', array($this, 'skip_hidden_checkbox_required') , 30, 2 );
 
 		add_filter( 'wpcf7_validate_file*', array( $this, 'skip_validation_for_hidden_file_field' ), 30, 3 );
 		add_filter( 'wpcf7_validate_multifile*', array( $this, 'skip_validation_for_hidden_file_field' ), 30, 3 );
@@ -417,46 +416,46 @@ class UACF7_CF {
 	}
 
 
-	function skip_swv_add_checkbox_rules( $schema, $contact_form ) {
+	// function skip_swv_add_checkbox_rules( $schema, $contact_form ) {
 
-		$invalid_field_key = $this->invalid_field_key;
-		// uacf7_print_r('key');
+	// 	$invalid_field_key = $this->invalid_field_key;
+	// 	// uacf7_print_r('key');
 
-		$tags = $contact_form->scan_form_tags( array(
-			'basetype' => array( 'checkbox', 'radio' ),
-		) );
+	// 	$tags = $contact_form->scan_form_tags( array(
+	// 		'basetype' => array( 'checkbox', 'radio' ),
+	// 	) );
 		
 	
-		foreach ( $tags as $tag ) {
+	// 	foreach ( $tags as $tag ) {
 
-			if ( $tag->basetype === 'checkbox' && $tag->is_required()  ) {
-				// uacf7_print_r($tag->name);
-				continue;
-			}
+	// 		if ( $tag->basetype === 'checkbox' && $tag->is_required()  ) {
+	// 			// uacf7_print_r($tag->name);
+	// 			continue;
+	// 		}
 
-			if ( $tag->is_required() or 'radio' === $tag->type ) {
-				$schema->add_rule(
-					wpcf7_swv_create_rule( 'required', array(
-						'field' => $tag->name,
-						'error' => wpcf7_get_message( 'invalid_required' ),
-					) )
-				);
-			}
+	// 		if ( $tag->is_required() or 'radio' === $tag->type ) {
+	// 			$schema->add_rule(
+	// 				wpcf7_swv_create_rule( 'required', array(
+	// 					'field' => $tag->name,
+	// 					'error' => wpcf7_get_message( 'invalid_required' ),
+	// 				) )
+	// 			);
+	// 		}
 	
-			// For radio buttons or checkboxes with an 'exclusive' option, add maxitems rule
-			if ( 'radio' === $tag->type || $tag->has_option( 'exclusive' ) ) {
-				$schema->add_rule(
-					wpcf7_swv_create_rule( 'maxitems', array(
-						'field' => $tag->name,
-						'threshold' => 1,
-						'error' => $contact_form->filter_message(
-							__( 'Too many items are selected.', 'contact-form-7' )
-						),
-					) )
-				);
-			}
-		}
-	}
+	// 		// For radio buttons or checkboxes with an 'exclusive' option, add maxitems rule
+	// 		if ( 'radio' === $tag->type || $tag->has_option( 'exclusive' ) ) {
+	// 			$schema->add_rule(
+	// 				wpcf7_swv_create_rule( 'maxitems', array(
+	// 					'field' => $tag->name,
+	// 					'threshold' => 1,
+	// 					'error' => $contact_form->filter_message(
+	// 						__( 'Too many items are selected.', 'contact-form-7' )
+	// 					),
+	// 				) )
+	// 			);
+	// 		}
+	// 	}
+	// }
 		
 
 	
@@ -499,6 +498,26 @@ class UACF7_CF {
 				$this->hidden_fields[] = $field;
 			}
 		}
+
+	}
+
+	public function skip_hidden_checkbox_required($result, $tag){
+
+		if ( ! count( $result->get_invalid_fields() ) ) {
+			return $result;
+		}
+		if ( isset( $_POST ) ) {
+			$this->set_hidden_fields_arrays( $_POST );
+		}
+
+		$invalid_field_keys = array_keys( $result->get_invalid_fields() );
+
+		if ( isset( $this->hidden_fields ) && is_array( $this->hidden_fields ) && in_array( $tag->name. '[]', $this->hidden_fields ) ) {
+
+			return new WPCF7_Validation();
+		}
+
+		return $result;
 
 	}
 
