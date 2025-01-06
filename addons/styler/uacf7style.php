@@ -591,8 +591,6 @@ class UACF7_uacf7style {
 
 	public function old_uacf7_properties( $properties, $cfform ) {
 
-		wp_register_style( 'uacf7-single-form-styler', UACF7_URL . 'addons/styler/css/uacf7-single-form-styler.css', array(), null );
-
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 
 			$form = $properties['form'];
@@ -662,9 +660,8 @@ class UACF7_uacf7style {
 				$btn_margin_bottom = $form_meta['uacf7_uacf7style_btn_margin_bottom'];
 				$btn_margin_left = $form_meta['uacf7_uacf7style_btn_margin_left'];
 				$ua_custom_css = $form_meta['uacf7_uacf7style_ua_custom_css'];
-			
-
-                $css ="
+				?>
+                <style>
                     .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> label {
                         <?php
                         // Color
@@ -727,14 +724,14 @@ class UACF7_uacf7style {
                         ?>
                     }
 
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type='email'],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type='number'],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type='password'],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type='search'],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type='tel'],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type='text'],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type='url'],
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type='date'],
+                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="email"],
+                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="number"],
+                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="password"],
+                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="search"],
+                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="tel"],
+                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="text"],
+                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="url"],
+                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="date"],
                     .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> select,
                     .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> textarea {
                         <?php
@@ -860,7 +857,7 @@ class UACF7_uacf7style {
                         width: 100%;
                     }
 
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type='submit'] {
+                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="submit"] {
                         <?php
                         // Color
                         if ( ! empty( $btn_color ) ) {
@@ -941,7 +938,7 @@ class UACF7_uacf7style {
                         ?>
                     }
 
-                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type='submit']:hover {
+                    .uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="submit"]:hover {
                         <?php
                         // Hover color
                         if ( ! empty( $btn_color_hover ) ) {
@@ -959,14 +956,12 @@ class UACF7_uacf7style {
                         }
                         ?>
                     }
-						
-					$ua_custom_css
-				";
-                    
-			// Ensure the stylesheet is enqueued
-			wp_add_inline_style( 'uacf7-single-form-styler', $css );
-			wp_enqueue_style( 'uacf7-single-form-styler' ); 
 
+                    <?php echo $ua_custom_css ?>
+                </style>
+
+				<?php echo '<div class="uacf7-uacf7style uacf7-uacf7style-' . esc_attr( $cfform->id() ) . '">' . $form . '</div>';
+				$properties['form'] = ob_get_clean();
 			endif;
 		}
 
@@ -974,18 +969,21 @@ class UACF7_uacf7style {
 	}
 
 	public function uacf7_properties($properties, $cfform) {
+		
+
 		wp_register_style('uacf7-single-form-styler', UACF7_URL . 'addons/styler/css/uacf7-single-form-styler.css', [], null);
 	
 		if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) {
 			$form = $properties['form'];
 			$form_meta = uacf7_get_form_option($cfform->id(), 'styler');
 			$form_styles = $form_meta['uacf7_enable_form_styles'] ?? false;
-	
+			$ua_custom_css = $form_meta['uacf7_uacf7style_ua_custom_css'];
+			
 			if ($form_styles) {
-				ob_start();
 				$css = $this->generate_dynamic_css($cfform->id(), $form_meta);
-				echo '<style>' . $css . '</style>';
-				ob_end_clean();
+				$css = $ua_custom_css . $css;
+				wp_add_inline_style( 'uacf7-single-form-styler', $css );
+				wp_enqueue_style( 'uacf7-single-form-styler' );
 			}
 		}
 	
