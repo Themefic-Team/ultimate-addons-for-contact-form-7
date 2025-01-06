@@ -589,7 +589,7 @@ class UACF7_uacf7style {
 		return $value;
 	}
 
-	public function uacf7_properties( $properties, $cfform ) {
+	public function old_uacf7_properties( $properties, $cfform ) {
 
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 
@@ -967,6 +967,113 @@ class UACF7_uacf7style {
 
 		return $properties;
 	}
+
+	public function uacf7_properties($properties, $cfform) {
+		
+
+		wp_register_style('uacf7-single-form-styler', UACF7_URL . 'addons/styler/css/uacf7-single-form-styler.css', [], null);
+	
+		if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) {
+			$form = $properties['form'];
+			$form_meta = uacf7_get_form_option($cfform->id(), 'styler');
+			$form_styles = $form_meta['uacf7_enable_form_styles'] ?? false;
+			$ua_custom_css = $form_meta['uacf7_uacf7style_ua_custom_css'];
+			
+			if ($form_styles) {
+				$css = $this->generate_dynamic_css($cfform->id(), $form_meta);
+				$css = $ua_custom_css . $css;
+				wp_add_inline_style( 'uacf7-single-form-styler', $css );
+				wp_enqueue_style( 'uacf7-single-form-styler' );
+			}
+		}
+	
+		return $properties;
+	}
+	
+	/**
+	 * Generate Dynamic CSS based on form meta.
+	 */
+	private function generate_dynamic_css($form_id, $form_meta) {
+		$selectors = [
+			'label' => [
+				'color' => $form_meta['uacf7_uacf7style_label_color_option']['uacf7_uacf7style_label_color'] ?? null,
+				'background-color' => $form_meta['uacf7_uacf7style_label_color_option']['uacf7_uacf7style_label_background_color'] ?? null,
+				'font-size' => $form_meta['uacf7_uacf7style_label_font_size'] ? $form_meta['uacf7_uacf7style_label_font_size'] . 'px' : null,
+				'font-family' => $form_meta['uacf7_uacf7style_label_font_family'] ?? null,
+				'font-style' => $form_meta['uacf7_uacf7style_label_font_style'] ?? null,
+				'font-weight' => $form_meta['uacf7_uacf7style_label_font_weight'] ?? null,
+				'padding' => $this->generate_spacing_css($form_meta, 'label_padding'),
+				'margin' => $this->generate_spacing_css($form_meta, 'label_margin'),
+			],
+			'input' => [
+				'color' => $form_meta['uacf7_uacf7style_input_color_option']['uacf7_uacf7style_input_color'] ?? null,
+				'background-color' => $form_meta['uacf7_uacf7style_input_color_option']['uacf7_uacf7style_input_background_color'] ?? null,
+				'font-size' => $form_meta['uacf7_uacf7style_input_font_size'] ? $form_meta['uacf7_uacf7style_input_font_size'] . 'px' : null,
+				'font-family' => $form_meta['uacf7_uacf7style_input_font_family'] ?? null,
+				'font-style' => $form_meta['uacf7_uacf7style_input_font_style'] ?? null,
+				'font-weight' => $form_meta['uacf7_uacf7style_input_font_weight'] ?? null,
+				'border' => $this->generate_border_css($form_meta, 'input_border'),
+				'border-radius' => $form_meta['uacf7_uacf7style_input_border_radius'] ? $form_meta['uacf7_uacf7style_input_border_radius'] . 'px' : null,
+				'padding' => $this->generate_spacing_css($form_meta, 'input_padding'),
+				'margin' => $this->generate_spacing_css($form_meta, 'input_margin'),
+			],
+			'button' => [
+				'color' => $form_meta['uacf7_uacf7style_btn_color_option']['uacf7_uacf7style_btn_color'] ?? null,
+				'background-color' => $form_meta['uacf7_uacf7style_btn_color_option']['uacf7_uacf7style_btn_background_color'] ?? null,
+				'font-size' => $form_meta['uacf7_uacf7style_btn_font_size'] ? $form_meta['uacf7_uacf7style_btn_font_size'] . 'px' : null,
+				'border' => $this->generate_border_css($form_meta, 'btn_border'),
+				'border-radius' => $form_meta['uacf7_uacf7style_btn_border_radius'] ? $form_meta['uacf7_uacf7style_btn_border_radius'] . 'px' : null,
+				'padding' => $this->generate_spacing_css($form_meta, 'btn_padding'),
+				'margin' => $this->generate_spacing_css($form_meta, 'btn_margin'),
+			],
+		];
+	
+		$css = '';
+		foreach ($selectors as $selector => $properties) {
+			$css .= $this->build_css_rule(".uacf7-uacf7style-{$form_id} {$selector}", $properties);
+		}
+	
+		return $css;
+	}
+	
+	/**
+	 * Build CSS rule from properties.
+	 */
+	private function build_css_rule($selector, $properties) {
+		$rules = '';
+		foreach ($properties as $property => $value) {
+			if (!empty($value)) {
+				$rules .= "{$property}: {$value};";
+			}
+		}
+		return $rules ? "{$selector} { {$rules} }" : '';
+	}
+	
+	/**
+	 * Generate CSS for spacing properties (padding or margin).
+	 */
+	private function generate_spacing_css($form_meta, $key_prefix) {
+		$values = [
+			'top' => $form_meta["uacf7_uacf7style_{$key_prefix}_top"] ?? null,
+			'right' => $form_meta["uacf7_uacf7style_{$key_prefix}_right"] ?? null,
+			'bottom' => $form_meta["uacf7_uacf7style_{$key_prefix}_bottom"] ?? null,
+			'left' => $form_meta["uacf7_uacf7style_{$key_prefix}_left"] ?? null,
+		];
+	
+		return implode(' ', array_filter($values)) . 'px';
+	}
+	
+	/**
+	 * Generate CSS for border properties.
+	 */
+	private function generate_border_css($form_meta, $key_prefix) {
+		$style = $form_meta["uacf7_uacf7style_{$key_prefix}_style"] ?? null;
+		$width = $form_meta["uacf7_uacf7style_{$key_prefix}_width"] ? $form_meta["uacf7_uacf7style_{$key_prefix}_width"] . 'px' : null;
+		$color = $form_meta["uacf7_uacf7style_{$key_prefix}_color"] ?? null;
+	
+		return $style && $width && $color ? "{$width} {$style} {$color}" : null;
+	}
+	
 
 }
 new UACF7_uacf7style();
