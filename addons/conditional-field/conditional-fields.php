@@ -467,7 +467,6 @@ class UACF7_CF {
 		}
 
 		$invalid_field_keys = array_keys( $result->get_invalid_fields() );
-		
 		if ( isset( $this->hidden_fields ) && is_array( $this->hidden_fields ) && in_array( $tag->name. '[]', $this->hidden_fields ) ) {
 
 			return new WPCF7_Validation();
