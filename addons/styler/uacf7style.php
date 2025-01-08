@@ -979,7 +979,14 @@ class UACF7_uacf7style {
 
 			if ( $form_styles ) {
 				$css = $this->generate_dynamic_css( $cfform->id(), $form_meta );
-				$com_css = $ua_custom_css . $css;
+
+				// If custom css is added
+				if(!empty($ua_custom_css)) {
+					$com_css = $ua_custom_css . $css;
+				} else {
+					$com_css = $css;
+				}
+
 				wp_add_inline_style( 'uacf7-single-form-styler', $com_css );
 				wp_enqueue_style( 'uacf7-single-form-styler' );
 			}
