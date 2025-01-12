@@ -1011,7 +1011,7 @@ class UACF7_uacf7style {
 				...array_filter(array_values($this->generate_spacing_css($form_meta, 'label_padding', 'padding'))),
 				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'label_margin', 'margin' ))),
 			],
-			'input' => [ 
+			'.wpcf7-form-control:not(.wpcf7-submit)' => [ 
 				'color' => $form_meta['uacf7_uacf7style_input_color_option']['uacf7_uacf7style_input_color'] ?? null,
 				'background-color' => $form_meta['uacf7_uacf7style_input_color_option']['uacf7_uacf7style_input_background_color'] ?? null,
 				'font-size' => $form_meta['uacf7_uacf7style_input_font_size'] ? $form_meta['uacf7_uacf7style_input_font_size'] . 'px' : null,
