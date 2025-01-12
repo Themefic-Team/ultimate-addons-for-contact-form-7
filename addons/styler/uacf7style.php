@@ -979,8 +979,15 @@ class UACF7_uacf7style {
 
 			if ( $form_styles ) {
 				$css = $this->generate_dynamic_css( $cfform->id(), $form_meta );
-				$css = $ua_custom_css . $css;
-				wp_add_inline_style( 'uacf7-single-form-styler', $css );
+
+				// If custom css is added
+				if(!empty($ua_custom_css)) {
+					$com_css = $ua_custom_css . $css;
+				} else {
+					$com_css = $css;
+				}
+
+				wp_add_inline_style( 'uacf7-single-form-styler', $com_css );
 				wp_enqueue_style( 'uacf7-single-form-styler' );
 			}
 		}
@@ -1001,8 +1008,8 @@ class UACF7_uacf7style {
 				'font-style' => $form_meta['uacf7_uacf7style_label_font_style'] ?? null,
 				'font-weight' => $form_meta['uacf7_uacf7style_label_font_weight'] ?? null,
 
-				...array_filter($this->generate_spacing_css($form_meta, 'label_padding', 'padding')),
-				...array_filter($this->generate_spacing_css( $form_meta, 'label_margin', 'margin' )),
+				...array_filter(array_values($this->generate_spacing_css($form_meta, 'label_padding', 'padding'))),
+				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'label_margin', 'margin' ))),
 			],
 			'input' => [ 
 				'color' => $form_meta['uacf7_uacf7style_input_color_option']['uacf7_uacf7style_input_color'] ?? null,
@@ -1014,8 +1021,8 @@ class UACF7_uacf7style {
 				'border' => $this->generate_border_css( $form_meta, 'input_border' ),
 				'border-radius' => $form_meta['uacf7_uacf7style_input_border_radius'] ? $form_meta['uacf7_uacf7style_input_border_radius'] . 'px' : null,
 
-				...array_filter($this->generate_spacing_css( $form_meta, 'input_padding', 'padding' )),
-				...array_filter($this->generate_spacing_css( $form_meta, 'input_margin', 'margin' )),
+				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'input_padding', 'padding' ))),
+				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'input_margin', 'margin' ))),
 			],
 			'.wpcf7-submit' => [ 
 				'color' => $form_meta['uacf7_uacf7style_btn_color_option']['uacf7_uacf7style_btn_color'] ?? null,
@@ -1024,8 +1031,8 @@ class UACF7_uacf7style {
 				'border' => $this->generate_border_css( $form_meta, 'btn_border' ),
 				'border-radius' => $form_meta['uacf7_uacf7style_btn_border_radius'] ? $form_meta['uacf7_uacf7style_btn_border_radius'] . 'px' : null,
 				
-				...array_filter($this->generate_spacing_css( $form_meta, 'btn_padding', 'padding' )),
-				...array_filter($this->generate_spacing_css( $form_meta, 'btn_margin','margin' )),
+				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'btn_padding', 'padding' ))),
+				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'btn_margin','margin' ))),
 			],
 		];
 
