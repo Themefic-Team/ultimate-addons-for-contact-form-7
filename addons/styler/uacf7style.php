@@ -975,7 +975,8 @@ class UACF7_uacf7style {
 			$form = $properties['form'];
 			$form_meta = uacf7_get_form_option( $cfform->id(), 'styler' );
 			$form_styles = $form_meta['uacf7_enable_form_styles'] ?? false;
-			$ua_custom_css = $form_meta['uacf7_uacf7style_ua_custom_css'];
+			$ua_custom_css = isset($form_meta['uacf7_uacf7style_ua_custom_css']) ? $form_meta['uacf7_uacf7style_ua_custom_css'] : '';
+
 
 			if ( $form_styles ) {
 				$css = $this->generate_dynamic_css( $cfform->id(), $form_meta );
