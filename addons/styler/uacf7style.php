@@ -589,7 +589,7 @@ class UACF7_uacf7style {
 		return $value;
 	}
 
-	public function old_uacf7_properties( $properties, $cfform ) {
+	public function uacf7_properties( $properties, $cfform ) {
 
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 
@@ -968,7 +968,7 @@ class UACF7_uacf7style {
 		return $properties;
 	}
 
-	public function uacf7_properties( $properties, $cfform ) {
+	public function old_uacf7_properties( $properties, $cfform ) {
 		wp_register_style( 'uacf7-single-form-styler', UACF7_URL . 'addons/styler/css/uacf7-single-form-styler.css', [], null );
 
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
