@@ -192,6 +192,17 @@ UACF7_Settings::option(
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/form-preview-submission/',
 								'is_pro' => true
 							),
+							'uacf7_enable_save_and_continue_pro' => array(
+								'id' => 'uacf7_enable_save_and_continue_pro',
+								'type' => 'switch',
+								'label' => __( 'Form Save & Continue', 'ultimate-addons-cf7' ),
+								'image_url' => UACF7_URL . 'assets/admin/images/addons/Placeholder-Styling@2x.png',
+								'default' => false,
+								'subtitle' => __( 'Increase Form Completion Rates With Save and Resume.', 'ultimate-addons-cf7' ),
+								'demo_link' => 'https://cf7addons.com/preview/save-and-continue/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/save-and-continue/',
+								'is_pro' => true
+							),
 							'uacf7_enable_mailchimp' => array(
 								'id' => 'uacf7_enable_mailchimp',
 								'type' => 'switch',
@@ -359,17 +370,6 @@ UACF7_Settings::option(
 								'demo_link' => 'https://cf7addons.com/preview/star-rating-pro/',
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-star-rating-field-pro/',
 								'is_pro' => true,
-							),
-							'uacf7_enable_save_and_continue_pro' => array(
-								'id' => 'uacf7_enable_save_and_continue_pro',
-								'type' => 'switch',
-								'label' => __( 'Form Save & Continue', 'ultimate-addons-cf7' ),
-								'image_url' => UACF7_URL . 'assets/admin/images/addons/Placeholder-Styling@2x.png',
-								'default' => false,
-								'subtitle' => __( 'Increase Form Completion Rates With Save and Resume.', 'ultimate-addons-cf7' ),
-								'demo_link' => 'https://cf7addons.com/preview/save-and-continue/',
-								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/save-and-continue/',
-								'is_pro' => true
 							),
 							'uacf7_enable_range_slider' => array(
 								'id' => 'uacf7_enable_range_slider',
