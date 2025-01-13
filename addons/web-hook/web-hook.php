@@ -14,7 +14,7 @@ class UACF7_WEB_HOOK {
 		add_filter( 'uacf7_post_meta_options', array( $this, 'uacf7_post_meta_options_webhook' ), 12, 2 );
 
 		add_action( 'wpcf7_before_send_mail', array( $this, 'uacf7_send_data_by_web_hook' ) );
-		add_filter( 'wpcf7_load_js', '__return_false' );
+		// add_filter( 'wpcf7_load_js', '__return_false' );
 	}
 
 
