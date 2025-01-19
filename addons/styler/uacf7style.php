@@ -589,7 +589,7 @@ class UACF7_uacf7style {
 		return $value;
 	}
 
-	public function old_uacf7_properties( $properties, $cfform ) {
+	public function uacf7_properties( $properties, $cfform ) {
 
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 
@@ -968,7 +968,7 @@ class UACF7_uacf7style {
 		return $properties;
 	}
 
-	public function uacf7_properties( $properties, $cfform ) {
+	public function old_uacf7_properties( $properties, $cfform ) {
 		wp_register_style( 'uacf7-single-form-styler', UACF7_URL . 'addons/styler/css/uacf7-single-form-styler.css', [], null );
 
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
@@ -976,7 +976,6 @@ class UACF7_uacf7style {
 			$form_meta = uacf7_get_form_option( $cfform->id(), 'styler' );
 			$form_styles = $form_meta['uacf7_enable_form_styles'] ?? false;
 			$ua_custom_css = isset($form_meta['uacf7_uacf7style_ua_custom_css']) ? $form_meta['uacf7_uacf7style_ua_custom_css'] : '';
-
 
 			if ( $form_styles ) {
 				$css = $this->generate_dynamic_css( $cfform->id(), $form_meta );
@@ -1012,7 +1011,7 @@ class UACF7_uacf7style {
 				...array_filter(array_values($this->generate_spacing_css($form_meta, 'label_padding', 'padding'))),
 				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'label_margin', 'margin' ))),
 			],
-			'input' => [ 
+			'.wpcf7-form-control:not(.wpcf7-submit)' => [ 
 				'color' => $form_meta['uacf7_uacf7style_input_color_option']['uacf7_uacf7style_input_color'] ?? null,
 				'background-color' => $form_meta['uacf7_uacf7style_input_color_option']['uacf7_uacf7style_input_background_color'] ?? null,
 				'font-size' => $form_meta['uacf7_uacf7style_input_font_size'] ? $form_meta['uacf7_uacf7style_input_font_size'] . 'px' : null,

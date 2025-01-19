@@ -184,10 +184,10 @@ UACF7_Settings::option(
 							'uacf7_enable_form_submission_preview_pro' => array(
 								'id' => 'uacf7_enable_form_submission_preview_pro',
 								'type' => 'switch',
-								'label' => __( 'Form Submission Preview Pro', 'ultimate-addons-cf7' ),
+								'label' => __( 'Form Preview Submission', 'ultimate-addons-cf7' ),
 								'image_url' => UACF7_URL . 'assets/admin/images/addons/Frontend-Post-Submission@2x.png',
 								'default' => false,
-								'subtitle' => __( 'Check preview of form filled data before submit.', 'ultimate-addons-cf7' ),
+								'subtitle' => __( 'Enable users to review and verify form data before final submission', 'ultimate-addons-cf7' ),
 								'demo_link' => 'https://cf7addons.com/preview/form-preview-submission/',
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/form-preview-submission/',
 								'is_pro' => true

@@ -1,4 +1,4 @@
-<img src="https://ps.w.org/ultimate-addons-for-contact-form-7/assets/banner-772x250.jpg" alt="ultimate-addons-for-contact-form-7" width="100%"/>
+<img src="https://ps.w.org/ultimate-addons-for-contact-form-7/assets/banner-1544x500.png" alt="ultimate-addons-for-contact-form-7" width="100%"/>
 
 
 # Ultimate Addons for Contact Form 7
