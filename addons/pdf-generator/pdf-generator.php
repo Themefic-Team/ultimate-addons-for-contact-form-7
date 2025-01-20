@@ -256,6 +256,21 @@ class UACF7_PDF_GENERATOR {
 					'type' => 'editor',
 
 				),
+				'uacf7_pdf_form_download' => array(
+					'id' => 'uacf7_pdf_form_download',
+					'type' => 'heading',
+					'label' => __( 'Download Form After Submit', 'ultimate-addons-cf7' ),
+				),
+				'uacf7_enable_pdf_form_download' => array(
+					'id' => 'uacf7_enable_pdf_form_download',
+					'type' => 'switch',
+					'label' => __( ' Enable PDF Form Download ', 'ultimate-addons-cf7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
+					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'default' => false,
+					'field_width' => 100,
+					'is_pro' => true
+				),
 				'uacf7_pdf_custom_css' => array(
 					'id' => 'uacf7_pdf_custom_css',
 					'type' => 'heading',
@@ -592,7 +607,8 @@ class UACF7_PDF_GENERATOR {
 				'margin_footer' => 0,
 				'format' => 'A4',
 				'margin_left' => 0,
-				'margin_right' => 0
+				'margin_right' => 0,
+				'margin_top' => 25,
 			] );
 			$replace_key = [];
 
