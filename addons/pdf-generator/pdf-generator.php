@@ -320,25 +320,25 @@ class UACF7_PDF_GENERATOR {
 		global $wpdb;
 		$data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . "uacf7_form WHERE id = %s AND form_id = %s", $data_id, $form_id ) );
 
-		$uacf7_pdf_name = ! empty( $pdf['uacf7_pdf_name'] ) ? $pdf['uacf7_pdf_name'] : get_the_title( $form_id );
-		$disable_header = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'header', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
-		$disable_footer = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'footer', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
-		$customize_pdf = ! empty( $pdf['customize_pdf'] ) ? $pdf['customize_pdf'] : '';
-		$pdf_bg_upload_image = ! empty( $pdf['pdf_bg_upload_image'] ) ? $pdf['pdf_bg_upload_image'] : '';
-		$customize_pdf_header = ! empty( $pdf['customize_pdf_header'] ) ? $pdf['customize_pdf_header'] : '';
+		$uacf7_pdf_name          = ! empty( $pdf['uacf7_pdf_name'] ) ? $pdf['uacf7_pdf_name'] : get_the_title( $form_id );
+		$disable_header          = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'header', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
+		$disable_footer          = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'footer', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
+		$customize_pdf           = ! empty( $pdf['customize_pdf'] ) ? $pdf['customize_pdf'] : '';
+		$pdf_bg_upload_image     = ! empty( $pdf['pdf_bg_upload_image'] ) ? $pdf['pdf_bg_upload_image'] : '';
+		$customize_pdf_header    = ! empty( $pdf['customize_pdf_header'] ) ? $pdf['customize_pdf_header'] : '';
 		$pdf_header_upload_image = ! empty( $pdf['pdf_header_upload_image'] ) ? $pdf['pdf_header_upload_image'] : '';
-		$pdf_header_img_height = ! empty( $pdf['pdf_header_img_height'] ) ? $pdf['pdf_header_img_height'] : '';
-		$pdf_header_img_width = ! empty( $pdf['pdf_header_img_width'] ) ? $pdf['pdf_header_img_width'] : '';
-		$pdf_header_img_aline = ! empty( $pdf['pdf_header_img_aline'] ) ? $pdf['pdf_header_img_aline'] : '';
-		$customize_pdf_footer = ! empty( $pdf['customize_pdf_footer'] ) ? $pdf['customize_pdf_footer'] : '';
-		$custom_pdf_css = ! empty( $pdf['custom_pdf_css'] ) ? $pdf['custom_pdf_css'] : '';
-		$pdf_content_color = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '';
-		$pdf_content_bg_color = ! empty( $pdf['pdf_content_bg_color'] ) ? $pdf['pdf_content_bg_color'] : '';
-		$pdf_header_color = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '';
-		$pdf_header_bg_color = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '';
-		$pdf_footer_color = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '';
-		$pdf_footer_bg_color = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '';
-		$pdf_bg_upload_image = ! empty( $pdf_bg_upload_image ) ? 'background-image: url("' . esc_attr( $pdf_bg_upload_image ) . '");' : '';
+		$pdf_header_img_height   = ! empty( $pdf['pdf_header_img_height'] ) ? $pdf['pdf_header_img_height'] : '';
+		$pdf_header_img_width    = ! empty( $pdf['pdf_header_img_width'] ) ? $pdf['pdf_header_img_width'] : '';
+		$pdf_header_img_aline    = ! empty( $pdf['pdf_header_img_aline'] ) ? $pdf['pdf_header_img_aline'] : '';
+		$customize_pdf_footer    = ! empty( $pdf['customize_pdf_footer'] ) ? $pdf['customize_pdf_footer'] : '';
+		$custom_pdf_css          = ! empty( $pdf['custom_pdf_css'] ) ? $pdf['custom_pdf_css'] : '';
+		$pdf_content_color       = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '';
+		$pdf_content_bg_color    = ! empty( $pdf['pdf_content_bg_color'] ) ? $pdf['pdf_content_bg_color'] : '';
+		$pdf_header_color        = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '';
+		$pdf_header_bg_color     = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '';
+		$pdf_footer_color        = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '';
+		$pdf_footer_bg_color     = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '';
+		$pdf_bg_upload_image     = ! empty( $pdf_bg_upload_image ) ? 'background-image: url("' . esc_attr( $pdf_bg_upload_image ) . '");' : '';
 		$pdf_header_upload_image = ! empty( $pdf_header_upload_image ) ? '<img src="' . esc_attr( $pdf_header_upload_image ) . '" style="height: 60; max-width: 100%; ">' : '';
 
 		$mpdf = new \Mpdf\Mpdf( [ 
@@ -353,7 +353,8 @@ class UACF7_PDF_GENERATOR {
 			'margin_footer' => 0,
 			'format' => 'A4',
 			'margin_left' => 0,
-			'margin_right' => 0
+			'margin_right' => 0,
+			'margin_top' => 25
 		] );
 
 
