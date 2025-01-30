@@ -17,6 +17,7 @@ class UACF7_PDF_GENERATOR {
 		add_filter( 'wpcf7_mail_components', array( $this, 'uacf7_wpcf7_mail_components' ), 10, 3 );
 		// add_filter( 'wpcf7_load_js', '__return_false' );
 		add_action( 'wp_ajax_uacf7_get_generated_pdf', array( $this, 'uacf7_get_generated_pdf' ) );
+		add_action( 'wp_ajax_nopriv_uacf7_get_generated_pdf', array( $this, 'uacf7_get_generated_pdf' ) );
 		add_filter( 'uacf7_post_meta_options', array( $this, 'uacf7_post_meta_options_pdf_generator' ), 18, 2 );
 		add_filter( 'uacf7_post_meta_import_export', array( $this, 'uacf7_post_meta_import_export_pdf_generator' ), 18, 2 );
 
@@ -256,6 +257,21 @@ class UACF7_PDF_GENERATOR {
 					'type' => 'editor',
 
 				),
+				'uacf7_pdf_form_download' => array(
+					'id' => 'uacf7_pdf_form_download',
+					'type' => 'heading',
+					'label' => __( 'Download Form After Submit', 'ultimate-addons-cf7' ),
+				),
+				'uacf7_enable_pdf_form_download' => array(
+					'id' => 'uacf7_enable_pdf_form_download',
+					'type' => 'switch',
+					'label' => __( ' Enable PDF Form Download ', 'ultimate-addons-cf7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
+					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'default' => false,
+					'field_width' => 100,
+					'is_pro' => true
+				),
 				'uacf7_pdf_custom_css' => array(
 					'id' => 'uacf7_pdf_custom_css',
 					'type' => 'heading',
@@ -305,25 +321,25 @@ class UACF7_PDF_GENERATOR {
 		global $wpdb;
 		$data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . "uacf7_form WHERE id = %s AND form_id = %s", $data_id, $form_id ) );
 
-		$uacf7_pdf_name = ! empty( $pdf['uacf7_pdf_name'] ) ? $pdf['uacf7_pdf_name'] : get_the_title( $form_id );
-		$disable_header = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'header', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
-		$disable_footer = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'footer', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
-		$customize_pdf = ! empty( $pdf['customize_pdf'] ) ? $pdf['customize_pdf'] : '';
-		$pdf_bg_upload_image = ! empty( $pdf['pdf_bg_upload_image'] ) ? $pdf['pdf_bg_upload_image'] : '';
-		$customize_pdf_header = ! empty( $pdf['customize_pdf_header'] ) ? $pdf['customize_pdf_header'] : '';
+		$uacf7_pdf_name          = ! empty( $pdf['uacf7_pdf_name'] ) ? $pdf['uacf7_pdf_name'] : get_the_title( $form_id );
+		$disable_header          = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'header', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
+		$disable_footer          = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'footer', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
+		$customize_pdf           = ! empty( $pdf['customize_pdf'] ) ? $pdf['customize_pdf'] : '';
+		$pdf_bg_upload_image     = ! empty( $pdf['pdf_bg_upload_image'] ) ? $pdf['pdf_bg_upload_image'] : '';
+		$customize_pdf_header    = ! empty( $pdf['customize_pdf_header'] ) ? $pdf['customize_pdf_header'] : '';
 		$pdf_header_upload_image = ! empty( $pdf['pdf_header_upload_image'] ) ? $pdf['pdf_header_upload_image'] : '';
-		$pdf_header_img_height = ! empty( $pdf['pdf_header_img_height'] ) ? $pdf['pdf_header_img_height'] : '';
-		$pdf_header_img_width = ! empty( $pdf['pdf_header_img_width'] ) ? $pdf['pdf_header_img_width'] : '';
-		$pdf_header_img_aline = ! empty( $pdf['pdf_header_img_aline'] ) ? $pdf['pdf_header_img_aline'] : '';
-		$customize_pdf_footer = ! empty( $pdf['customize_pdf_footer'] ) ? $pdf['customize_pdf_footer'] : '';
-		$custom_pdf_css = ! empty( $pdf['custom_pdf_css'] ) ? $pdf['custom_pdf_css'] : '';
-		$pdf_content_color = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '';
-		$pdf_content_bg_color = ! empty( $pdf['pdf_content_bg_color'] ) ? $pdf['pdf_content_bg_color'] : '';
-		$pdf_header_color = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '';
-		$pdf_header_bg_color = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '';
-		$pdf_footer_color = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '';
-		$pdf_footer_bg_color = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '';
-		$pdf_bg_upload_image = ! empty( $pdf_bg_upload_image ) ? 'background-image: url("' . esc_attr( $pdf_bg_upload_image ) . '");' : '';
+		$pdf_header_img_height   = ! empty( $pdf['pdf_header_img_height'] ) ? $pdf['pdf_header_img_height'] : '';
+		$pdf_header_img_width    = ! empty( $pdf['pdf_header_img_width'] ) ? $pdf['pdf_header_img_width'] : '';
+		$pdf_header_img_aline    = ! empty( $pdf['pdf_header_img_aline'] ) ? $pdf['pdf_header_img_aline'] : '';
+		$customize_pdf_footer    = ! empty( $pdf['customize_pdf_footer'] ) ? $pdf['customize_pdf_footer'] : '';
+		$custom_pdf_css          = ! empty( $pdf['custom_pdf_css'] ) ? $pdf['custom_pdf_css'] : '';
+		$pdf_content_color       = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '';
+		$pdf_content_bg_color    = ! empty( $pdf['pdf_content_bg_color'] ) ? $pdf['pdf_content_bg_color'] : '';
+		$pdf_header_color        = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '';
+		$pdf_header_bg_color     = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '';
+		$pdf_footer_color        = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '';
+		$pdf_footer_bg_color     = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '';
+		$pdf_bg_upload_image     = ! empty( $pdf_bg_upload_image ) ? 'background-image: url("' . esc_attr( $pdf_bg_upload_image ) . '");' : '';
 		$pdf_header_upload_image = ! empty( $pdf_header_upload_image ) ? '<img src="' . esc_attr( $pdf_header_upload_image ) . '" style="height: 60; max-width: 100%; ">' : '';
 
 		$mpdf = new \Mpdf\Mpdf( [ 
@@ -338,7 +354,8 @@ class UACF7_PDF_GENERATOR {
 			'margin_footer' => 0,
 			'format' => 'A4',
 			'margin_left' => 0,
-			'margin_right' => 0
+			'margin_right' => 0,
+			'margin_top' => 25
 		] );
 
 
@@ -593,7 +610,7 @@ class UACF7_PDF_GENERATOR {
 				'format' => 'A4',
 				'margin_left' => 0,
 				'margin_right' => 0,
-				'margin_top' => 20,
+				'margin_top' => 25,
 			] );
 			$replace_key = [];
 
