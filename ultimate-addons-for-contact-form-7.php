@@ -131,8 +131,6 @@ class Ultimate_Addons_CF7 {
 		//Require ultimate addons
 		require_once UACF7_PATH . 'addons/addons.php';
 
-
-
 		//  Update UACF7 Plugin Version
 		if ( UACF7_VERSION != get_option( 'uacf7_version' ) ) {
 			update_option( 'uacf7_version', UACF7_VERSION );
@@ -165,7 +163,7 @@ class Ultimate_Addons_CF7 {
 		$pro_active = is_plugin_active( 'ultimate-addons-for-contact-form-7-pro/ultimate-addons-for-contact-form-7-pro.php' );
 
 		if ( in_array( $screen, $tf_options_screens ) || in_array( $post_type, $tf_options_post_type ) ) {
-			wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css', 'sadf' );
+			wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css' );
 
 			// // wp_enqueue_media();
 			wp_enqueue_script( 'wp-color-picker' );
