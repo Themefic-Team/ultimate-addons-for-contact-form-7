@@ -46,6 +46,9 @@ class UACF7_CF {
 
 		// add_filter( 'wpcf7_load_js', '__return_false' );
 
+		add_action('admin_notices', array( $this, 'uacf7_migration_notice'));
+		add_action('admin_init', array( $this, 'uacf7_migrate_conditional_fields_handler'));
+		add_action('admin_notices', array( $this, 'uacf7_migration_success_notice'));
 
 	}
 
@@ -58,6 +61,130 @@ class UACF7_CF {
 		wp_localize_script( 'uacf7-cf-script', 'uacf7_cf_object', $this->get_forms() );
 	}
 
+	public function uacf7_migration_notice() {
+
+		if (is_plugin_active('cf7-conditional-fields/conditional-fields.php')) {
+			if (!get_option('uacf7_migration_done')) {
+				echo '<div class="notice notice-warning is-dismissible">
+					<p><strong>Ultimate Addons for Contact Form 7:</strong>  Detected condtional data from <strong>Conditional Fields for Contact Form 7</strong>. Would you like to migrate it?</p>
+					<p>
+						<a href="' . esc_url(admin_url('admin.php?action=uacf7_migrate_conditional_fields')) . '" class="button button-primary">Migrate Now</a>
+					</p>
+				</div>';
+			}
+		}
+	}
+
+	public function uacf7_migration_success_notice() {
+		if (isset($_GET['uacf7_migration_success']) && $_GET['uacf7_migration_success'] == 1) {
+			echo '<div class="notice notice-success is-dismissible">
+				<p>Migration completed successfully.</p>
+			</div>';
+		}
+	}
+
+	public function uacf7_migrate_conditional_fields_handler() {
+		if (isset($_GET['action']) && $_GET['action'] === 'uacf7_migrate_conditional_fields') {
+			$this->uacf7_migrate_conditional_fields();
+	
+			update_option('uacf7_migration_done', true);
+			wp_redirect(admin_url('admin.php?page=wpcf7&uacf7_migration_success=1'));
+			exit;
+		}
+	}
+
+	public function uacf7_migrate_conditional_fields() {
+		$forms = get_posts([
+			'post_type' => 'wpcf7_contact_form',
+			'posts_per_page' => -1,
+		]);
+	
+		foreach ($forms as $form) {
+			$post_id = $form->ID;
+	
+			// Migrate conditional metadata
+			$conditional_data = get_post_meta($post_id, 'wpcf7cf_options', true);
+			if (!empty($conditional_data)) {
+				$migrated_data = [];
+	
+				foreach ($conditional_data as $index => $condition) {
+					$then_field = $condition['then_field'];
+					$condition_for = count($condition['and_rules']) > 1 ? 'all' : 'any';
+	
+					$uacf7_conditions = [];
+	
+					$operator_map = [
+						'equals' => 'equal',
+						'not equals' => 'not_equal',
+						'greater than' => 'greater_than',
+						'greater than or equals' => 'greater_than_or_equal_to',
+						'less than' => 'less_than',
+						'less than or equals' => 'less_than_or_equal_to',
+						'is empty' => 'contains',
+						'not empty' => 'does_not_contain',
+					];
+
+					foreach ($condition['and_rules'] as $rule_index => $rule) {
+						$mapped_operator = isset($operator_map[$rule['operator']]) 
+							? $operator_map[$rule['operator']] 
+							: $rule['operator']; 
+					
+						$uacf7_conditions[$rule_index + 1] = [
+							'uacf7_cf_tn' => $rule['if_field'],
+							'uacf7_cf_operator' => $mapped_operator,
+							'uacf7_cf_val' => $rule['if_value'],
+						];
+					}
+	
+					$migrated_data[$index + 1] = [
+						'uacf7_cf_group' => $then_field,
+						'uacf7_cf_hs' => 'show',
+						'uacf7_cf_condition_for' => $condition_for,
+						'uacf7_cf_conditions' => $uacf7_conditions,
+					];
+				}
+	
+				// Fetch existing form options to maintain other settings
+				$form_options = get_post_meta($post_id, 'uacf7_form_opt', true);
+				if (!is_array($form_options)) {
+					$form_options = [];
+				}
+	
+				// Set migrated conditionals under 'conditional' key
+				$form_options['conditional'] = [
+					'conditional_heading' => '',
+					'conditional_field_docs' => '',
+					'conditional_form_options_heading' => '',
+					'conditional_repeater' => $migrated_data,
+				];
+	
+				// Save the updated form options back to post meta
+				update_post_meta($post_id, 'uacf7_form_opt', $form_options);
+			}
+	
+			// Replace [group] tags with [conditional] in form content
+			$form_content = get_post_meta($post_id, '_form', true);
+	
+			if (!empty($form_content)) {
+				$updated_content = preg_replace_callback(
+					'/\[group\s+([^\]]+)\](.*?)\[\/group\]/s',
+					function ($matches) {
+						$group_name = $matches[1];
+						$content_inside = $matches[2];
+						return "[conditional {$group_name}]{$content_inside}[/conditional]";
+					},
+					$form_content
+				);
+	
+				// Save updated form content if changed
+				if ($updated_content !== $form_content) {
+					update_post_meta($post_id, '_form', $updated_content);
+				}
+			}
+		}
+	}
+	
+	
 
 	public function uacf7_post_meta_options_conditional_field( $value, $post_id ) {
 
@@ -307,12 +434,13 @@ class UACF7_CF {
 				// if($post_id != 128) continue;
 
 				$conditional = uacf7_get_form_option( $post_id, 'conditional' );
+
 				if ( $conditional != false ) {
 					$conditional_repeater = $conditional['conditional_repeater'];
 					if ( $conditional_repeater != false ) {
 						$count = 0;
 						$data = [];
-
+						// beaf_print_r($conditional_repeater);
 						foreach ( $conditional_repeater as $item ) {
 							$newItem = [ 
 								'uacf7_cf_hs' => $item['uacf7_cf_hs'],
