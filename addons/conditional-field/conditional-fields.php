@@ -104,6 +104,17 @@ class UACF7_CF {
 	
 			// Migrate conditional metadata
 			$conditional_data = get_post_meta($post_id, 'wpcf7cf_options', true);
+			$operator_map = [
+				'equals' => 'equal',
+				'not equals' => 'not_equal',
+				'greater than' => 'greater_than',
+				'greater than or equals' => 'greater_than_or_equal_to',
+				'less than' => 'less_than',
+				'less than or equals' => 'less_than_or_equal_to',
+				'is empty' => 'contains',
+				'not empty' => 'does_not_contain',
+			];
+			
 			if (!empty($conditional_data)) {
 				$migrated_data = [];
 	
@@ -112,17 +123,6 @@ class UACF7_CF {
 					$condition_for = count($condition['and_rules']) > 1 ? 'all' : 'any';
 	
 					$uacf7_conditions = [];
-	
-					$operator_map = [
-						'equals' => 'equal',
-						'not equals' => 'not_equal',
-						'greater than' => 'greater_than',
-						'greater than or equals' => 'greater_than_or_equal_to',
-						'less than' => 'less_than',
-						'less than or equals' => 'less_than_or_equal_to',
-						'is empty' => 'contains',
-						'not empty' => 'does_not_contain',
-					];
 
 					foreach ($condition['and_rules'] as $rule_index => $rule) {
 						$mapped_operator = isset($operator_map[$rule['operator']]) 
