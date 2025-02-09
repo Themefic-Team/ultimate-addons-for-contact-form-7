@@ -21,7 +21,6 @@ class UACF7_Redirection {
 		add_action('admin_init', array($this, 'uacf7_migrate_redirection_handler'));
 		add_action('admin_notices', array($this, 'uacf7_redirection_migration_success_notice'));
 		add_action('admin_init', array($this, 'uacf7_handle_dismiss_notice'));
-		$this->migrate_redirection_data_to_uacf7();
     }
     
     public function enqueue_redirect_script() {
@@ -331,7 +330,7 @@ class UACF7_Redirection {
 
     
 	public function migrate_redirection_data_to_uacf7() {
-		
+
 		$redirect_actions = get_posts([
 			'post_type' => 'wpcf7r_action',
 			'post_status' => 'private',
