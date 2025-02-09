@@ -45,8 +45,6 @@ class UACF7_DATABASE {
 	/*
 	 * Enqueue script Backend
 	 */
-
-
 	public function wp_enqueue_admin_script() {
 		wp_enqueue_style( 'database-admin-style', UACF7_ADDONS . '/database/assets/css/database-admin.css' );
 		wp_enqueue_script( 'database-admin', UACF7_ADDONS . '/database/assets/js/database-admin.js', array( 'jquery' ), null, true );
@@ -56,7 +54,8 @@ class UACF7_DATABASE {
 			array(
 				'admin_url' => get_admin_url() . 'admin.php',
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'plugin_dir_url' => plugin_dir_url( __FILE__ ),
+				'plugin_dir_urls' => plugin_dir_url( __FILE__ ),
+				'plugin_dir_url' => UACF7_URL,
 				'nonce' => wp_create_nonce( 'uacf7-form-database-admin-nonce' ),
 			)
 		);

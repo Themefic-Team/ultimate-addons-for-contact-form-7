@@ -52,6 +52,8 @@
       });
     });
 
+    console.log(database_admin_url.plugin_dir_url);
+
 
     // UACF7 Db View
     $(".uacf7-db-view").click(function (e) {
