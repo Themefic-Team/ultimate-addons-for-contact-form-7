@@ -169,6 +169,7 @@ class UACF7_uacf7style {
 					'type' => 'number',
 					'label' => __( 'Bottom', 'ultimate-addons-cf7' ),
 					'placeholder' => __( 'Bottom', 'ultimate-addons-cf7' ),
+					'default' => 20,
 					'field_width' => 25,
 				),
 				'uacf7_uacf7style_label_margin_left' => array(
@@ -176,6 +177,7 @@ class UACF7_uacf7style {
 					'type' => 'number',
 					'label' => __( 'Left', 'ultimate-addons-cf7' ),
 					'placeholder' => __( 'Left', 'ultimate-addons-cf7' ),
+					// 'default' => 20,
 					'field_width' => 25,
 				),
 				'styler_heading_input' => array(
@@ -468,15 +470,8 @@ class UACF7_uacf7style {
 					'type' => 'color',
 					'label' => __( 'Border Color', 'ultimate-addons-cf7' ),
 					'class' => 'tf-field-class',
-					// 'default' => '#ffffff',
 					'multiple' => false,
 					'inline' => false,
-					// 'colors' => array(
-					//     'uacf7_uacf7style_btn_color' => 'Color',
-					//     'uacf7_uacf7style_btn_color_hover' => 'Color (hover)', 
-					//     'uacf7_uacf7style_btn_background_color' => 'Background Color (hover)', 
-					//     'uacf7_uacf7style_btn_background_color_hover' => 'Background Color (hover)', 
-					// ),  
 					'field_width' => 50,
 				),
 				'uacf7_uacf7style_btn_border_color_hover' => array(
@@ -484,15 +479,8 @@ class UACF7_uacf7style {
 					'type' => 'color',
 					'label' => __( 'Border Color (Hover)', 'ultimate-addons-cf7' ),
 					'class' => 'tf-field-class',
-					// 'default' => '#ffffff',
 					'multiple' => false,
-					'inline' => true,
-					// 'colors' => array(
-					//     'uacf7_uacf7style_btn_color' => 'Color',
-					//     'uacf7_uacf7style_btn_color_hover' => 'Color (hover)', 
-					//     'uacf7_uacf7style_btn_background_color' => 'Background Color (hover)', 
-					//     'uacf7_uacf7style_btn_background_color_hover' => 'Background Color (hover)', 
-					// ),  
+					'inline' => true, 
 					'field_width' => 50,
 				),
 				'uacf7_uacf7style_btn_padding' => array(

@@ -54,8 +54,7 @@ class UACF7_DATABASE {
 			array(
 				'admin_url' => get_admin_url() . 'admin.php',
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'plugin_dir_urls' => plugin_dir_url( __FILE__ ),
-				'plugin_dir_url' => UACF7_URL,
+				'plugin_dir_url' => UACF7_URL . 'assets/admin/images',
 				'nonce' => wp_create_nonce( 'uacf7-form-database-admin-nonce' ),
 			)
 		);

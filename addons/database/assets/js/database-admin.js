@@ -52,15 +52,12 @@
       });
     });
 
-    console.log(database_admin_url.plugin_dir_url);
-
-
     // UACF7 Db View
     $(".uacf7-db-view").click(function (e) {
       e.preventDefault();
       var $this = $(this);
       var id = $(this).data("id");
-      $this.html('<img src="' + database_admin_url.plugin_dir_url + 'assets/images/loader.gif" alt="">');
+      $this.html('<img src="' + database_admin_url.plugin_dir_url + '/pre-loader.svg" alt="">');
       $.ajax({
         url: database_admin_url.ajaxurl,
         type: 'post',

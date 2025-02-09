@@ -35,7 +35,7 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 			//enqueue scripts
 			add_action( 'admin_enqueue_scripts', array( $this, 'tf_options_admin_enqueue_scripts' ), 1 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'uacf7_admin_dequeue_scripts' ), 999 );
-			// add_action( 'wp_enqueue_scripts', array( $this, 'tf_options_wp_enqueue_scripts' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'uacf7_fontend_options_wp_enueue_scripts' ) );
 
 			// Import Export
 			add_action( 'wp_ajax_uacf7_option_import', array( $this, 'uacf7_option_import_callback' ) );
@@ -253,6 +253,24 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 					)
 				)
 			);
+		}
+
+		/**
+		 * Fontend Enqueue scripts
+		 * @author M Hemel Hasan
+		 */
+		public function uacf7_fontend_options_wp_enueue_scripts(){
+			$uacf7_enable_cdn_load_css = uacf7_settings( 'uacf7_enable_cdn_load_css' );
+
+			if ( $uacf7_enable_cdn_load_css == true ) {
+				wp_enqueue_style( 'uacf7-fontawesome-4', '//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css', array(), $this->tf_options_version() );
+				wp_enqueue_style( 'uacf7-fontawesome-5', '//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css', array(), $this->tf_options_version() );
+				wp_enqueue_style( 'uacf7-fontawesome-6', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css', array(), $this->tf_options_version() );
+			} else {
+				wp_enqueue_style( 'uacf7-fontawesome-4', '//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css', array(), $this->tf_options_version() );
+				wp_enqueue_style( 'uacf7-fontawesome-5', '//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css', array(), $this->tf_options_version() );
+				wp_enqueue_style( 'uacf7-fontawesome-6', UACF7_URL . 'assets/admin/libs/font-awesome/fontawesome6/css/all.min.css', array(), $this->tf_options_version() );
+			}
 		}
 
 
