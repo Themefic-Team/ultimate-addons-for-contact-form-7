@@ -1,4 +1,7 @@
 <?php
+
+use phpDocumentor\Reflection\Types\This;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -17,7 +20,8 @@ class UACF7_Redirection {
 		add_action('admin_notices', array($this, 'uacf7_redirection_migration_notice'));
 		add_action('admin_init', array($this, 'uacf7_migrate_redirection_handler'));
 		add_action('admin_notices', array($this, 'uacf7_redirection_migration_success_notice'));
-		 
+		add_action('admin_init', array($this, 'uacf7_handle_dismiss_notice'));
+		$this->migrate_redirection_data_to_uacf7();
     }
     
     public function enqueue_redirect_script() {
@@ -249,9 +253,7 @@ class UACF7_Redirection {
 		}
 	}
     
-    /*
- 
-    
+
     /*
     * Fields array
     */
@@ -288,6 +290,7 @@ class UACF7_Redirection {
 					<p>You no longer need multiple plugins for redirection. Click "Migrate Now" to transfer your data seamlessly.</p>
 					<p>
 						<a href="' . esc_url(admin_url('admin.php?action=uacf7_migrate_redirection')) . '" class="button button-primary">Migrate Now</a>
+						<a href="' . esc_url(add_query_arg('uacf7_dismiss_redirection_notice', '1')) . '" class="button button-secondary">Not Now</a>
 					</p>
 				</div>';
 			}
@@ -302,6 +305,14 @@ class UACF7_Redirection {
 			echo '<div class="notice notice-success is-dismissible">
 				<p>Redirection migration completed successfully.</p>
 			</div>';
+		}
+	}
+
+	public function uacf7_handle_dismiss_notice() {
+		if (isset($_GET['uacf7_dismiss_redirection_notice']) && $_GET['uacf7_dismiss_redirection_notice'] === '1') {
+			update_option('uacf7_redirection_migration_done', true);
+			wp_redirect(remove_query_arg('uacf7_dismiss_redirection_notice'));
+			exit;
 		}
 	}
 
@@ -320,7 +331,7 @@ class UACF7_Redirection {
 
     
 	public function migrate_redirection_data_to_uacf7() {
-		// Fetch all wpcf7r_action posts
+		
 		$redirect_actions = get_posts([
 			'post_type' => 'wpcf7r_action',
 			'post_status' => 'private',
@@ -342,26 +353,23 @@ class UACF7_Redirection {
 				continue;
 			}
 
-			// Remove `uacf7_form_opt` from the meta data
 			unset($meta_data['uacf7_form_opt']);
-	
-			// Map redirect action metadata to Ultimate Addons format
+			
 			$redirect_data = [
 				'redirect_enabled' => ($meta_data['action_status'][0] === 'on') ? 1 : 0,
-				'redirect_url' => !empty($meta_data['external_url'][0]) ? $meta_data['external_url'][0] : '',
+				'external_url' => !empty($meta_data['use_external_url'][0]) == 'on' ? $meta_data['external_url'][0] : '',
 				'redirect_delay' => !empty($meta_data['delay_redirect_seconds'][0]) ? intval($meta_data['delay_redirect_seconds'][0]) : 0,
 				'redirection_heading' => '',
 				'redirection_docs' => '',
-				'uacf7_redirect_enable' => 1,
+				'uacf7_redirect_enable' => ($meta_data['action_status'][0] === 'on') ? 1 : 0,
 				'uacf7_redirect_form_options_heading' => '',
-				'uacf7_redirect_to_type' => !empty($meta_data['page_id'][0]) ? 'to_page' : 'to_url',
+				'uacf7_redirect_to_type' => !empty($meta_data['use_external_url'][0]) == 'on' ? 'to_url' : 'to_page',
 				'page_id' => !empty($meta_data['page_id'][0]) ? intval($meta_data['page_id'][0]) : 0,
 				'uacf7_redirect_type' => '',
 				'target' => !empty($meta_data['open_in_new_tab'][0]) && $meta_data['open_in_new_tab'][0] === 'on' ? 1 : 0,
 				'uacf7_redirect_tag_support' => '',
 			];
 	
-			// Example of additional conditional redirection logic
 			if (!empty($meta_data['http_build_query_selectively_fields'][0])) {
 				$redirect_data['conditional_redirect'] = [
 					1 => [
@@ -372,22 +380,16 @@ class UACF7_Redirection {
 				];
 			}
 
-			// Fetch and update existing form options
 			$form_options = get_post_meta($wpcf7_id, 'uacf7_form_opt', true);
 			if (!is_array($form_options)) {
 				$form_options = [];
 			}
 
-			// Save redirection settings under "redirection" key
 			$form_options['redirection'] = $redirect_data;
 	
-			// Update Ultimate Addons form options
 			update_post_meta($wpcf7_id, 'uacf7_form_opt', $form_options);
 
-			// beaf_print_r($redirect_data);
 		}
-
-		// beaf_print_r(uacf7_get_form_option(265, 'redirection'));
 
 	}
 
