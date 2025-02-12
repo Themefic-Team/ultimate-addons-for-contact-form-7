@@ -160,7 +160,7 @@ class UACF7_PDF_GENERATOR {
 				'customize_pdf_header' => array(
 					'id' => 'customize_pdf_header',
 					'label' => __( 'Header Content', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}.', 'ultimate-addons-cf7' ),
+					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}. <br> Use any php <a href="https://www.php.net/manual/en/function.date.php" target="_blank">Date</a> format for date shortcode {DATE format} ', 'ultimate-addons-cf7' ),
 					'type' => 'editor',
 
 				),
@@ -253,7 +253,7 @@ class UACF7_PDF_GENERATOR {
 				'customize_pdf_footer' => array(
 					'id' => 'customize_pdf_footer',
 					'label' => __( 'Footer Content', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}.', 'ultimate-addons-cf7' ),
+					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}. <br> Use any php <a href="https://www.php.net/manual/en/function.date.php" target="_blank">Date</a> format for date shortcode {DATE format} ', 'ultimate-addons-cf7' ),
 					'type' => 'editor',
 
 				),
