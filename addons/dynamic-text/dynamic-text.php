@@ -39,7 +39,7 @@ class UACF7_DYNAMIC_TEXT {
 		if ( empty( $tag->name ) ) {
 			return '';
 		}
-
+		// beaf_print_r($tag, $tag->name);
 		$validation_error = wpcf7_get_validation_error( $tag->name );
 
 		$class = wpcf7_form_controls_class( $tag->type );
@@ -229,12 +229,12 @@ class UACF7_DYNAMIC_TEXT {
 					<?php echo esc_html__( 'Choose Field', 'ultimate-addons-cf7' ); ?>
 				</legend>
                 
-				<select data-tag-part="value">
+				<select id="uacf7-choose-field" data-tag-part="value">
 					<option value="">
                         <?php echo esc_html__( 'Select', 'ultimate-addons-cf7' ); ?>
                     </option>
 					<option value="UACF7_URL">
-                        <?php echo esc_html__( 'Current URL', 'ultimate-addons-cf7' ); ?>
+                        <?php echo esc_html__( 'Current URL or Part', 'ultimate-addons-cf7' ); ?>
 					</option>
 					<option value="UACF7_URL_WITH_PERAMETERS">
 						<?php echo esc_html__( 'Current URL with Perameters', 'ultimate-addons-cf7' ); ?>
@@ -260,6 +260,47 @@ class UACF7_DYNAMIC_TEXT {
 				</legend>
 				<input type="text" data-tag-part="option" data-tag-option="key:" placeholder="Dynamic key" >			
 			</fieldset>
+
+			<fieldset>
+				<legend>
+					<?php echo esc_html__('URL Part (Optional)', 'ultimate-addons-cf7'); ?>
+				</legend>
+
+				<select data-tag-part="option" data-tag-option="part:">
+					<option value="">
+						<?php echo esc_html__('Full URL (Default)', 'ultimate-addons-cf7'); ?>
+					</option>
+					<option value="host">
+						<?php echo esc_html__('Host (Domain)', 'ultimate-addons-cf7'); ?>
+					</option>
+					<option value="query">
+						<?php echo esc_html__('Query String', 'ultimate-addons-cf7'); ?>
+					</option>
+					<option value="path">
+						<?php echo esc_html__('Path', 'ultimate-addons-cf7'); ?>
+					</option>
+				</select>
+			</fieldset>
+
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+					let urlPartSelect = document.getElementById("uacf7-url-part"); 
+					let shortcodeInput = document.querySelector('[data-tag-part="value"]');
+
+					if (urlPartSelect && shortcodeInput) {
+						urlPartSelect.addEventListener("change", function() {
+							let selectedPart = urlPartSelect.value;
+							let baseShortcode = "UACF7_URL";
+
+							if (selectedPart) {
+								baseShortcode += " part=" + selectedPart;
+							}
+
+							shortcodeInput.value = baseShortcode;
+						});
+					}
+				});
+			</script>
 
 			<?php
 				$tgg->print( 'class_attr' );
