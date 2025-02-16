@@ -1298,3 +1298,36 @@ function uacf7_install_hydra_booking() {
     wp_send_json_success(['message' => 'Hydra Booking Plugin installed and activated successfully.']);
 }
 
+function uacf7_dismiss_booking_pro_notice() {
+    check_ajax_referer('uacf7_admin_nonce', 'security');
+
+    set_transient('uacf7_booking_pro_notice_dismissed', true, 24 * HOUR_IN_SECONDS);
+
+    wp_send_json_success();
+}
+
+add_action('wp_ajax_uacf7_dismiss_booking_pro_notice', 'uacf7_dismiss_booking_pro_notice');
+
+function uacf7_booking_pro_admin_notice() {
+    if (get_transient('uacf7_booking_pro_notice_dismissed')) {
+        return;
+    }
+
+    ?>
+    <div class="notice notice-danger is-dismissible uacf7-booking-pro-notice">
+        <p><strong>Important Announcement:</strong> We would like to inform you that the <strong>Booking/Appointment Form Pro</strong> add-on will be discontinued in the upcoming update. As part of our ongoing commitment to enhancing user experience, we are introducing <strong>Hydra Booking</strong> Free as its replacement.</p>
+    </div>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('.uacf7-booking-pro-notice').on('click', '.notice-dismiss', function () {
+                $.post(ajaxurl, {
+                    action: 'uacf7_dismiss_booking_pro_notice',
+                    security: '<?php echo wp_create_nonce("uacf7_admin_nonce"); ?>'
+                });
+            });
+        });
+    </script>
+    <?php
+}
+add_action('admin_notices', 'uacf7_booking_pro_admin_notice');

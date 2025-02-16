@@ -813,6 +813,19 @@ form.tag-generator-panel[data-version="2"] .control-box{
     padding: 20px 15px;
 }
 
+.notice-danger.uacf7-booking-pro-notice {
+    border-left-color: #b32d2e;
+}
+.uacf7-booking-pro-notice{
+    padding: 15px;
+    margin-bottom: 10px;
+}
+.uacf7-booking-pro-notice strong:first-child{
+    display: block;
+    padding-bottom: 4px;
+    font-size: 16px;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
