@@ -270,27 +270,6 @@ class UACF7_DYNAMIC_TEXT {
 				<input type="text" data-tag-part="option" data-tag-option="key:" placeholder="Dynamic key" >			
 			</fieldset>
 
-			<fieldset>
-				<legend>
-					<?php echo esc_html__('URL Part (Optional)', 'ultimate-addons-cf7'); ?>
-				</legend>
-
-				<select data-tag-part="option" data-tag-option="part:">
-					<option value="">
-						<?php echo esc_html__('Full URL (Default)', 'ultimate-addons-cf7'); ?>
-					</option>
-					<option value="host">
-						<?php echo esc_html__('Host (Domain)', 'ultimate-addons-cf7'); ?>
-					</option>
-					<option value="query">
-						<?php echo esc_html__('Query String', 'ultimate-addons-cf7'); ?>
-					</option>
-					<option value="path">
-						<?php echo esc_html__('Path', 'ultimate-addons-cf7'); ?>
-					</option>
-				</select>
-			</fieldset>
-
 			<?php
 				$tgg->print( 'class_attr' );
 			?>
