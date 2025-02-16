@@ -759,6 +759,71 @@ form.tag-generator-panel[data-version="2"] .control-box{
     line-height: 24px;
 }
 
+/** uacf7 Hydra installation Notice */
+
+.uacf7-notice {
+    background-color: #fef3c7;
+    color: #b45309; 
+    padding: 20px 15px;
+    margin: 10px 0;
+    border-left: 4px solid #f59e0b;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.uacf7-loader {
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid #f59e0b; /* Orange */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Success Checkmark */
+.uacf7-checkmark {
+    color: green;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Error Cross */
+.uacf7-error {
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.uacf7-notice.success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-left-color: #10b981;
+    padding: 20px 15px;
+}
+
+.uacf7-notice.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-left-color: #dc2626;
+    padding: 20px 15px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Media query for responsive */
 @media screen and (max-width: 991px) {
 

@@ -1252,3 +1252,49 @@ function uacf7_plugin_update_message( $plugin_data, $response ) {
 	return $plugin_data;
 
 }
+
+
+add_action('wp_ajax_uacf7_install_hydra_booking', 'uacf7_install_hydra_booking');
+
+function uacf7_install_hydra_booking() {
+    check_ajax_referer('uacf7_admin_nonce', 'security');
+
+    if (!current_user_can('install_plugins')) {
+        wp_send_json_error(['message' => 'Permission denied']);
+    }
+
+    include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+    include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+    include_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+    $plugin_slug = 'hydra-booking';
+    $plugin_file = 'hydra-booking/hydra-booking.php';
+
+    // Check if already installed
+    if (is_plugin_active($plugin_file)) {
+        wp_send_json_success(['message' => 'Hydra Booking Plugin is already active.']);
+    }
+
+    $api = plugins_api('plugin_information', ['slug' => $plugin_slug]);
+
+    if (is_wp_error($api)) {
+        wp_send_json_error(['message' => 'Plugin info could not be retrieved.']);
+    }
+
+    $upgrader = new Plugin_Upgrader(new WP_Ajax_Upgrader_Skin());
+    $result = $upgrader->install($api->download_link);
+
+    if (is_wp_error($result)) {
+        wp_send_json_error(['message' => 'Hydra Booking Plugin Installation failed.']);
+    }
+
+    // Activate plugin
+    $activate = activate_plugin($plugin_file);
+
+    if (is_wp_error($activate)) {
+        wp_send_json_error(['message' => 'Hydra Booking Plugin Activation failed.']);
+    }
+
+    wp_send_json_success(['message' => 'Hydra Booking Plugin installed and activated successfully.']);
+}
+

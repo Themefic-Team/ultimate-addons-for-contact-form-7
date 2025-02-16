@@ -170,6 +170,16 @@ UACF7_Settings::option(
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-booking-form/',
 								'is_pro' => true,
 							),
+							'uacf7_enable_hydra_booking_form' => array(
+								'id' => 'uacf7_enable_hydra_booking_form',
+								'type' => 'switch',
+								'label' => __( 'Booking/Appointment Form', 'ultimate-addons-cf7' ),
+								'image_url' => UACF7_URL . 'assets/admin/images/addons/Booking-or-Appointment-Form@2x.png',
+								'default' => false,
+								'subtitle' => __( 'Appointment Booking Plugin with Automated Scheduling - Apple/Outlook/ Google Calendar, WooCommerce, Zoom, Fluent Forms, Zapier, Mailchimp & CRM Integration..', 'ultimate-addons-cf7' ),
+								'demo_link' => 'https://demo.hydrabooking.com/',
+								'documentation_link' => 'https://themefic.com/docs/hydrabooking/',
+							),
 							'uacf7_enable_post_submission' => array(
 								'id' => 'uacf7_enable_post_submission',
 								'type' => 'switch',
