@@ -234,7 +234,16 @@ class UACF7_DYNAMIC_TEXT {
                         <?php echo esc_html__( 'Select', 'ultimate-addons-cf7' ); ?>
                     </option>
 					<option value="UACF7_URL">
-                        <?php echo esc_html__( 'Current URL or Part', 'ultimate-addons-cf7' ); ?>
+                        <?php echo esc_html__( 'Current URL', 'ultimate-addons-cf7' ); ?>
+					</option>
+					<option value="UACF7_URL part=host">
+						<?php echo esc_html__('Current URL Host (Domain)', 'ultimate-addons-cf7'); ?>
+					</option>
+					<option value="UACF7_URL part=query">
+						<?php echo esc_html__('Current URL Query String', 'ultimate-addons-cf7'); ?>
+					</option>
+					<option value="UACF7_URL part=path">
+						<?php echo esc_html__('Current URL Path', 'ultimate-addons-cf7'); ?>
 					</option>
 					<option value="UACF7_URL_WITH_PERAMETERS">
 						<?php echo esc_html__( 'Current URL with Perameters', 'ultimate-addons-cf7' ); ?>
@@ -281,26 +290,6 @@ class UACF7_DYNAMIC_TEXT {
 					</option>
 				</select>
 			</fieldset>
-
-			<script>
-				document.addEventListener("DOMContentLoaded", function() {
-					let urlPartSelect = document.getElementById("uacf7-url-part"); 
-					let shortcodeInput = document.querySelector('[data-tag-part="value"]');
-
-					if (urlPartSelect && shortcodeInput) {
-						urlPartSelect.addEventListener("change", function() {
-							let selectedPart = urlPartSelect.value;
-							let baseShortcode = "UACF7_URL";
-
-							if (selectedPart) {
-								baseShortcode += " part=" + selectedPart;
-							}
-
-							shortcodeInput.value = baseShortcode;
-						});
-					}
-				});
-			</script>
 
 			<?php
 				$tgg->print( 'class_attr' );
