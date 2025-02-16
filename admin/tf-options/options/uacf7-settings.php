@@ -258,9 +258,9 @@ UACF7_Settings::option(
 								'label' => __( 'Weekly Email Summary', 'ultimate-addons-cf7' ),
 								'image_url' => UACF7_URL . 'assets/admin/images/addons/Save-to-Database.png',
 								'default' => false,
-								'subtitle' => __( 'Respond to inquiries from the dashboard and export submission data. It is an advanced solution for form inquiries. ', 'ultimate-addons-cf7' ),
-								'demo_link' => 'https://cf7addons.com/preview/best-contact-form-7-database-addon/',
-								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/database-pro/',
+								'subtitle' => __( 'Email Summaries provide daily or weekly reports with the number of entries for each of your forms.', 'ultimate-addons-cf7' ),
+								'demo_link' => 'https://cf7addons.com/preview/weekly-email-summary/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/weekly-email-summary/',
 								'is_pro' => true,
 							),
 
