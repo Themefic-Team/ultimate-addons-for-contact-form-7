@@ -34,6 +34,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 			//ajax save options
 			add_action( 'wp_ajax_uacf7_options_save', array( $this, 'uacf7_ajax_save_options' ) );
+			
+			add_action('wp_ajax_themefic_manage_plugin', array( $this, 'themefic_manage_plugin' ) );
 		}
 
 		public static function option( $key, $params = array() ) {
@@ -495,16 +497,21 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					}
 
 					?>
-					<li class="plugin-item">
+
+					<li class="plugin-item" data-plugin-slug="<?php echo esc_attr($plugin['slug']); ?>">
 						<div class="plugin-info-wrapper">
-							<img src="<?php echo esc_url($plugin['image']); ?>" alt="<?php echo esc_attr($plugin['name']); ?>" width="64" height="64">
+							<img src="<?php echo esc_url($plugin['image']); ?>" alt="<?php echo esc_attr($plugin['name']); ?>" width="40" height="40">
 							<div class="plugin-info">
 								<strong><?php echo esc_html($plugin['name']); ?></strong>
 								<div class="plugin-btn">
 									<?php if (!$installed): ?>
-										<a href="<?php echo esc_url(wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin['slug']), 'install-plugin_' . $plugin['slug'])); ?>" class="plugin-button install">Install</a>
+										<button class="plugin-button install" data-action="install" data-plugin="<?php echo esc_attr($plugin['slug']); ?>">
+											Install <span class="loader"></span>
+										</button>
 									<?php elseif (!$activated): ?>
-										<a href="<?php echo esc_url(wp_nonce_url(self_admin_url('plugins.php?action=activate&plugin=' . $plugin_path), 'activate-plugin_' . $plugin_path)); ?>" class="plugin-button activate">Activate</a>
+										<button class="plugin-button activate" data-action="activate" data-plugin="<?php echo esc_attr($plugin['slug']); ?>">
+											Activate <span class="loader"></span>
+										</button>
 									<?php else: ?>
 										<span class="plugin-button plugin-status active">Activated</span>
 									<?php endif; ?>
@@ -513,7 +520,9 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										<?php if (!$pro_installed): ?>
 											<a href="<?php echo esc_url($plugin['pro']['url']); ?>" class="plugin-button pro" target="_blank">Get Pro</a>
 										<?php elseif (!$pro_activated): ?>
-											<a href="<?php echo esc_url(wp_nonce_url(self_admin_url('plugins.php?action=activate&plugin=' . $pro_path), 'activate-plugin_' . $pro_path)); ?>" class="plugin-button activate-pro">Activate Pro</a>
+											<button class="plugin-button activate-pro" data-action="activate" data-plugin="<?php echo esc_attr($plugin['pro']['slug']); ?>">
+												Activate Pro <span class="loader"></span>
+											</button>
 										<?php else: ?>
 											<span class="plugin-button plugin-status active-pro">Pro Activated</span>
 										<?php endif; ?>
@@ -522,11 +531,68 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 							</div>
 						</div>
 					</li>
+
 				<?php endforeach; ?>
+
 			</ul>
 
 			<?php 
 		}
+
+		public function themefic_manage_plugin() {
+			check_ajax_referer('themefic_plugin_nonce', 'security');
+
+			if (!current_user_can('install_plugins')) {
+				wp_send_json_error('You do not have permission to perform this action.');
+			}
+
+			$plugin_slug = isset($_POST['plugin_slug']) ? sanitize_text_field($_POST['plugin_slug']) : '';
+			$plugin_action = isset($_POST['plugin_action']) ? sanitize_text_field($_POST['plugin_action']) : '';
+
+			if (!$plugin_slug || !$plugin_action) {
+				wp_send_json_error('Invalid request.');
+			}
+
+			include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+			include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+			include_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+			if ($plugin_action === 'install') {
+				$api = plugins_api('plugin_information', ['slug' => $plugin_slug]);
+
+				if (is_wp_error($api)) {
+					wp_send_json_error($api->get_error_message());
+				}
+
+				$upgrader = new Plugin_Upgrader(new WP_Ajax_Upgrader_Skin());
+				$install_result = $upgrader->install($api->download_link);
+
+				if (is_wp_error($install_result)) {
+					wp_send_json_error($install_result->get_error_message());
+				}
+
+				wp_send_json_success(['message' => 'Installed successfully.']);
+			}
+
+			if ($plugin_action === 'activate') {
+				$plugin_path = WP_PLUGIN_DIR . '/' . $plugin_slug . '/' . $plugin_slug . '.php';
+
+				if (!file_exists($plugin_path)) {
+					wp_send_json_error('Plugin file not found.');
+				}
+
+				$activate_result = activate_plugin($plugin_path);
+
+				if (is_wp_error($activate_result)) {
+					wp_send_json_error($activate_result->get_error_message());
+				}
+
+				wp_send_json_success(['message' => 'Activated successfully.']);
+			}
+
+			wp_send_json_error('Invalid action.');
+		}
+
 
 
 		// Custom comparison function based on 'label' value
