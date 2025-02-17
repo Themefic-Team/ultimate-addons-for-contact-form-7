@@ -825,6 +825,55 @@ form.tag-generator-panel[data-version="2"] .control-box{
     padding-bottom: 4px;
     font-size: 16px;
 }
+.uacf7-addons-settings-page .uacf7-addon-setting-content {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 32px;
+}
+.uacf7-addons-settings-page {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	gap: 32px;
+}
+.uacf7-addons-settings-sidebar { 
+    padding: 15px; 
+    background-color: #fcfbfe; 
+    padding: 32px;
+    border-radius: 6px; 
+    /* box-shadow: 0 2px 6px rgba(0,0,0,0.1);  */
+}
+.plugin-item { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee; 
+}
+.plugin-btn{
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+
+}
+.plugin-info-wrapper{
+    display: flex; 
+    align-items: center;
+    gap: 10px; 
+}
+.plugin-info-wrapper img{
+    width: 32px;
+    height: 32px;
+}
+.plugin-info { 
+    display: flex; 
+    gap: 10px; 
+    flex-direction: column;
+}
+.plugin-button { padding: 5px 10px; border-radius: 4px; font-size: 12px; text-decoration: none; }
+.plugin-button.install { background: #007cba; color: #fff; }
+.plugin-button.activate { background: #28a745; color: #fff; }
+.plugin-button.pro { background: #ff9800; color: #fff; }
+.plugin-status.active { color: #28a745; font-weight: bold; }
 
 @keyframes fadeIn {
     from {

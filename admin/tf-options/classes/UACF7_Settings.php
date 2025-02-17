@@ -247,128 +247,243 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				<!-- deshboard-header-include -->
 				<?php echo $this->tf_top_header(); ?>
 				<div class="uacf7-addons-settings-page">
-					<h1 class="uacf7-setting-title">
-						<?php echo _e( 'Ultimate Addons for Contact Form 7 (UACF7) Settings', 'ultimate-addons-cf7' ) ?>
-					</h1>
-					<form method="post" action="" class="tf-option-form tf-ajax-save" enctype="multipart/form-data">
-						<div class="uacf7-settings-heading">
-							<div class="uacf7-settings-heading-wrap">
-								<label for="uacf7-addon-filter" class="uacf7-addon-filter-search">
-									<span class="uacf7-addon-filter-icon">
-										<svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-											xmlns="http://www.w3.org/2000/svg">
-											<path
-												d="M17.5 17.5L14.5834 14.5833M16.6667 9.58333C16.6667 13.4954 13.4954 16.6667 9.58333 16.6667C5.67132 16.6667 2.5 13.4954 2.5 9.58333C2.5 5.67132 5.67132 2.5 9.58333 2.5C13.4954 2.5 16.6667 5.67132 16.6667 9.58333Z"
-												stroke="#D5D0E2" stroke-width="1.66667" stroke-linecap="round"
-												stroke-linejoin="round" />
-										</svg>
-									</span>
-									<input id="uacf7-addon-filter" type="text" name="uacf7_addon_filter">
-								</label>
-							</div>
-							<div class="uacf7-settings-heading-wrap">
-								<div class="uacf7-addon-filter-cta">
-									<button
-										class="uacf7-addon-filter-button all active"><?php echo _e( 'All', 'ultimate-addons-cf7' ) ?>
-										( <span class="uacf7-addon-filter-cta-count"></span> )</button>
-									<button
-										class="uacf7-addon-filter-button deactive"><?php echo _e( 'Free', 'ultimate-addons-cf7' ) ?>
-										( <span class="uacf7-addon-filter-cta-count"></span> )</button>
-									<button
-										class="uacf7-addon-filter-button activete"><?php echo _e( 'Pro', 'ultimate-addons-cf7' ) ?>
-										( <span class="uacf7-addon-filter-cta-count"></span> )</button>
+					<div class="uacf7-addons-settings-page-wrapper">
+						<h1 class="uacf7-setting-title">
+							<?php echo _e( 'Ultimate Addons for Contact Form 7 (UACF7) Settings', 'ultimate-addons-cf7' ) ?>
+						</h1>
+						<form method="post" action="" class="tf-option-form tf-ajax-save" enctype="multipart/form-data">
+							<div class="uacf7-settings-heading">
+								<div class="uacf7-settings-heading-wrap">
+									<label for="uacf7-addon-filter" class="uacf7-addon-filter-search">
+										<span class="uacf7-addon-filter-icon">
+											<svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+												xmlns="http://www.w3.org/2000/svg">
+												<path
+													d="M17.5 17.5L14.5834 14.5833M16.6667 9.58333C16.6667 13.4954 13.4954 16.6667 9.58333 16.6667C5.67132 16.6667 2.5 13.4954 2.5 9.58333C2.5 5.67132 5.67132 2.5 9.58333 2.5C13.4954 2.5 16.6667 5.67132 16.6667 9.58333Z"
+													stroke="#D5D0E2" stroke-width="1.66667" stroke-linecap="round"
+													stroke-linejoin="round" />
+											</svg>
+										</span>
+										<input id="uacf7-addon-filter" type="text" name="uacf7_addon_filter">
+									</label>
 								</div>
-							</div>
-						</div>
-
-						<div class="uacf7-addon-setting-content">
-							<input type="hidden" name="uacf7_current_page" value="uacf7_addons_page">
-							<?php
-							$data = get_option( $this->option_id, true );
-
-							$fields = [];
-
-							foreach ( $this->option_sections as $section_key => $section ) :
-
-								if ( $section_key == 'general_addons' || $section_key == 'extra_fields_addons' || $section_key == 'wooCommerce_integration' ) :
-									$fields = array_merge( $fields, $section['fields'] );
-								endif;
-							endforeach;
-
-							//  Short as Alphabetically
-							usort( $fields, array( $this, 'uacf7_setup_wizard_sorting' ) );
-							foreach ( $fields as $field_key => $field ) :
-								$id = $this->option_id . '[' . $field['id'] . ']';
-								?>
-								<div class="uacf7-single-addon-setting uacf7-fields-<?php echo esc_attr( $field['id'] ) ?>"
-									data-parent="<?php echo esc_attr( $section_key ) ?>"
-									data-filter="<?php echo esc_html( strtolower( $field['label'] ) ) ?>">
-									<?php
-									$label_class = '';
-									if ( isset( $field['is_pro'] ) ) {
-										$label_class .= $field['is_pro'] == true ? 'tf-field-disable tf-field-pro' : '';
-										echo '<span class="addon-status pro">' . esc_html( 'Pro' ) . '</span>';
-									} else {
-										echo '<span class="addon-status free">' . esc_html( 'Free' ) . '</span>';
-									}
-									$child = isset( $field['child_field'] ) ? $field['child_field'] : '';
-									$is_pro = isset( $field['is_pro'] ) ? 'pro' : '';
-									$default = $field['default'] == true ? 'checked' : '';
-									$default = isset( $data[ $field['id'] ] ) && $data[ $field['id'] ] == 1 ? 'checked' : $default;
-									$value = isset( $data[ $field['id'] ] ) ? $data[ $field['id'] ] : 0;
-									$demo_link = isset( $field['demo_link'] ) ? $field['demo_link'] : '#';
-									$documentation_link = isset( $field['documentation_link'] ) ? $field['documentation_link'] : '#';
-
-									// echo $default; 
-									?>
-									<div class="uacf7-single-addons-wrap">
-										<?php if ( isset( $field['image_url'] ) && ! empty( $field['image_url'] ) ) : ?>
-											<img src="<?php echo esc_url( $field['image_url'] ); ?>" alt="">
-										<?php endif; ?>
-										<h2 class="uacf7-single-addon-title"><?php echo esc_html( $field['label'] ) ?></h2>
-										<p class="uacf7-single-addon-desc">
-											<?php echo isset( $field['subtitle'] ) ? $field['subtitle'] : ''; ?>
-											<?php echo '<a href="' . sanitize_url( $documentation_link ) . '" target="_blank">' . __( 'Documentation', 'ultimate-addons-cf7' ) . '</a>' ?>
-										</p>
-
-									</div>
-									<div class="uacf7-single-addon-cta">
-										<a href="<?php echo sanitize_url( $demo_link ); ?>" target="_blank"
-											class="uacf7-single-addon-btn">View Demo</a>
-
-										<div class="uacf7-addon-toggle-wrap">
-											<input type="checkbox" data-child="<?php echo esc_attr( $child ) ?>"
-												data-is-pro="<?php echo esc_attr( $is_pro ) ?>"
-												id="<?php echo esc_attr( $field['id'] ) ?>" <?php echo esc_attr( $default ) ?>
-												value="<?php echo esc_html( $value ); ?>" class="uacf7-addon-input-field"
-												name="<?php echo esc_attr( $id ) ?>" id="uacf7_enable_redirection">
-
-											<label class="uacf7-addon-toggle-inner <?php echo esc_attr( $label_class ) ?> "
-												for="<?php echo esc_attr( $field['id'] ) ?>">
-												<span class="uacf7-addon-toggle-track"><svg width="16" height="17" viewBox="0 0 16 17"
-														fill="none" xmlns="http://www.w3.org/2000/svg">
-														<rect y="0.5" width="16" height="16" rx="8" fill="#79757F" />
-													</svg>
-												</span>
-											</label>
-										</div>
-
+								<div class="uacf7-settings-heading-wrap">
+									<div class="uacf7-addon-filter-cta">
+										<button
+											class="uacf7-addon-filter-button all active"><?php echo _e( 'All', 'ultimate-addons-cf7' ) ?>
+											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
+										<button
+											class="uacf7-addon-filter-button deactive"><?php echo _e( 'Free', 'ultimate-addons-cf7' ) ?>
+											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
+										<button
+											class="uacf7-addon-filter-button activete"><?php echo _e( 'Pro', 'ultimate-addons-cf7' ) ?>
+											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
 									</div>
 								</div>
+							</div>
 
+							<div class="uacf7-addon-setting-content">
+								<input type="hidden" name="uacf7_current_page" value="uacf7_addons_page">
 								<?php
-							endforeach;
-							?>
-						</div>
-						<?php wp_nonce_field( 'uacf7_option_nonce_action', 'uacf7_option_nonce' ); ?>
-					</form>
+								$data = get_option( $this->option_id, true );
+
+								$fields = [];
+
+								foreach ( $this->option_sections as $section_key => $section ) :
+
+									if ( $section_key == 'general_addons' || $section_key == 'extra_fields_addons' || $section_key == 'wooCommerce_integration' ) :
+										$fields = array_merge( $fields, $section['fields'] );
+									endif;
+								endforeach;
+
+								//  Short as Alphabetically
+								usort( $fields, array( $this, 'uacf7_setup_wizard_sorting' ) );
+								foreach ( $fields as $field_key => $field ) :
+									$id = $this->option_id . '[' . $field['id'] . ']';
+									?>
+									<div class="uacf7-single-addon-setting uacf7-fields-<?php echo esc_attr( $field['id'] ) ?>"
+										data-parent="<?php echo esc_attr( $section_key ) ?>"
+										data-filter="<?php echo esc_html( strtolower( $field['label'] ) ) ?>">
+										<?php
+										$label_class = '';
+										if ( isset( $field['is_pro'] ) ) {
+											$label_class .= $field['is_pro'] == true ? 'tf-field-disable tf-field-pro' : '';
+											echo '<span class="addon-status pro">' . esc_html( 'Pro' ) . '</span>';
+										} else {
+											echo '<span class="addon-status free">' . esc_html( 'Free' ) . '</span>';
+										}
+										$child = isset( $field['child_field'] ) ? $field['child_field'] : '';
+										$is_pro = isset( $field['is_pro'] ) ? 'pro' : '';
+										$default = $field['default'] == true ? 'checked' : '';
+										$default = isset( $data[ $field['id'] ] ) && $data[ $field['id'] ] == 1 ? 'checked' : $default;
+										$value = isset( $data[ $field['id'] ] ) ? $data[ $field['id'] ] : 0;
+										$demo_link = isset( $field['demo_link'] ) ? $field['demo_link'] : '#';
+										$documentation_link = isset( $field['documentation_link'] ) ? $field['documentation_link'] : '#';
+
+										// echo $default; 
+										?>
+										<div class="uacf7-single-addons-wrap">
+											<?php if ( isset( $field['image_url'] ) && ! empty( $field['image_url'] ) ) : ?>
+												<img src="<?php echo esc_url( $field['image_url'] ); ?>" alt="">
+											<?php endif; ?>
+											<h2 class="uacf7-single-addon-title"><?php echo esc_html( $field['label'] ) ?></h2>
+											<p class="uacf7-single-addon-desc">
+												<?php echo isset( $field['subtitle'] ) ? $field['subtitle'] : ''; ?>
+												<?php echo '<a href="' . sanitize_url( $documentation_link ) . '" target="_blank">' . __( 'Documentation', 'ultimate-addons-cf7' ) . '</a>' ?>
+											</p>
+
+										</div>
+										<div class="uacf7-single-addon-cta">
+											<a href="<?php echo sanitize_url( $demo_link ); ?>" target="_blank"
+												class="uacf7-single-addon-btn">View Demo</a>
+
+											<div class="uacf7-addon-toggle-wrap">
+												<input type="checkbox" data-child="<?php echo esc_attr( $child ) ?>"
+													data-is-pro="<?php echo esc_attr( $is_pro ) ?>"
+													id="<?php echo esc_attr( $field['id'] ) ?>" <?php echo esc_attr( $default ) ?>
+													value="<?php echo esc_html( $value ); ?>" class="uacf7-addon-input-field"
+													name="<?php echo esc_attr( $id ) ?>" id="uacf7_enable_redirection">
+
+												<label class="uacf7-addon-toggle-inner <?php echo esc_attr( $label_class ) ?> "
+													for="<?php echo esc_attr( $field['id'] ) ?>">
+													<span class="uacf7-addon-toggle-track"><svg width="16" height="17" viewBox="0 0 16 17"
+															fill="none" xmlns="http://www.w3.org/2000/svg">
+															<rect y="0.5" width="16" height="16" rx="8" fill="#79757F" />
+														</svg>
+													</span>
+												</label>
+											</div>
+
+										</div>
+									</div>
+
+									<?php
+								endforeach;
+								?>
+							</div>
+							<?php wp_nonce_field( 'uacf7_option_nonce_action', 'uacf7_option_nonce' ); ?>
+						</form>
+					</div>
+					
+					<div class="uacf7-addons-settings-sidebar">
+						<?php echo $this->tf_sidebar(); ?>
+					</div>
 				</div>
-
-
 			</div>
 
 			<?php
 		}
+
+		public function tf_sidebar() {
+			?>
+			<div class="uacf7-sidebar">
+				<div class="uacf7-sidebar-wrap">
+					<div class="uacf7-sidebar-header">
+						<h1 class="uacf7-sidebar-title"><?php echo _e( 'Recommended Plugins', 'ultimate-addons-cf7' ) ?></h1>
+					</div>
+					<div class="uacf7-sidebar-content">
+						<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil minus natus consequuntur placeat et vel laudantium reiciendis qui? Facilis iusto saepe omnis ullam modi placeat expedita enim dolor. </p>
+						<?php echo $this->tf_get_sidebar_plugin_list(); ?>
+					</div>
+					<div class="uacf7-sidebar-footer">
+						Footer Content goes here
+						
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil minus natus consequuntur placeat et vel laudantium reiciendis qui? Facilis iusto saepe omnis ullam modi placeat expedita enim dolor. 
+					</div>
+				</div>
+			</div>
+			<?php
+		}
+
+		public function tf_get_sidebar_plugin_list(){
+
+			$plugins = [
+				[
+					'name'       => 'Ultimate Addons for Contact Form 7',
+					'slug'       => 'ultimate-addons-for-contact-form-7',
+					'file_name'  => 'ultimate-addons-for-contact-form-7',
+					'image'      => 'https://ps.w.org/ultimate-addons-for-contact-form-7/assets/icon-128x128.png',
+					'pro'        => true,
+					'pro_url'    => 'https://cf7addons.com/pricing/',
+				],
+				[
+					'name'       => 'Ultimate Before After Image Slider & Gallery – BEAF',
+					'slug'       => 'beaf-before-and-after-gallery',
+					'file_name'  => 'before-and-after-gallery',
+					'pro'        => true,
+					'image'      => 'https://ps.w.org/beaf-before-and-after-gallery/assets/icon-128x128.png',
+					'pro_url'    => 'https://themefic.com/plugins/beaf/pro/',
+				],
+				[
+					'name'       => 'Tourfic – Ultimate Travel Booking, Hotel Booking & Car Rental WordPress Plugin | WooCommerce Booking',
+					'slug'       => 'tourfic',
+					'file_name'  => 'tourfic',
+					'image'      => 'https://ps.w.org/tourfic/assets/icon-128x128.gif',
+					'pro'        => true,
+					'pro_url'    => 'https://themefic.com/tourfic/',
+				],
+				[
+					'name'       => 'Instantio – WooCommerce Quick Checkout | Direct Checkout, Floating Cart, Side Cart & Popup Cart',
+					'slug'       => 'instantio',
+					'file_name'  => 'instantio',
+					'image'      => 'https://ps.w.org/instantio/assets/icon-128x128.png',
+					'pro'        => true,
+					'pro_url'    => 'https://themefic.com/instantio/',
+				],
+				[
+					'name'       => 'Hydra Booking – All in One Appointment Booking System | Appointment Scheduling, Booking Calendar & WooCommerce Bookings',
+					'slug'       => 'hydra-booking',
+					'file_name'  => 'hydra-booking',
+					'image'      => 'https://ps.w.org/hydra-booking/assets/icon-128x128.jpg',
+					'pro'        => true,
+					'pro_url'    => 'https://hydrabooking.com/',
+				],
+				[
+					'name'       => 'Before After Slider for WooCommerce – eBEAF',
+					'slug'       => 'before-after-for-woocommerce',
+					'file_name'  => 'before-after-for-woocommerce',
+					'image'      => 'https://ps.w.org/before-after-for-woocommerce/assets/icon-128x128.gif',
+					'pro'        => true,
+					'pro_url'    => 'https://themefic.com/plugins/ebeaf/pro/',
+				],
+			];
+
+			?>
+
+			<ul>
+				<?php foreach ($plugins as $plugin): 
+					$plugin_path = $plugin['slug'] . '/' . $plugin['file_name'] . '.php';
+					$installed = file_exists(WP_PLUGIN_DIR . '/' . $plugin_path);
+					$activated = $installed && is_plugin_active($plugin_path);
+					?>
+					<li class="plugin-item">
+						<div class="plugin-info-wrapper">
+							<img src="<?php echo esc_url($plugin['image']); ?>" alt="<?php echo esc_attr($plugin['name']); ?>" width="64" height="64">
+							<div class="plugin-info">
+								<strong><?php echo esc_html($plugin['name']); ?></strong>
+								<div class="plugin-btn">
+
+									<?php if (!$installed): ?>
+										<a href="<?php echo esc_url(wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin['slug']), 'install-plugin_' . $plugin['slug'])); ?>" class="plugin-button install">Install</a>
+									<?php elseif (!$activated): ?>
+										<a href="<?php echo esc_url(wp_nonce_url(self_admin_url('plugins.php?action=activate&plugin=' . $plugin_path), 'activate-plugin_' . $plugin_path)); ?>" class="plugin-button activate">Activate</a>
+									<?php else: ?>
+										<span class="plugin-status active">Actived</span>
+									<?php endif; ?>
+
+									<?php if (!empty($plugin['pro_url']) && (!$installed || !$activated)): ?>
+										<a href="<?php echo esc_url($plugin['pro_url']); ?>" class="plugin-button pro">Get Pro</a>
+									<?php endif; ?>
+								</div>
+							</div>
+						</div>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+
+			<?php 
+		}
+
 
 		// Custom comparison function based on 'label' value
 		public function uacf7_setup_wizard_sorting( $a, $b ) {
