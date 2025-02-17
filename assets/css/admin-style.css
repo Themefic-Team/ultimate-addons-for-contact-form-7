@@ -869,11 +869,38 @@ form.tag-generator-panel[data-version="2"] .control-box{
     gap: 10px; 
     flex-direction: column;
 }
-.plugin-button { padding: 5px 10px; border-radius: 4px; font-size: 12px; text-decoration: none; }
-.plugin-button.install { background: #007cba; color: #fff; }
-.plugin-button.activate { background: #28a745; color: #fff; }
-.plugin-button.pro { background: #ff9800; color: #fff; }
-.plugin-status.active { color: #28a745; font-weight: bold; }
+.plugin-button { 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+    font-size: 12px; 
+    text-decoration: none; 
+}
+.plugin-button.install { 
+    background: #007cba; 
+    color: #fff; 
+}
+.plugin-button.activate { 
+    background: #382673; 
+    color: #fff; 
+}
+.plugin-button.pro { 
+    background: #ff9800;
+    color: #fff; 
+}
+.plugin-status.active { 
+    background: #382673;
+    color: #fff; 
+    opacity: 0.8; 
+}
+.plugin-button.activate-pro { 
+    background: #ff5722; 
+    color: #fff; 
+}
+.plugin-status.active-pro { 
+    background: #ff5722; 
+    color: #fff; 
+    opacity: 0.8; 
+}
 
 @keyframes fadeIn {
     from {

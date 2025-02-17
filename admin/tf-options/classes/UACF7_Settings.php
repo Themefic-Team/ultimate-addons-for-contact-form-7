@@ -379,16 +379,25 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			<div class="uacf7-sidebar">
 				<div class="uacf7-sidebar-wrap">
 					<div class="uacf7-sidebar-header">
-						<h1 class="uacf7-sidebar-title"><?php echo _e( 'Recommended Plugins', 'ultimate-addons-cf7' ) ?></h1>
+						<h1 class="uacf7-sidebar-title"><?php echo _e( 'Themefic Family', 'ultimate-addons-cf7' ) ?></h1>
 					</div>
 					<div class="uacf7-sidebar-content">
-						<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil minus natus consequuntur placeat et vel laudantium reiciendis qui? Facilis iusto saepe omnis ullam modi placeat expedita enim dolor. </p>
+						<p>
+							Welcome to the <strong>**Themefic Family**!</strong> We build powerful and innovative WordPress plugins to help you enhance your website’s functionality with ease. Below is a list of our recommended plugins—install, activate, and supercharge your site today!
+						</p>
 						<?php echo $this->tf_get_sidebar_plugin_list(); ?>
 					</div>
 					<div class="uacf7-sidebar-footer">
-						Footer Content goes here
-						
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil minus natus consequuntur placeat et vel laudantium reiciendis qui? Facilis iusto saepe omnis ullam modi placeat expedita enim dolor. 
+						<p>
+							Need help or have any questions? Our support team is here to assist you.  
+							Visit our <a href="https://portal.themefic.com/support/" target="_blank">Support Center</a> or explore our <a href="https://themefic.com/docs" target="_blank">Documentation</a> for quick guides and tutorials.
+						</p>
+						<p>
+							Stay updated with our latest features and offers by following us on  
+							<a href="https://facebook.com/themefic" target="_blank">Facebook</a> | 
+							<a href="https://twitter.com/themefic" target="_blank">Twitter</a> | 
+							<a href="https://themefic.com/blog" target="_blank">Blog</a>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -403,48 +412,68 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					'slug'       => 'ultimate-addons-for-contact-form-7',
 					'file_name'  => 'ultimate-addons-for-contact-form-7',
 					'image'      => 'https://ps.w.org/ultimate-addons-for-contact-form-7/assets/icon-128x128.png',
-					'pro'        => true,
-					'pro_url'    => 'https://cf7addons.com/pricing/',
+					'pro'        => [
+						'slug'      => 'ultimate-addons-for-contact-form-7-pro',
+						'file_name' => 'ultimate-addons-for-contact-form-7-pro',
+						'url'       => 'https://cf7addons.com/pricing/',
+					],
 				],
 				[
 					'name'       => 'Ultimate Before After Image Slider & Gallery – BEAF',
 					'slug'       => 'beaf-before-and-after-gallery',
 					'file_name'  => 'before-and-after-gallery',
-					'pro'        => true,
 					'image'      => 'https://ps.w.org/beaf-before-and-after-gallery/assets/icon-128x128.png',
-					'pro_url'    => 'https://themefic.com/plugins/beaf/pro/',
+					'pro_url'    => '',
+					'pro'        => [
+						'slug'      => 'beaf-before-and-after-gallery',
+						'file_name' => 'before-and-after-gallery',
+						'url'       => 'https://themefic.com/plugins/beaf/pro/',
+					],
 				],
 				[
 					'name'       => 'Tourfic – Ultimate Travel Booking, Hotel Booking & Car Rental WordPress Plugin | WooCommerce Booking',
 					'slug'       => 'tourfic',
 					'file_name'  => 'tourfic',
 					'image'      => 'https://ps.w.org/tourfic/assets/icon-128x128.gif',
-					'pro'        => true,
-					'pro_url'    => 'https://themefic.com/tourfic/',
+					'pro'        => [
+						'slug'      => 'tourfic-pro',
+						'file_name' => 'tourfic-pro',
+						'url'       => 'https://themefic.com/tourfic/',
+					],
 				],
 				[
 					'name'       => 'Instantio – WooCommerce Quick Checkout | Direct Checkout, Floating Cart, Side Cart & Popup Cart',
 					'slug'       => 'instantio',
 					'file_name'  => 'instantio',
 					'image'      => 'https://ps.w.org/instantio/assets/icon-128x128.png',
-					'pro'        => true,
-					'pro_url'    => 'https://themefic.com/instantio/',
+					'pro'        => [
+						'slug'      => 'wooinstant',
+						'file_name' => 'wooinstant',
+						'url'       => 'https://themefic.com/instantio/',
+					],
 				],
 				[
 					'name'       => 'Hydra Booking – All in One Appointment Booking System | Appointment Scheduling, Booking Calendar & WooCommerce Bookings',
 					'slug'       => 'hydra-booking',
 					'file_name'  => 'hydra-booking',
 					'image'      => 'https://ps.w.org/hydra-booking/assets/icon-128x128.jpg',
-					'pro'        => true,
-					'pro_url'    => 'https://hydrabooking.com/',
+					'pro'        => [
+						'slug'      => 'hydra-booking-pro',
+						'file_name' => 'hydra-booking-pro',
+						'url'       => 'https://hydrabooking.com/',
+					],
 				],
 				[
 					'name'       => 'Before After Slider for WooCommerce – eBEAF',
 					'slug'       => 'before-after-for-woocommerce',
 					'file_name'  => 'before-after-for-woocommerce',
 					'image'      => 'https://ps.w.org/before-after-for-woocommerce/assets/icon-128x128.gif',
-					'pro'        => true,
-					'pro_url'    => 'https://themefic.com/plugins/ebeaf/pro/',
+					'pro_url'    => '',
+					'pro'        => [
+						'slug'      => 'before-after-for-woocommerce-pro',
+						'file_name' => 'before-after-for-woocommerce-pro',
+						'url'       => 'https://themefic.com/plugins/ebeaf/pro/',
+					],
 				],
 			];
 
@@ -455,6 +484,16 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					$plugin_path = $plugin['slug'] . '/' . $plugin['file_name'] . '.php';
 					$installed = file_exists(WP_PLUGIN_DIR . '/' . $plugin_path);
 					$activated = $installed && is_plugin_active($plugin_path);
+
+					$pro_installed = false;
+					$pro_activated = false;
+					
+					if (!empty($plugin['pro'])) {
+						$pro_path = $plugin['pro']['slug'] . '/' . $plugin['pro']['file_name'] . '.php';
+						$pro_installed = file_exists(WP_PLUGIN_DIR . '/' . $pro_path);
+						$pro_activated = $pro_installed && is_plugin_active($pro_path);
+					}
+
 					?>
 					<li class="plugin-item">
 						<div class="plugin-info-wrapper">
@@ -462,17 +501,22 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 							<div class="plugin-info">
 								<strong><?php echo esc_html($plugin['name']); ?></strong>
 								<div class="plugin-btn">
-
 									<?php if (!$installed): ?>
 										<a href="<?php echo esc_url(wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin['slug']), 'install-plugin_' . $plugin['slug'])); ?>" class="plugin-button install">Install</a>
 									<?php elseif (!$activated): ?>
 										<a href="<?php echo esc_url(wp_nonce_url(self_admin_url('plugins.php?action=activate&plugin=' . $plugin_path), 'activate-plugin_' . $plugin_path)); ?>" class="plugin-button activate">Activate</a>
 									<?php else: ?>
-										<span class="plugin-status active">Actived</span>
+										<span class="plugin-button plugin-status active">Activated</span>
 									<?php endif; ?>
 
-									<?php if (!empty($plugin['pro_url']) && (!$installed || !$activated)): ?>
-										<a href="<?php echo esc_url($plugin['pro_url']); ?>" class="plugin-button pro">Get Pro</a>
+									<?php if (!empty($plugin['pro'])): ?>
+										<?php if (!$pro_installed): ?>
+											<a href="<?php echo esc_url($plugin['pro']['url']); ?>" class="plugin-button pro" target="_blank">Get Pro</a>
+										<?php elseif (!$pro_activated): ?>
+											<a href="<?php echo esc_url(wp_nonce_url(self_admin_url('plugins.php?action=activate&plugin=' . $pro_path), 'activate-plugin_' . $pro_path)); ?>" class="plugin-button activate-pro">Activate Pro</a>
+										<?php else: ?>
+											<span class="plugin-button plugin-status active-pro">Pro Activated</span>
+										<?php endif; ?>
 									<?php endif; ?>
 								</div>
 							</div>
