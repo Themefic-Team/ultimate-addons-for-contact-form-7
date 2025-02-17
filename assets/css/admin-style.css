@@ -841,7 +841,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
     padding: 32px;
     border-radius: 6px; 
     position: sticky;
-    top: 20px; 
+    top: 10px; 
     align-self: start;
     max-height: 100vh;
     overflow-y: auto;
@@ -857,7 +857,6 @@ form.tag-generator-panel[data-version="2"] .control-box{
     display: flex;
     justify-content: flex-start;
     gap: 10px;
-
 }
 .plugin-info-wrapper{
     display: flex; 

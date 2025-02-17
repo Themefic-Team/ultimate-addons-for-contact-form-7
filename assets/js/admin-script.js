@@ -253,7 +253,7 @@ jQuery(document).ready(function ($) {
 });
 
 jQuery(document).ready(function($) {
-    $('.plugin-button').on('click', function(e) {
+    $('.plugin-button').not('.pro').on('click', function(e) {
         e.preventDefault();
 
         let button = $(this);
