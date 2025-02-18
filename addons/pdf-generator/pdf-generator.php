@@ -333,12 +333,12 @@ class UACF7_PDF_GENERATOR {
 		$pdf_header_img_aline    = ! empty( $pdf['pdf_header_img_aline'] ) ? $pdf['pdf_header_img_aline'] : '';
 		$customize_pdf_footer    = ! empty( $pdf['customize_pdf_footer'] ) ? $pdf['customize_pdf_footer'] : '';
 		$custom_pdf_css          = ! empty( $pdf['custom_pdf_css'] ) ? $pdf['custom_pdf_css'] : '';
-		$pdf_content_color       = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '';
+		$pdf_content_color       = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '000';
 		$pdf_content_bg_color    = ! empty( $pdf['pdf_content_bg_color'] ) ? $pdf['pdf_content_bg_color'] : '';
-		$pdf_header_color        = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '';
-		$pdf_header_bg_color     = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '';
-		$pdf_footer_color        = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '';
-		$pdf_footer_bg_color     = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '';
+		$pdf_header_color        = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '#fff';
+		$pdf_header_bg_color     = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '#382673';
+		$pdf_footer_color        = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '#fff';
+		$pdf_footer_bg_color     = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '#5D5676';
 		$pdf_bg_upload_image     = ! empty( $pdf_bg_upload_image ) ? 'background-image: url("' . esc_attr( $pdf_bg_upload_image ) . '");' : '';
 		$pdf_header_upload_image = ! empty( $pdf_header_upload_image ) ? '<img src="' . esc_attr( $pdf_header_upload_image ) . '" style="height: 60; max-width: 100%; ">' : '';
 
@@ -365,15 +365,21 @@ class UACF7_PDF_GENERATOR {
                  ' . esc_attr( $pdf_bg_upload_image ) . '
                 background-repeat:no-repeat;
                 background-image-resize: 6; 
+				background-color: #F8F7FD;
             }
             .pdf-header{
                 height: 60px;   
                 background-color: ' . esc_attr( $pdf_header_bg_color ) . ';
                 color : ' . esc_attr( $pdf_header_color ) . '; 
+				padding: 10px 25px;
             }
+			.pdf-header p{
+				margin: 0;
+			}
             .pdf-footer{ 
                 background-color: ' . esc_attr( $pdf_footer_bg_color ) . ';
                 color : ' . esc_attr( $pdf_footer_color ) . '; 
+				padding: 10px 25px;
             }
             .pdf-content{ 
                 background-color: ' . esc_attr( $pdf_content_bg_color ) . ';
@@ -382,40 +388,56 @@ class UACF7_PDF_GENERATOR {
                 height: 100%;
             }
             .pdf-content table{  
-                width: 100%; 
-                border-collapse: collapse; 
-                border-left: 1px solid ;
-                border-bottom: 1px solid;
-            }
-            .pdf-content tr td{   
-                border-top: 1px solid;
-                border-right: 1px solid;
-                padding: 5px;
-                text-align: center;
-            } 
+				width: 100%; 
+				border-collapse: collapse; 
+				border: 1px dashed rgb(227, 227, 227) ;
+				background-color: #F8F7FD;
+				padding: 10px 15px;
+				margin-top: 15px;
+				border-radius: 10px !important;
+			}
+			.pdf-content tr {
+				padding: 10px;
+				margin-lef: 10px;
+				margin-right: 10px;
+			}
+			
+			.pdf-content tr td{ 
+				padding-left: 15px;
+				text-align: left;
+				border-bottom: 1px solid #F0EEF6;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+			} 
+			pdf-content tr td:first-child{
+				min-width: 25%;
+			}
+			.pdf-content tr:last-child td{
+				border-bottom: 0;
+			}
             .header-logo{
-                text-align: ' . esc_attr( $pdf_header_img_aline ) . '; 
-                float: left; 
-                width: 20%;
-            }
-            .header-content{
-                float: right; 
-                width: 80%
-                
-            }
+				text-align: ' . esc_attr( $pdf_header_img_aline ) . '; 
+				width: 20%;
+				float: left;
+			}
+			.header-content{ 
+				float: right;
+				width: 80%;
+				text-align: right;
+			}
             ' . $custom_pdf_css . '
         </style>';
-
 
 		// PDF Header checked( 'on', $disable_header );
 		if ( $disable_header != true ) {
 			$mpdf->SetHTMLHeader( '
             <div class="pdf-header"  >
-                    <div class="header-logo"  >
+                    <div class="header-logo">
                         ' . $pdf_header_upload_image . '
                     </div>    
                     <div class="header-content">
-                    ' . $customize_pdf_header . '
+                    ' .  $customize_pdf_header . '
                     </div>
             </div>
             ' );
@@ -524,7 +546,7 @@ class UACF7_PDF_GENERATOR {
 		$mpdf->WriteHTML( $pdf_style, \Mpdf\HTMLParserMode::HEADER_CSS );
 
 		// PDF Footer Content
-		$mpdf->WriteHTML( '<div class="pdf-content">' . nl2br( $pdf_content ) . '   </div>' );
+		$mpdf->WriteHTML( '<div class="pdf-content">' . nl2br( $this->makeLinksClickable($pdf_content) ) . '   </div>' );
 
 		// make directory 
 		if ( ! file_exists( $dir . '/uacf7-uploads' ) ) {
@@ -589,14 +611,15 @@ class UACF7_PDF_GENERATOR {
 			$pdf_header_img_aline = ! empty( $pdf['pdf_header_img_aline'] ) ? $pdf['pdf_header_img_aline'] : '';
 			$customize_pdf_footer = ! empty( $pdf['customize_pdf_footer'] ) ? $pdf['customize_pdf_footer'] : '';
 			$custom_pdf_css = ! empty( $pdf['custom_pdf_css'] ) ? $pdf['custom_pdf_css'] : '';
-			$pdf_content_color = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '';
+			$pdf_content_color = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '#000';
 			$pdf_content_bg_color = ! empty( $pdf['pdf_content_bg_color'] ) ? $pdf['pdf_content_bg_color'] : '';
-			$pdf_header_color = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '';
-			$pdf_header_bg_color = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '';
-			$pdf_footer_color = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '';
-			$pdf_footer_bg_color = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '';
+			$pdf_header_color = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '#fff';
+			$pdf_header_bg_color = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '#382673';
+			$pdf_footer_color = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '#fff';
+			$pdf_footer_bg_color = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '#5D5676';
 			$pdf_bg_upload_image = ! empty( $pdf_bg_upload_image ) ? 'background-image: url("' . esc_attr( $pdf_bg_upload_image ) . '");' : '';
 			$pdf_header_upload_image = ! empty( $pdf_header_upload_image ) ? '<img src="' . esc_attr( $pdf_header_upload_image ) . '" style="height: 60; max-width: 100%; ">' : '';
+			
 			$mpdf = new \Mpdf\Mpdf( [ 
 				'fontdata' => [ // lowercase letters only in font key
 					'dejavuserifcond' => [ 
@@ -617,18 +640,24 @@ class UACF7_PDF_GENERATOR {
 			// PDF Style
 			$pdf_style = ' <style>
                 body {
-                     ' . $pdf_bg_upload_image . '
+                    background:url(' . $pdf_bg_upload_image . ');
                     background-repeat:no-repeat;
                     background-image-resize: 6; 
+					background-color: #F8F7FD;
                 }
                 .pdf-header{
                     height: 60px;   
                     background-color: ' . esc_attr( $pdf_header_bg_color ) . ';
                     color : ' . esc_attr( $pdf_header_color ) . '; 
+					padding: 10px 25px;
                 }
+				.pdf-header p{
+					margin: 0;
+				}
                 .pdf-footer{ 
                     background-color: ' . esc_attr( $pdf_footer_bg_color ) . ';
                     color : ' . esc_attr( $pdf_footer_color ) . '; 
+					padding: 10px 25px;
                 }
                 .pdf-content{ 
                     background-color: ' . esc_attr( $pdf_content_bg_color ) . ';
@@ -639,24 +668,42 @@ class UACF7_PDF_GENERATOR {
                 .pdf-content table{  
                     width: 100%; 
                     border-collapse: collapse; 
-                    border-left: 1px solid ;
-                    border-bottom: 1px solid;
+                    border: 1px dashed rgb(227, 227, 227) ;
+                    // border-bottom: 1px solid rgb(218, 218, 218);
+					background-color: #F8F7FD;
+					padding: 10px 15px;
+					margin-top: 15px;
+					border-radius: 10px !important;
                 }
-                .pdf-content tr td{   
-                    border-top: 1px solid;
-                    border-right: 1px solid;
-                    padding: 5px;
-                    text-align: center;
+				.pdf-content tr {
+					padding: 10px;
+					margin-lef: 10px;
+					margin-right: 10px;
+				}
+				
+                .pdf-content tr td{ 
+                    padding-left: 15px;
+                    text-align: left;
+					border-bottom: 1px solid #F0EEF6;
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
                 } 
+				pdf-content tr td:first-child{
+					min-width: 25%;
+				}
+				.pdf-content tr:last-child td{
+					border-bottom: 0;
+				}
                 .header-logo{
                     text-align: ' . esc_attr( $pdf_header_img_aline ) . '; 
-                    float: left; 
                     width: 20%;
+					float: left;
                 }
-                .header-content{
-                    float: right; 
-                    width: 80%
-                    
+                .header-content{ 
+					float: right;
+                    width: 80%;
+					text-align: right;
                 }
                 ' . $custom_pdf_css . '
             </style>';
@@ -749,16 +796,22 @@ class UACF7_PDF_GENERATOR {
 			$mpdf->WriteHTML( $pdf_style, \Mpdf\HTMLParserMode::HEADER_CSS );
 			
 			// PDF Footer Content
-			$mpdf->WriteHTML( '<div class="pdf-content">' . nl2br( $pdf_content ) . '   </div>' );
+			$mpdf->WriteHTML( '<div class="pdf-content">' . nl2br( $this->makeLinksClickable($pdf_content)) . '   </div>' );
 
 			$pdf_url = $dir . '/uacf7-uploads/' . $uacf7_pdf_name . '.pdf';
 
-			$mpdf->Output( $pdf_url, 'F' ); // save to databaes 
+			$mpdf->Output( $pdf_url, 'F' ); 
 
 			$components['attachments'][] = $pdf_url;
 		}
 		return $components;
 
+	}
+
+	public function makeLinksClickable($text) {
+		$pattern = '/(https?:\/\/[^\s]+)/';
+		
+		return preg_replace($pattern, '<a href="$1">$1</a>', $text);
 	}
 
 	// Import Export 
