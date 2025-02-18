@@ -427,8 +427,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					'image'      => 'https://ps.w.org/beaf-before-and-after-gallery/assets/icon-128x128.png',
 					'pro_url'    => '',
 					'pro'        => [
-						'slug'      => 'beaf-before-and-after-gallery',
-						'file_name' => 'before-and-after-gallery',
+						'slug'      => 'beaf-before-and-after-gallery-pro',
+						'file_name' => 'before-and-after-gallery-pro',
 						'url'       => 'https://themefic.com/plugins/beaf/pro/',
 					],
 				],
@@ -505,11 +505,11 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								<strong><?php echo esc_html($plugin['name']); ?></strong>
 								<div class="plugin-btn">
 									<?php if (!$installed): ?>
-										<button class="plugin-button install" data-action="install" data-plugin="<?php echo esc_attr($plugin['slug']); ?>">
+										<button class="plugin-button install" data-action="install" data-plugin="<?php echo esc_attr($plugin['slug']); ?>" data-plugin_filename="<?php echo esc_attr($plugin['file_name']); ?>">
 											Install <span class="loader"></span>
 										</button>
 									<?php elseif (!$activated): ?>
-										<button class="plugin-button activate" data-action="activate" data-plugin="<?php echo esc_attr($plugin['slug']); ?>">
+										<button class="plugin-button activate" data-action="activate" data-plugin="<?php echo esc_attr($plugin['slug']); ?>" data-plugin_filename="<?php echo esc_attr($plugin['file_name']); ?>" >
 											Activate <span class="loader"></span>
 										</button>
 									<?php else: ?>
@@ -520,7 +520,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										<?php if (!$pro_installed): ?>
 											<a href="<?php echo esc_url($plugin['pro']['url']); ?>" class="plugin-button pro" target="_blank">Get Pro</a>
 										<?php elseif (!$pro_activated): ?>
-											<button class="plugin-button activate-pro" data-action="activate" data-plugin="<?php echo esc_attr($plugin['pro']['slug']); ?>">
+											<button class="plugin-button activate-pro" data-action="activate" data-plugin="<?php echo esc_attr($plugin['pro']['slug']); ?>" data-plugin_filename="<?php echo esc_attr($plugin['pro']['file_name']); ?>">
 												Activate Pro <span class="loader"></span>
 											</button>
 										<?php else: ?>
@@ -547,6 +547,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			}
 
 			$plugin_slug = isset($_POST['plugin_slug']) ? sanitize_text_field($_POST['plugin_slug']) : '';
+			$plugin_filename = isset($_POST['plugin_filename']) ? sanitize_text_field($_POST['plugin_filename']) : '';
 			$plugin_action = isset($_POST['plugin_action']) ? sanitize_text_field($_POST['plugin_action']) : '';
 
 			if (!$plugin_slug || !$plugin_action) {
@@ -575,7 +576,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			}
 
 			if ($plugin_action === 'activate') {
-				$plugin_path = WP_PLUGIN_DIR . '/' . $plugin_slug . '/' . $plugin_slug . '.php';
+				$plugin_path = WP_PLUGIN_DIR . '/' . $plugin_slug . '/' . $plugin_filename . '.php';
 
 				if (!file_exists($plugin_path)) {
 					wp_send_json_error('Plugin file not found.');

@@ -259,6 +259,7 @@ jQuery(document).ready(function($) {
         let button = $(this);
         let action = button.data('action');
         let pluginSlug = button.data('plugin');
+        let pluginFileName = button.data('plugin_filename');
 
         if (!action || !pluginSlug) return;
 
@@ -281,6 +282,7 @@ jQuery(document).ready(function($) {
                 action: 'themefic_manage_plugin',
                 security: themefic_plugin_nonce,
                 plugin_slug: pluginSlug,
+                plugin_filename: pluginFileName,
                 plugin_action: action
             },
             success: function(response) {
