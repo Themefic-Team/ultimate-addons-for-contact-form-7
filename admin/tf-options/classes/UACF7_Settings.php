@@ -465,18 +465,18 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 						'url'       => 'https://hydrabooking.com/',
 					],
 				],
-				[
-					'name'       => 'Before After Slider for WooCommerce – eBEAF',
-					'slug'       => 'before-after-for-woocommerce',
-					'file_name'  => 'before-after-for-woocommerce',
-					'image'      => 'https://ps.w.org/before-after-for-woocommerce/assets/icon-128x128.gif',
-					'pro_url'    => '',
-					'pro'        => [
-						'slug'      => 'before-after-for-woocommerce-pro',
-						'file_name' => 'before-after-for-woocommerce-pro',
-						'url'       => 'https://themefic.com/plugins/ebeaf/pro/',
-					],
-				],
+				// [
+				// 	'name'       => 'Before After Slider for WooCommerce – eBEAF',
+				// 	'slug'       => 'before-after-for-woocommerce',
+				// 	'file_name'  => 'before-after-for-woocommerce',
+				// 	'image'      => 'https://ps.w.org/before-after-for-woocommerce/assets/icon-128x128.gif',
+				// 	'pro_url'    => '',
+				// 	'pro'        => [
+				// 		'slug'      => 'before-after-for-woocommerce-pro',
+				// 		'file_name' => 'before-after-for-woocommerce-pro',
+				// 		'url'       => 'https://themefic.com/plugins/ebeaf/pro/',
+				// 	],
+				// ],
 			];
 
 			?>
