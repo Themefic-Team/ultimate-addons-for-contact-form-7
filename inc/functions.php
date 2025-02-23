@@ -1483,3 +1483,12 @@ function uacf7_migrate_conditional_fields() {
 	}
 }
 
+// html email content line breaks issue solved.
+add_filter('wp_mail', function ($args) {
+    if ($args['headers'] && strpos($args['headers'], 'text/html') !== false) {
+        $args['message'] = nl2br($args['message']);
+    }
+    return $args;
+});
+
+
