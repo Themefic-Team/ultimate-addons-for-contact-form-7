@@ -1272,3 +1272,32 @@ function uacf7_preserve_line_breaks($contact_form) {
     }
     $contact_form->set_properties($properties);
 }
+
+
+function uacf7_dismiss_booking_pro_notice() {
+    check_ajax_referer('uacf7_admin_nonce', 'security');
+    set_transient('uacf7_booking_pro_notice_dismissed', true, 7 * DAY_IN_SECONDS);
+    wp_send_json_success();
+}
+add_action('wp_ajax_uacf7_dismiss_booking_pro_notice', 'uacf7_dismiss_booking_pro_notice');
+function uacf7_booking_pro_admin_notice() {
+    if (get_transient('uacf7_booking_pro_notice_dismissed')) {
+        return;
+    }
+    ?>
+    <div class="notice notice-warning notice-danger is-dismissible uacf7-booking-pro-notice" style="border-left-color: #B32D2E;">
+        <p><strong style="display: block; padding-bottom: 4px; font-size: 16px;">Important Update:</strong> Please be advised that the <strong>Booking/Appointment Form Pro</strong> add-on will be discontinued following the next update. We are delighted to introduce <strong>Hydra Booking Free</strong> as the superior alternative. <a href="https://themefic.com/uacf7-booking-addon-will-be-discontinued/" target="_blank">Discover the new features</a>.</p>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('.uacf7-booking-pro-notice').on('click', '.notice-dismiss', function () {
+                $.post(ajaxurl, {
+                    action: 'uacf7_dismiss_booking_pro_notice',
+                    security: '<?php echo wp_create_nonce("uacf7_admin_nonce"); ?>'
+                });
+            });
+        });
+    </script>
+    <?php
+}
+add_action('admin_notices', 'uacf7_booking_pro_admin_notice');
