@@ -378,28 +378,40 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 		public function tf_sidebar() {
 			?>
+
 			<div class="uacf7-sidebar">
 				<div class="uacf7-sidebar-wrap">
 					<div class="uacf7-sidebar-header">
-						<h1 class="uacf7-sidebar-title"><?php echo _e( 'Themefic Family', 'ultimate-addons-cf7' ) ?></h1>
+						<h1 class="uacf7-sidebar-title"><?php echo _e( 'Extend Your Website', 'ultimate-addons-cf7' ) ?></h1>
 					</div>
 					<div class="uacf7-sidebar-content">
-						<p>
-							Welcome to the <strong>**Themefic Family**!</strong> We build powerful and innovative WordPress plugins to help you enhance your website’s functionality with ease. Below is a list of our recommended plugins—install, activate, and supercharge your site today!
-						</p>
+						
 						<?php echo $this->tf_get_sidebar_plugin_list(); ?>
-					</div>
-					<div class="uacf7-sidebar-footer">
-						<p>
-							Need help or have any questions? Our support team is here to assist you.  
-							Visit our <a href="https://portal.themefic.com/support/" target="_blank">Support Center</a> or explore our <a href="https://themefic.com/docs" target="_blank">Documentation</a> for quick guides and tutorials.
-						</p>
-						<p>
-							Stay updated with our latest features and offers by following us on  
-							<a href="https://facebook.com/themefic" target="_blank">Facebook</a> | 
-							<a href="https://twitter.com/themefic" target="_blank">Twitter</a> | 
-							<a href="https://themefic.com/blog" target="_blank">Blog</a>
-						</p>
+
+						<div class="quick-access">
+							<h3>Quick Access</h3>
+							<div class="quick-access-wrapper">
+								<div class="access-item">
+									<a href="https://portal.themefic.com/support/" target="_blank">
+										<span class="icon"><i class="fa-solid fa-headset"></i></span>
+										<?php echo _e( 'Support', 'ultimate-addons-cf7' ); ?>
+									</a>
+								</div>
+								<div class="access-item">
+									<a href="https://themefic.com/docs/" target="_blank">
+										<span class="icon"><i class="fa-solid fa-folder-open"></i></span>
+										<?php echo _e( 'Documentation', 'ultimate-addons-cf7' ); ?>
+									</a>
+								</div>
+								<div class="access-item">
+									<a href="https://themefic.com/faq/" target="_blank">
+										<span class="icon"><i class="fa-solid fa-clipboard-question"></i></span>
+										<?php echo _e( 'FAQ', 'ultimate-addons-cf7' ); ?>
+									</a>
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -410,60 +422,64 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 			$plugins = [
 				[
-					'name'       => 'Ultimate Addons for Contact Form 7',
+					'name'       => 'UACF7',
 					'slug'       => 'ultimate-addons-for-contact-form-7',
 					'file_name'  => 'ultimate-addons-for-contact-form-7',
+					'subtitle'   => '40+ Essential Addons for Contact Form 7',
 					'image'      => 'https://ps.w.org/ultimate-addons-for-contact-form-7/assets/icon-128x128.png',
-					'pro'        => [
-						'slug'      => 'ultimate-addons-for-contact-form-7-pro',
-						'file_name' => 'ultimate-addons-for-contact-form-7-pro',
-						'url'       => 'https://cf7addons.com/pricing/',
-					],
+					// 'pro'        => [
+					// 	'slug'      => 'ultimate-addons-for-contact-form-7-pro',
+					// 	'file_name' => 'ultimate-addons-for-contact-form-7-pro',
+					// 	'url'       => 'https://cf7addons.com/pricing/',
+					// ],
 				],
 				[
-					'name'       => 'Ultimate Before After Image Slider & Gallery – BEAF',
+					'name'       => 'BEAF',
 					'slug'       => 'beaf-before-and-after-gallery',
 					'file_name'  => 'before-and-after-gallery',
+					'subtitle'   => 'Ultimate Before After Image Slider & Gallery',
 					'image'      => 'https://ps.w.org/beaf-before-and-after-gallery/assets/icon-128x128.png',
-					'pro_url'    => '',
-					'pro'        => [
-						'slug'      => 'beaf-before-and-after-gallery-pro',
-						'file_name' => 'before-and-after-gallery-pro',
-						'url'       => 'https://themefic.com/plugins/beaf/pro/',
-					],
+					// 'pro'        => [
+					// 	'slug'      => 'beaf-before-and-after-gallery-pro',
+					// 	'file_name' => 'before-and-after-gallery-pro',
+					// 	'url'       => 'https://themefic.com/plugins/beaf/pro/',
+					// ],
 				],
 				[
-					'name'       => 'Tourfic – Ultimate Travel Booking, Hotel Booking & Car Rental WordPress Plugin | WooCommerce Booking',
+					'name'       => 'Tourfic',
 					'slug'       => 'tourfic',
 					'file_name'  => 'tourfic',
+					'subtitle'   => 'Ultimate Travel Booking, Hotel Booking & Car Rental WordPress Plugin | WooCommerce Booking',
 					'image'      => 'https://ps.w.org/tourfic/assets/icon-128x128.gif',
-					'pro'        => [
-						'slug'      => 'tourfic-pro',
-						'file_name' => 'tourfic-pro',
-						'url'       => 'https://themefic.com/tourfic/',
-					],
+					// 'pro'        => [
+					// 	'slug'      => 'tourfic-pro',
+					// 	'file_name' => 'tourfic-pro',
+					// 	'url'       => 'https://themefic.com/tourfic/',
+					// ],
 				],
 				[
-					'name'       => 'Instantio – WooCommerce Quick Checkout | Direct Checkout, Floating Cart, Side Cart & Popup Cart',
+					'name'       => 'Instantio',
 					'slug'       => 'instantio',
 					'file_name'  => 'instantio',
+					'subtitle'   => 'WooCommerce Quick Checkout | Direct Checkout, Floating Cart, Side Cart & Popup Cart',
 					'image'      => 'https://ps.w.org/instantio/assets/icon-128x128.png',
-					'pro'        => [
-						'slug'      => 'wooinstant',
-						'file_name' => 'wooinstant',
-						'url'       => 'https://themefic.com/instantio/',
-					],
+					// 'pro'        => [
+					// 	'slug'      => 'wooinstant',
+					// 	'file_name' => 'wooinstant',
+					// 	'url'       => 'https://themefic.com/instantio/',
+					// ],
 				],
 				[
-					'name'       => 'Hydra Booking – All in One Appointment Booking System | Appointment Scheduling, Booking Calendar & WooCommerce Bookings',
+					'name'       => 'Hydra',
 					'slug'       => 'hydra-booking',
 					'file_name'  => 'hydra-booking',
+					'subtitle'   => 'All in One Appointment Booking System | Appointment Scheduling, Booking Calendar & WooCommerce Bookings',
 					'image'      => 'https://ps.w.org/hydra-booking/assets/icon-128x128.jpg',
-					'pro'        => [
-						'slug'      => 'hydra-booking-pro',
-						'file_name' => 'hydra-booking-pro',
-						'url'       => 'https://hydrabooking.com/',
-					],
+					// 'pro'        => [
+					// 	'slug'      => 'hydra-booking-pro',
+					// 	'file_name' => 'hydra-booking-pro',
+					// 	'url'       => 'https://hydrabooking.com/',
+					// ],
 				],
 				// [
 				// 	'name'       => 'Before After Slider for WooCommerce – eBEAF',
@@ -500,10 +516,10 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 					<li class="plugin-item" data-plugin-slug="<?php echo esc_attr($plugin['slug']); ?>">
 						<div class="plugin-info-wrapper">
-							<img src="<?php echo esc_url($plugin['image']); ?>" alt="<?php echo esc_attr($plugin['name']); ?>" width="40" height="40">
 							<div class="plugin-info">
-								<strong><?php echo esc_html($plugin['name']); ?></strong>
+								<img src="<?php echo esc_url($plugin['image']); ?>" alt="<?php echo esc_attr($plugin['name']); ?>" width="40" height="40">
 								<div class="plugin-btn">
+									<span class="badge free">Free</span>
 									<?php if (!$installed): ?>
 										<button class="plugin-button install" data-action="install" data-plugin="<?php echo esc_attr($plugin['slug']); ?>" data-plugin_filename="<?php echo esc_attr($plugin['file_name']); ?>">
 											Install <span class="loader"></span>
@@ -528,6 +544,11 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										<?php endif; ?>
 									<?php endif; ?>
 								</div>
+							</div>
+							<div class="uacf7-plugin-content">
+								<h4><?php echo esc_html($plugin['name']); ?></h4>
+								<p><?php echo esc_html($plugin['subtitle']); ?></p>
+								<strong></strong>
 							</div>
 						</div>
 					</li>

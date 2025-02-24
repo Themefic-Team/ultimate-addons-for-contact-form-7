@@ -1301,7 +1301,7 @@ function uacf7_install_hydra_booking() {
 function uacf7_dismiss_booking_pro_notice() {
     check_ajax_referer('uacf7_admin_nonce', 'security');
 
-    set_transient('uacf7_booking_pro_notice_dismissed', true, 24 * HOUR_IN_SECONDS);
+    set_transient('uacf7_booking_pro_notice_dismissed', true, 7 * DAY_IN_SECONDS);
 
     wp_send_json_success();
 }
