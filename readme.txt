@@ -457,6 +457,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 - Introduced: Email Piping to Database Pro.
 - Fixed: HTML line break issue in emails.
+- Improved: Weekly Email Summary.
 - Notice: Transitioning the Booking add-on to legacy status and introducing a new booking feature soon.
 
 = 3.5.2 - 15/02/2025 =
@@ -510,23 +511,6 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 - Compatibility: Resolved translation notice issue for compatibility with WordPress 6.7.1.
 - Fix: Addressed minor bugs and implemented general improvements.
-
-= 3.4.12 - 21/11/2024 =
-
-- Update: Revised and updated the plugin's Readme.txt file information.
-
-= 3.4.11 - 19/11/2024 =
-
-- Compatibility: Fully compatible with WordPress 6.7
-
-= 3.4.10 - 18/11/2024 =
-
-- compatibility: Fully compatible with Contact Form 7 version 6.0.
-- Improvement: Optimized and improved the overall codebase for better performance.
-- Fix: Resolved issues with multi-step and form submission validation.
-- Fix: Addressed deprecation warnings and fixed.
-- Feature: Added support for multi-page PDFs.
-- Improvement: Enhanced range slider functionality.
 
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 
