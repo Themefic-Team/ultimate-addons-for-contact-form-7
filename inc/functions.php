@@ -1483,12 +1483,31 @@ function uacf7_migrate_conditional_fields() {
 	}
 }
 
-// html email content line breaks issue solved.
-add_filter('wp_mail', function ($args) {
-    if ($args['headers'] && strpos($args['headers'], 'text/html') !== false) {
-        $args['message'] = nl2br($args['message']);
+
+add_action('wpcf7_before_send_mail', 'uacf7_preserve_line_breaks');
+
+function uacf7_preserve_line_breaks($contact_form) {
+    $submission = WPCF7_Submission::get_instance();
+
+    if (!$submission) {
+        return;
     }
-    return $args;
-});
+
+    $properties = $contact_form->get_properties();
+    
+    $is_html = !empty($properties['mail']['use_html']);
+	
+	if($is_html){
+		if (!empty($properties['mail']['body'])) {
+			$properties['mail']['body'] = nl2br($properties['mail']['body']);
+		}
+	
+		if (!empty($properties['mail_2']['body'])) {
+			$properties['mail_2']['body'] = nl2br($properties['mail_2']['body']);
+		}
+	}
+
+	$contact_form->set_properties($properties);
+}
 
 
