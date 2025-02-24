@@ -1315,7 +1315,7 @@ function uacf7_booking_pro_admin_notice() {
 
     ?>
     <div class="notice notice-warning notice-danger is-dismissible uacf7-booking-pro-notice" style="border-left-color: #b32d2e;">
-        <p><strong style="display: block; padding-bottom: 4px; font-size: 16px;">Important Announcement:</strong> We would like to inform you that the <strong>Booking/Appointment Form Pro</strong> add-on will be discontinued in the upcoming update. As part of our ongoing commitment to enhancing user experience, we are introducing <strong>Hydra Booking</strong> Free as its replacement.</p>
+		<p><strong style="display: block; padding-bottom: 4px; font-size: 16px;">Important Notice:</strong> Please be advised that the <strong>Booking/Appointment Form Pro</strong> add-on will be discontinued soon. We are delighted to introduce <strong>Hydra Booking Free</strong> as the superior alternative. <a href="https://themefic.com/uacf7-booking-addon-will-be-discontinued/" target="_blank">Discover the new features</a>.</p>
     </div>
 
     <script type="text/javascript">
