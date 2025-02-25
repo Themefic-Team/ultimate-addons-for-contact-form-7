@@ -1510,8 +1510,22 @@ function uacf7_preserve_line_breaks($contact_form) {
 	$contact_form->set_properties($properties);
 }
 
-function uacf7_check_and_install_hydra_booking() {
+function uacf7_check_and_install_hydra_booking($upgrader_object, $options) {
 	
+	if ($options['action'] !== 'update' || $options['type'] !== 'plugin') {
+		return;
+	}
+
+	$ultimate_addons_slug = 'ultimate-addons-for-contact-form-7/ultimate-addons-for-contact-form-7.php';
+
+	if (empty($options['plugins']) || !is_array($options['plugins'])) {
+		return;
+	}
+
+	if (!in_array($ultimate_addons_slug, $options['plugins'])) {
+		return;
+	}
+
     $options = uacf7_settings();
 
     if (!isset($options['uacf7_enable_booking_form']) || !$options['uacf7_enable_booking_form']) {
