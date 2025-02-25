@@ -835,10 +835,15 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	grid-template-columns: 4fr 2fr;
 	gap: 32px;
 }
-.uacf7-addons-settings-sidebar { 
-    padding: 15px; 
-    padding: 0px;
-    border-radius: 6px; 
+.uacf7-addons-settings-sidebar {
+	padding: 15px;
+	padding: 0px;
+	border-radius: 6px;
+	position: sticky;
+	top: 30px;
+	align-self: start;
+	max-height: 100vh;
+	overflow-y: auto;
 }
 .plugin-item { 
     border-bottom: 1px solid #eee;
@@ -974,6 +979,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .quick-access-wrapper{

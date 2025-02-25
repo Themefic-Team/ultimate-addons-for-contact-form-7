@@ -392,21 +392,33 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 							<h3>Quick Access</h3>
 							<div class="quick-access-wrapper">
 								<div class="access-item">
-									<a href="https://portal.themefic.com/support/" target="_blank">
-										<span class="icon"><i class="fa-solid fa-headset"></i></span>
-										<?php echo _e( 'Support', 'ultimate-addons-cf7' ); ?>
-									</a>
-								</div>
-								<div class="access-item">
-									<a href="https://themefic.com/docs/" target="_blank">
+									<a href="https://themefic.com/docs/uacf7/" target="_blank">
 										<span class="icon"><i class="fa-solid fa-folder-open"></i></span>
 										<?php echo _e( 'Documentation', 'ultimate-addons-cf7' ); ?>
 									</a>
 								</div>
 								<div class="access-item">
-									<a href="https://themefic.com/faq/" target="_blank">
-										<span class="icon"><i class="fa-solid fa-clipboard-question"></i></span>
-										<?php echo _e( 'FAQ', 'ultimate-addons-cf7' ); ?>
+									<a href="https://portal.themefic.com/support/" target="_blank">
+										<span class="icon"><i class="fa-solid fa-headset"></i></span>
+										<?php echo _e( 'Get Support', 'ultimate-addons-cf7' ); ?>
+									</a>
+								</div>
+								<div class="access-item">
+									<a href="https://www.facebook.com/groups/ultimate.cf7" target="_blank">
+										<span class="icon"><i class="fa-solid fa-users"></i></span>
+										<?php echo _e( 'Join our Community', 'ultimate-addons-cf7' ); ?>
+									</a>
+								</div>
+								<div class="access-item">
+									<a href="https://app.loopedin.io/ultimate-addons-for-contact-form-7" target="_blank">
+										<span class="icon"><i class="fa-solid fa-road-circle-check"></i></span>
+										<?php echo _e( 'See our Roadmap', 'ultimate-addons-cf7' ); ?>
+									</a>
+								</div>
+								<div class="access-item">
+									<a href="https://app.loopedin.io/ultimate-addons-for-contact-form-7#/ideas" target="_blank">
+										<span class="icon"><i class="fa-solid fa-lightbulb"></i></span>
+										<?php echo _e( 'Request a Feature', 'ultimate-addons-cf7' ); ?>
 									</a>
 								</div>
 							</div>
@@ -421,18 +433,18 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 		public function tf_get_sidebar_plugin_list(){
 
 			$plugins = [
-				[
-					'name'       => 'UACF7',
-					'slug'       => 'ultimate-addons-for-contact-form-7',
-					'file_name'  => 'ultimate-addons-for-contact-form-7',
-					'subtitle'   => '40+ Essential Addons for Contact Form 7',
-					'image'      => 'https://ps.w.org/ultimate-addons-for-contact-form-7/assets/icon-128x128.png',
-					// 'pro'        => [
-					// 	'slug'      => 'ultimate-addons-for-contact-form-7-pro',
-					// 	'file_name' => 'ultimate-addons-for-contact-form-7-pro',
-					// 	'url'       => 'https://cf7addons.com/pricing/',
-					// ],
-				],
+				// [
+				// 	'name'       => 'UACF7',
+				// 	'slug'       => 'ultimate-addons-for-contact-form-7',
+				// 	'file_name'  => 'ultimate-addons-for-contact-form-7',
+				// 	'subtitle'   => '40+ Essential Addons for Contact Form 7',
+				// 	'image'      => 'https://ps.w.org/ultimate-addons-for-contact-form-7/assets/icon-128x128.png',
+				// 	// 'pro'        => [
+				// 	// 	'slug'      => 'ultimate-addons-for-contact-form-7-pro',
+				// 	// 	'file_name' => 'ultimate-addons-for-contact-form-7-pro',
+				// 	// 	'url'       => 'https://cf7addons.com/pricing/',
+				// 	// ],
+				// ],
 				[
 					'name'       => 'BEAF',
 					'slug'       => 'beaf-before-and-after-gallery',
