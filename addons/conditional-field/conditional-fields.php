@@ -46,7 +46,6 @@ class UACF7_CF {
 
 		// add_filter( 'wpcf7_load_js', '__return_false' );
 
-
 	}
 
 	public function enqueue_cf_admin_script() {
@@ -57,7 +56,6 @@ class UACF7_CF {
 		wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/uacf7-cf-script.js', array( 'jquery' ), UACF7_VERSION, true );
 		wp_localize_script( 'uacf7-cf-script', 'uacf7_cf_object', $this->get_forms() );
 	}
-
 
 	public function uacf7_post_meta_options_conditional_field( $value, $post_id ) {
 
@@ -166,6 +164,10 @@ class UACF7_CF {
 										'less_than' => 'Less than',
 										'greater_than_or_equal_to' => 'Greater than or equal to',
 										'less_than_or_equal_to' => 'Less than or equal to',
+										'starts_with' => 'Starts with',
+										'ends_with' => 'Ends With',
+										'contains' => 'Contains',
+										'does_not_contain' => 'Does not contain'
 									),
 									'field_width' => '50',
 								),
@@ -303,12 +305,13 @@ class UACF7_CF {
 				// if($post_id != 128) continue;
 
 				$conditional = uacf7_get_form_option( $post_id, 'conditional' );
+
 				if ( $conditional != false ) {
 					$conditional_repeater = $conditional['conditional_repeater'];
 					if ( $conditional_repeater != false ) {
 						$count = 0;
 						$data = [];
-
+						// beaf_print_r($conditional_repeater);
 						foreach ( $conditional_repeater as $item ) {
 							$newItem = [ 
 								'uacf7_cf_hs' => $item['uacf7_cf_hs'],
@@ -589,7 +592,23 @@ class UACF7_CF {
 					// Condition for Less than or equal to
 					else if ( $uacf7_cf_operator == 'less_than_or_equal_to' && $posted_value <= $uacf7_cf_val ) {
 						$condition_status[] = 'true';
-					} else {
+					}
+					// Condition for Starts With
+					else if ( $uacf7_cf_operator == 'starts_with' && substr( $posted_value, 0, strlen( $uacf7_cf_val ) ) === $uacf7_cf_val ) {
+						$condition_status[] = 'true';
+					} 
+					// Condition for Ends With
+					else if ( $uacf7_cf_operator == 'ends_with' && substr( $posted_value, -strlen( $uacf7_cf_val ) ) === $uacf7_cf_val ) {
+						$condition_status[] = 'true';
+					}     
+					// Condition for Contains
+					else if ( $uacf7_cf_operator == 'contains' && strpos( $posted_value, $uacf7_cf_val ) !== false ) {
+						$condition_status[] = 'true';
+					}     
+					// Condition for Excludes (does not contain)
+					else if ( $uacf7_cf_operator == 'does_not_contain' && strpos( $posted_value, $uacf7_cf_val ) === false ) {
+						$condition_status[] = 'true';
+					}else {
 						$condition_status[] = 'false';
 					}
 				}
@@ -716,7 +735,23 @@ class UACF7_CF {
 					// Condition for Less than or equal to
 					else if ( $uacf7_cf_operator == 'less_than_or_equal_to' && $posted_value <= $uacf7_cf_val ) {
 						$condition_status[] = 'true';
-					} else {
+					} 
+					// Condition for Starts With
+					else if ( $uacf7_cf_operator == 'starts_with' && substr( $posted_value, 0, strlen( $uacf7_cf_val ) ) === $uacf7_cf_val ) {
+						$condition_status[] = 'true';
+					} 
+					// Condition for Ends With
+					else if ( $uacf7_cf_operator == 'ends_with' && substr( $posted_value, -strlen( $uacf7_cf_val ) ) === $uacf7_cf_val ) {
+						$condition_status[] = 'true';
+					}     
+					// Condition for Contains
+					else if ( $uacf7_cf_operator == 'contains' && strpos( $posted_value, $uacf7_cf_val ) !== false ) {
+						$condition_status[] = 'true';
+					}     
+					// Condition for Excludes (does not contain)
+					else if ( $uacf7_cf_operator == 'does_not_contain' && strpos( $posted_value, $uacf7_cf_val ) === false ) {
+						$condition_status[] = 'true';
+					}else {
 						$condition_status[] = 'false';
 					}
 				}

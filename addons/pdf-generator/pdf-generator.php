@@ -8,6 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class UACF7_PDF_GENERATOR {
 
+	private static $pdf_url = '';
+
 	/*
 	 * Construct function
 	 */
@@ -17,13 +19,31 @@ class UACF7_PDF_GENERATOR {
 		add_filter( 'wpcf7_mail_components', array( $this, 'uacf7_wpcf7_mail_components' ), 10, 3 );
 		// add_filter( 'wpcf7_load_js', '__return_false' );
 		add_action( 'wp_ajax_uacf7_get_generated_pdf', array( $this, 'uacf7_get_generated_pdf' ) );
-		add_action( 'wp_ajax_nopriv_uacf7_get_generated_pdf', array( $this, 'uacf7_get_generated_pdf' ) );
+
+		add_action('wpcf7_mail_sent', [$this, 'store_pdf_url']);
+		
 		add_filter( 'uacf7_post_meta_options', array( $this, 'uacf7_post_meta_options_pdf_generator' ), 18, 2 );
 		add_filter( 'uacf7_post_meta_import_export', array( $this, 'uacf7_post_meta_import_export_pdf_generator' ), 18, 2 );
 
 		require_once( 'inc/functions.php' );
 
+	}
 
+	public function store_pdf_url($contact_form) {
+		$form_id = $contact_form->id();
+		$pdf_url = get_transient('uacf7_pdf_url_' . $form_id);
+	
+		if ($pdf_url) {
+	
+			add_filter('wpcf7_ajax_json_echo', function($response) use ($pdf_url) {
+				if (isset($response['status']) && $response['status'] === 'mail_sent') {
+					$response['pdf_url'] = $pdf_url;
+				}
+				return $response;
+			}, 10, 2);
+	
+			delete_transient('uacf7_pdf_url_' . $form_id);
+		}
 	}
 
 	/*
@@ -160,7 +180,7 @@ class UACF7_PDF_GENERATOR {
 				'customize_pdf_header' => array(
 					'id' => 'customize_pdf_header',
 					'label' => __( 'Header Content', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}.', 'ultimate-addons-cf7' ),
+					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}. <br> Use any php <a href="https://www.php.net/manual/en/function.date.php" target="_blank">Date</a> format for date shortcode {DATE format} ', 'ultimate-addons-cf7' ),
 					'type' => 'editor',
 
 				),
@@ -253,7 +273,7 @@ class UACF7_PDF_GENERATOR {
 				'customize_pdf_footer' => array(
 					'id' => 'customize_pdf_footer',
 					'label' => __( 'Footer Content', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}.', 'ultimate-addons-cf7' ),
+					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}. <br> Use any php <a href="https://www.php.net/manual/en/function.date.php" target="_blank">Date</a> format for date shortcode {DATE format} ', 'ultimate-addons-cf7' ),
 					'type' => 'editor',
 
 				),
@@ -333,12 +353,12 @@ class UACF7_PDF_GENERATOR {
 		$pdf_header_img_aline    = ! empty( $pdf['pdf_header_img_aline'] ) ? $pdf['pdf_header_img_aline'] : '';
 		$customize_pdf_footer    = ! empty( $pdf['customize_pdf_footer'] ) ? $pdf['customize_pdf_footer'] : '';
 		$custom_pdf_css          = ! empty( $pdf['custom_pdf_css'] ) ? $pdf['custom_pdf_css'] : '';
-		$pdf_content_color       = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '';
+		$pdf_content_color       = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '000';
 		$pdf_content_bg_color    = ! empty( $pdf['pdf_content_bg_color'] ) ? $pdf['pdf_content_bg_color'] : '';
-		$pdf_header_color        = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '';
-		$pdf_header_bg_color     = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '';
-		$pdf_footer_color        = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '';
-		$pdf_footer_bg_color     = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '';
+		$pdf_header_color        = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '#fff';
+		$pdf_header_bg_color     = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '#382673';
+		$pdf_footer_color        = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '#fff';
+		$pdf_footer_bg_color     = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '#5D5676';
 		$pdf_bg_upload_image     = ! empty( $pdf_bg_upload_image ) ? 'background-image: url("' . esc_attr( $pdf_bg_upload_image ) . '");' : '';
 		$pdf_header_upload_image = ! empty( $pdf_header_upload_image ) ? '<img src="' . esc_attr( $pdf_header_upload_image ) . '" style="height: 60; max-width: 100%; ">' : '';
 
@@ -365,15 +385,21 @@ class UACF7_PDF_GENERATOR {
                  ' . esc_attr( $pdf_bg_upload_image ) . '
                 background-repeat:no-repeat;
                 background-image-resize: 6; 
+				background-color: #F8F7FD;
             }
             .pdf-header{
                 height: 60px;   
                 background-color: ' . esc_attr( $pdf_header_bg_color ) . ';
                 color : ' . esc_attr( $pdf_header_color ) . '; 
+				padding: 10px 25px;
             }
+			.pdf-header p{
+				margin: 0;
+			}
             .pdf-footer{ 
                 background-color: ' . esc_attr( $pdf_footer_bg_color ) . ';
                 color : ' . esc_attr( $pdf_footer_color ) . '; 
+				padding: 10px 25px;
             }
             .pdf-content{ 
                 background-color: ' . esc_attr( $pdf_content_bg_color ) . ';
@@ -382,40 +408,56 @@ class UACF7_PDF_GENERATOR {
                 height: 100%;
             }
             .pdf-content table{  
-                width: 100%; 
-                border-collapse: collapse; 
-                border-left: 1px solid ;
-                border-bottom: 1px solid;
-            }
-            .pdf-content tr td{   
-                border-top: 1px solid;
-                border-right: 1px solid;
-                padding: 5px;
-                text-align: center;
-            } 
+				width: 100%; 
+				border-collapse: collapse; 
+				border: 1px dashed rgb(227, 227, 227) ;
+				background-color: #F8F7FD;
+				padding: 10px 15px;
+				margin-top: 15px;
+				border-radius: 10px !important;
+			}
+			.pdf-content tr {
+				padding: 10px;
+				margin-lef: 10px;
+				margin-right: 10px;
+			}
+			
+			.pdf-content tr td{ 
+				padding-left: 15px;
+				text-align: left;
+				border-bottom: 1px solid #F0EEF6;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+			} 
+			pdf-content tr td:first-child{
+				min-width: 25%;
+			}
+			.pdf-content tr:last-child td{
+				border-bottom: 0;
+			}
             .header-logo{
-                text-align: ' . esc_attr( $pdf_header_img_aline ) . '; 
-                float: left; 
-                width: 20%;
-            }
-            .header-content{
-                float: right; 
-                width: 80%
-                
-            }
+				text-align: ' . esc_attr( $pdf_header_img_aline ) . '; 
+				width: 20%;
+				float: left;
+			}
+			.header-content{ 
+				float: right;
+				width: 80%;
+				text-align: right;
+			}
             ' . $custom_pdf_css . '
         </style>';
-
 
 		// PDF Header checked( 'on', $disable_header );
 		if ( $disable_header != true ) {
 			$mpdf->SetHTMLHeader( '
             <div class="pdf-header"  >
-                    <div class="header-logo"  >
+                    <div class="header-logo">
                         ' . $pdf_header_upload_image . '
                     </div>    
                     <div class="header-content">
-                    ' . $customize_pdf_header . '
+                    ' .  $customize_pdf_header . '
                     </div>
             </div>
             ' );
@@ -524,7 +566,7 @@ class UACF7_PDF_GENERATOR {
 		$mpdf->WriteHTML( $pdf_style, \Mpdf\HTMLParserMode::HEADER_CSS );
 
 		// PDF Footer Content
-		$mpdf->WriteHTML( '<div class="pdf-content">' . nl2br( $pdf_content ) . '   </div>' );
+		$mpdf->WriteHTML( '<div class="pdf-content">' . nl2br( $this->makeLinksClickable($pdf_content) ) . '   </div>' );
 
 		// make directory 
 		if ( ! file_exists( $dir . '/uacf7-uploads' ) ) {
@@ -554,6 +596,8 @@ class UACF7_PDF_GENERATOR {
 		$pdf = uacf7_get_form_option( $wpcf7->id(), 'pdf_generator' );
 
 		$enable_pdf = isset( $pdf['uacf7_enable_pdf_generator'] ) ? $pdf['uacf7_enable_pdf_generator'] : 0;
+        $enable_pdf_download = isset( $pdf['uacf7_enable_pdf_form_download'] ) ? $pdf['uacf7_enable_pdf_form_download'] : 0;
+
 		$pdf_send_to = isset( $pdf['pdf_send_to'] ) ? $pdf['pdf_send_to'] : '';
 		if ( ( $pdf_send_to == 'mail-1' && $mail->name() == 'mail_2' ) || ( $pdf_send_to == 'mail-2' && $mail->name() == 'mail' ) ) {
 			return $components;
@@ -567,6 +611,8 @@ class UACF7_PDF_GENERATOR {
 			$upload_dir = wp_upload_dir();
 			$time_now = time();
 			$dir = $upload_dir['basedir'];
+			$upload_dir = wp_upload_dir();
+			$url = $upload_dir['baseurl'];
 			$uploaded_files = [];
 			$uacf7_dirname = $upload_dir['basedir'] . '/uacf7-uploads';
 			if ( ! file_exists( $uacf7_dirname ) ) {
@@ -589,14 +635,15 @@ class UACF7_PDF_GENERATOR {
 			$pdf_header_img_aline = ! empty( $pdf['pdf_header_img_aline'] ) ? $pdf['pdf_header_img_aline'] : '';
 			$customize_pdf_footer = ! empty( $pdf['customize_pdf_footer'] ) ? $pdf['customize_pdf_footer'] : '';
 			$custom_pdf_css = ! empty( $pdf['custom_pdf_css'] ) ? $pdf['custom_pdf_css'] : '';
-			$pdf_content_color = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '';
+			$pdf_content_color = ! empty( $pdf['pdf_content_color'] ) ? $pdf['pdf_content_color'] : '#000';
 			$pdf_content_bg_color = ! empty( $pdf['pdf_content_bg_color'] ) ? $pdf['pdf_content_bg_color'] : '';
-			$pdf_header_color = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '';
-			$pdf_header_bg_color = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '';
-			$pdf_footer_color = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '';
-			$pdf_footer_bg_color = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '';
+			$pdf_header_color = ! empty( $pdf['pdf_header_color'] ) ? $pdf['pdf_header_color'] : '#fff';
+			$pdf_header_bg_color = ! empty( $pdf['pdf_header_bg_color'] ) ? $pdf['pdf_header_bg_color'] : '#382673';
+			$pdf_footer_color = ! empty( $pdf['pdf_footer_color'] ) ? $pdf['pdf_footer_color'] : '#fff';
+			$pdf_footer_bg_color = ! empty( $pdf['pdf_footer_bg_color'] ) ? $pdf['pdf_footer_bg_color'] : '#5D5676';
 			$pdf_bg_upload_image = ! empty( $pdf_bg_upload_image ) ? 'background-image: url("' . esc_attr( $pdf_bg_upload_image ) . '");' : '';
 			$pdf_header_upload_image = ! empty( $pdf_header_upload_image ) ? '<img src="' . esc_attr( $pdf_header_upload_image ) . '" style="height: 60; max-width: 100%; ">' : '';
+			
 			$mpdf = new \Mpdf\Mpdf( [ 
 				'fontdata' => [ // lowercase letters only in font key
 					'dejavuserifcond' => [ 
@@ -617,18 +664,24 @@ class UACF7_PDF_GENERATOR {
 			// PDF Style
 			$pdf_style = ' <style>
                 body {
-                     ' . $pdf_bg_upload_image . '
+                    background:url(' . $pdf_bg_upload_image . ');
                     background-repeat:no-repeat;
                     background-image-resize: 6; 
+					background-color: #F8F7FD;
                 }
                 .pdf-header{
                     height: 60px;   
                     background-color: ' . esc_attr( $pdf_header_bg_color ) . ';
                     color : ' . esc_attr( $pdf_header_color ) . '; 
+					padding: 10px 25px;
                 }
+				.pdf-header p{
+					margin: 0;
+				}
                 .pdf-footer{ 
                     background-color: ' . esc_attr( $pdf_footer_bg_color ) . ';
                     color : ' . esc_attr( $pdf_footer_color ) . '; 
+					padding: 10px 25px;
                 }
                 .pdf-content{ 
                     background-color: ' . esc_attr( $pdf_content_bg_color ) . ';
@@ -639,24 +692,41 @@ class UACF7_PDF_GENERATOR {
                 .pdf-content table{  
                     width: 100%; 
                     border-collapse: collapse; 
-                    border-left: 1px solid ;
-                    border-bottom: 1px solid;
+                    border: 1px dashed rgb(227, 227, 227) ;
+					background-color: #F8F7FD;
+					padding: 10px 15px;
+					margin-top: 15px;
+					border-radius: 10px !important;
                 }
-                .pdf-content tr td{   
-                    border-top: 1px solid;
-                    border-right: 1px solid;
-                    padding: 5px;
-                    text-align: center;
+				.pdf-content tr {
+					padding: 10px;
+					margin-lef: 10px;
+					margin-right: 10px;
+				}
+				
+                .pdf-content tr td{ 
+                    padding-left: 15px;
+                    text-align: left;
+					border-bottom: 1px solid #F0EEF6;
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
                 } 
+				pdf-content tr td:first-child{
+					min-width: 25%;
+				}
+				.pdf-content tr:last-child td{
+					border-bottom: 0;
+				}
                 .header-logo{
                     text-align: ' . esc_attr( $pdf_header_img_aline ) . '; 
-                    float: left; 
                     width: 20%;
+					float: left;
                 }
-                .header-content{
-                    float: right; 
-                    width: 80%
-                    
+                .header-content{ 
+					float: right;
+                    width: 80%;
+					text-align: right;
                 }
                 ' . $custom_pdf_css . '
             </style>';
@@ -749,17 +819,30 @@ class UACF7_PDF_GENERATOR {
 			$mpdf->WriteHTML( $pdf_style, \Mpdf\HTMLParserMode::HEADER_CSS );
 			
 			// PDF Footer Content
-			$mpdf->WriteHTML( '<div class="pdf-content">' . nl2br( $pdf_content ) . '   </div>' );
+			$mpdf->WriteHTML( '<div class="pdf-content">' . nl2br( $this->makeLinksClickable($pdf_content)) . '   </div>' );
 
-			$pdf_url = $dir . '/uacf7-uploads/' . $uacf7_pdf_name . '.pdf';
+			$pdf_dir = $dir . '/uacf7-uploads/' . $uacf7_pdf_name . '.pdf';
+			$pdf_url = $url . '/uacf7-uploads/' . $uacf7_pdf_name . '.pdf';
 
-			$mpdf->Output( $pdf_url, 'F' ); // save to databaes 
+			$mpdf->Output( $pdf_dir, 'F' ); 
 
-			$components['attachments'][] = $pdf_url;
+			if($enable_pdf_download){
+				// Store the PDF URL temporarily (transient or global variable)
+				set_transient('uacf7_pdf_url_' . $wpcf7->id(), $pdf_url, 60);
+			}
+
+			$components['attachments'][] = $pdf_dir;
 		}
 		return $components;
 
 	}
+
+	public function makeLinksClickable($text) {
+		$pattern = '/(https?:\/\/[^\s]+)/';
+		
+		return preg_replace($pattern, '<a href="$1">$1</a>', $text);
+	}
+
 
 	// Import Export 
 	public function uacf7_post_meta_import_export_pdf_generator( $imported_data, $form_id ) {

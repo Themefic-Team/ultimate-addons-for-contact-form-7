@@ -162,13 +162,23 @@ UACF7_Settings::option(
 							'uacf7_enable_booking_form' => array(
 								'id' => 'uacf7_enable_booking_form',
 								'type' => 'switch',
-								'label' => __( 'Booking/Appointment Form', 'ultimate-addons-cf7' ),
+								'label' => __( 'Booking/Appointment', 'ultimate-addons-cf7' ),
 								'image_url' => UACF7_URL . 'assets/admin/images/addons/Booking-or-Appointment-Form@2x.png',
 								'default' => false,
 								'subtitle' => __( 'Create a booking or appointment form using Contact Form 7, including calendar and time options, with payment support.', 'ultimate-addons-cf7' ),
 								'demo_link' => 'https://cf7addons.com/preview/contact-form-7-booking-form/',
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-booking-form/',
 								'is_pro' => true,
+							),
+							'uacf7_enable_hydra_booking_form' => array(
+								'id' => 'uacf7_enable_hydra_booking_form',
+								'type' => 'switch',
+								'label' => __( 'Hydra Booking/Appointment', 'ultimate-addons-cf7' ),
+								'image_url' => UACF7_URL . 'assets/admin/images/addons/Booking-or-Appointment-Form@2x.png',
+								'default' => false,
+								'subtitle' => __( 'Appointment Booking Plugin with Automated Scheduling - Apple/Outlook/ Google Calendar, WooCommerce, Zoom, Fluent Forms, Zapier, Mailchimp & CRM Integration..', 'ultimate-addons-cf7' ),
+								'demo_link' => 'https://demo.hydrabooking.com/',
+								'documentation_link' => 'https://themefic.com/docs/hydrabooking/',
 							),
 							'uacf7_enable_post_submission' => array(
 								'id' => 'uacf7_enable_post_submission',
@@ -190,6 +200,17 @@ UACF7_Settings::option(
 								'subtitle' => __( 'Enable users to review and verify form data before final submission', 'ultimate-addons-cf7' ),
 								'demo_link' => 'https://cf7addons.com/preview/form-preview-submission/',
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/form-preview-submission/',
+								'is_pro' => true
+							),
+							'uacf7_enable_save_and_continue_pro' => array(
+								'id' => 'uacf7_enable_save_and_continue_pro',
+								'type' => 'switch',
+								'label' => __( 'Form Save & Continue', 'ultimate-addons-cf7' ),
+								'image_url' => UACF7_URL . 'assets/admin/images/addons/Placeholder-Styling@2x.png',
+								'default' => false,
+								'subtitle' => __( 'Increase Form Completion Rates With Save and Resume.', 'ultimate-addons-cf7' ),
+								'demo_link' => 'https://cf7addons.com/preview/save-and-continue/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/save-and-continue/',
 								'is_pro' => true
 							),
 							'uacf7_enable_mailchimp' => array(
@@ -247,9 +268,9 @@ UACF7_Settings::option(
 								'label' => __( 'Weekly Email Summary', 'ultimate-addons-cf7' ),
 								'image_url' => UACF7_URL . 'assets/admin/images/addons/Save-to-Database.png',
 								'default' => false,
-								'subtitle' => __( 'Respond to inquiries from the dashboard and export submission data. It is an advanced solution for form inquiries. ', 'ultimate-addons-cf7' ),
-								'demo_link' => 'https://cf7addons.com/preview/best-contact-form-7-database-addon/',
-								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/database-pro/',
+								'subtitle' => __( 'Email Summaries provide daily or weekly reports with the number of entries for each of your forms.', 'ultimate-addons-cf7' ),
+								'demo_link' => 'https://cf7addons.com/preview/weekly-email-summary/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/weekly-email-summary/',
 								'is_pro' => true,
 							),
 
