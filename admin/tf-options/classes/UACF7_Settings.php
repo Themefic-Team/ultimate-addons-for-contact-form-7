@@ -529,7 +529,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					<li class="plugin-item" data-plugin-slug="<?php echo esc_attr($plugin['slug']); ?>">
 						<div class="plugin-info-wrapper">
 							<div class="plugin-info">
-								<img src="<?php echo esc_url($plugin['image']); ?>" alt="<?php echo esc_attr($plugin['name']); ?>" width="40" height="40">
+								<img src="<?php echo esc_url($plugin['image']); ?>" alt="<?php echo esc_attr($plugin['name']); ?>" class="<?php echo esc_attr($plugin['name'] == 'BEAF' ? 'beaf-logo' : ''); ?>" width="40" height="40">
 								<div class="plugin-btn">
 									<span class="badge free">Free</span>
 									<?php if (!$installed): ?>
