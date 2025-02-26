@@ -389,7 +389,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 						<?php echo $this->tf_get_sidebar_plugin_list(); ?>
 
 						<div class="quick-access">
-							<h3>Quick Access</h3>
+							<h3><?php echo _e( 'Quick Access', 'ultimate-addons-cf7' ); ?></h3>
 							<div class="quick-access-wrapper">
 								<div class="access-item">
 									<a href="https://themefic.com/docs/uacf7/" target="_blank">
@@ -529,7 +529,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					<li class="plugin-item" data-plugin-slug="<?php echo esc_attr($plugin['slug']); ?>">
 						<div class="plugin-info-wrapper">
 							<div class="plugin-info">
-								<img src="<?php echo esc_url($plugin['image']); ?>" alt="<?php echo esc_attr($plugin['name']); ?>" width="40" height="40">
+								<img src="<?php echo esc_url($plugin['image']); ?>" alt="<?php echo esc_attr($plugin['name']); ?>" class="<?php echo esc_attr($plugin['name'] == 'BEAF' ? 'beaf-logo' : ''); ?>" width="40" height="40">
 								<div class="plugin-btn">
 									<span class="badge free">Free</span>
 									<?php if (!$installed): ?>

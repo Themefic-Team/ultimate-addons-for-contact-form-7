@@ -165,6 +165,21 @@ class UACF7_MULTISTEP {
 							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-6.png",
 							'is_pro' => true,
 						),
+						'style-7' => array(
+							'title' => 'Style 7',
+							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-7.png",
+							'is_pro' => true,
+						),
+						'style-8' => array(
+							'title' => 'Style 8',
+							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-8.png",
+							'is_pro' => true,
+						),
+						'style-9' => array(
+							'title' => 'Style 9',
+							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-9.png",
+							'is_pro' => true,
+						),
 					),
 
 				),
@@ -667,7 +682,7 @@ class UACF7_MULTISTEP {
 	public function uacf7_properties( $cfform ) {
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 			$form = $cfform->prop( 'form' );
-
+			
 			$mail = $cfform->prop( 'mail' );
 			$mail_2 = $cfform->prop( 'mail_2' );
 			$multistep_meta = uacf7_get_form_option( $cfform->id(), 'multistep' );
@@ -676,7 +691,7 @@ class UACF7_MULTISTEP {
 			$uacf7_enable_multistep_progressbar = isset( $multistep_meta['uacf7_enable_multistep_progressbar'] ) ? $multistep_meta['uacf7_enable_multistep_progressbar'] : '';
 
 			$all_steps = $cfform->scan_form_tags( array( 'type' => 'uacf7_step_start' ) );
-
+			// beaf_print_r($multistep_meta, $all_steps );
 			if ( $uacf7_multistep_is_multistep == true ) {
 				ob_start();
 				// Current Contact Form tags
