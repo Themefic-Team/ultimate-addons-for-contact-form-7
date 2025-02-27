@@ -660,7 +660,18 @@ class UACF7_MULTISTEP {
 						'placeholder' => __( 'Step description', 'ultimate-addons-cf7' ),
 						'is_pro' => true,
 						'dependency' => array(
-							array( 'uacf7_progressbar_style', '==', 'style-6' ),
+							array( 'uacf7_progressbar_style', '==', 'style-6' | 'uacf7_progressbar_style', '==', 'style-7'  ),
+						),
+					);
+
+					$fields[ 'step_form_desc_' . $step->name . '' ] = array(
+						'id' => 'step_form_desc_' . $step->name . '',
+						'type' => 'textarea',
+						'label' => __( 'Step Form description', 'ultimate-addons-cf7' ),
+						'placeholder' => __( 'Step Form description', 'ultimate-addons-cf7' ),
+						'is_pro' => true,
+						'dependency' => array(
+							array( 'uacf7_progressbar_style', '==', 'style-7' ),
 						),
 					);
 
@@ -775,7 +786,7 @@ class UACF7_MULTISTEP {
 								$step_id = 1;
 								$step_count = 0;
 								$step_name = apply_filters( 'uacf7_multistep_steps_names', '', $all_steps );
-
+								
 								foreach ( $all_steps as $step ) {
 									// $content = $step->values[0];
 									$content = isset( $step->values[0] ) ? $step->values[0] : '';
@@ -803,11 +814,16 @@ class UACF7_MULTISTEP {
 												  echo esc_attr( $step_id );
 											  } ?>
 										</a>
-										<?php
-										if ( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' ) {
-											echo '<p>' . esc_html( $content ) . '</p>';
-										}
-										?>
+										<div class="steps-info">
+											<?php
+											if ( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' ) {
+												echo '<p>' . esc_html( $content ) . '</p>';
+												if($uacf7_progressbar_style == 'style-7'){
+													echo '<span>'.esc_html($multistep_meta['step_desc_'.$step->name]).'</span>';
+												}
+											}
+											?>
+										</div>
 									</div>
 									<?php
 									$step_id++;
