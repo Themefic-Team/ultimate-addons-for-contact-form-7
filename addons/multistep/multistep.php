@@ -680,7 +680,7 @@ class UACF7_MULTISTEP {
 						'placeholder' => __( 'Step Form description', 'ultimate-addons-cf7' ),
 						'is_pro' => true,
 						'dependency' => array(
-							array( 'uacf7_progressbar_style', '==', 'style-7' ),
+							array( 'uacf7_progressbar_style', '==', 'style-7' | 'uacf7_progressbar_style', '==', 'style-10' ),
 						),
 					);
 
@@ -840,7 +840,7 @@ class UACF7_MULTISTEP {
 											<?php
 											if ( $uacf7_multistep_use_step_labels != true && $uacf7_progressbar_style != 'style-1' && $uacf7_progressbar_style != 'style-4' && $uacf7_progressbar_style != 'style-8' && $uacf7_progressbar_style != 'style-9' ) {
 												echo '<p>' . esc_html( $content ) . '</p>';
-												if($uacf7_progressbar_style == 'style-7'){
+												if($uacf7_progressbar_style == 'style-7' || $uacf7_progressbar_style == 'style-10' ){
 													echo '<span>'.esc_html($multistep_meta['step_desc_'.$step->name]).'</span>';
 												}
 											}
