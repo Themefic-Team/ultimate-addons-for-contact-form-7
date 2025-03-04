@@ -179,6 +179,9 @@ class Ultimate_Addons_CF7 {
 					'nonce' => wp_create_nonce( 'uacf7_options_nonce' ),
 				)
 			);
+			wp_localize_script('uacf7-admin-script', 'uacf7_admin_nonce', wp_create_nonce('uacf7_admin_nonce'));
+			wp_localize_script('uacf7-admin-script', 'themefic_plugin_nonce', wp_create_nonce('themefic_plugin_nonce'));
+			
 			wp_localize_script(
 				'uacf7-admin',
 				'uacf7_admin_params',
