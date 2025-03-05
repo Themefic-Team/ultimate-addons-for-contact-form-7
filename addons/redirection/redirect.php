@@ -283,16 +283,19 @@ class UACF7_Redirection {
 	 */
 	public function uacf7_redirection_migration_notice() {
 		if (is_plugin_active('wpcf7-redirect/wpcf7-redirect.php')) {
-			if (!get_option('uacf7_redirection_migration_done')) {
-				echo '<div class="notice notice-warning is-dismissible">
-					<p><strong>Ultimate Addons for Contact Form 7:</strong> Detected redirection settings from <strong>Redirection for Contact Form 7</strong>. Would you like to migrate it?</p>
-					<p>You no longer need multiple plugins for redirection. Click "Migrate Now" to transfer your data seamlessly.</p>
-					<p>
-						<a href="' . esc_url(admin_url('admin.php?action=uacf7_migrate_redirection')) . '" class="button button-primary">Migrate Now</a>
-						<a href="' . esc_url(add_query_arg('uacf7_dismiss_redirection_notice', '1')) . '" class="button button-secondary">Not Now</a>
-					</p>
-				</div>';
+			$dismiss_time = get_option('uacf7_redirection_migration_done', 0);
+	
+			if ($dismiss_time && $dismiss_time > time()) {
+				return;
 			}
+	
+			echo '<div class="notice notice-warning is-dismissible">
+				<p><strong>Ultimate Addons for Contact Form 7 – Migrate Your Redirection Settings:</strong><br> We\'ve detected redirection settings from <strong>Redirection for Contact Form 7</strong>. Easily migrate them with our built-in tool—no need for multiple plugins! Plus, access 40+ powerful addons in one place. Would you like to proceed?</p>
+				<p>
+					<a href="' . esc_url(admin_url('admin.php?action=uacf7_migrate_redirection')) . '" class="button button-primary">Migrate Now</a>
+					<a href="' . esc_url(add_query_arg('uacf7_dismiss_redirection_notice', '1')) . '" class="button button-secondary">Not Now</a>
+				</p>
+			</div>';
 		}
 	}
 
@@ -309,7 +312,7 @@ class UACF7_Redirection {
 
 	public function uacf7_handle_dismiss_notice() {
 		if (isset($_GET['uacf7_dismiss_redirection_notice']) && $_GET['uacf7_dismiss_redirection_notice'] === '1') {
-			update_option('uacf7_redirection_migration_done', true);
+			update_option('uacf7_redirection_migration_done', time() + (15 * DAY_IN_SECONDS));
 			wp_redirect(remove_query_arg('uacf7_dismiss_redirection_notice'));
 			exit;
 		}

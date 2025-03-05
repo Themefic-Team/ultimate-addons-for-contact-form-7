@@ -1353,21 +1353,26 @@ function enable_conditional_field() {
 
 function uacf7_migration_notice() {
 	if (is_plugin_active('cf7-conditional-fields/conditional-fields.php')) {
-		if (!get_option('uacf7_migration_done')) {
-			echo '<div class="notice notice-warning">
-				<p><strong>Ultimate Addons for Contact Form 7:</strong> Detected conditional data from <strong>Conditional Fields for Contact Form 7</strong>. Would you like to migrate it?</p>
-				<p>
-					<a href="' . esc_url(admin_url('admin.php?action=uacf7_migrate_conditional_fields')) . '" class="button button-primary">Migrate Now</a>
-					<a href="' . esc_url(add_query_arg('uacf7_dismiss_conditional_migration_notice', '1')) . '" class="button button-secondary">Not Now</a>
-				</p>
-			</div>';
+		$dismiss_time = get_option('uacf7_migration_done', 0);
+
+		if ($dismiss_time && $dismiss_time > time()) {
+			return;
 		}
+
+		echo '<div class="notice notice-warning is-dismissible">
+			<p><strong>Ultimate Addons for Contact Form 7 – Migrate Your Conditional Data:</strong> <br> We\'ve detected conditional data from <strong>Conditional Fields for Contact Form 7</strong>. Easily migrate it with our built-in tool and unlock 40+ powerful addons in one place. Would you like to proceed?</p>
+			<p>
+				<a href="' . esc_url(admin_url('admin.php?action=uacf7_migrate_conditional_fields')) . '" class="button button-primary">Migrate Now</a>
+				<a href="' . esc_url(add_query_arg('uacf7_dismiss_conditional_migration_notice', '1')) . '" class="button button-secondary">Not Now</a>
+			</p>
+		</div>';
 	}
 }
 
 function uacf7_handle_conditional_notice_dismiss() {
 	if (isset($_GET['uacf7_dismiss_conditional_migration_notice']) && $_GET['uacf7_dismiss_conditional_migration_notice'] === '1') {
-		update_option('uacf7_migration_done', true);
+		update_option('uacf7_migration_done', time() + (15 * DAY_IN_SECONDS));
+
 		wp_redirect(remove_query_arg('uacf7_dismiss_conditional_migration_notice'));
 		exit;
 	}
