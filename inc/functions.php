@@ -1515,62 +1515,62 @@ function uacf7_preserve_line_breaks($contact_form) {
 	$contact_form->set_properties($properties);
 }
 
-function uacf7_check_and_install_hydra_booking($upgrader_object, $options) {
+// function uacf7_check_and_install_hydra_booking($upgrader_object, $options) {
 	
-	if ($options['action'] !== 'update' || $options['type'] !== 'plugin') {
-		return;
-	}
+// 	if ($options['action'] !== 'update' || $options['type'] !== 'plugin') {
+// 		return;
+// 	}
 
-	$ultimate_addons_slug = 'ultimate-addons-for-contact-form-7/ultimate-addons-for-contact-form-7.php';
+// 	$ultimate_addons_slug = 'ultimate-addons-for-contact-form-7/ultimate-addons-for-contact-form-7.php';
 
-	if (empty($options['plugins']) || !is_array($options['plugins'])) {
-		return;
-	}
+// 	if (empty($options['plugins']) || !is_array($options['plugins'])) {
+// 		return;
+// 	}
 
-	if (!in_array($ultimate_addons_slug, $options['plugins'])) {
-		return;
-	}
+// 	if (!in_array($ultimate_addons_slug, $options['plugins'])) {
+// 		return;
+// 	}
 
-    $options = uacf7_settings();
+//     $options = uacf7_settings();
 
-    if (!isset($options['uacf7_enable_booking_form']) || !$options['uacf7_enable_booking_form']) {
-        return;
-    }
+//     if (!isset($options['uacf7_enable_booking_form']) || !$options['uacf7_enable_booking_form']) {
+//         return;
+//     }
 
-    $hydra_plugin_slug = 'hydra-booking/hydra-booking.php';
-    if (is_plugin_active($hydra_plugin_slug) || file_exists(WP_PLUGIN_DIR . '/' . $hydra_plugin_slug)) {
-        return; 
-    }
+//     $hydra_plugin_slug = 'hydra-booking/hydra-booking.php';
+//     if (is_plugin_active($hydra_plugin_slug) || file_exists(WP_PLUGIN_DIR . '/' . $hydra_plugin_slug)) {
+//         return; 
+//     }
 
-    uacf7_install_hydra_booking_on_plugin_update();
-}
+//     uacf7_install_hydra_booking_on_plugin_update();
+// }
 
-add_action('upgrader_process_complete', 'uacf7_check_and_install_hydra_booking', 10, 2);
+// add_action('upgrader_process_complete', 'uacf7_check_and_install_hydra_booking', 10, 2);
 
-function uacf7_install_hydra_booking_on_plugin_update() {
-    if (!current_user_can('install_plugins')) {
-        return;
-    }
+// function uacf7_install_hydra_booking_on_plugin_update() {
+//     if (!current_user_can('install_plugins')) {
+//         return;
+//     }
 
-    include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-    include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-    include_once ABSPATH . 'wp-admin/includes/plugin.php';
+//     include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+//     include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+//     include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-    $plugin_slug = 'hydra-booking';
-    $plugin_file = 'hydra-booking/hydra-booking.php';
+//     $plugin_slug = 'hydra-booking';
+//     $plugin_file = 'hydra-booking/hydra-booking.php';
 
-    $api = plugins_api('plugin_information', ['slug' => $plugin_slug]);
+//     $api = plugins_api('plugin_information', ['slug' => $plugin_slug]);
 
-    if (is_wp_error($api) || empty($api->download_link)) {
-        return;
-    }
+//     if (is_wp_error($api) || empty($api->download_link)) {
+//         return;
+//     }
 
-    $upgrader = new Plugin_Upgrader(new WP_Upgrader_Skin());
-    $result = $upgrader->install($api->download_link);
+//     $upgrader = new Plugin_Upgrader(new WP_Upgrader_Skin());
+//     $result = $upgrader->install($api->download_link);
 
-    if (is_wp_error($result)) {
-        return; 
-    }
+//     if (is_wp_error($result)) {
+//         return; 
+//     }
 
-    activate_plugin($plugin_file);
-}
+//     activate_plugin($plugin_file);
+// }
