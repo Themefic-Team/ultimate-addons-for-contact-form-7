@@ -285,7 +285,7 @@ class UACF7_PDF_GENERATOR {
 				'uacf7_enable_pdf_form_download' => array(
 					'id' => 'uacf7_enable_pdf_form_download',
 					'type' => 'switch',
-					'label' => __( ' Enable PDF Form Download ', 'ultimate-addons-cf7' ),
+					'label' => __( ' Enable PDF Download on Submission ', 'ultimate-addons-cf7' ),
 					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
 					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 					'default' => false,

@@ -291,8 +291,8 @@ UACF7_Settings::option(
 								'image_url' => UACF7_URL . 'assets/admin/images/addons/Send-PDF-Using-Contact-form-8.png',
 								'default' => false,
 								'subtitle' => __( "Download Generate PDFs after form submission. There will be a download button to download the submitted form.", 'ultimate-addons-cf7' ),
-								'demo_link' => 'https://cf7addons.com/preview/contact-form-7-pdf-generator/',
-								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-pdf-generator-pro/',
+								'demo_link' => 'https://cf7addons.com/preview/pdf-generate-pro/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/pdf-generate-pro/',
 								'is_pro' => true
 							),
 							'uacf7_enable_form_generator_ai_field' => array(
