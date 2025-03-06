@@ -65,7 +65,7 @@ class UACF7_COUNTRY_DROPDOWN {
 		$ds_country = $tag->has_option( 'ds_country' );
 		if ( $ds_country ) {
 			$atts['ds_country'] = 'true';
-
+			$class .= ' uacf7_country_dropdown_with_flag';
 		} else {
 			$class .= ' uacf7_country_dropdown_with_flag';
 		}
@@ -111,6 +111,10 @@ class UACF7_COUNTRY_DROPDOWN {
 		<?php if ( $ds_country ) { ?>
 			<span id="uacf7_country_select" class="wpcf7-form-control-wrap  <?php echo sanitize_html_class( $tag->name ); ?>">
 
+				
+				<input id="uacf7_countries_<?php echo esc_attr( $tag->name ); ?>" type="text" <?php echo $atts; ?>>
+				
+				<span><?php echo $validation_error; ?> </span>
 				<?php echo apply_filters( 'uacf7_api_based_country_filter', $api_country, $atts ); ?>
 
 			</span>
