@@ -614,6 +614,25 @@ class UACF7_MULTISTEP {
 						'multiple' => false,
 						'inline' => true,
 						'is_pro' => true,
+						'dependency' => array(
+							array( 'uacf7_progressbar_style', '==', 'style-1' | 'uacf7_progressbar_style', '==', 'style-2' | 'uacf7_progressbar_style', '==', 'style-3' | 'uacf7_progressbar_style', '==', 'style-4' | 'uacf7_progressbar_style', '==', 'style-5' | 'uacf7_progressbar_style', '==', 'style-6'  ),
+						)
+						
+					);
+
+					$fields[ 'uacf7_progressbar_icon_' . $step->name . '' ] = array(
+						'id' => 'uacf7_progressbar_icon_' . $step->name . '',
+						'type' => 'icon',
+						'label' => __( 'Add progressbar icon for this step', 'ultimate-addons-cf7' ),
+						'class' => 'tf-field-class',
+						'multiple' => false,
+						'inline' => true,
+						'is_pro' => true,
+						'default' => 'fas fa-user',
+						'dependency' => array(
+							array( 'uacf7_progressbar_style', '==', 'style-7' | 'uacf7_progressbar_style', '==', 'style-8' ),
+							array( 'uacf7_progressbar_style', '==', 'style-9' | 'uacf7_progressbar_style', '==', 'style-10' ),
+						),
 					);
 
 					if ( $step_count == 1 ) {
