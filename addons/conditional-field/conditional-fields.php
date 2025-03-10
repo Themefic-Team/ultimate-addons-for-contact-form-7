@@ -50,7 +50,6 @@ class UACF7_CF {
 		wp_localize_script( 'uacf7-cf-script', 'uacf7_cf_object', $this->get_forms() );
 	}
 
-
 	public function uacf7_post_meta_options_conditional_field( $value, $post_id ) {
 		$conditional = apply_filters( 'uacf7_post_meta_options_conditional_field_pro', $data = array(
 			'title' => __( 'Conditional Fields', 'ultimate-addons-cf7' ),
@@ -293,12 +292,13 @@ class UACF7_CF {
 				// if($post_id != 128) continue;
 
 				$conditional = uacf7_get_form_option( $post_id, 'conditional' );
+
 				if ( $conditional != false ) {
 					$conditional_repeater = $conditional['conditional_repeater'];
 					if ( $conditional_repeater != false ) {
 						$count = 0;
 						$data = [];
-
+						// beaf_print_r($conditional_repeater);
 						foreach ( $conditional_repeater as $item ) {
 							$newItem = [ 
 								'uacf7_cf_hs' => $item['uacf7_cf_hs'],
