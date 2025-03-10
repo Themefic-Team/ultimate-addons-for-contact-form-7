@@ -392,6 +392,17 @@ if ( ! function_exists( 'uacf7_review_notice' ) ) {
 		if ( $get_current_screen->base == 'dashboard' ) {
 			$current_user = wp_get_current_user();
 			?>
+			<style>
+				.themefic_review_notice ul {
+					display: flex;
+					justify-content: flex-start;
+					gap: 20px;
+					flex-wrap: wrap;
+				}
+				.themefic_review_notice ul li a{
+					text-decoration: none;
+				}
+			</style>
 			<div class="notice notice-info themefic_review_notice">
 
 				<?php echo sprintf(
