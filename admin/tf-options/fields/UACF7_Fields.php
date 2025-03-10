@@ -9,7 +9,6 @@ if ( ! class_exists( 'UACF7_Fields' ) ) {
 		public $settings_id;
 		public $parent_field;
 		public $section_key;
-		
 		public function __construct( $field = array(), $value = '', $settings_id = '', $parent_field = '', $section_key = '') {
 			$this->field       = $field;
 			$this->value       = $value;

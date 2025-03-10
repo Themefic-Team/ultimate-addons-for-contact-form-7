@@ -15,7 +15,6 @@ class UACF7_FORM_GENERATOR {
 		// admin scripts
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 
-
 		// add Popup Contact form 7 admin footer
 		add_action( 'wpcf7_admin_footer', array( $this, 'uacf7_form_admin_footer_popup' ) );
 
@@ -43,13 +42,10 @@ class UACF7_FORM_GENERATOR {
 			array(
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				'nonce' => wp_create_nonce( 'uacf7-form-generator-ai-nonce' ),
-				'loader' => UACF7_ADDONS . '/form-generator-ai/assets/images/pre-loader.svg',
+				'loader' => UACF7_URL . 'assets/admin/images/pre-loader.svg',
 			)
 		);
 	}
-
-
-
 
 	// Add Popup Contact form 7 admin footer
 	public function uacf7_form_admin_footer_popup() {
