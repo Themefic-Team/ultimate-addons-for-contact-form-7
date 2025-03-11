@@ -134,35 +134,35 @@ class UACF7_MULTISTEP {
 					'options' => array(
 						'default' => array(
 							'title' => 'Default',
-							'url' => UACF7_ADDONS . "/multistep/assets/img/default.png",
+							'url' => UACF7_ADDONS . "/multistep/assets/img/default.jpg",
 						),
 						'style-1' => array(
 							'title' => 'Style 1',
-							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-1.png",
+							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-1.jpg",
 						),
 						'style-2' => array(
 							'title' => 'Style 2',
-							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-2.png",
+							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-2.jpg",
 							'is_pro' => true,
 						),
 						'style-3' => array(
 							'title' => 'Style 3',
-							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-3.png",
+							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-3.jpg",
 							'is_pro' => true,
 						),
 						'style-4' => array(
 							'title' => 'Style 4',
-							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-4.png",
+							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-4.jpg",
 							'is_pro' => true,
 						),
 						'style-5' => array(
 							'title' => 'Style 5',
-							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-5.png",
+							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-5.jpg",
 							'is_pro' => true,
 						),
 						'style-6' => array(
 							'title' => 'Style 6',
-							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-6.png",
+							'url' => UACF7_ADDONS . "/multistep/assets/img/skin-6.jpg",
 							'is_pro' => true,
 						),
 						'style-7' => array(

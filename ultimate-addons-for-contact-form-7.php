@@ -3,7 +3,7 @@
  * Plugin Name: Ultimate Addons for Contact Form 7
  * Plugin URI: https://cf7addons.com/
  * Description: 40+ Essential Addons for Contact Form 7 - Conditional Fields, Multi Step Forms, Redirection, Form Templates, Columns, WooCommerce, Mailchimp and more, all in one.
- * Version: 3.5.3
+ * Version: 3.5.5
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -27,8 +27,10 @@ class Ultimate_Addons_CF7 {
 	public function __construct() {
 		define( 'UACF7_URL', plugin_dir_url( __FILE__ ) );
 		define( 'UACF7_ADDONS', UACF7_URL . 'addons' );
+		define( 'UACF7_ASSETS', UACF7_URL . 'assets' );
+		define( 'UACF7_ASSETS_ADMIN', UACF7_ASSETS . '/admin' );
 		define( 'UACF7_PATH', plugin_dir_path( __FILE__ ) );
-		define( 'UACF7_VERSION', '3.5.3' );
+		define( 'UACF7_VERSION', '3.5.5' );
 
 		if ( ! class_exists( 'Appsero\Client' ) ) {
 			require_once( __DIR__ . '/inc/app/src/Client.php' );
@@ -131,8 +133,6 @@ class Ultimate_Addons_CF7 {
 		//Require ultimate addons
 		require_once UACF7_PATH . 'addons/addons.php';
 
-
-
 		//  Update UACF7 Plugin Version
 		if ( UACF7_VERSION != get_option( 'uacf7_version' ) ) {
 			update_option( 'uacf7_version', UACF7_VERSION );
@@ -165,7 +165,7 @@ class Ultimate_Addons_CF7 {
 		$pro_active = is_plugin_active( 'ultimate-addons-for-contact-form-7-pro/ultimate-addons-for-contact-form-7-pro.php' );
 
 		if ( in_array( $screen, $tf_options_screens ) || in_array( $post_type, $tf_options_post_type ) ) {
-			wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css', 'sadf' );
+			wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css' );
 
 			// // wp_enqueue_media();
 			wp_enqueue_script( 'wp-color-picker' );

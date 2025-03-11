@@ -1,8 +1,6 @@
 (function ($) {
-
     // Country function for load the signature
     function uacf7_country_load() {
-
         var forms = $('.wpcf7-form');
 
         forms.each(function () {
@@ -31,20 +29,6 @@
     // Recall the country function if repeater addon repeat
     $(document).on('click', '.uacf7_repeater_add', function () {
         uacf7_country_load();
-        // var scriptId = 'uacf7-country-select-library-js';
-        // var scriptSrc = $('#' + scriptId).attr('src');
-
-        // // Remove the existing script tag
-        // $('#' + scriptId).remove();
-
-        // // Create a new script tag
-        // var newScript = document.createElement('script');
-        // newScript.id = scriptId;
-        // newScript.src = scriptSrc;
-
-        // // Append the new script tag to the head
-        // $('head').append(newScript);
-
     });
 
 })(jQuery);

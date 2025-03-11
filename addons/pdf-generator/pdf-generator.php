@@ -285,7 +285,7 @@ class UACF7_PDF_GENERATOR {
 				'uacf7_enable_pdf_form_download' => array(
 					'id' => 'uacf7_enable_pdf_form_download',
 					'type' => 'switch',
-					'label' => __( ' Enable PDF Form Download ', 'ultimate-addons-cf7' ),
+					'label' => __( ' Enable PDF Download on Submission ', 'ultimate-addons-cf7' ),
 					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
 					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 					'default' => false,
@@ -708,10 +708,10 @@ class UACF7_PDF_GENERATOR {
                     padding-left: 15px;
                     text-align: left;
 					border-bottom: 1px solid #F0EEF6;
-					display: flex;
-					justify-content: flex-start;
-					align-items: center;
+					display: table-cell !important;  
+    				vertical-align: middle !important; 
                 } 
+
 				pdf-content tr td:first-child{
 					min-width: 25%;
 				}
@@ -808,7 +808,7 @@ class UACF7_PDF_GENERATOR {
 
 			$pdf_content = str_replace( $replace_key, $replace_value, $customize_pdf );
 			// Replace extranal data using this content;
-
+			
 			$pdf_content = apply_filters( 'uacf7_pdf_generator_replace_condition_data', $pdf_content, $wpcf7->id(), $contact_form_data );
 
 			// Replace PDF Name
@@ -819,7 +819,7 @@ class UACF7_PDF_GENERATOR {
 			$mpdf->WriteHTML( $pdf_style, \Mpdf\HTMLParserMode::HEADER_CSS );
 			
 			// PDF Footer Content
-			$mpdf->WriteHTML( '<div class="pdf-content">' . nl2br( $this->makeLinksClickable($pdf_content)) . '   </div>' );
+			$mpdf->WriteHTML( '<div class="pdf-content">' . nl2br( $pdf_content) . '   </div>' );
 
 			$pdf_dir = $dir . '/uacf7-uploads/' . $uacf7_pdf_name . '.pdf';
 			$pdf_url = $url . '/uacf7-uploads/' . $uacf7_pdf_name . '.pdf';

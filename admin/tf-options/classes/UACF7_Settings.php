@@ -164,22 +164,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					array( $this, 'uacf7_license_info_callback' ),
 				);
 			}
-
-			// //Get Help submenu
-			// add_submenu_page(
-			// 	$this->option_id, //parent slug
-			// 	__('Get Help', 'ultimate-addons-cf7'),
-			// 	__('Get Help', 'ultimate-addons-cf7'),
-			// 	'manage_options',
-			// 	'tf_get_help',
-			// 	array( $this,'tf_get_help_callback'),
-			// 	10,
-			// );
-
-
 			// remove first submenu
 			remove_submenu_page( $this->option_id, $this->option_id );
-
 		}
 
 		// page top header
@@ -235,15 +221,12 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			<?php
 		}
 
-
 		/**
 		 * Get UAC7 Addon Page
 		 * @author Sydur Rahman
 		 */
-
 		public function uacf7_addons_page() {
 			// uacf7_print_r($this->option_sections);
-
 			?>
 			<div class="tf-setting-dashboard">
 				<!-- deshboard-header-include -->
@@ -446,6 +429,18 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				// 	// ],
 				// ],
 				[
+					'name'       => 'Hydra',
+					'slug'       => 'hydra-booking',
+					'file_name'  => 'hydra-booking',
+					'subtitle'   => 'All in One Appointment Booking System | Appointment Scheduling, Booking Calendar & WooCommerce Bookings',
+					'image'      => 'https://ps.w.org/hydra-booking/assets/icon-128x128.jpg',
+					// 'pro'        => [
+					// 	'slug'      => 'hydra-booking-pro',
+					// 	'file_name' => 'hydra-booking-pro',
+					// 	'url'       => 'https://hydrabooking.com/',
+					// ],
+				],
+				[
 					'name'       => 'BEAF',
 					'slug'       => 'beaf-before-and-after-gallery',
 					'file_name'  => 'before-and-after-gallery',
@@ -479,18 +474,6 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					// 	'slug'      => 'wooinstant',
 					// 	'file_name' => 'wooinstant',
 					// 	'url'       => 'https://themefic.com/instantio/',
-					// ],
-				],
-				[
-					'name'       => 'Hydra',
-					'slug'       => 'hydra-booking',
-					'file_name'  => 'hydra-booking',
-					'subtitle'   => 'All in One Appointment Booking System | Appointment Scheduling, Booking Calendar & WooCommerce Bookings',
-					'image'      => 'https://ps.w.org/hydra-booking/assets/icon-128x128.jpg',
-					// 'pro'        => [
-					// 	'slug'      => 'hydra-booking-pro',
-					// 	'file_name' => 'hydra-booking-pro',
-					// 	'url'       => 'https://hydrabooking.com/',
 					// ],
 				],
 				// [
@@ -774,8 +757,6 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			if ( empty( $tf_option_value ) ) {
 				$tf_option_value = array();
 			}
-
-
 			$ajax_save_class = 'tf-ajax-save';
 
 			if ( ! empty( $this->option_sections ) ) :

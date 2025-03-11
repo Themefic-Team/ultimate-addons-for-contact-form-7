@@ -124,23 +124,17 @@ if ( ! class_exists( 'UACF7_Metabox' ) ) {
 									<?php
 									$section_count = 0;
 									$sections = $this->metabox_sections;
-
 									asort( $sections );
-
-
 									if ( isset( $sections['import_export'] ) ) {
 										$import_export = $sections['import_export'];
 										unset( $sections['import_export'] );
 										$sections['import_export'] = $import_export;
 
 									}
-
-
 									foreach ( $sections as $key => $section ) : ?>
 										<?php //if( $section != null): ?>
 										<a class="tf-tablinks <?php echo $section_count == 0 ? 'active' : ''; ?>"
 											data-tab="<?php echo esc_attr( $key ) ?>">
-
 											<?php echo ! empty( $section['icon'] ) ? '<span class="tf-sec-icon"><i class="' . esc_attr( $section['icon'] ) . '"></i></span>' : ''; ?>
 											<?php echo esc_html( $section['title'] ); ?>
 											<?php if ( isset( $section['checked_field'] ) && $section['checked_field'] ) {

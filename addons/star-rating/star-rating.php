@@ -19,7 +19,7 @@ class UACF7_STAR_RATING {
 	 */
 	public function enqueue_frontend_script() {
 		wp_enqueue_style( 'uacf7-star-rating-style', UACF7_ADDONS . '/star-rating/assets/css/star-rating.css' );
-		wp_enqueue_style( 'uacf7-fontawesome', UACF7_ADDONS . '/star-rating/assets/css/all.css' );
+		// wp_enqueue_style( 'uacf7-fontawesome', UACF7_ADDONS . '/star-rating/assets/css/all.css' );
 	}
 
 

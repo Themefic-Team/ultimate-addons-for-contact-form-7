@@ -267,9 +267,9 @@ jQuery(document).ready(function($) {
         let originalText = button.clone().children().remove().end().text().trim();
 
         if (action === 'install') {
-            button.contents().first().replaceWith('Installing...');
+            button.contents().first().replaceWith('Installing..');
         } else if (action === 'activate') {
-            button.contents().first().replaceWith('Activating...');
+            button.contents().first().replaceWith('Activating..');
         }
 
         button.addClass('loading').prop('disabled', true);

@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class UACF7_COLUMN {
 
-	private $hidden_fields = array();
+	private $hidden_fields = [];
 	/*
 	 * Construct function
 	 */
@@ -13,14 +13,14 @@ class UACF7_COLUMN {
 		global $pagenow;
 		if ( isset( $_GET['page'] ) ) {
 			if ( ( $pagenow == 'admin.php' ) && ( $_GET['page'] == 'wpcf7' ) || ( $_GET['page'] == 'wpcf7-new' ) ) {
-				add_action( 'admin_enqueue_scripts', array( $this, 'admin_column_enqueue_script' ) );
+				add_action( 'admin_enqueue_scripts', [ $this, 'admin_column_enqueue_script' ] );
 			}
 		}
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_column_style' ) );
-		add_action( 'wpcf7_init', array( __CLASS__, 'add_shortcodes' ), 10, 0 );
-		add_action( 'admin_init', array( $this, 'tag_generator' ) );
-		add_filter( 'wpcf7_contact_form_properties', array( $this, 'uacf7_column_properties' ), 10, 2 );
-		add_filter( 'wpcf7_contact_form_properties', array( $this, 'uacf7_row_properties' ), 10, 2 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_column_style' ] );
+		add_action( 'wpcf7_init', [ $this, 'add_shortcodes' ], 10, 0 );
+		add_action( 'admin_init', [ $this, 'tag_generator' ] );
+		add_filter( 'wpcf7_contact_form_properties', [ $this, 'uacf7_column_properties' ], 10, 2 );
+		add_filter( 'wpcf7_contact_form_properties', [ $this, 'uacf7_row_properties' ], 10, 2 );
 	}
 
 	public function admin_column_enqueue_script() {
@@ -36,10 +36,8 @@ class UACF7_COLUMN {
 	 * Form tag
 	 */
 	public static function add_shortcodes() {
-
-		wpcf7_add_form_tag( 'uacf7-col', array( __CLASS__, 'column_tag_handler' ), true );
-
-		wpcf7_add_form_tag( 'uacf7-row', array( __CLASS__, 'column_tag_handler' ), true );
+		wpcf7_add_form_tag( 'uacf7-col', [ __CLASS__, 'column_tag_handler' ], true );
+		wpcf7_add_form_tag( 'uacf7-row', [ __CLASS__, 'column_tag_handler' ], true );
 	}
 
 	public static function column_tag_handler( $tag ) {
@@ -57,9 +55,7 @@ class UACF7_COLUMN {
 	 * Generate tag - conditional
 	 */
 	public function tag_generator() {
-
 		$tag_generator = WPCF7_TagGenerator::get_instance();
-
 		$tag_generator->add(
 			'uacf7-col',
 			__( 'Add Column', 'ultimate-addons-cf7' ),
@@ -137,7 +133,6 @@ class UACF7_COLUMN {
 [/uacf7-row]
 					</pre>
 			</fieldset>
-
 			<fieldset class="uacf7-column-select" data-column-codes="[uacf7-row][uacf7-col col:4] --your code-- [/uacf7-col][uacf7-col col:4] --your code-- [/uacf7-col][uacf7-col col:4] --your code-- [/uacf7-col][/uacf7-row]">
 				<legend>
 					<?php echo esc_html__( '3 Column', 'ultimate-addons-cf7' ); ?>
@@ -153,7 +148,6 @@ class UACF7_COLUMN {
 [/uacf7-row]
 				</pre>
 			</fieldset>
-
 			<fieldset class="uacf7-column-select" data-column-codes="[uacf7-row][uacf7-col col:3] --your code-- [/uacf7-col][uacf7-col col:3] --your code-- [/uacf7-col][uacf7-col col:3] --your code-- [/uacf7-col][uacf7-col col:3] --your code-- [/uacf7-col][/uacf7-row]">
 				<legend>
 					<?php echo esc_html__( '4 Column', 'ultimate-addons-cf7' ); ?>
@@ -170,7 +164,6 @@ class UACF7_COLUMN {
 [/uacf7-row]
 				</pre>
 			</fieldset>
-			
 			<fieldset class="column-pro-feature">
 				<legend>
 					<?php echo esc_html__( 'Custom Column Width', 'ultimate-addons-cf7' ); ?> 
@@ -211,28 +204,21 @@ class UACF7_COLUMN {
 	}
 
 	public function uacf7_column_properties( $properties, $cfform ) {
-
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-
 			$form = $properties['form'];
-
 			$form_parts = preg_split( '/(\[\/?uacf7-col(?:\]|\s.*?\]))/', $form, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
-
 			ob_start();
 
 			foreach ( $form_parts as $form_part ) {
 				if ( substr( $form_part, 0, 11 ) == '[uacf7-col ' ) {
 					$tag_parts = explode( ' ', rtrim( $form_part, ']' ) );
-
 					array_shift( $tag_parts );
-
 					$tag_html_type = 'div';
 					$ucaf7_column_class = '';
 					$uacf7_column_custom_width = '';
 					$col = '';
 
 					foreach ( $tag_parts as $i => $tag_part ) {
-
 						if ( $tag_part == 'col:12' ) {
 							$ucaf7_column_class = 'uacf7-col-12';
 						} elseif ( $tag_part == 'col:6' ) {
@@ -244,11 +230,9 @@ class UACF7_COLUMN {
 						} else {
 							$uacf7_column_custom_width = $tag_part;
 						}
-
 					}
 
 					$html = '<div class="' . esc_attr( $ucaf7_column_class ) . '">';
-
 					echo apply_filters( 'uacf7_column_custom_width', $html, $ucaf7_column_class, $uacf7_column_custom_width );
 
 				} else if ( $form_part == '[/uacf7-col]' ) {
@@ -257,28 +241,21 @@ class UACF7_COLUMN {
 					echo $form_part;
 				}
 			}
-
 			$properties['form'] = ob_get_clean();
 		}
 		return $properties;
 	}
 
 	public function uacf7_row_properties( $properties, $cfform ) {
-
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-
 			$form = $properties['form'];
-
 			$form_parts = preg_split( '/(\[\/?uacf7-row(?:\]|\s.*?\]))/', $form, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
-
 			ob_start();
 
 			foreach ( $form_parts as $form_part ) {
 				if ( substr( $form_part, 0, 10 ) == '[uacf7-row' ) {
 					$tag_parts = explode( ' ', rtrim( $form_part, ']' ) );
-
 					array_shift( $tag_parts );
-
 					echo '<div class="uacf7-row">';
 				} else if ( $form_part == '[/uacf7-row]' ) {
 					echo '</div>';
@@ -286,12 +263,9 @@ class UACF7_COLUMN {
 					echo $form_part;
 				}
 			}
-
 			$properties['form'] = ob_get_clean();
 		}
 		return $properties;
 	}
-
-
 }
 new UACF7_COLUMN();

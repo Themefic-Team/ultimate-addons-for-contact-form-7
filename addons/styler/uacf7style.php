@@ -169,6 +169,7 @@ class UACF7_uacf7style {
 					'type' => 'number',
 					'label' => __( 'Bottom', 'ultimate-addons-cf7' ),
 					'placeholder' => __( 'Bottom', 'ultimate-addons-cf7' ),
+					'default' => 20,
 					'field_width' => 25,
 				),
 				'uacf7_uacf7style_label_margin_left' => array(
@@ -176,6 +177,7 @@ class UACF7_uacf7style {
 					'type' => 'number',
 					'label' => __( 'Left', 'ultimate-addons-cf7' ),
 					'placeholder' => __( 'Left', 'ultimate-addons-cf7' ),
+					// 'default' => 20,
 					'field_width' => 25,
 				),
 				'styler_heading_input' => array(
@@ -468,15 +470,8 @@ class UACF7_uacf7style {
 					'type' => 'color',
 					'label' => __( 'Border Color', 'ultimate-addons-cf7' ),
 					'class' => 'tf-field-class',
-					// 'default' => '#ffffff',
 					'multiple' => false,
 					'inline' => false,
-					// 'colors' => array(
-					//     'uacf7_uacf7style_btn_color' => 'Color',
-					//     'uacf7_uacf7style_btn_color_hover' => 'Color (hover)', 
-					//     'uacf7_uacf7style_btn_background_color' => 'Background Color (hover)', 
-					//     'uacf7_uacf7style_btn_background_color_hover' => 'Background Color (hover)', 
-					// ),  
 					'field_width' => 50,
 				),
 				'uacf7_uacf7style_btn_border_color_hover' => array(
@@ -484,15 +479,8 @@ class UACF7_uacf7style {
 					'type' => 'color',
 					'label' => __( 'Border Color (Hover)', 'ultimate-addons-cf7' ),
 					'class' => 'tf-field-class',
-					// 'default' => '#ffffff',
 					'multiple' => false,
-					'inline' => true,
-					// 'colors' => array(
-					//     'uacf7_uacf7style_btn_color' => 'Color',
-					//     'uacf7_uacf7style_btn_color_hover' => 'Color (hover)', 
-					//     'uacf7_uacf7style_btn_background_color' => 'Background Color (hover)', 
-					//     'uacf7_uacf7style_btn_background_color_hover' => 'Background Color (hover)', 
-					// ),  
+					'inline' => true, 
 					'field_width' => 50,
 				),
 				'uacf7_uacf7style_btn_padding' => array(
@@ -589,7 +577,7 @@ class UACF7_uacf7style {
 		return $value;
 	}
 
-	public function uacf7_properties( $properties, $cfform ) {
+	public function old_uacf7_properties( $properties, $cfform ) {
 
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 
@@ -968,7 +956,7 @@ class UACF7_uacf7style {
 		return $properties;
 	}
 
-	public function old_uacf7_properties( $properties, $cfform ) {
+	public function uacf7_properties( $properties, $cfform ) {
 		wp_register_style( 'uacf7-single-form-styler', UACF7_URL . 'addons/styler/css/uacf7-single-form-styler.css', [], null );
 
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
@@ -1018,21 +1006,47 @@ class UACF7_uacf7style {
 				'font-family' => $form_meta['uacf7_uacf7style_input_font_family'] ?? null,
 				'font-style' => $form_meta['uacf7_uacf7style_input_font_style'] ?? null,
 				'font-weight' => $form_meta['uacf7_uacf7style_input_font_weight'] ?? null,
+				'height' => $form_meta['uacf7_uacf7style_input_height'] ? $form_meta['uacf7_uacf7style_input_height'] . 'px' : null,
+				// 'border-width' => $form_meta['uacf7_uacf7style_input_border_width'] ? $form_meta['uacf7_uacf7style_input_border_width'] . 'px' : null,
 				'border' => $this->generate_border_css( $form_meta, 'input_border' ),
 				'border-radius' => $form_meta['uacf7_uacf7style_input_border_radius'] ? $form_meta['uacf7_uacf7style_input_border_radius'] . 'px' : null,
 
 				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'input_padding', 'padding' ))),
 				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'input_margin', 'margin' ))),
 			],
+			'.wpcf7-radio span' => [
+				'color' => $form_meta['uacf7_uacf7style_input_color_option']['uacf7_uacf7style_input_color'] ?? null,
+				'font-size' => $form_meta['uacf7_uacf7style_input_font_size'] ? $form_meta['uacf7_uacf7style_input_font_size'] . 'px' : null,
+				'font-family' => $form_meta['uacf7_uacf7style_input_font_family'] ?? null,
+				'font-style' => $form_meta['uacf7_uacf7style_input_font_style'] ?? null,
+				'font-weight' => $form_meta['uacf7_uacf7style_input_font_weight'] ?? null,
+			],
+			'.wpcf7-checkbox span' => [
+				'color' => $form_meta['uacf7_uacf7style_input_color_option']['uacf7_uacf7style_input_color'] ?? null,
+				'font-size' => $form_meta['uacf7_uacf7style_input_font_size'] ? $form_meta['uacf7_uacf7style_input_font_size'] . 'px' : null,
+				'font-family' => $form_meta['uacf7_uacf7style_input_font_family'] ?? null,
+				'font-style' => $form_meta['uacf7_uacf7style_input_font_style'] ?? null,
+				'font-weight' => $form_meta['uacf7_uacf7style_input_font_weight'] ?? null,
+			],
 			'.wpcf7-submit' => [ 
+				'width' => $form_meta['uacf7_uacf7style_btn_width'] ? $form_meta['uacf7_uacf7style_btn_width'] . 'px' : null,
 				'color' => $form_meta['uacf7_uacf7style_btn_color_option']['uacf7_uacf7style_btn_color'] ?? null,
 				'background-color' => $form_meta['uacf7_uacf7style_btn_color_option']['uacf7_uacf7style_btn_background_color'] ?? null,
 				'font-size' => $form_meta['uacf7_uacf7style_btn_font_size'] ? $form_meta['uacf7_uacf7style_btn_font_size'] . 'px' : null,
+				'font-family' => $form_meta['uacf7_uacf7style_input_font_family'] ?? null,
+				'font-style' => $form_meta['uacf7_uacf7style_btn_font_style'] ?? null,
+				'font-weight' => $form_meta['uacf7_uacf7style_btn_font_weight'] ?? null,
 				'border' => $this->generate_border_css( $form_meta, 'btn_border' ),
 				'border-radius' => $form_meta['uacf7_uacf7style_btn_border_radius'] ? $form_meta['uacf7_uacf7style_btn_border_radius'] . 'px' : null,
 				
 				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'btn_padding', 'padding' ))),
 				...array_filter(array_values($this->generate_spacing_css( $form_meta, 'btn_margin','margin' ))),
+			],
+
+			'.wpcf7-submit:hover' => [ 
+				'color' => $form_meta['uacf7_uacf7style_btn_color_option']['uacf7_uacf7style_btn_color_hover'] ?? null,
+				'background-color' => $form_meta['uacf7_uacf7style_btn_color_option']['uacf7_uacf7style_btn_background_color_hover'] ?? null,
+				'border-color' => $form_meta['uacf7_uacf7style_btn_border_color_hover'] ?? null,
 			],
 		];
 
