@@ -706,6 +706,7 @@ class UACF7_PDF_GENERATOR {
 				
                 .pdf-content tr td{ 
                     padding-left: 15px;
+					padding-right: 15px;
                     text-align: left;
 					border-bottom: 1px solid #F0EEF6;
 					display: table-cell !important;  
