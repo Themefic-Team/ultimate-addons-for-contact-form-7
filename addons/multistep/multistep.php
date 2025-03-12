@@ -847,7 +847,7 @@ class UACF7_MULTISTEP {
 											  }
 											  if ( $uacf7_progressbar_style == 'style-1' || $uacf7_progressbar_style == 'style-8' || $uacf7_progressbar_style == 'style-9' ) {
 												  if ( $uacf7_multistep_use_step_labels != true ) {
-													  echo $content;
+													echo '<p>' . esc_html( $content ) . '</p>';
 												  } else {
 													  echo esc_attr( $step_id );
 												  }
