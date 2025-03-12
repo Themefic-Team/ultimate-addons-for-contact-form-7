@@ -1325,8 +1325,105 @@ function uacf7_booking_pro_admin_notice() {
     }
 
     ?>
-    <div class="notice notice-warning notice-danger is-dismissible uacf7-booking-pro-notice" style="border-left-color: #b32d2e;">
-		<p><strong style="display: block; padding-bottom: 4px; font-size: 16px;">Important Notice:</strong> Please be advised that the <strong>Booking/Appointment Form Pro</strong> add-on will be discontinued soon. We are delighted to introduce <strong>Hydra Booking Free</strong> as the superior alternative. <a href="https://themefic.com/uacf7-booking-addon-will-be-discontinued/" target="_blank">Discover the new features</a>.</p>
+
+	<style>
+		.hydra-notice{
+			padding: 20px;
+			background-color: #fff;
+			display: flex;
+			justify-content: space-between;
+			padding: 20px;
+			align-items: center;
+			gap: 16px;
+			border-radius: 8px;
+			box-shadow: 0px 8px 30px 0px rgba(16, 40, 20, 0.10);
+			width: 70%;
+		}
+
+		.hydra-notice .notice-dismiss{
+			top: -20px;
+			right: -20px;
+		}
+		.hydra-notice .notice-dismiss::before{
+			display: flex;
+			width: 24px;
+			height: 24px;
+			padding: 4px;
+			justify-content: center;
+			align-items: center;
+			gap: 8px;
+			border-radius: 32px;
+			background: #FFF;
+			box-shadow: 0px 8px 16px 0px rgba(16, 40, 20, 0.04);
+		}
+
+		.hydra-notice .notice-text strong {
+			color: #141915; 
+			display: block; 
+			line-height: 24px; 
+			font-size: 15px;
+			font-weight: 600;
+		}
+		.hydra-notice .notice-text p {
+			color:  #141915;
+			font-size: 13px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 20px;
+			margin: 0;
+		}
+		.notice.hydra-notice {
+			border: 0;
+		} 
+		.hydra-notice .notice-button {
+			display: flex;
+			justify-content: space-between;
+			flex-direction: column;
+			gap: 8px;
+		}
+		.hydra-notice .notice-button p{
+			color:  #2E6B38;
+			font-size: 13px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 20px;
+			margin: 0;
+		}
+		.hydra-notice .hydra-button {
+			display: flex;
+			padding: 6px 12px;
+			justify-content: center;
+			align-items: center;
+			gap: 8px;
+			border-radius: 6px;
+			background: #2E6B38;
+			color: #fff;
+			font-size: 13px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 20px; 
+		}
+
+
+	</style>
+
+
+    <div class="notice hydra-notice is-dismissible uacf7-booking-pro-notice" style="border-left-color: #b32d2e;">
+		<div class="notice-text">
+			<strong>Hey <?php echo get_current_user(); ?>! Want to enhance your Booking/Appointment Addon?</strong>
+			<p>HydraBooking: More than Booking Addon, with extra features for your convenience.</p>
+		</div>
+		<div class="notice-button">
+			<p>
+				<span>
+
+				</span>	
+				Loved by many
+			</p>
+			<div class="hydra-button">
+				Try Hydra Booking
+			</div>
+		</div>
     </div>
 
     <script type="text/javascript">
