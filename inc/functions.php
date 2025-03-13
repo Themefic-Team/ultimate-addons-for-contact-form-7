@@ -1324,6 +1324,11 @@ function uacf7_booking_pro_admin_notice() {
         return;
     }
 
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	if ( is_plugin_active( 'hydra-booking/hydra-booking.php' ) ) {
+		return;
+	}
+
     ?>
 
 	<style>
@@ -1337,7 +1342,7 @@ function uacf7_booking_pro_admin_notice() {
 			gap: 16px;
 			border-radius: 8px;
 			box-shadow: 0px 8px 30px 0px rgba(16, 40, 20, 0.10);
-			width: 70%;
+			width: 50%;
 		}
 
 		.hydra-notice .notice-dismiss{
@@ -1403,11 +1408,7 @@ function uacf7_booking_pro_admin_notice() {
 			margin-left: -5px;
 		}
 		.hydra-notice .hydra-button {
-			display: flex;
 			padding: 6px 12px;
-			justify-content: center;
-			align-items: center;
-			gap: 8px;
 			border-radius: 6px;
 			background: #2E6B38;
 			color: #fff;
@@ -1415,6 +1416,7 @@ function uacf7_booking_pro_admin_notice() {
 			font-style: normal;
 			font-weight: 600;
 			line-height: 20px; 
+			text-decoration: none;
 		}
 
 
@@ -1435,9 +1437,8 @@ function uacf7_booking_pro_admin_notice() {
 				</span>	
 				Loved by many
 			</p>
-			<div class="hydra-button">
-				Try Hydra Booking
-			</div>
+
+			<a href="<?php echo admin_url( 'plugin-install.php?tab=search&s=hydra+booking' ) ?>" class="hydra-button">Try Hydra Booking</a>
 		</div>
     </div>
 
@@ -1697,3 +1698,4 @@ function uacf7_preserve_line_breaks($contact_form) {
 
 //     activate_plugin($plugin_file);
 // }
+
