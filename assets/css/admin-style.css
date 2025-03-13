@@ -1084,6 +1084,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
     justify-content: space-between;
     flex-direction: column;
     gap: 8px;
+    align-items: end;
 }
 .hydra-notice .notice-button p{
     color:  #2E6B38;
