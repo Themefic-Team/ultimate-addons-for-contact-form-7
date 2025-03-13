@@ -1364,7 +1364,6 @@ function uacf7_booking_pro_admin_notice() {
 
 		.hydra-notice .notice-text strong {
 			color: #141915; 
-			display: block; 
 			line-height: 24px; 
 			font-size: 15px;
 			font-weight: 600;
@@ -1385,6 +1384,7 @@ function uacf7_booking_pro_admin_notice() {
 			justify-content: space-between;
 			flex-direction: column;
 			gap: 8px;
+			align-items: end;
 		}
 		.hydra-notice .notice-button p{
 			color:  #2E6B38;
@@ -1415,7 +1415,7 @@ function uacf7_booking_pro_admin_notice() {
 			font-size: 13px;
 			font-style: normal;
 			font-weight: 600;
-			line-height: 20px; 
+			line-height: 19px; 
 			text-decoration: none;
 		}
 
@@ -1424,11 +1424,11 @@ function uacf7_booking_pro_admin_notice() {
 
 
     <div class="notice hydra-notice is-dismissible uacf7-booking-pro-notice" style="border-left-color: #b32d2e;">
-		<div class="notice-text">
-			<strong>Hey <?php echo get_current_user(); ?>! Want to enhance your Booking/Appointment Addon?</strong>
+		<div class="notice-text" style="width: 70%;">
+			<strong style="display: block;">Hey <?php echo get_current_user(); ?>! Want to enhance your Booking/Appointment Addon?</strong>
 			<p>HydraBooking: More than Booking Addon, with extra features for your convenience.</p>
 		</div>
-		<div class="notice-button">
+		<div class="notice-button" style="width: 30%;">
 			<p>
 				<span>
 				<img src="<?php echo UACF7_URL; ?>assets/img/person-1.png" alt="user">

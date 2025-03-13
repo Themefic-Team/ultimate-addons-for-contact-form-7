@@ -825,7 +825,6 @@ form.tag-generator-panel[data-version="2"] .control-box{
     margin-bottom: 10px;
 }
 .uacf7-booking-pro-notice strong:first-child{
-    display: block;
     padding-bottom: 4px;
     font-size: 16px;
 }
@@ -1065,7 +1064,6 @@ form.tag-generator-panel[data-version="2"] .control-box{
 
 .hydra-notice .notice-text strong {
     color: #141915; 
-    display: block; 
     line-height: 24px; 
     font-size: 15px;
     font-weight: 600;
@@ -1116,7 +1114,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
     font-size: 13px;
     font-style: normal;
     font-weight: 600;
-    line-height: 20px; 
+    line-height: 19px; 
     text-decoration: none;
 }
 
