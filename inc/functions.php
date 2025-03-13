@@ -1386,8 +1386,21 @@ function uacf7_booking_pro_admin_notice() {
 			font-size: 13px;
 			font-style: normal;
 			font-weight: 400;
-			line-height: 20px;
+			line-height: 19px;
 			margin: 0;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 4px;
+		}
+		.hydra-notice .notice-button p span{
+			display: flex;
+			gap: 0px;
+			justify-content: flex-start;
+			align-items: center;
+		}
+		.hydra-notice .notice-button p span img:not(:first-child) {
+			margin-left: -5px;
 		}
 		.hydra-notice .hydra-button {
 			display: flex;
@@ -1416,7 +1429,9 @@ function uacf7_booking_pro_admin_notice() {
 		<div class="notice-button">
 			<p>
 				<span>
-
+				<img src="<?php echo UACF7_URL; ?>assets/img/person-1.png" alt="user">
+				<img src="<?php echo UACF7_URL; ?>assets/img/person-2.png" alt="person">
+				<img src="<?php echo UACF7_URL; ?>assets/img/person-3.png" alt="person">
 				</span>	
 				Loved by many
 			</p>
