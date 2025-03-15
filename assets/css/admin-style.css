@@ -1032,7 +1032,92 @@ form.tag-generator-panel[data-version="2"] .control-box{
     margin-right: 10px;
 }
 
+.hydra-notice{
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 30px 0px rgba(16, 40, 20, 0.10);
+    width: 50%;
+}
 
+.hydra-notice .notice-dismiss{
+    top: -20px;
+    right: -20px;
+}
+.hydra-notice .notice-dismiss::before{
+    display: flex;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 32px;
+    background: #FFF;
+    box-shadow: 0px 8px 16px 0px rgba(16, 40, 20, 0.04);
+}
+
+.hydra-notice .notice-text strong {
+    color: #141915; 
+    line-height: 24px; 
+    font-size: 15px;
+    font-weight: 600;
+}
+.hydra-notice .notice-text p {
+    color:  #141915;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0;
+}
+.notice.hydra-notice {
+    border: 0;
+} 
+.hydra-notice .notice-button {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 8px;
+    align-items: end;
+}
+.hydra-notice .notice-button p{
+    color:  #2E6B38;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+}
+.hydra-notice .notice-button p span{
+    display: flex;
+    gap: 0px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.hydra-notice .notice-button p span img:not(:first-child) {
+    margin-left: -5px;
+}
+.hydra-notice .hydra-button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: #2E6B38;
+    color: #fff;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19px; 
+    text-decoration: none;
+}
 
 
 @keyframes spin {
