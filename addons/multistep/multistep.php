@@ -615,7 +615,10 @@ class UACF7_MULTISTEP {
 						'inline' => true,
 						'is_pro' => true,
 						'dependency' => array(
-							array( 'uacf7_progressbar_style', '==', 'style-1' | 'uacf7_progressbar_style', '==', 'style-2' | 'uacf7_progressbar_style', '==', 'style-3' | 'uacf7_progressbar_style', '==', 'style-4' | 'uacf7_progressbar_style', '==', 'style-5' | 'uacf7_progressbar_style', '==', 'style-6'  ),
+							array( 'uacf7_progressbar_style', '!=', 'style-7' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-8' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-9' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-10' ),
 						)
 					);
 					$fields[ 'uacf7_progressbar_icon_' . $step->name . '' ] = array(
@@ -628,8 +631,12 @@ class UACF7_MULTISTEP {
 						'is_pro' => true,
 						'default' => 'fas fa-user',
 						'dependency' => array(
-							array( 'uacf7_progressbar_style', '==', 'style-7' | 'uacf7_progressbar_style', '==', 'style-8' ),
-							array( 'uacf7_progressbar_style', '==', 'style-9' | 'uacf7_progressbar_style', '==', 'style-10' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-1' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-4' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-5' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-6' ),
 						),
 					);
 
@@ -686,7 +693,13 @@ class UACF7_MULTISTEP {
 						'placeholder' => __( 'Step description', 'ultimate-addons-cf7' ),
 						'is_pro' => true,
 						'dependency' => array(
-							array( 'uacf7_progressbar_style', '==', 'style-6' | 'uacf7_progressbar_style', '==', 'style-7' | 'uacf7_progressbar_style', '==', 'style-10'   ),
+							array( 'uacf7_progressbar_style', '!=', 'style-1' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-4' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-5' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-8' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-9' ),
 						),
 					);
 
@@ -697,7 +710,14 @@ class UACF7_MULTISTEP {
 						'placeholder' => __( 'Step Form description', 'ultimate-addons-cf7' ),
 						'is_pro' => true,
 						'dependency' => array(
-							array( 'uacf7_progressbar_style', '==', 'style-7' | 'uacf7_progressbar_style', '==', 'style-10' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-1' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-2' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-3' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-4' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-5' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-6' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-8' ),
+							array( 'uacf7_progressbar_style', '!=', 'style-9' ),
 						),
 					);
 
