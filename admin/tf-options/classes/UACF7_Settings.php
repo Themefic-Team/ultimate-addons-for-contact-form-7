@@ -563,6 +563,11 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								<strong></strong>
 							</div>
 						</div>
+						<?php 
+							if($plugin['slug'] == 'hydra-booking') {
+								echo '<div class="ribbon ribbon-top-left"><span>New</span></div>';
+							}
+						?>
 					</li>
 
 				<?php endforeach; ?>

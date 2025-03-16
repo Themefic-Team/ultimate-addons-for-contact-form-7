@@ -402,7 +402,6 @@ if ( ! function_exists( 'uacf7_review_notice' ) ) {
 				.themefic_review_notice ul li a{
 					text-decoration: none;
 				}
-
 			</style>
 			<div class="notice notice-info themefic_review_notice">
 
@@ -1420,11 +1419,13 @@ function uacf7_booking_pro_admin_notice() {
 			text-decoration: none;
 		}
 
+
 	</style>
 
-	<div class="notice hydra-notice is-dismissible uacf7-booking-pro-notice" style="border-left-color: #b32d2e;">
+
+    <div class="notice hydra-notice is-dismissible uacf7-booking-pro-notice" style="border-left-color: #b32d2e;">
 		<div class="notice-text" style="width: 70%;">
-			<strong style="display: block;">Hey <?php echo get_current_user(); ?>! Want to enhance your Booking/Appointment Addon?</strong>
+			<strong style="display: block;">Hey <?php echo wp_get_current_user()->display_name; ?>! Want to enhance your Booking/Appointment Addon?</strong>
 			<p>HydraBooking: More than Booking Addon, with extra features for your convenience.</p>
 		</div>
 		<div class="notice-button" style="width: 30%;">
@@ -1697,3 +1698,4 @@ function uacf7_preserve_line_breaks($contact_form) {
 
 //     activate_plugin($plugin_file);
 // }
+
