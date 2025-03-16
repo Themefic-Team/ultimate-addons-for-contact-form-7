@@ -1150,29 +1150,33 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	text-align: center;
 }
   
-  /* top left*/
-  .ribbon-top-left {
+/* top left*/
+.ribbon-top-left {
     top: -5px;
     left: -5px;
-  }
-  .ribbon-top-left::before,
-  .ribbon-top-left::after {
+}
+.ribbon-top-left::before,
+.ribbon-top-left::after {
     border-top-color: transparent;
     border-left-color: transparent;
-  }
-  .ribbon-top-left::before {
+}
+.ribbon-top-left::before {
     top: 0;
     right: 0;
-  }
-  .ribbon-top-left::after {
+}
+.ribbon-top-left::after {
     bottom: 0;
     left: 0;
-  }
-  .ribbon-top-left span {
+}
+.ribbon-top-left span {
     right: 18px;
     top: 14px;
     transform: rotate(-45deg);
-  }
+}
+
+.tf-field.tf-field-callback:not(:has(.hydra-notice)) {
+	display: none;
+}
 
 
 @keyframes spin {
