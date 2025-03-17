@@ -838,7 +838,11 @@ class UACF7_MULTISTEP {
 								$progressbar_class = '';
 							}
 						?>
-
+						
+						<?php if ($uacf7_progressbar_style == 'style-8' || $uacf7_progressbar_style == 'style-9'){ ?>
+						<div class="uacf7-steps-wrapper">
+							<span class="scroll-btn left-btn"><i class="fa-solid fa-angle-left"></i></span>
+						<?php } ?>
 						<div class="uacf7-steps steps-form <?php echo esc_attr( $progressbar_class ); ?>">
 							<div class="steps-row setup-panel">
 								<?php
@@ -893,6 +897,10 @@ class UACF7_MULTISTEP {
 								?>
 							</div>
 						</div>
+						<?php if ($uacf7_progressbar_style == 'style-8' || $uacf7_progressbar_style == 'style-9'){ ?>
+							<span class="scroll-btn right-btn"><i class="fa-solid fa-angle-right"></i></span>
+						</div>
+						<?php } ?>
 					<?php endif; ?>
 				<?php
 				}
