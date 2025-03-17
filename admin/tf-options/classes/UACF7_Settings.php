@@ -526,7 +526,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 					?>
 
-					<li class="plugin-item" data-plugin-slug="<?php echo esc_attr($plugin['slug']); ?>">
+					<li class="plugin-item <?php echo esc_attr($plugin['slug'] == 'hydra-booking' ? 'featured' : ''); ?>" data-plugin-slug="<?php echo esc_attr($plugin['slug']); ?>">
 						<div class="plugin-info-wrapper">
 							<div class="plugin-info">
 								<img src="<?php echo esc_url($plugin['image']); ?>" alt="<?php echo esc_attr($plugin['name']); ?>" class="<?php echo esc_attr($plugin['name'] == 'BEAF' ? 'beaf-logo' : ''); ?>" width="40" height="40">
@@ -563,11 +563,6 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								<strong></strong>
 							</div>
 						</div>
-						<?php 
-							if($plugin['slug'] == 'hydra-booking') {
-								echo '<div class="ribbon ribbon-top-left"><span>New</span></div>';
-							}
-						?>
 					</li>
 
 				<?php endforeach; ?>
