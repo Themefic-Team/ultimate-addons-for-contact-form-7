@@ -1487,8 +1487,8 @@ function enable_conditional_field() {
 function uacf7_migration_notice() {
 	if (is_plugin_active('cf7-conditional-fields/conditional-fields.php')) {
 		$dismiss_time = get_option('uacf7_migration_done', 0);
-
-		if ($dismiss_time && $dismiss_time > time()) {
+		uacf7_print_r($dismiss_time);
+		if ($dismiss_time === '1' || ($dismiss_time && $dismiss_time > time())) {
 			return;
 		}
 
