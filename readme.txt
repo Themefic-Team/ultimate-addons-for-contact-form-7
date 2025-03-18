@@ -460,7 +460,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 = 3.5.6 - 18/03/2025 =
 
-- Added: Hydra notice was added to the booking form.
+- Added: Introduced new booking addon for Booking/Appointment.
 - Added: 4 new Multistep form templates added (Pro).
 - Fixed: Multisite Pro addons activation issue.
 - Fixed: PDF generator image URL issue.
