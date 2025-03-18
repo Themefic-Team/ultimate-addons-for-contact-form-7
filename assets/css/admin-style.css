@@ -1174,7 +1174,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
     transform: rotate(-45deg);
 }
 
-.tf-field.tf-field-callback:not(:has(.hydra-notice)) {
+#booking .tf-field.tf-field-callback:not(:has(.hydra-notice)) {
 	display: none;
 }
 
