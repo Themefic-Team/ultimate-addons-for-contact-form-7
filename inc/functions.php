@@ -1324,6 +1324,12 @@ function uacf7_booking_pro_admin_notice() {
         return;
     }
 
+	$last_updated = get_option('uacf7_plugin_last_updated', 0);
+
+	if (time() - $last_updated < 6 * HOUR_IN_SECONDS) {
+        return; // If not 6 hours yet, don't show the notice
+    }
+
 	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	if ( is_plugin_active( 'hydra-booking/hydra-booking.php' ) ) {
 		return;
@@ -1643,7 +1649,6 @@ function uacf7_preserve_line_breaks($contact_form) {
 }
 
 
-
 add_action('admin_footer', 'uacf7_show_hydra_modal');
 
 function uacf7_show_hydra_modal() {
@@ -1673,7 +1678,7 @@ function uacf7_show_hydra_modal() {
     <div id="uacf7-modal" class="uacf7-modal">
         <div class="uacf7-modal-content">
             <span id="uacf7-modal-close" class="uacf7-modal-close">&times;</span>
-            <h2>Hey <?php echo get_user_meta($user_id, 'first_name', true); ?>! Want to make your Booking/Appointment Addon stand out?</h2>
+            <h2>Hey <?php echo wp_get_current_user()->display_name; ?>! Want to make your Booking/Appointment Addon stand out?</h2>
             <p>HydraBooking offers everything you love about the Booking Addon—plus powerful new features designed to make your life easier.</p>
             <div class="hydra-modal-users">
                 <div class="users">
@@ -1819,7 +1824,7 @@ function uacf7_set_modal_shown() {
     check_ajax_referer('uacf7_modal_nonce', 'nonce');
 
     $user_id = get_current_user_id();
-    // update_user_meta($user_id, 'uacf7_modal_shown', 1);
+    update_user_meta($user_id, 'uacf7_modal_shown', 1);
 
     wp_send_json_success(['message' => 'Modal status updated.']);
 }

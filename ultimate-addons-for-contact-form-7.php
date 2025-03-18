@@ -41,6 +41,8 @@ class Ultimate_Addons_CF7 {
 			add_filter( 'wpcf7_autop_or_not', '__return_false' );
 		}
 
+		register_activation_hook(__FILE__, array($this,'uacf7_plugin_activation'));
+
 		//enqueue scripts
 		add_action( 'admin_enqueue_scripts', [ $this, 'tf_tourfic_admin_denqueue_script' ], 20 );
 	}
@@ -77,6 +79,10 @@ class Ultimate_Addons_CF7 {
 		if ( file_exists( UACF7_PATH . 'admin/tf-options/TF_Options.php' ) ) {
 			require_once UACF7_PATH . 'admin/tf-options/TF_Options.php';
 		}
+	}
+
+	function uacf7_plugin_activation() {
+		update_option('uacf7_plugin_last_updated', time());
 	}
 
 	/*
