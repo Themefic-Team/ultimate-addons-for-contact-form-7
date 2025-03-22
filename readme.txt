@@ -90,10 +90,6 @@ Equipped with over 40 essential features, **Ultimate Addons For Contact Form 7**
 
 [youtube https://www.youtube.com/watch?v=cSRnUbrKN4s]
 
-= How to Create a Booking Form with Contact Form 7 =
-
-[youtube https://www.youtube.com/watch?v=MA_hu3sy-vM]
-
 = How to Connect Contact Form 7 with WooCommerce =
 
 [youtube https://www.youtube.com/watch?v=avpgcp1DfS8]
@@ -465,6 +461,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 - Fixed: Conditional field selection issue.
 - Improved: Optimized multi-step preview images.
 - Improved: System stability for enhanced performance.
+- Improved: The translatable Text updated on save and continue addon.
 
 = 3.5.6 - 18/03/2025 =
 
