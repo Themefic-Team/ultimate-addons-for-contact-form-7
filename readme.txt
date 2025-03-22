@@ -4,7 +4,7 @@ Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 3.5.7
+Stable tag: 3.5.8
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -456,12 +456,16 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
-= 3.5.7 - 22/03/2025 =
+= 3.5.8 - 22/03/2025 =
 
 - Fixed: Conditional field selection issue.
 - Improved: Optimized multi-step preview images.
 - Improved: System stability for enhanced performance.
 - Improved: The translatable Text updated on save and continue addon.
+
+= 3.5.7 - 18/03/2025 =
+
+- Added: Updated readme.txt info
 
 = 3.5.6 - 18/03/2025 =
 
