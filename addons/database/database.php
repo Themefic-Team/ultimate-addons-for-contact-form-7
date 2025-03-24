@@ -21,6 +21,10 @@ class UACF7_DATABASE {
 		add_action( 'admin_init', array( $this, 'uacf7_create_database_table' ) );
 		//add_filter( 'wpcf7_load_js', '__return_false' );
 
+		add_action( 'admin_enqueue_scripts', [ $this, 'wp_enqueue_admin_script_pro' ] );
+
+		add_action( 'wp_ajax_uacf7dp_get_table_data', [ $this, 'ajax_get_table_data' ] );
+		add_action( 'wp_ajax_nopriv_uacf7dp_get_table_data', array( $this, 'ajax_get_table_data' ) );
 	}
 
 	//Create Ulimate Database   
@@ -62,6 +66,53 @@ class UACF7_DATABASE {
 		);
 	}
 
+	/**
+	 * This will load necessary files
+	 * @return void
+	 */
+	public function wp_enqueue_admin_script_pro( $screen ) {
+
+		$tf_options_screens = array(
+			'ultimate-addons_page_ultimate-addons-db',
+			'ultimate-addons_page_uacf7_addons',
+		);
+
+
+		if ( in_array( $screen, $tf_options_screens ) ) {
+			$url = wp_parse_url( home_url() );
+
+			// Enqueue jQuery UI
+			wp_enqueue_script( 'jquery-ui-tabs' );
+			wp_enqueue_script( 'jquery-ui-core' );
+			wp_enqueue_script( 'jquery-ui-widget' );
+			wp_enqueue_script( 'jquery-ui-mouse' );
+			wp_enqueue_script( 'jquery-ui-sortable' );
+
+
+			// Enqueue DataTables CSS
+			wp_enqueue_style( 'database-pro-admin-style', UACF7_PRO_ADDONS . '/database-pro/assets/css/database-pro-style.css' );
+			wp_enqueue_style( 'database-pro-table-style', 'https://cdn.datatables.net/v/ju/jqc-1.12.4/jszip-3.10.1/dt-1.13.10/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/cr-1.7.0/date-1.5.1/fc-4.3.0/r-2.5.0/rr-1.4.1/sc-2.3.0/sl-1.7.0/sr-1.3.0/datatables.min.css' );
+
+			// Enqueue DataTables JS
+			wp_enqueue_script( 'database-pro-table-script', 'https://cdn.datatables.net/v/ju/jqc-1.12.4/jszip-3.10.1/dt-1.13.10/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/cr-1.7.0/date-1.5.1/fc-4.3.0/r-2.5.0/rr-1.4.1/sc-2.3.0/sl-1.7.0/sr-1.3.0/datatables.min.js', array( 'jquery' ), null, true );
+			// Enqueue PDFMake
+			wp_enqueue_script( 'database-pro-pdfmake', 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js', array(), null, true );
+			// Enqueue PDFMake Fonts
+			wp_enqueue_script( 'database-pro-pdfmake-font', 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js', array(), null, true );
+
+			wp_enqueue_script( 'uacf7dp-database-pro-icons-script', UACF7_PRO_ADDONS . '/database-pro/assets/js/icons.js', array(), null, true );
+			wp_enqueue_script( 'uacf7dp-database-pro-table-script', UACF7_PRO_ADDONS . '/database-pro/assets/js/database-pro-main.js', array(), null, true );
+			wp_localize_script( 'uacf7dp-database-pro-table-script', 'uACF7DP_Pram', array(
+				'admin_url' => get_admin_url() . 'admin.php',
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'nonce' => wp_create_nonce( 'uacf7dp-nonce' ),
+			) );
+
+			wp_enqueue_script( 'jquery-ui', 'https://code.jquery.com/ui/1.13.3/jquery-ui.min.js', array( 'jquery' ), null, true );
+		}
+
+	}
+
 	/*
 	 * Database menu 
 	 */
@@ -82,7 +133,7 @@ class UACF7_DATABASE {
 	 * Database Admin Page 
 	 */
 
-	public function uacf7_create_database_page() {
+	public function uacf7_create_database_page_backup() {
 
 		$form_id = empty( $_GET['form_id'] ) ? 0 : (int) $_GET['form_id'];
 		$pdf = empty( $_GET['pdf'] ) ? 0 : $_GET['pdf'];
@@ -182,6 +233,171 @@ class UACF7_DATABASE {
 		}
 		// echo ob_get_clean();
 	}
+
+	public function uacf7_create_database_page() {
+		global $wpdb;
+
+		$form_id = isset( $_GET['form_id'] ) ? $_GET['form_id'] : null;
+
+		$list_forms = get_posts(
+			array(
+				'post_type' => 'wpcf7_contact_form',
+				'posts_per_page' => -1
+			)
+		);
+
+		?>
+		<div id="uacf7dp_addons_pages">
+			<div id="loading">
+				<div class="loading"></div>
+			</div>
+			<div id="uacf7dp_addons_header" class="uacf7dp-tabcontent">
+				<img src="<?php echo UACF7_ADDONS ?>/database/assets/images/ultimate-logo.png" alt="logo" />
+				<h4 class="uacf7dp_main-heading">
+					<?php echo esc_html__( 'Database', 'ultimate-addons-cf7' ); ?>
+				</h4>
+				<div class="uacf7dp_header-form">
+					<h4>
+						<?php echo esc_html__( 'Select form', 'ultimate-addons-cf7' ); ?>
+					</h4>
+
+					<select name="select_from_submit" id="select_from_submit">
+						<option value=" 0" <?php selected( isset( $_POST['form-id'] ) && $_POST['form-id'] == 0 ); ?>>
+							<?php echo esc_html__( 'Select form', 'ultimate-addons-cf7' ); ?>
+						</option>
+						<?php
+						foreach ( $list_forms as $form ) {
+							// count number of data
+							$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d", $form->ID ) );
+
+							echo '<option value="' . esc_attr( $form->ID ) . '" ' . selected( isset( $_POST['form-id'] ) && $_POST['form-id'] == $form->ID, true ) . '>';
+							echo esc_attr( $form->post_title ) . ' ( ' . $count . ' )';
+							echo '</option>';
+						}
+						?>
+					</select>
+				</div>
+			</div>
+
+			<div id="uacf7dp_table_container_wrap">
+
+				<div id="uacf7dp_table_container" class="uacf7dp-table-responsive">
+					<table id="uacf7dp-database-tablePro"></table>
+				</div>
+				<div class="uacf7dp_table_empty">
+					<img src="<?php echo UACF7_ADDONS ?>/database/assets/images/select.png" alt="thum" />
+					<p>
+						<span>To view data, please select a form</span>
+						Once selected, the data will be displayed on the screen.
+						The data can be filtered according to the
+						desired parameters. The data can also be exported into a spreadsheet for further analysis.
+					</p>
+				</div>
+			</div>
+
+			<section class="uacf7_popup_preview">
+				<div class="uacf7_popup_preview_content">
+
+					<div id="uacf7_popup_wrap">
+						<div class="db_popup_view">
+							<div class="close" title="Exit Full Screen">╳</div>
+							<div id="db_view_wrap">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+		<?php
+	}
+
+	public function ajax_get_table_data() {
+		// uacf7dp_checkNonce();
+		global $wpdb;
+		$cf7d_entry_order_by = '`data_id` DESC';
+		$form_id = isset( $_POST['form_id'] ) && $_POST['form_id'] >= 0 ? intval( $_POST['form_id'] ) : 0;
+
+		$get_form_data = $wpdb->prepare(
+			"SELECT * 
+			FROM {$wpdb->prefix}uacf7dp_data_entry 
+			WHERE `cf7_form_id` = %d 
+				AND data_id IN (
+					SELECT data_id 
+					FROM (
+						SELECT data_id 
+						FROM {$wpdb->prefix}uacf7dp_data_entry 
+						WHERE `cf7_form_id` = %d 
+						GROUP BY `data_id` 
+						ORDER BY %s
+					) AS temp_table
+				)
+			ORDER BY %s",
+			$form_id,
+			$form_id,
+			$cf7d_entry_order_by,
+			$cf7d_entry_order_by
+		);
+
+		$form_data = $wpdb->get_results( $get_form_data );
+
+		$uacf7dp_sortable = $this->uacf7dp_data_sortable( $form_data );
+
+		$fields = $this->uacf7dp_get_db_fields( $form_id );
+
+		$orgFieldsData = apply_filters( 'uacf7dp_column_default_fields', $uacf7dp_sortable, $fields );
+
+		wp_send_json_success(
+			array(
+				'fields' => $fields,
+				'data_sorted' => $orgFieldsData,
+			)
+		);
+		wp_die();
+	}
+
+	public function uacf7dp_data_sortable( $form_data ) {
+		$result = [];
+
+		foreach ( $form_data as $item ) {
+			$dataId = $item->data_id;
+
+			// If the array for this data_id doesn't exist, create it
+			if ( ! isset( $result[ $dataId ] ) ) {
+				$result[ $dataId ] = [];
+			}
+
+			// Add the item data to the array for this data_id
+			$result[ $dataId ][] = [ 
+				'id' => $item->id,
+				'cf7_form_id' => $item->cf7_form_id,
+				'data_id' => $item->data_id,
+				'fields_name' => $item->fields_name,
+				'value' => $item->value,
+			];
+		}
+
+		return $result;
+	}
+
+	public function uacf7dp_get_db_fields( $form_id ) {
+		global $wpdb;
+		$sql = sprintf( 'SELECT `fields_name` FROM `' . $wpdb->prefix . 'uacf7dp_data_entry` WHERE cf7_form_id = %d GROUP BY `fields_name`', $form_id );
+		$data = $wpdb->get_results( $sql );
+
+		$fields = array();
+		foreach ( $data as $k => $v ) {
+			$fields[ $v->fields_name ] = $v->fields_name;
+		}
+		if ( $fields ) {
+			$fields = apply_filters( 'uacf7dp_adminSide_fields', $fields, $form_id );
+		}
+
+		$Finalfields = array_merge( $fields, array( 'id' => 'id', 'cf7_form_id' => 'cf7_form_id' ) );
+
+		return $Finalfields;
+	}
+
 
 	public function encrypt_file( $inputFile, $outputFile, $key ) {
 		$inputData = file_get_contents( $inputFile );
