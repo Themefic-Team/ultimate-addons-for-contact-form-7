@@ -4,10 +4,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once 'inc/functions.php';
+require_once 'inc/migrator.php';
 /*
  * Pre Populate Classs
  */
 class UACF7_DATABASE {
+
+	private $uacf7dp_status = '';
 
 	/*
 	 * Construct function
@@ -22,6 +25,11 @@ class UACF7_DATABASE {
 		add_action( 'admin_init', array( $this, 'uacf7_create_database_table' ) );
 		//add_filter( 'wpcf7_load_js', '__return_false' );
 
+		/*
+		 * Creating tables and start migrator after active the plugin or active the addon
+		 */
+		add_action( 'admin_init', array( $this, 'uacf7dp_register_activation' ), 11, 2 );
+
 		add_action( 'admin_enqueue_scripts', [ $this, 'wp_enqueue_admin_script_pro' ] );
 
 		add_action( 'wp_ajax_uacf7dp_get_table_data', [ $this, 'ajax_get_table_data' ] );
@@ -30,6 +38,11 @@ class UACF7_DATABASE {
 		// For Viwe the data on popup
 		add_action( 'wp_ajax_uacf7dp_view_table_data', [ $this, 'uacf7dp_view_table_data' ] );
 		add_action( 'wp_ajax_nopriv_uacf7dp_view_table_data', array( $this, 'uacf7dp_view_table_data' ) );
+
+		add_action( 'wp_ajax_uacf7dp_deleted_table_datas', [ $this, 'uacf7dp_deleted_table_datas' ] );
+		add_action( 'wp_ajax_nopriv_uacf7dp_deleted_table_datas', array( $this, 'uacf7dp_deleted_table_datas' ) );
+
+		add_filter( 'uacf7dp_send_form_data_before_insert', [ $this, 'uacf7dp_get_form_data_before_insert' ], 10, 2 );
 		
 	}
 
@@ -52,10 +65,134 @@ class UACF7_DATABASE {
 		dbDelta( $sql );
 	}
 
+	public function uacf7dp_register_activation() {
+		// Call the function conditionally
+		if ( ! $this->uacf7dp_check_tables_existence() ) {
+			$this->uacf7dp_data_table_pro_func();
+		}
+
+		$this->uacf7dp_status = get_option( 'uacf7dp_database_pro_status' );
+		if ( ! isset( $this->uacf7dp_status ) || $this->uacf7dp_status === 'no' ) {
+
+			// Creating tables after addon active
+			$this->uacf7dp_data_table_pro_func();
+
+			// Data migrate free to pro
+			$migrater = new UACF7_DBMigrator_PRO();
+			$migrater->uacf7dp_check_free_db();
+
+			update_option( 'uacf7dp_database_pro_status', 'done' );
+		}
+
+		/*
+		 * Creating tables when plugin is active
+		 */
+		register_activation_hook( UACF7_FILE, [ $this, 'uacf7dp_data_table_pro_func' ] );
+	}
+
+	/**
+	 * If table not created then this will create the table uacf7dp_data_table_pro_func
+	 * @return void
+	 */
+	public function uacf7dp_data_table_pro_func() {
+		global $wpdb;
+		$charset_collate = $wpdb->get_charset_collate();
+
+		$uacf7dp_table = $wpdb->prefix . 'uacf7dp_data';
+		$uacf7dp_table_entry = $wpdb->prefix . 'uacf7dp_data_entry';
+
+		// form info table 
+		if ( $wpdb->get_var( "show tables like '$uacf7dp_table'" ) != $uacf7dp_table ) {
+			$sql = 'CREATE TABLE ' . $uacf7dp_table . ' (
+                `data_id` int(11) NOT NULL AUTO_INCREMENT,
+				`cf7_form_id` int(11) NOT NULL,
+				`submit_ip` int(11) NOT NULL,
+                `submit_time` timestamp NOT NULL,
+                UNIQUE KEY id (data_id)
+                ) ' . $charset_collate . ';';
+
+			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+			dbDelta( $sql );
+		}
+
+		// form entry table 
+		if ( $wpdb->get_var( "show tables like '$uacf7dp_table_entry'" ) != $uacf7dp_table_entry ) {
+			$sql = 'CREATE TABLE ' . $uacf7dp_table_entry . ' (
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `cf7_form_id` int(11) NOT NULL,
+                `data_id` int(11) NOT NULL,
+                `fields_name` varchar(250),
+                `value` varchar(250),
+                UNIQUE KEY id (id)
+                ) ' . $charset_collate . ';';
+			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+			dbDelta( $sql );
+
+		} else {
+			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+			maybe_convert_table_to_utf8mb4( $uacf7dp_table_entry );
+			$sql = 'ALTER TABLE ' . $uacf7dp_table_entry . ' change fields_name fields_name VARCHAR(250) character set utf8, change value value text character set utf8;';
+			$wpdb->query( $sql );
+		}
+
+	}
+
+	/**
+	 * This will store contact form data to the database
+	 * @param mixed $contact_form
+	 * @return void
+	 */
+	public function uacf7dp_get_form_data_before_insert( $insert_data, $extra ) {
+		global $wpdb;
+		$submission = WPCF7_Submission::get_instance();
+		$data = array_merge( $insert_data, $extra );
+		$submit_ip = $extra['submit_ip'];
+		$submit_time = current_time('mysql');
+
+		$submit_form_id = $submission->get_contact_form()->id();
+
+		$wpdb->query( $wpdb->prepare( 'INSERT INTO ' . $wpdb->prefix . 'uacf7dp_data(`cf7_form_id`, `submit_ip`, `submit_time`) VALUES (%d, %d, %s)', $submit_form_id, $submit_ip, $submit_time ) );
+		$data_id = $wpdb->insert_id;
+
+		$uacf7dp_no_save_fields = uacf7dp_no_save_fields();
+
+
+
+		foreach ( $data as $k => $v ) {
+			if ( in_array( $k, $uacf7dp_no_save_fields ) ) {
+				continue;
+			} else {
+				if ( is_array( $v ) ) {
+					$v = implode( "\n", $v );
+				}
+
+				$wpdb->query( $wpdb->prepare( 'INSERT INTO ' . $wpdb->prefix . 'uacf7dp_data_entry(`cf7_form_id`, `data_id`, `fields_name`, `value`) VALUES (%d,%d,%s,%s)', $submit_form_id, $data_id, $k, $v ) );
+			}
+		}
+	}
+
+
+	/**
+	 * It's check if table are create or not 
+	 * @return bool
+	 */
+	public function uacf7dp_check_tables_existence() {
+		global $wpdb;
+
+		$uacf7dp_table = $wpdb->prefix . 'uacf7dp_data';
+		$uacf7dp_table_entry = $wpdb->prefix . 'uacf7dp_data_entry';
+
+		// Check if tables exist
+		$table_exists = $wpdb->get_var( "SHOW TABLES LIKE '$uacf7dp_table'" ) == $uacf7dp_table &&
+			$wpdb->get_var( "SHOW TABLES LIKE '$uacf7dp_table_entry'" ) == $uacf7dp_table_entry;
+
+		return $table_exists;
+	}
+
 	/*
 	 * Enqueue script Backend
 	 */
-
 
 	public function wp_enqueue_admin_script() {
 		wp_enqueue_style( 'database-admin-style', UACF7_ADDONS . '/database/assets/css/database-admin.css' );
@@ -178,7 +315,7 @@ class UACF7_DATABASE {
 						<?php
 						foreach ( $list_forms as $form ) {
 							// count number of data
-							$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d", $form->ID ) );
+							$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->prefix . "uacf7dp_data WHERE cf7_form_id = %d", $form->ID ) );
 
 							echo '<option value="' . esc_attr( $form->ID ) . '" ' . selected( isset( $_POST['form-id'] ) && $_POST['form-id'] == $form->ID, true ) . '>';
 							echo esc_attr( $form->post_title ) . ' ( ' . $count . ' )';
@@ -600,6 +737,26 @@ class UACF7_DATABASE {
 		// submission id Action
 		do_action( 'uacf7_submission_id_insert', $uacf7_db_insert_id, $form->id(), $contact_form_data, $tags );
 
+	}
+
+	public function uacf7dp_deleted_table_datas() {
+		uacf7dp_checkNonce();
+		global $wpdb;
+
+		$form_id = isset( $_POST['cf7_form_id'] ) && $_POST['cf7_form_id'] >= 0 ? intval( $_POST['cf7_form_id'] ) : 0;
+		$data_id = isset( $_POST['data_id'] ) && $_POST['data_id'] >= 0 ? intval( $_POST['data_id'] ) : 0;
+
+		// Check if the provided IDs are valid
+		if ( $form_id <= 0 || $data_id <= 0 ) {
+			wp_send_json_error( array( 'message' => 'Invalid cf7_form_id or data_id.' ) );
+		}
+		$wpdb->delete( "{$wpdb->prefix}uacf7dp_data", array( 'cf7_form_id' => $form_id, 'data_id' => $data_id ) );
+
+		// Delete from wp_uacf7dp_data_entry
+		$wpdb->delete( "{$wpdb->prefix}uacf7dp_data_entry", array( 'cf7_form_id' => $form_id, 'data_id' => $data_id ) );
+
+		wp_send_json_success( array( 'message' => 'Data processed successfully' ) );
+		wp_die();
 	}
 
 

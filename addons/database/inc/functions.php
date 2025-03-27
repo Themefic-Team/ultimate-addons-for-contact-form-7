@@ -30,3 +30,10 @@ if ( ! function_exists( 'uacf7dp_checkNonce' ) ) {
 		}
 	}
 }
+
+if ( ! function_exists( 'uacf7dp_no_save_fields' ) ) {
+	function uacf7dp_no_save_fields() {
+		$uacf7dp_no_save_fields = array( '_wpcf7', '_wpcf7_version', '_wpcf7_locale', '_wpcf7_unit_tag', '_wpcf7_is_ajax_call' );
+		return apply_filters( 'uacf7dp_no_save_fields', $uacf7dp_no_save_fields );
+	}
+}

@@ -25,6 +25,7 @@ class Ultimate_Addons_CF7 {
 	 * Construct function
 	 */
 	public function __construct() {
+		define( 'UACF7_FILE', __FILE__ );
 		define( 'UACF7_URL', plugin_dir_url( __FILE__ ) );
 		define( 'UACF7_ADDONS', UACF7_URL . 'addons' );
 		define( 'UACF7_PATH', plugin_dir_path( __FILE__ ) );
