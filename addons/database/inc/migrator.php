@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class UACF7_DBMigrator_PRO {
+class UACF7_DBMigrator {
 
 
 	public function __construct() {

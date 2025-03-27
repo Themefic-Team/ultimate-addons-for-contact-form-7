@@ -78,7 +78,7 @@ class UACF7_DATABASE {
 			$this->uacf7dp_data_table_pro_func();
 
 			// Data migrate free to pro
-			$migrater = new UACF7_DBMigrator_PRO();
+			$migrater = new UACF7_DBMigrator();
 			$migrater->uacf7dp_check_free_db();
 
 			update_option( 'uacf7dp_database_pro_status', 'done' );
