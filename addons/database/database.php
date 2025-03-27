@@ -42,7 +42,11 @@ class UACF7_DATABASE {
 		add_action( 'wp_ajax_uacf7dp_deleted_table_datas', [ $this, 'uacf7dp_deleted_table_datas' ] );
 		add_action( 'wp_ajax_nopriv_uacf7dp_deleted_table_datas', array( $this, 'uacf7dp_deleted_table_datas' ) );
 
-		add_filter( 'uacf7dp_send_form_data_before_insert', [ $this, 'uacf7dp_get_form_data_before_insert' ], 10, 2 );
+		$option = get_option( 'uacf7_settings' );
+
+		if(isset( $option['uacf7_enable_database_pro'] ) && $option['uacf7_enable_database_pro'] != true ){
+			add_filter( 'uacf7dp_send_form_data_before_insert', [ $this, 'uacf7dp_get_form_data_before_insert' ], 10, 2 );
+		}
 		
 	}
 
