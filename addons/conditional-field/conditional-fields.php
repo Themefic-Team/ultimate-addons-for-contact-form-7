@@ -671,7 +671,6 @@ class UACF7_CF {
 						$mail_body_2 = preg_replace( '/\[' . $uacf7_cf_group . '\]/s', '', $mail_body_2 );
 						$mail_body_2 = preg_replace( '/\[\/' . $uacf7_cf_group . '\]/s', '', $mail_body_2 );
 					} else {
-						error_log('Show/hide: ' . $uacf7_cf_hs . ', For: ' . $uacf7_cf_conditions_for . ', Group :' . $uacf7_cf_group . ', Status: ' . print_r($condition_status, true). ', Body: ' . $mail_body . ' Condition :' . in_array(true, $condition_status, true));
 						$mail_body = preg_replace( '/\[' . $uacf7_cf_group . '\].*?\[\/' . $uacf7_cf_group . '\]/s', '', $mail_body );
 
 						// Mail 2 
