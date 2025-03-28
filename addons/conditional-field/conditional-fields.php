@@ -647,7 +647,9 @@ class UACF7_CF {
 
 				// Check if the conditions for any 
 				if ( $uacf7_cf_conditions_for == 'any' ) {
-					if ( ! in_array( 'false', $condition_status ) ) {
+					$normalized_conditions = array_map(fn($v) => $v === 'true', (array) $condition_status);
+
+					if ( in_array(true, $normalized_conditions, true) ) {
 						if ( $uacf7_cf_hs == 'show' ) {
 							$mail_body = preg_replace( '/\[' . $uacf7_cf_group . '\]/s', '', $mail_body );
 							$mail_body = preg_replace( '/\[\/' . $uacf7_cf_group . '\]/s', '', $mail_body );
@@ -669,6 +671,7 @@ class UACF7_CF {
 						$mail_body_2 = preg_replace( '/\[' . $uacf7_cf_group . '\]/s', '', $mail_body_2 );
 						$mail_body_2 = preg_replace( '/\[\/' . $uacf7_cf_group . '\]/s', '', $mail_body_2 );
 					} else {
+						error_log('Show/hide: ' . $uacf7_cf_hs . ', For: ' . $uacf7_cf_conditions_for . ', Group :' . $uacf7_cf_group . ', Status: ' . print_r($condition_status, true). ', Body: ' . $mail_body . ' Condition :' . in_array(true, $condition_status, true));
 						$mail_body = preg_replace( '/\[' . $uacf7_cf_group . '\].*?\[\/' . $uacf7_cf_group . '\]/s', '', $mail_body );
 
 						// Mail 2 
