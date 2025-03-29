@@ -45,7 +45,7 @@ class UACF7_DATABASE {
 
 		$option = get_option( 'uacf7_settings' );
 
-		if(isset( $option['uacf7_enable_database_pro'] ) && $option['uacf7_enable_database_pro'] != true ){
+		if(isset( $option['uacf7_enable_database_pro'] ) && $option['uacf7_enable_database_pro'] != true || ! is_plugin_active( 'ultimate-addons-for-contact-form-7-pro/ultimate-addons-for-contact-form-7-pro.php' ) ){
 			add_filter( 'uacf7dp_send_form_data_before_insert', [ $this, 'uacf7dp_get_form_data_before_insert' ], 10, 2 );
 		}
 		
@@ -73,33 +73,33 @@ class UACF7_DATABASE {
 	public function uacf7dp_register_activation() {
 		// Call the function conditionally
 		if ( ! $this->uacf7dp_check_tables_existence() ) {
-			$this->uacf7dp_data_table_pro_func();
+			$this->uacf7dp_data_table_func();
 		}
 
-		$this->uacf7dp_status = get_option( 'uacf7dp_database_pro_status' );
+		$this->uacf7dp_status = get_option( 'uacf7dp_database_free_status' );
 		if ( ! isset( $this->uacf7dp_status ) || $this->uacf7dp_status === 'no' ) {
 
 			// Creating tables after addon active
-			$this->uacf7dp_data_table_pro_func();
+			$this->uacf7dp_data_table_func();
 
 			// Data migrate free to pro
 			$migrater = new UACF7_DBMigrator();
 			$migrater->uacf7dp_check_free_db();
 
-			update_option( 'uacf7dp_database_pro_status', 'done' );
+			update_option( 'uacf7dp_database_free_status', 'done' );
 		}
 
 		/*
 		 * Creating tables when plugin is active
 		 */
-		register_activation_hook( UACF7_FILE, [ $this, 'uacf7dp_data_table_pro_func' ] );
+		register_activation_hook( UACF7_FILE, [ $this, 'uacf7dp_data_table_func' ] );
 	}
 
 	/**
 	 * If table not created then this will create the table uacf7dp_data_table_pro_func
 	 * @return void
 	 */
-	public function uacf7dp_data_table_pro_func() {
+	public function uacf7dp_data_table_func() {
 		global $wpdb;
 		$charset_collate = $wpdb->get_charset_collate();
 
@@ -231,7 +231,7 @@ class UACF7_DATABASE {
 
 			$option = get_option( 'uacf7_settings' );
 
-			if(isset( $option['uacf7_enable_database_pro'] ) && $option['uacf7_enable_database_pro'] != true ){
+			if(isset( $option['uacf7_enable_database_pro'] ) && $option['uacf7_enable_database_pro'] != true || ! is_plugin_active( 'ultimate-addons-for-contact-form-7-pro/ultimate-addons-for-contact-form-7-pro.php' )){
 
 				// Enqueue jQuery UI
 				wp_enqueue_script( 'jquery-ui-tabs' );
