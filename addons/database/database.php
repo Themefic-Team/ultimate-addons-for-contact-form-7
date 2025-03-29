@@ -3,8 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-require_once 'inc/functions.php';
-require_once 'inc/migrator.php';
+require_once plugin_dir_path(__FILE__) . 'inc/functions.php';
+require_once plugin_dir_path(__FILE__) . 'inc/migrator.php';
+
 /*
  * Pre Populate Classs
  */
