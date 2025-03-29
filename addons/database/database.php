@@ -77,7 +77,7 @@ class UACF7_DATABASE {
 		}
 
 		$this->uacf7dp_status = get_option( 'uacf7dp_database_free_status' );
-		if ( ! isset( $this->uacf7dp_status ) || $this->uacf7dp_status === 'no' ) {
+		if ( empty( $this->uacf7dp_status ) || $this->uacf7dp_status === 'no' ) {
 
 			// Creating tables after addon active
 			$this->uacf7dp_data_table_func();
