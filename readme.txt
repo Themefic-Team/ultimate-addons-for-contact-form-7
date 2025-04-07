@@ -4,7 +4,7 @@ Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 3.5.8
+Stable tag: 3.5.10
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -456,49 +456,21 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
+= 3.5.10 - 02/04/2025 =
+
+- Improved: Optimized the code from the redirection add-on.
+- Improved: System stability for enhanced performance.
+
+= 3.5.9 - 29/03/2025 =
+
+- Fixed: Conditional fields not sending emails has been resolved.
+
 = 3.5.8 - 22/03/2025 =
 
 - Fixed: Conditional field selection issue.
 - Improved: Optimized multi-step preview images.
 - Improved: System stability for enhanced performance.
 - Improved: The translatable Text updated on save and continue addon.
-
-= 3.5.7 - 18/03/2025 =
-
-- Added: Updated readme.txt info
-
-= 3.5.6 - 18/03/2025 =
-
-- Added: Introduced new booking addon for Booking/Appointment.
-- Added: 4 new Multistep form templates added (Pro).
-- Fixed: Multisite Pro addons activation issue.
-- Fixed: PDF generator image URL issue.
-- Fixed: Form Save and continue link Copy button icon not showing.
-- Fixed: Global Form Styler color not saving.
-- Improved: System stability for better performance.
-
-= 3.5.5 - 08/03/2025 =
-
-- Fixed: Mailchimp acceptance checkbox design issue.
-- Fixed: Responsive issues on the add-on page have been resolved.
-- Fixed: WooCommerce product dropdown multi-select issue.
-- Improved: Added country flags for dynamic country selection.
-- Improved: Mailchimp API connection notice.
-- Improved: System stability for better performance.
-
-= 3.5.4 - 06/03/2025 =
-
-- Introduced: "PDF Generate Pro" addon to download a PDF immediately after submitting a form.
-- Improved: Migration from the "Conditional Fields for Contact Form 7" plugin to "Ultimate Addons for Contact Form 7".
-- Improved: Migration from the "Redirection for Contact Form 7" plugin to "Ultimate Addons for Contact Form 7".
-- Improved: Updated design structure of the "PDF Generate" addon.
-- Improved: Added current URL host domain, URL path, and URL query string on "Dynamic Text" addon for.
-- Improved: Security issue with the "Submission ID" addon IDs has been resolved.
-- Improved: Enhanced flexibility to use any PHP date format on the "PDF Generate" addon.
-- Improved: Resolved data migration issues in the "Database Pro" addon.
-- Improved: Added guest posts and specified the post publish author settings on "Frontend Post Submission" addon.
-- Added: A showcase of our other plugins on the UACF7 All Addon Page.
-- Fixed: Resolved an issue with pre-populated redirection in the "Pre-populated" addon.
 
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 

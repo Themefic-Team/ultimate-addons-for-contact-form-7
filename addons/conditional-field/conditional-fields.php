@@ -647,6 +647,10 @@ class UACF7_CF {
 
 				// Check if the conditions for any 
 				if ( $uacf7_cf_conditions_for == 'any' ) {
+<<<<<<< HEAD
+=======
+					
+>>>>>>> a0fc8e9684e2ccb96571728ca435da61711db948
 					$normalized_conditions = array_map(fn($v) => $v === 'true', (array) $condition_status);
 
 					if ( in_array(true, $normalized_conditions, true) ) {
