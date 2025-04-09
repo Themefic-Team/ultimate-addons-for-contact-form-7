@@ -1760,7 +1760,7 @@ function uacf7_show_hydra_modal() {
 		}
 
 		function showSuccess($button, text) {
-			$button.html(text).prop('disabled', false);
+			$button.html(text).prop('disabled', true);
 		}
 
 		function showError($button, text) {
