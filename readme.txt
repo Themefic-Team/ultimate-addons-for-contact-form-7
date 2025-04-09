@@ -461,6 +461,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 - Improved: Database addon design has been enhanced for the free version.
 - Fixed: Email piping IMAP connection issue has been resolved.
 - Fixed: Undefined error during redirection migration has been resolved.
+- Notice: Hydra Booking plugin notice has been added.
 
 = 3.5.10 - 02/04/2025 =
 
