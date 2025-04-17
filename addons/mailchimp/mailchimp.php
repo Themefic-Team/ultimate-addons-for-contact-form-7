@@ -448,11 +448,19 @@ class UACF7_MAILCHIMP {
 			$subscriber_lname = ! empty( $subscriber_lname ) ? $posted_data[ $subscriber_lname ] : '';
 
 			$extra_fields = isset( $mailchimp['uacf7_mailchimp_merge_fields'] ) && is_array( $mailchimp['uacf7_mailchimp_merge_fields'] ) ? $mailchimp['uacf7_mailchimp_merge_fields'] : array();
-
+			
 			$extra_merge_fields = '';
 			foreach ( $extra_fields as $extra_field ) {
-				$extra_merge_fields .= '"' . $extra_field['mergefield'] . '": "' . $posted_data[ $extra_field['mailtag'] ] . '",';
+				$mailtag = $extra_field['mailtag'];
+				$value = isset( $posted_data[ $mailtag ] ) ? $posted_data[ $mailtag ] : '';
+			
+				if ( is_array( $value ) ) {
+					$value = implode( ', ', $value );
+				}
+			
+				$extra_merge_fields .= '"' . $extra_field['mergefield'] . '": "' . esc_js( $value ) . '",';
 			}
+			
 			$extra_merge_fields = trim( $extra_merge_fields, ',' );
 
 			if ( $extra_merge_fields != '' ) {
