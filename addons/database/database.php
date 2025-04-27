@@ -48,6 +48,8 @@ class UACF7_DATABASE {
 		if(isset( $option['uacf7_enable_database_pro'] ) && $option['uacf7_enable_database_pro'] != true || ! is_plugin_active( 'ultimate-addons-for-contact-form-7-pro/ultimate-addons-for-contact-form-7-pro.php' ) ){
 			add_filter( 'uacf7dp_send_form_data_before_insert', [ $this, 'uacf7dp_get_form_data_before_insert' ], 10, 2 );
 		}
+
+		add_action('wp_ajax_uacf7_ajax_database_export_csv', array($this, 'uacf7_ajax_database_export_csv') );
 		
 	}
 
@@ -267,6 +269,103 @@ class UACF7_DATABASE {
 		}
 
 	}
+
+
+	/*
+	 * Export CSV 
+	 */
+
+	 public function uacf7_ajax_database_export_csv() {
+		// Capability check
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'You do not have permission to perform this action.' );
+		}
+
+		if ( ! wp_verify_nonce( $_POST['ajax_nonce'], 'uacf7dp-nonce' ) ) {
+			exit( esc_html__( "Security error", 'ultimate-addons-cf7' ) );
+		}
+
+		if ( isset( $_POST['form_id'] ) && 0 < $_POST['form_id'] ) {
+			global $wpdb;
+			$form_id = intval( $_POST['form_id'] );
+			$today = date( "Y-m-d" );
+			$upload_dir = wp_upload_dir();
+			$dir = $upload_dir['baseurl'];
+			$replace_dir = '/uacf7-uploads/';
+			$file_name = get_the_title( $form_id );
+			$file_name = str_replace( " ", "-", $file_name );
+			$form_data = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d ", $form_id ) );
+
+			$list = [];
+			$count = 0;
+
+			foreach ( $form_data as $fkey => $fdata ) {
+				$ContactForm = WPCF7_ContactForm::get_instance( $fdata->form_id );
+				$form_fields = $ContactForm->scan_form_tags();
+				$fields = [];
+				$data = json_decode( $fdata->form_value );
+				foreach ( $form_fields as $field ) {
+
+					if ( $field['type'] != 'submit' && $field['type'] != 'uacf7_step_start' && $field['type'] != 'uacf7_step_end' && $field['type'] != 'uarepeater' && $field['type'] == 'uacf7_conversational_start' && $field['type'] == 'uacf7_conversational_end' ) {
+						$fields[ $field['name'] ] = '';
+					}
+				}
+				foreach ( $data as $key => $value ) {
+					$fields[ $key ] = $value;
+				}
+				$list_head = [];
+				$list_data = [];
+				foreach ( $fields as $key => $value ) {
+					if ( $fkey == 0 ) {
+						$list_head[] = $key;
+					}
+					if ( is_array( $value ) ) {
+						$value = implode( ", ", $value );
+					}
+					if ( strstr( $value, $replace_dir ) ) {
+						$value = str_replace( $replace_dir, "", $value );
+						$value = $dir . $replace_dir . $value;
+					}
+					$list_data[] = $value;
+				}
+				if ( $fkey == 0 ) {
+					$list_head[] = 'Date';
+					$list[] = $list_head;
+				}
+				
+				$list_data[] = $fdata->form_date;
+				$list[] = $list_data;
+
+			}
+			// Set the headers
+			ob_start();
+			header( 'Content-Type: text/csv' );
+			header( 'Content-Disposition: attachment; filename="' . $file_name . '"' );
+			$fp = fopen( 'php://output', 'w' );
+
+			foreach ( $list as $fields ) {
+				fputcsv( $fp, $fields );
+			}
+			fclose( $fp );
+			$csv_data = ob_get_clean();
+			$data = [ 
+				'status' => true,
+				'file_name' => $file_name,
+				'csv' => $csv_data,
+			];
+		} else {
+			$data = [ 
+				'status' => false,
+				'message' => esc_html( 'Something went wrong! Form ID not found.', 'ultimate-addons-cf7' ),
+			];
+		}
+
+
+		wp_send_json( $data );
+		wp_die();
+
+	}
+
 
 	/*
 	 * Database menu 
