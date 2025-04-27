@@ -292,51 +292,61 @@ class UACF7_DATABASE {
 			$upload_dir = wp_upload_dir();
 			$dir = $upload_dir['baseurl'];
 			$replace_dir = '/uacf7-uploads/';
-			$file_name = get_the_title( $form_id );
-			$file_name = str_replace( " ", "-", $file_name );
+			$form_title = get_the_title( $form_id );
+			$form_title = str_replace( " ", "-", $form_title );
+
+			$site_title = get_bloginfo( 'name' );
+			$site_title = str_replace( " ", "-", $site_title );
+			$file_name = $today . '-' . $form_title . '—' . $site_title;
 			$form_data = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . "uacf7_form WHERE form_id = %d ", $form_id ) );
-
+			
 			$list = [];
-			$count = 0;
+			$all_keys = [];
 
-			foreach ( $form_data as $fkey => $fdata ) {
-				$ContactForm = WPCF7_ContactForm::get_instance( $fdata->form_id );
-				$form_fields = $ContactForm->scan_form_tags();
-				$fields = [];
-				$data = json_decode( $fdata->form_value );
-				foreach ( $form_fields as $field ) {
-
-					if ( $field['type'] != 'submit' && $field['type'] != 'uacf7_step_start' && $field['type'] != 'uacf7_step_end' && $field['type'] != 'uarepeater' && $field['type'] == 'uacf7_conversational_start' && $field['type'] == 'uacf7_conversational_end' ) {
-						$fields[ $field['name'] ] = '';
+			// First pass: Collect all unique keys
+			foreach ( $form_data as $fdata ) {
+				$data = json_decode( $fdata->form_value, true );
+				if ( is_array( $data ) ) {
+					foreach ( $data as $key => $value ) {
+						$all_keys[ $key ] = true;
 					}
 				}
-				foreach ( $data as $key => $value ) {
-					$fields[ $key ] = $value;
-				}
-				$list_head = [];
-				$list_data = [];
-				foreach ( $fields as $key => $value ) {
-					if ( $fkey == 0 ) {
-						$list_head[] = $key;
+			}
+
+			$all_keys = array_keys( $all_keys ); // Unique field names
+			$all_keys[] = 'Date';
+
+			// Add header row
+			$list[] = $all_keys;
+
+			// Second pass: Build rows
+			foreach ( $form_data as $fdata ) {
+				$data = json_decode( $fdata->form_value, true );
+				$row = [];
+	
+				foreach ( $all_keys as $key ) {
+					if ( $key === 'Date' ) {
+						$row[] = $fdata->form_date;
+						continue;
 					}
+	
+					$value = isset( $data[ $key ] ) ? $data[ $key ] : '';
+	
 					if ( is_array( $value ) ) {
 						$value = implode( ", ", $value );
 					}
+	
 					if ( strstr( $value, $replace_dir ) ) {
 						$value = str_replace( $replace_dir, "", $value );
 						$value = $dir . $replace_dir . $value;
 					}
-					$list_data[] = $value;
+	
+					$row[] = $value;
 				}
-				if ( $fkey == 0 ) {
-					$list_head[] = 'Date';
-					$list[] = $list_head;
-				}
-				
-				$list_data[] = $fdata->form_date;
-				$list[] = $list_data;
-
+	
+				$list[] = $row;
 			}
+			
 			// Set the headers
 			ob_start();
 			header( 'Content-Type: text/csv' );
