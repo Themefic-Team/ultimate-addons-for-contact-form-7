@@ -961,6 +961,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
     transition: background 0.3s;
     position: relative;
     background-color: transparent;
+    flex-direction: column;
 }
 
 .plugin-button.loading {
@@ -1329,7 +1330,11 @@ form.tag-generator-panel[data-version="2"] .control-box{
     }
 }
 
-
+@media screen and (max-width: 1700px) {
+    .plugin-item {
+        padding: 18px;
+    }
+}
 
 @media screen and (max-width: 1650px) {
 
@@ -1341,7 +1346,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
         gap: 32px;
     }
     .uacf7-addons-settings-page .uacf7-settings-heading .uacf7-settings-heading-wrap .uacf7-addon-filter-cta .uacf7-addon-filter-button {
-        padding: 8px 15px;
+        padding: 8px 14px;
     }
 }
 
