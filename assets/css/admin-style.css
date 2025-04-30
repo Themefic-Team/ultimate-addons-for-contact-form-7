@@ -1330,6 +1330,14 @@ form.tag-generator-panel[data-version="2"] .control-box{
     }
 }
 
+
+.uacf7-addons-settings-page h1.uacf7-sidebar-title {
+	margin-bottom: 30px;
+	font-size: 2em;
+	font-weight: 700;
+	line-height: 32px !important;
+}
+
 @media screen and (max-width: 1700px) {
     .plugin-item {
         padding: 18px;
@@ -1346,7 +1354,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
         gap: 32px;
     }
     .uacf7-addons-settings-page .uacf7-settings-heading .uacf7-settings-heading-wrap .uacf7-addon-filter-cta .uacf7-addon-filter-button {
-        padding: 8px 14px;
+        padding: 8px 12px;
     }
 }
 
@@ -1496,5 +1504,6 @@ form.tag-generator-panel[data-version="2"] .control-box{
         grid-template-columns: 1fr;
     }
 }
+
 
 
