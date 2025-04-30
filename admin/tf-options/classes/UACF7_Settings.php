@@ -389,7 +389,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 						<?php echo $this->tf_get_sidebar_plugin_list(); ?>
 
 						<div class="quick-access">
-							<h3>Quick Access</h3>
+							<h3><?php echo __('Helpful Resources', 'ultimate-addons-cf7');  ?></h3>
 							<div class="quick-access-wrapper">
 								<div class="access-item">
 									<a href="https://themefic.com/docs/uacf7/" target="_blank">
