@@ -1335,7 +1335,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	margin-bottom: 30px;
 	font-size: 2em;
 	font-weight: 700;
-	line-height: 32px !important;
+	line-height: 32px;
 }
 
 @media screen and (max-width: 1700px) {
@@ -1371,7 +1371,8 @@ form.tag-generator-panel[data-version="2"] .control-box{
     .uacf7-sidebar-content ul {
         grid-template-columns: 1fr;
     }
-    .uacf7-addons-settings-page .uacf7-setting-title {
+    .uacf7-addons-settings-page .uacf7-setting-title,
+    .uacf7-addons-settings-page h1.uacf7-sidebar-title {
         margin-bottom: 30px;
         font-size: 1.7em;
     }
