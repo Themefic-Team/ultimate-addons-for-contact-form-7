@@ -382,7 +382,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			<div class="uacf7-sidebar">
 				<div class="uacf7-sidebar-wrap">
 					<div class="uacf7-sidebar-header">
-						<h1 class="uacf7-sidebar-title"><?php echo _e( 'Extend Your Website', 'ultimate-addons-cf7' ) ?></h1>
+						<h1 class="uacf7-sidebar-title"><?php echo _e( 'Power Up Your Website', 'ultimate-addons-cf7' ) ?></h1>
 					</div>
 					<div class="uacf7-sidebar-content">
 						
