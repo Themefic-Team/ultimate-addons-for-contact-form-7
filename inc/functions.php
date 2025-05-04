@@ -1964,12 +1964,6 @@ function migrate_redirection_data_to_uacf7() {
 }
 
 
-// add_filter('uacf7_settings_title', 'uacf7_settings_title', 10, 1);
-// function uacf7_settings_title() {
-// 	return 'Ultimate Addons';
-// }
-
-
 // function uacf7_check_and_install_hydra_booking($upgrader_object, $options) {
 	
 // 	if ($options['action'] !== 'update' || $options['type'] !== 'plugin') {
