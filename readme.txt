@@ -1,4 +1,4 @@
- === Ultimate Addons for Contact Form 7 ===
+ === Addons for Contact Form 7 ===
 Contributors: themefic, hasanet, hemelhasan, mdrejon, raihan143
 Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
@@ -22,7 +22,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 👉 Our [Documentation](https://themefic.com/docs/uacf7/getting-started/installation/?utm_source=wp_readme&utm_medium=uacf7_top_slot&utm_campaign=plugin_docs)
 👉 Join Our [Facebook Group](https://facebook.com/groups/ultimate.cf7)
 
-Equipped with over 40 essential features, **Ultimate Addons For Contact Form 7** is the must-have plugin to complement Contact Form 7. It significantly enhances the functionality of your website's forms created using [Contact Form 7](https://wordpress.org/plugins/contact-form-7/). This All-in-One WordPress Contact Form plugin includes a wide range of options, from basic to advanced, catering to all the needs of your website Contact Forms. Such incredible features are what make this one of the [best WordPress contact form](https://www.templatemonster.com/awards/winners-2023/) plugins.
+Equipped with over 40 essential features, **Addons For Contact Form 7** is the must-have plugin to complement Contact Form 7. It significantly enhances the functionality of your website's forms created using [Contact Form 7](https://wordpress.org/plugins/contact-form-7/). This All-in-One WordPress Contact Form plugin includes a wide range of options, from basic to advanced, catering to all the needs of your website Contact Forms. Such incredible features are what make this one of the [best WordPress contact form](https://www.templatemonster.com/awards/winners-2023/) plugins.
 
 = FREE ADDONS =
 
@@ -308,7 +308,7 @@ We provide full support on the WordPress.org forums & [Our Website](https://port
 
 ### Privacy Policy
 
-Ultimate Addons for Contact Form 7 uses [Appsero](https://appsero.com/) SDK to collect some telemetry data. Appsero SDK does not gather any data by default. The SDK only starts gathering basic telemetry data when a user allows it via the admin notice. Appsero SDK DOES NOT IMMEDIATELY start gathering data, without confirmation from users in any case. We use this data to troubleshoot problems faster, make product improvements & ensure a great user experience for all our users.
+Addons for Contact Form 7 uses [Appsero](https://appsero.com/) SDK to collect some telemetry data. Appsero SDK does not gather any data by default. The SDK only starts gathering basic telemetry data when a user allows it via the admin notice. Appsero SDK DOES NOT IMMEDIATELY start gathering data, without confirmation from users in any case. We use this data to troubleshoot problems faster, make product improvements & ensure a great user experience for all our users.
 
 How can I report security bugs?
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage, and handle any security vulnerabilities. [Report a security vulnerability](https://patchstack.com/database/vdp/ultimate-addons-for-contact-form-7/).
@@ -333,11 +333,11 @@ Icons source [Iconfinder](https://www.iconfinder.com").
 == Installation ==
 
 1. Download and unzip the plugin. Upload the unzipped folder to the wp-contents/plugins folder of your WordPress installation.
-2. Active the plugin from the WordPress Plugins administration page OR, Go to the WordPress admin panel, click 'Plugins' -> 'Add new'. In the search input box, type 'Ultimate Addons for Contact form 7'.
+2. Active the plugin from the WordPress Plugins administration page OR, Go to the WordPress admin panel, click 'Plugins' -> 'Add new'. In the search input box, type 'Addons for Contact form 7'.
 3. Install and activate the plugin.
 4. Go through the Quick setup wizard for the basic setup.
 5. Check our Documentation & YouTube videos for further instruction.
-6. Go to Plugin Settings (Dashboard -> Ultimate Addons) and enable the addon you need.
+6. Go to Plugin Settings (Dashboard -> CF7 Addons) and enable the addon you need.
 
 == Frequently Asked Questions ==
 
@@ -348,7 +348,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 Contact Form 7 is a popular, and one of the oldest, WordPress plugin that enables users to create and manage multiple contact forms on their website.
 
 = Why do we need a Contact form 7 add on plugin? =
-Addon plugins for Contact Form 7, like Ultimate Addons for Contact Form 7, enhance the core functionalities of wpcf7 by introducing additional features such as multi-step forms, address autocomplete, country dropdowns, range sliders, and more. These addons improve user experience, extend the form's capabilities, and integrate seamlessly with other services, making your forms more powerful and versatile.
+Addon plugins for Contact Form 7, like Addons for Contact Form 7, enhance the core functionalities of wpcf7 by introducing additional features such as multi-step forms, address autocomplete, country dropdowns, range sliders, and more. These addons improve user experience, extend the form's capabilities, and integrate seamlessly with other services, making your forms more powerful and versatile.
 
 = How to create multi-step forms using Contact Form 7 =
 Discover how to break down your Contact Form 7 into manageable, sequential steps, improving user engagement. Watch our tutorial [here](https://www.youtube.com/watch?v=7Ucrx_ttGdM) and see a live demo [here](https://cf7addons.com/preview/contact-form-7-multi-step-forms/).

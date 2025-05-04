@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Ultimate Addons for Contact Form 7
+ * Plugin Name: Addons for Contact Form 7
  * Plugin URI: https://cf7addons.com/
  * Description: 40+ Essential Addons for Contact Form 7 - Conditional Fields, Multi Step Forms, Redirection, Form Templates, Columns, WooCommerce, Mailchimp and more, all in one.
  * Version: 3.5.12
@@ -81,6 +81,7 @@ class Ultimate_Addons_CF7 {
 		if ( file_exists( UACF7_PATH . 'admin/tf-options/TF_Options.php' ) ) {
 			require_once UACF7_PATH . 'admin/tf-options/TF_Options.php';
 		}
+
 	}
 
 	function uacf7_plugin_activation() {
@@ -93,11 +94,11 @@ class Ultimate_Addons_CF7 {
 	public function tf_tourfic_admin_denqueue_script( $screen ) {
 		$UACF7_options_screens = array(
 			'toplevel_page_uacf7_settings',
-			'ultimate-addons_page_uacf7_addons',
+			'cf7-addons_page_uacf7_addons',
 			'toplevel_page_wpcf7',
 			'contact_page_wpcf7-new',
 			'admin_page_uacf7-setup-wizard',
-			'ultimate-addons_page_uacf7_license_info',
+			'cf7-addons_page_uacf7_license_info',
 		);
 
 		//The tourfic admin js Listings Directory Compatibility
@@ -120,7 +121,7 @@ class Ultimate_Addons_CF7 {
 			<p>
 				<?php printf(
 					__( '%s requires %s to be installed and active. You can install and activate it from %s', 'ultimate-addons-cf7' ),
-					'<strong>Ultimate Addons for Contact Form 7</strong>',
+					'<strong>Addons for Contact Form 7</strong>',
 					'<strong>Contact form 7</strong>',
 					'<a href="' . admin_url( 'plugin-install.php?tab=search&s=contact+form+7' ) . '">here</a>.'
 				); ?>
@@ -155,11 +156,11 @@ class Ultimate_Addons_CF7 {
 
 		$tf_options_screens = array(
 			'toplevel_page_uacf7_settings',
-			'ultimate-addons_page_uacf7_addons',
+			'cf7-addons_page_uacf7_addons',
 			'toplevel_page_wpcf7',
 			'contact_page_wpcf7-new',
 			'admin_page_uacf7-setup-wizard',
-			'ultimate-addons_page_uacf7_license_info',
+			'cf7-addons_page_uacf7_license_info',
 		);
 
 		$tf_options_post_type = array( 'uacf7_review' );
@@ -217,7 +218,7 @@ class Ultimate_Addons_CF7 {
 	 */
 	public function appsero_init_tracker_ultimate_addons_for_contact_form_7() {
 
-		$client = new Appsero\Client( '7d0e21bd-f697-4c80-8235-07b65893e0dd', 'Ultimate Addons for Contact Form 7', __FILE__ );
+		$client = new Appsero\Client( '7d0e21bd-f697-4c80-8235-07b65893e0dd', 'Addons for Contact Form 7', __FILE__ );
 
 		// Change Admin notice text
 

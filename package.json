@@ -1,7 +1,7 @@
 {
   "name": "uacf7",
   "version": "2.9.5",
-  "description": "UACF7 - Ultimate Addons for Contact Form 7",
+  "description": "UACF7 - Addons for Contact Form 7",
   "main": "uacf7.js",
   "babel": {
     "presets": [

@@ -221,8 +221,8 @@ class UACF7_DATABASE {
 	public function wp_enqueue_admin_script_pro( $screen ) {
 
 		$tf_options_screens = array(
-			'ultimate-addons_page_ultimate-addons-db',
-			'ultimate-addons_page_uacf7_addons',
+			'cf7-addons_page_ultimate-addons-db',
+			'cf7-addons_page_uacf7_addons',
 		);
 
 
