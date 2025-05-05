@@ -187,9 +187,12 @@ class Ultimate_Addons_CF7 {
 					'nonce' => wp_create_nonce( 'uacf7_options_nonce' ),
 				)
 			);
-			wp_localize_script('uacf7-admin-script', 'uacf7_admin_nonce', wp_create_nonce('uacf7_admin_nonce'));
-			wp_localize_script('uacf7-admin-script', 'themefic_plugin_nonce', wp_create_nonce('themefic_plugin_nonce'));
-			
+
+			wp_localize_script('uacf7-admin-script', 'uacf7_admin_data', [
+				'uacf7_nonce' => wp_create_nonce('uacf7_admin_nonce'),
+				'themefic_nonce' => wp_create_nonce('themefic_plugin_nonce'),
+			]);
+
 			wp_localize_script(
 				'uacf7-admin',
 				'uacf7_admin_params',
@@ -199,6 +202,7 @@ class Ultimate_Addons_CF7 {
 					'pro_active' => $pro_active
 				)
 			);
+			
 			wp_enqueue_style( 'uacf7-notyf', UACF7_URL . 'assets/app/libs/notyf/notyf.min.css', '', UACF7_VERSION );
 			wp_enqueue_script( 'uacf7-notyf', UACF7_URL . 'assets/app/libs/notyf/notyf.min.js', array( 'jquery' ), UACF7_VERSION, true );
 		}
