@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Addons for Contact Form 7
+ * Plugin Name: Ultra Addons for Contact Form 7
  * Plugin URI: https://cf7addons.com/
- * Description: 40+ Essential Addons for Contact Form 7 - Conditional Fields, Multi Step Forms, Redirection, Form Templates, Columns, WooCommerce, Mailchimp and more, all in one.
+ * Description: 40+ Essential Ultra Addons for Contact Form 7 - Conditional Fields, Multi Step Forms, Redirection, Form Templates, Columns, WooCommerce, Mailchimp and more, all in one.
  * Version: 3.5.12
  * Author: Themefic
  * Author URI: https://themefic.com/
@@ -121,7 +121,7 @@ class Ultimate_Addons_CF7 {
 			<p>
 				<?php printf(
 					__( '%s requires %s to be installed and active. You can install and activate it from %s', 'ultimate-addons-cf7' ),
-					'<strong>Addons for Contact Form 7</strong>',
+					'<strong>Ultra Addons for Contact Form 7</strong>',
 					'<strong>Contact form 7</strong>',
 					'<a href="' . admin_url( 'plugin-install.php?tab=search&s=contact+form+7' ) . '">here</a>.'
 				); ?>
@@ -218,7 +218,7 @@ class Ultimate_Addons_CF7 {
 	 */
 	public function appsero_init_tracker_ultimate_addons_for_contact_form_7() {
 
-		$client = new Appsero\Client( '7d0e21bd-f697-4c80-8235-07b65893e0dd', 'Addons for Contact Form 7', __FILE__ );
+		$client = new Appsero\Client( '7d0e21bd-f697-4c80-8235-07b65893e0dd', 'Ultra Addons for Contact Form 7', __FILE__ );
 
 		// Change Admin notice text
 

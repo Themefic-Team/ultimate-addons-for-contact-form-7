@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Addons for Contact Form 7\n"
+"Project-Id-Version: Ultra Addons for Contact Form 7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-21 09:52+0000\n"
 "PO-Revision-Date: 2022-11-21 11:51+0000\n"
@@ -725,11 +725,11 @@ msgid "CF7 Addons"
 msgstr ""
 
 #. Name of the plugin
-msgid "Addons for Contact Form 7"
+msgid "Ultra Addons for Contact Form 7"
 msgstr ""
 
 #: admin/admin-menu.php:33
-msgid "Addons for Contact Form 7 (UACF7) Settings"
+msgid "Ultra Addons for Contact Form 7 (UACF7) Settings"
 msgstr ""
 
 #: addons/database/database.php:94 addons/database/database.php:132
