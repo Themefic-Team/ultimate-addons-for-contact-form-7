@@ -734,21 +734,21 @@ msgid "Ultra Addons for Contact Form 7 (UACF7) Settings"
 msgstr ""
 
 #: addons/database/database.php:94 addons/database/database.php:132
-msgid "Ultimate Database"
+msgid "Ultra Database"
 msgstr ""
 
 #: addons/database/database.php:126
-msgid "Ultimate Database Addon"
+msgid "Ultra Database Addon"
 msgstr ""
 
 #. parent slug
 #. page_title
 #: addons/database/database.php:68 addons/database/database.php:69
-msgid "Ultimate DB"
+msgid "Ultra DB"
 msgstr ""
 
 #: inc/functions.php:159
-msgid "Ultimate Repeater (pro)"
+msgid "Ultra Repeater (pro)"
 msgstr ""
 
 #: addons/conditional-field/conditional-fields.php:136
