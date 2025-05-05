@@ -1371,7 +1371,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
     .uacf7-sidebar-content ul {
         grid-template-columns: 1fr;
     }
-    .uacf7-addons-settings-page .uacf7-setting-title, 
+    .uacf7-addons-settings-page .uacf7-setting-title,
     .uacf7-addons-settings-page h1.uacf7-sidebar-title {
         margin-bottom: 30px;
         font-size: 1.7em;
@@ -1474,7 +1474,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
         font-size: 16px;
         margin: 8px 0;
     }
-    .uacf7-addons-settings-page .uacf7-sidebar-title,
+    .uacf7-addons-settings-page .uacf7-sidebar-title ,
     .uacf7-addons-settings-page .uacf7-setting-title {
         margin-bottom: 30px;
         font-size: 1.5em !important;
