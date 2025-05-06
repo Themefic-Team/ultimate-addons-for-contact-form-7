@@ -4,7 +4,7 @@ Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 3.5.13
+Stable tag: 3.5.14
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -73,6 +73,7 @@ Equipped with over 40 essential features, **Ultimate Addons For Contact Form 7**
 * Weekly Email Summary (Pro)
 * Email Piping (Pro)
 * PDF Generate (Pro)
+* Drag & Drop Multiple File Uploads
 
 ### How It works:
 
@@ -296,6 +297,10 @@ Our [Contact Form 7 Form Email Piping](https://cf7addons.com/preview/email-pipin
 
 Our [PDF Generate Pro](https://cf7addons.com/preview/pdf-generate-pro/) feature enables users to generate and download a PDF immediately after submitting a form.
 
+= Contact Form 7 Drag & Drop Multiple File Uploads =
+
+Our [Drag & Drop Multiple File Uploads](https://cf7addons.com/preview/drag-and-drop-multiple-file-upload/) feature enables a smooth and modern way to upload multiple files directly through your Contact Form 7.
+
 **More Pro addons are in development and will be available soon.**
 
 ### Join our Community to stay updated
@@ -456,7 +461,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
-= 3.5.13 - 05/05/2025 =
+= 3.5.13 - 06/05/2025 =
 
 - Added: Drag & Drop Multiple File Uploads addon (Pro).
 - Improved: Quick access text updated.
