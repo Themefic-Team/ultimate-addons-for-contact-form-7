@@ -4,7 +4,7 @@ Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 3.5.13
+Stable tag: 3.5.14
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -461,6 +461,12 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
+= 3.5.14 - 08/05/2025 =
+
+- Renamed: Plugin rebranded to "Ultra Addons for Contact Form 7".
+- Updated: Admin menu changed to "CF7 Addons".
+- Improved: Labels and references updated accordingly.
+
 = 3.5.13 - 06/05/2025 =
 
 - Added: Drag & Drop Multiple File Uploads addon (Pro).
@@ -471,18 +477,6 @@ Just install our plugin, and you'll get access to a variety of free templates!
 - Fixed: Mailchimp limited audience and select field issues.
 - Fixed: Database CSV export issue resolved.
 - Fixed: Localize script warning error resolved.
-
-= 3.5.12 - 30/04/2025 =
-
-- Improved: System stability for enhanced performance.
-- Compatibility: Fully compatible with WordPress version 6.8.
-
-= 3.5.11 - 09/04/2025 =
-
-- Improved: Database addon design has been enhanced for the free version.
-- Fixed: Email piping IMAP connection issue has been resolved.
-- Fixed: Undefined error during redirection migration has been resolved.
-- Notice: Hydra Booking plugin notice has been added.
 
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 
