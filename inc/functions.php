@@ -1249,7 +1249,7 @@ function uacf7_plugin_update_message( $plugin_data, $response ) {
 				<div class="uacf7_plugin_page_notices" >
 					<div class="uacf7_info_wrap">
 						<h3>Important update notice!</h3>
-						<p>We’ve renamed <strong> Ultimate Addons for Contact Form 7 </strong> to <strong>Ultra Addons for Contact Form 7</strong> as part of a branding update. You’ll now find all settings under the <strong>CF7 Addons</strong>  menu.</p>
+						<p>We’ve renamed <strong> Ultimate Addons for Contact Form 7 </strong> to <strong>Ultra Addons for Contact Form 7</strong> as part of a branding update. You’ll now find all settings under the <strong>CF7 Addons</strong>  menu. <a href="https://themefic.com/ultra-addons-for-contact-form-7/" target="_blank">Learn More</a></p>
 					</div>
 					<div class="uacf7_compa_wrap">
 						<p>Thank you for your continued support — we\'re excited to keep improving the plugin for you!</p>
