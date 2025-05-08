@@ -408,7 +408,7 @@ if ( ! function_exists( 'uacf7_review_notice' ) ) {
 				<?php echo sprintf(
 					__( ' <p>Hey %1$s 👋, You have been using <b>%2$s</b> for quite a while. If you feel %2$s is helping your business to grow in any way, would you please help %2$s to grow by simply leaving a 5* review on the WordPress Forum?', 'ultimate-addons-cf7' ),
 					$current_user->display_name,
-					'Ultimate Addons for Contact Form 7'
+					'Ultra Addons for Contact Form 7'
 				); ?>
 
 				<ul>
@@ -513,9 +513,9 @@ if ( ! function_exists( 'uacf7_review_notice_callback' ) ) {
 //                     <a style="background-image: url(%2$s/uacf7_new_updated_anno.png)" class="uacf7_new_updated_anno_banner_url" target="_blank" href="https://themefic.com/uacf7-revamped-plugin-installation-and-options/">
 // 						<div class="uacf7_new_updated_anno_info_wrap">
 // 							<h3>
-// 								Introducing Ultimate Addons For Contact Form 7 v3.3.0!
+// 								Introducing Addons For Contact Form 7 v3.3.0!
 // 							</h3>
-// 							<p>Get ready for an exciting announcement! We will soon unveil the highly anticipated release of <b>Ultimate Addon Contact Form 7 v3.3.0</b>. Your user experience will be enhanced, and we recommend backing up your site before updating for a smooth transition</p>
+// 							<p>Get ready for an exciting announcement! We will soon unveil the highly anticipated release of <b>Addons Contact Form 7 v3.3.0</b>. Your user experience will be enhanced, and we recommend backing up your site before updating for a smooth transition</p>
 // 						</div>
 // 						<button class="uacf7_new_updated_anno_button">
 // 							Explore What’s New
@@ -1249,7 +1249,7 @@ function uacf7_plugin_update_message( $plugin_data, $response ) {
 				<div class="uacf7_plugin_page_notices" >
 					<div class="uacf7_info_wrap">
 						<h3>Important update notice!</h3>
-						<p>We’ve renamed <strong> Ultimate Addons for Contact Form 7 </strong> to <strong>Ultra Addons for Contact Form 7</strong> as part of a branding update. You’ll now find all settings under the <strong>CF7 Addons</strong>  menu. <a href="https://themefic.com/ultra-addons-for-contact-form-7/" target="_blank">Learn More</a></p>
+						<p>We’ve renamed <strong> Ultimate Addons for Contact Form 7 </strong> to <strong>Ultra Addons for Contact Form 7</strong> as part of a branding update. You’ll now find all settings under the <strong>CF7 Addons</strong>  menu. <a href="https://cf7addons.com/ultra-addons-for-contact-form-7/" target="_blank">Learn More</a></p>
 					</div>
 					<div class="uacf7_compa_wrap">
 						<p>Thank you for your continued support — we\'re excited to keep improving the plugin for you!</p>
@@ -1493,7 +1493,7 @@ function uacf7_migration_notice() {
 		}
 
 		echo '<div class="notice notice-warning">
-			<p><strong>Ultimate Addons for Contact Form 7 – Migrate Your Conditional Data:</strong> <br> We\'ve detected conditional data from <strong>Conditional Fields for Contact Form 7</strong>. Easily migrate it with our built-in tool and unlock 40+ powerful addons in one place. Would you like to proceed?</p>
+			<p><strong>Ultra Addons for Contact Form 7 – Migrate Your Conditional Data:</strong> <br> We\'ve detected conditional data from <strong>Conditional Fields for Contact Form 7</strong>. Easily migrate it with our built-in tool and unlock 40+ powerful addons in one place. Would you like to proceed?</p>
 			<p>
 				<a href="' . esc_url(admin_url('admin.php?action=uacf7_migrate_conditional_fields')) . '" class="button button-primary">Migrate Now</a>
 				<a href="' . esc_url(add_query_arg('uacf7_dismiss_conditional_migration_notice', '1')) . '" class="button button-secondary">Not Now</a>
@@ -1849,7 +1849,7 @@ function uacf7_redirection_migration_notice() {
 		}
 
 		echo '<div class="notice notice-warning">
-			<p><strong>Ultimate Addons for Contact Form 7 – Migrate Your Redirection Settings:</strong><br> We\'ve detected redirection settings from <strong>Redirection for Contact Form 7</strong>. Easily migrate them with our built-in tool—no need for multiple plugins! Plus, access 40+ powerful addons in one place. Would you like to proceed?</p>
+			<p><strong>Ultra Addons for Contact Form 7 – Migrate Your Redirection Settings:</strong><br> We\'ve detected redirection settings from <strong>Redirection for Contact Form 7</strong>. Easily migrate them with our built-in tool—no need for multiple plugins! Plus, access 40+ powerful addons in one place. Would you like to proceed?</p>
 			<p>
 				<a href="' . esc_url(admin_url('admin.php?action=uacf7_migrate_redirection')) . '" class="button button-primary">Migrate Now</a>
 				<a href="' . esc_url(add_query_arg('uacf7_dismiss_redirection_notice', '1')) . '" class="button button-secondary">Not Now</a>
@@ -1962,9 +1962,6 @@ function migrate_redirection_data_to_uacf7() {
 	}
 
 }
-
-
-
 
 
 // function uacf7_check_and_install_hydra_booking($upgrader_object, $options) {
