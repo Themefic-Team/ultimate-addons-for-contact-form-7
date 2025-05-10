@@ -461,7 +461,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
-= 3.5.14 - 08/05/2025 =
+= 3.5.14 - 10/05/2025 =
 
 - Renamed: Plugin rebranded to "Ultra Addons for Contact Form 7".
 - Updated: Admin menu changed to "CF7 Addons".

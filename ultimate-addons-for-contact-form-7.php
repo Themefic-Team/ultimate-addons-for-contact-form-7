@@ -81,7 +81,6 @@ class Ultimate_Addons_CF7 {
 		if ( file_exists( UACF7_PATH . 'admin/tf-options/TF_Options.php' ) ) {
 			require_once UACF7_PATH . 'admin/tf-options/TF_Options.php';
 		}
-
 	}
 
 	function uacf7_plugin_activation() {
