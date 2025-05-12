@@ -1358,7 +1358,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 .uacf7-sidebar-promo .promo-discount {
 	display: flex;
 	padding: 16px;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: flex-start;
 	border-radius: 8px;
 	background: radial-gradient(81.34% 87.34% at 50% 87.34%, rgba(255, 125, 125, 0.16) 0%, rgba(120, 32, 243, 0.00) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 0, 0, 0.16) 100%), linear-gradient(0deg, #7820F3 0%, #7820F3 100%), linear-gradient(0deg, #382673 0%, #382673 100%), #473080;
@@ -1371,7 +1371,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	color: #FFF;
 	text-align: left;
 	font-family: Inter;
-	font-size: 25px;
+	font-size: 24px;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 120%;
@@ -1382,15 +1382,16 @@ form.tag-generator-panel[data-version="2"] .control-box{
     color: #FFF;
     text-align: center;
     font-family: inherit;
-    font-size: 52px;
+    font-size: 48px;
     font-style: normal;
     font-weight: 700;
+    margin-top: -10px;
 }
 .uacf7-sidebar-promo .promo-discount span.promo-discount-text{
    color:  #FFF;
     text-align: center;
     font-family: Inter;
-    font-size: 17px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     letter-spacing: -0.25px;
@@ -1400,7 +1401,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 .uacf7-sidebar-promo .promo-description p {
 	color: #FFF;
 	font-family: Inter;
-	font-size: 17px;
+	font-size: 16px;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 150%;
@@ -1415,7 +1416,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 .uacf7-sidebar-promo .promo-description .countdown {
 	color: #FFF;
     font-family: Inter;
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 600;
     line-height: 32px; /* 133.333% */
@@ -1427,19 +1428,19 @@ form.tag-generator-panel[data-version="2"] .control-box{
 
 .uacf7-sidebar-promo .promo-description .discount-btn {
 	display: flex;
-    padding: 8px 16px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    gap: 8px;
-    background: #F61A39;
-    color:  #FFF;
-    font-family: Inter;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 150%; /* 25.5px */
-    text-decoration: none;
+	padding: 6px 14px;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 8px;
+	gap: 8px;
+	background: #F61A39;
+	color: #FFF;
+	font-family: Inter;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 150%;
+	text-decoration: none;
 }
 
 .uacf7-sidebar-promo .promo-description .discount-btn:hover {
