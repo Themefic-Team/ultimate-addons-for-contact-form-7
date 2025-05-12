@@ -1338,6 +1338,115 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	line-height: 32px;
 }
 
+
+/**
+ * Promo Banner CSS
+ */
+
+ .uacf7-sidebar-promo {
+	display: flex;
+	padding: 16px;
+	align-items: center;
+	align-content: center;
+	gap: 16px;
+	flex-direction: row;
+	border-radius: 8px;
+	border: 1px solid #7820F3;
+	background: radial-gradient(46.48% 49.91% at 50.09% 87%, rgba(255, 125, 125, 0.16) 0%, rgba(120, 32, 243, 0.00) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 0, 0, 0.16) 100%), linear-gradient(0deg, #7820F3 0%, #7820F3 100%), #382673;
+}
+
+.uacf7-sidebar-promo .promo-discount {
+	display: flex;
+	padding: 16px;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border-radius: 8px;
+	background: radial-gradient(81.34% 87.34% at 50% 87.34%, rgba(255, 125, 125, 0.16) 0%, rgba(120, 32, 243, 0.00) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 0, 0, 0.16) 100%), linear-gradient(0deg, #7820F3 0%, #7820F3 100%), linear-gradient(0deg, #382673 0%, #382673 100%), #473080;
+	box-shadow: 0px 3px 3px 0px rgba(44, 39, 63, 0.03), 0px 1px 6px 0px rgba(44, 39, 63, 0.03), 0px 0px 0px 1px rgba(44, 39, 63, 0.12), -8px 9.5px 24px 0px rgba(24, 14, 56, 0.32);
+	color: #fff;
+    flex-direction: column;
+}
+
+.uacf7-sidebar-promo .promo-discount span {
+	color: #FFF;
+	text-align: left;
+	font-family: Inter;
+	font-size: 25px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 120%;
+	letter-spacing: -0.25px;
+}
+
+.uacf7-sidebar-promo .promo-discount span.promo-discount-percent{
+    color: #FFF;
+    text-align: center;
+    font-family: inherit;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+}
+.uacf7-sidebar-promo .promo-discount span.promo-discount-text{
+   color:  #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.25px;
+    text-transform: uppercase;
+}
+
+.uacf7-sidebar-promo .promo-description p {
+	color: #FFF;
+	font-family: Inter;
+	font-size: 17px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 150%;
+}
+
+.uacf7-sidebar-promo .promo-description .dicount-timer {
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
+}
+
+.uacf7-sidebar-promo .promo-description .countdown {
+	color: #FFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px; /* 133.333% */
+    letter-spacing: -0.75px;
+}
+.uacf7-sidebar-promo .promo-description .countdown span {
+    font-weight: 400;
+}
+
+.uacf7-sidebar-promo .promo-description .discount-btn {
+	display: flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    gap: 8px;
+    background: #F61A39;
+    color:  #FFF;
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 25.5px */
+    text-decoration: none;
+}
+
+.uacf7-sidebar-promo .promo-description .discount-btn:hover {
+    background: #F61A39;
+}
+
+
 @media screen and (max-width: 1700px) {
     .plugin-item {
         padding: 18px;
