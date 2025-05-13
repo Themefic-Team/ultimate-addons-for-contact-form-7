@@ -1353,6 +1353,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	border-radius: 8px;
 	border: 1px solid #7820F3;
 	background: radial-gradient(46.48% 49.91% at 50.09% 87%, rgba(255, 125, 125, 0.16) 0%, rgba(120, 32, 243, 0.00) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 0, 0, 0.16) 100%), linear-gradient(0deg, #7820F3 0%, #7820F3 100%), #382673;
+    margin-bottom: 16px;
 }
 
 .uacf7-sidebar-promo .promo-discount {
@@ -1371,7 +1372,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	color: #FFF;
 	text-align: left;
 	font-family: Inter;
-	font-size: 24px;
+	font-size: 25px;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 120%;
@@ -1382,7 +1383,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
     color: #FFF;
     text-align: center;
     font-family: inherit;
-    font-size: 48px;
+    font-size: 52px;
     font-style: normal;
     font-weight: 700;
     margin-top: -10px;
@@ -1391,7 +1392,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
    color:  #FFF;
     text-align: center;
     font-family: Inter;
-    font-size: 16px;
+    font-size: 17px;
     font-style: normal;
     font-weight: 600;
     letter-spacing: -0.25px;
@@ -1401,7 +1402,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 .uacf7-sidebar-promo .promo-description p {
 	color: #FFF;
 	font-family: Inter;
-	font-size: 16px;
+	font-size: 17px;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 150%;
@@ -1416,7 +1417,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 .uacf7-sidebar-promo .promo-description .countdown {
 	color: #FFF;
     font-family: Inter;
-    font-size: 20px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 600;
     line-height: 32px; /* 133.333% */
@@ -1428,7 +1429,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 
 .uacf7-sidebar-promo .promo-description .discount-btn {
 	display: flex;
-	padding: 6px 14px;
+	padding: 8px 16px;
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 8px;
@@ -1436,7 +1437,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	background: #F61A39;
 	color: #FFF;
 	font-family: Inter;
-	font-size: 16px;
+	font-size: 17px;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 150%;
