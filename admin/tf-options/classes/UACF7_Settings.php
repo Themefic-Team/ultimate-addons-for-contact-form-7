@@ -382,8 +382,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			<div class="uacf7-sidebar">
 				<div class="uacf7-sidebar-wrap">
 					<!-- promo banner  -->
-					<?php echo $this->tf_get_promo_banner(); ?>
-					
+					 <?php echo apply_filters('uacf7_dashboard_fomo_banner', ''); ?>
+					 
 					<div class="uacf7-sidebar-content">
 
 						<?php echo $this->tf_get_sidebar_plugin_list(); ?>
@@ -430,7 +430,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			<?php
 		}
 
-		public function tf_get_promo_banner() {
+		public function tf_get_fomo_banner() {
 			?>
 			<div class="uacf7-sidebar-promo">
 				<div class="promo-discount">
