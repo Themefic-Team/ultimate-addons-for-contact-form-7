@@ -1411,7 +1411,9 @@ form.tag-generator-panel[data-version="2"] .control-box{
 .uacf7-sidebar-promo .promo-description .dicount-timer {
 	display: flex;
 	justify-content: space-between;
-    align-items: center;
+	align-items: center;
+	gap: 16px;
+	width: 100%;
 }
 
 .uacf7-sidebar-promo .promo-description .countdown {
@@ -1448,6 +1450,24 @@ form.tag-generator-panel[data-version="2"] .control-box{
     background: #F61A39;
 }
 
+/* .promo-description {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+} */
+
+
+/* 
+@media screen and (min-width: 1025px) {
+    .uacf7-sidebar-promo .promo-description .dicount-timer {
+        flex-wrap: wrap;
+    }
+    .uacf7-sidebar-promo .promo-description .countdown {
+        width: 100%;
+    }
+} */
 
 @media screen and (max-width: 1700px) {
     .plugin-item {

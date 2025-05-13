@@ -12,7 +12,7 @@ class Uacf7_Fomo_Banner {
     public function __construct(){
 
         
-        if(!class_exists('Ultimate_Addons_CF7_PRO')){
+        if(class_exists('Ultimate_Addons_CF7_PRO')){
 
             add_filter('uacf7_dashboard_fomo_banner', [$this, 'maybe_render_fomo_banner']);
             add_action('admin_footer', [ $this, 'uacf7_fomo_footer_script']);
@@ -55,7 +55,7 @@ class Uacf7_Fomo_Banner {
         $duration = (int) ($response['countdown']['duration_minutes'] ?? 0);
         $campaign_id = sanitize_key($response['campaign_id']);
         $first_visit_key = 'uacf7_fomo_first_visit_' . $campaign_id;
-
+        
         if (!$response || $response['status'] !== true) {
 
             if (isset($_COOKIE[$first_visit_key])) {
@@ -89,7 +89,8 @@ class Uacf7_Fomo_Banner {
         if ($remaining === 0) {
             $restart = $response['countdown']['restart'] ?? null;
             if ($restart === true && !empty($response['countdown']['interval_hours'])) {
-                $interval_seconds = (int) $response['countdown']['interval_hours'] * 3600;
+                $interval_seconds = (float) $response['countdown']['interval_hours'] * 3600;
+                
                 $next_start_time = $end_time + $interval_seconds;
 
                 if (time() < $next_start_time) {
@@ -100,6 +101,7 @@ class Uacf7_Fomo_Banner {
                     setcookie($first_visit_key, $first_visit_timestamp, time() + (365 * DAY_IN_SECONDS), '/');
                     $end_time = $first_visit_timestamp + ($duration * 60);
                     $remaining = max(0, $end_time - time());
+                    
                 }
             } else {
                 $should_show = false;
@@ -162,6 +164,7 @@ class Uacf7_Fomo_Banner {
 
                     if (diff <= 0) {
                         countdown.innerText = "Time’s up!";
+                        document.querySelector('.discount-btn').style.opacity = '0.5';
                         return;
                     }
 
