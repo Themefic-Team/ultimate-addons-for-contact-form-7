@@ -12,7 +12,7 @@ class Uacf7_Fomo_Banner {
     public function __construct(){
 
         
-        if(class_exists('Ultimate_Addons_CF7_PRO')){
+        if(!class_exists('Ultimate_Addons_CF7_PRO')){
 
             add_filter('uacf7_dashboard_fomo_banner', [$this, 'maybe_render_fomo_banner']);
             add_action('admin_footer', [ $this, 'uacf7_fomo_footer_script']);
