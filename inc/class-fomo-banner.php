@@ -52,16 +52,8 @@ class Uacf7_Fomo_Banner {
     public function maybe_render_fomo_banner() {
         $response = $this->response_data;
 
-        $duration = (int) ($response['countdown']['duration_minutes'] ?? 0);
-        $campaign_id = sanitize_key($response['campaign_id']);
-        $first_visit_key = 'uacf7_fomo_first_visit_' . $campaign_id;
-        
         if (!$response || $response['status'] !== true) {
-
-            if (isset($_COOKIE[$first_visit_key])) {
-                setcookie($first_visit_key, '', time() - 3600, '/'); // Expire the cookie
-            }
-
+            $this->clear_fomo_data($response['campaign_id']);
             return;
         }
 
@@ -69,39 +61,56 @@ class Uacf7_Fomo_Banner {
             return;
         }
 
-        $duration = (int) ($response['countdown']['duration_minutes'] ?? 0);
-        $campaign_id = sanitize_key($response['campaign_id']);
-        $first_visit_key = 'uacf7_fomo_first_visit_' . $campaign_id;
 
-        if (!isset($_COOKIE[$first_visit_key])) {
-            $first_visit_timestamp = time();
-            setcookie($first_visit_key, $first_visit_timestamp, time() + (365 * DAY_IN_SECONDS), '/');
-        } else {
-            $first_visit_timestamp = (int) $_COOKIE[$first_visit_key];
+        $user_id = get_current_user_id();
+        $campaign_id = sanitize_key($response['campaign_id']);
+        $user_first_visit_meta_key = 'uacf7_fomo_first_visit_time_' . $campaign_id;;
+        $cookie_key = 'uacf7_fomo_first_visit_' . $campaign_id;
+
+        // Check if we're on the right page to initiate the countdown
+        $screen = get_current_screen();
+        if ($screen && $screen->id === 'cf7-addons_page_uacf7_addons') {
+            // Only set countdown start time on first visit
+            if (!get_user_meta($user_id, $user_first_visit_meta_key, true)) {
+                update_user_meta($user_id, $user_first_visit_meta_key, time());
+            }
         }
 
-        $end_time = $first_visit_timestamp + ($duration * 60);
+        // If countdown has never started, exit early
+        $countdown_start = get_user_meta($user_id, $user_first_visit_meta_key, true);
+        if (!$countdown_start) {
+            return;
+        }
+        
+        // Ensure cookie exists (for front-end JS or cross-tab sync)
+        if (!isset($_COOKIE[$cookie_key])) {
+            setcookie($cookie_key, $countdown_start, time() + (365 * DAY_IN_SECONDS), '/');
+        } else {
+            $countdown_start = (int) $_COOKIE[$cookie_key];
+        }
+        
+        $duration = (int) ($response['countdown']['duration_minutes'] ?? 0);
+        $end_time = $countdown_start + ($duration * 60);
         $remaining = max(0, $end_time - time());
 
         $should_show = true;
 
-        // Logic based on `restart`
+        // Handle restart logic
         if ($remaining === 0) {
             $restart = $response['countdown']['restart'] ?? null;
-            if ($restart === true && !empty($response['countdown']['interval_hours'])) {
-                $interval_seconds = (float) $response['countdown']['interval_hours'] * 3600;
-                
-                $next_start_time = $end_time + $interval_seconds;
+            $interval_hours = (float) ($response['countdown']['interval_hours'] ?? 0);
 
+            if ($restart === true && $interval_hours > 0) {
+                $next_start_time = $end_time + ($interval_hours * 3600);
                 if (time() < $next_start_time) {
                     $should_show = false;
                 } else {
                     // Restart countdown
-                    $first_visit_timestamp = time();
-                    setcookie($first_visit_key, $first_visit_timestamp, time() + (365 * DAY_IN_SECONDS), '/');
-                    $end_time = $first_visit_timestamp + ($duration * 60);
+                    $new_start = time();
+                    update_user_meta($user_id, $user_first_visit_meta_key, $new_start);
+                    setcookie($cookie_key, $new_start, time() + (365 * DAY_IN_SECONDS), '/');
+                    $end_time = $new_start + ($duration * 60);
                     $remaining = max(0, $end_time - time());
-                    
                 }
             } else {
                 $should_show = false;
@@ -148,6 +157,17 @@ class Uacf7_Fomo_Banner {
 
     }
 
+    public function clear_fomo_data($campaign_id){
+
+        $user_id = get_current_user_id();
+        delete_user_meta($user_id, 'uacf7_fomo_first_visit_time_'.$campaign_id);
+
+        if (isset($_COOKIE['uacf7_fomo_first_visit_'.$campaign_id])) {
+            setcookie('uacf7_fomo_first_visit_'.$campaign_id, '', time() - 3600, '/');
+        }
+
+    }
+
     public function uacf7_fomo_footer_script( $screen ){
         ?>
         <script>
@@ -172,7 +192,7 @@ class Uacf7_Fomo_Banner {
                     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-                    countdown.innerText = `${hours} h : ${minutes} m : ${seconds} s`;
+                    countdown.innerHTML = `${hours} <span>h</span> : ${minutes} <span>m</span> : ${seconds} <span>s</span>`;
                     setTimeout(updateCountdown, 1000);
                 }
 
