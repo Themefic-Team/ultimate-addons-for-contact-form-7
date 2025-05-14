@@ -64,8 +64,7 @@ class Uacf7_Fomo_Banner {
 
         $user_id = get_current_user_id();
         $campaign_id = sanitize_key($response['campaign_id']);
-        $user_first_visit_meta_key = 'uacf7_fomo_first_visit_time_' . $campaign_id;;
-        $cookie_key = 'uacf7_fomo_first_visit_' . $campaign_id;
+        $user_first_visit_meta_key = 'uacf7_fomo_first_visit_time_' . $campaign_id;
 
         // Check if we're on the right page to initiate the countdown
         $screen = get_current_screen();
@@ -80,13 +79,6 @@ class Uacf7_Fomo_Banner {
         $countdown_start = get_user_meta($user_id, $user_first_visit_meta_key, true);
         if (!$countdown_start) {
             return;
-        }
-        
-        // Ensure cookie exists (for front-end JS or cross-tab sync)
-        if (!isset($_COOKIE[$cookie_key])) {
-            setcookie($cookie_key, $countdown_start, time() + (365 * DAY_IN_SECONDS), '/');
-        } else {
-            $countdown_start = (int) $_COOKIE[$cookie_key];
         }
         
         $duration = (int) ($response['countdown']['duration_minutes'] ?? 0);
@@ -108,7 +100,6 @@ class Uacf7_Fomo_Banner {
                     // Restart countdown
                     $new_start = time();
                     update_user_meta($user_id, $user_first_visit_meta_key, $new_start);
-                    setcookie($cookie_key, $new_start, time() + (365 * DAY_IN_SECONDS), '/');
                     $end_time = $new_start + ($duration * 60);
                     $remaining = max(0, $end_time - time());
                 }
@@ -161,10 +152,6 @@ class Uacf7_Fomo_Banner {
 
         $user_id = get_current_user_id();
         delete_user_meta($user_id, 'uacf7_fomo_first_visit_time_'.$campaign_id);
-
-        if (isset($_COOKIE['uacf7_fomo_first_visit_'.$campaign_id])) {
-            setcookie('uacf7_fomo_first_visit_'.$campaign_id, '', time() - 3600, '/');
-        }
 
     }
 
