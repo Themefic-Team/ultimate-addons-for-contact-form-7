@@ -149,7 +149,6 @@ class Uacf7_Fomo_Banner {
     }
 
     public function uacf7_fomo_footer_script( $screen ){
-        uacf7_print_r($screen);
         ?>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
@@ -164,13 +163,16 @@ class Uacf7_Fomo_Banner {
 
                     if (diff <= 0) {
                         countdown.innerText = "Time’s up!";
-                        document.querySelector('.discount-btn').style.opacity = '0.5';
+                        const btn = document.querySelector('.discount-btn');
+                        if (btn) btn.style.opacity = '0.5';
                         return;
                     }
 
-                    const minutes = Math.floor(diff / 60000);
-                    const seconds = Math.floor((diff % 60000) / 1000);
-                    countdown.innerText = `${minutes} m : ${seconds} s`;
+                    const hours = Math.floor(diff / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                    countdown.innerText = `${hours} h : ${minutes} m : ${seconds} s`;
                     setTimeout(updateCountdown, 1000);
                 }
 

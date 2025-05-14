@@ -1399,6 +1399,14 @@ form.tag-generator-panel[data-version="2"] .control-box{
     text-transform: uppercase;
 }
 
+.uacf7-sidebar-promo .promo-description {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
 .uacf7-sidebar-promo .promo-description p {
 	color: #FFF;
 	font-family: Inter;
@@ -1406,6 +1414,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	font-style: normal;
 	font-weight: 600;
 	line-height: 150%;
+    margin: 0;
 }
 
 .uacf7-sidebar-promo .promo-description .dicount-timer {
@@ -1419,7 +1428,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 .uacf7-sidebar-promo .promo-description .countdown {
 	color: #FFF;
     font-family: Inter;
-    font-size: 24px;
+    font-size: 19px;
     font-style: normal;
     font-weight: 600;
     line-height: 32px; /* 133.333% */
@@ -1431,7 +1440,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 
 .uacf7-sidebar-promo .promo-description .discount-btn {
 	display: flex;
-	padding: 8px 16px;
+	padding: 8px 12px;
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 8px;
@@ -1439,7 +1448,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	background: #F61A39;
 	color: #FFF;
 	font-family: Inter;
-	font-size: 17px;
+	font-size: 16px;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 150%;
@@ -1450,24 +1459,21 @@ form.tag-generator-panel[data-version="2"] .control-box{
     background: #F61A39;
 }
 
-/* .promo-description {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 16px;
-} */
 
 
-/* 
-@media screen and (min-width: 1025px) {
+@media screen and (max-width: 1860px) {
+    .uacf7-sidebar-promo .promo-description {
+        gap: 8px;
+    }
     .uacf7-sidebar-promo .promo-description .dicount-timer {
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
     .uacf7-sidebar-promo .promo-description .countdown {
         width: 100%;
     }
-} */
+}
 
 @media screen and (max-width: 1700px) {
     .plugin-item {
@@ -1495,6 +1501,12 @@ form.tag-generator-panel[data-version="2"] .control-box{
     }
 }
 
+@media screen and (max-width: 1450px) { 
+    .uacf7-sidebar-promo {
+        align-items: flex-start;
+    }
+}
+
 @media screen and (max-width: 1400px) {
     .uacf7-addons-settings-page {
         grid-template-columns: 4fr 2fr;
@@ -1516,6 +1528,9 @@ form.tag-generator-panel[data-version="2"] .control-box{
     }
     .uacf7-addons-settings-page .uacf7-addon-setting-content {
         gap: 24px;
+    }
+    .uacf7-sidebar-promo {
+        flex-direction: column;
     }
 }
 
@@ -1618,6 +1633,20 @@ form.tag-generator-panel[data-version="2"] .control-box{
 
     .quick-access {
         padding: 14px;
+    }
+
+    .uacf7-sidebar-promo .promo-discount span.promo-discount-percent {
+        font-size: 48px;
+    }
+    .uacf7-sidebar-promo .promo-discount span {
+        font-size: 22px;
+    }
+    .uacf7-sidebar-promo .promo-discount span.promo-discount-text,
+    .uacf7-sidebar-promo .promo-description p {
+        font-size: 16px;
+    }
+    .uacf7-sidebar-promo .promo-description .discount-btn {
+        font-size: 14px;
     }
 }
 

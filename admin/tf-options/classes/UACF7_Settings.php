@@ -447,7 +447,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					<p><?php echo esc_html('Buy within next 2 hours to avail this discount. Hurry, clock is ticking...'); ?></p>
 					<div class="dicount-timer">
 						<div class="countdown">
-							02 <span>h</span>: 00 <span>m</span>
+							02 <span>h</span>: 00 <span>m</span> : 00 <span>s</span>
 						</div>
 						<a class="discount-btn" href="https://themefic.com/products/ultimate-addons-for-contact-form-7/" target="_blank" class="tf-btn tf-btn-primary">
 						    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
