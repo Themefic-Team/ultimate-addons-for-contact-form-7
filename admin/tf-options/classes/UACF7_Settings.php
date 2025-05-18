@@ -391,7 +391,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 						<div class="customization-quote">
 							<div class="quote-header">
 								<i class="fa-solid fa-code"></i>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=uacf7_addons' ) ) ?>"><?php echo __('Get Free Quote', 'ultimate-addons-cf7');  ?></a>
+								<a href="<?php echo esc_url('https://portal.themefic.com/hire-us/' ); ?>" target="_blank" ><?php echo __('Get Free Quote', 'ultimate-addons-cf7');  ?></a>
 							</div>
 							<div class="quote-content">
 								<h3><?php echo __('Need Help Customizing Your WordPress Site?', 'ultimate-addons-cf7');  ?></h3>
