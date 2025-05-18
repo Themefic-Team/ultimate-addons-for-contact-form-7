@@ -388,6 +388,17 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 						<?php echo $this->tf_get_sidebar_plugin_list(); ?>
 
+						<div class="customization-quote">
+							<div class="quote-header">
+								<i class="fa-solid fa-code"></i>
+								<a href="<?php echo esc_url( admin_url( 'admin.php?page=uacf7_addons' ) ) ?>"><?php echo __('Get Free Quote', 'ultimate-addons-cf7');  ?></a>
+							</div>
+							<div class="quote-content">
+								<h3><?php echo __('Need Help Customizing Your WordPress Site?', 'ultimate-addons-cf7');  ?></h3>
+								<p><?php echo __('Want to tweak a theme, adjust a plugin like ultimate addons or add custom functionality to your site? Our expert WordPress developers can tailor it just the way you need. We only charge $29/hour.', 'ultimate-addons-cf7');  ?></p>								
+							</div>
+						</div>
+
 						<div class="quick-access">
 							<h3><?php echo __('Helpful Resources', 'ultimate-addons-cf7');  ?></h3>
 							<div class="quick-access-wrapper">
