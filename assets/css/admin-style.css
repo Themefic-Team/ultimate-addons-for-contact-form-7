@@ -1459,7 +1459,7 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 16px;
+	gap: 8px;
 	width: 100%;
 }
 
