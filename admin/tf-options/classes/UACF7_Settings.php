@@ -395,7 +395,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 							</div>
 							<div class="quote-content">
 								<h3><?php echo __('Need Help Customizing Your WordPress Site?', 'ultimate-addons-cf7');  ?></h3>
-								<p><?php echo __('Want to tweak a theme, adjust a plugin like ultimate addons or add custom functionality to your site? Our expert WordPress developers can tailor it just the way you need. We only charge $29/hour.', 'ultimate-addons-cf7');  ?></p>								
+								<p><?php echo __('Want to tweak a theme, adjust a plugin like Ultra Addons or add custom functionality to your site? Our expert WordPress developers can tailor it just the way you need. We only charge $29/hour.', 'ultimate-addons-cf7');  ?></p>								
 							</div>
 						</div>
 
