@@ -1318,7 +1318,7 @@ function uacf7_install_hydra_booking() {
 function uacf7_dismiss_booking_pro_notice() {
     check_ajax_referer('uacf7_admin_nonce', 'security');
 
-    set_transient('uacf7_booking_pro_notice_dismissed', true, 7 * DAY_IN_SECONDS);
+    update_option('uacf7_booking_pro_notice_dismissed', true);
 
     wp_send_json_success();
 }
@@ -1326,7 +1326,7 @@ function uacf7_dismiss_booking_pro_notice() {
 add_action('wp_ajax_uacf7_dismiss_booking_pro_notice', 'uacf7_dismiss_booking_pro_notice');
 
 function uacf7_booking_pro_admin_notice() {
-    if (get_transient('uacf7_booking_pro_notice_dismissed')) {
+    if (get_option('uacf7_booking_pro_notice_dismissed')) {
         return;
     }
 

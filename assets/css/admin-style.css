@@ -844,11 +844,11 @@ form.tag-generator-panel[data-version="2"] .control-box{
 	padding: 15px;
 	padding: 0px;
 	border-radius: 6px;
-	position: sticky;
+	/* position: sticky; */
 	top: 30px;
 	align-self: start;
-	max-height: 100vh;
-	overflow-y: auto;
+	/* max-height: 100vh; */
+	/* overflow-y: auto; */
 }
 .plugin-item { 
     border-bottom: 1px solid #eee;
