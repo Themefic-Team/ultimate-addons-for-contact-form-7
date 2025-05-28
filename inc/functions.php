@@ -141,9 +141,11 @@ Function: uacf7_print_r
 Return: checked
 */
 if ( ! function_exists( 'uacf7_print_r' ) ) {
-	function uacf7_print_r( $value ) {
+	function uacf7_print_r( ...$args ) {
 		echo '<pre style="padding-left: 180px;">';
-		print_r( $value );
+		foreach ( $args as $arg ) {
+			print_r( $arg );
+		}
 		echo '</pre>';
 		// exit;
 	}
