@@ -52,10 +52,14 @@ class Uacf7_Fomo_Banner {
     public function maybe_render_fomo_banner() {
         $response = $this->response_data;
 
-        if (!$response || $response['status'] !== true) {
-            $this->clear_fomo_data($response['campaign_id']);
+        if (!is_array($response) || $response['status'] !== true) {
+            $campaign_id = is_array($response) && isset($response['campaign_id']) ? $response['campaign_id'] : null;
+            if ($campaign_id) {
+                $this->clear_fomo_data($campaign_id);
+            }
             return;
         }
+
 
         if (!in_array('dashboard', $response['show_on_pages'])) {
             return;
