@@ -3,7 +3,7 @@ if(!defined('ABSPATH')){
     exit;
 }
 
-class Uacf7_Fomo_Banner {
+class Uacf7_Helper_Banner {
 
     private $api_url = 'https://api.themefic.com/fomo';
     private $response_data  = false;
@@ -52,8 +52,16 @@ class Uacf7_Fomo_Banner {
     public function maybe_render_fomo_banner() {
         $response = $this->response_data;
 
-        if (!$response || $response['status'] !== true) {
-            $this->clear_fomo_data($response['campaign_id']);
+        // if (!$response || $response['status'] !== true) {
+        //     $this->clear_fomo_data($response['campaign_id']);
+        //     return;
+        // }
+        
+        if (!is_array($response) || $response['status'] !== true) {
+            $campaign_id = is_array($response) && isset($response['campaign_id']) ? $response['campaign_id'] : null;
+            if ($campaign_id) {
+                $this->clear_fomo_data($campaign_id);
+            }
             return;
         }
 
@@ -190,4 +198,4 @@ class Uacf7_Fomo_Banner {
 
 }
 
-new Uacf7_Fomo_Banner();
+new Uacf7_Helper_Banner();
