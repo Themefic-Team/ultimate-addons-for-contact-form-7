@@ -3,7 +3,7 @@ if(!defined('ABSPATH')){
     exit;
 }
 
-class Uacf7_Fomo_Banner {
+class Uacf7_Helper_Banner {
 
     private $api_url = 'https://api.themefic.com/fomo';
     private $response_data  = false;
@@ -14,8 +14,8 @@ class Uacf7_Fomo_Banner {
         
         if(!class_exists('Ultimate_Addons_CF7_PRO')){
 
-            add_filter('uacf7_dashboard_fomo_banner', [$this, 'maybe_render_fomo_banner']);
-            add_action('admin_footer', [ $this, 'uacf7_fomo_footer_script']);
+            add_filter('uacf7_dashboard_helper_banner', [$this, 'render_helper_banner'], 10, 2);
+            add_action('admin_footer', [ $this, 'uacf7_admin_helper_footer_script']);
             $this->uacf7_get_api_response();
 
         }
@@ -49,13 +49,18 @@ class Uacf7_Fomo_Banner {
         return $this->response_data;
     }
 
-    public function maybe_render_fomo_banner() {
+    public function render_helper_banner() {
         $response = $this->response_data;
 
+        // if (!$response || $response['status'] !== true) {
+        //     $this->clear_fomo_data($response['campaign_id']);
+        //     return;
+        // }
+        
         if (!is_array($response) || $response['status'] !== true) {
             $campaign_id = is_array($response) && isset($response['campaign_id']) ? $response['campaign_id'] : null;
             if ($campaign_id) {
-                $this->clear_fomo_data($campaign_id);
+                $this->clear_helper_banner_data($campaign_id);
             }
             return;
         }
@@ -151,14 +156,14 @@ class Uacf7_Fomo_Banner {
 
     }
 
-    public function clear_fomo_data($campaign_id){
+    public function clear_helper_banner_data($campaign_id){
 
         $user_id = get_current_user_id();
         delete_user_meta($user_id, 'uacf7_fomo_first_visit_time_'.$campaign_id);
 
     }
 
-    public function uacf7_fomo_footer_script( $screen ){
+    public function uacf7_admin_helper_footer_script( $screen ){
         ?>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
@@ -194,4 +199,4 @@ class Uacf7_Fomo_Banner {
 
 }
 
-new Uacf7_Fomo_Banner();
+new Uacf7_Helper_Banner();
