@@ -119,7 +119,7 @@ class Uacf7_Helper_Banner {
             return;
         }
 
-        $countdown_html = '<div class="uacf7-fomo-countdown" data-end-time="' . esc_attr($end_time) . '"></div>';
+        $countdown_html = '<div class="uacf7-promo-countdown" data-end-time="' . esc_attr($end_time) . '"></div>';
 
         ob_start();
         ?>
@@ -166,7 +166,7 @@ class Uacf7_Helper_Banner {
         ?>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                const countdown = document.querySelector('.uacf7-fomo-countdown');
+                const countdown = document.querySelector('.uacf7-promo-countdown');
                 if (!countdown) return;
 
                 const endTime = parseInt(countdown.getAttribute('data-end-time')) * 1000;
