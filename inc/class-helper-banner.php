@@ -5,7 +5,7 @@ if(!defined('ABSPATH')){
 
 class Uacf7_Helper_Banner {
 
-    private $api_url = 'https://api.themefic.com/fomo';
+    private $api_url = 'https://tourfic.site/fomo/';
     private $response_data  = false;
     private $error_message  = '';
 
@@ -16,47 +16,55 @@ class Uacf7_Helper_Banner {
 
             add_filter('uacf7_dashboard_helper_banner', [$this, 'render_helper_banner'], 10, 2);
             add_action('admin_footer', [ $this, 'uacf7_admin_helper_footer_script']);
+            // delete_transient('uacf7_helper_banner_api_response');
             $this->uacf7_get_api_response();
 
         }
     }
 
-    public function uacf7_get_api_response(){
+    public function uacf7_get_api_response() {
         if ($this->response_data !== false) {
             return $this->response_data;
         }
 
+        $transient_key = 'uacf7_helper_banner_api_response';
+        $cached_data = get_transient($transient_key);
+
+        if ($cached_data !== false) {
+            $this->response_data = $cached_data;
+            return $this->response_data;
+        }
+
         $query_params = array(
-            'plugin' => 'uacf7', 
+            'plugin' => 'uacf7',
         );
 
         $response = wp_remote_post($this->api_url, array(
             'body'    => json_encode($query_params),
             'headers' => array('Content-Type' => 'application/json'),
+            'timeout' => 10,
         ));
 
         if (is_wp_error($response)) {
-            // Handle API request error
             $this->response_data = false;
             $this->error_message = esc_html($response->get_error_message());
- 
         } else {
             $data = wp_remote_retrieve_body($response);
             $decoded = json_decode($data, true);
             $this->response_data = $decoded['campaign'] ?? false;
+
+            // Cache the response for 24 hours
+            set_transient($transient_key, $this->response_data, 24 * HOUR_IN_SECONDS);
         }
 
         return $this->response_data;
     }
 
+
+
     public function render_helper_banner() {
         $response = $this->response_data;
 
-        // if (!$response || $response['status'] !== true) {
-        //     $this->clear_fomo_data($response['campaign_id']);
-        //     return;
-        // }
-        
         if (!is_array($response) || $response['status'] !== true) {
             $campaign_id = is_array($response) && isset($response['campaign_id']) ? $response['campaign_id'] : null;
             if ($campaign_id) {
