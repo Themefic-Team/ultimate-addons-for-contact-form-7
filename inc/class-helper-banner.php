@@ -7,7 +7,6 @@ class Uacf7_Helper_Banner {
 
     public function __construct(){
 
-        
         if(!class_exists('Ultimate_Addons_CF7_PRO')){
 
             add_filter('uacf7_dashboard_helper_banner', [$this, 'render_helper_banner'], 10, 2);
@@ -18,7 +17,7 @@ class Uacf7_Helper_Banner {
 
     public function render_helper_banner() {
 
-        $campaign_id = 'fomotest120'; // change campaign id to start a new campaign
+        $campaign_id = 'banner60'; // change campaign id to start a new campaign
         $user_id = get_current_user_id();
         $user_first_visit_meta_key = 'uacf7_fomo_first_visit_time_' . $campaign_id;
 
