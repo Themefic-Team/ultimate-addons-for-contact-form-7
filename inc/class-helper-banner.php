@@ -42,9 +42,9 @@ class Uacf7_Helper_Banner {
         $button_text         = 'Grab this deal now';
         $discount_percentage = 60;
 
-        $campaign_restart    = true; // set to false to disable
-        $interval_time       = (float) 0.01; // interval in hours (support float values, e.g. 0.01 = 36 seconds)
-        $duration            = 2; // duration in minutes
+        $campaign_restart    = false; // set to false to disable
+        $interval_time       = (float) 168; // interval in hours (support float values, e.g. 0.01 = 36 seconds)
+        $duration            = 109; // duration in minutes
         $end_time            = $countdown_start + ($duration * 60);
         $remaining           = max(0, $end_time - time());
 
