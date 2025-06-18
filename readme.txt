@@ -469,6 +469,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 - Fixed: Spacing issue in Star Rating component.
 - Fixed: Background color issue in Form Styler textarea.
 - Fixed: CSV export mistakenly included deleted files.
+- Improved: Save and continue feature settings added to multistep forms.
 
 = 3.5.18 - 06/04/2025 =
 
