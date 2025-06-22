@@ -99,16 +99,18 @@ jQuery(document).ready(function () {
             }
         });
 
-        // Manually add selected radio inputs (serialize skips unselected)
-        uacf7_current_step.find('input[type="radio"]').each(function () {
+        // Manually add selected radio and checkbox inputs (serialize skips unselected/multiple)
+        uacf7_current_step.find('input[type="radio"], input[type="checkbox"]').each(function () {
             var name = this.name;
-            if (fields_to_check_serialized.indexOf(name + '=') === -1) {
-                var checkedVal = jQuery('input[name="' + name + '"]:checked').val();
-                if (typeof checkedVal !== 'undefined') {
-                    fields_to_check_serialized += '&' + encodeURIComponent(name) + '=' + encodeURIComponent(checkedVal);
-                }
+            var isChecked = jQuery(this).is(':checked');
+
+            // Skip if already serialized
+            if (fields_to_check_serialized.indexOf(encodeURIComponent(name) + '=') === -1 && isChecked) {
+                var val = jQuery(this).val();
+                fields_to_check_serialized += '&' + encodeURIComponent(name) + '=' + encodeURIComponent(val);
             }
         });
+
         
 
         if (jQuery(uacf7_current_step).find(".wpcf7-form-control[type='file']").length > 0) {
