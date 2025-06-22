@@ -88,6 +88,29 @@ jQuery(document).ready(function () {
 
         var fields_to_check_serialized = jQuery(uacf7_current_step).find(".wpcf7-form-control").serialize();
 
+        // Manually add selected radio inputs (serialize skips unselected)
+        uacf7_current_step.find('input[type="radio"]').each(function () {
+            var name = this.name;
+            if (fields_to_check_serialized.indexOf(name + '=') === -1) {
+                var checkedVal = jQuery('input[name="' + name + '"]:checked').val();
+                if (typeof checkedVal !== 'undefined') {
+                    fields_to_check_serialized += '&' + encodeURIComponent(name) + '=' + encodeURIComponent(checkedVal);
+                }
+            }
+        });
+
+        // Manually add selected radio inputs (serialize skips unselected)
+        uacf7_current_step.find('input[type="radio"]').each(function () {
+            var name = this.name;
+            if (fields_to_check_serialized.indexOf(name + '=') === -1) {
+                var checkedVal = jQuery('input[name="' + name + '"]:checked').val();
+                if (typeof checkedVal !== 'undefined') {
+                    fields_to_check_serialized += '&' + encodeURIComponent(name) + '=' + encodeURIComponent(checkedVal);
+                }
+            }
+        });
+        
+
         if (jQuery(uacf7_current_step).find(".wpcf7-form-control[type='file']").length > 0) {
             jQuery(uacf7_current_step).find(".wpcf7-form-control[type='file']").each(function (i, n) {
                 fields_to_check_serialized += "&" + jQuery(this).attr('name') + "=" + jQuery(this).val();
