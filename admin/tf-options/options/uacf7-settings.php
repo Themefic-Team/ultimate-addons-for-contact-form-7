@@ -228,7 +228,7 @@ UACF7_Settings::option(
 								'id'                 => 'uacf7_enable_google_captcha_pro',
 								'type'               => 'switch',
 								'label'              => __( 'Google ReCaptcha', 'ultimate-addons-cf7' ),
-								'image_url'          => UACF7_URL . 'assets/admin/images/addons/Placeholder-Styling@2x.png',
+								'image_url'          => UACF7_URL . 'assets/admin/images/addons/google-recaptcha.png',
 								'default'            => false,
 								'subtitle'           => __( 'Spam and bot protection from spam submission', 'ultimate-addons-cf7' ),
 								'demo_link'          => 'https://cf7addons.com/preview/google-recaptcha/',
