@@ -239,7 +239,7 @@ UACF7_Settings::option(
 								'id'                 => 'uacf7_enable_google_sheet_pro',
 								'type'               => 'switch',
 								'label'              => __( 'Google Sheet', 'ultimate-addons-cf7' ),
-								'image_url'          => UACF7_URL . 'assets/admin/images/addons/Placeholder-Styling@2x.png',
+								'image_url'          => UACF7_URL . 'assets/admin/images/addons/google-spreadsheet.png',
 								'default'            => false,
 								'subtitle'           => __( 'Integrate Contact Form 7 with Google Sheets for easy data entry.', 'ultimate-addons-cf7' ),
 								'demo_link'          => 'https://cf7addons.com/preview/google-sheet/',
