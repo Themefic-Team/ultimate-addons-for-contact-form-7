@@ -238,12 +238,12 @@ UACF7_Settings::option(
 							'uacf7_enable_google_sheet_pro' => array(
 								'id'                 => 'uacf7_enable_google_sheet_pro',
 								'type'               => 'switch',
-								'label'              => __( 'Google Spreadsheet', 'ultimate-addons-cf7' ),
+								'label'              => __( 'Google Sheet', 'ultimate-addons-cf7' ),
 								'image_url'          => UACF7_URL . 'assets/admin/images/addons/Placeholder-Styling@2x.png',
 								'default'            => false,
-								'subtitle'           => __( 'Integrate Contact Form 7 with Google Spreadsheet for easy data entry.', 'ultimate-addons-cf7' ),
-								'demo_link'          => 'https://cf7addons.com/preview/google-spreadsheet/',
-								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/google-spreadsheet/',
+								'subtitle'           => __( 'Integrate Contact Form 7 with Google Sheets for easy data entry.', 'ultimate-addons-cf7' ),
+								'demo_link'          => 'https://cf7addons.com/preview/google-sheet/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/google-sheet/',
 								'is_pro'             => true
 							),
 							'uacf7_enable_mailchimp' => array(
