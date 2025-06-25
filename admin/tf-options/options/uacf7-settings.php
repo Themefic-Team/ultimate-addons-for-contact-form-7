@@ -227,7 +227,7 @@ UACF7_Settings::option(
 							'uacf7_enable_google_captcha_pro' => array(
 								'id'                 => 'uacf7_enable_google_captcha_pro',
 								'type'               => 'switch',
-								'label'              => __( 'Google ReCaptcha', 'ultimate-addons-cf7' ),
+								'label'              => __( 'Google reCAPTCHA', 'ultimate-addons-cf7' ),
 								'image_url'          => UACF7_URL . 'assets/admin/images/addons/google-recaptcha.png',
 								'default'            => false,
 								'subtitle'           => __( 'Safeguard your forms from spam, bot submissions, and malicious activity.', 'ultimate-addons-cf7' ),
