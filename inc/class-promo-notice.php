@@ -281,7 +281,7 @@ class UACF7_PROMO_NOTICE {
                     });
                 });";
 
-            wp_add_inline_script('uacf7-promo-script', $inline_js);
+            wp_add_inline_script('uacf7-admin-script', $inline_js);
          endif; ?>
         <?php
 	}
