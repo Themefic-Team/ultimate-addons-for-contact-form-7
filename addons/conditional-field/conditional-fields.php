@@ -551,13 +551,13 @@ class UACF7_CF {
 
 
 		if ( $submission && is_array( $conditional_repeater ) && ! empty( $conditional_repeater ) ) {
-
+			
 			// Loop through the conditional fields
 			foreach ( $conditional_repeater as $key => $condition ) {
 				$uacf7_cf_hs = $condition['uacf7_cf_hs'];
 				$uacf7_cf_group = $condition['uacf7_cf_group'];
 				$uacf7_cf_conditions_for = $condition['uacf7_cf_condition_for'];
-				$uacf7_cf_conditions = $condition['uacf7_cf_conditions'];
+				$uacf7_cf_conditions = $condition['uacf7_cf_conditions'] ?? [];
 				$condition_status = [];
 				
 				// Check if the conditional field is hidden or shown
@@ -567,7 +567,7 @@ class UACF7_CF {
 					$uacf7_cf_tn = rtrim($value['uacf7_cf_tn'], '[]');
 					
 					// $posted_value = is_array( $posted_data[ $uacf7_cf_tn ] ) && in_array( $uacf7_cf_val, $posted_data[ $uacf7_cf_tn ] ) ? $uacf7_cf_val : $posted_data[ $uacf7_cf_tn ];
-					$posted_value = is_array($posted_data[$uacf7_cf_tn]) ? implode(',', $posted_data[$uacf7_cf_tn]) : $posted_data[$uacf7_cf_tn];
+					@$posted_value = is_array($posted_data[$uacf7_cf_tn]) ? implode(',', $posted_data[$uacf7_cf_tn]) : $posted_data[$uacf7_cf_tn];
 				
 					// Condition for Equal  
 					if ( $uacf7_cf_operator == 'equal' && $posted_value == $uacf7_cf_val ) {
