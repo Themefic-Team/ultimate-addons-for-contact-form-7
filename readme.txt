@@ -467,11 +467,12 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
-= 3.5.23 - 02/07/2025 =
+= 3.5.23 - 03/07/2025 =
 
 - Introduced: Google Sheets Integration Addon for "Ultra Addons for Contact Form 7".
 - Improved: System stability enhancements implemented.
 - Fixed: Addressed and resolved the PHP Warning error.
+- Fixed: Drag and drop file upload with conditional fields.
 
 = 3.5.22 - 29/06/2025 =
 
