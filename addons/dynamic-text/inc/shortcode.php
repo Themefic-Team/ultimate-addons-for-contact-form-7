@@ -34,7 +34,11 @@ if (!function_exists('UACF7_URL')) {
                 // Otherwise, return full query string
                 return urldecode(http_build_query($query_array, '', '&', PHP_QUERY_RFC3986));
             default:
-                return $current_url;
+                // Return only base URL (no query string)
+                $scheme = 'https';
+                $host = $parsed_url['host'] ?? $_SERVER['HTTP_HOST'];
+                $path = $parsed_url['path'] ?? '';
+                return "$scheme://$host$path";
         }
     }
 
