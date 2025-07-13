@@ -246,6 +246,17 @@ UACF7_Settings::option(
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/google-sheet/',
 								'is_pro'             => true
 							),
+							'uacf7_enable_slack_integration' => array(
+								'id'                 => 'uacf7_enable_slack_integration',
+								'type'               => 'switch',
+								'label'              => __( 'Slack Integration', 'ultimate-addons-cf7' ),
+								'image_url'          => UACF7_URL . 'assets/admin/images/addons/google-spreadsheet.png',
+								'default'            => false,
+								'subtitle'           => __( 'Connect Contact Form 7 with slack to get notifications.', 'ultimate-addons-cf7' ),
+								'demo_link'          => 'https://cf7addons.com/preview/slack/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/slack/',
+								'is_pro'             => true
+							),
 							'uacf7_enable_mailchimp' => array(
 								'id'                 => 'uacf7_enable_mailchimp',
 								'type'               => 'switch',
