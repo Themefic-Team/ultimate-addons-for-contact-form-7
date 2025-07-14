@@ -250,11 +250,22 @@ UACF7_Settings::option(
 								'id'                 => 'uacf7_enable_slack_integration',
 								'type'               => 'switch',
 								'label'              => __( 'Slack Integration', 'ultimate-addons-cf7' ),
-								'image_url'          => UACF7_URL . 'assets/admin/images/addons/google-spreadsheet.png',
+								'image_url'          => UACF7_URL . 'assets/admin/images/addons/slack.png',
 								'default'            => false,
 								'subtitle'           => __( 'Connect Contact Form 7 with slack to get notifications.', 'ultimate-addons-cf7' ),
 								'demo_link'          => 'https://cf7addons.com/preview/slack/',
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/slack/',
+								'is_pro'             => true
+							),
+							'uacf7_enable_twilio_integration' => array(
+								'id'                 => 'uacf7_enable_twilio_integration',
+								'type'               => 'switch',
+								'label'              => __( 'Twilio Integration', 'ultimate-addons-cf7' ),
+								'image_url'          => UACF7_URL . 'assets/admin/images/addons/twilio.png',
+								'default'            => false,
+								'subtitle'           => __( 'Connect Contact Form 7 with Twilio to get notifications on your phone.', 'ultimate-addons-cf7' ),
+								'demo_link'          => 'https://cf7addons.com/preview/twilio/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/twilio/',
 								'is_pro'             => true
 							),
 							'uacf7_enable_mailchimp' => array(
