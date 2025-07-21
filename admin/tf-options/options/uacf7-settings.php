@@ -268,6 +268,17 @@ UACF7_Settings::option(
 								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/twilio/',
 								'is_pro'             => true
 							),
+							'uacf7_enable_prevent_duplicate_entries' => array(
+								'id'                 => 'uacf7_enable_prevent_duplicate_entries',
+								'type'               => 'switch',
+								'label'              => __( 'Prevent Duplicate Entries', 'ultimate-addons-cf7' ),
+								'image_url'          => UACF7_URL . 'assets/admin/images/addons/Twilio.png',
+								'default'            => false,
+								'subtitle'           => __( 'Prevent duplicate entries from being submitted.', 'ultimate-addons-cf7' ),
+								'demo_link'          => 'https://cf7addons.com/preview/prevent-duplicate-entries/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/prevent-duplicate-entries/',
+								'is_pro'             => true
+							),
 							'uacf7_enable_mailchimp' => array(
 								'id'                 => 'uacf7_enable_mailchimp',
 								'type'               => 'switch',
