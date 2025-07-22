@@ -272,7 +272,7 @@ UACF7_Settings::option(
 								'id'                 => 'uacf7_enable_prevent_duplicate_entries',
 								'type'               => 'switch',
 								'label'              => __( 'Prevent Duplicate Entries', 'ultimate-addons-cf7' ),
-								'image_url'          => UACF7_URL . 'assets/admin/images/addons/Twilio.png',
+								'image_url'          => UACF7_URL . 'assets/admin/images/addons/prevent-duplicate-entries.png',
 								'default'            => false,
 								'subtitle'           => __( 'Prevent duplicate entries from being submitted.', 'ultimate-addons-cf7' ),
 								'demo_link'          => 'https://cf7addons.com/preview/prevent-duplicate-entries/',
