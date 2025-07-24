@@ -482,7 +482,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
-= 3.5.25 - 09/07/2025 =
+= 3.5.25 - 24/07/2025 =
 
 - New Addons: Prevent Duplicate Entries Addon has been introduced.
 - New Addons: Twilio Integration Addon has been introduced.
