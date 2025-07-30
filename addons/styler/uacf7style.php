@@ -732,6 +732,8 @@ class UACF7_uacf7style {
 					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="text"],
 					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="url"],
 					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="date"],
+					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="radio"],
+					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="checkbox"],
 					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> select,
 					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> textarea {
 						<?php
