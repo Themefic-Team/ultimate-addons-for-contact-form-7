@@ -481,7 +481,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
-= 3.5.25 - 10/08/2025 =
+= 3.5.26 - 10/08/2025 =
 
 - Fixed: Styling issue with Form Styler radio and checkbox input fields.
 - Fixed: Prepopulate fields issue affecting select and checkbox inputs.
