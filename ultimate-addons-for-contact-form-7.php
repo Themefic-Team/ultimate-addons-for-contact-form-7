@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Ultimate_Addons_CF7 {
 
 	/*
-	 * Construct function
+	 * Construct a function
 	 */
 	public function __construct() {
 		define( 'UACF7_FILE', __FILE__ );
