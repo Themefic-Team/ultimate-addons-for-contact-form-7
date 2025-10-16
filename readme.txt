@@ -483,8 +483,8 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 = 3.5.31 - 16/10/2025 =
 
-- Compatibility: Fully compatible with WordPress 6.8.3
-- Update: Readme.txt information updated
+- Compatibility: Fully compatible with Contact Form 7 (v6.1.2).
+- Update: Readme.txt information updated.
 
 = 3.5.30 - 05/10/2025 =
 
