@@ -77,7 +77,7 @@ class UACF7_PROMO_NOTICE {
                 $start_date = isset($promo_banner['start_date']) ? $promo_banner['start_date'] : '';
                 $end_date = isset($promo_banner['end_date']) ? $promo_banner['end_date'] : '';
                 $enable_side = isset($promo_banner['enable_status']) ? $promo_banner['enable_status'] : false;
-            } 
+            }
             if(is_array($this->uacf7_promo_option) && strtotime($end_date) > time() && strtotime($start_date) < time()  && $enable_side == true){ 
                 
                 add_action( 'wpcf7_admin_misc_pub_section', array( $this, 'uacf7_promo_side_notice_callback' ) );
@@ -105,7 +105,8 @@ class UACF7_PROMO_NOTICE {
 		wp_add_dashboard_widget(
 			'uacf7_promo_dashboard_widget',
 			__('Themefic Deals & Services', 'ultimate-addons-cf7'),
-			[$this, 'render_dashboard_notice_widget']
+			[$this, 'render_dashboard_notice_widget'],
+            null, null, 'side', 'high'
 		);
 	}
 
