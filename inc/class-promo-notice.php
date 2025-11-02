@@ -82,6 +82,9 @@ class UACF7_PROMO_NOTICE {
                 
                 add_action( 'wpcf7_admin_misc_pub_section', array( $this, 'uacf7_promo_side_notice_callback' ) );
                 add_action( 'wp_ajax_uacf7_promo_side_notice_cf7_dismiss_callback', array($this, 'uacf7_promo_side_notice_cf7_dismiss_callback') ); 
+
+                add_action('init', [$this, 'init_dashboard_notice_widget']);
+			    add_action('wp_ajax_uacf7_dashboard_widget_dismiss', [$this, 'ajax_dashboard_widget_dismiss']);
             } 
 
 
@@ -91,6 +94,81 @@ class UACF7_PROMO_NOTICE {
         
        
     }
+
+    public function init_dashboard_notice_widget() {
+
+		// Ensure we’re only loading it on Dashboard
+		add_action('wp_dashboard_setup', [$this, 'register_dashboard_notice_widget']);
+	}
+	
+	public function register_dashboard_notice_widget() {
+		wp_add_dashboard_widget(
+			'uacf7_promo_dashboard_widget',
+			__('Themefic Deals & Services', 'ultimate-addons-cf7'),
+			[$this, 'render_dashboard_notice_widget']
+		);
+	}
+
+    public function render_dashboard_notice_widget() {
+		$service_banner  = isset($this->uacf7_promo_option['service_banner']) ? $this->uacf7_promo_option['service_banner'] : [];
+		$promo_banner    = isset($this->uacf7_promo_option['promo_banner']) ? $this->uacf7_promo_option['promo_banner'] : [];
+
+		$current_day = date('l');
+		
+		// Determine which banner to show (service preferred)
+		if (isset($service_banner['enable_status']) && $service_banner['enable_status'] == true && in_array($current_day, (array)$service_banner['display_days'])) {
+			$image_url      = esc_url($service_banner['banner_url']);
+			$deal_link      = esc_url($service_banner['redirect_url']);
+			$dismiss_status = !empty($service_banner['dismiss_status']);
+			$start_date     = isset($service_banner['start_date']) ? strtotime($service_banner['start_date']) : 0;
+			$end_date       = isset($service_banner['end_date']) ? strtotime($service_banner['end_date']) : 0;
+		} else {
+			$image_url      = esc_url($promo_banner['banner_url']);
+			$deal_link      = esc_url($promo_banner['redirect_url']);
+			$dismiss_status = !empty($promo_banner['dismiss_status']);
+			$start_date     = isset($promo_banner['start_date']) ? strtotime($promo_banner['start_date']) : 0;
+			$end_date       = isset($promo_banner['end_date']) ? strtotime($promo_banner['end_date']) : 0;
+		}
+
+		// Dismiss control
+		$dismissed = get_option('uacf7_dashboard_widget_dismissed', false);
+
+		// Conditions for showing the banner
+		if (
+			empty($image_url) ||
+			$start_date > time() ||
+			$end_date < time() ||
+			( $dismiss_status && $dismissed && time() < $dismissed )
+		) {
+			echo '<p>' . esc_html__('No active promotions at the moment.', 'ultimate-addons-cf7') . '</p>';
+			return;
+		}
+
+		?>
+		<div class="uacf7-dashboard-widget" style="text-align:center; position:relative; margin:10px 0;">
+			<a href="<?php echo $deal_link; ?>" target="_blank">
+				<img src="<?php echo $image_url; ?>" alt="" style="width:100%; max-width:820px; border-radius:6px;">
+			</a>
+			<?php if ($dismiss_status): ?>
+				<button type="button" class="notice-dismiss uacf7-dashboard-dismiss" style="position:absolute; top:5px; right:5px;"></button>
+			<?php endif; ?>
+		</div>
+		<script>
+			jQuery(document).ready(function($){
+				$(document).on('click', '.uacf7-dashboard-dismiss', function(){
+					$(this).closest('.uacf7-dashboard-widget').fadeOut(300);
+					$.post(ajaxurl, { action: 'uacf7_dashboard_widget_dismiss' });
+				});
+			});
+		</script>
+		<?php
+	}
+
+    public function ajax_dashboard_widget_dismiss() {
+        // Dismiss control - 7 days
+		update_option('uacf7_dashboard_widget_dismissed', time() + (86400 * 7));
+		wp_die();
+	}
 
     public function uacf7_get_api_response(){
         $query_params = array(
