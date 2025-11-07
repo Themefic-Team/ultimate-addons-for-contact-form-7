@@ -82,11 +82,13 @@ class UACF7_PROMO_NOTICE {
                 
                 add_action( 'wpcf7_admin_misc_pub_section', array( $this, 'uacf7_promo_side_notice_callback' ) );
                 add_action( 'wp_ajax_uacf7_promo_side_notice_cf7_dismiss_callback', array($this, 'uacf7_promo_side_notice_cf7_dismiss_callback') ); 
-
-                add_action('init', [$this, 'init_dashboard_notice_widget']);
-			    add_action('wp_ajax_uacf7_dashboard_widget_dismiss', [$this, 'ajax_dashboard_widget_dismiss']);
             } 
 
+            $dashboard_widget = isset($this->uacf7_promo_option['dashboard_widget']) ? $this->uacf7_promo_option['dashboard_widget'] : [];
+            if (isset($dashboard_widget['enable_status']) && $dashboard_widget['enable_status'] == true) {
+                add_action('init', [$this, 'init_dashboard_notice_widget']);
+                add_action('wp_ajax_uacf7_dashboard_widget_dismiss', [$this, 'ajax_dashboard_widget_dismiss']);
+            }
 
             register_deactivation_hook( UACF7_PATH . 'ultimate-addons-for-contact-form-7.php', array($this, 'uacf7_promo_notice_deactivation_hook') );
         }
@@ -102,68 +104,215 @@ class UACF7_PROMO_NOTICE {
 	}
 	
 	public function register_dashboard_notice_widget() {
+
+        $dashboard_banner = isset($this->uacf7_promo_option['dashboard_widget'])
+        ? $this->uacf7_promo_option['dashboard_widget']
+        : [];
+
+        // Use API title if available, otherwise fallback
+        $widget_title = !empty($dashboard_banner['title'])
+        ? esc_html($dashboard_banner['title'])
+        : __('Themefic Deals & Services', 'ultimate-addons-cf7');
+
+
 		wp_add_dashboard_widget(
 			'uacf7_promo_dashboard_widget',
-			__('Themefic Deals & Services', 'ultimate-addons-cf7'),
+			$widget_title,
 			[$this, 'render_dashboard_notice_widget'],
             null, null, 'side', 'high'
 		);
 	}
 
     public function render_dashboard_notice_widget() {
-		$service_banner  = isset($this->uacf7_promo_option['service_banner']) ? $this->uacf7_promo_option['service_banner'] : [];
-		$promo_banner    = isset($this->uacf7_promo_option['promo_banner']) ? $this->uacf7_promo_option['promo_banner'] : [];
+        $dashboard_widget = isset($this->uacf7_promo_option['dashboard_widget']) ? $this->uacf7_promo_option['dashboard_widget'] : [];
 
-		$current_day = date('l');
-		
-		// Determine which banner to show (service preferred)
-		if (isset($service_banner['enable_status']) && $service_banner['enable_status'] == true && in_array($current_day, (array)$service_banner['display_days'])) {
-			$image_url      = esc_url($service_banner['banner_url']);
-			$deal_link      = esc_url($service_banner['redirect_url']);
-			$dismiss_status = !empty($service_banner['dismiss_status']);
-			$start_date     = isset($service_banner['start_date']) ? strtotime($service_banner['start_date']) : 0;
-			$end_date       = isset($service_banner['end_date']) ? strtotime($service_banner['end_date']) : 0;
-		} else {
-			$image_url      = esc_url($promo_banner['banner_url']);
-			$deal_link      = esc_url($promo_banner['redirect_url']);
-			$dismiss_status = !empty($promo_banner['dismiss_status']);
-			$start_date     = isset($promo_banner['start_date']) ? strtotime($promo_banner['start_date']) : 0;
-			$end_date       = isset($promo_banner['end_date']) ? strtotime($promo_banner['end_date']) : 0;
-		}
+        if (empty($dashboard_widget) || empty($dashboard_widget['enable_status'])) {
+            echo '<p>' . esc_html__('No active widget promotion.', 'ultimate-addons-cf7') . '</p>';
+            return;
+        }
 
-		// Dismiss control
-		$dismissed = get_option('uacf7_dashboard_widget_dismissed', false);
+        $highlight = isset($dashboard_widget['highlight']) ? $dashboard_widget['highlight'] : [];
+        $links     = isset($dashboard_widget['links']) ? $dashboard_widget['links'] : [];
+        $footer    = isset($dashboard_widget['footer']) ? $dashboard_widget['footer'] : [];
 
-		// Conditions for showing the banner
-		if (
-			empty($image_url) ||
-			$start_date > time() ||
-			$end_date < time() ||
-			( $dismiss_status && $dismissed && time() < $dismissed )
-		) {
-			echo '<p>' . esc_html__('No active promotions at the moment.', 'ultimate-addons-cf7') . '</p>';
-			return;
-		}
+        ?>
+        <div class="uacf7-dashboard-widget" style="position:relative;">
+            <?php if (!empty($dashboard_widget['dismiss_status'])) : ?>
+                <button type="button" class="notice-dismiss uacf7-dashboard-dismiss" style="position:absolute; top:10px; right:10px;"></button>
+            <?php endif; ?>
 
-		?>
-		<div class="uacf7-dashboard-widget" style="text-align:center; position:relative; margin:10px 0;">
-			<a href="<?php echo $deal_link; ?>" target="_blank">
-				<img src="<?php echo $image_url; ?>" alt="" style="width:100%; max-width:820px; border-radius:6px;">
-			</a>
-			<?php if ($dismiss_status): ?>
-				<button type="button" class="notice-dismiss uacf7-dashboard-dismiss" style="position:absolute; top:5px; right:5px;"></button>
-			<?php endif; ?>
-		</div>
-		<script>
-			jQuery(document).ready(function($){
-				$(document).on('click', '.uacf7-dashboard-dismiss', function(){
-					$(this).closest('.uacf7-dashboard-widget').fadeOut(300);
-					$.post(ajaxurl, { action: 'uacf7_dashboard_widget_dismiss' });
-				});
-			});
-		</script>
-		<?php
-	}
+            <?php if (!empty($highlight)) : ?>
+                <div class="highlight">
+                    <?php if (!empty($highlight['before_image'])) : ?>
+                        <img class="before-img" src="<?php echo esc_url($highlight['before_image']); ?>" style="max-width:100%; height:auto;" alt="">
+                    <?php endif; ?>
+                    <div class="content">
+                        <?php if (!empty($highlight['title'])) : ?>
+                        <p style="font-weight:600; margin:5px 0;"><?php echo esc_html($highlight['title']); ?></p>
+                        <?php endif; ?>
+                        <?php if (!empty($highlight['button_text']) && !empty($highlight['button_url'])) : ?>
+                            <a href="<?php echo esc_url($highlight['button_url']); ?>" target="_blank" class="button button-primary"><?php echo esc_html($highlight['button_text']); ?></a>
+                        <?php endif; ?>
+                    </div>
+                     <?php if (!empty($highlight['after_image'])) : ?>
+                        <img class="after-img" src="<?php echo esc_url($highlight['after_image']); ?>" style="max-width:100%; height:auto;" alt="">
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($links)) : ?>
+                <ul>
+                    <?php foreach ($links as $link) : ?>
+                        <li>
+                            <a href="<?php echo esc_url($link['url']); ?>" target="_blank">
+                                <?php if (!empty($link['tag'])) echo ' <span class="new-tag">' . esc_html($link['tag']) . '</span>'; ?>
+                                <?php echo esc_html($link['text']); ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+
+            <?php if (!empty($footer)) : ?>
+                <div class="footer" style="display:flex; justify-content:space-between; margin-top:15px; font-size:13px;">
+                    <?php if (!empty($footer['left'])) : ?>
+                        <a href="<?php echo esc_url($footer['left']['url']); ?>" target="_blank"><?php echo esc_html($footer['left']['text']); ?>
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.5 0H6.66667V1.25H10.3667L5.39167 6.225L6.275 7.10833L11.25 2.13333V5.83333H12.5V0ZM1.66667 0.833333C1.22464 0.833333 0.800716 1.00893 0.488155 1.32149C0.175595 1.63405 0 2.05797 0 2.5V10.8333C0 11.2754 0.175595 11.6993 0.488155 12.0118C0.800716 12.3244 1.22464 12.5 1.66667 12.5H10C10.442 12.5 10.8659 12.3244 11.1785 12.0118C11.4911 11.6993 11.6667 11.2754 11.6667 10.8333V8.33333H10.4167V10.8333C10.4167 10.9438 10.3728 11.0498 10.2946 11.128C10.2165 11.2061 10.1105 11.25 10 11.25H1.66667C1.55616 11.25 1.45018 11.2061 1.37204 11.128C1.2939 11.0498 1.25 10.9438 1.25 10.8333V2.5C1.25 2.38949 1.2939 2.28351 1.37204 2.20537C1.45018 2.12723 1.55616 2.08333 1.66667 2.08333H4.16667V0.833333H1.66667Z" fill="#2271B1"/>
+                        </svg>
+                        </a>
+                    <?php endif; ?>
+                    <?php if (!empty($footer['right'])) : ?>
+                        <a href="<?php echo esc_url($footer['right']['url']); ?>" target="_blank"><?php echo esc_html($footer['right']['text']); ?>
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.5 0H6.66667V1.25H10.3667L5.39167 6.225L6.275 7.10833L11.25 2.13333V5.83333H12.5V0ZM1.66667 0.833333C1.22464 0.833333 0.800716 1.00893 0.488155 1.32149C0.175595 1.63405 0 2.05797 0 2.5V10.8333C0 11.2754 0.175595 11.6993 0.488155 12.0118C0.800716 12.3244 1.22464 12.5 1.66667 12.5H10C10.442 12.5 10.8659 12.3244 11.1785 12.0118C11.4911 11.6993 11.6667 11.2754 11.6667 10.8333V8.33333H10.4167V10.8333C10.4167 10.9438 10.3728 11.0498 10.2946 11.128C10.2165 11.2061 10.1105 11.25 10 11.25H1.66667C1.55616 11.25 1.45018 11.2061 1.37204 11.128C1.2939 11.0498 1.25 10.9438 1.25 10.8333V2.5C1.25 2.38949 1.2939 2.28351 1.37204 2.20537C1.45018 2.12723 1.55616 2.08333 1.66667 2.08333H4.16667V0.833333H1.66667Z" fill="#2271B1"/>
+                        </svg>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <style>
+            .uacf7-dashboard-widget {
+                background: #fff;
+                border-radius: 4px;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                font-size: 13px;
+                color: #23282d;
+            }
+
+            .uacf7-dashboard-widget .header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: #f8f9fa;
+                padding: 14px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .uacf7-dashboard-widget .highlight {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: #fff;
+                border-bottom:1px solid #ccd0d4; 
+                padding:12px 0px; 
+                margin-bottom:8px; 
+                text-align:left;
+                gap: 10px;
+            }
+
+            .uacf7-dashboard-widget .highlight .before-img {
+                width: 58px;
+                height: 58px;
+            }
+            .uacf7-dashboard-widget .highlight .after-img {
+                width: 100px;
+                height: 60px;
+            }
+            .uacf7-dashboard-widget .highlight .content {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .uacf7-dashboard-widget .highlight .content p{
+                color: #1D2327;
+                font-family: "Roboto", sans-serif;
+                font-size: 13px;
+                font-weight: 500;
+                line-height: 19.6px;
+            }
+            .uacf7-dashboard-widget .highlight .content .button{
+                height: 30px;
+                color: #FFF;
+                font-family: "Roboto", sans-serif;
+                font-size: 13px;
+                font-weight: 500;
+                border-radius: 3px;
+                background: #2271B1;
+            }
+
+            .uacf7-dashboard-widget ul li a {
+                color: #2271B1;
+                font-family: "Roboto", sans-serif;
+                font-size: 13px;
+                font-weight: 400;
+                line-height: 120%;
+            }
+
+            .uacf7-dashboard-widget .new-tag {
+                padding: 3px 6px;
+                border-radius: 3px;
+                background-color: #0A875A;
+                font-family: "Roboto", sans-serif;
+                font-size: 10.5px;
+                font-weight: 500;
+                line-height: 12.6px;
+                line-height: 12.6px;
+                color: #fff;
+                text-transform: uppercase;
+            }
+
+            .uacf7-dashboard-widget .footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-top: 1px solid #ddd;
+                padding: 10px 0px;
+                background: #fff;
+            }
+
+            .uacf7-dashboard-widget .footer a {
+                text-decoration: none;
+                font-weight: 500;
+                color: #2271B1;
+                font-family: "Roboto", sans-serif;
+                font-size: 13px;
+                font-weight: 400;
+                line-height: 15.6px;
+            }
+
+            .uacf7-dashboard-widget .footer a svg {
+                padding-left: 4px;
+            }
+
+        </style>
+
+        <script>
+        jQuery(document).ready(function($){
+            $(document).on('click', '.uacf7-dashboard-dismiss', function(){
+                $(this).closest('.uacf7-dashboard-widget').fadeOut(300);
+                $.post(ajaxurl, { action: 'uacf7_dashboard_widget_dismiss' });
+            });
+        });
+        </script>
+        <?php
+    }
+
+
 
     public function ajax_dashboard_widget_dismiss() {
         // Dismiss control - 7 days
@@ -294,7 +443,7 @@ class UACF7_PROMO_NOTICE {
     public function tf_black_friday_notice_dismiss_callback() {  
 
         $uacf7_promo_option = get_option( 'uacf7_promo__schudle_option' );
-	$restart = isset($uacf7_promo_option['dashboard_banner']['restart']) && $uacf7_promo_option['dashboard_banner']['restart'] != false ? $uacf7_promo_option['dashboard_banner']['restart'] : false;
+	    $restart = isset($uacf7_promo_option['dashboard_banner']['restart']) && $uacf7_promo_option['dashboard_banner']['restart'] != false ? $uacf7_promo_option['dashboard_banner']['restart'] : false;
         if($restart == false){
             update_option( 'tf_dismiss_admin_notice', strtotime($uacf7_promo_option['end_date']) ); 
         }else{
@@ -312,7 +461,7 @@ class UACF7_PROMO_NOTICE {
         
 
         $current_day = date('l'); 
-        if( isset($service_banner['enable_status']) && $service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
+        if( isset($service_banner['enable_status']) && $service_banner['enable_status'] == true && !in_array($current_day, $service_banner['display_days'])){ 
            
             $image_url = esc_url($service_banner['banner_url']);
             $deal_link = esc_url($service_banner['redirect_url']);  
