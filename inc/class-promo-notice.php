@@ -461,7 +461,7 @@ class UACF7_PROMO_NOTICE {
         
 
         $current_day = date('l'); 
-        if( isset($service_banner['enable_status']) && $service_banner['enable_status'] == true && !in_array($current_day, $service_banner['display_days'])){ 
+        if( isset($service_banner['enable_status']) && $service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
            
             $image_url = esc_url($service_banner['banner_url']);
             $deal_link = esc_url($service_banner['redirect_url']);  
