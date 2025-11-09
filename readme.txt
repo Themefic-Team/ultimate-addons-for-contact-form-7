@@ -4,11 +4,11 @@ Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 3.5.31
+Stable tag: 3.5.32
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
-50+ Essential Addons for Contact Form 7 - Conditional Fields, Multi Step Forms, Redirection, Templates, Columns, WooCommerce, Mailchimp & more
+50+ Essential Addons for Contact Form 7 - Conditional Fields, Multi Step Forms, Redirection, Columns, WooCommerce, Mailchimp & more
 
 == Description ==
 
@@ -480,6 +480,12 @@ Just install our plugin, and you'll get access to a variety of free templates!
 53. Range Slider Pro (Form Example)
 
 == Changelog ==
+
+= 3.5.32 - 09/11/2025 =
+
+- Updated: Information in readme.txt file.
+- Improved: System stability and performance.
+- Compatibility: Fully compatible with Contact Form 7 (v6.1.3).
 
 = 3.5.31 - 16/10/2025 =
 
