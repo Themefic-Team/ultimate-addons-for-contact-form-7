@@ -27,7 +27,7 @@ class UACF7_PROMO_NOTICE {
         'November',
         'December'
     ];
-    private $plugins_existes = ['ins', 'tf', 'beaf', 'ebef'];
+    private $plugins_existes = ['ins', 'tf', 'beaf', 'ebef', 'uawpf', 'hydra'];
 
     public function __construct() {
 
@@ -230,15 +230,19 @@ class UACF7_PROMO_NOTICE {
                 margin-bottom:8px; 
                 text-align:left;
                 gap: 10px;
+                padding-top: 0px;
             }
 
             .uacf7-dashboard-widget .highlight .before-img {
                 width: 58px;
                 height: 58px;
+                flex: 0 0 58px;
             }
             .uacf7-dashboard-widget .highlight .after-img {
                 width: 100px;
                 height: 60px;
+                flex: 1;
+                width: 100%;
             }
             .uacf7-dashboard-widget .highlight .content {
                 display: flex;
