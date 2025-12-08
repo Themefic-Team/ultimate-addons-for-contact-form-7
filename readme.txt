@@ -485,6 +485,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 - Compatibility: Fully compatible with WordPress (v6.9).
 - Compatibility: Fully compatible with Contact Form 7 (v6.1.4).
+- Fixed: jQuery error in Console
 
 = 3.5.32 - 09/11/2025 =
 
