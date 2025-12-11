@@ -483,7 +483,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 = 3.5.34 - 11/12/2025 =
 
-- Fixed: Patched missing authorization vulnerability for PDFs
+- Fixed: Authorization vulnerability in PDF Generator.
 
 = 3.5.33 - 08/12/2025 =
 
