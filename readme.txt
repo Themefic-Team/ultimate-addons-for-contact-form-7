@@ -4,7 +4,7 @@ Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 3.5.34
+Stable tag: 3.5.35
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -481,6 +481,10 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
+= 3.5.35 - 07/01/2026 =
+
+- Fixed: Conditional field migration Patchstack vulnerability.
+
 = 3.5.34 - 11/12/2025 =
 
 - Fixed: Authorization vulnerability in PDF Generator.
@@ -490,17 +494,6 @@ Just install our plugin, and you'll get access to a variety of free templates!
 - Compatibility: Fully compatible with WordPress (v6.9).
 - Compatibility: Fully compatible with Contact Form 7 (v6.1.4).
 - Fixed: jQuery error in Console.
-
-= 3.5.32 - 09/11/2025 =
-
-- Updated: Information in readme.txt file.
-- Improved: System stability and performance.
-- Compatibility: Fully compatible with Contact Form 7 (v6.1.3).
-
-= 3.5.31 - 16/10/2025 =
-
-- Compatibility: Fully compatible with Contact Form 7 (v6.1.2).
-- Update: Readme.txt information updated.
 
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 
