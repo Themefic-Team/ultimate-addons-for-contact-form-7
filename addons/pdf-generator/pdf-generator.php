@@ -335,8 +335,10 @@ class UACF7_PDF_GENERATOR {
 			wp_send_json_error( 'Unauthorized', 403 );
 		}
 
-		if ( ! wp_verify_nonce( $_POST['ajax_nonce'], 'uacf7-pdf-generator' ) ) {
-			exit( esc_html__( "Security error", 'ultimate-addons-cf7' ) );
+		if ( empty( $_POST['ajax_nonce'] ) || 
+			! wp_verify_nonce( sanitize_text_field( $_POST['ajax_nonce'] ), 'uacf7-pdf-generator' ) ) {
+
+			wp_send_json_error( 'Security check failed', 403 );
 		}
 
 		$form_id = ! empty( $_POST['form_id'] ) ? $_POST['form_id'] : '';
@@ -638,6 +640,24 @@ class UACF7_PDF_GENERATOR {
 			if ( ! file_exists( $uacf7_dirname ) ) {
 				wp_mkdir_p( $uacf7_dirname );
 			}
+
+			$htaccess = $uacf7_dirname . '/.htaccess';
+
+			if ( ! file_exists( $htaccess ) ) {
+
+				$rules =
+			"# Apache 2.4+" . PHP_EOL .
+			"<IfModule authz_core_module>" . PHP_EOL .
+			"Require all denied" . PHP_EOL .
+			"</IfModule>" . PHP_EOL . PHP_EOL .
+			"# Apache 2.2" . PHP_EOL .
+			"<IfModule !authz_core_module>" . PHP_EOL .
+			"Deny from all" . PHP_EOL .
+			"</IfModule>";
+
+				file_put_contents( $htaccess, $rules );
+			}
+
 			foreach ( $_FILES as $file_key => $file ) {
 				array_push( $uploaded_files, $file_key );
 			}
@@ -808,7 +828,7 @@ class UACF7_PDF_GENERATOR {
 				if ( ! empty( $file ) ) {
 					if ( in_array( $file_key, $uploaded_files ) ) {
 						$file = is_array( $file ) ? reset( $file ) : $file;
-						$dir_link = '/uacf7-uploads/' . $time_now . '-' . $file_key . '-' . basename( $file );
+						$dir_link = '/uacf7-uploads/' . $time_now . '-' . $file_key . '-' . sanitize_file_name( basename( $file ) );
 						copy( $file, $dir . $dir_link );
 						$replace_key[] = '[' . $file_key . ']';
 						$replace_value[] = $upload_dir['baseurl'] . $dir_link;
