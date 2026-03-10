@@ -641,23 +641,6 @@ class UACF7_PDF_GENERATOR {
 				wp_mkdir_p( $uacf7_dirname );
 			}
 
-			$htaccess = $uacf7_dirname . '/.htaccess';
-
-			if ( ! file_exists( $htaccess ) ) {
-
-				$rules =
-			"# Apache 2.4+" . PHP_EOL .
-			"<IfModule authz_core_module>" . PHP_EOL .
-			"Require all denied" . PHP_EOL .
-			"</IfModule>" . PHP_EOL . PHP_EOL .
-			"# Apache 2.2" . PHP_EOL .
-			"<IfModule !authz_core_module>" . PHP_EOL .
-			"Deny from all" . PHP_EOL .
-			"</IfModule>";
-
-				file_put_contents( $htaccess, $rules );
-			}
-
 			foreach ( $_FILES as $file_key => $file ) {
 				array_push( $uploaded_files, $file_key );
 			}
@@ -824,17 +807,61 @@ class UACF7_PDF_GENERATOR {
 				}
 
 			}
+
 			foreach ( $files as $file_key => $file ) {
+
 				if ( ! empty( $file ) ) {
+
 					if ( in_array( $file_key, $uploaded_files ) ) {
+
 						$file = is_array( $file ) ? reset( $file ) : $file;
+
 						$dir_link = '/uacf7-uploads/' . $time_now . '-' . $file_key . '-' . sanitize_file_name( basename( $file ) );
 						copy( $file, $dir . $dir_link );
+
+						$file_url  = $upload_dir['baseurl'] . $dir_link;
+						$file_path = $dir . $dir_link;
+
 						$replace_key[] = '[' . $file_key . ']';
-						$replace_value[] = $upload_dir['baseurl'] . $dir_link;
+
+						// Detect extension
+						$ext = strtolower( pathinfo( $file_url, PATHINFO_EXTENSION ) );
+
+						$image_types = [ 'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg' ];
+
+						if ( in_array( $ext, $image_types ) ) {
+
+							// Show image preview in PDF
+							$replace_value[] = '<img src="' . esc_url( $file_url ) . '" style="max-width:200px;height:auto;" />';
+
+						} else {
+
+							// File info
+							$filename = basename( $file_url );
+							$filesize = file_exists( $file_path ) ? size_format( filesize( $file_path ) ) : '';
+
+							$replace_value[] = '
+							<div style="margin-bottom:10px;">
+								<strong>' . esc_html( $filename ) . '</strong>' .
+								( $filesize ? ' <span style="font-size:11px;color:#666;">(' . esc_html( $filesize ) . ')</span>' : '' ) .
+								'<br>
+								<a href="' . esc_url( $file_url ) . '" 
+								style="
+									display:inline-block;
+									margin-top:4px;
+									padding:6px 12px;
+									background:#382673;
+									color:#fff;
+									text-decoration:none;
+									border-radius:4px;
+									font-size:11px;
+								">
+									Download File
+								</a>
+							</div>';
+						}
 					}
 				}
-
 			}
 
 			// Repeater value
