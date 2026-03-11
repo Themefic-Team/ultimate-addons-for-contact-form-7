@@ -481,9 +481,10 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
-= 3.5.38 - 08/03/2026 =
+= 3.5.38 - 11/03/2026 =
 
 - Improved: Security has been improved.
+- Compatible with WordPress (v6.9.3).
 
 = 3.5.37 - 26/02/2026 =
 

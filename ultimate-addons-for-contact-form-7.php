@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/*
+/* 
  * Class Ultimate_Addon_CF7
  */
 class Ultimate_Addons_CF7 {
