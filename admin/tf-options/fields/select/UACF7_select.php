@@ -86,7 +86,7 @@ if ( ! class_exists( 'UACF7_select' ) ) {
 					'' => 'Select Salesforce Field'
 				);
 
-				$object = 'Account';
+				$object = '';
 
 				if (!empty($this->field['query_args']['post_id'])) {
 					$post_id = $this->field['query_args']['post_id'];
@@ -97,7 +97,7 @@ if ( ! class_exists( 'UACF7_select' ) ) {
 						$object = ucfirst($settings['uacf7_salesforce_object']);
 					}
 				}
-
+				
 				try {
 
 					$cache_key = 'uacf7_sf_fields_' . strtolower($object);
@@ -132,14 +132,13 @@ if ( ! class_exists( 'UACF7_select' ) ) {
 								if (empty($field['createable'])) continue;
 
 								$options[$field['name']] = sprintf(
-									'%s (%s)',
+									'%s',
 									$field['label'],
-									$field['name']
 								);
 							}
 						}
 
-						set_transient($cache_key, $options, 12 * HOUR_IN_SECONDS);
+						set_transient($cache_key, $options, 1 * HOUR_IN_SECONDS);
 
 						$this->field['options'] = apply_filters(
 							'uacf7_salesforce_field_options',
