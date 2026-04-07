@@ -180,3 +180,10 @@
 	background: #e7f1ff;
 	transform: translateY(-1px);
 }
+
+.uacf7-integration-item svg {
+	width: 22px;
+	color: #2271b1;
+	fill: #2271b1;
+	height: 20px;
+}
