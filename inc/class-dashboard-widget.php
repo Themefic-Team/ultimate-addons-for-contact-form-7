@@ -101,7 +101,7 @@ class Uacf7DashboardWidget {
                         <span><?php esc_html_e( 'Total Active Forms', 'ultimate-addons-cf7' ); ?></span>
                         </br></br>
                         <div class="uacf7-actions">
-                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=ultrawpf_addons' ) ); ?>" class="button">
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=uacf7_addons' ) ); ?>" class="button">
                                 <?php esc_html_e( 'Enable Database Addon To Save Entries', 'ultimate-addons-cf7' ); ?>
                             </a>
                         </div>
