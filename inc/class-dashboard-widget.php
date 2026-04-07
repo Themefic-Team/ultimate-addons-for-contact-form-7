@@ -191,7 +191,7 @@ class Uacf7DashboardWidget {
 					<a href="<?php echo esc_url( 'https://cf7addons.com/twilio-slack-integration-prevent-duplicate-entries-and-google-recaptcha-v3/' ); ?>" target="_blank"><?php esc_html_e( 'v3.5.25: Twilio, Slack integration & Security Improvements', 'ultimate-addons-cf7' ); ?></a>
 				</li>
 				<li>
-					<a href="<?php echo esc_url( 'https://cf7addons.com/twilio-integration-with-contact-form-7-instant-sms-and-whatsapp-notifications/' ); ?>" target="_blank"><?php esc_html_e( 'Twilio Integration: SMS & WhatsApp Notifications with contact form 7', 'ultimate-addons-cf7' ); ?></a>
+					<a href="<?php echo esc_url( 'https://cf7addons.com/google-recaptcha-integration-with-contact-form-7/' ); ?>" target="_blank"><?php esc_html_e( 'v3.5.21: Added Google reCAPTCHA Support', 'ultimate-addons-cf7' ); ?></a>
 				</li>
 				<li>
 					<a href="<?php echo esc_url( 'https://cf7addons.com/google-sheets-integration-with-contact-form-7/' ); ?>" target="_blank"><?php esc_html_e( 'v3.5.23: Google Sheets Integration with Contact form 7', 'ultimate-addons-cf7' ); ?></a>
