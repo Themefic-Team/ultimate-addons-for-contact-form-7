@@ -188,13 +188,13 @@ class Uacf7DashboardWidget {
 			<ul class="uacf7-blog-list">
 				<li>
 					<span class="uacf7-badge"><?php esc_html_e( 'NEW', 'ultimate-addons-cf7' ); ?></span>
-					<a href="<?php echo esc_url( 'https://cf7addons.com/how-to-install-plugins-in-wordpress-website/' ); ?>" target="_blank"><?php esc_html_e( 'How to install plugins on your WordPress website How to Install Plugins in WordPress: A Complete Beginner’s Guide', 'ultimate-addons-cf7' ); ?></a>
+					<a href="<?php echo esc_url( 'https://cf7addons.com/twilio-slack-integration-prevent-duplicate-entries-and-google-recaptcha-v3/' ); ?>" target="_blank"><?php esc_html_e( 'v3.5.25: Twilio, Slack integration & Security Improvements', 'ultimate-addons-cf7' ); ?></a>
 				</li>
 				<li>
-					<a href="<?php echo esc_url( 'https://cf7addons.com/twilio-slack-integration-prevent-duplicate-entries-and-google-recaptcha-v3/' ); ?>" target="_blank"><?php esc_html_e( 'Contact form 7 Integration with twilio slack prevent duplicate submission | Ultra Addons for Contact Form 7 Ultra Addons for Contact Form 7 v3.5.25: Twilio, Slack Integration, Prevent Duplicate Entries, and Google reCAPTCHA v3', 'ultimate-addons-cf7' ); ?></a>
+					<a href="<?php echo esc_url( 'https://cf7addons.com/twilio-integration-with-contact-form-7-instant-sms-and-whatsapp-notifications/' ); ?>" target="_blank"><?php esc_html_e( 'Twilio Integration: SMS & WhatsApp Notifications with contact form 7', 'ultimate-addons-cf7' ); ?></a>
 				</li>
 				<li>
-					<a href="<?php echo esc_url( 'https://cf7addons.com/twilio-integration-with-contact-form-7-instant-sms-and-whatsapp-notifications/' ); ?>" target="_blank"><?php esc_html_e( 'Twilio Integration with Contact Form 7: Instant SMS and WhatsApp Notifications', 'ultimate-addons-cf7' ); ?></a>
+					<a href="<?php echo esc_url( 'https://cf7addons.com/google-sheets-integration-with-contact-form-7/' ); ?>" target="_blank"><?php esc_html_e( 'v3.5.23: Google Sheets Integration with Contact form 7', 'ultimate-addons-cf7' ); ?></a>
 				</li>
 			</ul>
 
