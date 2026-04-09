@@ -430,7 +430,7 @@ UACF7_Settings::option(
 								'default'            => false,
 								'subtitle'           => __( 'Integrate with Salesforce to save form entries as leads and contacts', 'ultimate-addons-cf7' ),
 								'demo_link'          => 'https://cf7addons.com/preview/salesforce-integration/',
-								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/salesforce-integration-for-contact-form-7/',
+								'documentation_link' => 'https://themefic.com/docs/uacf7/pro-addons/salesforce-integration/',
 								'is_pro'             => true
 							),
 						),
