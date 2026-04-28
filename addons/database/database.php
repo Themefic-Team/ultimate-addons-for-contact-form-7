@@ -830,9 +830,9 @@ class uacf7_form_List_Table extends WP_List_Table {
 			return;
 		}
 
-		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . __( 'Select bulk action' ) . '</label>';
+		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . __( 'Select bulk action', 'ultimate-addons-cf7' ) . '</label>';
 		echo '<select name="action' . $two . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
-		echo '<option value="-1">' . __( 'Bulk actions' ) . "</option>\n";
+		echo '<option value="-1">' . __( 'Bulk actions', 'ultimate-addons-cf7' ) . "</option>\n";
 
 		foreach ( $this->_actions as $key => $value ) {
 			if ( is_array( $value ) ) {
@@ -853,7 +853,7 @@ class uacf7_form_List_Table extends WP_List_Table {
 
 		echo "</select>\n";
 
-		submit_button( __( 'Apply' ), 'action', '', false, array( 'id' => "doaction $two" ) );
+		submit_button( __( 'Apply', 'ultimate-addons-cf7' ), 'action', '', false, array( 'id' => "doaction $two" ) );
 		echo "<button  style=' margin-left:5px;' class='button uacf7-db-export-csv'> Export CSV</button>";
 		echo "\n";
 	}
