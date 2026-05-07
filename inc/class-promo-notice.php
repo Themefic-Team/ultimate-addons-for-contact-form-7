@@ -130,7 +130,7 @@ class UACF7_PROMO_NOTICE {
         $schedules['every_day'] = array(
             'interval' => 86400, // Every 24 hours
             // 'interval' => 5, // Every 24 hours
-            'display' => __( 'Every 24 hours', 'ultimate-addons-cf7' )
+            'display' => __('Every 24 hours')
         );
         return $schedules;
     }

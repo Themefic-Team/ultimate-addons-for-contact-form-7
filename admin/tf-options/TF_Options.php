@@ -89,12 +89,12 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 
 				$response = [ 
 					'status' => 'success',
-					'message' => __( 'Options imported successfully!', 'ultimate-addons-cf7' ),
+					'message' => __( 'Options imported successfully!', 'tourfic' ),
 				];
 			} else {
 				$response = [ 
 					'status' => 'error',
-					'message' => __( 'Your imported data is not valid', 'ultimate-addons-cf7' ),
+					'message' => __( 'Your imported data is not valid', 'tourfic' ),
 				];
 			}
 

@@ -1028,20 +1028,20 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					if ( empty( $tf_import_option ) || ! is_array( $tf_import_option ) ) {
 						$response = [ 
 							'status' => 'error',
-							'message' => __( 'Your imported data is not valid', 'ultimate-addons-cf7' ),
+							'message' => __( 'Your imported data is not valid', 'tourfic' ),
 						];
 					} else {
 						$this->save_options();
 						$response = [ 
 							'status' => 'success',
-							'message' => __( 'Options imported successfully!', 'ultimate-addons-cf7' ),
+							'message' => __( 'Options imported successfully!', 'tourfic' ),
 						];
 					}
 				} else {
 					$this->save_options();
 					$response = [ 
 						'status' => 'success',
-						'message' => __( 'Options saved successfully!', 'ultimate-addons-cf7' ),
+						'message' => __( 'Options saved successfully!', 'tourfic' ),
 					];
 
 				}

@@ -191,7 +191,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ) {
 							for="<?php echo 'next_btn_' . $step->name; ?>"><?php echo __( 'Change next button text for this Step', 'ultimate-addons-cf7' ) ?></label>
 					</p>
 					<input id="<?php echo 'next_btn_' . $step->name; ?>" type="text" name="" value=""
-						placeholder="<?php echo esc_html__( 'Next', 'ultimate-addons-cf7' ) ?>">
+						placeholder="<?php echo esc_html__( 'Next', 'ultimate-addons-cf7-pro' ) ?>">
 				</div>
 				<?php
 			} else {
@@ -203,7 +203,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ) {
 								<?php echo __( 'Change previous button text for this Step', 'ultimate-addons-cf7' ) ?>
 							</label></p>
 						<input id="<?php echo 'prev_btn_' . $step->name; ?>" type="text" name="" value=""
-							placeholder="<?php echo esc_html__( 'Previous', 'ultimate-addons-cf7' ) ?>">
+							placeholder="<?php echo esc_html__( 'Previous', 'ultimate-addons-cf7-pro' ) ?>">
 					</div>
 					<?php
 
@@ -215,7 +215,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ) {
 									<?php echo __( 'Change previous button text for this Step', 'ultimate-addons-cf7' ) ?>
 								</label></p>
 							<input id="<?php echo 'prev_btn_' . $step->name; ?>" type="text" name="" value=""
-								placeholder="<?php echo esc_html__( 'Previous', 'ultimate-addons-cf7' ) ?>">
+								placeholder="<?php echo esc_html__( 'Previous', 'ultimate-addons-cf7-pro' ) ?>">
 						</div>
 
 						<div class="multistep_field_column">
@@ -223,7 +223,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ) {
 									<?php echo __( 'Change next button text for this Step', 'ultimate-addons-cf7' ) ?>
 								</label></p>
 							<input id="<?php echo 'next_btn_' . $step->name; ?>" type="text" name="" value=""
-								placeholder="<?php echo esc_html__( 'Next', 'ultimate-addons-cf7' ) ?>">
+								placeholder="<?php echo esc_html__( 'Next', 'ultimate-addons-cf7-pro' ) ?>">
 						</div>
 					</div>
 					<?php
@@ -247,7 +247,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ) {
 								<?php echo __( 'Step description', 'ultimate-addons-cf7' ) ?>
 							</label></p>
 						<textarea id="<?php echo 'step_desc_' . $step->name; ?>" type="text" name="" cols="40" rows="3"
-							placeholder="<?php echo esc_html__( 'Step description', 'ultimate-addons-cf7' ) ?>"></textarea>
+							placeholder="<?php echo esc_html__( 'Step description', 'ultimate-addons-cf7-pro' ) ?>"></textarea>
 					</div>
 
 					<div class="multistep_field_column">
@@ -255,7 +255,7 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ) {
 								<?php echo __( 'Description title', 'ultimate-addons-cf7' ) ?>
 							</label></p>
 						<input id="<?php echo 'desc_title_' . $step->name; ?>" type="text" name="" value=""
-							placeholder="<?php echo esc_html__( 'Description title', 'ultimate-addons-cf7' ) ?>">
+							placeholder="<?php echo esc_html__( 'Description title', 'ultimate-addons-cf7-pro' ) ?>">
 					</div>
 				</div>
 			</div>
