@@ -248,6 +248,9 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			<div class="tf-setting-dashboard">
 				<!-- deshboard-header-include -->
 				<?php echo $this->tf_top_header(); ?>
+				<div class="uacf7-dashboard-promo-banner-header">
+					<?php do_action( 'uacf7_dashboard_promo_notice' ); ?>
+				</div>
 				<div class="uacf7-addons-settings-page">
 					<div class="uacf7-addons-settings-page-wrapper">
 						<h1 class="uacf7-setting-title">
@@ -871,6 +874,10 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				<div class="tf-setting-dashboard">
 					<!-- dashboard-header-include -->
 					<?php echo $this->tf_top_header(); ?>
+					
+					<div class="uacf7-dashboard-promo-banner-header">
+						<?php do_action( 'uacf7_dashboard_promo_notice' ); ?>
+					</div>
 
 					<div class="tf-option-wrapper tf-setting-wrapper">
 						<form method="post" action="" class="tf-option-form <?php echo esc_attr( $ajax_save_class ) ?>"
