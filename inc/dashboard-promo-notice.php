@@ -89,9 +89,9 @@ class Uacf7_Dashboard_Promo_Notice {
 	 */
 	public function render() {
 
-		// if ( ! $this->should_display() ) {
-		// 	return;
-		// }
+		if ( ! $this->should_display() ) {
+			return;
+		}
 
 		?>
 
