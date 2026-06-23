@@ -17,6 +17,11 @@ if ( file_exists( UACF7_PATH . 'inc/class-promo-notice.php' ) ) {
     require_once ( UACF7_PATH .'inc/class-promo-notice.php');
 }
 
+if ( file_exists( UACF7_PATH . 'inc/dashboard-promo-notice.php' ) ) {
+
+    require_once ( UACF7_PATH .'inc/dashboard-promo-notice.php');
+}
+
 //Require Dashboard Notice
 if ( file_exists( UACF7_PATH . 'inc/class-dashboard-widget.php' ) ) {
 

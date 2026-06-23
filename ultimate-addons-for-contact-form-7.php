@@ -202,6 +202,17 @@ class Ultimate_Addons_CF7 {
 					'pro_active' => $pro_active
 				)
 			);
+
+			wp_localize_script(
+				'uacf7-admin-script',
+				'uacf7Promo',
+				array(
+					'ajaxurl' => admin_url( 'admin-ajax.php' ),
+					'nonce'   => wp_create_nonce(
+						'uacf7_notice_nonce'
+					),
+				)
+			);
 			
 			wp_enqueue_style( 'uacf7-notyf', UACF7_URL . 'assets/app/libs/notyf/notyf.min.css', '', UACF7_VERSION );
 			wp_enqueue_script( 'uacf7-notyf', UACF7_URL . 'assets/app/libs/notyf/notyf.min.js', array( 'jquery' ), UACF7_VERSION, true );
