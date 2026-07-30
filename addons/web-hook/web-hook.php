@@ -65,7 +65,8 @@ class UACF7_WEB_HOOK {
 					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
 					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
 					'field_width' => 50,
-					'default' => false
+					'default' => false,
+					'is_pro' => true
 				],
 
 				'uacf7_webhook_conditional_form_options_heading' => array(
@@ -156,6 +157,7 @@ class UACF7_WEB_HOOK {
 						)
 					),
 					'dependency' => [ 'uacf7_enable_web_hook_condition', '==', 1 ],
+					'is_pro' => true
 				),
 
 				'web_hook_form_options_heading' => array(
