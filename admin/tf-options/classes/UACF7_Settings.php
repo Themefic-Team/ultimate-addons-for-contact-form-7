@@ -247,11 +247,11 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			?>
 			<div class="tf-setting-dashboard">
 				<!-- deshboard-header-include -->
-				<?php echo $this->tf_top_header(); ?>
+				<?php $this->tf_top_header(); ?>
 				<div class="uacf7-addons-settings-page">
 					<div class="uacf7-addons-settings-page-wrapper">
 						<h1 class="uacf7-setting-title">
-							<?php echo _e( 'Ultra Addons for Contact Form 7 (UACF7) Settings', 'ultimate-addons-cf7' ) ?>
+							<?php echo esc_html__( 'Ultra Addons for Contact Form 7 (UACF7) Settings', 'ultimate-addons-cf7' ) ?>
 						</h1>
 						<form method="post" action="" class="tf-option-form tf-ajax-save" enctype="multipart/form-data">
 							<div class="uacf7-settings-heading">
@@ -272,13 +272,13 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								<div class="uacf7-settings-heading-wrap">
 									<div class="uacf7-addon-filter-cta">
 										<button
-											class="uacf7-addon-filter-button all active"><?php echo _e( 'All', 'ultimate-addons-cf7' ) ?>
+											class="uacf7-addon-filter-button all active"><?php _e( 'All', 'ultimate-addons-cf7' ) ?>
 											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
 										<button
-											class="uacf7-addon-filter-button deactive"><?php echo _e( 'Free', 'ultimate-addons-cf7' ) ?>
+											class="uacf7-addon-filter-button deactive"><?php _e( 'Free', 'ultimate-addons-cf7' ) ?>
 											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
 										<button
-											class="uacf7-addon-filter-button activete"><?php echo _e( 'Pro', 'ultimate-addons-cf7' ) ?>
+											class="uacf7-addon-filter-button activete"><?php _e( 'Pro', 'ultimate-addons-cf7' ) ?>
 											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
 									</div>
 								</div>
@@ -371,7 +371,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 						<div class="uacf7-dashboard-promo-banner-header uacf7-sidebar-promo-header">
 							<?php do_action( 'uacf7_dashboard_promo_notice' ); ?>
 						</div>
-						<?php echo $this->tf_sidebar(); ?>
+						<?php $this->tf_sidebar(); ?>
 					</div>
 				</div>
 			</div>
@@ -389,20 +389,63 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					 
 					<div class="uacf7-sidebar-content">
 
-						<?php echo $this->tf_get_sidebar_plugin_list(); ?>
-
-						<?php echo $this->uacf7_get_sidebar_collab_plugin_list(); ?>
-
-						<div class="uacf7-sidebar-customization-quote">
+						<a
+							class="uacf7-sidebar-customization-quote"
+							href="<?php echo esc_url( uacf7_utm_generator( 'https://cf7addons.com/services/', array( 'utm_medium' => 'dashboard_customization_quote' ) ) ); ?>"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="<?php echo esc_attr__( 'Get a free WordPress development quote', 'ultimate-addons-cf7' ); ?>"
+						>
 							<div class="uacf7-quote-header">
-								<i class="fa-solid fa-code"></i>
-								<a href="<?php echo esc_url(uacf7_utm_generator( 'https://portal.themefic.com/hire-us/', array( 'utm_medium' => 'dashboard_customization_quote') ) ); ?>" target="_blank" ><?php echo __('Get Free Quote', 'ultimate-addons-cf7');  ?></a>
+								<i class="fa-solid fa-code" aria-hidden="true"></i>
+
+								<span>
+									<?php echo esc_html__( 'Get Free Quote', 'ultimate-addons-cf7' ); ?>
+								</span>
 							</div>
+
 							<div class="uacf7-quote-content">
-								<h3><?php echo __('Need Help Customizing Your WordPress Site?', 'ultimate-addons-cf7');  ?></h3>
-								<p><?php echo __('Want to tweak a theme, adjust a plugin like Ultra Addons or add custom functionality to your site? Our expert WordPress developers can tailor it just the way you need. We only charge $29/hour.', 'ultimate-addons-cf7');  ?></p>								
+								<h3>
+									<?php
+									echo esc_html__(
+										'White Label WordPress Development & Design Services',
+										'ultimate-addons-cf7'
+									);
+									?>
+								</h3>
+
+								<p>
+									<?php
+									echo esc_html__(
+										'Need something built, fixed, or improved? We\'ve got you covered. Starting at $25/hour only.',
+										'ultimate-addons-cf7'
+									);
+									?>
+								</p>
+
+								<ul class="uacf7-customization-services">
+									<li>
+										<?php echo esc_html__( 'Custom plugin & theme development', 'ultimate-addons-cf7' ); ?>
+									</li>
+
+									<li>
+										<?php echo esc_html__( 'Site builds & redesigns', 'ultimate-addons-cf7' ); ?>
+									</li>
+
+									<li>
+										<?php echo esc_html__( 'Third-party integrations & API work', 'ultimate-addons-cf7' ); ?>
+									</li>
+
+									<li>
+										<?php echo esc_html__( 'UI/UX & Custom Design', 'ultimate-addons-cf7' ); ?>
+									</li>
+								</ul>
 							</div>
-						</div>
+						</a>
+
+						<?php $this->tf_get_sidebar_plugin_list(); ?>
+
+						<?php $this->uacf7_get_sidebar_collab_plugin_list(); ?>
 
 						<div class="uacf7-quick-access">
 							<h3><?php echo __('Helpful Resources', 'ultimate-addons-cf7');  ?></h3>
@@ -410,31 +453,31 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								<div class="uacf7-access-item">
 									<a href="<?php echo esc_url(uacf7_utm_generator( 'https://themefic.com/docs/uacf7/', array( 'utm_medium' => 'dashboard_doc_link') ) ); ?>" target="_blank">
 										<span class="icon"><i class="fa-solid fa-folder-open"></i></span>
-										<?php echo _e( 'Documentation', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Documentation', 'ultimate-addons-cf7' ); ?>
 									</a>
 								</div>
 								<div class="uacf7-access-item">
 									<a href="<?php echo esc_url(uacf7_utm_generator( 'https://portal.themefic.com/support/', array( 'utm_medium' => 'dashboard_support_link') ) ); ?>" target="_blank">
 										<span class="icon"><i class="fa-solid fa-headset"></i></span>
-										<?php echo _e( 'Get Support', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Get Support', 'ultimate-addons-cf7' ); ?>
 									</a>
 								</div>
 								<div class="uacf7-access-item">
 									<a href="https://www.facebook.com/groups/ultimate.cf7" target="_blank">
 										<span class="icon"><i class="fa-solid fa-users"></i></span>
-										<?php echo _e( 'Join our Community', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Join our Community', 'ultimate-addons-cf7' ); ?>
 									</a>
 								</div>
 								<div class="uacf7-access-item">
 									<a href="https://app.loopedin.io/ultimate-addons-for-contact-form-7" target="_blank">
 										<span class="icon"><i class="fa-solid fa-road-circle-check"></i></span>
-										<?php echo _e( 'See our Roadmap', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'See our Roadmap', 'ultimate-addons-cf7' ); ?>
 									</a>
 								</div>
 								<div class="uacf7-access-item">
 									<a href="https://app.loopedin.io/ultimate-addons-for-contact-form-7#/ideas" target="_blank">
 										<span class="icon"><i class="fa-solid fa-lightbulb"></i></span>
-										<?php echo _e( 'Request a Feature', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Request a Feature', 'ultimate-addons-cf7' ); ?>
 									</a>
 								</div>
 							</div>
@@ -735,7 +778,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			<div class="tf-setting-dashboard">
 
 				<!-- deshboard-header-include -->
-				<?php echo $this->tf_top_header(); ?>
+				<?php $this->tf_top_header(); ?>
 
 				<div class="tf-settings-help-center">
 					<div class="tf-help-center-banner">
@@ -873,7 +916,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				?>
 				<div class="tf-setting-dashboard">
 					<!-- dashboard-header-include -->
-					<?php echo $this->tf_top_header(); ?>
+					<?php $this->tf_top_header(); ?>
 					<div class="uacf7-dashboard-promo-banner-header">
 						<?php do_action( 'uacf7_dashboard_promo_notice' ); ?>
 					</div>
