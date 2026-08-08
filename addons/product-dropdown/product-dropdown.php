@@ -249,7 +249,7 @@ class UACF7_PRODUCT_DROPDOWN {
 
 		$tag_generator->add(
 			'uacf7_product_dropdown',
-			__( 'Product Dropdown', 'ultimate-addons-cf7' ),
+			__( 'Product Dropdown', 'ultimate-addons-for-contact-form-7' ),
 			[ $this, 'tg_pane_product_dropdown' ],
 			array( 'version' => '2' )
 		);
@@ -260,9 +260,9 @@ class UACF7_PRODUCT_DROPDOWN {
 
 		$field_types = array(
 			'uacf7_product_dropdown' => array(
-				'display_name' => __( 'Product Dropdown', 'ultimate-addons-cf7' ),
-				'heading' => __( 'Generate Product Dropdown', 'ultimate-addons-cf7' ),
-				'description' => __( '', 'ultimate-addons-cf7' ),
+				'display_name' => __( 'Product Dropdown', 'ultimate-addons-for-contact-form-7' ),
+				'heading' => __( 'Generate Product Dropdown', 'ultimate-addons-for-contact-form-7' ),
+				'description' => __( '', 'ultimate-addons-for-contact-form-7' ),
 			),
 		);
 
@@ -294,7 +294,7 @@ class UACF7_PRODUCT_DROPDOWN {
 			?></p>
 			<div class="uacf7-doc-notice">
 				<?php echo sprintf(
-					__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+					__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
 					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-woocommerce/" target="_blank">Product Dropdown</a>'
 				); ?>
 			</div>
@@ -316,7 +316,7 @@ class UACF7_PRODUCT_DROPDOWN {
 
 			<fieldset>
 				<legend>
-					<?php echo esc_html( __( 'Field Option', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_html( __( 'Field Option', 'ultimate-addons-for-contact-form-7' ) ); ?>
 				</legend>
 
 				<div class="uacf7_field_wraping">
@@ -324,7 +324,7 @@ class UACF7_PRODUCT_DROPDOWN {
 						<?php ob_start(); ?>
 						<input type="checkbox" data-tag-part="option" data-tag-option="" disabled />
 
-						<?php echo esc_attr( __( 'Allow multiple selections ', 'ultimate-addons-cf7' ) ); ?>
+						<?php echo esc_attr( __( 'Allow multiple selections ', 'ultimate-addons-for-contact-form-7' ) ); ?>
 
 						<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">
 							(Pro)
@@ -342,7 +342,7 @@ class UACF7_PRODUCT_DROPDOWN {
 					<div>
 						<?php ob_start(); ?>
 						<input type="checkbox" data-tag-part="option" data-tag-option="" disabled />
-						<?php echo esc_attr( __( 'Display Total of Selected Product Price', 'ultimate-addons-cf7' ) ); ?>
+						<?php echo esc_attr( __( 'Display Total of Selected Product Price', 'ultimate-addons-for-contact-form-7' ) ); ?>
 
 						<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
 						<?php $display_price = ob_get_clean(); ?>
@@ -361,18 +361,18 @@ class UACF7_PRODUCT_DROPDOWN {
 			<fieldset>
 				<?php ob_start(); ?>
 				<legend>
-					<?php echo esc_html( __( 'Show Product By', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_html( __( 'Show Product By', 'ultimate-addons-for-contact-form-7' ) ); ?>
 					<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
 				</legend>
 
 				<input id="byID" name="product_by" disabled type="radio" value="id" checked />
-				<?php echo esc_html( __( ' Product ID', 'ultimate-addons-cf7' ) ); ?>
+				<?php echo esc_html( __( ' Product ID', 'ultimate-addons-for-contact-form-7' ) ); ?>
 
 				<input id="byCategory" name="product_by" disabled type="radio" value="category" />
-				<?php echo esc_html( __( 'Category', 'ultimate-addons-cf7' ) ); ?>
+				<?php echo esc_html( __( 'Category', 'ultimate-addons-for-contact-form-7' ) ); ?>
 
 				<input id="byTag" name="product_by" disabled type="radio" value="tag" />
-				<?php echo esc_html( __( 'Tag', 'ultimate-addons-cf7' ) ); ?>
+				<?php echo esc_html( __( 'Tag', 'ultimate-addons-for-contact-form-7' ) ); ?>
 
 				<?php
 				$product_by = ob_get_clean();
@@ -383,21 +383,21 @@ class UACF7_PRODUCT_DROPDOWN {
 			<fieldset>
 				<?php ob_start(); ?>
 				<legend>
-					<?php echo esc_attr( __( 'Product Order By', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_attr( __( 'Product Order By', 'ultimate-addons-for-contact-form-7' ) ); ?>
 				</legend>
 
 				<label for="byDate">
 					<input id="byDate" name="order_by" class="" disabled type="radio" value="" checked>
-					<?php echo esc_html( __( ' Date (by Default)', 'ultimate-addons-cf7' ) ); ?></label>
+					<?php echo esc_html( __( ' Date (by Default)', 'ultimate-addons-for-contact-form-7' ) ); ?></label>
 
 				<label for="byASC">
 					<input id="byASC" name="order_by" class="" disabled type="radio" value="asc">
-					<?php echo esc_html( __( 'ASC', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_html( __( 'ASC', 'ultimate-addons-for-contact-form-7' ) ); ?>
 				</label>
 
 				<label for="byDSC">
 					<input id="byDSC" name="order_by" class="" disabled type="radio" value="dsc">
-					<?php echo esc_html( __( 'DSC', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_html( __( 'DSC', 'ultimate-addons-for-contact-form-7' ) ); ?>
 				</label>
 				<a style="color:red" target="_blank" href="https://cf7addons.com/pricing/">(Pro)</a>
 				<?php
@@ -409,7 +409,7 @@ class UACF7_PRODUCT_DROPDOWN {
 			<fieldset class="tag-generator-panel-product-id">
 				<?php ob_start(); ?>
 				<legend for="tag-generator-panel-product-id">
-					<?php echo esc_attr( __( 'Product ID', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_attr( __( 'Product ID', 'ultimate-addons-for-contact-form-7' ) ); ?>
 				</legend>
 
 
@@ -434,7 +434,7 @@ class UACF7_PRODUCT_DROPDOWN {
 				<?php ob_start(); ?>
 
 				<legend for="tag-generator-panel-product-category">
-					<?php echo esc_attr( __( 'Product Category', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_attr( __( 'Product Category', 'ultimate-addons-for-contact-form-7' ) ); ?>
 				</legend>
 
 				<div>
@@ -479,7 +479,7 @@ class UACF7_PRODUCT_DROPDOWN {
 				<?php ob_start(); ?>
 
 				<legend for="tag-generator-panel-product-tag">
-					<?php echo esc_attr( __( 'Product tag', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_attr( __( 'Product tag', 'ultimate-addons-for-contact-form-7' ) ); ?>
 				</legend>
 
 				<div>
@@ -522,7 +522,7 @@ class UACF7_PRODUCT_DROPDOWN {
 			<fieldset>
 				<?php ob_start(); ?>
 				<legend>
-					<?php echo esc_html( __( 'Layout Style', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_html( __( 'Layout Style', 'ultimate-addons-for-contact-form-7' ) ); ?>
 				</legend>
 
 				<label for="layoutDropdown"><input id="layoutDropdown" name="layout" class="option" disabled type="radio"

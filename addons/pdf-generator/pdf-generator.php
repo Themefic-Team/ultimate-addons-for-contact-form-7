@@ -78,16 +78,16 @@ class UACF7_PDF_GENERATOR {
 
 
 		$pdf_generator = apply_filters( 'uacf7_post_meta_options_pdf_generator_pro', $data = array(
-			'title' => __( 'PDF Generator', 'ultimate-addons-cf7' ),
+			'title' => __( 'PDF Generator', 'ultimate-addons-for-contact-form-7' ),
 			'icon' => 'fa-solid fa-file-pdf',
 			'checked_field' => 'uacf7_enable_pdf_generator',
 			'fields' => array(
 				'uacf7_pdf_label' => array(
 					'id' => 'uacf7_pdf_label',
 					'type' => 'heading',
-					'label' => __( 'PDF Generator Settings', 'ultimate-addons-cf7' ),
+					'label' => __( 'PDF Generator Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-						__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-cf7' ),
+						__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
 					)
 				),
@@ -96,28 +96,28 @@ class UACF7_PDF_GENERATOR {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+						__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-pdf-generator/" target="_blank" rel="noopener">PDF Generator</a>'
 					)
 				),
 				'uacf7_enable_pdf_generator' => array(
 					'id' => 'uacf7_enable_pdf_generator',
 					'type' => 'switch',
-					'label' => __( ' Enable PDF Generator ', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( ' Enable PDF Generator ', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default' => false,
 					'field_width' => 100,
 				),
 				'pdf_generator_form_options_heading' => array(
 					'id' => 'pdf_generator_form_options_heading',
 					'type' => 'heading',
-					'label' => __( 'PDF Option ', 'ultimate-addons-cf7' ),
+					'label' => __( 'PDF Option ', 'ultimate-addons-for-contact-form-7' ),
 				),
 				'uacf7_pdf_disable_header_footer' => array(
 					'id' => 'uacf7_pdf_disable_header_footer',
 					'type' => 'checkbox',
-					'label' => __( 'Disable Header and Footer of PDF', 'ultimate-addons-cf7' ),
+					'label' => __( 'Disable Header and Footer of PDF', 'ultimate-addons-for-contact-form-7' ),
 					'options' => array(
 						'header' => 'Disable Header',
 						'footer' => 'Disable Footer'
@@ -129,17 +129,17 @@ class UACF7_PDF_GENERATOR {
 				'uacf7_pdf_name' => array(
 					'id' => 'uacf7_pdf_name',
 					'type' => 'text',
-					'label' => __( 'PDF Name ', 'ultimate-addons-cf7' ),
-					'subtitle' => __( "For instance, if you enter 'website-submission' as the file name, the resulting PDF will be named 'website-submission.pdf'.", 'ultimate-addons-cf7' ),
-					'placeholder' => __( 'E.g. website-submission', 'ultimate-addons-cf7' ),
+					'label' => __( 'PDF Name ', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( "For instance, if you enter 'website-submission' as the file name, the resulting PDF will be named 'website-submission.pdf'.", 'ultimate-addons-for-contact-form-7' ),
+					'placeholder' => __( 'E.g. website-submission', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 50,
 
 				),
 				'pdf_send_to' => array(
 					'id' => 'pdf_send_to',
 					'type' => 'select',
-					'label' => __( 'PDF Send To ', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Choose whether you want both Mail 1 and Mail 2 users to receive the PDF as an attachment, or just one of them.', 'ultimate-addons-cf7' ),
+					'label' => __( 'PDF Send To ', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'Choose whether you want both Mail 1 and Mail 2 users to receive the PDF as an attachment, or just one of them.', 'ultimate-addons-for-contact-form-7' ),
 					'options' => array(
 						'both' => 'Both',
 						'mail-1' => 'Mail 1',
@@ -150,13 +150,13 @@ class UACF7_PDF_GENERATOR {
 				'uacf7_customize_pdf_header' => array(
 					'id' => 'uacf7_customize_pdf_header',
 					'type' => 'heading',
-					'label' => __( 'PDF Header Settings', 'ultimate-addons-cf7' ),
+					'label' => __( 'PDF Header Settings', 'ultimate-addons-for-contact-form-7' ),
 
 				),
 				// 'uacf7_pdf_generator_mpdf_tags' => array(
 				//     'id'        => 'uacf7_pdf_generator_mpdf_tags',
 				//     'type'      => 'notice',
-				//     'label'     => __( 'm-PDF Tags ', 'ultimate-addons-cf7' ),
+				//     'label'     => __( 'm-PDF Tags ', 'ultimate-addons-for-contact-form-7' ),
 				//     'class' => 'tf-field-class',
 				//     'content' => '
 				//     {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}
@@ -165,14 +165,14 @@ class UACF7_PDF_GENERATOR {
 				'pdf_header_upload_image' => array(
 					'id' => 'pdf_header_upload_image',
 					'type' => 'image',
-					'label' => __( 'Header Image ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Header Image ', 'ultimate-addons-for-contact-form-7' ),
 
 				),
 
 				'pdf_header_color' => array(
 					'id' => 'pdf_header_color',
 					'type' => 'color',
-					'label' => __( 'Header Content Color ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Header Content Color ', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 50,
 					'class' => 'tf-field-class',
 					// 'default' => '#ffffff',
@@ -182,7 +182,7 @@ class UACF7_PDF_GENERATOR {
 				'pdf_header_bg_color' => array(
 					'id' => 'pdf_header_bg_color',
 					'type' => 'color',
-					'label' => __( 'Header Background Color ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Header Background Color ', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 50,
 					'class' => 'tf-field-class',
 					// 'default' => '#ffffff',
@@ -191,26 +191,26 @@ class UACF7_PDF_GENERATOR {
 				),
 				'customize_pdf_header' => array(
 					'id' => 'customize_pdf_header',
-					'label' => __( 'Header Content', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}. <br> Use any php <a href="https://www.php.net/manual/en/function.date.php" target="_blank">Date</a> format for date shortcode {DATE format} ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Header Content', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}. <br> Use any php <a href="https://www.php.net/manual/en/function.date.php" target="_blank">Date</a> format for date shortcode {DATE format} ', 'ultimate-addons-for-contact-form-7' ),
 					'type' => 'editor',
 
 				),
 				'uacf7_customize_pdf_body' => array(
 					'id' => 'uacf7_customize_pdf_body',
 					'type' => 'heading',
-					'label' => __( 'PDF Body Settings', 'ultimate-addons-cf7' ),
+					'label' => __( 'PDF Body Settings', 'ultimate-addons-for-contact-form-7' ),
 				),
 
 				'pdf_bg_upload_image' => array(
 					'id' => 'pdf_bg_upload_image',
 					'type' => 'image',
-					'label' => __( 'Body Background Image ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Body Background Image ', 'ultimate-addons-for-contact-form-7' ),
 				),
 				'pdf_content_color' => array(
 					'id' => 'pdf_content_color',
 					'type' => 'color',
-					'label' => __( 'Body Content Color ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Body Content Color ', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 50,
 					'class' => 'tf-field-class',
 					// 'default' => '#ffffff',
@@ -220,7 +220,7 @@ class UACF7_PDF_GENERATOR {
 				'pdf_content_bg_color' => array(
 					'id' => 'pdf_content_bg_color',
 					'type' => 'color',
-					'label' => __( 'Body Background Color ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Body Background Color ', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 50,
 					'class' => 'tf-field-class',
 					// 'default' => '#ffffff',
@@ -232,8 +232,8 @@ class UACF7_PDF_GENERATOR {
 
 				'customize_pdf' => array(
 					'id' => 'customize_pdf',
-					'label' => __( 'Body Content ', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'If you wish to include extra content in the body of the PDF.', 'ultimate-addons-cf7' ),
+					'label' => __( 'Body Content ', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'If you wish to include extra content in the body of the PDF.', 'ultimate-addons-for-contact-form-7' ),
 					'type' => 'editor',
 
 				),
@@ -248,13 +248,13 @@ class UACF7_PDF_GENERATOR {
 				'uacf7_customize_pdf_footer' => array(
 					'id' => 'uacf7_customize_pdf_footer',
 					'type' => 'heading',
-					'label' => __( 'PDF Footer Settings', 'ultimate-addons-cf7' ),
+					'label' => __( 'PDF Footer Settings', 'ultimate-addons-for-contact-form-7' ),
 				),
 
 				// 'uacf7_pdf_footer_background_image' => array(
 				//     'id'        => 'uacf7_pdf_footer_background_image',
 				//     'type'      => 'image',
-				//     'label'     => __( 'PDF Footer Background Image ', 'ultimate-addons-cf7' ),
+				//     'label'     => __( 'PDF Footer Background Image ', 'ultimate-addons-for-contact-form-7' ),
 
 				// ),
 
@@ -262,7 +262,7 @@ class UACF7_PDF_GENERATOR {
 				'pdf_footer_color' => array(
 					'id' => 'pdf_footer_color',
 					'type' => 'color',
-					'label' => __( 'Footer Content Color ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Footer Content Color ', 'ultimate-addons-for-contact-form-7' ),
 					'class' => 'tf-field-class',
 					// 'default' => '#ffffff',
 					'multiple' => false,
@@ -273,7 +273,7 @@ class UACF7_PDF_GENERATOR {
 				'pdf_footer_bg_color' => array(
 					'id' => 'pdf_footer_bg_color',
 					'type' => 'color',
-					'label' => __( 'Footer Background Color ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Footer Background Color ', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 50,
 					'class' => 'tf-field-class',
 					// 'default' => '#ffffff',
@@ -283,22 +283,22 @@ class UACF7_PDF_GENERATOR {
 
 				'customize_pdf_footer' => array(
 					'id' => 'customize_pdf_footer',
-					'label' => __( 'Footer Content', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}. <br> Use any php <a href="https://www.php.net/manual/en/function.date.php" target="_blank">Date</a> format for date shortcode {DATE format} ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Footer Content', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'Some tags you can use - Page numbers & date Tags : {PAGENO}, {DATE j-m-Y}, {nb}, {nbpg}. <br> Use any php <a href="https://www.php.net/manual/en/function.date.php" target="_blank">Date</a> format for date shortcode {DATE format} ', 'ultimate-addons-for-contact-form-7' ),
 					'type' => 'editor',
 
 				),
 				'uacf7_pdf_form_download' => array(
 					'id' => 'uacf7_pdf_form_download',
 					'type' => 'heading',
-					'label' => __( 'Download Form After Submit', 'ultimate-addons-cf7' ),
+					'label' => __( 'Download Form After Submit', 'ultimate-addons-for-contact-form-7' ),
 				),
 				'uacf7_enable_pdf_form_download' => array(
 					'id' => 'uacf7_enable_pdf_form_download',
 					'type' => 'switch',
-					'label' => __( ' Enable PDF Download on Submission ', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( ' Enable PDF Download on Submission ', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default' => false,
 					'field_width' => 100,
 					'is_pro' => true
@@ -306,7 +306,7 @@ class UACF7_PDF_GENERATOR {
 				'uacf7_pdf_custom_css' => array(
 					'id' => 'uacf7_pdf_custom_css',
 					'type' => 'heading',
-					'label' => __( 'Custom CSS for PDF', 'ultimate-addons-cf7' ),
+					'label' => __( 'Custom CSS for PDF', 'ultimate-addons-for-contact-form-7' ),
 				),
 				'custom_pdf_css' => array(
 					'id' => 'custom_pdf_css',

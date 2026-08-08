@@ -58,16 +58,16 @@ class UACF7_MULTISTEP {
 	public function uacf7_post_meta_options_multistep( $value, $post_id ) {
 
 		$multistep = apply_filters( 'uacf7_post_meta_options_multistep_pro', $data = array(
-			'title' => __( 'Multi-step Form', 'ultimate-addons-cf7' ),
+			'title' => __( 'Multi-step Form', 'ultimate-addons-for-contact-form-7' ),
 			'icon' => 'fa-solid fa-stairs',
 			'checked_field' => 'uacf7_multistep_is_multistep',
 			'fields' => array(
 				'placeholder_heading' => array(
 					'id' => 'placeholder_heading',
 					'type' => 'heading',
-					'label' => __( 'Multi-step Form Settings', 'ultimate-addons-cf7' ),
+					'label' => __( 'Multi-step Form Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-						__( 'Create stunning multi-step forms with Contact Form 7. Ideal solution for long forms. See Demo %1s.', 'ultimate-addons-cf7' ),
+						__( 'Create stunning multi-step forms with Contact Form 7. Ideal solution for long forms. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="https://cf7addons.com/preview/contact-form-7-multi-step-forms/" target="_blank">Example</a>'
 					)
 				),
@@ -76,7 +76,7 @@ class UACF7_MULTISTEP {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
+						__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">Multi-step Form</a>',
 						'<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-multi-step-form-pro/" target="_blank">Multi-step Form (Pro)</a>'
 					)
@@ -84,33 +84,33 @@ class UACF7_MULTISTEP {
 				'uacf7_multistep_is_multistep' => array(
 					'id' => 'uacf7_multistep_is_multistep',
 					'type' => 'switch',
-					'label' => __( ' Enable Multistep', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( ' Enable Multistep', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default' => false,
 					'field_width' => 100,
 				),
 				'uacf7_multistep_form_options_heading' => array(
 					'id' => 'uacf7_multistep_form_options_heading',
 					'type' => 'heading',
-					'label' => __( 'Multistep Option ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Multistep Option ', 'ultimate-addons-for-contact-form-7' ),
 				),
 				'uacf7_enable_multistep_progressbar' => array(
 					'id' => 'uacf7_enable_multistep_progressbar',
 					'type' => 'switch',
-					'label' => __( ' Enable Progressbar ', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( ' Enable Progressbar ', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default' => false,
 					'field_width' => 50,
 				),
 				'uacf7_enable_multistep_scroll' => array(
 					'id' => 'uacf7_enable_multistep_scroll',
 					'type' => 'switch',
-					'label' => __( 'Enable Form Auto Scrolling ', 'ultimate-addons-cf7' ),
-					'description' => __( 'Auto scroll to top after clicking the next button.', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( 'Enable Form Auto Scrolling ', 'ultimate-addons-for-contact-form-7' ),
+					'description' => __( 'Auto scroll to top after clicking the next button.', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default' => false,
 					'is_pro' => true,
 					'field_width' => 50,
@@ -118,17 +118,17 @@ class UACF7_MULTISTEP {
 				'uacf7_multistep_use_step_labels' => array(
 					'id' => 'uacf7_multistep_use_step_labels',
 					'type' => 'switch',
-					'label' => __( 'Hide Progressbar Labels ', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( 'Hide Progressbar Labels ', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default' => false,
 					'field_width' => 50,
 				),
 				'uacf7_progressbar_style' => array(
 					'id' => 'uacf7_progressbar_style',
 					'type' => 'imageselect',
-					'label' => __( 'Choose Form Layout / Style', 'ultimate-addons-cf7' ),
-					'description' => __( 'See live demo examples <a href="https://cf7addons.com/preview/contact-form-7-multi-step-forms/pro/" target="_blank">here</a>.', 'ultimate-addons-cf7' ),
+					'label' => __( 'Choose Form Layout / Style', 'ultimate-addons-for-contact-form-7' ),
+					'description' => __( 'See live demo examples <a href="https://cf7addons.com/preview/contact-form-7-multi-step-forms/pro/" target="_blank">here</a>.', 'ultimate-addons-for-contact-form-7' ),
 					'multiple' => true,
 					'inline' => true,
 					'options' => array(
@@ -192,15 +192,15 @@ class UACF7_MULTISTEP {
 				'uacf7_progressbar_styler' => array(
 					'id' => 'uacf7_progressbar_styler',
 					'type' => 'heading',
-					'label' => __( 'Progressbar Styler', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'All modifications in this section are applicable to the "Progressbar" of the form.', 'ultimate-addons-cf7' ),
+					'label' => __( 'Progressbar Styler', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'All modifications in this section are applicable to the "Progressbar" of the form.', 'ultimate-addons-for-contact-form-7' ),
 				),
 
 				'uacf7_multistep_step_height' => array(
 					'id' => 'uacf7_multistep_step_height',
 					'type' => 'select',
-					'label' => __( 'Progressbar Height', 'ultimate-addons-cf7' ),
-					// 'placeholder'     => __( 'width', 'ultimate-addons-cf7' ),  
+					'label' => __( 'Progressbar Height', 'ultimate-addons-for-contact-form-7' ),
+					// 'placeholder'     => __( 'width', 'ultimate-addons-for-contact-form-7' ),  
 					'options' => array(
 						'default' => 'Default',
 						'equal-height' => 'Equal height'
@@ -218,7 +218,7 @@ class UACF7_MULTISTEP {
 				'uacf7_multistep_progressbar_color_option' => array(
 					'id' => 'uacf7_multistep_progressbar_color_option',
 					'type' => 'color',
-					'label' => __( 'Color Options', 'ultimate-addons-cf7' ),
+					'label' => __( 'Color Options', 'ultimate-addons-for-contact-form-7' ),
 					'class' => 'tf-field-class',
 					'multiple' => true,
 					'inline' => true,
@@ -237,65 +237,65 @@ class UACF7_MULTISTEP {
 					'id' => 'uacf7_progressbar_size_option',
 					'type' => 'heading',
 					'class' => 'heading-inner',
-					'label' => __( 'Size Options', 'ultimate-addons-cf7' ),
-					'subtitle' => __( ' E.g. 16 (Do not add px or em).', 'ultimate-addons-cf7' ),
+					'label' => __( 'Size Options', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( ' E.g. 16 (Do not add px or em).', 'ultimate-addons-for-contact-form-7' ),
 				),
 
 
 				'uacf7_multistep_circle_width' => array(
 					'id' => 'uacf7_multistep_circle_width',
 					'type' => 'number',
-					'label' => __( ' Circle Width', 'ultimate-addons-cf7' ),
-					'placeholder' => __( 'width', 'ultimate-addons-cf7' ),
+					'label' => __( ' Circle Width', 'ultimate-addons-for-contact-form-7' ),
+					'placeholder' => __( 'width', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 25,
 				),
 
 				'uacf7_multistep_circle_height' => array(
 					'id' => 'uacf7_multistep_circle_height',
 					'type' => 'number',
-					'label' => __( ' Circle Height', 'ultimate-addons-cf7' ),
-					'placeholder' => __( 'height', 'ultimate-addons-cf7' ),
+					'label' => __( ' Circle Height', 'ultimate-addons-for-contact-form-7' ),
+					'placeholder' => __( 'height', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 25,
 				),
 				'uacf7_multistep_font_size' => array(
 					'id' => 'uacf7_multistep_font_size',
 					'type' => 'number',
-					'label' => __( ' Circle Font Size', 'ultimate-addons-cf7' ),
-					'placeholder' => __( 'font size', 'ultimate-addons-cf7' ),
+					'label' => __( ' Circle Font Size', 'ultimate-addons-for-contact-form-7' ),
+					'placeholder' => __( 'font size', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 25,
 				),
 				'uacf7_multistep_circle_border_radious' => array(
 					'id' => 'uacf7_multistep_circle_border_radious',
 					'type' => 'number',
-					'label' => __( ' Circle Border Radious', 'ultimate-addons-cf7' ),
-					'placeholder' => __( 'border radious', 'ultimate-addons-cf7' ),
+					'label' => __( ' Circle Border Radious', 'ultimate-addons-for-contact-form-7' ),
+					'placeholder' => __( 'border radious', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 25,
 				),
 				'uacf7_progressbar_button_style' => array(
 					'id' => 'uacf7_progressbar_button_style',
 					'type' => 'heading',
-					'label' => __( 'Next and Previous Button Style', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'All modifications in this section are applicable to the "Button" of the form.', 'ultimate-addons-cf7' ),
+					'label' => __( 'Next and Previous Button Style', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'All modifications in this section are applicable to the "Button" of the form.', 'ultimate-addons-for-contact-form-7' ),
 				),
 				'uacf7_multistep_button_padding_tb' => array(
 					'id' => 'uacf7_multistep_button_padding_tb',
 					'type' => 'number',
-					'label' => __( ' Padding ( Top - Bottom )', 'ultimate-addons-cf7' ),
-					'placeholder' => __( 'E.g. 16 (Do not add px or em)', 'ultimate-addons-cf7' ),
+					'label' => __( ' Padding ( Top - Bottom )', 'ultimate-addons-for-contact-form-7' ),
+					'placeholder' => __( 'E.g. 16 (Do not add px or em)', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 33,
 				),
 				'uacf7_multistep_button_padding_lr' => array(
 					'id' => 'uacf7_multistep_button_padding_lr',
 					'type' => 'number',
-					'label' => __( ' Padding ( Left - Right )', 'ultimate-addons-cf7' ),
-					'placeholder' => __( 'E.g. 16 (Do not add px or em)', 'ultimate-addons-cf7' ),
+					'label' => __( ' Padding ( Left - Right )', 'ultimate-addons-for-contact-form-7' ),
+					'placeholder' => __( 'E.g. 16 (Do not add px or em)', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 33,
 				),
 
 				'uacf7_multistep_button_border_radius' => array(
 					'id' => 'uacf7_multistep_button_border_radius',
 					'type' => 'number',
-					'label' => __( ' Border Radius', 'ultimate-addons-cf7' ),
+					'label' => __( ' Border Radius', 'ultimate-addons-for-contact-form-7' ),
 					'is_pro' => true,
 					'field_width' => 33,
 				),
@@ -303,7 +303,7 @@ class UACF7_MULTISTEP {
 				'uacf7_multistep_next_prev_option' => array(
 					'id' => 'uacf7_multistep_next_prev_option',
 					'type' => 'color',
-					'label' => __( 'Color Options', 'ultimate-addons-cf7' ),
+					'label' => __( 'Color Options', 'ultimate-addons-for-contact-form-7' ),
 					'class' => 'tf-field-class',
 					'multiple' => true,
 					'inline' => true,
@@ -331,8 +331,8 @@ class UACF7_MULTISTEP {
 		ob_start();
 		$form_current = \WPCF7_ContactForm::get_current();
 		$meta = uacf7_get_form_option( $form_current->id(), 'multistep' );
-		$next_btn = isset( $meta[ 'next_btn_' . $tag->name ] ) ? $meta[ 'next_btn_' . $tag->name ] : esc_html__( 'Next', 'ultimate-addons-cf7' );
-		$prev_btn = isset( $meta[ 'prev_btn_' . $tag->name ] ) ? $meta[ 'prev_btn_' . $tag->name ] : esc_html__( 'Previous', 'ultimate-addons-cf7' );
+		$next_btn = isset( $meta[ 'next_btn_' . $tag->name ] ) ? $meta[ 'next_btn_' . $tag->name ] : esc_html__( 'Next', 'ultimate-addons-for-contact-form-7' );
+		$prev_btn = isset( $meta[ 'prev_btn_' . $tag->name ] ) ? $meta[ 'prev_btn_' . $tag->name ] : esc_html__( 'Previous', 'ultimate-addons-for-contact-form-7' );
 
 		?>
 		<div class="uacf7-step uacf7-step-<?php echo esc_attr( $form_current->id() ); ?> step-content"
@@ -346,9 +346,9 @@ class UACF7_MULTISTEP {
 		?>
 			<p class="uacf7-buttons">
 				<button class="uacf7-prev"
-					data-form-id="<?php echo esc_attr( $form_current->id() ); ?>"><?php echo esc_html__( 'Previous', 'ultimate-addons-cf7' ); ?></button>
+					data-form-id="<?php echo esc_attr( $form_current->id() ); ?>"><?php echo esc_html__( 'Previous', 'ultimate-addons-for-contact-form-7' ); ?></button>
 				<button class="uacf7-next"
-					data-form-id="<?php echo esc_attr( $form_current->id() ); ?>"><?php echo esc_html__( 'Next', 'ultimate-addons-cf7' ); ?></button>
+					data-form-id="<?php echo esc_attr( $form_current->id() ); ?>"><?php echo esc_html__( 'Next', 'ultimate-addons-for-contact-form-7' ); ?></button>
 				<span class="wpcf7-spinner uacf7-ajax-loader"></span>
 			</p>
 		</div>
@@ -411,14 +411,14 @@ class UACF7_MULTISTEP {
 
 		$tag_generator->add(
 			'uacf7_step_start',
-			__( 'Multistep Start', 'ultimate-addons-cf7' ),
+			__( 'Multistep Start', 'ultimate-addons-for-contact-form-7' ),
 			[ $this, 'tg_pane_step_start' ],
 			array( 'version' => '2' )
 		);
 
 		$tag_generator->add(
 			'uacf7_step_end',
-			__( 'Multistep End', 'ultimate-addons-cf7' ),
+			__( 'Multistep End', 'ultimate-addons-for-contact-form-7' ),
 			[ $this, 'tg_pane_step_end' ],
 			array( 'version' => '2' )
 		);
@@ -429,9 +429,9 @@ class UACF7_MULTISTEP {
 
 		$field_types = array(
 			'uacf7_step_start' => array(
-				'display_name' => __( 'Multistep Start', 'ultimate-addons-cf7' ),
-				'heading' => __( 'Generate tag: Step', 'ultimate-addons-cf7' ),
-				'description' => __( '', 'ultimate-addons-cf7' ),
+				'display_name' => __( 'Multistep Start', 'ultimate-addons-for-contact-form-7' ),
+				'heading' => __( 'Generate tag: Step', 'ultimate-addons-for-contact-form-7' ),
+				'description' => __( '', 'ultimate-addons-for-contact-form-7' ),
 			),
 		);
 
@@ -458,7 +458,7 @@ class UACF7_MULTISTEP {
 			?></p>
 			<div class="uacf7-doc-notice">
 				<?php echo sprintf(
-					__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+					__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
 					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-multi-step-forms/" target="_blank">Multi-step Form</a>'
 				); ?>
 			</div>
@@ -478,7 +478,7 @@ class UACF7_MULTISTEP {
 		<?php 
 
 		$tgg->print( 'default_value', array(
-			'title' => __( 'Label', 'ultimate-addons-cf7' ),
+			'title' => __( 'Label', 'ultimate-addons-for-contact-form-7' ),
 		) );
 
 		$tgg->print( 'field_name' );
@@ -488,7 +488,7 @@ class UACF7_MULTISTEP {
 
 		<fieldset>
 			<div class="uacf7-doc-notice uacf7-guide">
-				<?php echo esc_html( __( 'To activate the form, enable it from the "Multi-step Form" tab located under the Addons for CF7 Options. This tab also contains additional settings.', 'ultimate-addons-cf7' ) ); ?>
+				<?php echo esc_html( __( 'To activate the form, enable it from the "Multi-step Form" tab located under the Addons for CF7 Options. This tab also contains additional settings.', 'ultimate-addons-for-contact-form-7' ) ); ?>
 			</div>
 		</fieldset>
 			
@@ -510,9 +510,9 @@ class UACF7_MULTISTEP {
 	static function tg_pane_step_end( $contact_form, $options ) {
 		$field_types = array(
 			'uacf7_step_end' => array(
-				'display_name' => __( 'Multistep End', 'ultimate-addons-cf7' ),
-				'heading' => __( 'Generate tag: Multistep End', 'ultimate-addons-cf7' ),
-				'description' => __( '', 'ultimate-addons-cf7' ),
+				'display_name' => __( 'Multistep End', 'ultimate-addons-for-contact-form-7' ),
+				'heading' => __( 'Generate tag: Multistep End', 'ultimate-addons-for-contact-form-7' ),
+				'description' => __( '', 'ultimate-addons-for-contact-form-7' ),
 			),
 		);
 
@@ -602,14 +602,14 @@ class UACF7_MULTISTEP {
 					$fields[ 'uacf7_multistep_step_' . $step_count . '' ] = array(
 						'id' => 'uacf7_multistep_step_' . $step_count . '',
 						'type' => 'heading',
-						'label' => __( 'Step ' . $step_count . '', 'ultimate-addons-cf7' ),
+						'label' => __( 'Step ' . $step_count . '', 'ultimate-addons-for-contact-form-7' ),
 						'is_pro' => true,
 					);
 
 					$fields[ 'uacf7_progressbar_image_' . $step->name . '' ] = array(
 						'id' => 'uacf7_progressbar_image_' . $step->name . '',
 						'type' => 'image',
-						'label' => __( 'Add progressbar image for this step', 'ultimate-addons-cf7' ),
+						'label' => __( 'Add progressbar image for this step', 'ultimate-addons-for-contact-form-7' ),
 						'class' => 'tf-field-class',
 						'multiple' => false,
 						'inline' => true,
@@ -624,7 +624,7 @@ class UACF7_MULTISTEP {
 					$fields[ 'uacf7_progressbar_icon_' . $step->name . '' ] = array(
 						'id' => 'uacf7_progressbar_icon_' . $step->name . '',
 						'type' => 'icon',
-						'label' => __( 'Add progressbar icon for this step', 'ultimate-addons-cf7' ),
+						'label' => __( 'Add progressbar icon for this step', 'ultimate-addons-for-contact-form-7' ),
 						'class' => 'tf-field-class',
 						'multiple' => false,
 						'inline' => true,
@@ -644,7 +644,7 @@ class UACF7_MULTISTEP {
 						$fields[ 'next_btn_' . $step->name . '' ] = array(
 							'id' => 'next_btn_' . $step->name . '',
 							'type' => 'text',
-							'label' => __( 'Change next button text for this Step', 'ultimate-addons-cf7' ),
+							'label' => __( 'Change next button text for this Step', 'ultimate-addons-for-contact-form-7' ),
 							'field_width' => 50,
 							'is_pro' => true,
 						);
@@ -653,7 +653,7 @@ class UACF7_MULTISTEP {
 							$fields[ 'prev_btn_' . $step->name . '' ] = array(
 								'id' => 'prev_btn_' . $step->name . '',
 								'type' => 'text',
-								'label' => __( 'Change previous button text for this Step', 'ultimate-addons-cf7' ),
+								'label' => __( 'Change previous button text for this Step', 'ultimate-addons-for-contact-form-7' ),
 								'field_width' => 50,
 								'is_pro' => true,
 							);
@@ -661,14 +661,14 @@ class UACF7_MULTISTEP {
 							$fields[ 'next_btn_' . $step->name . '' ] = array(
 								'id' => 'next_btn_' . $step->name . '',
 								'type' => 'text',
-								'label' => __( 'Change next button text for this Step', 'ultimate-addons-cf7' ),
+								'label' => __( 'Change next button text for this Step', 'ultimate-addons-for-contact-form-7' ),
 								'field_width' => 50,
 								'is_pro' => true,
 							);
 							$fields[ 'prev_btn_' . $step->name . '' ] = array(
 								'id' => 'prev_btn_' . $step->name . '',
 								'type' => 'text',
-								'label' => __( 'Change previous button text for this Step', 'ultimate-addons-cf7' ),
+								'label' => __( 'Change previous button text for this Step', 'ultimate-addons-for-contact-form-7' ),
 								'field_width' => 50,
 								'is_pro' => true,
 							);
@@ -677,8 +677,8 @@ class UACF7_MULTISTEP {
 					$fields[ 'desc_title_' . $step->name . '' ] = array(
 						'id' => 'desc_title_' . $step->name . '',
 						'type' => 'text',
-						'label' => __( 'Description title', 'ultimate-addons-cf7' ),
-						'placeholder' => __( 'Description title', 'ultimate-addons-cf7' ),
+						'label' => __( 'Description title', 'ultimate-addons-for-contact-form-7' ),
+						'placeholder' => __( 'Description title', 'ultimate-addons-for-contact-form-7' ),
 						'is_pro' => true,
 						'field_width' => 50,
 						'dependency' => array(
@@ -689,8 +689,8 @@ class UACF7_MULTISTEP {
 					$fields[ 'step_desc_' . $step->name . '' ] = array(
 						'id' => 'step_desc_' . $step->name . '',
 						'type' => 'textarea',
-						'label' => __( 'Step description', 'ultimate-addons-cf7' ),
-						'placeholder' => __( 'Step description', 'ultimate-addons-cf7' ),
+						'label' => __( 'Step description', 'ultimate-addons-for-contact-form-7' ),
+						'placeholder' => __( 'Step description', 'ultimate-addons-for-contact-form-7' ),
 						'is_pro' => true,
 						'dependency' => array(
 							array( 'uacf7_progressbar_style', '!=', 'style-1' ),
@@ -706,8 +706,8 @@ class UACF7_MULTISTEP {
 					$fields[ 'step_form_desc_' . $step->name . '' ] = array(
 						'id' => 'step_form_desc_' . $step->name . '',
 						'type' => 'textarea',
-						'label' => __( 'Step Form description', 'ultimate-addons-cf7' ),
-						'placeholder' => __( 'Step Form description', 'ultimate-addons-cf7' ),
+						'label' => __( 'Step Form description', 'ultimate-addons-for-contact-form-7' ),
+						'placeholder' => __( 'Step Form description', 'ultimate-addons-for-contact-form-7' ),
 						'is_pro' => true,
 						'dependency' => array(
 							array( 'uacf7_progressbar_style', '!=', 'style-1' ),
@@ -936,7 +936,7 @@ class UACF7_MULTISTEP {
 
 	public function check_fields_validation() {
 		if ( ! wp_verify_nonce( $_REQUEST['ajax_nonce'], 'uacf7-multistep' ) ) {
-			exit( esc_html__( "Security error", 'ultimate-addons-cf7' ) );
+			exit( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );
 		}
 
 		$current_step_fields = explode( ',', $_REQUEST['current_fields_to_check'] );

@@ -180,7 +180,7 @@ class UACF7_STAR_RATING {
 
 		$tag_generator->add(
 			'uacf7_star_rating',
-			__( 'Star Rating', 'ultimate-addons-cf7' ),
+			__( 'Star Rating', 'ultimate-addons-for-contact-form-7' ),
 			[ $this, 'tg_pane_star_rating' ],
 			array( 'version' => '2' )
 		);
@@ -191,9 +191,9 @@ class UACF7_STAR_RATING {
 
 		$field_types = array(
 			'uacf7_star_rating' => array(
-				'display_name' => __( 'Star Rating', 'ultimate-addons-cf7' ),
-				'heading' => __( 'Generate a Star Rating Field.', 'ultimate-addons-cf7' ),
-				'description' => __( '', 'ultimate-addons-cf7' ),
+				'display_name' => __( 'Star Rating', 'ultimate-addons-for-contact-form-7' ),
+				'heading' => __( 'Generate a Star Rating Field.', 'ultimate-addons-for-contact-form-7' ),
+				'description' => __( '', 'ultimate-addons-for-contact-form-7' ),
 			),
 		);
 
@@ -220,7 +220,7 @@ class UACF7_STAR_RATING {
 			?></p>
 			<div class="uacf7-doc-notice">
 				<?php echo sprintf(
-					__( 'Confused? Check our Documentation on %1s.', 'ultimate-addons-cf7' ),
+					__( 'Confused? Check our Documentation on %1s.', 'ultimate-addons-for-contact-form-7' ),
 					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-star-rating-field/" target="_blank">Star Rating</a>'
 				); ?>
 			</div>
@@ -241,7 +241,7 @@ class UACF7_STAR_RATING {
 
 			<fieldset>
 				<legend>
-					<?php echo esc_html__( 'Rating Icon', 'ultimate-addons-cf7' ); ?>
+					<?php echo esc_html__( 'Rating Icon', 'ultimate-addons-for-contact-form-7' ); ?>
 				</legend>
 
 				<label for="star1">
@@ -288,7 +288,7 @@ class UACF7_STAR_RATING {
 				</label>
 
 				<legend>
-					<?php _e( 'Icon Class', 'ultimate-addons-cf7' ); ?>
+					<?php _e( 'Icon Class', 'ultimate-addons-for-contact-form-7' ); ?>
 				</legend>
 
 				<input data-tag-part="option" data-tag-option="class:" id="tag-generator-panel-text-star-class" type="text"
@@ -304,13 +304,13 @@ class UACF7_STAR_RATING {
 
 			<fieldset>
 				<legend>
-					<?php _e( 'Star Rating Style', 'ultimate-addons-cf7' ); ?>
+					<?php _e( 'Star Rating Style', 'ultimate-addons-for-contact-form-7' ); ?>
 				</legend>
 
 				<?php ob_start() ?>
 				<select data-tag-part="value" name="values" disabled id="tag-generator-panel-range-style">
 					<option value="default">
-						<?php _e( 'Default', 'ultimate-addons-cf7' ); ?>
+						<?php _e( 'Default', 'ultimate-addons-for-contact-form-7' ); ?>
 					</option>
 				</select>
 				<a href="https://cf7addons.com/preview/star-rating/pro" style="color:red">(Pro)</a>
@@ -323,21 +323,21 @@ class UACF7_STAR_RATING {
 
 			<fieldset>
 				<legend>
-					<?php _e( 'Default Star Rating', 'ultimate-addons-cf7' ); ?>
+					<?php _e( 'Default Star Rating', 'ultimate-addons-for-contact-form-7' ); ?>
 				</legend>
 
 				<input type="number" data-tag-part="option" data-tag-option="selected:" name="selected"
 					id="tag-generator-panel-text-selected" placeholder="5" />
 
 				<p>
-					<?php _e( 'Change the values of star. Default value: 1,2,3,4,5', 'ultimate-addons-cf7' ); ?>
+					<?php _e( 'Change the values of star. Default value: 1,2,3,4,5', 'ultimate-addons-for-contact-form-7' ); ?>
 				</p>
 				</td>
 			</fieldset>
 
 			<fieldset>
 				<legend>
-					<?php _e( 'Star 1', 'ultimate-addons-cf7' ); ?>
+					<?php _e( 'Star 1', 'ultimate-addons-for-contact-form-7' ); ?>
 				</legend>
 				<input type="text" data-tag-part="option" data-tag-option="star1:" name="star1"
 					id="tag-generator-panel-text-star1">
@@ -345,7 +345,7 @@ class UACF7_STAR_RATING {
 
 			<fieldset>
 				<legend>
-					<?php _e( 'Star 2', 'ultimate-addons-cf7' ); ?>
+					<?php _e( 'Star 2', 'ultimate-addons-for-contact-form-7' ); ?>
 				</legend>
 				<input type="text" data-tag-part="option" data-tag-option="star2:" name="star2"
 					id="tag-generator-panel-text-star2">
@@ -353,7 +353,7 @@ class UACF7_STAR_RATING {
 
 			<fieldset>
 				<legend>
-					<?php _e( 'Star 3', 'ultimate-addons-cf7' ); ?>
+					<?php _e( 'Star 3', 'ultimate-addons-for-contact-form-7' ); ?>
 				</legend>
 				<input type="text" data-tag-part="option" data-tag-option="star3:" name="star3"
 					id="tag-generator-panel-text-star3">
@@ -361,7 +361,7 @@ class UACF7_STAR_RATING {
 
 			<fieldset>
 				<legend>
-					<?php _e( 'Star 4', 'ultimate-addons-cf7' ); ?>
+					<?php _e( 'Star 4', 'ultimate-addons-for-contact-form-7' ); ?>
 				</legend>
 				<input type="text" data-tag-part="option" data-tag-option="star4:" name="star4"
 					id="tag-generator-panel-text-star3">
@@ -369,7 +369,7 @@ class UACF7_STAR_RATING {
 
 			<fieldset>
 				<legend>
-					<?php _e( 'Star 5', 'ultimate-addons-cf7' ); ?>
+					<?php _e( 'Star 5', 'ultimate-addons-for-contact-form-7' ); ?>
 				</legend>
 				<input type="text" data-tag-part="option" data-tag-option="star5:" name="star5"
 					id="tag-generator-panel-text-star4">

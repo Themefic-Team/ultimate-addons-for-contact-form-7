@@ -60,16 +60,16 @@ class UACF7_CF {
 	public function uacf7_post_meta_options_conditional_field( $value, $post_id ) {
 
 		$conditional = apply_filters( 'uacf7_post_meta_options_conditional_field_pro', $data = array(
-			'title' => __( 'Conditional Fields', 'ultimate-addons-cf7' ),
+			'title' => __( 'Conditional Fields', 'ultimate-addons-for-contact-form-7' ),
 			'icon' => 'fa-solid fa-fan',
 			'checked_field' => 'conditional_repeater',
 			'fields' => array(
 				'conditional_heading' => array(
 					'id' => 'conditional_heading',
 					'type' => 'heading',
-					'label' => __( 'Conditional Fields Settings', 'ultimate-addons-cf7' ),
+					'label' => __( 'Conditional Fields Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-						__( 'Show or hide Contact Form 7 fields based on Conditional Logic. See Demo %1s.', 'ultimate-addons-cf7' ),
+						__( 'Show or hide Contact Form 7 fields based on Conditional Logic. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="https://cf7addons.com/preview/contact-form-7-conditional-fields/" target="_blank">Example</a>'
 					)
 				),
@@ -78,7 +78,7 @@ class UACF7_CF {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
+						__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-conditional-fields/" target="_blank">Conditional Fields</a>',
 						'<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-conditional-fields-pro/" target="_blank">Conditional Fields (Pro)</a>'
 					)
@@ -86,19 +86,19 @@ class UACF7_CF {
 				'conditional_form_options_heading' => array(
 					'id' => 'conditional_form_options_heading',
 					'type' => 'heading',
-					'label' => __( 'Conditional Option ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Conditional Option ', 'ultimate-addons-for-contact-form-7' ),
 				),
 				'conditional_repeater' => array(
 					'id' => 'conditional_repeater',
 					'type' => 'repeater',
-					'label' => __( 'Setup your Conditional Logic', 'ultimate-addons-cf7' ),
-					'subtitle' => __( "The process involves selecting a field and determining its visibility (either visible or hidden) based on whether any or all specified conditions are met. These conditions are triggered by the conditional value you establish for another field.", 'ultimate-addons-cf7' ),
+					'label' => __( 'Setup your Conditional Logic', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( "The process involves selecting a field and determining its visibility (either visible or hidden) based on whether any or all specified conditions are met. These conditions are triggered by the conditional value you establish for another field.", 'ultimate-addons-for-contact-form-7' ),
 					'class' => 'tf-field-class',
 					'fields' => array(
 						'uacf7_cf_group' => array(
 							'id' => 'uacf7_cf_group',
 							'type' => 'select',
-							'label' => __( 'Choose Field', 'ultimate-addons-cf7' ),
+							'label' => __( 'Choose Field', 'ultimate-addons-for-contact-form-7' ),
 							'subtitle' => "Wrap a field with this shortcode: [conditional conditional-123][/conditional]. Replace 'conditional-123' with your specific ID.",
 							'class' => 'tf-field-class',
 							'options' => 'uacf7',
@@ -111,7 +111,7 @@ class UACF7_CF {
 						'uacf7_cf_hs' => array(
 							'id' => 'uacf7_cf_hs',
 							'type' => 'select',
-							'label' => __( 'Visibility', 'ultimate-addons-cf7' ),
+							'label' => __( 'Visibility', 'ultimate-addons-for-contact-form-7' ),
 							'subtitle' => "Select whether this field should be visible or hidden when the condition below is met.",
 							'class' => 'tf-field-class',
 							'options' => array(
@@ -123,7 +123,7 @@ class UACF7_CF {
 						'uacf7_cf_condition_for' => array(
 							'id' => 'uacf7_cf_condition_for',
 							'type' => 'select',
-							'label' => __( 'If', 'ultimate-addons-cf7' ),
+							'label' => __( 'If', 'ultimate-addons-for-contact-form-7' ),
 							'subtitle' => "Choose the trigger for the condition: it should activate if 'any' one of the conditions is met or when 'all' conditions.",
 							'class' => 'tf-field-class',
 							'options' => array(
@@ -136,14 +136,14 @@ class UACF7_CF {
 						'uacf7_cf_conditions' => array(
 							'id' => 'uacf7_cf_conditions',
 							'type' => 'repeater',
-							'label' => __( 'Add Condition', 'ultimate-addons-cf7' ),
+							'label' => __( 'Add Condition', 'ultimate-addons-for-contact-form-7' ),
 							'class' => 'tf-field-class',
 							'fields' => array(
 
 								'uacf7_cf_tn' => array(
 									'id' => 'uacf7_cf_tn',
 									'type' => 'select',
-									'label' => __( 'Conditional Field', 'ultimate-addons-cf7' ),
+									'label' => __( 'Conditional Field', 'ultimate-addons-for-contact-form-7' ),
 									'class' => 'tf-field-class',
 									'options' => 'uacf7',
 									'query_args' => array(
@@ -155,7 +155,7 @@ class UACF7_CF {
 								'uacf7_cf_operator' => array(
 									'id' => 'uacf7_cf_operator',
 									'type' => 'select',
-									'label' => __( 'is', 'ultimate-addons-cf7' ),
+									'label' => __( 'is', 'ultimate-addons-for-contact-form-7' ),
 									'class' => 'tf-field-class',
 									'options' => array(
 										'equal' => 'equal',
@@ -218,7 +218,7 @@ class UACF7_CF {
 
 		$tag_generator->add(
 			'conditional',
-			__( 'Conditional Wraper', 'ultimate-addons-cf7' ),
+			__( 'Conditional Wraper', 'ultimate-addons-for-contact-form-7' ),
 			[ $this, 'tg_pane_conditional' ],
 			array( 'version' => '2' )
 		);
@@ -228,8 +228,8 @@ class UACF7_CF {
 		$field_types = array(
 			'conditional' => array(
 				'display_name' => __( 'conditional area', 'contact-form-7' ),
-				'heading' => __( 'Generate a conditional tag to wrap the elements that can be shown conditionally.', 'ultimate-addons-cf7' ),
-				'description' => __( 'Check "Conditional Fields" tab located under the Addons for CF7 Options for additional settings. Make sure to set those, otherwise the conditions may not work correctly.', 'ultimate-addons-cf7' ),
+				'heading' => __( 'Generate a conditional tag to wrap the elements that can be shown conditionally.', 'ultimate-addons-for-contact-form-7' ),
+				'description' => __( 'Check "Conditional Fields" tab located under the Addons for CF7 Options for additional settings. Make sure to set those, otherwise the conditions may not work correctly.', 'ultimate-addons-for-contact-form-7' ),
 			),
 		);
 

@@ -239,7 +239,7 @@ class Uacf7_Dashboard_Promo_Notice {
 			<button
 				type="button"
 				class="uacf7-promo-close"
-				aria-label="<?php esc_attr_e( 'Dismiss', 'ultimate-addons-cf7' ); ?>"
+				aria-label="<?php esc_attr_e( 'Dismiss', 'ultimate-addons-for-contact-form-7' ); ?>"
 			>
 				<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 0.5L0.5 8M0.5 0.5L8 8" stroke="#626A6A" stroke-linecap="round" stroke-linejoin="round"/>
@@ -258,7 +258,7 @@ class Uacf7_Dashboard_Promo_Notice {
 					<?php
 					echo esc_html(
 						sprintf(
-							__( 'Lifetime License only for $%s', 'ultimate-addons-cf7' ),
+							__( 'Lifetime License only for $%s', 'ultimate-addons-for-contact-form-7' ),
 							number_format_i18n( $offer['discount_price'] )
 						)
 					);
@@ -268,7 +268,7 @@ class Uacf7_Dashboard_Promo_Notice {
 				<p>
 					<?php esc_html_e(
 						'All PRO features included.',
-						'ultimate-addons-cf7'
+						'ultimate-addons-for-contact-form-7'
 					); ?>
 				</p>
 
@@ -282,7 +282,7 @@ class Uacf7_Dashboard_Promo_Notice {
 				>
 					
 					<div class="buy-now-text">
-						<?php esc_html_e( 'Buy Now', 'ultimate-addons-cf7' ); ?>
+						<?php esc_html_e( 'Buy Now', 'ultimate-addons-for-contact-form-7' ); ?>
 					</div>
 					<div class="arrow-icon">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

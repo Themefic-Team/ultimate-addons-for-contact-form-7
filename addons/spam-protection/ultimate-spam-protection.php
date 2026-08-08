@@ -28,18 +28,18 @@ class UACF7_SPAM_PROTECTION {
 			'uacf7_spam_protection_settings',  // Name of the JavaScript object
 			[ 
 				'enable_spam_protection_pro' => $spam_protection_pro, // Data to pass
-				'captchaARequiredMessage' => __( 'CAPTCHA field is required. Please enter the answer.', 'ultimate-addons-cf7' ),
-				'captchaValidatedMessage' => __( 'CAPTCHA validated successfully.', 'ultimate-addons-cf7' ),
-				'captchaValidationFailed' => __( 'CAPTCHA validation failed. Please try again.', 'ultimate-addons-cf7' ),
+				'captchaARequiredMessage' => __( 'CAPTCHA field is required. Please enter the answer.', 'ultimate-addons-for-contact-form-7' ),
+				'captchaValidatedMessage' => __( 'CAPTCHA validated successfully.', 'ultimate-addons-for-contact-form-7' ),
+				'captchaValidationFailed' => __( 'CAPTCHA validation failed. Please try again.', 'ultimate-addons-for-contact-form-7' ),
 			]
 		);
 		// Localize the script to pass PHP data to JavaScript
 		wp_localize_script(
 			'uacf7-spam-protection-image', 'uacf7_spam_protection_settings', [ 
 				'enable_spam_protection_pro' => $spam_protection_pro, // Data to pass
-				'captchaRequiredMessage' => __( 'CAPTCHA field is required. Please enter the answer.', 'ultimate-addons-cf7' ),
-				'captchaSuccessMessage' => __( 'CAPTCHA validated successfully.', 'ultimate-addons-cf7' ),
-				'captchaFailedMessage' => __( 'CAPTCHA validation failed. Please try again.', 'ultimate-addons-cf7' ),
+				'captchaRequiredMessage' => __( 'CAPTCHA field is required. Please enter the answer.', 'ultimate-addons-for-contact-form-7' ),
+				'captchaSuccessMessage' => __( 'CAPTCHA validated successfully.', 'ultimate-addons-for-contact-form-7' ),
+				'captchaFailedMessage' => __( 'CAPTCHA validation failed. Please try again.', 'ultimate-addons-for-contact-form-7' ),
 			]
 		);
 
@@ -48,7 +48,7 @@ class UACF7_SPAM_PROTECTION {
 
 	public function uacf7_post_meta_options_spam_protection( $value, $post_id ) {
 		$spam_protection = apply_filters( 'uacf7_post_meta_options_spam_protection_pro', $data = array(
-			'title' => __( 'Spam Protection', 'ultimate-addons-cf7' ),
+			'title' => __( 'Spam Protection', 'ultimate-addons-for-contact-form-7' ),
 			'icon' => 'fa-solid fa-spaghetti-monster-flying',
 			'checked_field' => 'uacf7_spam_protection_enable',
 
@@ -56,11 +56,11 @@ class UACF7_SPAM_PROTECTION {
 				'uacf7_spam_protection_heading' => array(
 					'id' => 'uacf7_spam_protection_heading',
 					'type' => 'heading',
-					'label' => __( 'Spam Protection Settings', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'This feature will help you to protect your form submission from Spam attacks.', 'ultimate-addons-cf7' ),
+					'label' => __( 'Spam Protection Settings', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'This feature will help you to protect your form submission from Spam attacks.', 'ultimate-addons-for-contact-form-7' ),
 					'content' => sprintf(
 						// Translators: %1$s is replaced with the link to documentation.
-						esc_html__( 'Add spam protection for your contact form 7 forms. %s .', 'ultimate-addons-cf7' ),
+						esc_html__( 'Add spam protection for your contact form 7 forms. %s .', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="https://cf7addons.com/preview/spam-protection/" target="_blank">See Demo</a>',
 
 					),
@@ -72,7 +72,7 @@ class UACF7_SPAM_PROTECTION {
 					'style' => 'success',
 					'content' => sprintf(
 						// Translators: %1$s is replaced with the link to documentation. 
-						esc_html__( 'Not sure how to set this? Check our step-by-step documentation on  %s .', 'ultimate-addons-cf7' ),
+						esc_html__( 'Not sure how to set this? Check our step-by-step documentation on  %s .', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection/" target="_blank">Spam Protection</a>',
 					),
 				),
@@ -80,15 +80,15 @@ class UACF7_SPAM_PROTECTION {
 				'uacf7_spam_protection_enable' => array(
 					'id' => 'uacf7_spam_protection_enable',
 					'type' => 'switch',
-					'label' => __( 'Enable Spam Protection', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( 'Enable Spam Protection', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default' => false
 				),
 				'uacf7_spam_protection_type' => array(
 					'id' => 'uacf7_spam_protection_type',
 					'type' => 'select',
-					'label' => __( 'Protection Type', 'ultimate-addons-cf7' ),
+					'label' => __( 'Protection Type', 'ultimate-addons-for-contact-form-7' ),
 					'options' => array(
 						'arithmathic_recognation' => 'Arithmetic Recognition',
 						'image_recognation' => 'Image Recognition',
@@ -98,24 +98,24 @@ class UACF7_SPAM_PROTECTION {
 				'uacf7_spam_protection_placeholder_text' => array(
 					'id'       => 'uacf7_spam_protection_placeholder_text',
 					'type'     => 'text',
-					'label'    => __( 'Placeholder Text', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Set the placeholder text for the CAPTCHA field.', 'ultimate-addons-cf7' ),
+					'label'    => __( 'Placeholder Text', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'Set the placeholder text for the CAPTCHA field.', 'ultimate-addons-for-contact-form-7' ),
 					'is_pro'   => false,
 					'default'  => 'Enter CAPTCHA answer',
 				),
 				'uacf7_minimum_time_limit' => array(
 					'id' => 'uacf7_minimum_time_limit',
 					'type' => 'number',
-					'label' => __( 'Each Submission Difference', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'To prevent spamming bots, you can set a time limit to restrict too frequent submissions. Please specify the time limit in seconds. Default: 5 seconds', 'ultimate-addons-cf7' ),
-					'placeholder' => __( '5', 'ultimate-addons-cf7' ),
+					'label' => __( 'Each Submission Difference', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'To prevent spamming bots, you can set a time limit to restrict too frequent submissions. Please specify the time limit in seconds. Default: 5 seconds', 'ultimate-addons-for-contact-form-7' ),
+					'placeholder' => __( '5', 'ultimate-addons-for-contact-form-7' ),
 					'default' => 5,
 					'is_pro' => true
 				),
 				'uacf7_spam_email_protection_type' => array(
 					'id' => 'uacf7_spam_email_protection_type',
 					'type' => 'select',
-					'label' => __( 'Email Protection List Type', 'ultimate-addons-cf7' ),
+					'label' => __( 'Email Protection List Type', 'ultimate-addons-for-contact-form-7' ),
 					'options' => array(
 						'none'      => 'None',
 						'allowlist' => 'Allowlist',
@@ -127,8 +127,8 @@ class UACF7_SPAM_PROTECTION {
 				'uacf7_spam_email_protection_allow_list' => array(
 					'id'       => 'uacf7_spam_email_protection_allow_list',
 					'type'     => 'textarea',
-					'label'    => __( 'Email Protection List', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Restrict which email addresses are allowed. Be sure to separate each email address with a comma.', 'ultimate-addons-cf7' ),
+					'label'    => __( 'Email Protection List', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'Restrict which email addresses are allowed. Be sure to separate each email address with a comma.', 'ultimate-addons-for-contact-form-7' ),
 					'is_pro'   => true,
 					'dependency' => array(
 							array( 'uacf7_spam_email_protection_type', '==', 'allowlist' ),
@@ -137,8 +137,8 @@ class UACF7_SPAM_PROTECTION {
 				'uacf7_spam_email_protection_deny_list' => array(
 					'id'       => 'uacf7_spam_email_protection_deny_list',
 					'type'     => 'textarea',
-					'label'    => __( 'Email Protection List', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Restrict which email addresses are allowed. Be sure to separate each email address with a comma.', 'ultimate-addons-cf7' ),
+					'label'    => __( 'Email Protection List', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'Restrict which email addresses are allowed. Be sure to separate each email address with a comma.', 'ultimate-addons-for-contact-form-7' ),
 					'is_pro'   => true,
 					'dependency' => array(
 							array( 'uacf7_spam_email_protection_type', '==', 'denylist' ),
@@ -147,29 +147,29 @@ class UACF7_SPAM_PROTECTION {
 				// 'uacf7_word_filter' => array(
 				// 	'id' => 'uacf7_word_filter',
 				// 	'type' => 'textarea',
-				// 	'label' => __('Word Filtering', 'ultimate-addons-cf7'),
-				// 	'subtitle' => __('Enlist the words you want to avoid from Spammer, Separate the words using a Comma. If that word/s found in the message it will skip to the email (email will not send to mail)', 'ultimate-addons-cf7'),
-				// 	'placeholder' => __('E.g. evil, earning money, scam', 'ultimate-addons-cf7'),
+				// 	'label' => __('Word Filtering', 'ultimate-addons-for-contact-form-7'),
+				// 	'subtitle' => __('Enlist the words you want to avoid from Spammer, Separate the words using a Comma. If that word/s found in the message it will skip to the email (email will not send to mail)', 'ultimate-addons-for-contact-form-7'),
+				// 	'placeholder' => __('E.g. evil, earning money, scam', 'ultimate-addons-for-contact-form-7'),
 				// 	'is_pro' => true
 				// ),
 				// 'uacf7_ip_block' => array(
 				// 	'id' => 'uacf7_ip_block',
 				// 	'type' => 'textarea',
-				// 	'label' => __( 'IP Block', 'ultimate-addons-cf7' ),
-				// 	'subtitle' => __( 'Enlist the IP you want to Ban / Block, Separate the IPs using a Comma', 'ultimate-addons-cf7' ),
-				// 	'placeholder' => __( 'E.g. 192.158.1.38,192.158.1.39,192.158.1.40', 'ultimate-addons-cf7' ),
+				// 	'label' => __( 'IP Block', 'ultimate-addons-for-contact-form-7' ),
+				// 	'subtitle' => __( 'Enlist the IP you want to Ban / Block, Separate the IPs using a Comma', 'ultimate-addons-for-contact-form-7' ),
+				// 	'placeholder' => __( 'E.g. 192.158.1.38,192.158.1.39,192.158.1.40', 'ultimate-addons-for-contact-form-7' ),
 				// 	'is_pro' => true
 				// ),
 				// 'uacf7_blocked_countries' => array(
 				// 	'id' => 'uacf7_blocked_countries',
 				// 	'type' => 'textarea',
-				// 	'label' => __( 'Country Block', 'ultimate-addons-cf7' ),
+				// 	'label' => __( 'Country Block', 'ultimate-addons-for-contact-form-7' ),
 				// 	'subtitle' => sprintf(
 				// 		// Translators: %1$s is replaced with the link to documentation.
-				// 		esc_html__( 'Enlist the Country or Countries that you want to Ban / Block. Separate the Countries %s using a Comma', 'ultimate-addons-cf7' ),
-				// 		'<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" target="_blank">' . __( 'iso2 name', 'ultimate-addons-cf7' ) . '</a>'
+				// 		esc_html__( 'Enlist the Country or Countries that you want to Ban / Block. Separate the Countries %s using a Comma', 'ultimate-addons-for-contact-form-7' ),
+				// 		'<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" target="_blank">' . __( 'iso2 name', 'ultimate-addons-for-contact-form-7' ) . '</a>'
 				// 	),
-				// 	'placeholder' => __( 'E.g. us,ca,uk', 'ultimate-addons-cf7' ),
+				// 	'placeholder' => __( 'E.g. us,ca,uk', 'ultimate-addons-for-contact-form-7' ),
 				// 	'is_pro' => true
 				// ),
 
@@ -185,7 +185,7 @@ class UACF7_SPAM_PROTECTION {
 	public function uacf7_spam_protection_tag_generator() {
 		wpcf7_add_tag_generator(
 			'uacf7_spam_protection',
-			__( 'Spam Protection', 'ultimate-addons-cf7' ),
+			__( 'Spam Protection', 'ultimate-addons-for-contact-form-7' ),
 			'uacf7-tg-pane-spam-protection',
 			array( $this, 'tg_pane_spam_protection' ),
 			array( 'version' => '2' )
@@ -199,9 +199,9 @@ class UACF7_SPAM_PROTECTION {
 
 		$field_types = array(
 			'uacf7_spam_protection' => array(
-				'display_name' => __( 'Spam Protection', 'ultimate-addons-cf7' ),
-				'heading' => __( 'Spam Protection', 'ultimate-addons-cf7' ),
-				'description' => __( '', 'ultimate-addons-cf7' ),
+				'display_name' => __( 'Spam Protection', 'ultimate-addons-for-contact-form-7' ),
+				'heading' => __( 'Spam Protection', 'ultimate-addons-for-contact-form-7' ),
+				'description' => __( '', 'ultimate-addons-for-contact-form-7' ),
 			),
 		);
 
@@ -229,7 +229,7 @@ class UACF7_SPAM_PROTECTION {
 			<div class="uacf7-doc-notice">
 				<?php echo sprintf(
 					// Translators: %1$s is replaced with the link to documentation. 
-					esc_html__( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-cf7' ),
+					esc_html__( 'Not sure how to set this? Check our step by step  %1s.', 'ultimate-addons-for-contact-form-7' ),
 					'<a href="https://themefic.com/docs/uacf7/free-addons/spam-protection/" target="_blank">documentation</a>'
 				); ?>
 			</div>

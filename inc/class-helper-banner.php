@@ -88,7 +88,7 @@ class Uacf7_Helper_Banner {
                     </svg>
                 </span>
                 <span class="promo-discount-percent"><?php echo esc_html($discount_percentage); ?>%</span>
-                <span class="promo-discount-text"><?php echo __('Discount', 'ultimate-addons-cf7'); ?></span>
+                <span class="promo-discount-text"><?php echo __('Discount', 'ultimate-addons-for-contact-form-7'); ?></span>
             </div>
             <div class="promo-description">
                 <p><?php echo esc_html($description); ?></p>

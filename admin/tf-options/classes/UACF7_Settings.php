@@ -116,8 +116,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			//Addons submenu
 			add_submenu_page(
 				$this->option_id,
-				__( 'All Addons', 'ultimate-addons-cf7' ),
-				__( 'All Addons', 'ultimate-addons-cf7' ),
+				__( 'All Addons', 'ultimate-addons-for-contact-form-7' ),
+				__( 'All Addons', 'ultimate-addons-for-contact-form-7' ),
 				'manage_options',
 				'uacf7_addons',
 				array( $this, 'uacf7_addons_page' ),
@@ -126,8 +126,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			// All Forms
 			add_submenu_page(
 				$this->option_id,
-				__( 'All Forms', 'ultimate-addons-cf7' ),
-				__( 'All Forms', 'ultimate-addons-cf7' ),
+				__( 'All Forms', 'ultimate-addons-for-contact-form-7' ),
+				__( 'All Forms', 'ultimate-addons-for-contact-form-7' ),
 				'manage_options',
 				'admin.php?page=wpcf7',
 				// array( $this, 'uacf7_create_database_page' ),
@@ -135,8 +135,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			// All Forms
 			add_submenu_page(
 				$this->option_id,
-				__( 'Add New Form', 'ultimate-addons-cf7' ),
-				__( 'Add New Form', 'ultimate-addons-cf7' ),
+				__( 'Add New Form', 'ultimate-addons-for-contact-form-7' ),
+				__( 'Add New Form', 'ultimate-addons-for-contact-form-7' ),
 				'manage_options',
 				'admin.php?page=wpcf7-new',
 				// array( $this, 'uacf7_create_database_page' ),
@@ -146,8 +146,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			// 
 			add_submenu_page(
 				$this->option_id, //parent slug
-				__( 'Settings', 'ultimate-addons-cf7' ), // page_title
-				__( 'Settings', 'ultimate-addons-cf7' ), // menu_title
+				__( 'Settings', 'ultimate-addons-for-contact-form-7' ), // page_title
+				__( 'Settings', 'ultimate-addons-for-contact-form-7' ), // menu_title
 				'manage_options', // capability
 				$this->option_id . '#tab=mailchimp', // menu_slug
 				array( $this, 'tf_options_page' ) // function
@@ -157,8 +157,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				//License Info submenu 
 				add_submenu_page(
 					$this->option_id, //parent slug
-					__( 'Pro License', 'ultimate-addons-cf7' ),
-					__( 'Pro License', 'ultimate-addons-cf7' ),
+					__( 'Pro License', 'ultimate-addons-for-contact-form-7' ),
+					__( 'Pro License', 'ultimate-addons-for-contact-form-7' ),
 					'manage_options',
 					'uacf7_license_info',
 					array( $this, 'uacf7_license_info_callback' ),
@@ -168,8 +168,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			// //Get Help submenu
 			// add_submenu_page(
 			// 	$this->option_id, //parent slug
-			// 	__('Get Help', 'ultimate-addons-cf7'),
-			// 	__('Get Help', 'ultimate-addons-cf7'),
+			// 	__('Get Help', 'ultimate-addons-for-contact-form-7'),
+			// 	__('Get Help', 'ultimate-addons-for-contact-form-7'),
 			// 	'manage_options',
 			// 	'tf_get_help',
 			// 	array( $this,'tf_get_help_callback'),
@@ -209,7 +209,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										d="M17.9423 5.08086V8.67502C17.9423 10.4721 17.3855 11.6941 16.272 12.368C16.0026 12.5298 15.6884 12.3141 15.6884 11.9996L15.6973 8.67502C15.6973 5.08086 13.641 3.0232 10.0491 3.0232L4.58048 3.03219C4.26619 3.03219 4.05067 2.7177 4.21231 2.44814C4.88578 1.33395 6.10702 0.776855 7.89398 0.776855H13.641C16.5055 0.776855 17.9423 2.21452 17.9423 5.08086Z"
 										fill="#003c79"></path>
 								</svg>
-								<span><?php _e( "Need Help?", "ultimate-addons-cf7" ); ?></span>
+								<span><?php _e( "Need Help?", "ultimate-addons-for-contact-form-7" ); ?></span>
 							</a>
 							<a href="https://themefic.com/docs/uacf7/" target="_blank">
 								<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -217,7 +217,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										d="M16.1896 7.57803H13.5902C11.4586 7.57803 9.72274 5.84103 9.72274 3.70803V1.10703C9.72274 0.612031 9.318 0.207031 8.82332 0.207031H5.00977C2.23956 0.207031 0 2.00703 0 5.22003V13.194C0 16.407 2.23956 18.207 5.00977 18.207H12.0792C14.8494 18.207 17.089 16.407 17.089 13.194V8.47803C17.089 7.98303 16.6843 7.57803 16.1896 7.57803ZM8.09478 14.382H4.4971C4.12834 14.382 3.82254 14.076 3.82254 13.707C3.82254 13.338 4.12834 13.032 4.4971 13.032H8.09478C8.46355 13.032 8.76935 13.338 8.76935 13.707C8.76935 14.076 8.46355 14.382 8.09478 14.382ZM9.89363 10.782H4.4971C4.12834 10.782 3.82254 10.476 3.82254 10.107C3.82254 9.73803 4.12834 9.43203 4.4971 9.43203H9.89363C10.2624 9.43203 10.5682 9.73803 10.5682 10.107C10.5682 10.476 10.2624 10.782 9.89363 10.782Z"
 										fill="#003c79"></path>
 								</svg>
-								<span><?php _e( "Documentation", "ultimate-addons-cf7" ); ?></span>
+								<span><?php _e( "Documentation", "ultimate-addons-for-contact-form-7" ); ?></span>
 
 							</a>
 							<a href="https://portal.themefic.com/support/" target="_blank">
@@ -226,7 +226,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										d="M13.5902 7.57803H16.1896C16.6843 7.57803 17.089 7.98303 17.089 8.47803V13.194C17.089 16.407 14.8494 18.207 12.0792 18.207H5.00977C2.23956 18.207 0 16.407 0 13.194V5.22003C0 2.00703 2.23956 0.207031 5.00977 0.207031H8.82332C9.318 0.207031 9.72274 0.612031 9.72274 1.10703V3.70803C9.72274 5.84103 11.4586 7.57803 13.5902 7.57803ZM11.9613 0.396012C11.5926 0.0270125 10.954 0.279013 10.954 0.792013V3.93301C10.954 5.24701 12.0693 6.33601 13.4274 6.33601C14.2818 6.34501 15.4689 6.34501 16.4852 6.34501H16.4854C16.998 6.34501 17.2679 5.74201 16.9081 5.38201C16.4894 4.96018 15.9637 4.42927 15.3988 3.85888L15.3932 3.85325L15.3913 3.85133L15.3905 3.8505L15.3902 3.85016C14.2096 2.65803 12.86 1.29526 11.9613 0.396012ZM3.0145 12.0732C3.0145 11.7456 3.28007 11.48 3.60768 11.48H5.32132V9.76639C5.32132 9.43879 5.58689 9.17321 5.9145 9.17321C6.2421 9.17321 6.50768 9.43879 6.50768 9.76639V11.48H8.22131C8.54892 11.48 8.8145 11.7456 8.8145 12.0732C8.8145 12.4008 8.54892 12.6664 8.22131 12.6664H6.50768V14.38C6.50768 14.7076 6.2421 14.9732 5.9145 14.9732C5.58689 14.9732 5.32132 14.7076 5.32132 14.38V12.6664H3.60768C3.28007 12.6664 3.0145 12.4008 3.0145 12.0732Z"
 										fill="#003c79"></path>
 								</svg>
-								<span><?php _e( "Feature Request", "ultimate-addons-cf7" ); ?></span>
+								<span><?php _e( "Feature Request", "ultimate-addons-for-contact-form-7" ); ?></span>
 							</a>
 						</div>
 					</div>
@@ -251,7 +251,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				<div class="uacf7-addons-settings-page">
 					<div class="uacf7-addons-settings-page-wrapper">
 						<h1 class="uacf7-setting-title">
-							<?php echo esc_html__( 'Ultra Addons for Contact Form 7 (UACF7) Settings', 'ultimate-addons-cf7' ) ?>
+							<?php echo esc_html__( 'Ultra Addons for Contact Form 7 (UACF7) Settings', 'ultimate-addons-for-contact-form-7' ) ?>
 						</h1>
 						<form method="post" action="" class="tf-option-form tf-ajax-save" enctype="multipart/form-data">
 							<div class="uacf7-settings-heading">
@@ -272,13 +272,13 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								<div class="uacf7-settings-heading-wrap">
 									<div class="uacf7-addon-filter-cta">
 										<button
-											class="uacf7-addon-filter-button all active"><?php _e( 'All', 'ultimate-addons-cf7' ) ?>
+											class="uacf7-addon-filter-button all active"><?php _e( 'All', 'ultimate-addons-for-contact-form-7' ) ?>
 											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
 										<button
-											class="uacf7-addon-filter-button deactive"><?php _e( 'Free', 'ultimate-addons-cf7' ) ?>
+											class="uacf7-addon-filter-button deactive"><?php _e( 'Free', 'ultimate-addons-for-contact-form-7' ) ?>
 											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
 										<button
-											class="uacf7-addon-filter-button activete"><?php _e( 'Pro', 'ultimate-addons-cf7' ) ?>
+											class="uacf7-addon-filter-button activete"><?php _e( 'Pro', 'ultimate-addons-for-contact-form-7' ) ?>
 											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
 									</div>
 								</div>
@@ -331,7 +331,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 											<h2 class="uacf7-single-addon-title"><?php echo esc_html( $field['label'] ) ?></h2>
 											<p class="uacf7-single-addon-desc">
 												<?php echo isset( $field['subtitle'] ) ? $field['subtitle'] : ''; ?>
-												<?php echo '<a href="' . sanitize_url(uacf7_utm_generator( $documentation_link, array( 'utm_medium' => 'all_addons_doc_button') ) ) . '" target="_blank">' . __( 'Documentation', 'ultimate-addons-cf7' ) . '</a>' ?>
+												<?php echo '<a href="' . sanitize_url(uacf7_utm_generator( $documentation_link, array( 'utm_medium' => 'all_addons_doc_button') ) ) . '" target="_blank">' . __( 'Documentation', 'ultimate-addons-for-contact-form-7' ) . '</a>' ?>
 											</p>
 
 										</div>
@@ -394,13 +394,13 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 							href="<?php echo esc_url( uacf7_utm_generator( 'https://cf7addons.com/services/', array( 'utm_medium' => 'dashboard_customization_quote' ) ) ); ?>"
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label="<?php echo esc_attr__( 'Get a free WordPress development quote', 'ultimate-addons-cf7' ); ?>"
+							aria-label="<?php echo esc_attr__( 'Get a free WordPress development quote', 'ultimate-addons-for-contact-form-7' ); ?>"
 						>
 							<div class="uacf7-quote-header">
 								<i class="fa-solid fa-code" aria-hidden="true"></i>
 
 								<span>
-									<?php echo esc_html__( 'Get Free Quote', 'ultimate-addons-cf7' ); ?>
+									<?php echo esc_html__( 'Get Free Quote', 'ultimate-addons-for-contact-form-7' ); ?>
 								</span>
 							</div>
 
@@ -409,7 +409,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 									<?php
 									echo esc_html__(
 										'White Label WordPress Development & Design Services',
-										'ultimate-addons-cf7'
+										'ultimate-addons-for-contact-form-7'
 									);
 									?>
 								</h3>
@@ -418,26 +418,26 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 									<?php
 									echo esc_html__(
 										'Need something built, fixed, or improved? We\'ve got you covered. Starting at $25/hour only.',
-										'ultimate-addons-cf7'
+										'ultimate-addons-for-contact-form-7'
 									);
 									?>
 								</p>
 
 								<ul class="uacf7-customization-services">
 									<li>
-										<?php echo esc_html__( 'Custom plugin & theme development', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Custom plugin & theme development', 'ultimate-addons-for-contact-form-7' ); ?>
 									</li>
 
 									<li>
-										<?php echo esc_html__( 'Site builds & redesigns', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Site builds & redesigns', 'ultimate-addons-for-contact-form-7' ); ?>
 									</li>
 
 									<li>
-										<?php echo esc_html__( 'Third-party integrations & API work', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Third-party integrations & API work', 'ultimate-addons-for-contact-form-7' ); ?>
 									</li>
 
 									<li>
-										<?php echo esc_html__( 'UI/UX & Custom Design', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'UI/UX & Custom Design', 'ultimate-addons-for-contact-form-7' ); ?>
 									</li>
 								</ul>
 							</div>
@@ -448,36 +448,36 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 						<?php $this->uacf7_get_sidebar_collab_plugin_list(); ?>
 
 						<div class="uacf7-quick-access">
-							<h3><?php echo __('Helpful Resources', 'ultimate-addons-cf7');  ?></h3>
+							<h3><?php echo __('Helpful Resources', 'ultimate-addons-for-contact-form-7');  ?></h3>
 							<div class="uacf7-quick-access-wrapper">
 								<div class="uacf7-access-item">
 									<a href="<?php echo esc_url(uacf7_utm_generator( 'https://themefic.com/docs/uacf7/', array( 'utm_medium' => 'dashboard_doc_link') ) ); ?>" target="_blank">
 										<span class="icon"><i class="fa-solid fa-folder-open"></i></span>
-										<?php echo esc_html__( 'Documentation', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Documentation', 'ultimate-addons-for-contact-form-7' ); ?>
 									</a>
 								</div>
 								<div class="uacf7-access-item">
 									<a href="<?php echo esc_url(uacf7_utm_generator( 'https://portal.themefic.com/support/', array( 'utm_medium' => 'dashboard_support_link') ) ); ?>" target="_blank">
 										<span class="icon"><i class="fa-solid fa-headset"></i></span>
-										<?php echo esc_html__( 'Get Support', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Get Support', 'ultimate-addons-for-contact-form-7' ); ?>
 									</a>
 								</div>
 								<div class="uacf7-access-item">
 									<a href="https://www.facebook.com/groups/ultimate.cf7" target="_blank">
 										<span class="icon"><i class="fa-solid fa-users"></i></span>
-										<?php echo esc_html__( 'Join our Community', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Join our Community', 'ultimate-addons-for-contact-form-7' ); ?>
 									</a>
 								</div>
 								<div class="uacf7-access-item">
 									<a href="https://app.loopedin.io/ultimate-addons-for-contact-form-7" target="_blank">
 										<span class="icon"><i class="fa-solid fa-road-circle-check"></i></span>
-										<?php echo esc_html__( 'See our Roadmap', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'See our Roadmap', 'ultimate-addons-for-contact-form-7' ); ?>
 									</a>
 								</div>
 								<div class="uacf7-access-item">
 									<a href="https://app.loopedin.io/ultimate-addons-for-contact-form-7#/ideas" target="_blank">
 										<span class="icon"><i class="fa-solid fa-lightbulb"></i></span>
-										<?php echo esc_html__( 'Request a Feature', 'ultimate-addons-cf7' ); ?>
+										<?php echo esc_html__( 'Request a Feature', 'ultimate-addons-for-contact-form-7' ); ?>
 									</a>
 								</div>
 							</div>
@@ -783,11 +783,11 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				<div class="tf-settings-help-center">
 					<div class="tf-help-center-banner">
 						<div class="tf-help-center-content">
-							<h2><?php _e( "Setup Wizard", "ultimate-addons-cf7" ); ?></h2>
-							<p><?php _e( "Click the button below to run the setup wizard of Ultra Addons for Contact Form 7. Your existing settings will not change.", "ultimate-addons-cf7" ); ?>
+							<h2><?php _e( "Setup Wizard", "ultimate-addons-for-contact-form-7" ); ?></h2>
+							<p><?php _e( "Click the button below to run the setup wizard of Ultra Addons for Contact Form 7. Your existing settings will not change.", "ultimate-addons-for-contact-form-7" ); ?>
 							</p>
 							<a href="<?php echo esc_url( admin_url( 'admin.php?page=tf-setup-wizard' ) ) ?>"
-								class="tf-admin-btn tf-btn-secondary"><?php _e( "Setup Wizard", "ultimate-addons-cf7" ); ?></a>
+								class="tf-admin-btn tf-btn-secondary"><?php _e( "Setup Wizard", "ultimate-addons-for-contact-form-7" ); ?></a>
 						</div>
 						<div class="tf-help-center-image">
 							<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/setup_wizard.png" alt="setup wizard">
@@ -796,8 +796,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 					<div class="tf-help-center-banner">
 						<div class="tf-help-center-content">
-							<h2><?php _e( "Help Center", "ultimate-addons-cf7" ); ?></h2>
-							<p><?php _e( "To help you to get started, we put together the documentation, support link, videos and FAQs here.", "ultimate-addons-cf7" ); ?>
+							<h2><?php _e( "Help Center", "ultimate-addons-for-contact-form-7" ); ?></h2>
+							<p><?php _e( "To help you to get started, we put together the documentation, support link, videos and FAQs here.", "ultimate-addons-for-contact-form-7" ); ?>
 							</p>
 						</div>
 						<div class="tf-help-center-image">
@@ -809,48 +809,48 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 						<div class="tf-single-support">
 							<a href="https://themefic.com/docs/uacf7/" target="_blank">
 								<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tf-documents.png" alt="Document">
-								<h3><?php _e( "Documentation", "ultimate-addons-cf7" ); ?></h3>
-								<span><?php _e( "Read More", "ultimate-addons-cf7" ); ?></span>
+								<h3><?php _e( "Documentation", "ultimate-addons-for-contact-form-7" ); ?></h3>
+								<span><?php _e( "Read More", "ultimate-addons-for-contact-form-7" ); ?></span>
 							</a>
 						</div>
 						<div class="tf-single-support">
 							<a href="https://portal.themefic.com/support/" target="_blank">
 								<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tf-mail.png" alt="Document">
-								<h3><?php _e( "Email Support", "ultimate-addons-cf7" ); ?></h3>
-								<span><?php _e( "Contact Us", "ultimate-addons-cf7" ); ?></span>
+								<h3><?php _e( "Email Support", "ultimate-addons-for-contact-form-7" ); ?></h3>
+								<span><?php _e( "Contact Us", "ultimate-addons-for-contact-form-7" ); ?></span>
 							</a>
 						</div>
 
 						<div class="tf-single-support">
 							<a href="https://cf7addons.com" target="_blank">
 								<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tf-comment.png" alt="Document">
-								<h3><?php _e( "Live Chat", "ultimate-addons-cf7" ); ?></h3>
-								<span><?php _e( "Chat Now", "ultimate-addons-cf7" ); ?></span>
+								<h3><?php _e( "Live Chat", "ultimate-addons-for-contact-form-7" ); ?></h3>
+								<span><?php _e( "Chat Now", "ultimate-addons-for-contact-form-7" ); ?></span>
 							</a>
 						</div>
 
 						<div class="tf-single-support">
 							<a href="https://www.youtube.com/playlist?list=PLY0rtvOwg0ylCl7NTwNHUPq-eY1qwUH_N" target="_blank">
 								<img src="<?php // echo TF_ASSETS_APP_URL; ?>images/tf-tutorial.png" alt="Document">
-								<h3><?php _e( "Video Tutorials", "ultimate-addons-cf7" ); ?></h3>
-								<span><?php _e( "Watch Video", "ultimate-addons-cf7" ); ?></span>
+								<h3><?php _e( "Video Tutorials", "ultimate-addons-for-contact-form-7" ); ?></h3>
+								<span><?php _e( "Watch Video", "ultimate-addons-for-contact-form-7" ); ?></span>
 							</a>
 						</div>
 					</div>
 
 					<div class="tf-settings-faq">
-						<h2><?php _e( "Common FAQs", "ultimate-addons-cf7" ); ?></h2>
+						<h2><?php _e( "Common FAQs", "ultimate-addons-for-contact-form-7" ); ?></h2>
 
 						<div class="tf-accordion-wrapper">
 							<div class="tf-accrodian-item">
 								<div class="tf-single-faq">
 									<div class="tf-faq-title">
 										<i class="fas fa-angle-down"></i>
-										<h4><?php _e( "What is UACF7? ", "ultimate-addons-cf7" ); ?></h4>
+										<h4><?php _e( "What is UACF7? ", "ultimate-addons-for-contact-form-7" ); ?></h4>
 									</div>
 									<div class="tf-faq-desc">
 										<p>
-											<?php _e( "", "ultimate-addons-cf7" ); ?>
+											<?php _e( "", "ultimate-addons-for-contact-form-7" ); ?>
 										</p>
 									</div>
 								</div>
@@ -859,11 +859,11 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								<div class="tf-single-faq">
 									<div class="tf-faq-title">
 										<i class="fas fa-angle-down"></i>
-										<h4><?php _e( "How to install UACF7 ", "ultimate-addons-cf7" ); ?></h4>
+										<h4><?php _e( "How to install UACF7 ", "ultimate-addons-for-contact-form-7" ); ?></h4>
 									</div>
 									<div class="tf-faq-desc">
 										<p>
-											<?php _e( "Please check our documentations", "ultimate-addons-cf7" ); ?>
+											<?php _e( "Please check our documentations", "ultimate-addons-for-contact-form-7" ); ?>
 										</p>
 									</div>
 								</div>
@@ -872,12 +872,12 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								<div class="tf-single-faq">
 									<div class="tf-faq-title">
 										<i class="fas fa-angle-down"></i>
-										<h4><?php _e( "Is Free version fully free or there is a gap? ", "ultimate-addons-cf7" ); ?>
+										<h4><?php _e( "Is Free version fully free or there is a gap? ", "ultimate-addons-for-contact-form-7" ); ?>
 										</h4>
 									</div>
 									<div class="tf-faq-desc">
 										<p>
-											<?php _e( "", "ultimate-addons-cf7" ); ?>
+											<?php _e( "", "ultimate-addons-for-contact-form-7" ); ?>
 										</p>
 									</div>
 								</div>
@@ -1011,7 +1011,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 									<!-- Footer -->
 									<div class="tf-option-footer">
 										<button type="submit"
-											class="tf-admin-btn tf-btn-secondary tf-submit-btn"><?php _e( 'Save', 'ultimate-addons-cf7' ); ?></button>
+											class="tf-admin-btn tf-btn-secondary tf-submit-btn"><?php _e( 'Save', 'ultimate-addons-for-contact-form-7' ); ?></button>
 									</div>
 								</div>
 							</div>
@@ -1197,7 +1197,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 		public function uacf7_ajax_save_options() {
 			$response = [ 
 				'status' => 'error',
-				'message' => __( 'Something went wrong!', 'ultimate-addons-cf7' ),
+				'message' => __( 'Something went wrong!', 'ultimate-addons-for-contact-form-7' ),
 			];
 
 			if ( ! empty( $_POST['uacf7_option_nonce'] ) && wp_verify_nonce( $_POST['uacf7_option_nonce'], 'uacf7_option_nonce_action' ) ) {

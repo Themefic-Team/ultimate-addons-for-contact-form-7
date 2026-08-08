@@ -45,16 +45,16 @@ class UACF7_Redirection {
     public function uacf7_post_meta_options_redirection($value, $post_id) {
 		
 		$redirection = apply_filters('uacf7_post_meta_options_redirection_pro', $data = array(
-			'title'  => __( 'Redirection', 'ultimate-addons-cf7' ),
+			'title'  => __( 'Redirection', 'ultimate-addons-for-contact-form-7' ),
 			'icon'   => 'fa-solid fa-diamond-turn-right',
             'checked_field'   => 'uacf7_redirect_enable',
 			'fields' => array( 
 				'redirection_heading' => array(
 					'id'    => 'redirection_heading',
 					'type'  => 'heading', 
-					'label' => __( 'Redirection Settings', 'ultimate-addons-cf7' ),
+					'label' => __( 'Redirection Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-                        __( 'Redirect users to a Thank You or external page based on form submission, with an option to open in a new tab. See Demo %1s.', 'ultimate-addons-cf7' ),
+                        __( 'Redirect users to a Thank You or external page based on form submission, with an option to open in a new tab. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
                          '<a href="https://cf7addons.com/preview/redirection-for-contact-form-7/" target="_blank">Example</a>'
                     )
 				),
@@ -63,7 +63,7 @@ class UACF7_Redirection {
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s, %2s and %3s .', 'ultimate-addons-cf7' ),
+                        __( 'Confused? Check our Documentation on  %1s, %2s and %3s .', 'ultimate-addons-for-contact-form-7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/redirection-for-contact-form-7/" target="_blank">Redirect to a Page or External URL</a>',
                         '<a href="https://themefic.com/docs/uacf7/pro-addons/conditional-redirect-for-contact-form-7/" target="_blank">Conditional Redirect</a>',
                         '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-whatsapp-integration-and-tag-support/" target="_blank">Tag Support</a>'
@@ -72,20 +72,20 @@ class UACF7_Redirection {
 				'uacf7_redirect_enable' => array(
 					'id'        => 'uacf7_redirect_enable',
 					'type'      => 'switch',
-					'label'     => __( ' Enable Redirection', 'ultimate-addons-cf7' ),
-					'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label'     => __( ' Enable Redirection', 'ultimate-addons-for-contact-form-7' ),
+					'label_on'  => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default'   => false
 				),
 				'uacf7_redirect_form_options_heading' => array(
                     'id'        => 'uacf7_redirect_form_options_heading',
                     'type'      => 'heading',
-                    'label'     => __( 'Redirection Option ', 'ultimate-addons-cf7' ),
+                    'label'     => __( 'Redirection Option ', 'ultimate-addons-for-contact-form-7' ),
                 ),
 				'uacf7_redirect_to_type' => array(
 					'id'        => 'uacf7_redirect_to_type',
 					'type'      => 'radio',
-					'label'     => __( 'Redirect to', 'ultimate-addons-cf7' ),
+					'label'     => __( 'Redirect to', 'ultimate-addons-for-contact-form-7' ),
 					'options' => array(
 						'to_page' => 'Redirect to Internal Page ',
 						'to_url' => 'Redirect to External URL ',
@@ -97,7 +97,7 @@ class UACF7_Redirection {
 				'page_id' => array(
 					'id'        => 'page_id',
 					'type'      => 'select',
-					'label'     => __( 'Select the Redirection Page ', 'ultimate-addons-cf7' ),  
+					'label'     => __( 'Select the Redirection Page ', 'ultimate-addons-for-contact-form-7' ),  
 					'options'     => 'posts', 
 					'query_args'  => array(
 						'post_type'      => 'page',
@@ -109,16 +109,16 @@ class UACF7_Redirection {
 				'external_url' => array(
 					'id'        => 'external_url',
 					'type'      => 'text',
-					'label'     => __( 'Insert Any URL', 'ultimate-addons-cf7' ),   
+					'label'     => __( 'Insert Any URL', 'ultimate-addons-for-contact-form-7' ),   
 					'dependency' => array(array( 'uacf7_redirect_to_type', '==', 'to_url' ), array( 'uacf7_redirect_type', '==', false )),
 				),
 				'uacf7_redirect_type' => array(
 					'id'        => 'uacf7_redirect_type',
 					'type'      => 'switch',
-					'label'     => __( 'Conditional Redirect', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Redirect users to different webpages based on specific conditions. For example, if Condition A is met, the user is redirected to abc.com, while Condition B leads the user to xyz.com.', 'ultimate-addons-cf7' ),
-					'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label'     => __( 'Conditional Redirect', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'Redirect users to different webpages based on specific conditions. For example, if Condition A is met, the user is redirected to abc.com, while Condition B leads the user to xyz.com.', 'ultimate-addons-for-contact-form-7' ),
+					'label_on'  => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default'   => false,
 					'is_pro' => true,
 				),
@@ -126,7 +126,7 @@ class UACF7_Redirection {
 					'id' => 'conditional_redirect',
 					'type' => 'repeater',
 					'label' => 'Conditional Redirection Settings',
-					'subtitle' => __( "The process works as follows: You select a field and specify a value. If the user's input matches the value you set for that field, they will then be redirected to the specified URL.", 'ultimate-addons-cf7' ),
+					'subtitle' => __( "The process works as follows: You select a field and specify a value. If the user's input matches the value you set for that field, they will then be redirected to the specified URL.", 'ultimate-addons-for-contact-form-7' ),
 					'class' => 'tf-field-class',
 					'dependency' => array( 'uacf7_redirect_type', '==', true ),
 					'fields' => array(
@@ -158,20 +158,20 @@ class UACF7_Redirection {
 				'target' => array(
 					'id'        => 'target',
 					'type'      => 'switch',
-					'label'     => __( 'Open Page in a New Tab', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Enable this to open the redirection page in a new tab.', 'ultimate-addons-cf7' ),
-					'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label'     => __( 'Open Page in a New Tab', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'Enable this to open the redirection page in a new tab.', 'ultimate-addons-for-contact-form-7' ),
+					'label_on'  => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default'   => false,
 					'field_width' => 50,
 				),
 				'uacf7_redirect_tag_support' => array(
 					'id'        => 'uacf7_redirect_tag_support',
 					'type'      => 'switch',
-					'label'     => __( 'Whatsapp or Tags Support', 'ultimate-addons-cf7' ),
-					'subtitle' => __( 'Add tags on URL / Pass data to Whatsapp.', 'ultimate-addons-cf7' ),
-					'label_on'  => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label'     => __( 'Whatsapp or Tags Support', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( 'Add tags on URL / Pass data to Whatsapp.', 'ultimate-addons-for-contact-form-7' ),
+					'label_on'  => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'default'   => false,
 					'is_pro' => true,
 					'field_width' => 50,

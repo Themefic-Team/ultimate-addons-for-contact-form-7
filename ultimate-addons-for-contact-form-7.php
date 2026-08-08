@@ -8,7 +8,7 @@
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: ultimate-addons-cf7
+ * Text Domain: ultimate-addons-for-contact-form-7
  * Domain Path: /languages
  */
 
@@ -36,6 +36,20 @@ class Ultimate_Addons_CF7 {
 			require_once( __DIR__ . '/inc/app/src/Client.php' );
 		}
 
+		/*
+		 * ---------------------------------------------------------
+		 * Legacy text-domain migration
+		 * ---------------------------------------------------------
+		 *
+		 * Must run while the plugin is loading so its hooks are
+		 * registered before WordPress reaches init/admin_init.
+		 */
+		require_once UACF7_PATH . 'inc/class-uacf7-text-domain-migration.php';
+
+		if ( class_exists( 'UACF7_Text_Domain_Migration' ) ) {
+			UACF7_Text_Domain_Migration::init( __FILE__ );
+		}
+
 		//Plugin loaded
 		add_action( 'init', [ $this, 'uacf7_plugin_loaded' ], 9 );
 
@@ -54,7 +68,7 @@ class Ultimate_Addons_CF7 {
 	 */
 	public function uacf7_plugin_loaded() {
 		//Register text domain
-		load_plugin_textdomain( 'ultimate-addons-cf7', false, basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'ultimate-addons-for-contact-form-7', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 		// Initialize the appsero
 		$this->appsero_init_tracker_ultimate_addons_for_contact_form_7();
@@ -119,7 +133,7 @@ class Ultimate_Addons_CF7 {
 		<div class="notice notice-error">
 			<p>
 				<?php printf(
-					__( '%s requires %s to be installed and active. You can install and activate it from %s', 'ultimate-addons-cf7' ),
+					__( '%s requires %s to be installed and active. You can install and activate it from %s', 'ultimate-addons-for-contact-form-7' ),
 					'<strong>Ultra Addons for Contact Form 7</strong>',
 					'<strong>Contact form 7</strong>',
 					'<a href="' . admin_url( 'plugin-install.php?tab=search&s=contact+form+7' ) . '">here</a>.'

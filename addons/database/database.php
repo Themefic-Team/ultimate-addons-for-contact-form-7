@@ -282,7 +282,7 @@ class UACF7_DATABASE {
 		}
 
 		if ( ! wp_verify_nonce( $_POST['ajax_nonce'], 'uacf7dp-nonce' ) ) {
-			exit( esc_html__( "Security error", 'ultimate-addons-cf7' ) );
+			exit( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );
 		}
 
 		if ( isset( $_POST['form_id'] ) && 0 < $_POST['form_id'] ) {
@@ -378,7 +378,7 @@ class UACF7_DATABASE {
 		} else {
 			$data = [ 
 				'status' => false,
-				'message' => esc_html( 'Something went wrong! Form ID not found.', 'ultimate-addons-cf7' ),
+				'message' => esc_html( 'Something went wrong! Form ID not found.', 'ultimate-addons-for-contact-form-7' ),
 			];
 		}
 
@@ -397,8 +397,8 @@ class UACF7_DATABASE {
 
 		add_submenu_page(
 			'uacf7_settings',
-			__( 'Database', 'ultimate-addons-cf7' ),
-			__( 'Database', 'ultimate-addons-cf7' ),
+			__( 'Database', 'ultimate-addons-for-contact-form-7' ),
+			__( 'Database', 'ultimate-addons-for-contact-form-7' ),
 			'manage_options',
 			'ultimate-addons-db',
 			apply_filters( 'uacf7_database_admin_page', array( $this, 'uacf7_create_database_page' ) ),
@@ -427,16 +427,16 @@ class UACF7_DATABASE {
 			<div id="uacf7dp_addons_header" class="uacf7dp-tabcontent">
 				<img src="<?php echo UACF7_ADDONS ?>/database/assets/images/ultimate-logo.png" alt="logo" />
 				<h4 class="uacf7dp_main-heading">
-					<?php echo esc_html__( 'Database', 'ultimate-addons-cf7' ); ?>
+					<?php echo esc_html__( 'Database', 'ultimate-addons-for-contact-form-7' ); ?>
 				</h4>
 				<div class="uacf7dp_header-form">
 					<h4>
-						<?php echo esc_html__( 'Select form', 'ultimate-addons-cf7' ); ?>
+						<?php echo esc_html__( 'Select form', 'ultimate-addons-for-contact-form-7' ); ?>
 					</h4>
 
 					<select name="select_from_submit" id="select_from_submit">
 						<option value=" 0" <?php selected( isset( $_POST['form-id'] ) && $_POST['form-id'] == 0 ); ?>>
-							<?php echo esc_html__( 'Select form', 'ultimate-addons-cf7' ); ?>
+							<?php echo esc_html__( 'Select form', 'ultimate-addons-for-contact-form-7' ); ?>
 						</option>
 						<?php
 						foreach ( $list_forms as $form ) {

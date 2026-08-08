@@ -27,16 +27,16 @@ class UACF7_WEB_HOOK {
 	public function uacf7_post_meta_options_webhook( $value, $post_id ) {
 
 		$WebHook = apply_filters( 'uacf7_post_meta_options_webhook', $data = array(
-			'title' => __( 'Webhook', 'ultimate-addons-cf7' ),
+			'title' => __( 'Webhook', 'ultimate-addons-for-contact-form-7' ),
 			'icon' => 'fa-solid fa-code-compare',
 			'checked_field'   => 'uacf7_enable_web_hook',
 			'fields' => [ 
 				'uacf7_Web_hook_heading' => [ 
 					'id' => 'uacf7_web_hook_heading',
 					'type' => 'heading',
-					'label' => __( 'Webhook (Pabbly/Zapier) Settings', 'ultimate-addons-cf7' ),
+					'label' => __( 'Webhook (Pabbly/Zapier) Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-                        __( 'Transfer form data to third-party services like Pabbly or Zapier via webhooks. See Demo %1s.', 'ultimate-addons-cf7' ),
+                        __( 'Transfer form data to third-party services like Pabbly or Zapier via webhooks. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
                          '<a href="#" target="_blank">Example</a>'
                     )
 				],
@@ -45,25 +45,25 @@ class UACF7_WEB_HOOK {
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
                         '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-webhook/" target="_blank">Webhook Setup</a>'
                     )
 				],
 				'uacf7_enable_web_hook' => [ 
 					'id' => 'uacf7_enable_web_hook',
 					'type' => 'switch',
-					'label' => __( ' Enable Webhook ', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( ' Enable Webhook ', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 50,
 					'default' => false
 				],
 				'uacf7_enable_web_hook_condition' => [ 
 					'id' => 'uacf7_enable_web_hook_condition',
 					'type' => 'switch',
-					'label' => __( ' Enable Webhook Conditions', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( ' Enable Webhook Conditions', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => 50,
 					'default' => false,
 					'is_pro' => true
@@ -72,20 +72,20 @@ class UACF7_WEB_HOOK {
 				'uacf7_webhook_conditional_form_options_heading' => array(
 					'id' => 'uacf7_webhook_conditional_form_options_heading',
 					'type' => 'heading',
-					'label' => __( 'Conditional Option ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Conditional Option ', 'ultimate-addons-for-contact-form-7' ),
 					'dependency' => [ 'uacf7_enable_web_hook_condition', '==', 1 ],
 				),
 				'uacf7_webhook_conditional_repeater' => array(
 					'id' => 'uacf7_webhook_conditional_repeater',
 					'type' => 'repeater',
-					'label' => __( 'Setup your Conditional Logic', 'ultimate-addons-cf7' ),
-					'subtitle' => __( "The webhook will send data to the endpoint only if the conditional logic matches. Select a field and determine whether the data should be sent when any or all specified conditions are met.", 'ultimate-addons-cf7' ),
+					'label' => __( 'Setup your Conditional Logic', 'ultimate-addons-for-contact-form-7' ),
+					'subtitle' => __( "The webhook will send data to the endpoint only if the conditional logic matches. Select a field and determine whether the data should be sent when any or all specified conditions are met.", 'ultimate-addons-for-contact-form-7' ),
 					'class' => 'tf-field-class',
 					'fields' => array(
 						'uacf7_cf_hs' => array(
 							'id' => 'uacf7_cf_hs',
 							'type' => 'select',
-							'label' => __( 'Condition', 'ultimate-addons-cf7' ),
+							'label' => __( 'Condition', 'ultimate-addons-for-contact-form-7' ),
 							'subtitle' => "Select whether this field's value should be sent to the webhook or not when the condition below is met.",
 							'class' => 'tf-field-class',
 							'options' => array(
@@ -97,7 +97,7 @@ class UACF7_WEB_HOOK {
 						'uacf7_cf_condition_for' => array(
 							'id' => 'uacf7_cf_condition_for',
 							'type' => 'select',
-							'label' => __( 'If', 'ultimate-addons-cf7' ),
+							'label' => __( 'If', 'ultimate-addons-for-contact-form-7' ),
 							'subtitle' => "Choose the trigger for the condition: it should activate if 'any' one of the conditions is met or when 'all' conditions.",
 							'class' => 'tf-field-class',
 							'options' => array(
@@ -110,14 +110,14 @@ class UACF7_WEB_HOOK {
 						'uacf7_cf_conditions' => array(
 							'id' => 'uacf7_cf_conditions',
 							'type' => 'repeater',
-							'label' => __( 'Add Condition', 'ultimate-addons-cf7' ),
+							'label' => __( 'Add Condition', 'ultimate-addons-for-contact-form-7' ),
 							'class' => 'tf-field-class',
 							'fields' => array(
 
 								'uacf7_cf_tn' => array(
 									'id' => 'uacf7_cf_tn',
 									'type' => 'select',
-									'label' => __( 'Conditional Field', 'ultimate-addons-cf7' ),
+									'label' => __( 'Conditional Field', 'ultimate-addons-for-contact-form-7' ),
 									'class' => 'tf-field-class',
 									'options' => 'uacf7',
 									'query_args' => array(
@@ -129,7 +129,7 @@ class UACF7_WEB_HOOK {
 								'uacf7_cf_operator' => array(
 									'id' => 'uacf7_cf_operator',
 									'type' => 'select',
-									'label' => __( 'is', 'ultimate-addons-cf7' ),
+									'label' => __( 'is', 'ultimate-addons-for-contact-form-7' ),
 									'class' => 'tf-field-class',
 									'options' => array(
 										'equal' => 'equal',
@@ -163,21 +163,21 @@ class UACF7_WEB_HOOK {
 				'web_hook_form_options_heading' => array(
 					'id'        => 'web_hook_form_options_heading',
 					'type'      => 'heading',
-					'label'     => __( 'Webhook Option ', 'ultimate-addons-cf7' ),
+					'label'     => __( 'Webhook Option ', 'ultimate-addons-for-contact-form-7' ),
 				),
 
 				'uacf7_web_hook_api' => [ 
 					'id' => 'uacf7_web_hook_api',
 					'type' => 'text',
-					'label' => __( 'Request URL', 'ultimate-addons-cf7' ),
-					'placeholder' => __( 'Enter a Request URL', 'ultimate-addons-cf7' ),
+					'label' => __( 'Request URL', 'ultimate-addons-for-contact-form-7' ),
+					'placeholder' => __( 'Enter a Request URL', 'ultimate-addons-for-contact-form-7' ),
 					'dependency' => [ 'uacf7_enable_web_hook', '==', 1 ],
 				],
 
 				'uacf7_web_hook_request_method' => [ 
 					'id' => 'uacf7_web_hook_request_method',
 					'type' => 'select',
-					'label' => __( 'Request Method', 'ultimate-addons-cf7' ),
+					'label' => __( 'Request Method', 'ultimate-addons-for-contact-form-7' ),
 					'options' => array(
 						'GET' => 'GET',
 						'POST' => 'POST',
@@ -192,7 +192,7 @@ class UACF7_WEB_HOOK {
 				'uacf7_web_hook_request_format' => [ 
 					'id' => 'uacf7_web_hook_request_format',
 					'type' => 'select',
-					'label' => __( 'Request Format', 'ultimate-addons-cf7' ),
+					'label' => __( 'Request Format', 'ultimate-addons-for-contact-form-7' ),
 					'options' => array(
 						'json' => 'JSON',
 						'formdata' => 'FORMDATA',
@@ -204,7 +204,7 @@ class UACF7_WEB_HOOK {
 				'uacf7_web_hook_header_request' => [ 
 					'id' => 'uacf7_web_hook_header_request',
 					'type' => 'repeater',
-					'label' => __( 'Request Headers', 'ultimate-addons-cf7' ),
+					'label' => __( 'Request Headers', 'ultimate-addons-for-contact-form-7' ),
 					'dependency' => [ 'uacf7_enable_web_hook', '==', 1 ],
 					'fields' => [ 
 
@@ -212,7 +212,7 @@ class UACF7_WEB_HOOK {
 							'id' => 'uacf7_web_hook_header_request_custom',
 							'type' => 'radio',
 							'class' => 'padding-bottom0',
-							'label' => __( 'Enable Custom Value', 'ultimate-addons-cf7' ),
+							'label' => __( 'Enable Custom Value', 'ultimate-addons-for-contact-form-7' ),
 							'options' => [ 
 								'form' => 'Form Data',
 								'custom' => 'Custom Value',
@@ -225,7 +225,7 @@ class UACF7_WEB_HOOK {
 							'id' => 'uacf7_web_hook_header_request_value',
 							'class' => 'padding-top0',
 							'type' => 'text',
-							'placeholder' => __( 'Enter a parameter key', 'ultimate-addons-cf7' ),
+							'placeholder' => __( 'Enter a parameter key', 'ultimate-addons-for-contact-form-7' ),
 							'field_width' => 50,
 						],
 
@@ -233,7 +233,7 @@ class UACF7_WEB_HOOK {
 							'id' => 'uacf7_web_hook_header_request_parameter',
 							'class' => 'padding-top0',
 							'type' => 'select',
-							// 'label' => __( 'Request Format', 'ultimate-addons-cf7' ),
+							// 'label' => __( 'Request Format', 'ultimate-addons-for-contact-form-7' ),
 							'options' => 'uacf7',
 							'query_args' => array(
 								'post_id' => $post_id,
@@ -247,8 +247,8 @@ class UACF7_WEB_HOOK {
 							'id' => 'uacf7_web_hook_header_request_parameter_custom',
 							'class' => 'padding-top0',
 							'type' => 'text',
-							'placeholder' => __( 'Custom value', 'ultimate-addons-cf7' ),
-							// 'label' => __( 'Request Format', 'ultimate-addons-cf7' ),
+							'placeholder' => __( 'Custom value', 'ultimate-addons-for-contact-form-7' ),
+							// 'label' => __( 'Request Format', 'ultimate-addons-for-contact-form-7' ),
 							'dependency' => array( 'uacf7_web_hook_header_request_custom', '==', 'custom' ),
 							'field_width' => 50,
 						],
@@ -259,20 +259,20 @@ class UACF7_WEB_HOOK {
 				'uacf7_web_hook_body_request' => [ 
 					'id' => 'uacf7_web_hook_body_request',
 					'type' => 'repeater',
-					'label' => __( 'Request Body', 'ultimate-addons-cf7' ),
+					'label' => __( 'Request Body', 'ultimate-addons-for-contact-form-7' ),
 					'dependency' => [ 'uacf7_enable_web_hook', '==', 1 ],
 					'fields' => [ 
 						'uacf7_web_hook_body_request_value' => [ 
 							'id' => 'uacf7_web_hook_body_request_value',
 							'type' => 'text',
-							'placeholder' => __( 'Enter a parameter key', 'ultimate-addons-cf7' ),
+							'placeholder' => __( 'Enter a parameter key', 'ultimate-addons-for-contact-form-7' ),
 							'field_width' => 50,
 						],
 
 						'uacf7_web_hook_body_request_parameter' => [ 
 							'id' => 'uacf7_web_hook_body_request_parameter',
 							'type' => 'select',
-							// 'label' => __( 'Request Format', 'ultimate-addons-cf7' ),
+							// 'label' => __( 'Request Format', 'ultimate-addons-for-contact-form-7' ),
 							'options' => 'uacf7',
 							'query_args' => array(
 								'post_id' => $post_id,

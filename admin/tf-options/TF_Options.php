@@ -66,7 +66,7 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 
 			if ( ! current_user_can( 'manage_options' ) ) {
 				wp_send_json_error(
-					[ 'message' => __( 'You do not have sufficient permissions to access this page.', 'ultimate-addons-cf7' ) ]
+					[ 'message' => __( 'You do not have sufficient permissions to access this page.', 'ultimate-addons-for-contact-form-7' ) ]
 				);
 			}
 
@@ -75,7 +75,7 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 
 			$response = [ 
 				'status' => 'error',
-				'message' => __( 'Something went wrong!', 'ultimate-addons-cf7' ),
+				'message' => __( 'Something went wrong!', 'ultimate-addons-for-contact-form-7' ),
 			];
 
 			if ( ! empty( $imported_data ) && is_array( $imported_data ) ) {
@@ -273,9 +273,9 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 					'ajax_url' => admin_url( 'admin-ajax.php' ),
 					'nonce' => wp_create_nonce( 'tf_options_nonce' ),
 					'tf_export_import_msg' => array(
-						'imported' => __( 'Imported successfully!', 'ultimate-addons-cf7' ),
-						'import_confirm' => __( 'Are you sure you want to import this data?', 'ultimate-addons-cf7' ),
-						'import_empty' => __( 'Import Data cannot be empty!', 'ultimate-addons-cf7' ),
+						'imported' => __( 'Imported successfully!', 'ultimate-addons-for-contact-form-7' ),
+						'import_confirm' => __( 'Are you sure you want to import this data?', 'ultimate-addons-for-contact-form-7' ),
+						'import_empty' => __( 'Import Data cannot be empty!', 'ultimate-addons-for-contact-form-7' ),
 					)
 				)
 			);
@@ -423,12 +423,12 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 							<?php echo esc_html( $field['label'] ) ?>
 							<?php if ( $is_pro ) : ?>
 								<div class="tf-csf-badge"><span class="tf-pro">
-										<?php _e( "Pro", "ultimate-addons-cf7" ); ?>
+										<?php _e( "Pro", "ultimate-addons-for-contact-form-7" ); ?>
 									</span></div>
 							<?php endif; ?>
 							<?php if ( $badge_up ) : ?>
 								<div class="tf-csf-badge"><span class="tf-upcoming">
-										<?php _e( "Upcoming", "ultimate-addons-cf7" ); ?>
+										<?php _e( "Upcoming", "ultimate-addons-for-contact-form-7" ); ?>
 									</span></div>
 							<?php endif; ?>
 						</label>
@@ -453,7 +453,7 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 							$_field = new $fieldClass( $field, $value, $settings_id, $parent, $section_key );
 							$_field->render();
 						} else {
-							echo '<p>' . __( 'Field not found!', 'ultimate-addons-cf7' ) . '</p>';
+							echo '<p>' . __( 'Field not found!', 'ultimate-addons-for-contact-form-7' ) . '</p>';
 						}
 						?>
 					</div>

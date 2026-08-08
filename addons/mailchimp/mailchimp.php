@@ -48,7 +48,7 @@ class UACF7_MAILCHIMP {
 
 		// Verify nonce
 		if ( ! isset( $_POST['ajax_nonce'] ) || ! wp_verify_nonce( $_POST['ajax_nonce'], 'uacf7_mailchimp_admin_nonce' ) ) {
-			wp_send_json_error( esc_html__( "Security error", 'ultimate-addons-cf7' ) );
+			wp_send_json_error( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );
 			wp_die(); // Terminate execution
 		}
 
@@ -71,31 +71,31 @@ class UACF7_MAILCHIMP {
 			$response = json_decode( $response );
 
 			if ( $response !== null ) {
-				$status .= '<span class="status-title"><strong>' . esc_html__( 'Status: ', 'ultimate-addons-cf7' ) . '</strong>';
+				$status .= '<span class="status-title"><strong>' . esc_html__( 'Status: ', 'ultimate-addons-for-contact-form-7' ) . '</strong>';
 
 				if ( $this->is_internet_connected() == false ) { //Checking internet connection
-					$status .= '<span class="status-error">' . esc_html__( 'Can\'t connect to the server. Please check internet connection.', 'ultimate-addons-cf7' ) . '</span>';
+					$status .= '<span class="status-error">' . esc_html__( 'Can\'t connect to the server. Please check internet connection.', 'ultimate-addons-for-contact-form-7' ) . '</span>';
 				}
 
 				if ( isset( $response->health_status ) ) { //Display success message
-					$status .= '<span class="status-success">' . esc_html( $response->health_status, 'ultimate-addons-cf7' ) . '</span>';
+					$status .= '<span class="status-success">' . esc_html( $response->health_status, 'ultimate-addons-for-contact-form-7' ) . '</span>';
 				}
 
 				if ( isset( $response->title ) ) { //Display error title
-					$status .= '<span class="status-error">' . esc_html( $response->title, 'ultimate-addons-cf7' ) . '</span>';
+					$status .= '<span class="status-error">' . esc_html( $response->title, 'ultimate-addons-for-contact-form-7' ) . '</span>';
 				}
 
 				$status .= '</span>';
 
 				if ( isset( $response->detail ) ) { //Display error mdetails
-					$status .= '<span class="status-details status-error">' . esc_html( $response->detail, 'ultimate-addons-cf7' ) . '</span>';
+					$status .= '<span class="status-details status-error">' . esc_html( $response->detail, 'ultimate-addons-for-contact-form-7' ) . '</span>';
 				}
 			} else {
-				$status .= '<span class="status-error">' . esc_html( 'Not Connected! invalid API Key', 'ultimate-addons-cf7' ) . '</span>';
+				$status .= '<span class="status-error">' . esc_html( 'Not Connected! invalid API Key', 'ultimate-addons-for-contact-form-7' ) . '</span>';
 			}
 
 		} else {
-			$status .= '<span class="status-error">' . esc_html( 'Empty! Please fill the API key', 'ultimate-addons-cf7' ) . '</span>';
+			$status .= '<span class="status-error">' . esc_html( 'Empty! Please fill the API key', 'ultimate-addons-for-contact-form-7' ) . '</span>';
 		}
 
 		// Send response back to the AJAX request
@@ -157,16 +157,16 @@ class UACF7_MAILCHIMP {
 
 
 		$mailchimp = apply_filters( 'uacf7_post_meta_options_mailchimp_pro', $data = array(
-			'title' => __( 'Mailchimp', 'ultimate-addons-cf7' ),
+			'title' => __( 'Mailchimp', 'ultimate-addons-for-contact-form-7' ),
 			'icon' => 'fa-brands fa-mailchimp',
 			'checked_field' => 'uacf7_mailchimp_form_enable',
 			'fields' => array(
 				'uacf7_mailchimp_label' => array(
 					'id' => 'uacf7_mailchimp_label',
 					'type' => 'heading',
-					'label' => __( 'Mailchimp Integration', 'ultimate-addons-cf7' ),
+					'label' => __( 'Mailchimp Integration', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-						__( 'Send form submissions to your Mailchimp lists automatically. See Demo %1s.', 'ultimate-addons-cf7' ),
+						__( 'Send form submissions to your Mailchimp lists automatically. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="https://cf7addons.com/preview/mailchimp-for-contact-form-7/" target="_blank" rel="noopener">Example</a>'
 					)
 				),
@@ -174,12 +174,12 @@ class UACF7_MAILCHIMP {
 				'uacf7_mailchimp_form_enable' => array(
 					'id' => 'uacf7_mailchimp_form_enable',
 					'type' => 'switch',
-					'label' => __( ' Enable Mailchimp ', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( ' Enable Mailchimp ', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => '50',
 					'subtitle' => sprintf(
-						__( 'Before enabling, ensure you have added your Mailchimp API key %1s.', 'ultimate-addons-cf7' ),
+						__( 'Before enabling, ensure you have added your Mailchimp API key %1s.', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="admin.php?page=uacf7_settings#tab=mailchimp" target="_blank" rel="noopener">here</a>'
 					),
 					'default' => false
@@ -188,12 +188,12 @@ class UACF7_MAILCHIMP {
 				'uacf7_mailchimp_form_acceptance' => array(
 					'id' => 'uacf7_mailchimp_form_acceptance',
 					'type' => 'switch',
-					'label' => __( ' Enable Mailchimp Acceptance', 'ultimate-addons-cf7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-cf7' ),
-					'label_off' => __( 'No', 'ultimate-addons-cf7' ),
+					'label' => __( ' Enable Mailchimp Acceptance', 'ultimate-addons-for-contact-form-7' ),
+					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
+					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => '50',
 					'subtitle' => sprintf(
-						__( 'Enabling this feature will prevent emails from being submitted to Mailchimp if they do not meet the specified criteria.', 'ultimate-addons-cf7' ),
+						__( 'Enabling this feature will prevent emails from being submitted to Mailchimp if they do not meet the specified criteria.', 'ultimate-addons-for-contact-form-7' ),
 					),
 					'default' => false,
 					'dependency' => [ 'uacf7_mailchimp_form_enable', '==', '1' ],
@@ -206,7 +206,7 @@ class UACF7_MAILCHIMP {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-cf7' ),
+						__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
 						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-mailchimp/" target="_blank" rel="noopener">Mailchimp Integration</a>'
 					)
 				),
@@ -214,7 +214,7 @@ class UACF7_MAILCHIMP {
 				'uacf7_mailchimp_form_options_heading' => array(
 					'id' => 'uacf7_mailchimp_form_options_heading',
 					'type' => 'heading',
-					'label' => __( 'Mailchimp Option ', 'ultimate-addons-cf7' ),
+					'label' => __( 'Mailchimp Option ', 'ultimate-addons-for-contact-form-7' ),
 					'dependency' => [ 'uacf7_mailchimp_form_enable', '==', '1' ],
 				),
 
@@ -223,7 +223,7 @@ class UACF7_MAILCHIMP {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Note: If you dont see the field names in the field selection, please save the form and try again.', 'ultimate-addons-cf7' )
+						__( 'Note: If you dont see the field names in the field selection, please save the form and try again.', 'ultimate-addons-for-contact-form-7' )
 					),
 					'dependency' => [ 'uacf7_mailchimp_form_enable', '==', '1' ],
 				),
@@ -239,7 +239,7 @@ class UACF7_MAILCHIMP {
 				'uacf7_mailchimp_form_type' => array(
 					'id' => 'uacf7_mailchimp_form_type',
 					'type' => 'radio',
-					'label' => __( 'Type of Form', 'ultimate-addons-cf7' ),
+					'label' => __( 'Type of Form', 'ultimate-addons-for-contact-form-7' ),
 					// 'field_width' => '50',
 					'options' => array(
 						'subscribe' => 'Subscription Form',
@@ -252,7 +252,7 @@ class UACF7_MAILCHIMP {
 				'uacf7_mailchimp_audience' => array(
 					'id' => 'uacf7_mailchimp_audience',
 					'type' => 'select',
-					'label' => __( ' Select Mailchimp Audience ', 'ultimate-addons-cf7' ),
+					'label' => __( ' Select Mailchimp Audience ', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => '25',
 					'options' => $audience,
 					'dependency' => [ 'uacf7_mailchimp_form_enable', '==', '1' ],
@@ -260,7 +260,7 @@ class UACF7_MAILCHIMP {
 				'uacf7_mailchimp_subscriber_email' => array(
 					'id' => 'uacf7_mailchimp_subscriber_email',
 					'type' => 'select',
-					'label' => __( ' Subscriber Email ', 'ultimate-addons-cf7' ),
+					'label' => __( ' Subscriber Email ', 'ultimate-addons-for-contact-form-7' ),
 					'query_args' => array(
 						'post_id' => $post_id,
 						'specific' => 'email',
@@ -272,7 +272,7 @@ class UACF7_MAILCHIMP {
 				'uacf7_mailchimp_subscriber_fname' => array(
 					'id' => 'uacf7_mailchimp_subscriber_fname',
 					'type' => 'select',
-					'label' => __( ' Subscriber First Name ', 'ultimate-addons-cf7' ),
+					'label' => __( ' Subscriber First Name ', 'ultimate-addons-for-contact-form-7' ),
 					'query_args' => array(
 						'post_id' => $post_id,
 						'specific' => 'text',
@@ -284,7 +284,7 @@ class UACF7_MAILCHIMP {
 				'uacf7_mailchimp_subscriber_lname' => array(
 					'id' => 'uacf7_mailchimp_subscriber_lname',
 					'type' => 'select',
-					'label' => __( ' Subscriber Last Name ', 'ultimate-addons-cf7' ),
+					'label' => __( ' Subscriber Last Name ', 'ultimate-addons-for-contact-form-7' ),
 					'query_args' => array(
 						'post_id' => $post_id,
 						'specific' => 'text',
@@ -296,7 +296,7 @@ class UACF7_MAILCHIMP {
 				'uacf7_mailchimp_subscriber_tags' => array(
 					'id'         => 'uacf7_mailchimp_subscriber_tags',
 					'type'       => 'select2',
-					'label'      => __( 'Tags To Add', 'ultimate-addons-cf7' ),
+					'label'      => __( 'Tags To Add', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle'   => 'Add tags to your subscribers. These tags will be added from your mailchimp tag list.',
 					'query_args' => array(
 						'post_id'  => $post_id,
@@ -428,27 +428,27 @@ class UACF7_MAILCHIMP {
 			$response = $this->set_config( $api_key, 'ping' );
 			$response = json_decode( $response );
 
-			$status .= '<span class="status-title"><strong>' . esc_html__( 'Status: ', 'ultimate-addons-cf7' ) . '</strong>';
+			$status .= '<span class="status-title"><strong>' . esc_html__( 'Status: ', 'ultimate-addons-for-contact-form-7' ) . '</strong>';
 
 			if ( $this->is_internet_connected() == false ) { //Checking internet connection
-				$status .= '<span class="status-error">' . esc_html__( 'Can\'t connect to the server. Please check internet connection.', 'ultimate-addons-cf7' ) . '</span>';
+				$status .= '<span class="status-error">' . esc_html__( 'Can\'t connect to the server. Please check internet connection.', 'ultimate-addons-for-contact-form-7' ) . '</span>';
 			}
 
 			if ( isset( $response->health_status ) ) { //Display success message
-				$status .= '<span class="status-success">' . esc_html( $response->health_status, 'ultimate-addons-cf7' ) . '</span>';
+				$status .= '<span class="status-success">' . esc_html( $response->health_status, 'ultimate-addons-for-contact-form-7' ) . '</span>';
 			}
 
 			if ( isset( $response->title ) ) { //Display error title
-				$status .= '<span class="status-error">' . esc_html( $response->title, 'ultimate-addons-cf7' ) . '</span>';
+				$status .= '<span class="status-error">' . esc_html( $response->title, 'ultimate-addons-for-contact-form-7' ) . '</span>';
 			}
 
 			$status .= '</span>';
 
 			if ( isset( $response->detail ) ) { //Display error mdetails
-				$status .= '<span class="status-details status-error">' . esc_html( $response->detail, 'ultimate-addons-cf7' ) . '</span>';
+				$status .= '<span class="status-details status-error">' . esc_html( $response->detail, 'ultimate-addons-for-contact-form-7' ) . '</span>';
 			}
 		} else {
-			$status .= '<span class="status-details status-error">' . esc_html( 'Please configure your Mailchimp API Key from', 'ultimate-addons-cf7' ) . ' <strong>' . esc_html( 'Addons -> Settings -> Mailchimp API', 'ultimate-addons-cf7' ) . ' </strong>' . '</span>';
+			$status .= '<span class="status-details status-error">' . esc_html( 'Please configure your Mailchimp API Key from', 'ultimate-addons-for-contact-form-7' ) . ' <strong>' . esc_html( 'Addons -> Settings -> Mailchimp API', 'ultimate-addons-for-contact-form-7' ) . ' </strong>' . '</span>';
 		}
 
 		return $status;

@@ -120,7 +120,7 @@ class UACF7_PROMO_NOTICE {
         // Use API title if available, otherwise fallback
         $widget_title = !empty($dashboard_banner['title'])
         ? esc_html($dashboard_banner['title'])
-        : __('Themefic Deals & Services', 'ultimate-addons-cf7');
+        : __('Themefic Deals & Services', 'ultimate-addons-for-contact-form-7');
 
 
 		wp_add_dashboard_widget(
@@ -135,7 +135,7 @@ class UACF7_PROMO_NOTICE {
         $dashboard_widget = isset($this->uacf7_promo_option['dashboard_widget']) ? $this->uacf7_promo_option['dashboard_widget'] : [];
 
         if (empty($dashboard_widget) || empty($dashboard_widget['enable_status'])) {
-            echo '<p>' . esc_html__('No active widget promotion.', 'ultimate-addons-cf7') . '</p>';
+            echo '<p>' . esc_html__('No active widget promotion.', 'ultimate-addons-for-contact-form-7') . '</p>';
             return;
         }
 
@@ -422,7 +422,7 @@ class UACF7_PROMO_NOTICE {
                     <img  style="width: 100%;" src="<?php echo esc_attr($image_url) ?>" alt="">
                 </a> 
                 <?php if( isset($dashboard_banner['dismiss_status']) && $dashboard_banner['dismiss_status'] == true): ?>
-                <button type="button" class="notice-dismiss tf_black_friday_notice_dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this notice.', 'ultimate-addons-cf7' ) ?></span></button>
+                <button type="button" class="notice-dismiss tf_black_friday_notice_dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this notice.', 'ultimate-addons-for-contact-form-7' ) ?></span></button>
                 <?php  endif; ?>
             </div>
             <script>

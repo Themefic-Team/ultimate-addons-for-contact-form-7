@@ -12,12 +12,12 @@ if ( ! class_exists( 'UACF7_switch' ) ) {
 		public function render() {
 
 			$args = wp_parse_args( $this->field, array(
-				'label_on'  => esc_html__( 'On', 'ultimate-addons-cf7' ),
-				'label_off' => esc_html__( 'Off', 'ultimate-addons-cf7' ),
+				'label_on'  => esc_html__( 'On', 'ultimate-addons-for-contact-form-7' ),
+				'label_off' => esc_html__( 'Off', 'ultimate-addons-for-contact-form-7' ),
 			) );
 
-			$on  = ( ! empty( $args['label_on'] ) ) ? $args['label_on'] : esc_html__( 'On', 'ultimate-addons-cf7' );
-			$off = ( ! empty( $args['label_off'] ) ) ? $args['label_off'] : esc_html__( 'Off', 'ultimate-addons-cf7' );
+			$on  = ( ! empty( $args['label_on'] ) ) ? $args['label_on'] : esc_html__( 'On', 'ultimate-addons-for-contact-form-7' );
+			$off = ( ! empty( $args['label_off'] ) ) ? $args['label_off'] : esc_html__( 'Off', 'ultimate-addons-for-contact-form-7' );
 			$width = ( ! empty( $this->field['width'] ) ) ? ' style="width: '. esc_attr( $this->field['width'] ) .'px;"': '';
 			?>
             <label for="<?php echo esc_attr( $this->field_name() ); ?>" class="tf-switch-label" <?php echo wp_kses_post($width); ?>>

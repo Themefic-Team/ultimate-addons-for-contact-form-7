@@ -102,7 +102,7 @@ class UACF7_COUNTRY_DROPDOWN {
 
 		ob_start(); ?>
 		<select <?php echo $atts; ?> id="uacf7_country_api">
-			<option value=""><?php echo esc_html__( 'Select a Country', 'ultimate-addons-cf7' ); ?></option>
+			<option value=""><?php echo esc_html__( 'Select a Country', 'ultimate-addons-for-contact-form-7' ); ?></option>
 		</select>
 		<?php
 		$api_country = ob_get_clean();
@@ -172,7 +172,7 @@ class UACF7_COUNTRY_DROPDOWN {
 			return;
 
 		wpcf7_add_tag_generator( 'uacf7_country_dropdown',
-			__( 'Country Dropdown', 'ultimate-addons-cf7' ),
+			__( 'Country Dropdown', 'ultimate-addons-for-contact-form-7' ),
 			'uacf7-tg-pane-country-dropdown',
 			array( $this, 'tg_pane_country_dropdown' ),
 			array( 'version' => '2' )
@@ -192,14 +192,14 @@ class UACF7_COUNTRY_DROPDOWN {
 
 			<div class="uacf7-doc-notice">
 				<?php echo sprintf(
-					__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-cf7' ),
+					__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-for-contact-form-7' ),
 					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-country-dropdown-with-flag/" target="_blank">Country Dropdown</a>', '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-autocomplete/" target="_blank">IP Geo Fields (Autocomplete)</a>'
 				); ?>
 			</div>
 
 			<p class="uacf7-doc-notice uacf7-guide">
 				<?php echo sprintf(
-					__( 'Need  autocomplete feature for country, city, state, and zip code fields based on the user IP address? Try Our Pro addon %1s.', 'ultimate-addons-cf7' ),
+					__( 'Need  autocomplete feature for country, city, state, and zip code fields based on the user IP address? Try Our Pro addon %1s.', 'ultimate-addons-for-contact-form-7' ),
 					'<strong><a target="_blank" href="https://cf7addons.com/preview/contact-form-7-autocomplete/">IP Geolocation</a></strong>'
 				); ?>
 
@@ -223,12 +223,12 @@ class UACF7_COUNTRY_DROPDOWN {
 			<fieldset class="uacf7-tag-wraper">
 				<?php ob_start(); ?>
 				<legend>
-					<?php echo esc_html( __( 'Auto complete', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_html( __( 'Auto complete', 'ultimate-addons-for-contact-form-7' ) ); ?>
 					<a style="color:red" target="_blank" href="https://cf7addons.com/">(Pro)</a>
 				</legend>
 			
 				<input disabled type="checkbox" data-tag-part="option" data-tag-option="country_auto_complete"/>
-				<?php echo esc_html( __( "Autocomplete country using user's network IP.", "ultimate-addons-cf7" ) ); ?>
+				<?php echo esc_html( __( "Autocomplete country using user's network IP.", "ultimate-addons-for-contact-form-7" ) ); ?>
 				<?php
 				$autocomplete_html = ob_get_clean();
 
@@ -243,11 +243,11 @@ class UACF7_COUNTRY_DROPDOWN {
 			<fieldset class="uacf7-tag-wraper">
 				<?php ob_start(); ?>
 				<legend>
-					<?php echo esc_html( __( 'Dynamic Selection', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_html( __( 'Dynamic Selection', 'ultimate-addons-for-contact-form-7' ) ); ?>
 					<a style="color:red" target="_blank" href="https://cf7addons.com/">(Pro)</a>
 				</legend>
 				<input disabled type="checkbox" class="option" data-tag-part="option" data-tag-option="ds_country"/>
-				<?php echo esc_html( __( "Dynamically Populate Countries, States, and Cities", "ultimate-addons-cf7" ) ); ?>
+				<?php echo esc_html( __( "Dynamically Populate Countries, States, and Cities", "ultimate-addons-for-contact-form-7" ) ); ?>
 
 				<?php
 				$dynamic_selection = ob_get_clean();
@@ -263,14 +263,14 @@ class UACF7_COUNTRY_DROPDOWN {
 				<?php ob_start(); ?>
 
 				<legend>
-					<?php echo esc_html( __( 'Show Specific Countries', 'ultimate-addons-cf7' ) ); ?>
+					<?php echo esc_html( __( 'Show Specific Countries', 'ultimate-addons-for-contact-form-7' ) ); ?>
 					<a style="color:red" target="_blank" href="https://cf7addons.com/">(Pro)</a>
 				</legend>
 
 				<textarea class="values" name="" id="tag-generator-panel-product-id" cols="30" rows="10" disabled></textarea>
 
 				<br>
-				<?php echo esc_html( __( ' One ID per line. ', 'ultimate-addons-cf7' ) ); ?>
+				<?php echo esc_html( __( ' One ID per line. ', 'ultimate-addons-for-contact-form-7' ) ); ?>
 				<?php
 				$default_country = ob_get_clean();
 				/*
