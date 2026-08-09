@@ -27,8 +27,9 @@ class UACF7_uacf7style {
 					'type' => 'heading',
 					'label' => __( 'Single Form Styler Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-						__( 'Style your entire form without any CSS coding, including colors, margins, button styles, and font sizes. These options overrides Global Form Styler Settings. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://cf7addons.com/preview/contact-form-7-style-addon/" target="_blank">Example</a>'
+						/* translators: %1$s: demo link */
+						__( 'Style your entire form without any CSS coding, including colors, margins, button styles, and font sizes. These options overrides Global Form Styler Settings. See Demo %1$s.', 'ultimate-addons-for-contact-form-7' ),
+						'<a href="https://cf7addons.com/preview/contact-form-7-style-addon/" target="_blank">' . esc_html__( 'Example', 'ultimate-addons-for-contact-form-7' ) . '</a>'
 					)
 				),
 				'styler_docs' => array(
@@ -36,9 +37,10 @@ class UACF7_uacf7style {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-style/" target="_blank">Single Form Styler</a>',
-						'<a href="https://themefic.com/docs/uacf7/pro-addons/global-form-styler-for-contact-form-7/" target="_blank">Global Form Styler</a>'
+						/* translators: %1$s: demo link, %2$s: demo link */
+						__( 'Confused? Check our Documentation on  %1$s and %2$s.', 'ultimate-addons-for-contact-form-7' ),
+						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-style/" target="_blank">' . esc_html__( 'Single Form Styler', 'ultimate-addons-for-contact-form-7' ) . '</a>',
+						'<a href="https://themefic.com/docs/uacf7/pro-addons/global-form-styler-for-contact-form-7/" target="_blank">' . esc_html__( 'Global Form Styler', 'ultimate-addons-for-contact-form-7' ) . '</a>'
 					)
 				),
 				'uacf7_enable_form_styles' => array(
@@ -662,7 +664,7 @@ class UACF7_uacf7style {
 				$ua_custom_css              = $form_meta['uacf7_uacf7style_ua_custom_css'];
 				?>
 				<style>
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> label {
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> label {
 						<?php
 						// Color
 						if ( ! empty( $label_color ) ) {
@@ -724,18 +726,18 @@ class UACF7_uacf7style {
 						?>
 					}
 
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="email"],
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="number"],
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="password"],
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="search"],
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="tel"],
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="text"],
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="url"],
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="date"],
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="radio"],
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="checkbox"],
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> select,
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> textarea {
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="email"],
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="number"],
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="password"],
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="search"],
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="tel"],
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="text"],
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="url"],
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="date"],
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="radio"],
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="checkbox"],
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> select,
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> textarea {
 						<?php
 						// Color
 						if ( ! empty( $input_color ) ) {
@@ -816,8 +818,8 @@ class UACF7_uacf7style {
 						?>
 					}
 
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> .wpcf7-radio span,
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> .wpcf7-checkbox span {
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> .wpcf7-radio span,
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> .wpcf7-checkbox span {
 						<?php
 						// Color
 						if ( ! empty( $input_color ) ) {
@@ -846,7 +848,7 @@ class UACF7_uacf7style {
 						?>
 					}
 
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> textarea {
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> textarea {
 						<?php
 						// Height
 						if ( ! empty( $textarea_input_height ) ) {
@@ -859,7 +861,7 @@ class UACF7_uacf7style {
 						width: 100%;
 					}
 
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="submit"] {
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="submit"] {
 						<?php
 						// Color
 						if ( ! empty( $btn_color ) ) {
@@ -940,7 +942,7 @@ class UACF7_uacf7style {
 						?>
 					}
 
-					.uacf7-uacf7style-<?php esc_attr_e( $cfform->id() ); ?> input[type="submit"]:hover {
+					.uacf7-uacf7style-<?php echo esc_attr( $cfform->id() ); ?> input[type="submit"]:hover {
 						<?php
 						// Hover color
 						if ( ! empty( $btn_color_hover ) ) {
@@ -959,10 +961,10 @@ class UACF7_uacf7style {
 						?>
 					}
 
-					<?php echo $ua_custom_css ?>
+					<?php echo wp_kses_post( $ua_custom_css ); ?>
 				</style>
 
-				<?php echo '<div class="uacf7-uacf7style uacf7-uacf7style-' . esc_attr( $cfform->id() ) . '">' . $form . '</div>';
+				<?php echo '<div class="uacf7-uacf7style uacf7-uacf7style-' . esc_attr( $cfform->id() ) . '">' . wp_kses_post( $form ) .'</div>';
 				$properties['form'] = ob_get_clean();
 			endif;
 		}

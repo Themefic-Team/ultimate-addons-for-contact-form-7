@@ -1,7 +1,7 @@
  === Ultra Addons for Contact Form 7 ===
 Contributors: themefic, hasanet, hemelhasan, mdrejon, raihan143
 Tags: contact form, contact form 7, forms, custom form, form builder
-Requires at least: 4.2
+Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 3.5.47

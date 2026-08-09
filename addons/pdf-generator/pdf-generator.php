@@ -87,8 +87,9 @@ class UACF7_PDF_GENERATOR {
 					'type' => 'heading',
 					'label' => __( 'PDF Generator Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-						__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">Example</a>'
+						/* translators: %1$s: demo link */
+						__( 'Generate a PDF from submissions and send it to admin and the submitter\'s email. See Demo %1$s.', 'ultimate-addons-for-contact-form-7' ),
+						'<a href="https://cf7addons.com/preview/contact-form-7-pdf-generator/" target="_blank" rel="noopener">'.esc_html__('Example', 'ultimate-addons-for-contact-form-7').'</a>'
 					)
 				),
 				'pdf_generator_docs' => array(
@@ -96,8 +97,9 @@ class UACF7_PDF_GENERATOR {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-pdf-generator/" target="_blank" rel="noopener">PDF Generator</a>'
+						/* translators: %1$s: documentation link */
+						__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-for-contact-form-7' ),
+						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-pdf-generator/" target="_blank" rel="noopener">'.esc_html__('PDF Generator', 'ultimate-addons-for-contact-form-7').'</a>'
 					)
 				),
 				'uacf7_enable_pdf_generator' => array(

@@ -120,7 +120,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 				'status' => 'success',
 				'value' => $value,
 			];
-			echo wp_send_json( $data );
+			wp_send_json( $data );
 			die();
 		}
 
@@ -171,7 +171,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 				'edit_url' => admin_url( 'admin.php?page=wpcf7&post=' . $contact_form->id() . '&action=edit' ),
 				'message' => $message,
 			];
-			echo wp_send_json( $data );
+			wp_send_json( $data );
 			die();
 		}
 
@@ -353,15 +353,15 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 							</span>
 
 							<div class="uacf7-single-step-content-inner">
-								<h1><?php echo _e( 'Welcome to Ultra Addons for Contact Form 7', 'ultimate-addons-for-contact-form-7' ) ?></h1>
+								<h1><?php echo esc_html__( 'Welcome to Ultra Addons for Contact Form 7', 'ultimate-addons-for-contact-form-7' ) ?></h1>
 
-								<p><?php echo _e( "The easiest and best Contact Form 7 Addons Plugin for WordPress. With 45+ essential features, this all-in-one plugin includes nearly all the basic to advanced options for your site's contact form.", 'ultimate-addons-for-contact-form-7' ) ?>
+								<p><?php echo esc_html__( "The easiest and best Contact Form 7 Addons Plugin for WordPress. With 45+ essential features, this all-in-one plugin includes nearly all the basic to advanced options for your site's contact form.", 'ultimate-addons-for-contact-form-7' ) ?>
 								</p>
 
 								<div class="uacf7-step-plugin-required">
-									<p><?php echo esc_html( 'To continue, the plugin requires Contact Form 7' ) ?> <br> to be
+									<p><?php echo esc_html__( 'To continue, the plugin requires Contact Form 7', 'ultimate-addons-for-contact-form-7' ) ?> <br> to be
 										<?php if ( $uacf7_plugin_status == 'not_active' ) {
-											echo '<strong>' . esc_html( "installed" ) . '</strong> ' . esc_html( " & activated.", ) . ' ';
+											echo '<strong>' . esc_html__( "installed", 'ultimate-addons-for-contact-form-7' ) . '</strong> ' . esc_html__( " & activated.", 'ultimate-addons-for-contact-form-7' ) . ' ';
 										} else {
 											echo esc_html( "installed & activated." );
 										} ?>
@@ -396,8 +396,8 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 						data-step="2">
 						<div class="uacf7-single-step-content-wrap">
 							<div class="hydra-installation-notice"></div>
-							<h2><?php echo _e( 'Activate your addons', 'ultimate-addons-for-contact-form-7' ) ?></h2>
-							<p><?php echo _e( 'Please activate only the addons you need. This helps avoid loading unnecessary assets (JS, CSS). Both Free and Pro addons are available here, organized ', 'ultimate-addons-for-contact-form-7' ) ?><strong><?php echo _e( 'Alphabetically', 'ultimate-addons-for-contact-form-7' ) ?></strong>.
+							<h2><?php echo esc_html__( 'Activate your addons', 'ultimate-addons-for-contact-form-7' ) ?></h2>
+							<p><?php echo esc_html__( 'Please activate only the addons you need. This helps avoid loading unnecessary assets (JS, CSS). Both Free and Pro addons are available here, organized ', 'ultimate-addons-for-contact-form-7' ) ?><strong><?php echo esc_html__( 'Alphabetically', 'ultimate-addons-for-contact-form-7' ) ?></strong>.
 							</p>
 							<form method="post" action="" class="tf-option-form tf-ajax-save" enctype="multipart/form-data">
 
@@ -443,7 +443,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 											// echo $default; 
 											?>
 											<div class="uacf7-single-addons-wrap">
-												<?php echo $badge; ?>
+												<?php echo wp_kses_post( $badge ); ?>
 												<h2 class="uacf7-single-addon-title"><?php echo esc_html( $field['label'] ) ?></h2>
 												<div class="uacf7-addon-toggle-wrap">
 													<input type="checkbox" id="<?php echo esc_attr( $field['id'] ) ?>"
@@ -479,12 +479,12 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 							<div class="uacf7-single-step-content-inner">
 								<div class="uacf7-form-generate">
 									<h3>
-										<?php echo sprintf(
-											__( 'AI Form Generator<span>Our AI Form Generator creates a basic form for you, based on your selected category from the dropdown menu below. You can then customize this form to suit your specific requirements.</span>', 'ultimate-addons-for-contact-form-7' ) ); ?>
+										<?php echo wp_kses_post( sprintf(
+											__( 'AI Form Generator<span>Our AI Form Generator creates a basic form for you, based on your selected category from the dropdown menu below. You can then customize this form to suit your specific requirements.</span>', 'ultimate-addons-for-contact-form-7' ) ) ); ?>
 									</h3>
 									<label for="uacf7-select-form">
 										<select name="uacf7-select-form" class="tf-select2" id="uacf7-select-form">
-											<option value=""><?php echo esc_html( 'Choose Form type', 'ultimate-addons-for-contact-form-7' ) ?>
+											<option value=""><?php echo esc_html__( 'Choose Form type', 'ultimate-addons-for-contact-form-7' ) ?>
 											</option>
 											<?php
 											foreach ( $option_form as $key => $form ) :
@@ -497,7 +497,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 								</div>
 								<button class="uacf7-generate-form uacf7-setup-widzard-btn" style="display:none;"
 									data-current-step="1"
-									data-next-step="2"><?php echo esc_html( 'Generate with AI', 'ultimate-addons-for-contact-form-7' ) ?>
+									data-next-step="2"><?php echo esc_html__( 'Generate with AI', 'ultimate-addons-for-contact-form-7' ) ?>
 
 									<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<g clip-path="url(#clip0_143_4913)">
@@ -514,7 +514,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 								</button>
 							</div>
 							<div class="uacf7-single-step-content-inner">
-								<img src="<?php echo UACF7_URL ?>assets/admin/images/quick-setup.svg" alt="quick-setup">
+								<img src="<?php echo esc_url( UACF7_URL ) ?>assets/admin/images/quick-setup.svg" alt="quick-setup">
 
 								<div class="uacf7-generated-template" style="display:none">
 									<!-- <textarea name="uacf7-generated-form" id="uacf7_ai_code_content" cols="30" rows="10"></textarea> -->
@@ -522,7 +522,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 										<textarea name="uacf7-generated-form" id="uacf7_ai_code_content"></textarea>
 									</div>
 									<button
-										class="uacf7-create-form uacf7-setup-widzard-btn "><?php echo esc_html( 'Create your form', 'ultimate-addons-for-contact-form-7' ) ?></button>
+										class="uacf7-create-form uacf7-setup-widzard-btn "><?php echo esc_html__( 'Create your form', 'ultimate-addons-for-contact-form-7' ) ?></button>
 								</div>
 							</div>
 						</div>
@@ -533,13 +533,13 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 					<div class="uacf7-wizard-footer-inner">
 						<div class="uacf7-wizard-footer-left">
 							<a href="<?php echo esc_url( admin_url() ) ?>"
-								class="uacf7-wizard-footer-left-link uacf7-back-dashboard"><?php echo esc_html( 'Back to Dashboard', 'ultimate-addons-for-contact-form-7' ) ?></a>
+								class="uacf7-wizard-footer-left-link uacf7-back-dashboard"><?php echo esc_html__( 'Back to Dashboard', 'ultimate-addons-for-contact-form-7' ) ?></a>
 						</div>
 
 						<div class="uacf7-wizard-footer-right">
 
 							<a href="<?php echo esc_url( admin_url() ) ?>admin.php?page=uacf7_settings#tab=mailchimp" class="wizard_uacf7_btn_back_addon" style="display: none">
-								<?php echo esc_html( 'Go to settings', 'ultimate-addons-for-contact-form-7' ) ?>
+								<?php echo esc_html__( 'Go to settings', 'ultimate-addons-for-contact-form-7' ) ?>
 							</a>
 
 							<button
@@ -586,7 +586,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 					$url = admin_url( 'admin.php?page=uacf7-setup-wizard' );
 				}
 
-				wp_redirect( $url );
+				wp_safe_redirect( $url );
 				exit;
 			}
 		}

@@ -248,7 +248,7 @@ class Uacf7_Dashboard_Promo_Notice {
 
 			<div class="uacf7-promo-icon">
 
-				<img style="height:72px; width:60px;" src="<?php echo UACF7_URL; ?>assets/admin/images/icons/shield-icon.gif" alt="shield logo">
+				<img style="height:72px; width:60px;" src="<?php echo esc_url( UACF7_URL ); ?>assets/admin/images/icons/shield-icon.gif" alt="shield logo">
 
 			</div>
 
@@ -258,6 +258,7 @@ class Uacf7_Dashboard_Promo_Notice {
 					<?php
 					echo esc_html(
 						sprintf(
+							/* translators: %1$s: Discounted price. */
 							__( 'Lifetime License only for $%s', 'ultimate-addons-for-contact-form-7' ),
 							number_format_i18n( $offer['discount_price'] )
 						)

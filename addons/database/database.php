@@ -425,7 +425,7 @@ class UACF7_DATABASE {
 				<div class="loading"></div>
 			</div>
 			<div id="uacf7dp_addons_header" class="uacf7dp-tabcontent">
-				<img src="<?php echo UACF7_ADDONS ?>/database/assets/images/ultimate-logo.png" alt="logo" />
+				<img src="<?php echo esc_url(UACF7_ADDONS) ?>/database/assets/images/ultimate-logo.png" alt="logo" />
 				<h4 class="uacf7dp_main-heading">
 					<?php echo esc_html__( 'Database', 'ultimate-addons-for-contact-form-7' ); ?>
 				</h4>
@@ -444,7 +444,7 @@ class UACF7_DATABASE {
 							$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM " . $wpdb->prefix . "uacf7dp_data WHERE cf7_form_id = %d", $form->ID ) );
 
 							echo '<option value="' . esc_attr( $form->ID ) . '" ' . selected( isset( $_POST['form-id'] ) && $_POST['form-id'] == $form->ID, true ) . '>';
-							echo esc_attr( $form->post_title ) . ' ( ' . $count . ' )';
+							echo esc_attr( $form->post_title ) . ' ( ' . esc_attr( $count ) . ' )';
 							echo '</option>';
 						}
 						?>
@@ -458,7 +458,7 @@ class UACF7_DATABASE {
 					<table id="uacf7dp-database-tablePro"></table>
 				</div>
 				<div class="uacf7dp_table_empty">
-					<img src="<?php echo UACF7_ADDONS ?>/database/assets/images/select.png" alt="thum" />
+					<img src="<?php echo esc_url(UACF7_ADDONS) ?>/database/assets/images/select.png" alt="thum" />
 					<p>
 						<span>To view data, please select a form</span>
 						Once selected, the data will be displayed on the screen.
@@ -598,7 +598,7 @@ class UACF7_DATABASE {
 
 		$html .= '</table></div>';
 
-		echo $html;
+		echo wp_kses_post( $html );
 		wp_die();
 	}
 

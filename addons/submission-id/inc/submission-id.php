@@ -30,9 +30,9 @@ class UACF7_SUBMISSION_ID_PANEL {
 		} else {
 
 			global $wpdb;
-			$table_name = $wpdb->prefix . 'uacf7_form';
+			$table_name = esc_sql( $wpdb->prefix . 'uacf7_form' );
 			$last_item = $wpdb->get_row(
-				$wpdb->prepare( "SELECT * FROM $table_name WHERE form_id= %d  ORDER BY submission_id DESC ", $form_id )
+				$wpdb->prepare( "SELECT * FROM {$table_name} WHERE form_id = %d ORDER BY submission_id DESC", $form_id )
 			);
 
 
@@ -66,22 +66,22 @@ class UACF7_SUBMISSION_ID_PANEL {
 	public function uacf7_create_submission_id_database_col() {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'uacf7_form';
-		$table_exist = $wpdb->get_var( "SHOW TABLES LIKE '{$table_name}'" );
+		$table_exist = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) );
 
-		if ( $table_exist == $table_name ) {
-			$charset_collate = $wpdb->get_charset_collate();
-
-			$tableName = $wpdb->prefix . 'leaguemanager_person_status';
-			$sql_checked = "SELECT *  FROM information_schema.COLUMNS  WHERE 
-                              TABLE_SCHEMA = '$wpdb->dbname' 
-                          AND TABLE_NAME = '$table_name' 
-                          AND COLUMN_NAME = 'submission_id'";
+		if ( $table_exist === $table_name ) {
+			$sql_checked = $wpdb->prepare(
+				"SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = %s AND TABLE_NAME = %s AND COLUMN_NAME = %s",
+				$wpdb->dbname,
+				$table_name,
+				'submission_id'
+			);
 
 			$checked_status = $wpdb->query( $sql_checked );
 			if ( $checked_status != true ) {
-				$sql = "ALTER TABLE $table_name 
-        MODIFY COLUMN form_date DATETIME NULL,
-        ADD submission_id bigint(20) DEFAULT 0 NULL AFTER form_value";
+				$sql = $wpdb->prepare(
+					"ALTER TABLE %i MODIFY COLUMN form_date DATETIME NULL, ADD submission_id bigint(20) DEFAULT 0 NULL AFTER form_value",
+					$table_name
+				);
 				$wpdb->query( $sql );
 			}
 		}

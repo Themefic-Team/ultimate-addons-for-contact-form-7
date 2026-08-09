@@ -87,7 +87,7 @@ class UACF7_COLUMN {
 			?></h3>
 
 			<p><?php
-			$description = wp_kses(
+			echo wp_kses(
 				$field_types['uacf7-col']['description'],
 				array(
 					'a' => array( 'href' => true ),
@@ -95,14 +95,25 @@ class UACF7_COLUMN {
 				),
 				array( 'http', 'https' )
 			);
-
-			echo $description;
 			?></p>
 			<div class="uacf7-doc-notice">
-				<?php echo sprintf(
-					__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-for-contact-form-7' ),
-					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-columns/" target="_blank">Columns / Grid</a>', '<a href="https://themefic.com/docs/uacf7/pro-addons/custom-columns-for-contact-form-7/" target="_blank">Custom Columns</a>'
-				); ?>
+				<?php
+					echo wp_kses_post(
+						sprintf(
+							/* translators: 1: Link to Columns/Grid documentation, 2: Link to Custom Columns documentation. */
+							__(
+								'Confused? Check our Documentation on %1$s and %2$s.',
+								'ultimate-addons-for-contact-form-7'
+							),
+							'<a href="' . esc_url( 'https://themefic.com/docs/uacf7/free-addons/contact-form-7-columns/' ) . '" target="_blank" rel="noopener noreferrer">' .
+								esc_html__( 'Columns / Grid', 'ultimate-addons-for-contact-form-7' ) .
+							'</a>',
+							'<a href="' . esc_url( 'https://themefic.com/docs/uacf7/pro-addons/custom-columns-for-contact-form-7/' ) . '" target="_blank" rel="noopener noreferrer">' .
+								esc_html__( 'Custom Columns', 'ultimate-addons-for-contact-form-7' ) .
+							'</a>'
+						)
+					);
+				?>
 			</div>
 			<h3><?php echo esc_html__( "Generate tag: Column", "ultimate-addons-for-contact-form-7" ); ?></h3>
 		</header>
@@ -249,12 +260,19 @@ class UACF7_COLUMN {
 
 					$html = '<div class="' . esc_attr( $ucaf7_column_class ) . '">';
 
-					echo apply_filters( 'uacf7_column_custom_width', $html, $ucaf7_column_class, $uacf7_column_custom_width );
+					echo wp_kses_post(
+						apply_filters(
+							'uacf7_column_custom_width',
+							$html,
+							$ucaf7_column_class,
+							$uacf7_column_custom_width
+						)
+					);
 
 				} else if ( $form_part == '[/uacf7-col]' ) {
-					echo '</div>';
+					echo esc_html( '</div>' );
 				} else {
-					echo $form_part;
+					echo wp_kses_post( $form_part );
 				}
 			}
 
@@ -283,7 +301,7 @@ class UACF7_COLUMN {
 				} else if ( $form_part == '[/uacf7-row]' ) {
 					echo '</div>';
 				} else {
-					echo $form_part;
+					echo wp_kses_post( $form_part );
 				}
 			}
 

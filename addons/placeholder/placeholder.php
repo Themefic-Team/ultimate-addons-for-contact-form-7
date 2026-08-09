@@ -35,8 +35,9 @@ class UACF7_Placeholder {
 					'type' => 'heading', 
 					'label' => __( 'Placeholder Styler Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-                        __( 'Style form placeholders, like text color and background color, without writing any CSS. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
-                         '<a href="https://cf7addons.com/preview/contact-form-7-placeholder-styling/" target="_blank">Example</a>'
+						/* translators: %1$s: demo link */
+                        __( 'Style form placeholders, like text color and background color, without writing any CSS. See Demo %1$s.', 'ultimate-addons-for-contact-form-7' ),
+                         '<a href="https://cf7addons.com/preview/contact-form-7-placeholder-styling/" target="_blank" rel="noopener noreferrer">'.esc_html__( 'Example', 'ultimate-addons-for-contact-form-7' ).'</a>'
                     )
 				),
 				'placeholder_docs' => array(
@@ -44,8 +45,9 @@ class UACF7_Placeholder {
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-placeholder-styling/" target="_blank">Placeholder Styling</a>'
+                        /* translators: %1$s: documentation link */
+                        __( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-for-contact-form-7' ),
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-placeholder-styling/" target="_blank" rel="noopener noreferrer">'.esc_html__( 'Placeholder Styling', 'ultimate-addons-for-contact-form-7' ).'</a>'
                     )
 				),
 				'uacf7_enable_placeholder_styles' => array(
@@ -152,80 +154,80 @@ class UACF7_Placeholder {
 				$background_color = isset( $form_meta['uacf7_placeholder_color_option'] ) ? $form_meta['uacf7_placeholder_color_option']['uacf7_placeholder_background_color'] : '';
 				?>
 				<style>
-					.uacf7-form-<?php esc_attr_e( $cfform->id() ); ?>
+					.uacf7-form-<?php echo esc_attr( $cfform->id() ); ?>
 					::placeholder {
 						color:
-							<?php echo esc_attr_e( $color ); ?>
+							<?php echo esc_attr( $color ); ?>
 						;
 						background-color:
-							<?php echo esc_attr_e( $background_color ); ?>
+							<?php echo esc_attr( $background_color ); ?>
 						;
 						font-size:
-							<?php echo esc_attr_e( $fontsize ) . 'px'; ?>
+							<?php echo esc_attr( $fontsize ) . 'px'; ?>
 						;
 						font-family:
-							<?php echo esc_attr_e( $fontfamily ); ?>
+							<?php echo esc_attr( $fontfamily ); ?>
 						;
 						font-style:
-							<?php echo esc_attr_e( $fontstyle ); ?>
+							<?php echo esc_attr( $fontstyle ); ?>
 						;
 						font-weight:
-							<?php echo esc_attr_e( $fontweight ); ?>
+							<?php echo esc_attr( $fontweight ); ?>
 						;
 					}
 
 					.uacf7-form-
 
-					<?php esc_attr_e( $cfform->id() ); ?>
+					<?php echo esc_attr( $cfform->id() ); ?>
 					::-webkit-input-placeholder {
 						/* Edge */
 						color:
-							<?php echo esc_attr_e( $color ); ?>
+							<?php echo esc_attr( $color ); ?>
 						;
 						background-color:
-							<?php echo esc_attr_e( $background_color ); ?>
+							<?php echo esc_attr( $background_color ); ?>
 						;
 						font-size:
-							<?php echo esc_attr_e( $fontsize ) . 'px'; ?>
+							<?php echo esc_attr( $fontsize ) . 'px'; ?>
 						;
 						font-family:
-							<?php echo esc_attr_e( $fontfamily ); ?>
+							<?php echo esc_attr( $fontfamily ); ?>
 						;
 						font-style:
-							<?php echo esc_attr_e( $fontstyle ); ?>
+							<?php echo esc_attr( $fontstyle ); ?>
 						;
 						font-weight:
-							<?php echo esc_attr_e( $fontweight ); ?>
+							<?php echo esc_attr( $fontweight ); ?>
 						;
 					}
 
 					.uacf7-form-
 
-					<?php esc_attr_e( $cfform->id() ); ?>
+					<?php echo esc_attr( $cfform->id() ); ?>
 					:-ms-input-placeholder {
 						/* Internet Explorer 10-11 */
 						color:
-							<?php echo esc_attr_e( $color ); ?>
+							<?php echo esc_attr( $color ); ?>
 						;
 						background-color:
-							<?php echo esc_attr_e( $background_color ); ?>
+							<?php echo esc_attr( $background_color ); ?>
 						;
 						font-size:
-							<?php echo esc_attr_e( $fontsize ) . 'px'; ?>
+							<?php echo esc_attr( $fontsize ) . 'px'; ?>
 						;
 						font-family:
-							<?php echo esc_attr_e( $fontfamily ); ?>
+							<?php echo esc_attr( $fontfamily ); ?>
 						;
 						font-style:
-							<?php echo esc_attr_e( $fontstyle ); ?>
+							<?php echo esc_attr( $fontstyle ); ?>
 						;
 						font-weight:
-							<?php echo esc_attr_e( $fontweight ); ?>
+							<?php echo esc_attr( $fontweight ); ?>
 						;
 					}
 				</style>
 				<?php
-				echo $form;
+				echo wp_kses_post( $form );
 				$properties['form'] = ob_get_clean();
 
 			endif;

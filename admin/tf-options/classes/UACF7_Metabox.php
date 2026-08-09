@@ -114,7 +114,7 @@ if ( ! class_exists( 'UACF7_Metabox' ) ) {
 
 								<span>
 									<?php echo esc_html( 'VERSION : ', 'ultimate-addons-for-contact-form-7' ); ?>
-									<?php echo UACF7_VERSION ?>
+									<?php echo esc_html( UACF7_VERSION ); ?>
 								</span>
 							</div>
 						<?php endif; ?>

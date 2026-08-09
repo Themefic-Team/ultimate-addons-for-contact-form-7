@@ -132,12 +132,13 @@ class Ultimate_Addons_CF7 {
 		?>
 		<div class="notice notice-error">
 			<p>
-				<?php printf(
-					__( '%s requires %s to be installed and active. You can install and activate it from %s', 'ultimate-addons-for-contact-form-7' ),
+				<?php wp_kses_post( sprintf(
+					/* translators: %1$s: Plugin Name, %2$s: Required Plugin Name, %3$s: Link to install the required plugin */
+					__( '%1$s requires %2$s to be installed and active. You can install and activate it from %3$s', 'ultimate-addons-for-contact-form-7' ),
 					'<strong>Ultra Addons for Contact Form 7</strong>',
 					'<strong>Contact form 7</strong>',
-					'<a href="' . admin_url( 'plugin-install.php?tab=search&s=contact+form+7' ) . '">here</a>.'
-				); ?>
+					'<a href="' . esc_url( admin_url( 'plugin-install.php?tab=search&s=contact+form+7' ) ) . '">here</a>.'
+				) ); ?>
 			</p>
 		</div>
 		<?php
@@ -262,4 +263,4 @@ class Ultimate_Addons_CF7 {
 /*
  * Object - Ultimate_Addons_CF7
  */
-$ultimate_addons_cf7 = new Ultimate_Addons_CF7();
+new Ultimate_Addons_CF7();

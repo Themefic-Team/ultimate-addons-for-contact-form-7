@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /*
  * Star Review Metabox regiter
  * @author M Hemel Hasan

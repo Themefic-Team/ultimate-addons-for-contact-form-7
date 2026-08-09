@@ -1,5 +1,5 @@
 <?php 
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 // // Current url Shortcode
 // if(!function_exists('UACF7_URL')){

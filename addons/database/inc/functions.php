@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( ! function_exists( 'uacf7dp_column_default_fields' ) ) {
 	function uacf7dp_column_default_fields( $item, $column_name ) {

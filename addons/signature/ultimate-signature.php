@@ -55,8 +55,9 @@ class UACF7_SIGNATURE {
 					'type' => 'heading',
 					'label' => __( 'Signature Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-						__( 'Add a digital signature feature to your forms. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://cf7addons.com/preview/contact-form-7-signature-addon/" target="_blank" rel="noopener">Example</a>'
+						/* translators: %1$s: demo link */
+						__( 'Add a digital signature feature to your forms. See Demo %1$s.', 'ultimate-addons-for-contact-form-7' ),
+						'<a href="https://cf7addons.com/preview/contact-form-7-signature-addon/" target="_blank" rel="noopener">' . esc_html__( 'Example', 'ultimate-addons-for-contact-form-7' ) . '</a>'
 					)
 				),
 				'signature_docs' => array(
@@ -64,8 +65,9 @@ class UACF7_SIGNATURE {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/" target="_blank" rel="noopener">Digital Signature</a>'
+						/* translators: %1s: demo link */
+						__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-for-contact-form-7' ),
+						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/" target="_blank" rel="noopener">' . esc_html__( 'Digital Signature', 'ultimate-addons-for-contact-form-7' ) . '</a>'
 					)
 				),
 
@@ -187,12 +189,12 @@ class UACF7_SIGNATURE {
 		?>
 		<span class="wpcf7-form-control-wrap <?php echo sanitize_html_class( $tag->name ); ?>"
 			data-name="<?php echo sanitize_html_class( $tag->name ); ?>">
-			<input hidden type="file" class="img_id_special" <?php echo $atts; ?>>
+			<input hidden type="file" class="img_id_special" <?php echo wp_kses_post( $atts ); ?>>
 
 			<div class="signature-pad" data-field-name="<?php echo sanitize_html_class( $tag->name ); ?>">
 				<canvas id="<?php echo sanitize_html_class( $tag->name ); ?>"
-					data-field-name="<?php echo sanitize_html_class( $tag->name ); ?>" width="<?php echo $canvas_width; ?>"
-					height="<?php echo $canvas_height; ?>"></canvas>
+					data-field-name="<?php echo sanitize_html_class( $tag->name ); ?>" width="<?php echo esc_attr( $canvas_width ); ?>"
+					height="<?php echo esc_attr( $canvas_height ); ?>"></canvas>
 			</div>
 			<div class="control_div">
 				<button data-field-name="<?php echo sanitize_html_class( $tag->name ); ?>"
@@ -229,7 +231,7 @@ class UACF7_SIGNATURE {
 			'uacf7_signature' => array(
 				'display_name' => __( 'Signature', 'ultimate-addons-for-contact-form-7' ),
 				'heading' => __( 'Generate a digital signature.', 'ultimate-addons-for-contact-form-7' ),
-				'description' => __( '', 'ultimate-addons-for-contact-form-7' ),
+				'description' => '',
 			),
 		);
 
@@ -243,7 +245,7 @@ class UACF7_SIGNATURE {
 			?></h3>
 
 			<p><?php
-			$description = wp_kses(
+			echo wp_kses(
 				$field_types['uacf7_signature']['description'],
 				array(
 					'a' => array( 'href' => true ),
@@ -252,14 +254,14 @@ class UACF7_SIGNATURE {
 				array( 'http', 'https' )
 			);
 
-			echo $description;
 			?></p>
 
             <div class="uacf7-doc-notice">
-				<?php echo sprintf(
+				<?php echo wp_kses_post( sprintf(
+					/* translators: %1s: demo link */
 					__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
-					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/" target="_blank">Digital Signature</a>'
-				); ?>
+					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-signature-addon/" target="_blank">' . esc_html__( 'Digital Signature', 'ultimate-addons-for-contact-form-7' ) . '</a>'
+				) ); ?>
 			</div>
 			
 		</header>

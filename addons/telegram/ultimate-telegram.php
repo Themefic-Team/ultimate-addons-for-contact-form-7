@@ -40,8 +40,9 @@ class UACF7_TELEGRAM {
 					'type' => 'heading',
 					'label' => __( 'Telegram Integration', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-						__( 'Forward form submission data to Telegram automatically. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://cf7addons.com/preview/contact-form-7-telegram/" target="_blank" rel="noopener">Example</a>'
+						/* translators: %1s: demo link */
+						__( 'Forward form submission data to Telegram automatically. See Demo %1$s.', 'ultimate-addons-for-contact-form-7' ),
+						'<a href="https://cf7addons.com/preview/contact-form-7-telegram/" target="_blank" rel="noopener">' . esc_html__( 'Example', 'ultimate-addons-for-contact-form-7' ) . '</a>'
 					)
 				),
 
@@ -50,8 +51,9 @@ class UACF7_TELEGRAM {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-telegram/" target="_blank" rel="noopener">Telegram Integration</a>'
+						/* translators: %1s: demo link */
+						__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-for-contact-form-7' ),
+						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-telegram/" target="_blank" rel="noopener">' . esc_html__( 'Telegram Integration', 'ultimate-addons-for-contact-form-7' ) . '</a>'
 					)
 				),
 				'uacf7_telegram_enable' => array(

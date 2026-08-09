@@ -88,13 +88,13 @@ class Uacf7_Helper_Banner {
                     </svg>
                 </span>
                 <span class="promo-discount-percent"><?php echo esc_html($discount_percentage); ?>%</span>
-                <span class="promo-discount-text"><?php echo __('Discount', 'ultimate-addons-for-contact-form-7'); ?></span>
+                <span class="promo-discount-text"><?php echo esc_html__('Discount', 'ultimate-addons-for-contact-form-7'); ?></span>
             </div>
             <div class="promo-description">
                 <p><?php echo esc_html($description); ?></p>
                 <div class="dicount-timer">
                     <div class="countdown">
-                        <?php echo $countdown_html; ?>
+                        <?php echo wp_kses_post($countdown_html); ?>
                     </div>
                     <a class="discount-btn" href="<?php echo esc_url($button_url) . '?ending=' . urlencode($end_time); ?>&utm_source=banner_uacf7&utm_medium=plugin_banner&utm_campaign=flash60" target="_blank" class="tf-btn tf-btn-primary">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

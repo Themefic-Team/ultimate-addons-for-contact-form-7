@@ -40,8 +40,9 @@ class UACF7_range_Slider {
 					'type' => 'heading',
 					'label' => __( 'Range Slider Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-						__( 'Add beautiful Range slider fields to Contact Form 7, with multiple preview layouts available on Pro. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://cf7addons.com/preview/contact-form-7-range-slider/" target="_blank" rel="noopener">Example</a>'
+						/* translators: %1s: demo link */
+						__( 'Add beautiful Range slider fields to Contact Form 7, with multiple preview layouts available on Pro. See Demo %1$s.', 'ultimate-addons-for-contact-form-7' ),
+						'<a href="https://cf7addons.com/preview/contact-form-7-range-slider/" target="_blank" rel="noopener">'.esc_html__( 'Example', 'ultimate-addons-for-contact-form-7' ).'</a>'
 					)
 				),
 				'range_slider_docs' => array(
@@ -49,9 +50,10 @@ class UACF7_range_Slider {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank" rel="noopener">Range Slider</a>',
-						'<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-range-slider-pro/" target="_blank" rel="noopener">Range Slider (Pro)</a>'
+						/* translators: %1s: demo link */
+						__( 'Confused? Check our Documentation on  %1$s and %2$s.', 'ultimate-addons-for-contact-form-7' ),
+						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank" rel="noopener">'.esc_html__( 'Range Slider', 'ultimate-addons-for-contact-form-7' ).'</a>',
+						'<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-range-slider-pro/" target="_blank" rel="noopener">'.esc_html__( 'Range Slider (Pro)', 'ultimate-addons-for-contact-form-7' ).'</a>'
 					)
 				),
 				'uacf7_range_slider_form_options_heading' => array(
@@ -213,7 +215,7 @@ class UACF7_range_Slider {
 					value="<?php echo esc_attr( $default ); ?>" class="uacf7-slider uacf7-range">
 			</span>
 			<span>
-				<?php echo $validation_error; ?>
+				<?php echo wp_kses_post( $validation_error ); ?>
 			</span>
 			</div>
 			<?php
@@ -248,7 +250,7 @@ class UACF7_range_Slider {
 			</div>
 
 			<span>
-				<?php echo $validation_error; ?>
+				<?php echo wp_kses_post( $validation_error );?>
 			</span>
 			</div>
 			<?php
@@ -281,7 +283,7 @@ class UACF7_range_Slider {
 			'uacf7_range_slider' => array(
 				'display_name' => __( 'Range Slider', 'ultimate-addons-for-contact-form-7' ),
 				'heading' => __( 'Range Slider', 'ultimate-addons-for-contact-form-7' ),
-				'description' => __( '', 'ultimate-addons-for-contact-form-7' ),
+				'description' => '',
 			),
 		);
 
@@ -293,7 +295,7 @@ class UACF7_range_Slider {
 			?></h3>
 
 			<p><?php
-			$description = wp_kses(
+			echo wp_kses(
 				$field_types['uacf7_range_slider']['description'],
 				array(
 					'a' => array( 'href' => true ),
@@ -301,14 +303,13 @@ class UACF7_range_Slider {
 				),
 				array( 'http', 'https' )
 			);
-
-			echo $description;
 			?></p>
 			<div class="uacf7-doc-notice">
-				<?php echo sprintf(
-					__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
-					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank">Range Slider</a>'
-				); ?>
+				<?php echo wp_kses_post( sprintf(
+					/* translators: %1$s: documentation link */
+					__( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-for-contact-form-7' ),
+					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-range-slider/" target="_blank">'.esc_html__( 'Range Slider', 'ultimate-addons-for-contact-form-7' ).'</a>'
+				) ); ?>
 			</div>
 		</header>
 		<div class="control-box uacf7-control-box">
@@ -415,7 +416,7 @@ class UACF7_range_Slider {
 			</fieldset>
 			<?php
 			$range_style = ob_get_clean();
-			echo apply_filters( 'uacf7_range_slider_style_field', $range_style );
+			echo wp_kses_post( apply_filters( 'uacf7_range_slider_style_field', $range_style ) );
 			?>
 
 			<fieldset>
@@ -603,7 +604,7 @@ class UACF7_range_Slider {
 
 			<?php
 
-			echo '<div class="uacf7-form-' . $cf->id() . '">' . $form . '</div>';
+			echo '<div class="uacf7-form-' . esc_attr( $cf->id() ) . '">' . wp_kses_post( $form ) . '</div>';
 			$properties['form'] = ob_get_clean();
 
 		}

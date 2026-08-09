@@ -63,29 +63,30 @@ class UACF7_FORM_GENERATOR {
 					<div class="uacf7-ai-form-column">
 						<div class="uacf7-form-input-wrap">
 
-							<h4><?php echo _e( 'Create a', 'ultimate-addons-for-contact-form-7' ); ?></h4>
+							<h4><?php echo esc_html__( 'Create a', 'ultimate-addons-for-contact-form-7' ); ?></h4>
 							<div class="uacf7-form-input-inner">
 								<select class="form-control uacf7-choices" data-trigger name="uacf7-form-generator-ai"
 									id="uacf7-form-generator-ai" placeholder="This is a placeholder" multiple>
 								</select>
 								<button
-									class="uacf7_ai_search_button"><?php echo _e( 'Generate With AI', 'ultimate-addons-for-contact-form-7' ); ?></button>
+									class="uacf7_ai_search_button"><?php echo esc_html__( 'Generate With AI', 'ultimate-addons-for-contact-form-7' ); ?></button>
 							</div>
 
 						</div>
 						<div class="uacf7-doc-notice">
-							<?php echo sprintf(
+							<?php echo wp_kses_post( sprintf(
+								/* Translators: 1: documentation link */
 								__( 'Not sure how to use this? Check our step by step  %1s.', 'ultimate-addons-for-contact-form-7' ),
-								'<a href="https://themefic.com/docs/uacf7/free-addons/ai-form-generator/" target="_blank">documentation</a>'
-							); ?>
+								'<a href="'.esc_url('https://themefic.com/docs/uacf7/free-addons/ai-form-generator/').'" target="_blank">'.esc_html__('documentation', 'ultimate-addons-for-contact-form-7').'</a>'
+							) ); ?>
 						</div>
 					</div>
 					<div class="uacf7-ai-form-column">
 						<div class="uacf7-ai-codeblock">
 							<div class="uacf7-ai-navigation">
-								<span class="uacf7-ai-code-reset"> <?php echo _e( 'Reset', 'ultimate-addons-for-contact-form-7' ); ?></span>
-								<span class="uacf7-ai-code-copy"> <?php echo _e( 'Copy', 'ultimate-addons-for-contact-form-7' ); ?></span>
-								<span class="uacf7-ai-code-insert"> <?php echo _e( 'Insert', 'ultimate-addons-for-contact-form-7' ); ?></span>
+								<span class="uacf7-ai-code-reset"> <?php echo esc_html__( 'Reset', 'ultimate-addons-for-contact-form-7' ); ?></span>
+								<span class="uacf7-ai-code-copy"> <?php echo esc_html__( 'Copy', 'ultimate-addons-for-contact-form-7' ); ?></span>
+								<span class="uacf7-ai-code-insert"> <?php echo esc_html__( 'Insert', 'ultimate-addons-for-contact-form-7' ); ?></span>
 							</div>
 							<textarea name="uacf7_ai_code_content" id="uacf7_ai_code_content"></textarea>
 						</div>
@@ -171,7 +172,7 @@ class UACF7_FORM_GENERATOR {
 			'value_form' => $secend_option_form,
 		];
 
-		echo wp_send_json( $data );
+		wp_send_json( $data );
 		die();
 
 	}
@@ -193,7 +194,7 @@ class UACF7_FORM_GENERATOR {
 			'status' => 'success',
 			'value' => $value,
 		];
-		echo wp_send_json( $data );
+		wp_send_json( $data );
 		die();
 	}
 
@@ -228,7 +229,7 @@ class UACF7_FORM_GENERATOR {
 						$open_wrapper = false;
 					}
 				} else {
-					echo $form_part; // Output the content, sanitized
+					echo wp_kses_post( $form_part ); // Output the content, sanitized
 				}
 			}
 

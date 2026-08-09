@@ -101,7 +101,7 @@ class UACF7_COUNTRY_DROPDOWN {
 		$atts = wpcf7_format_atts( $country_atts );
 
 		ob_start(); ?>
-		<select <?php echo $atts; ?> id="uacf7_country_api">
+		<select <?php echo esc_attr( $atts ); ?> id="uacf7_country_api">
 			<option value=""><?php echo esc_html__( 'Select a Country', 'ultimate-addons-for-contact-form-7' ); ?></option>
 		</select>
 		<?php
@@ -114,9 +114,9 @@ class UACF7_COUNTRY_DROPDOWN {
 
 				<?php //echo apply_filters( 'uacf7_api_based_country_filter', $api_country, $atts ); ?>
 
-				<input id="uacf7_countries_<?php echo esc_attr( $tag->name ); ?>" type="text" <?php echo $atts; ?>>
+				<input id="uacf7_countries_<?php echo esc_attr( $tag->name ); ?>" type="text" <?php echo wp_kses_post( $atts ); ?>>
 
-				<span><?php echo $validation_error; ?> </span>
+				<span><?php echo wp_kses_post( $validation_error ); ?> </span>
 
 				<div style="display:none;">
 					<input type="hidden" id="uacf7_countries_<?php echo esc_attr( $tag->name ); ?>_code" data-countrycodeinput="1" readonly="readonly" placeholder="Selected country code will appear here" />
@@ -127,9 +127,9 @@ class UACF7_COUNTRY_DROPDOWN {
 
 			<span id="uacf7_country_select" class="wpcf7-form-control-wrap  <?php echo sanitize_html_class( $tag->name ); ?>">
 
-				<input id="uacf7_countries_<?php echo esc_attr( $tag->name ); ?>" type="text" <?php echo $atts; ?>>
+				<input id="uacf7_countries_<?php echo esc_attr( $tag->name ); ?>" type="text" <?php echo wp_kses_post( $atts ); ?>>
 
-				<span><?php echo $validation_error; ?> </span>
+				<span><?php echo wp_kses_post( $validation_error ); ?> </span>
 
 				<div style="display:none;">
 					<input type="hidden" id="uacf7_countries_<?php echo esc_attr( $tag->name ); ?>_code" data-countrycodeinput="1"
@@ -191,18 +191,40 @@ class UACF7_COUNTRY_DROPDOWN {
 			</h3>
 
 			<div class="uacf7-doc-notice">
-				<?php echo sprintf(
-					__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-for-contact-form-7' ),
-					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-country-dropdown-with-flag/" target="_blank">Country Dropdown</a>', '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-autocomplete/" target="_blank">IP Geo Fields (Autocomplete)</a>'
-				); ?>
+				<?php
+				echo wp_kses_post(
+					sprintf(
+						/* translators: 1: Link to Country Dropdown documentation, 2: Link to IP Geo Fields documentation. */
+						__(
+							'Confused? Check our Documentation on %1$s and %2$s.',
+							'ultimate-addons-for-contact-form-7'
+						),
+						'<a href="' . esc_url( 'https://themefic.com/docs/uacf7/free-addons/contact-form-7-country-dropdown-with-flag/' ) . '" target="_blank" rel="noopener noreferrer">' .
+							esc_html__( 'Country Dropdown', 'ultimate-addons-for-contact-form-7' ) .
+						'</a>',
+						'<a href="' . esc_url( 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-autocomplete/' ) . '" target="_blank" rel="noopener noreferrer">' .
+							esc_html__( 'IP Geo Fields (Autocomplete)', 'ultimate-addons-for-contact-form-7' ) .
+						'</a>'
+					)
+				);
+				?>
 			</div>
 
 			<p class="uacf7-doc-notice uacf7-guide">
-				<?php echo sprintf(
-					__( 'Need  autocomplete feature for country, city, state, and zip code fields based on the user IP address? Try Our Pro addon %1s.', 'ultimate-addons-for-contact-form-7' ),
-					'<strong><a target="_blank" href="https://cf7addons.com/preview/contact-form-7-autocomplete/">IP Geolocation</a></strong>'
-				); ?>
-
+				<?php
+				echo wp_kses_post(
+					sprintf(
+						/* translators: %1$s: Link to the IP Geo Fields (Autocomplete) Pro add-on. */
+						__(
+							'Need autocomplete for country, city, state, and ZIP code fields based on the user IP address? Try our Pro add-on %1$s.',
+							'ultimate-addons-for-contact-form-7'
+						),
+						'<strong><a href="' . esc_url( 'https://cf7addons.com/' ) . '" target="_blank" rel="noopener noreferrer">' .
+							esc_html__( 'IP Geo Fields (Autocomplete)', 'ultimate-addons-for-contact-form-7' ) .
+						'</a></strong>'
+					)
+				);
+				?>
 			</p>
 		</header>
 		<div class="control-box">
@@ -236,7 +258,7 @@ class UACF7_COUNTRY_DROPDOWN {
 				 * Tag generator field: auto complete
 				 */
 
-				echo apply_filters( 'uacf7_tag_generator_country_autocomplete_field', $autocomplete_html );
+				echo wp_kses_post(apply_filters( 'uacf7_tag_generator_country_autocomplete_field', $autocomplete_html ));
 				?>
 			</fieldset>
 
@@ -254,7 +276,7 @@ class UACF7_COUNTRY_DROPDOWN {
 				/*
 				 * Tag generator field: Dynamic Selection
 				 */
-				echo apply_filters( 'uacf7_tag_generator_dynamic_selection', $dynamic_selection );
+				echo wp_kses_post(apply_filters( 'uacf7_tag_generator_dynamic_selection', $dynamic_selection ));
 				?>
 			</fieldset>
 
@@ -276,7 +298,7 @@ class UACF7_COUNTRY_DROPDOWN {
 				/*
 				 * Tag generator field: auto complete
 				 */
-				echo apply_filters( 'uacf7_tag_generator_default_country_field', $default_country );
+				echo wp_kses_post(apply_filters( 'uacf7_tag_generator_default_country_field', $default_country ));
 				 
 				?>
 			</fieldset>

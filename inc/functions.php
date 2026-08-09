@@ -199,17 +199,17 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ) {
 		$step_count = 1;
 		foreach ( $all_steps as $step ) {
 			?>
-			<h3><strong>Step <?php echo $step_count; ?> <a style="color:red" target="_blank"
+			<h3><strong>Step <?php echo esc_html( $step_count ); ?> <a style="color:red" target="_blank"
 						href="https://cf7addons.com/pricing/">(Pro)</a></strong></h3>
 			<?php
 			if ( $step_count == 1 ) {
 				?>
 				<div>
 					<p><label
-							for="<?php echo 'next_btn_' . $step->name; ?>"><?php echo __( 'Change next button text for this Step', 'ultimate-addons-for-contact-form-7' ) ?></label>
+							for="<?php echo 'next_btn_' . esc_attr( $step->name ); ?>"><?php echo esc_html__( 'Change next button text for this Step', 'ultimate-addons-for-contact-form-7' ) ?></label>
 					</p>
-					<input id="<?php echo 'next_btn_' . $step->name; ?>" type="text" name="" value=""
-						placeholder="<?php echo esc_html__( 'Next', 'ultimate-addons-cf7-pro' ) ?>">
+					<input id="<?php echo 'next_btn_' . esc_attr( $step->name ); ?>" type="text" name="" value=""
+						placeholder="<?php echo esc_html__( 'Next', 'ultimate-addons-for-contact-form-7' ) ?>">
 				</div>
 				<?php
 			} else {
@@ -217,11 +217,11 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ) {
 				if ( count( $all_steps ) == $step_count ) {
 					?>
 					<div>
-						<p><label for="<?php echo 'prev_btn_' . $step->name; ?>">
-								<?php echo __( 'Change previous button text for this Step', 'ultimate-addons-for-contact-form-7' ) ?>
+						<p><label for="<?php echo 'prev_btn_' . esc_attr( $step->name ); ?>">
+								<?php echo esc_html__( 'Change previous button text for this Step', 'ultimate-addons-for-contact-form-7' ) ?>
 							</label></p>
-						<input id="<?php echo 'prev_btn_' . $step->name; ?>" type="text" name="" value=""
-							placeholder="<?php echo esc_html__( 'Previous', 'ultimate-addons-cf7-pro' ) ?>">
+						<input id="<?php echo 'prev_btn_' . esc_attr( $step->name ); ?>" type="text" name="" value=""
+							placeholder="<?php echo esc_html__( 'Previous', 'ultimate-addons-for-contact-form-7' ) ?>">
 					</div>
 					<?php
 
@@ -229,19 +229,19 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ) {
 					?>
 					<div class="multistep_fields_row-">
 						<div class="multistep_field_column">
-							<p><label for="<?php echo 'prev_btn_' . $step->name; ?>">
-									<?php echo __( 'Change previous button text for this Step', 'ultimate-addons-for-contact-form-7' ) ?>
+							<p><label for="<?php echo 'prev_btn_' . esc_attr( $step->name ); ?>">
+									<?php echo esc_html__( 'Change previous button text for this Step', 'ultimate-addons-for-contact-form-7' ) ?>
 								</label></p>
-							<input id="<?php echo 'prev_btn_' . $step->name; ?>" type="text" name="" value=""
-								placeholder="<?php echo esc_html__( 'Previous', 'ultimate-addons-cf7-pro' ) ?>">
+							<input id="<?php echo 'prev_btn_' . esc_attr( $step->name ); ?>" type="text" name="" value=""
+								placeholder="<?php echo esc_html__( 'Previous', 'ultimate-addons-for-contact-form-7' ) ?>">
 						</div>
 
 						<div class="multistep_field_column">
-							<p><label for="<?php echo 'next_btn_' . $step->name; ?>">
-									<?php echo __( 'Change next button text for this Step', 'ultimate-addons-for-contact-form-7' ) ?>
+							<p><label for="<?php echo 'next_btn_' . esc_attr( $step->name ); ?>">
+									<?php echo esc_html__( 'Change next button text for this Step', 'ultimate-addons-for-contact-form-7' ) ?>
 								</label></p>
-							<input id="<?php echo 'next_btn_' . $step->name; ?>" type="text" name="" value=""
-								placeholder="<?php echo esc_html__( 'Next', 'ultimate-addons-cf7-pro' ) ?>">
+							<input id="<?php echo 'next_btn_' . esc_attr( $step->name ); ?>" type="text" name="" value=""
+								placeholder="<?php echo esc_html__( 'Next', 'ultimate-addons-for-contact-form-7' ) ?>">
 						</div>
 					</div>
 					<?php
@@ -251,29 +251,29 @@ function uacf7_multistep_pro_features_demo( $all_steps, $form_id ) {
 			?>
 			<div class="uacf7_multistep_progressbar_image_row">
 				<p><label for="<?php echo esc_attr( 'uacf7_progressbar_image_' . $step->name ); ?>">
-						<?php echo __( 'Add progressbar image for this step', 'ultimate-addons-for-contact-form-7' ) ?>
+						<?php echo esc_html__( 'Add progressbar image for this step', 'ultimate-addons-for-contact-form-7' ) ?>
 					</label></p>
 				<input class="uacf7_multistep_progressbar_image"
 					id="<?php echo esc_attr( 'uacf7_progressbar_image_' . $step->name ); ?>" type="url" name="" value=""> <a
 					class="button-primary" href="#">
-					<?php echo __( 'Add or Upload Image', 'ultimate-addons-for-contact-form-7' ) ?>
+					<?php echo esc_html__( 'Add or Upload Image', 'ultimate-addons-for-contact-form-7' ) ?>
 				</a>
 
 				<div class="multistep_fields_row step-title-description col-50">
 					<div class="multistep_field_column">
-						<p><label for="<?php echo 'step_desc_' . $step->name; ?>">
-								<?php echo __( 'Step description', 'ultimate-addons-for-contact-form-7' ) ?>
+						<p><label for="<?php echo 'step_desc_' . esc_attr( $step->name ); ?>">
+								<?php echo esc_html__( 'Step description', 'ultimate-addons-for-contact-form-7' ) ?>
 							</label></p>
-						<textarea id="<?php echo 'step_desc_' . $step->name; ?>" type="text" name="" cols="40" rows="3"
-							placeholder="<?php echo esc_html__( 'Step description', 'ultimate-addons-cf7-pro' ) ?>"></textarea>
+						<textarea id="<?php echo 'step_desc_' . esc_attr( $step->name ); ?>" type="text" name="" cols="40" rows="3"
+							placeholder="<?php echo esc_html__( 'Step description', 'ultimate-addons-for-contact-form-7' ) ?>"></textarea>
 					</div>
 
 					<div class="multistep_field_column">
-						<p><label for="<?php echo 'desc_title_' . $step->name; ?>">
-								<?php echo __( 'Description title', 'ultimate-addons-for-contact-form-7' ) ?>
+						<p><label for="<?php echo 'desc_title_' . esc_attr( $step->name ); ?>">
+								<?php echo esc_html__( 'Description title', 'ultimate-addons-for-contact-form-7' ) ?>
 							</label></p>
-						<input id="<?php echo 'desc_title_' . $step->name; ?>" type="text" name="" value=""
-							placeholder="<?php echo esc_html__( 'Description title', 'ultimate-addons-cf7-pro' ) ?>">
+						<input id="<?php echo 'desc_title_' . esc_attr( $step->name ); ?>" type="text" name="" value=""
+							placeholder="<?php echo esc_html__( 'Description title', 'ultimate-addons-for-contact-form-7' ) ?>">
 					</div>
 				</div>
 			</div>
@@ -308,7 +308,7 @@ function uacf7_multistep_progressbar_style( $form_id ) {
 			<?php if ( ! empty( $uacf7_multistep_circle_height ) )
 				echo 'height: ' . esc_attr( $uacf7_multistep_circle_height ) . 'px;'; ?>
 			<?php if ( $uacf7_multistep_circle_border_radious != '' )
-				echo 'border-radius: ' . $uacf7_multistep_circle_border_radious . 'px;'; ?>
+				echo 'border-radius: ' . esc_attr( $uacf7_multistep_circle_border_radious ) . 'px;'; ?>
 			<?php if ( ! empty( $uacf7_multistep_circle_height ) )
 				echo 'line-height: ' . esc_attr( $uacf7_multistep_circle_height ) . 'px;'; ?>
 			<?php if ( ! empty( $uacf7_multistep_circle_bg_color ) )
@@ -321,7 +321,7 @@ function uacf7_multistep_progressbar_style( $form_id ) {
 
 		.steps-form .steps-row .steps-step .btn-circle img {
 			<?php if ( $uacf7_multistep_circle_border_radious != 0 )
-				echo 'border-radius: ' . $uacf7_multistep_circle_border_radious . 'px !important;'; ?>
+				echo 'border-radius: ' . esc_attr( $uacf7_multistep_circle_border_radious ) . 'px !important;'; ?>
 		}
 
 		.steps-form .steps-row .steps-step .btn-circle.uacf7-btn-active,
@@ -381,7 +381,7 @@ function uacf7_add_wrapper_to_cf7_form( $properties, $cfform ) {
 		
 		$form = $properties['form'];
 		ob_start();
-		echo '<div class="uacf7-form-wrapper-container uacf7-form-' . $cfform->id() . ' '.$auto_cart_class.' '.$uacf7_formStyler_class.'">' . $form . '</div>';
+		echo '<div class="uacf7-form-wrapper-container uacf7-form-' . esc_attr( $cfform->id() ) . ' ' . esc_attr( $auto_cart_class ) . ' ' . esc_attr( $uacf7_formStyler_class ) . '">' . wp_kses_post( $form ) . '</div>';
 		$properties['form'] = ob_get_clean();
 
 	}
@@ -423,32 +423,33 @@ if ( ! function_exists( 'uacf7_review_notice' ) ) {
 			</style>
 			<div class="notice notice-info themefic_review_notice">
 
-				<?php echo sprintf(
+				<?php echo wp_kses_post( sprintf(
+					/* translators: %1$s: User Name, %2$s: Plugin Name */
 					__( ' <p>Hey %1$s 👋, You have been using <b>%2$s</b> for quite a while. If you feel %2$s is helping your business to grow in any way, would you please help %2$s to grow by simply leaving a 5* review on the WordPress Forum?', 'ultimate-addons-for-contact-form-7' ),
-					$current_user->display_name,
+					esc_html( $current_user->display_name ),
 					'Ultra Addons for Contact Form 7'
-				); ?>
+				) ); ?>
 
 				<ul>
 					<li><a target="_blank"
 							href="<?php echo esc_url( 'https://wordpress.org/plugins/ultimate-addons-for-contact-form-7/#reviews' ) ?>"
 							class=""><span
-								class="dashicons dashicons-external"></span><?php _e( ' Ok, you deserve it!', 'ultimate-addons-for-contact-form-7' ) ?></a>
+								class="dashicons dashicons-external"></span><?php esc_html_e( ' Ok, you deserve it!', 'ultimate-addons-for-contact-form-7' ) ?></a>
 					</li>
 					<li><a href="#" class="already_done" data-status="already"><span class="dashicons dashicons-smiley"></span>
-							<?php _e( 'I already did', 'ultimate-addons-for-contact-form-7' ) ?></a></li>
+							<?php esc_html_e( 'I already did', 'ultimate-addons-for-contact-form-7' ) ?></a></li>
 					<li><a href="#" class="later" data-status="later"><span class="dashicons dashicons-calendar-alt"></span>
-							<?php _e( 'Maybe Later', 'ultimate-addons-for-contact-form-7' ) ?></a></li>
+							<?php esc_html_e( 'Maybe Later', 'ultimate-addons-for-contact-form-7' ) ?></a></li>
 					<li><a target="_blank"
 							href="<?php echo esc_url( 'https://themefic.com/docs/ultimate-addons-for-contact-form-7/' ) ?>"
 							class=""><span class="dashicons dashicons-sos"></span>
-							<?php _e( 'I need help', 'ultimate-addons-for-contact-form-7' ) ?></a></li>
+							<?php esc_html_e( 'I need help', 'ultimate-addons-for-contact-form-7' ) ?></a></li>
 					<li><a href="#" class="never" data-status="never"><span
-								class="dashicons dashicons-dismiss"></span><?php _e( 'Never show again', 'ultimate-addons-for-contact-form-7' ) ?>
+								class="dashicons dashicons-dismiss"></span><?php esc_html_e( 'Never show again', 'ultimate-addons-for-contact-form-7' ) ?>
 						</a></li>
 				</ul>
 				<button type="button" class="notice-dismiss review_notice_dismiss" data-status="never"><span
-						class="screen-reader-text"><?php _e( 'Dismiss this notice.', 'ultimate-addons-for-contact-form-7' ) ?></span></button>
+						class="screen-reader-text"><?php esc_html_e( 'Dismiss this notice.', 'ultimate-addons-for-contact-form-7' ) ?></span></button>
 			</div>
 
 			<!--   Themefic Plugin Review Admin Notice Script -->
@@ -1262,12 +1263,13 @@ function uacf7_plugin_update_message( $plugin_data, $response ) {
 	// var_dump( $new_version );
 
 	if ( isset( $new_version ) && version_compare( $new_version, $plugin_data['Version'], '>' ) && $new_version === '3.0.0' ) {
-		echo sprintf(
-			__( '
-				<div class="uacf7_plugin_page_notices" >
-					<div class="uacf7_info_wrap">
-						<h3>Important update notice!</h3>
-						<p>We’ve renamed <strong> Ultimate Addons for Contact Form 7 </strong> to <strong>Ultra Addons for Contact Form 7</strong> as part of a branding update. You’ll now find all settings under the <strong>CF7 Addons</strong>  menu. <a href="https://cf7addons.com/ultra-addons-for-contact-form-7/" target="_blank">Learn More</a></p>
+		echo wp_kses_post(
+			sprintf(
+				__( '
+					<div class="uacf7_plugin_page_notices" >
+						<div class="uacf7_info_wrap">
+							<h3>Important update notice!</h3>
+							<p>We’ve renamed <strong> Ultimate Addons for Contact Form 7 </strong> to <strong>Ultra Addons for Contact Form 7</strong> as part of a branding update. You’ll now find all settings under the <strong>CF7 Addons</strong>  menu. <a href="https://cf7addons.com/ultra-addons-for-contact-form-7/" target="_blank">Learn More</a></p>
 					</div>
 					<div class="uacf7_compa_wrap">
 						<p>Thank you for your continued support — we\'re excited to keep improving the plugin for you!</p>
@@ -1275,7 +1277,7 @@ function uacf7_plugin_update_message( $plugin_data, $response ) {
 				</div>
 				', 'ultimate-addons-for-contact-form-7' ),
 			'ultimate-addons-for-contact-form-7'
-		);
+		) );
 	}
 
 	return $plugin_data;
@@ -1471,14 +1473,14 @@ function uacf7_booking_pro_admin_notice() {
 		<div class="notice-button" style="width: 30%;">
 			<p>
 				<span>
-				<img src="<?php echo UACF7_URL; ?>assets/img/person-1.png" alt="user">
-				<img src="<?php echo UACF7_URL; ?>assets/img/person-2.png" alt="person">
-				<img src="<?php echo UACF7_URL; ?>assets/img/person-3.png" alt="person">
+				<img src="<?php echo esc_url( UACF7_URL ); ?>assets/img/person-1.png" alt="user">
+				<img src="<?php echo esc_url( UACF7_URL ); ?>assets/img/person-2.png" alt="person">
+				<img src="<?php echo esc_url( UACF7_URL ); ?>assets/img/person-3.png" alt="person">
 				</span>	
 				Loved by many
 			</p>
 
-			<a href="<?php echo admin_url( 'plugin-install.php?tab=search&s=hydra+booking' ) ?>" class="hydra-button">Try Hydra Booking</a>
+			<a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=search&s=hydra+booking' ) ); ?>" class="hydra-button">Try Hydra Booking</a>
 		</div>
     </div>
 
@@ -1487,7 +1489,7 @@ function uacf7_booking_pro_admin_notice() {
             $('.uacf7-booking-pro-notice').on('click', '.notice-dismiss', function () {
                 $.post(ajaxurl, {
                     action: 'uacf7_dismiss_booking_pro_notice',
-                    security: '<?php echo wp_create_nonce("uacf7_admin_nonce"); ?>'
+                    security: '<?php echo esc_js( wp_create_nonce("uacf7_admin_nonce") ); ?>'
                 });
             });
         });
@@ -1566,11 +1568,11 @@ function uacf7_migrate_conditional_fields_handler() {
     }
 
     if ( ! current_user_can('manage_options') ) {
-        wp_die(__('You are not allowed to perform this action.', 'ultimate-addons-for-contact-form-7'));
+        wp_die(esc_html__('You are not allowed to perform this action.', 'ultimate-addons-for-contact-form-7'));
     }
 
     if ( empty($_GET['_wpnonce']) || ! wp_verify_nonce($_GET['_wpnonce'], 'uacf7_migrate_conditional_fields_nonce') ) {
-        wp_die(__('Security check failed.', 'ultimate-addons-for-contact-form-7'));
+        wp_die(esc_html__('Security check failed.', 'ultimate-addons-for-contact-form-7'));
     }
 
     if ( get_option('uacf7_migration_done') ) {
@@ -1743,14 +1745,14 @@ function uacf7_show_hydra_modal() {
     <div id="uacf7-modal" class="uacf7-modal">
         <div class="uacf7-modal-content">
             <span id="uacf7-modal-close" class="uacf7-modal-close">&times;</span>
-            <h2>Hey <?php echo wp_get_current_user()->display_name; ?>! Want to make your Booking/Appointment Addon stand out?</h2>
+            <h2>Hey <?php echo esc_html( wp_get_current_user()->display_name ); ?>! Want to make your Booking/Appointment Addon stand out?</h2>
             <p>HydraBooking offers everything you love about the Booking Addon—plus powerful new features designed to make your life easier.</p>
             <div class="hydra-modal-users">
                 <div class="users">
                     <span>
-                        <img src="<?php echo UACF7_URL; ?>assets/img/person-1.png" alt="user">
-                        <img src="<?php echo UACF7_URL; ?>assets/img/person-2.png" alt="person">
-                        <img src="<?php echo UACF7_URL; ?>assets/img/person-3.png" alt="person">
+                        <img src="<?php echo esc_url( UACF7_URL ); ?>assets/img/person-1.png" alt="user">
+                        <img src="<?php echo esc_url( UACF7_URL ); ?>assets/img/person-2.png" alt="person">
+                        <img src="<?php echo esc_url( UACF7_URL ); ?>assets/img/person-3.png" alt="person">
                     </span>    
                     Many people are already using this...
                 </div>
@@ -1765,9 +1767,9 @@ function uacf7_show_hydra_modal() {
 
 		$('#uacf7-modal-close').click(function () {
 			$('#uacf7-modal').fadeOut();
-			$.post('<?php echo admin_url('admin-ajax.php'); ?>', {
+			$.post('<?php echo esc_url( admin_url('admin-ajax.php') ); ?>', {
 				action: 'uacf7_set_modal_shown',
-				nonce: '<?php echo wp_create_nonce("uacf7_modal_nonce"); ?>'
+				nonce: '<?php echo esc_attr(wp_create_nonce("uacf7_modal_nonce")); ?>'
 			});
 		});
 
@@ -1777,10 +1779,10 @@ function uacf7_show_hydra_modal() {
 
 			$.ajax({
 				type: 'POST',
-				url: '<?php echo admin_url('admin-ajax.php'); ?>',
+				url: '<?php echo esc_url( admin_url('admin-ajax.php') ); ?>',
 				data: {
 					action: 'install_hydrabooking',
-					nonce: '<?php echo wp_create_nonce("install_hydra_booking"); ?>'
+					nonce: '<?php echo esc_attr(wp_create_nonce("install_hydra_booking")); ?>'
 				},
 				success: function (response) {
 					if (response.success) {
@@ -1802,10 +1804,10 @@ function uacf7_show_hydra_modal() {
 		function activateHydraBooking($button) {
 			$.ajax({
 				type: 'POST',
-				url: '<?php echo admin_url('admin-ajax.php'); ?>',
+				url: '<?php echo esc_url( admin_url('admin-ajax.php') ); ?>',
 				data: {
 					action: 'activate_hydrabooking',
-					nonce: '<?php echo wp_create_nonce("activate_hydra_booking"); ?>'
+					nonce: '<?php echo esc_attr(wp_create_nonce("activate_hydra_booking")); ?>'
 				},
 				success: function (response) {
 					if (response.success) {
@@ -1973,11 +1975,11 @@ function uacf7_migrate_redirection_handler() {
     }
 
     if ( ! current_user_can('manage_options') ) {
-        wp_die(__('You are not allowed to perform this action.', 'ultimate-addons-for-contact-form-7'));
+        wp_die(esc_html__('You are not allowed to perform this action.', 'ultimate-addons-for-contact-form-7'));
     }
 
     if ( empty($_GET['_wpnonce']) || ! wp_verify_nonce($_GET['_wpnonce'], 'uacf7_migrate_redirection_nonce') ) {
-        wp_die(__('Security check failed.', 'ultimate-addons-for-contact-form-7'));
+        wp_die(esc_html__('Security check failed.', 'ultimate-addons-for-contact-form-7'));
     }
 
     // Prevent double migration

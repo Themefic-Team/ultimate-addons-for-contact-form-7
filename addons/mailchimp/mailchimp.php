@@ -166,8 +166,9 @@ class UACF7_MAILCHIMP {
 					'type' => 'heading',
 					'label' => __( 'Mailchimp Integration', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
+						/* translators: %1$s: demo link */
 						__( 'Send form submissions to your Mailchimp lists automatically. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://cf7addons.com/preview/mailchimp-for-contact-form-7/" target="_blank" rel="noopener">Example</a>'
+						'<a href="https://cf7addons.com/preview/mailchimp-for-contact-form-7/" target="_blank" rel="noopener">'.esc_html__( 'here', 'ultimate-addons-for-contact-form-7' ).'</a>'
 					)
 				),
 
@@ -179,8 +180,9 @@ class UACF7_MAILCHIMP {
 					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
 					'field_width' => '50',
 					'subtitle' => sprintf(
+						/* translators: %1$s: demo link */
 						__( 'Before enabling, ensure you have added your Mailchimp API key %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="admin.php?page=uacf7_settings#tab=mailchimp" target="_blank" rel="noopener">here</a>'
+						'<a href="admin.php?page=uacf7_settings#tab=mailchimp" target="_blank" rel="noopener">'.esc_html__( 'here', 'ultimate-addons-for-contact-form-7' ).'</a>'
 					),
 					'default' => false
 				),
@@ -206,8 +208,9 @@ class UACF7_MAILCHIMP {
 					'type' => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
+						/* translators: %1$s: demo link */
 						__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-mailchimp/" target="_blank" rel="noopener">Mailchimp Integration</a>'
+						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-mailchimp/" target="_blank" rel="noopener">'.esc_html__( 'Mailchimp Integration', 'ultimate-addons-for-contact-form-7' ).'</a>'
 					)
 				),
 

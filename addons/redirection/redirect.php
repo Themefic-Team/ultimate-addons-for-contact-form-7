@@ -15,6 +15,20 @@ class UACF7_Redirection {
 	 */
 	public $fields = [];
 
+	/**
+	 * Store the resolved redirect URL.
+	 *
+	 * @var string
+	 */
+	public $redirect_url = '';
+
+	/**
+	 * Store whether a new-tab redirect script should be enqueued.
+	 *
+	 * @var bool
+	 */
+	public $enqueue_new_tab_script = false;
+
     /*
     * Construct function
     */
@@ -54,8 +68,9 @@ class UACF7_Redirection {
 					'type'  => 'heading', 
 					'label' => __( 'Redirection Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-                        __( 'Redirect users to a Thank You or external page based on form submission, with an option to open in a new tab. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
-                         '<a href="https://cf7addons.com/preview/redirection-for-contact-form-7/" target="_blank">Example</a>'
+						/* translators: %1$s: demo link */
+                        __( 'Redirect users to a Thank You or external page based on form submission, with an option to open in a new tab. See Demo %1$s.', 'ultimate-addons-for-contact-form-7' ),
+                         '<a href="https://cf7addons.com/preview/redirection-for-contact-form-7/" target="_blank">'.esc_html__( 'Demo', 'ultimate-addons-for-contact-form-7' ).'</a>'
                     )
 				),
 				'redirection_docs' => array(
@@ -63,10 +78,11 @@ class UACF7_Redirection {
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s, %2s and %3s .', 'ultimate-addons-for-contact-form-7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/redirection-for-contact-form-7/" target="_blank">Redirect to a Page or External URL</a>',
-                        '<a href="https://themefic.com/docs/uacf7/pro-addons/conditional-redirect-for-contact-form-7/" target="_blank">Conditional Redirect</a>',
-                        '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-whatsapp-integration-and-tag-support/" target="_blank">Tag Support</a>'
+						/* translators: %1$s: redirect to a page or external URL, %2$s: conditional redirect, %3$s: tag support */
+                        __( 'Confused? Check our Documentation on  %1$s, %2$s and %3$s .', 'ultimate-addons-for-contact-form-7' ),
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/redirection-for-contact-form-7/" target="_blank">'.esc_html__( 'Redirect to a Page or External URL', 'ultimate-addons-for-contact-form-7' ).'</a>',
+                        '<a href="https://themefic.com/docs/uacf7/pro-addons/conditional-redirect-for-contact-form-7/" target="_blank">'.esc_html__( 'Conditional Redirect', 'ultimate-addons-for-contact-form-7' ).'</a>',
+                        '<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-whatsapp-integration-and-tag-support/" target="_blank">'.esc_html__( 'Tag Support', 'ultimate-addons-for-contact-form-7' ).'</a>'
                     )
 				),
 				'uacf7_redirect_enable' => array(
@@ -87,7 +103,7 @@ class UACF7_Redirection {
 					'type'      => 'radio',
 					'label'     => __( 'Redirect to', 'ultimate-addons-for-contact-form-7' ),
 					'options' => array(
-						'to_page' => 'Redirect to Internal Page ',
+						'to_page' => __( 'Redirect to Internal Page', 'ultimate-addons-for-contact-form-7' ),
 						'to_url' => 'Redirect to External URL ',
 					 ),
 					 'default' => 'to_page',
@@ -251,7 +267,7 @@ class UACF7_Redirection {
 					if ( 'on' === $this->fields['open_in_new_tab'] ) {
 						$this->enqueue_new_tab_script = true;
 					} else {
-						wp_redirect( $this->redirect_url );
+						wp_safe_redirect( $this->redirect_url );
 						exit;
 					}
 				}

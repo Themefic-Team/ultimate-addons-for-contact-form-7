@@ -36,8 +36,9 @@ class UACF7_WEB_HOOK {
 					'type' => 'heading',
 					'label' => __( 'Webhook (Pabbly/Zapier) Settings', 'ultimate-addons-for-contact-form-7' ),
 					'subtitle' => sprintf(
-                        __( 'Transfer form data to third-party services like Pabbly or Zapier via webhooks. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
-                         '<a href="#" target="_blank">Example</a>'
+						/* translators: %1s: demo link */
+                        __( 'Transfer form data to third-party services like Pabbly or Zapier via webhooks. See Demo %1$s.', 'ultimate-addons-for-contact-form-7' ),
+                         '<a href="#" target="_blank">' . esc_html__( 'Example', 'ultimate-addons-for-contact-form-7' ) . '</a>'
                     )
 				],
 				'webhook_docs' => [ 
@@ -45,8 +46,9 @@ class UACF7_WEB_HOOK {
 					'type'    => 'notice',
 					'style'   => 'success',
 					'content' => sprintf( 
-                        __( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
-                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-webhook/" target="_blank">Webhook Setup</a>'
+						/* translators: %1s: demo link */
+                        __( 'Confused? Check our Documentation on  %1$s.', 'ultimate-addons-for-contact-form-7' ),
+                        '<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-webhook/" target="_blank">' . esc_html__( 'Webhook Setup', 'ultimate-addons-for-contact-form-7' ) . '</a>'
                     )
 				],
 				'uacf7_enable_web_hook' => [ 

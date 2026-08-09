@@ -65,23 +65,37 @@ class UACF7_CF {
 			'checked_field' => 'conditional_repeater',
 			'fields' => array(
 				'conditional_heading' => array(
-					'id' => 'conditional_heading',
-					'type' => 'heading',
-					'label' => __( 'Conditional Fields Settings', 'ultimate-addons-for-contact-form-7' ),
+					'id'    => 'conditional_heading',
+					'type'  => 'heading',
+					'label' => __('Conditional Fields Settings','ultimate-addons-for-contact-form-7'),
 					'subtitle' => sprintf(
-						__( 'Show or hide Contact Form 7 fields based on Conditional Logic. See Demo %1s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://cf7addons.com/preview/contact-form-7-conditional-fields/" target="_blank">Example</a>'
-					)
+						/* translators: %1$s: Link to the Conditional Fields example/demo. */
+						__(
+							'Show or hide Contact Form 7 fields based on Conditional Logic. See Demo %1$s.',
+							'ultimate-addons-for-contact-form-7'
+						),
+						'<a href="' . esc_url( 'https://cf7addons.com/preview/contact-form-7-conditional-fields/' ) . '" target="_blank" rel="noopener noreferrer">' .
+							esc_html__( 'Example', 'ultimate-addons-for-contact-form-7' ) .
+						'</a>'
+					),
 				),
 				'conditional_field_docs' => array(
-					'id' => 'conditional_field_docs',
-					'type' => 'notice',
+					'id'    => 'conditional_field_docs',
+					'type'  => 'notice',
 					'style' => 'success',
 					'content' => sprintf(
-						__( 'Confused? Check our Documentation on  %1s and %2s.', 'ultimate-addons-for-contact-form-7' ),
-						'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-conditional-fields/" target="_blank">Conditional Fields</a>',
-						'<a href="https://themefic.com/docs/uacf7/pro-addons/contact-form-7-conditional-fields-pro/" target="_blank">Conditional Fields (Pro)</a>'
-					)
+						/* translators: 1: Link to Conditional Fields documentation, 2: Link to Conditional Fields Pro documentation. */
+						__(
+							'Confused? Check our Documentation on %1$s and %2$s.',
+							'ultimate-addons-for-contact-form-7'
+						),
+						'<a href="' . esc_url( 'https://themefic.com/docs/uacf7/free-addons/contact-form-7-conditional-fields/' ) . '" target="_blank" rel="noopener noreferrer">' .
+							esc_html__( 'Conditional Fields', 'ultimate-addons-for-contact-form-7' ) .
+						'</a>',
+						'<a href="' . esc_url( 'https://themefic.com/docs/uacf7/pro-addons/contact-form-7-conditional-fields-pro/' ) . '" target="_blank" rel="noopener noreferrer">' .
+							esc_html__( 'Conditional Fields (Pro)', 'ultimate-addons-for-contact-form-7' ) .
+						'</a>'
+					),
 				),
 				'conditional_form_options_heading' => array(
 					'id' => 'conditional_form_options_heading',
@@ -227,7 +241,7 @@ class UACF7_CF {
 	static function tg_pane_conditional( $contact_form, $options ) {
 		$field_types = array(
 			'conditional' => array(
-				'display_name' => __( 'conditional area', 'contact-form-7' ),
+				'display_name' => __( 'conditional area', 'ultimate-addons-for-contact-form-7' ),
 				'heading' => __( 'Generate a conditional tag to wrap the elements that can be shown conditionally.', 'ultimate-addons-for-contact-form-7' ),
 				'description' => __( 'Check "Conditional Fields" tab located under the Addons for CF7 Options for additional settings. Make sure to set those, otherwise the conditions may not work correctly.', 'ultimate-addons-for-contact-form-7' ),
 			),
@@ -243,7 +257,7 @@ class UACF7_CF {
 			</h3>
 
 			<p><?php
-			$description = wp_kses(
+			echo wp_kses(
 				$field_types['conditional']['description'],
 				array(
 					'a' => array( 'href' => true ),
@@ -252,12 +266,11 @@ class UACF7_CF {
 				array( 'http', 'https' )
 			);
 
-			echo $description;
 			?></p>
 			<div class="uacf7-doc-notice">
-				Confused? Check our Documentation on
+				<?php esc_html_e('Confused? Check our Documentation on', 'ultimate-addons-for-contact-form-7'); ?>
 				<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-conditional-fields/" target="_blank">
-					Conditional Fields
+					<?php esc_html_e('Conditional Fields', 'ultimate-addons-for-contact-form-7'); ?>
 				</a>.
 			</div>
 		</header>
@@ -372,11 +385,11 @@ class UACF7_CF {
 
 					array_push( $stack, $tag_html_type );
 
-					echo '<' . $tag_html_type . ' class="uacf7_conditional ' . esc_attr( $tag_id ) . '">';
+					echo '<div class="uacf7_conditional ' . esc_attr( $tag_id ) . '">';
 				} else if ( $form_part == '[/conditional]' ) {
-					echo '</' . array_pop( $stack ) . '>';
+					echo '</' . esc_attr(array_pop( $stack )) . '>';
 				} else {
-					echo $form_part;
+					echo wp_kses_post( $form_part );
 				}
 			}
 

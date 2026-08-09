@@ -111,11 +111,11 @@ class UACF7_DYNAMIC_TEXT {
 		ob_start();
 
 		?>
-		<span class="wpcf7-form-control-wrap <?php echo sanitize_html_class( $tag->name ); ?>"
-			data-name="<?php echo sanitize_html_class( $tag->name ); ?>">
+		<span class="wpcf7-form-control-wrap <?php echo sanitize_html_class( esc_attr( $tag->name ) ); ?>"
+			data-name="<?php echo sanitize_html_class( esc_attr( $tag->name ) ); ?>">
 
-			<input id="uacf7_<?php echo esc_attr( $tag->name ); ?>" <?php echo $atts; ?>>
-			<span><?php echo $validation_error; ?></span>
+			<input id="uacf7_<?php echo esc_attr( $tag->name ); ?>" <?php echo esc_attr( $atts ); ?>>
+			<span><?php echo wp_kses_post( $validation_error ); ?></span>
 		</span>
 		<?php
 
@@ -173,7 +173,7 @@ class UACF7_DYNAMIC_TEXT {
 			'uacf7_dynamic_text' => array(
 				'display_name' => __( 'Dynamic Text', 'ultimate-addons-for-contact-form-7' ),
 				'heading' => __( 'Generate a Dynamic Text.', 'ultimate-addons-for-contact-form-7' ),
-				'description' => __( '', 'ultimate-addons-for-contact-form-7' ),
+				'description' => '',
 			),
 		);
 
@@ -186,7 +186,7 @@ class UACF7_DYNAMIC_TEXT {
 			?></h3>
 
 			<p><?php
-			$description = wp_kses(
+			echo wp_kses(
 				$field_types['uacf7_dynamic_text']['description'],
 				array(
 					'a' => array( 'href' => true ),
@@ -195,12 +195,12 @@ class UACF7_DYNAMIC_TEXT {
 				array( 'http', 'https' )
 			);
 
-			echo $description;
 			?></p>
 			<div class="uacf7-doc-notice">
 				<?php echo sprintf(
-					__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
-					'<a href="https://themefic.com/docs/uacf7/free-addons/contact-form-7-dynamic-text-extension/" target="_blank">Dynamic Text</a>'
+					/* Translators: 1: Dynamic Text */
+					esc_html__( 'Confused? Check our Documentation on  %1s.', 'ultimate-addons-for-contact-form-7' ),
+					'<a href="'.esc_url('https://themefic.com/docs/uacf7/free-addons/contact-form-7-dynamic-text-extension/').'" target="_blank">' . esc_html__( 'Dynamic Text', 'ultimate-addons-for-contact-form-7' ) . '</a>'
 				); ?>
 			</div>
 
