@@ -19,7 +19,7 @@ class UACF7_PRODUCT_DROPDOWN {
 
 	public function admin_enqueue_script() {
 
-		wp_enqueue_script( 'uacf7-product-dropdown', UACF7_ADDONS . '/product-dropdown/assets/admin-script.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'uacf7-product-dropdown', UACF7_ADDONS . '/product-dropdown/assets/admin-script.js', array( 'jquery' ), UACF7_VERSION, true );
 	}
 
 
@@ -217,24 +217,40 @@ class UACF7_PRODUCT_DROPDOWN {
 		return $html;
 	}
 
-
-
 	public function wpcf7_product_dropdown_validation_filter( $result, $tag ) {
 		$name = $tag->name;
 
-		if ( isset( $_POST[ $name ] )
-			and is_array( $_POST[ $name ] ) ) {
-			foreach ( $_POST[ $name ] as $key => $value ) {
-				if ( '' === $value ) {
-					unset( $_POST[ $name ][ $key ] );
-				}
+		$posted_value = null;
+
+		if ( isset( $_POST[ $name ] ) ) {
+			$posted_value = wp_unslash( $_POST[ $name ] );
+
+			if ( is_array( $posted_value ) ) {
+				$posted_value = array_map(
+					'sanitize_text_field',
+					$posted_value
+				);
+
+				$posted_value = array_filter(
+					$posted_value,
+					static function ( $value ) {
+						return '' !== $value;
+					}
+				);
+			} else {
+				$posted_value = sanitize_text_field( $posted_value );
 			}
 		}
 
-		$empty = ! isset( $_POST[ $name ] ) || empty( $_POST[ $name ] ) && '0' !== $_POST[ $name ];
+		$empty = null === $posted_value
+			|| '' === $posted_value
+			|| array() === $posted_value;
 
-		if ( $tag->is_required() and $empty ) {
-			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+		if ( $tag->is_required() && $empty ) {
+			$result->invalidate(
+				$tag,
+				wpcf7_get_message( 'invalid_required' )
+			);
 		}
 
 		return $result;

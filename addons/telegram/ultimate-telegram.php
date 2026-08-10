@@ -165,7 +165,9 @@ class UACF7_TELEGRAM {
 
 
 			if ( is_wp_error( $response ) ) {
-				error_log( 'Telegram API request failed: ' . $response->get_error_message() );
+				// Telegram API request failed. This is a non-blocking integration, so we
+				// do not emit production debug output here.
+				return;
 			}
 		}
 

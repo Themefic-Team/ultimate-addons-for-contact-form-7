@@ -973,7 +973,7 @@ class UACF7_uacf7style {
 	}
 
 	public function old_uacf7_properties( $properties, $cfform ) {
-		wp_register_style( 'uacf7-single-form-styler', UACF7_URL . 'addons/styler/css/uacf7-single-form-styler.css', [], null );
+		wp_register_style( 'uacf7-single-form-styler', UACF7_URL . 'addons/styler/css/uacf7-single-form-styler.css', [], UACF7_VERSION );
 
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 			$form = $properties['form'];

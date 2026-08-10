@@ -33,11 +33,11 @@ class UACF7_FORM_GENERATOR {
 
 	// Add Admin Scripts
 	public function admin_scripts() {
-		wp_enqueue_script( 'uacf7-form-generator-ai-choices-js', UACF7_ADDONS . '/form-generator-ai/assets/js/choices.min.js', array(), null, true );
-		wp_enqueue_script( 'uacf7-form-generator-ai-admin-js', UACF7_ADDONS . '/form-generator-ai/assets/js/admin-form-generator-ai.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'uacf7-form-generator-ai-choices-js', UACF7_ADDONS . '/form-generator-ai/assets/js/choices.min.js', array(), UACF7_VERSION, true );
+		wp_enqueue_script( 'uacf7-form-generator-ai-admin-js', UACF7_ADDONS . '/form-generator-ai/assets/js/admin-form-generator-ai.js', array( 'jquery' ), UACF7_VERSION, true );
 		// wp_enqueue_style( 'uacf7-form-generator-ai-choices-css', UACF7_ADDONS . '/form-generator-ai/assets/css/choices.css' ); 
 
-		wp_enqueue_style( 'uacf7-form-generator-ai-admin-css', UACF7_ADDONS . '/form-generator-ai/assets/css/admin-form-generator-ai.css' );
+		wp_enqueue_style( 'uacf7-form-generator-ai-admin-css', UACF7_ADDONS . '/form-generator-ai/assets/css/admin-form-generator-ai.css', array(), UACF7_VERSION, 'all' );
 
 		wp_localize_script( 'uacf7-form-generator-ai-admin-js', 'uacf7_form_ai',
 			array(
@@ -100,7 +100,8 @@ class UACF7_FORM_GENERATOR {
 	}
 
 	public function uacf7_form_generator_ai_get_tag() {
-		if ( ! wp_verify_nonce( $_POST['ajax_nonce'], 'uacf7-form-generator-ai-nonce' ) ) {
+		$ajax_nonce = isset( $_POST['ajax_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['ajax_nonce'] ) ) : '';
+		if ( empty( $ajax_nonce ) || ! wp_verify_nonce( $ajax_nonce, 'uacf7-form-generator-ai-nonce' ) ) {
 			exit( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );
 		}
 		$tag_generator = WPCF7_TagGenerator::get_instance( 'panel', true );
@@ -179,15 +180,21 @@ class UACF7_FORM_GENERATOR {
 
 	// Ai form Get Tag Ajax Function
 	public function uacf7_form_generator_ai() {
-		if ( ! wp_verify_nonce( $_POST['ajax_nonce'], 'uacf7-form-generator-ai-nonce' ) ) {
+		$ajax_nonce = isset( $_POST['ajax_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['ajax_nonce'] ) ) : '';
+		if ( empty( $ajax_nonce ) || ! wp_verify_nonce( $ajax_nonce, 'uacf7-form-generator-ai-nonce' ) ) {
 			exit( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );
 		}
 		$vaue = '';
-		$uacf7_default = $_POST['searchValue'];
+		$raw_uacf7_default = isset( $_POST['searchValue'] ) ? wp_unslash( $_POST['searchValue'] ) : '';
+		if ( is_array( $raw_uacf7_default ) ) {
+			$uacf7_default = array_map( 'sanitize_text_field', $raw_uacf7_default );
+		} else {
+			$uacf7_default = sanitize_text_field( $raw_uacf7_default );
+		}
 
-		if ( count( $uacf7_default ) > 0 && $uacf7_default[0] == 'form' ) {
+		if ( is_array( $uacf7_default ) && count( $uacf7_default ) > 0 && $uacf7_default[0] === 'form' ) {
 			$value = require_once apply_filters( 'uacf7_ai_form_generator_template', UACF7_FORM_AI_PATH . '/templates/uacf7-forms.php' );
-		} elseif ( count( $uacf7_default ) > 0 && $uacf7_default[0] == 'tag' ) {
+		} elseif ( is_array( $uacf7_default ) && count( $uacf7_default ) > 0 && $uacf7_default[0] === 'tag' ) {
 			$value = require_once apply_filters( 'uacf7_ai_form_generator_template', UACF7_FORM_AI_PATH . '/templates/uacf7-tags.php' );
 		}
 		$data = [ 

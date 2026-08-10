@@ -95,7 +95,7 @@ class UACF7_PRE_POPULATE {
                         'options'  => 'uacf7',
                         'query_args' => array(
                             'post_id'      => $post_id,  
-                            'exclude'      => ['submit'], 
+                            'exclude_types'      => ['submit'], 
                         ), 
                      )
                  ),
@@ -115,7 +115,7 @@ class UACF7_PRE_POPULATE {
     */
     
     public function wp_enqueue_script() {
-		wp_enqueue_script( 'pre-populate-script', UACF7_ADDONS . '/pre-populate-field/assets/js/pre-populate.js', array('jquery'), null, true ); 
+		wp_enqueue_script( 'pre-populate-script', UACF7_ADDONS . '/pre-populate-field/assets/js/pre-populate.js', array('jquery'), UACF7_VERSION, true ); 
         wp_localize_script( 'pre-populate-script', 'pre_populate_url',
             array( 
                     'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -133,12 +133,12 @@ class UACF7_PRE_POPULATE {
         if ( ! isset( $_POST ) || empty( $_POST ) ) {
 			return;
 		}
-        
-        if ( !wp_verify_nonce($_POST['ajax_nonce'], 'uacf7-pre-populate')) {
+        $nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
+        if ( !wp_verify_nonce($nonce, 'uacf7-pre-populate')) {
             exit(esc_html__("Security error", 'ultimate-addons-for-contact-form-7'));
         }
 
-        $form_id = $_POST['form_id']; 
+        $form_id = isset( $_POST['form_id'] ) ? sanitize_text_field( wp_unslash( $_POST['form_id'] ) ) : ''; 
         $pre_populate = uacf7_get_form_option( $form_id, 'pre_populated' );
         $pre_populate_enable = isset($pre_populate['pre_populate_enable']) ? $pre_populate['pre_populate_enable'] : false;
         if($pre_populate_enable == true){

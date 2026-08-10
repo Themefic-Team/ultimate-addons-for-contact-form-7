@@ -162,7 +162,7 @@ class UACF7_CF {
 									'options' => 'uacf7',
 									'query_args' => array(
 										'post_id' => $post_id,
-										'exclude' => [ 'submit', 'conditional' ],
+										'exclude_types' => [ 'submit', 'conditional' ],
 									),
 									'field_width' => '50',
 								),

@@ -19,8 +19,8 @@ class UACF7_Placeholder {
 	// } 
 
 	public function enqueue_placeholder_style() {
-		wp_enqueue_style( 'uacf7-placeholder', UACF7_ADDONS . '/placeholder/css/placeholder-style.css' );
-		wp_enqueue_script( 'uacf7-placeholder-script', UACF7_ADDONS . '/placeholder/js/color-pickr.js', array( 'jquery', 'wp-color-picker' ), '', true );
+		wp_enqueue_style( 'uacf7-placeholder', UACF7_ADDONS . '/placeholder/css/placeholder-style.css', array(), UACF7_VERSION, 'all' );
+		wp_enqueue_script( 'uacf7-placeholder-script', UACF7_ADDONS . '/placeholder/js/color-pickr.js', array( 'jquery', 'wp-color-picker' ), UACF7_VERSION, true );
 	}
 
 	// Add Placeholder Options

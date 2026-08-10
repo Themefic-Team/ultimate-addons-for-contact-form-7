@@ -614,7 +614,7 @@ class UACF7_range_Slider {
 	public function uacf7_contact_form_properties( $properties, $cf ) {
 		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 
-			wp_register_style( 'uacf7-rangeSlider-dynamic', UACF7_URL . 'addons/range-slider/css/uacf7-range.css', array(), null );
+			wp_register_style( 'uacf7-rangeSlider-dynamic', UACF7_URL . 'addons/range-slider/css/uacf7-range.css', array(), UACF7_VERSION, 'all' );
 
 			$form_id = $cf->id();
 			$range_slider = uacf7_get_form_option( $form_id, 'range_slider' );
@@ -699,16 +699,48 @@ class UACF7_range_Slider {
 	 * Enqueue Slider scripts
 	 */
 	public function enqueue_slider_scripts() {
-		wp_enqueue_script( 'uacf7-range-slider', UACF7_URL . 'addons/range-slider/js/range-slider.js', array( 'jquery', 'jquery-ui' ), false, true );
-		wp_enqueue_style( 'jquery-ui-style', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' );
-		wp_enqueue_style( 'range-slider-style', UACF7_URL . 'addons/range-slider/css/style.css' );
 
-		wp_register_script( 'jquery-ui', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array( 'jquery' ), false, true );
-		wp_register_script( 'touch-punch', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js', array( 'jquery' ), false, true );
-		// wp_enqueue_script( 'jquery-ui' );
-		wp_enqueue_script( 'jquery-ui-core' );
-		wp_enqueue_script( 'touch-punch' );
+		/*
+		* WordPress core provides:
+		* - jquery-ui-slider
+		* - jquery-touch-punch
+		*/
+		wp_enqueue_script( 'jquery-ui-slider' );
+		wp_enqueue_script( 'jquery-touch-punch' );
 
+		/*
+		* Plugin-specific range slider script.
+		*/
+		wp_enqueue_script(
+			'uacf7-range-slider',
+			UACF7_URL . 'addons/range-slider/js/range-slider.js',
+			array(
+				'jquery',
+				'jquery-ui-slider',
+				'jquery-touch-punch',
+			),
+			UACF7_VERSION,
+			true
+		);
+
+		/*
+		* jQuery UI theme CSS.
+		* WordPress core does not provide a complete jQuery UI theme stylesheet,
+		* so this can remain bundled locally.
+		*/
+		wp_enqueue_style(
+			'uacf7-jquery-ui-style',
+			UACF7_URL . 'addons/range-slider/css/jquery-ui.css',
+			array(),
+			UACF7_VERSION
+		);
+
+		wp_enqueue_style(
+			'uacf7-range-slider-style',
+			UACF7_URL . 'addons/range-slider/css/style.css',
+			array( 'uacf7-jquery-ui-style' ),
+			UACF7_VERSION
+		);
 	}
 
 }

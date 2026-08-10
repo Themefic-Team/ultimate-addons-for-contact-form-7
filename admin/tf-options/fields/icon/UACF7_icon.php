@@ -128,7 +128,7 @@ if ( ! class_exists( 'UACF7_icon' ) ) {
 				),
 			);
 
-			$icons = apply_filters( 'tf_icon_list', $icons );
+			$icons = apply_filters( 'uacf7_icon_list', $icons );
 
 			return $icons;
 		}

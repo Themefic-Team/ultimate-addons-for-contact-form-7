@@ -63,7 +63,7 @@ if ( ! class_exists( 'UACF7_tab' ) ) {
                             </div>
 						<?php endforeach; ?>
 					<?php endif; ?>
-					<?php do_action( $parent_id . '_after_tab_content' );
+					<?php do_action( 'uacf7_' . $parent_id . '_after_tab_content' );
 					 // do_action('uacf7dp_email_piping_tap_after_tab_content') ?>
                 </div>
             </div>

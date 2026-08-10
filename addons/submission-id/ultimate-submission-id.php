@@ -206,11 +206,11 @@ class UACF7_SUBMISSION_ID {
 	 * Submission ID Realtime update in the Frontend
 	 */
 	public function uacf7_update_submission_id() {
-
-		if ( ! wp_verify_nonce( $_POST['ajax_nonce'], 'uacf7-submission-id-nonce' ) ) {
+		$nonce = isset( $_POST['ajax_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['ajax_nonce'] ) ) : '';
+		if ( ! wp_verify_nonce( $nonce, 'uacf7-submission-id-nonce' ) ) {
 			exit( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );
 		}
-		$form_id = $_POST['form_id'];
+		$form_id = isset( $_POST['form_id'] ) ? sanitize_text_field( wp_unslash( $_POST['form_id'] ) ) : '';
 		$submission = uacf7_get_form_option( $form_id, 'submission_id' );
 		$meta_data = isset( $submission['uacf7_submission_id'] ) ? $submission['uacf7_submission_id'] : 0;
 
@@ -236,17 +236,21 @@ class UACF7_SUBMISSION_ID {
 			if ( ! empty( $submission_value ) ) {
 
 				global $wpdb;
+				$uacf7_form = $wpdb;
 				$table_name = $wpdb->prefix . 'uacf7_form';
 				$id = absint( $uacf7_db_id );
 
 				// update submission id existing database using parameterized API
-				$wpdb->update(
+				// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery
+				// phpcs:enable WordPress.DB.DirectDatabaseQuery.NoCaching
+				$uacf7_form->update(
 					$table_name,
 					array( 'submission_id' => $submission_value ),
 					array( 'id' => $id ),
 					array( '%s' ),
 					array( '%d' )
 				);
+				
 			}
 		}
 

@@ -340,7 +340,14 @@ final class UACF7_Text_Domain_Migration {
 				continue;
 			}
 
-			if ( ! is_writable( $target_directory ) ) {
+			global $wp_filesystem;
+
+			if ( empty( $wp_filesystem ) ) {
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+				WP_Filesystem();
+			}
+
+			if ( ! $wp_filesystem->is_writable( $target_directory ) ) {
 				$success = false;
 				continue;
 			}

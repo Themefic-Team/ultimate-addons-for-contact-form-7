@@ -298,8 +298,15 @@ class UACF7_SPAM_PROTECTION {
 		$atts = array();
 
 
-		$ip = ( isset( $_SERVER['X_FORWARDED_FOR'] ) ) ? $_SERVER['X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
-		$addr = wp_remote_get( 'http://ip-api.com/php/' . $ip );
+		$ip = isset( $_SERVER['X_FORWARDED_FOR'] )
+			? sanitize_text_field( wp_unslash( $_SERVER['X_FORWARDED_FOR'] ) )
+			: (
+				isset( $_SERVER['REMOTE_ADDR'] )
+					? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) )
+					: ''
+			);
+			
+		$addr = wp_remote_get( 'http://ip-api.com/php/' . filter_var( $ip, FILTER_VALIDATE_IP ) );
 		$addr_body = wp_remote_retrieve_body( $addr );
 		$addr = unserialize( $addr_body );
 
@@ -330,7 +337,7 @@ class UACF7_SPAM_PROTECTION {
 
 		$atts['aria-invalid'] = $validation_error ? 'true' : 'false';
 		$atts['name'] = $tag->name;
-		$atts['user-ip'] = $ip;
+		$atts['user-ip'] = filter_var( $ip, FILTER_VALIDATE_IP );
 		$value = $tag->values;
 		$default_value = $tag->get_default_option( $value );
 		$atts['value'] = $value;

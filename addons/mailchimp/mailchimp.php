@@ -26,7 +26,7 @@ class UACF7_MAILCHIMP {
 	 * Enqueue script Backend
 	 */
 	public function wp_enqueue_admin_script() {
-		wp_enqueue_script( 'mailchimp_admin', UACF7_ADDONS . '/mailchimp/assets/js/mailchimp_admin.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'mailchimp_admin', UACF7_ADDONS . '/mailchimp/assets/js/mailchimp_admin.js', array( 'jquery' ), UACF7_VERSION, true );
 		wp_localize_script(
 			'mailchimp_admin',
 			'mailchimp_peram',
@@ -47,7 +47,8 @@ class UACF7_MAILCHIMP {
 		}
 
 		// Verify nonce
-		if ( ! isset( $_POST['ajax_nonce'] ) || ! wp_verify_nonce( $_POST['ajax_nonce'], 'uacf7_mailchimp_admin_nonce' ) ) {
+		$ajax_nonce = isset( $_POST['ajax_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['ajax_nonce'] ) ) : '';
+		if ( empty( $ajax_nonce ) || ! wp_verify_nonce( $ajax_nonce, 'uacf7_mailchimp_admin_nonce' ) ) {
 			wp_send_json_error( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );
 			wp_die(); // Terminate execution
 		}
@@ -58,10 +59,10 @@ class UACF7_MAILCHIMP {
 			wp_die(); // Terminate execution
 		}
 
-		$uacf7_mailchimp_api_key = sanitize_text_field( $_POST['inputKey'] );
-
-		if ( $uacf7_mailchimp_api_key ) {
-			$api_key = $uacf7_mailchimp_api_key;
+		$input_key = isset( $_POST['inputKey'] ) ? sanitize_text_field( wp_unslash( $_POST['inputKey'] ) ) : '';
+		$api_key = '';
+		if ( $input_key ) {
+			$api_key = $input_key;
 		}
 
 		$status = '';
@@ -326,7 +327,7 @@ class UACF7_MAILCHIMP {
 							'field_width' => '50',
 							'query_args' => array(
 								'post_id' => $post_id,
-								'exclude' => [ 'submit' ]
+								'exclude_types' => [ 'submit' ]
 							),
 							'options' => 'uacf7',
 						),
@@ -351,13 +352,20 @@ class UACF7_MAILCHIMP {
 
 	/* Check Internet connection */
 	public static function is_internet_connected() {
-		$connected = @fsockopen( "www.google.com", 80 );
-		if ( $connected ) {
-			return true;
-			fclose( $connected );
-		} else {
+		$response = wp_remote_get(
+			'https://www.google.com/',
+			array(
+				'timeout' => 3,
+				'sslverify' => false,
+			)
+		);
+
+		if ( is_wp_error( $response ) ) {
 			return false;
 		}
+
+		$response_code = wp_remote_retrieve_response_code( $response );
+		return ( $response_code >= 200 && $response_code < 500 );
 	}
 
 	/* Get mailchimp api key */
@@ -393,33 +401,35 @@ class UACF7_MAILCHIMP {
 
 	/* Mailchimp config set */
 	private function set_config( $api_key = '', $path = '' ) {
-
+		if ( empty( $api_key ) || empty( $path ) ) {
+			return '';
+		}
 
 		$server_prefix = explode( "-", $api_key );
 
 		if ( ! isset( $server_prefix[1] ) ) {
-			return;
+			return '';
 		}
 		$server_prefix = $server_prefix[1];
 
 		$url = "https://$server_prefix.api.mailchimp.com/3.0/$path";
 
-		$curl = curl_init( $url );
-		curl_setopt( $curl, CURLOPT_URL, $url );
-		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
-
-		$headers = array(
-			"Authorization: Bearer $api_key"
+		$response = wp_remote_get(
+			$url,
+			array(
+				'timeout' => 30,
+				'sslverify' => false,
+				'headers' => array(
+					'Authorization' => 'Bearer ' . $api_key,
+				),
+			)
 		);
-		curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
-		//for debug only!
-		curl_setopt( $curl, CURLOPT_SSL_VERIFYHOST, false );
-		curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, false );
 
-		$resp = curl_exec( $curl );
-		curl_close( $curl );
+		if ( is_wp_error( $response ) ) {
+			return '';
+		}
 
-		return $resp;
+		return wp_remote_retrieve_body( $response );
 	}
 
 	/* Mailchimp connection status */
@@ -501,36 +511,28 @@ class UACF7_MAILCHIMP {
 
 			$url = "https://$server_prefix.api.mailchimp.com/3.0/lists/" . $audience . "/members";
 
-
 			//Mailchimp data
 			$data = '{"email_address":"' . sanitize_email( $subscriber_email ) . '","status":"subscribed","merge_fields":{"FNAME": "' . sanitize_text_field( $subscriber_fname ) . '", "LNAME": "' . sanitize_text_field( $subscriber_lname ) . '"' . $extra_merge_fields . '},"vip":false,"location":{"latitude":0,"longitude":0}}';
 
-			$curl = curl_init( $url );
-			curl_setopt( $curl, CURLOPT_URL, $url );
-			curl_setopt( $curl, CURLOPT_POST, true );
-			curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
-
-			$headers = array(
-				"Authorization: Bearer $api_key",
-				"Content-Type: application/json",
+			$response = wp_remote_post(
+				$url,
+				array(
+					'timeout' => 30,
+					'method' => 'POST',
+					'sslverify' => false,
+					'headers' => array(
+						'Authorization' => 'Bearer ' . $api_key,
+						'Content-Type' => 'application/json',
+					),
+					'body' => $data,
+				)
 			);
 
-			curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
-			curl_setopt( $curl, CURLOPT_POSTFIELDS, $data );
-
-			//for debug only!
-			curl_setopt( $curl, CURLOPT_SSL_VERIFYHOST, false );
-			curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, false );
-
-			$resp = curl_exec( $curl );
-
-			if ( curl_errno( $curl ) ) {
-				error_log( 'cURL error: ' . curl_error( $curl ) );
-			} else {
-				error_log( 'Mailchimp response: ' . $resp );
+			if ( is_wp_error( $response ) ) {
+				return '';
 			}
 
-			curl_close( $curl );
+			$resp = wp_remote_retrieve_body( $response );
 
 			do_action(
 				'uacf7_mailchimp_after_subscribe',
@@ -538,13 +540,16 @@ class UACF7_MAILCHIMP {
 				$audience,           // List ID
 				$subscriber_email,   // Subscriber email
 				$subscriber_tags,    // Tags array
-				$headers,            // cURL headers
+				array(
+					'Authorization' => 'Bearer ' . $api_key,
+					'Content-Type' => 'application/json',
+				),            // HTTP headers
 				$server_prefix       // Server prefix 
 			);
 
 			return $resp;
 		} else {
-			error_log( 'Mailchimp connection failed or missing subscriber email.' );
+			return '';
 		}
 
 	}

@@ -84,8 +84,8 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 			}
 
 			// activate the plugin
-			$plugin_slug = sanitize_text_field( wp_unslash( $_POST['slug'] ) );
-			$file_name = sanitize_text_field( wp_unslash( $_POST['file_name'] ) );
+			$plugin_slug = isset( $_POST['slug'] ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
+			$file_name = isset( $_POST['file_name'] ) ? sanitize_text_field( wp_unslash( $_POST['file_name'] ) ) : '';
 			$result = activate_plugin( $plugin_slug . '/' . $file_name . '.php' );
 
 			if ( is_wp_error( $result ) ) {
@@ -109,7 +109,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 
 			$vaue = '';
 			$uacf7_default[0] = 'form';
-			$uacf7_default[1] = $_POST['searchValue'];
+			$uacf7_default[1] = isset( $_POST['searchValue'] ) ? wp_unslash( $_POST['searchValue'] ) : '';
 
 
 			if ( count( $uacf7_default ) > 0 && $uacf7_default[0] == 'form' ) {
@@ -136,8 +136,8 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 			}
 
 			$vaue = '';
-			$form_name = $_POST['form_name'];
-			$form_value = str_replace( "\\", "", $_POST['form_value'] );
+			$form_name = isset( $_POST['form_name'] ) ? sanitize_text_field( wp_unslash( $_POST['form_name'] ) ) : '';
+			$form_value = str_replace( "\\", "", isset( $_POST['form_value'] ) ? wp_unslash( $_POST['form_value'] ) : '' );
 			$message = '';
 			$status = 'success';
 

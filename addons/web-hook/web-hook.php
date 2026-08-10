@@ -19,8 +19,8 @@ class UACF7_WEB_HOOK {
 
 
 	public function enqueue_webhook_style() {
-		wp_enqueue_style( 'uacf7-web-hook', UACF7_ADDONS . '/web-hook/css/web-hook.css' );
-		wp_enqueue_script( 'uacf7-web-hook-script', UACF7_ADDONS . '/web-hook/js/web-hook.js', array( 'jquery' ), '', true );
+		wp_enqueue_style( 'uacf7-web-hook', UACF7_ADDONS . '/web-hook/css/web-hook.css', array(), UACF7_VERSION, 'all' );
+		wp_enqueue_script( 'uacf7-web-hook-script', UACF7_ADDONS . '/web-hook/js/web-hook.js', array( 'jquery' ), UACF7_VERSION, true );
 	}
 
 	// Add Web Hook Options
@@ -124,7 +124,7 @@ class UACF7_WEB_HOOK {
 									'options' => 'uacf7',
 									'query_args' => array(
 										'post_id' => $post_id,
-										'exclude' => [ 'submit', 'conditional' ],
+										'exclude_types' => [ 'submit', 'conditional' ],
 									),
 									'field_width' => '50',
 								),
@@ -239,7 +239,7 @@ class UACF7_WEB_HOOK {
 							'options' => 'uacf7',
 							'query_args' => array(
 								'post_id' => $post_id,
-								'exclude' => [ 'submit', 'conditional' ],
+								'exclude_types' => [ 'submit', 'conditional' ],
 							),
 							'dependency' => array( 'uacf7_web_hook_header_request_custom', '==', 'form' ),
 							'field_width' => 50,
@@ -278,7 +278,7 @@ class UACF7_WEB_HOOK {
 							'options' => 'uacf7',
 							'query_args' => array(
 								'post_id' => $post_id,
-								'exclude' => [ 'submit', 'conditional' ],
+								'exclude_types' => [ 'submit', 'conditional' ],
 							),
 							'field_width' => 50,
 						],

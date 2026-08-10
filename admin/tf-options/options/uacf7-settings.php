@@ -4,16 +4,16 @@ defined( 'ABSPATH' ) || exit;
 
 if ( file_exists( UACF7_PATH . 'admin/tf-options/options/tf-menu-icon.php' ) ) {
 
-	$menu_icon = UACF7_URL . 'assets/admin/images/icon.png';
+	$uacf7_menu_icon = UACF7_URL . 'assets/admin/images/icon.png';
 } else {
-	$menu_icon = 'dashicons-palmtree';
+	$uacf7_menu_icon = 'dashicons-palmtree';
 }
 
 UACF7_Settings::option(
 	'uacf7_settings',
 	array(
 		'title'    => __( 'CF7 Addons', 'ultimate-addons-for-contact-form-7' ),
-		'icon'     => $menu_icon,
+		'icon'     => $uacf7_menu_icon,
 		'position' => 30.01,
 		'sections' => 
 			apply_filters(

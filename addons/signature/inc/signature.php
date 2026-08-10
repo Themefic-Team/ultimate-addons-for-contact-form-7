@@ -96,24 +96,25 @@ class UACF7_SIGNATURE_PANEL{
   /** Form Save */
 
   public function uacf7_signature_save_form($form){
-    if ( ! isset( $_POST ) || empty( $_POST ) ) {
-      return;
-  }
 
-    if ( !wp_verify_nonce( $_POST['uacf7_signature_nonce'], 'uacf7_signature_nonce_action' ) ) {
+    if ( ! isset( $_POST ) || empty( $_POST ) ) {
+        return;
+    }
+
+    $nonce = isset( $_POST['uacf7_signature_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['uacf7_signature_nonce'] ) ) : '';
+    if ( !wp_verify_nonce( $nonce, 'uacf7_signature_nonce_action' ) ) {
         return;
     }
 
     $uacf7_signature_settings = [
-      'uacf7_signature_enable' =>  sanitize_text_field($_POST['uacf7_signature_enable']),
-      'uacf7_signature_bg_color' =>  sanitize_text_field($_POST['uacf7_signature_bg_color']),
-      'uacf7_signature_pen_color' =>  sanitize_text_field($_POST['uacf7_signature_pen_color']),
-      'uacf7_signature_pad_width' =>  sanitize_text_field($_POST['uacf7_signature_pad_width']),
-      'uacf7_signature_pad_height' =>  sanitize_text_field($_POST['uacf7_signature_pad_height']),
+      'uacf7_signature_enable' =>  isset($_POST['uacf7_signature_enable']) ? sanitize_text_field( wp_unslash( $_POST['uacf7_signature_enable'] ) ) : '',
+      'uacf7_signature_bg_color' =>  isset($_POST['uacf7_signature_bg_color']) ? sanitize_text_field( wp_unslash( $_POST['uacf7_signature_bg_color'] ) ) : '',
+      'uacf7_signature_pen_color' =>  isset($_POST['uacf7_signature_pen_color']) ? sanitize_text_field( wp_unslash( $_POST['uacf7_signature_pen_color'] ) ) : '',
+      'uacf7_signature_pad_width' =>  isset($_POST['uacf7_signature_pad_width']) ? sanitize_text_field( wp_unslash( $_POST['uacf7_signature_pad_width'] ) ) : '',
+      'uacf7_signature_pad_height' =>  isset($_POST['uacf7_signature_pad_height']) ? sanitize_text_field( wp_unslash( $_POST['uacf7_signature_pad_height'] ) ) : '',
     ];
 
     update_post_meta( $form->id(), 'uacf7_signature_settings', $uacf7_signature_settings);
-
 
   }
 

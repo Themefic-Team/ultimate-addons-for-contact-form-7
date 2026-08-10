@@ -30,11 +30,11 @@ class UACF7_COUNTRY_DROPDOWN {
 
 	public function wp_enqueue_script() {
 
-		wp_enqueue_style( 'uacf7-country-select-main', UACF7_ADDONS . '/country-dropdown/assets/css/countrySelect.min.css' );
-		wp_enqueue_style( 'uacf7-country-select-style', UACF7_ADDONS . '/country-dropdown/assets/css/style.css' );
+		wp_enqueue_style( 'uacf7-country-select-main', UACF7_ADDONS . '/country-dropdown/assets/css/countrySelect.min.css', array(), UACF7_VERSION, 'all' );
+		wp_enqueue_style( 'uacf7-country-select-style', UACF7_ADDONS . '/country-dropdown/assets/css/style.css', array(), UACF7_VERSION, 'all' );
 
-		wp_enqueue_script( 'uacf7-country-select-library', UACF7_ADDONS . '/country-dropdown/assets/js/countrySelect.js', array( 'jquery' ), null, true );
-		wp_enqueue_script( 'uacf7-country-select-script', UACF7_ADDONS . '/country-dropdown/assets/js/script.js', array( 'jquery', 'uacf7-country-select-library' ), null, true );
+		wp_enqueue_script( 'uacf7-country-select-library', UACF7_ADDONS . '/country-dropdown/assets/js/countrySelect.js', array( 'jquery' ), UACF7_VERSION, true );
+		wp_enqueue_script( 'uacf7-country-select-script', UACF7_ADDONS . '/country-dropdown/assets/js/script.js', array( 'jquery', 'uacf7-country-select-library' ), UACF7_VERSION, true );
 	}
 
 	/*
@@ -146,13 +146,21 @@ class UACF7_COUNTRY_DROPDOWN {
 	public function wpcf7_country_dropdown_validation_filter( $result, $tag ) {
 		$name = $tag->name;
 
-		if ( isset( $_POST[ $name ] )
-			and is_array( $_POST[ $name ] ) ) {
-			foreach ( $_POST[ $name ] as $key => $value ) {
-				if ( '' === $value ) {
-					unset( $_POST[ $name ][ $key ] );
+		if ( isset( $_POST[ $name ] ) ) {
+			$raw_post_value = wp_unslash( $_POST[ $name ] );
+			$post_value = is_array( $raw_post_value )
+				? array_map( 'sanitize_text_field', $raw_post_value )
+				: sanitize_text_field( $raw_post_value );
+
+			if ( is_array( $post_value ) ) {
+				foreach ( $post_value as $key => $value ) {
+					if ( '' === $value ) {
+						unset( $post_value[ $key ] );
+					}
 				}
 			}
+
+			$_POST[ $name ] = $post_value;
 		}
 
 		$empty = ! isset( $_POST[ $name ] ) || empty( $_POST[ $name ] ) && '0' !== $_POST[ $name ];

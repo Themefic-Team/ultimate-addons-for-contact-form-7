@@ -124,31 +124,50 @@ class UACF7_DYNAMIC_TEXT {
 		return $countries;
 	}
 
-
 	/*
-	 * Form tag Validation 
-	 */
+	* Form tag validation.
+	*/
 	public function uacf7_dynamic_text_validation_filter( $result, $tag ) {
 		$name = $tag->name;
 
-		if ( isset( $_POST[ $name ] )
-			and is_array( $_POST[ $name ] ) ) {
-			foreach ( $_POST[ $name ] as $key => $value ) {
-				if ( '' === $value ) {
-					unset( $_POST[ $name ][ $key ] );
-				}
+		$posted_value = null;
+
+		if ( isset( $_POST[ $name ] ) ) {
+			$posted_value = wp_unslash( $_POST[ $name ] );
+
+			if ( is_array( $posted_value ) ) {
+				$posted_value = array_map(
+					'sanitize_text_field',
+					$posted_value
+				);
+
+				/*
+				* Remove empty values but preserve "0".
+				*/
+				$posted_value = array_filter(
+					$posted_value,
+					static function ( $value ) {
+						return '' !== $value;
+					}
+				);
+			} else {
+				$posted_value = sanitize_text_field( $posted_value );
 			}
 		}
 
-		$empty = ! isset( $_POST[ $name ] ) || empty( $_POST[ $name ] ) && '0' !== $_POST[ $name ];
+		$empty = null === $posted_value
+			|| '' === $posted_value
+			|| array() === $posted_value;
 
-		if ( $tag->is_required() and $empty ) {
-			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+		if ( $tag->is_required() && $empty ) {
+			$result->invalidate(
+				$tag,
+				wpcf7_get_message( 'invalid_required' )
+			);
 		}
 
 		return $result;
 	}
-
 
 	/*
 	 * Generate tag - conditional

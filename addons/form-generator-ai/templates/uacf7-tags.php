@@ -24,7 +24,7 @@ ob_start();
     if(isset($uacf7_default[1]) && !empty($uacf7_default[1])){
         $uacf7_form_label = isset($uacf7_default[2]) ? $uacf7_default[2] : 0;
         $uacf7_required = isset($uacf7_default[3]) ? $uacf7_default[3] : '';
-        $uacf7_number = rand(100, 999);
+        $uacf7_number = wp_rand(100, 999);
         
         switch($uacf7_default[1]){
             case 'text':

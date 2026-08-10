@@ -44,11 +44,11 @@ if ( ! class_exists( 'UACF7_select' ) ) {
 					} 
 					// uacf7_print_r($tags);
 					
-					$exclude = isset($this->field['query_args']['exclude']) ? $this->field['query_args']['exclude'] : array();
+					$exclude_types = isset( $this->field['query_args']['exclude_types'] ) && is_array( $this->field['query_args']['exclude_types'] ) ? $this->field['query_args']['exclude_types'] : array();
 					
 					foreach ( $tags as $tag ) { 
 
-						if ($tag['type'] == '' || in_array($tag['basetype'], $exclude) ) continue; 
+						if ($tag['type'] == '' || in_array($tag['basetype'], $exclude_types, true) ) continue; 
 
 						if( $tag['type'] == 'checkbox'  ) {   
 							$tag_name =  is_array($tag['options']) && !in_array('exclusive', $tag['options']) ? $tag['name'].'[]'  : $tag['name'];

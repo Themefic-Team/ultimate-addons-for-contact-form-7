@@ -47,9 +47,9 @@ class Uacf7DashboardWidget {
                     <div class="uacf7-stat">
                         <?php
                             global $wpdb;
-
+                            $uacf7_db = $wpdb;
                             // Get last 30 days date
-                            $date_30_days_ago = date( 'Y-m-d H:i:s', strtotime( '-30 days' ) );
+                            $date_30_days_ago = gmdate( 'Y-m-d H:i:s', strtotime( '-30 days' ) );
 
                             // Get all active WPForms
                             $forms = get_posts( [
@@ -64,10 +64,10 @@ class Uacf7DashboardWidget {
                             if ( ! empty( $forms ) ) {
                                 foreach ( $forms as $form_id ) {
 
-                                    $count = (int) $wpdb->get_var(
-                                        $wpdb->prepare(
+                                    $count = (int) $uacf7_db->get_var(
+                                        $uacf7_db->prepare(
                                             "SELECT COUNT(*) 
-                                            FROM {$wpdb->prefix}uacf7_form 
+                                            FROM {$uacf7_db->prefix}uacf7_form 
                                             WHERE form_id = %d",
                                             $form_id
                                         )

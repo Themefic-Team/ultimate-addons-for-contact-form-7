@@ -70,9 +70,6 @@ class Ultimate_Addons_CF7 {
 		//Register text domain
 		load_plugin_textdomain( 'ultimate-addons-for-contact-form-7', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
-		// Initialize the appsero
-		$this->appsero_init_tracker_ultimate_addons_for_contact_form_7();
-
 		//Enqueue admin scripts
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ), 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'uacf7_frontend_scripts' ) );
@@ -188,12 +185,12 @@ class Ultimate_Addons_CF7 {
 		$pro_active = is_plugin_active( 'ultimate-addons-for-contact-form-7-pro/ultimate-addons-for-contact-form-7-pro.php' );
 
 		if ( in_array( $screen, $tf_options_screens ) || in_array( $post_type, $tf_options_post_type ) ) {
-			wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css', 'sadf' );
+			wp_enqueue_style( 'uacf7-admin-style', UACF7_URL . 'assets/css/admin-style.css', array(), UACF7_VERSION, 'all' );
 
 			// // wp_enqueue_media();
 			wp_enqueue_script( 'wp-color-picker' );
 			wp_enqueue_style( 'wp-color-picker' );
-			wp_enqueue_script( 'uacf7-admin-script', UACF7_URL . 'assets/js/admin-script.js', array( 'jquery' ), null, true );
+			wp_enqueue_script( 'uacf7-admin-script', UACF7_URL . 'assets/js/admin-script.js', array( 'jquery' ), UACF7_VERSION, true );
 			wp_localize_script(
 				'uacf7-admin',
 				'uacf7_options',
@@ -236,28 +233,10 @@ class Ultimate_Addons_CF7 {
 
 	// Enqueue admin scripts
 	public function uacf7_frontend_scripts() {
-		wp_enqueue_style( 'uacf7-frontend-style', UACF7_URL . 'assets/css/uacf7-frontend.css', '' );
-		wp_enqueue_style( 'uacf7-form-style', UACF7_URL . 'assets/css/form-style.css', '' );
+		wp_enqueue_style( 'uacf7-frontend-style', UACF7_URL . 'assets/css/uacf7-frontend.css', array(), UACF7_VERSION, 'all' );
+		wp_enqueue_style( 'uacf7-form-style', UACF7_URL . 'assets/css/form-style.css', array(), UACF7_VERSION, 'all' );
 	}
 
-	/**
-	 * Initialize the plugin tracker
-	 *
-	 * @return void
-	 */
-	public function appsero_init_tracker_ultimate_addons_for_contact_form_7() {
-
-		$client = new Appsero\Client( '7d0e21bd-f697-4c80-8235-07b65893e0dd', 'Ultra Addons for Contact Form 7', __FILE__ );
-
-		// Change Admin notice text
-
-		$notice = sprintf( $client->__trans( 'Want to help make <strong>%1$s</strong> even more awesome? Allow %1$s to collect non-sensitive diagnostic data and usage information. I agree to get Important Product Updates & Discount related information on my email from  %1$s (I can unsubscribe anytime).' ), $client->name );
-		$client->insights()->notice( $notice );
-
-		// Active insights
-		$client->insights()->init();
-
-	}
 }
 
 /*

@@ -31,7 +31,7 @@ class UACF7_PROMO_NOTICE {
 
     public function __construct() {
 
-        if(in_array(date('F'), $this->months) && !class_exists('Ultimate_Addons_CF7_PRO')){  
+        if(in_array(gmdate('F'), $this->months) && !class_exists('Ultimate_Addons_CF7_PRO')){  
 
             $uacf7_promo__schudle_start_from = !empty(get_option( 'uacf7_promo__schudle_start_from' )) ? get_option( 'uacf7_promo__schudle_start_from' ) : 0;
 
@@ -67,7 +67,7 @@ class UACF7_PROMO_NOTICE {
             $service_banner = isset($this->uacf7_promo_option['service_banner']) ? $this->uacf7_promo_option['service_banner'] : array();
             $promo_banner = isset($this->uacf7_promo_option['promo_banner']) ? $this->uacf7_promo_option['promo_banner'] : array();
 
-            $current_day = date('l'); 
+            $current_day = gmdate('l'); 
             if(isset($service_banner['enable_status']) && $service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
              
                 $start_date = isset($service_banner['start_date']) ? $service_banner['start_date'] : '';
@@ -472,7 +472,7 @@ class UACF7_PROMO_NOTICE {
         $promo_banner = isset($this->uacf7_promo_option['promo_banner']) ? $this->uacf7_promo_option['promo_banner'] : array();
         
 
-        $current_day = date('l'); 
+        $current_day = gmdate('l'); 
         if( isset($service_banner['enable_status']) && $service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
            
             $image_url = esc_url($service_banner['banner_url']);

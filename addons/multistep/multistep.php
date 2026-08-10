@@ -23,12 +23,25 @@ class UACF7_MULTISTEP {
 		add_filter( 'uacf7_post_meta_options_multistep_pro', array( $this, 'uacf7_post_meta_options_multistep_pro' ), 10, 2 );
 		add_filter( 'uacf7_multistep_steps_names', array( $this, 'uacf7_multistep_steps_names' ), 10, 2 );
 		add_filter( 'uacf7_multistep_step_title', array( $this, 'uacf7_multistep_step_title' ), 10, 2 );
+		// Add to your theme's functions.php or plugin file
+		add_filter( 'wp_kses_allowed_html', array( $this, 'custom_allow_style_tags' ), 10, 2 );
 	}
 
+	public function custom_allow_style_tags( $allowed_tags, $context ) {
+		// Only apply this to the post context
+		if ( 'post' === $context ) {
+			$allowed_tags['style'] = array(
+				'type' => true, // Allows <style type="text/css">
+			);
+		}
+		return $allowed_tags;
+	}
+
+
 	public function enqueue_script() {
-		wp_enqueue_script( 'uacf7-multistep', UACF7_ADDONS . '/multistep/assets/js/multistep.js', array( 'jquery' ), null, true );
-		wp_enqueue_script( 'uacf7-progressbar', UACF7_ADDONS . '/multistep/assets/js/progressbar.js', array( 'jquery' ), null, true );
-		wp_enqueue_style( 'uacf7-multistep-style', UACF7_ADDONS . '/multistep/assets/css/multistep.css' );
+		wp_enqueue_script( 'uacf7-multistep', UACF7_ADDONS . '/multistep/assets/js/multistep.js', array( 'jquery' ), UACF7_VERSION, true );
+		wp_enqueue_script( 'uacf7-progressbar', UACF7_ADDONS . '/multistep/assets/js/progressbar.js', array( 'jquery' ), UACF7_VERSION, true );
+		wp_enqueue_style( 'uacf7-multistep-style', UACF7_ADDONS . '/multistep/assets/css/multistep.css', array(), UACF7_VERSION, 'all' );
 
 
 		wp_localize_script( 'uacf7-multistep', 'uacf7_multistep_obj', array(
@@ -590,12 +603,10 @@ class UACF7_MULTISTEP {
 					$all_steps = $form_current->scan_form_tags( array( 'type' => 'uacf7_step_start' ) );
 				} else {
 					// Handle case where scan_form_tags() method is not available
-					error_log( 'Error: scan_form_tags() method not found in ' . get_class( $form_current ) );
 					echo "Error: scan_form_tags() method not found.";
 				}
 			} else {
 				// Handle case where $form_current is not defined or not an object
-				error_log( 'Error: $form_current is not defined or is not an object.' );
 				echo "Error: Form object not found.";
 			}
 
@@ -949,7 +960,8 @@ class UACF7_MULTISTEP {
 	}
 
 	public function check_fields_validation() {
-		if ( ! wp_verify_nonce( $_REQUEST['ajax_nonce'], 'uacf7-multistep' ) ) {
+		$nonce = isset( $_REQUEST['ajax_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['ajax_nonce'] ) ) : '';
+		if ( ! wp_verify_nonce( $nonce, 'uacf7-multistep' ) ) {
 			exit( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );
 		}
 
@@ -973,7 +985,7 @@ class UACF7_MULTISTEP {
 			$count++;
 		}
 
-		$form = wpcf7_contact_form( $_REQUEST['form_id'] );
+		$form = wpcf7_contact_form( isset( $_REQUEST['form_id'] ) ? absint( $_REQUEST['form_id'] ) : 0 );
 		$all_form_tags = $form->scan_form_tags();
 		$invalid_fields = false;
 		require_once WPCF7_PLUGIN_DIR . '/includes/validation.php';
@@ -997,14 +1009,14 @@ class UACF7_MULTISTEP {
 				$result = apply_filters( "wpcf7_validate_{$type}", $result, $tag );
 
 			} elseif ( 'file*' === $type || 'file' === $type ) {
-				$fdir = $_REQUEST[ $tag->name ];
+				$fdir = isset( $_REQUEST[ $tag->name ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ $tag->name ] ) ) : '';
 				if ( $fdir ) {
 					$_FILES[ $tag->name ] = array(
 						'name' => wp_basename( $fdir ),
 						'tmp_name' => $fdir,
 					);
 				}
-				$file = $_FILES[ $tag->name ];
+				$file = isset( $_FILES[ $tag->name ] ) ? sanitize_file_name( wp_unslash( $_FILES[ $tag->name ] ) ) : null;
 				//$file = $_REQUEST[$tag->name];
 				$args = array(
 					'tag' => $tag,
@@ -1021,7 +1033,7 @@ class UACF7_MULTISTEP {
 				$result = apply_filters( "wpcf7_validate_{$type}", $result, $tag, array( 'uploaded_files' => $new_files, ) );
 
 				if ( isset( $_REQUEST[ $tag->name . '_size' ] ) ) {
-					$file_size = $_REQUEST[ $tag->name . '_size' ];
+					$file_size = isset( $_REQUEST[ $tag->name . '_size' ] ) ? absint( $_REQUEST[ $tag->name . '_size' ] ) : 0;
 					if ( $file_size > $tag->get_limit_option() ) {
 						$file_error = array(
 							'into' => 'span.wpcf7-form-control-wrap[data-name = ' . esc_attr( $tag->name ) . ']',

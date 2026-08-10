@@ -338,13 +338,13 @@ class UACF7_PDF_GENERATOR {
 		}
 
 		if ( empty( $_POST['ajax_nonce'] ) || 
-			! wp_verify_nonce( sanitize_text_field( $_POST['ajax_nonce'] ), 'uacf7-pdf-generator' ) ) {
+			! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ajax_nonce'] ) ), 'uacf7-pdf-generator' ) ) {
 
 			wp_send_json_error( 'Security check failed', 403 );
 		}
 
-		$form_id = ! empty( $_POST['form_id'] ) ? $_POST['form_id'] : '';
-		$data_id = ! empty( $_POST['id'] ) ? $_POST['id'] : '';
+		$form_id = ! empty( $_POST['form_id'] ) ? sanitize_text_field( wp_unslash( $_POST['form_id'] ) ) : '';
+		$data_id = ! empty( $_POST['id'] ) ? sanitize_text_field( wp_unslash( $_POST['id'] ) ) : '';
 		require UACF7_PATH . 'third-party/vendor/autoload.php';
 
 		// Pdf get Meta Option
@@ -359,7 +359,8 @@ class UACF7_PDF_GENERATOR {
 		$dir = $upload_dir['basedir'];
 		$url = $upload_dir['baseurl'];
 		global $wpdb;
-		$data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . "uacf7_form WHERE id = %s AND form_id = %s", $data_id, $form_id ) );
+		$uacf7_db = $wpdb;
+		$data = $uacf7_db->get_row( $uacf7_db->prepare( "SELECT * FROM " . $uacf7_db->prefix . "uacf7_form WHERE id = %s AND form_id = %s", $data_id, $form_id ) );
 
 		$uacf7_pdf_name          = ! empty( $pdf['uacf7_pdf_name'] ) ? $pdf['uacf7_pdf_name'] : get_the_title( $form_id );
 		$disable_header          = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'header', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
@@ -546,7 +547,7 @@ class UACF7_PDF_GENERATOR {
 				$extension = strtolower( $pathInfo['extension'] );
 
 				ob_start();
-				echo $uacf7_DB->decrypt_and_display( $dir . $value, $encryptionKey );
+				echo wp_kses_post( $uacf7_DB->decrypt_and_display( $dir . $value, $encryptionKey ) );
 				$decryptedData = ob_get_clean();
 
 				if ( $decryptedData !== null ) {
@@ -867,8 +868,9 @@ class UACF7_PDF_GENERATOR {
 			}
 
 			// Repeater value
-			if ( isset( $_POST['_uacf7_repeaters'] ) ) {
-				$repeaters = json_decode( stripslashes( $_POST['_uacf7_repeaters'] ) );
+			$uacf7_repeaters = isset( $_POST['_uacf7_repeaters'] ) ? wp_unslash( $_POST['_uacf7_repeaters'] ) : '';
+			if ( ! empty( $uacf7_repeaters ) ) {
+				$repeaters = json_decode( $uacf7_repeaters );
 
 				if ( isset( $repeaters ) || is_array( $repeaters ) ) {
 					$repeater_data = apply_filters( 'uacf7_pdf_generator_replace_data', $repeater_value, $repeaters, $customize_pdf );

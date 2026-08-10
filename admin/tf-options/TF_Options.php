@@ -70,8 +70,8 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 				);
 			}
 
-			$imported_data = json_decode( wp_unslash( trim( $_POST['tf_import_option'] ) ), true );
-			$form_id = stripslashes( $_POST['form_id'] );
+			$imported_data = isset( $_POST['tf_import_option'] ) ? wp_unslash( json_decode( trim( $_POST['tf_import_option'] ) ), true ) : '';
+			$form_id = isset( $_POST['form_id'] ) ? wp_unslash( absint( stripslashes( $_POST['form_id'] ) ) ) : '';
 
 			$response = [ 
 				'status' => 'error',

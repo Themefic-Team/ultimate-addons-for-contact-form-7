@@ -24,12 +24,12 @@ class UACF7_COLUMN {
 	}
 
 	public function admin_column_enqueue_script() {
-		wp_enqueue_script( 'uacf7-column', UACF7_ADDONS . '/column/assets/js/column-admin.js', array( 'jquery' ), null, true );
-		wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/assets/css/column-admin.css' );
+		wp_enqueue_script( 'uacf7-column', UACF7_ADDONS . '/column/assets/js/column-admin.js', array( 'jquery' ), UACF7_VERSION, true );
+		wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/assets/css/column-admin.css', array(), UACF7_VERSION, 'all' );
 	}
 
 	public function enqueue_column_style() {
-		wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/grid/columns.css' );
+		wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/grid/columns.css', array(), UACF7_VERSION, 'all' );
 	}
 
 	/*
@@ -215,7 +215,7 @@ class UACF7_COLUMN {
 
 			<div class="submitbox">
 				<input type="button" class="button button-primary insert-tag uacf7-column-insert-tag"
-					value="<?php echo esc_attr( __( 'Insert Tag', 'ultimate-addons-for-contact-form-7' ) ); ?>" />
+					value="<?php echo esc_attr__('Insert Tag', 'ultimate-addons-for-contact-form-7' ); ?>" />
 			</div>
 		</div>
 		<?php
@@ -270,7 +270,7 @@ class UACF7_COLUMN {
 					);
 
 				} else if ( $form_part == '[/uacf7-col]' ) {
-					echo esc_html( '</div>' );
+					echo wp_kses_post( '</div>' );
 				} else {
 					echo wp_kses_post( $form_part );
 				}

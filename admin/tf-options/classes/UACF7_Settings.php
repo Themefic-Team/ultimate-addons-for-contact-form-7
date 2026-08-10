@@ -16,10 +16,10 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 		public function __construct( $key, $params = array() ) {
 			$this->option_id = $key;
-			$this->option_title = ! empty( $params['title'] ) ? apply_filters( $key . '_title', $params['title'] ) : '';
-			$this->option_icon = ! empty( $params['icon'] ) ? apply_filters( $key . '_icon', $params['icon'] ) : '';
-			$this->option_position = ! empty( $params['position'] ) ? apply_filters( $key . '_position', $params['position'] ) : 30.01;
-			$this->option_sections = ! empty( $params['sections'] ) ? apply_filters( $key . '_sections', $params['sections'] ) : array();
+			$this->option_title = ! empty( $params['title'] ) ? apply_filters( 'uacf7_' . $key . '_title', $params['title'] ) : '';
+			$this->option_icon = ! empty( $params['icon'] ) ? apply_filters( 'uacf7_' . $key . '_icon', $params['icon'] ) : '';
+			$this->option_position = ! empty( $params['position'] ) ? apply_filters( 'uacf7_' . $key . '_position', $params['position'] ) : 30.01;
+			$this->option_sections = ! empty( $params['sections'] ) ? apply_filters( 'uacf7_' . $key . '_sections', $params['sections'] ) : array();
 			// echo $this->option_icon;
 			// run only is admin panel options, avoid performance loss
 			$this->pre_tabs = $this->pre_tabs( $this->option_sections );
@@ -714,9 +714,9 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				wp_send_json_error('You do not have permission to perform this action.');
 			}
 
-			$plugin_slug = isset($_POST['plugin_slug']) ? sanitize_text_field($_POST['plugin_slug']) : '';
-			$plugin_filename = isset($_POST['plugin_filename']) ? sanitize_text_field($_POST['plugin_filename']) : '';
-			$plugin_action = isset($_POST['plugin_action']) ? sanitize_text_field($_POST['plugin_action']) : '';
+			$plugin_slug = isset($_POST['plugin_slug']) ? sanitize_text_field(wp_unslash($_POST['plugin_slug'])) : '';
+			$plugin_filename = isset($_POST['plugin_filename']) ? sanitize_text_field(wp_unslash($_POST['plugin_filename'])) : '';
+			$plugin_action = isset($_POST['plugin_action']) ? sanitize_text_field(wp_unslash($_POST['plugin_action'])) : '';
 
 			if (!$plugin_slug || !$plugin_action) {
 				wp_send_json_error('Invalid request.');
@@ -1043,11 +1043,11 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 			$option = get_option( $this->option_id );
 			$option_request = ( ! empty( $_POST[ $this->option_id ] ) ) ? $_POST[ $this->option_id ] : array();
-			$uacf7_current_page = ( ! empty( $_POST['uacf7_current_page'] ) ) ? $_POST['uacf7_current_page'] : '';
+			$uacf7_current_page = ( ! empty( $_POST['uacf7_current_page'] ) ) ? sanitize_text_field( wp_unslash( $_POST['uacf7_current_page'] ) ) : '';
 
 			if ( isset( $_POST['tf_import_option'] ) && ! empty( wp_unslash( trim( $_POST['tf_import_option'] ) ) ) ) {
 
-				$tf_import_option = json_decode( wp_unslash( trim( $_POST['tf_import_option'] ) ), true );
+				$tf_import_option = wp_unslash( json_decode( trim( $_POST['tf_import_option'] ) ), true );
 
 				// $option_request = !empty($tf_import_option) && is_array($tf_import_option) ? $tf_import_option : $option_request;
 				update_option( $this->option_id, $tf_import_option );
@@ -1157,11 +1157,11 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 											'woff2' => 'font/woff2'
 										);
 								
-										for ( $i = 0; $i < count( $_FILES['file']['name'] ); $i++ ) {
-											$original_name = $_FILES['file']['name'][ $i ];
-											$tmp_name      = $_FILES['file']['tmp_name'][ $i ];
-											$type          = $_FILES['file']['type'][ $i ];
-								
+										for ( $i = 0; $i < count( isset($_FILES['file']['name']) ? $_FILES['file']['name'] : array() ); $i++ ) {
+											$original_name = isset( $_FILES['file']['name'][ $i ] ) ? sanitize_file_name( wp_unslash( $_FILES['file']['name'][ $i ] ) ) : '';
+											$tmp_name      = isset( $_FILES['file']['tmp_name'][ $i ] ) ? sanitize_file_name( wp_unslash( $_FILES['file']['tmp_name'][ $i ] ) ) : '';
+											$type          = isset( $_FILES['file']['type'][ $i ] ) ? sanitize_text_field( wp_unslash( $_FILES['file']['type'][ $i ] ) ) : '';
+
 											$sanitized_name = sanitize_file_name( $original_name );
 											$extension      = strtolower( pathinfo( $sanitized_name, PATHINFO_EXTENSION ) );
 								
@@ -1200,7 +1200,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				'message' => __( 'Something went wrong!', 'ultimate-addons-for-contact-form-7' ),
 			];
 
-			if ( ! empty( $_POST['uacf7_option_nonce'] ) && wp_verify_nonce( $_POST['uacf7_option_nonce'], 'uacf7_option_nonce_action' ) ) {
+			if ( ! empty( $_POST['uacf7_option_nonce'] ) && wp_verify_nonce( sanitize_text_field(wp_unslash( $_POST['uacf7_option_nonce'] )), 'uacf7_option_nonce_action' ) ) {
 				if ( isset( $_POST['tf_import_option'] ) && ! empty( wp_unslash( trim( $_POST['tf_import_option'] ) ) ) ) {
 
 					$tf_import_option = json_decode( wp_unslash( trim( $_POST['tf_import_option'] ) ), true );
@@ -1236,9 +1236,23 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 		 * @author Foysal
 		 */
 		public function get_current_page_url() {
-			$page_url = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ? "https" : "http" ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+			$scheme = is_ssl() ? 'https' : 'http';
 
-			return $page_url;
+			$host = isset( $_SERVER['HTTP_HOST'] )
+				? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) )
+				: '';
+
+			$request_uri = isset( $_SERVER['REQUEST_URI'] )
+				? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) )
+				: '';
+
+			if ( empty( $host ) ) {
+				return '';
+			}
+
+			$page_url = $scheme . '://' . $host . $request_uri;
+
+			return esc_url_raw( $page_url );
 		}
 
 		/*
@@ -1247,7 +1261,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 		 * @author Foysal
 		 */
 		public function get_query_string( $url ) {
-			$url_parts = parse_url( $url );
+			$url_parts = wp_parse_url( $url );
 			parse_str( $url_parts['query'], $query_string );
 
 			return $query_string;
