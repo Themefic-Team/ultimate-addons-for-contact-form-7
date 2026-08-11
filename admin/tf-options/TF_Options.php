@@ -304,20 +304,68 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 			// uacf7_print_r($field);
 			$class = isset( $field['class'] ) ? $field['class'] : '';
 
-			$is_pro = isset( $field['is_pro'] ) ? $field['is_pro'] : '';
 			$badge_up = isset( $field['badge_up'] ) ? $field['badge_up'] : '';
 
-			if ( function_exists( 'is_tf_pro' ) && is_tf_pro() ) {
-				$is_pro = false;
-			}
-			if ( $is_pro == true ) {
-				$class .= ' tf-field-disable tf-field-pro';
-			}
-			if ( $badge_up == true ) {
-				$class .= ' tf-field-disable tf-field-upcoming';
-			}
-			$tf_meta_box_dep_value = get_post_meta( get_the_ID(), $settings_id, true );
+			/**
+			 * Generic field badges.
+			 *
+			 * Free plugin only knows about its own generic/default badges.
+			 * Extensions can add additional badges through
+			 * `uacf7_option_field_state`.
+			 */
+			$badges = array();
 
+			if ( $badge_up == true ) {
+
+				$class .= ' tf-field-disable tf-field-upcoming';
+
+				$badges[] = array(
+					'label' => __(
+						'Upcoming',
+						'ultimate-addons-for-contact-form-7'
+					),
+					'class' => 'tf-upcoming',
+				);
+			}
+
+			/**
+			 * Generic field UI state.
+			 *
+			 * Extensions can modify:
+			 *
+			 * - field classes
+			 * - badges
+			 * - disabled state
+			 */
+			$field_state = apply_filters(
+				'uacf7_option_field_state',
+				array(
+					'class'    => $class,
+					'badges'   => $badges,
+					'disabled' => false,
+				),
+				$field,
+				$value,
+				$settings_id,
+				$parent,
+				$section_key
+			);
+
+			$class = isset( $field_state['class'] )
+				? $field_state['class']
+				: '';
+
+			$badges = isset( $field_state['badges'] ) && is_array( $field_state['badges'] )
+				? $field_state['badges']
+				: array();
+
+			/**
+			 * Pass generic disabled state to the actual
+			 * field renderer if an extension sets it.
+			 */
+			if ( ! empty( $field_state['disabled'] ) ) {
+				$field['disabled'] = true;
+			}
 
 			$depend = '';
 			if ( ! empty( $field['dependency'] ) ) {
@@ -360,22 +408,34 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 			}
 			?>
 
-			<div class="tf-field tf-field-<?php echo esc_attr( $field['type'] ); ?> <?php echo esc_attr( $class ); ?> <?php echo ! empty( $visible ) ? esc_attr($visible) : ''; ?>"
-				<?php echo ! empty( $depend ) ? wp_kses_post( $depend ) : ''; ?> style="<?php echo esc_attr( $field_style ); ?>">
+			<div class="tf-field tf-field-<?php echo esc_attr( $field['type'] ); ?> <?php echo esc_attr( $class ); ?> <?php echo ! empty( $visible ) ? esc_attr( $visible ) : ''; ?>"
+				<?php echo ! empty( $depend ) ? wp_kses_post( $depend ) : ''; ?>
+				style="<?php echo esc_attr( $field_style ); ?>">
 				<div class="tf-field-wrap">
 					<?php if ( ! empty( $field['label'] ) ) : ?>
-						<label for="<?php echo esc_attr( $id ) ?>" class="tf-field-label">
-							<?php echo esc_html( $field['label'] ) ?>
-							<?php if ( $is_pro ) : ?>
-								<div class="tf-csf-badge"><span class="tf-pro">
-										<?php esc_html_e( "Pro", "ultimate-addons-for-contact-form-7" ); ?>
-									</span></div>
-							<?php endif; ?>
-							<?php if ( $badge_up ) : ?>
-								<div class="tf-csf-badge"><span class="tf-upcoming">
-										<?php esc_html_e( "Upcoming", "ultimate-addons-for-contact-form-7" ); ?>
-									</span></div>
-							<?php endif; ?>
+						<label for="<?php echo esc_attr( $id ); ?>" class="tf-field-label">
+							<?php echo esc_html( $field['label'] ); ?>
+							<?php
+							/**
+							 * Render all field badges generically.
+							 *
+							 * The Free plugin does not know whether a badge
+							 * represents Pro, Upcoming, or another extension.
+							 */
+							foreach ( $badges as $badge ) :
+								if ( empty( $badge['label'] ) ) {
+									continue;
+								}
+								$badge_class = isset( $badge['class'] )
+									? $badge['class']
+									: '';
+								?>
+								<div class="tf-csf-badge">
+									<span class="<?php echo esc_attr( $badge_class ); ?>">
+										<?php echo esc_html( $badge['label'] ); ?>
+									</span>
+								</div>
+							<?php endforeach; ?>
 						</label>
 					<?php endif; ?>
 
@@ -383,9 +443,16 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 						<span class="tf-field-sub-title">
 							<?php
 							if ( $field['id'] == 'styler_heading_label' ) {
-								echo esc_html( $field['subtitle'] );
+
+								echo esc_html(
+									$field['subtitle']
+								);
+
 							} else {
-								echo wp_kses_post( $field['subtitle'] );
+
+								echo wp_kses_post(
+									$field['subtitle']
+								);
 							}
 							?>
 						</span>
@@ -393,32 +460,36 @@ if ( ! class_exists( 'UACF7_Options' ) ) {
 
 					<div class="tf-fieldset">
 						<?php
-						$fieldClass = 'UACF7_' . $field['type'];
-						if ( class_exists( $fieldClass ) ) {
-							$_field = new $fieldClass( $field, $value, $settings_id, $parent, $section_key );
-							$_field->render();
-						} else {
-							echo '<p>' . esc_html__( 'Field not found!', 'ultimate-addons-for-contact-form-7' ) . '</p>';
-						}
+							$fieldClass = 'UACF7_' . $field['type'];
+
+							if ( class_exists( $fieldClass ) ) {
+
+								$_field = new $fieldClass(
+									$field,
+									$value,
+									$settings_id,
+									$parent,
+									$section_key
+								);
+
+								$_field->render();
+
+							} else {
+
+								echo '<p>' . esc_html__( 'Field not found!', 'ultimate-addons-for-contact-form-7' ) . '</p>';
+							}
 						?>
 					</div>
 					<?php if ( ! empty( $field['description'] ) ) : ?>
-						<p class="description">
-							<?php echo wp_kses_post( $field['description'] ) ?>
-						</p>
+
+						<p class="description"><?php echo wp_kses_post( $field['description'] ); ?></p>
+
 					<?php endif; ?>
+
 				</div>
 
 			</div>
 			<?php
-		}
-
-		public function is_uacf7_pro_active() {
-			if ( is_plugin_active( 'ultimate-addons-for-contact-form-7-pro/ultimate-addons-for-contact-form-7-pro.php' ) ) {
-				return true;
-			}
-
-			return false;
 		}
 
 	}

@@ -273,16 +273,40 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 									</label>
 								</div>
 								<div class="uacf7-settings-heading-wrap">
+									<?php
+										$filter_tabs = array(
+											'all' => array(
+												'label' => __( 'All', 'ultimate-addons-for-contact-form-7' ),
+												'class' => 'all active',
+											),
+											'free' => array(
+												'label' => __( 'Free', 'ultimate-addons-for-contact-form-7' ),
+												'class' => 'deactive',
+											),
+										);
+
+										$filter_tabs = apply_filters(
+											'uacf7_addons_filter_tabs',
+											$filter_tabs
+										);
+
+									?>
 									<div class="uacf7-addon-filter-cta">
-										<button
-											class="uacf7-addon-filter-button all active"><?php esc_html_e( 'All', 'ultimate-addons-for-contact-form-7' ) ?>
-											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
-										<button
-											class="uacf7-addon-filter-button deactive"><?php esc_html_e( 'Free', 'ultimate-addons-for-contact-form-7' ) ?>
-											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
-										<button
-											class="uacf7-addon-filter-button activete"><?php esc_html_e( 'Pro', 'ultimate-addons-for-contact-form-7' ) ?>
-											( <span class="uacf7-addon-filter-cta-count"></span> )</button>
+										
+										<?php foreach ( $filter_tabs as $filter_key => $filter ) : ?>
+
+											<button
+												type="button"
+												class="uacf7-addon-filter-button <?php echo esc_attr( $filter['class'] ); ?>"
+												data-addon-filter="<?php echo esc_attr( $filter_key ); ?>"
+											>
+												<?php echo esc_html( $filter['label'] ); ?>
+
+												(<span class="uacf7-addon-filter-cta-count"></span>)
+											</button>
+
+										<?php endforeach; ?>
+
 									</div>
 								</div>
 							</div>
@@ -291,6 +315,10 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								<input type="hidden" name="uacf7_current_page" value="uacf7_addons_page">
 								<?php
 								$data = get_option( $this->option_id, true );
+								
+								if ( ! is_array( $data ) ) {
+									$data = array();
+								}
 
 								$fields = [];
 
@@ -301,70 +329,175 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 									endif;
 								endforeach;
 
-								//  Short as Alphabetically
+								// Short as Alphabetically
 								usort( $fields, array( $this, 'uacf7_setup_wizard_sorting' ) );
+
 								foreach ( $fields as $field_key => $field ) :
+
 									$id = $this->option_id . '[' . $field['id'] . ']';
 									?>
+
 									<div class="uacf7-single-addon-setting uacf7-fields-<?php echo esc_attr( $field['id'] ) ?>"
 										data-parent="<?php echo esc_attr( $section_key ) ?>"
 										data-filter="<?php echo esc_html( strtolower( $field['label'] ) ) ?>">
+
 										<?php
-										$label_class = '';
-										if ( isset( $field['is_pro'] ) ) {
-											$label_class .= $field['is_pro'] == true ? 'tf-field-disable tf-field-pro' : '';
-											echo '<span class="addon-status pro">' . esc_html( 'Pro' ) . '</span>';
-										} else {
-											echo '<span class="addon-status free">' . esc_html( 'Free' ) . '</span>';
+
+										/**
+										 * Default addon UI state.
+										 *
+										 * Extensions can modify:
+										 * - status label
+										 * - status class
+										 * - toggle class
+										 * - input attributes
+										 */
+										$addon_ui = apply_filters(
+											'uacf7_addon_ui',
+											array(
+												'status_label'     => __( 'Free', 'ultimate-addons-for-contact-form-7' ),
+												'status_class'     => 'free',
+												'label_class'      => '',
+												'input_attributes' => array(),
+											),
+											$field,
+											$this->option_id
+										);
+
+										$label_class = isset( $addon_ui['label_class'] )
+											? $addon_ui['label_class']
+											: '';
+
+										$status_label = isset( $addon_ui['status_label'] )
+											? $addon_ui['status_label']
+											: '';
+
+										$status_class = isset( $addon_ui['status_class'] )
+											? $addon_ui['status_class']
+											: '';
+
+										$input_attributes = isset( $addon_ui['input_attributes'] ) && is_array( $addon_ui['input_attributes'] )
+											? $addon_ui['input_attributes']
+											: array();
+
+										if ( ! empty( $status_label ) ) {
+											echo '<span class="addon-status ' . esc_attr( $status_class ) . '">' . esc_html( $status_label ) . '</span>';
 										}
+
 										$child = isset( $field['child_field'] ) ? $field['child_field'] : '';
-										$is_pro = isset( $field['is_pro'] ) ? 'pro' : '';
 										$default = $field['default'] == true ? 'checked' : '';
 										$default = isset( $data[ $field['id'] ] ) && $data[ $field['id'] ] == 1 ? 'checked' : $default;
 										$value = isset( $data[ $field['id'] ] ) ? $data[ $field['id'] ] : 0;
 										$demo_link = isset( $field['demo_link'] ) ? $field['demo_link'] : '#';
 										$documentation_link = isset( $field['documentation_link'] ) ? $field['documentation_link'] : '#';
 
-										// echo $default; 
+										// echo $default;
 										?>
+
 										<div class="uacf7-single-addons-wrap">
+
 											<?php if ( isset( $field['image_url'] ) && ! empty( $field['image_url'] ) ) : ?>
 												<img src="<?php echo esc_url( $field['image_url'] ); ?>" alt="">
 											<?php endif; ?>
-											<h2 class="uacf7-single-addon-title"><?php echo esc_html( $field['label'] ) ?></h2>
+
+											<h2 class="uacf7-single-addon-title">
+												<?php echo esc_html( $field['label'] ) ?>
+											</h2>
+
 											<p class="uacf7-single-addon-desc">
+
 												<?php echo isset( $field['subtitle'] ) ? esc_html( $field['subtitle'] ) : ''; ?>
-												<?php echo '<a href="' . esc_url(uacf7_utm_generator( $documentation_link, array( 'utm_medium' => 'all_addons_doc_button') ) ) . '" target="_blank">' . esc_html__( 'Documentation', 'ultimate-addons-for-contact-form-7' ) . '</a>' ?>
+
+												<?php
+												echo '<a href="' .
+													esc_url(
+														uacf7_utm_generator(
+															$documentation_link,
+															array(
+																'utm_medium' => 'all_addons_doc_button',
+															)
+														)
+													) .
+													'" target="_blank">' .
+													esc_html__(
+														'Documentation',
+														'ultimate-addons-for-contact-form-7'
+													) .
+													'</a>';
+												?>
+
 											</p>
 
 										</div>
+
 										<div class="uacf7-single-addon-cta">
-											<a href="<?php echo esc_url(uacf7_utm_generator( $demo_link, array( 'utm_medium' => 'all_addons_preview_button' ) ) ); ?>" target="_blank"
-												class="uacf7-single-addon-btn"><?php esc_html_e( 'View Demo', 'ultimate-addons-for-contact-form-7' ) ?></a>
+
+											<a href="<?php echo esc_url(
+												uacf7_utm_generator(
+													$demo_link,
+													array(
+														'utm_medium' => 'all_addons_preview_button',
+													)
+												)
+											); ?>"
+												target="_blank"
+												class="uacf7-single-addon-btn">
+												<?php esc_html_e( 'View Demo', 'ultimate-addons-for-contact-form-7' ) ?>
+											</a>
 
 											<div class="uacf7-addon-toggle-wrap">
-												<input type="checkbox" data-child="<?php echo esc_attr( $child ) ?>"
-													data-is-pro="<?php echo esc_attr( $is_pro ) ?>"
-													id="<?php echo esc_attr( $field['id'] ) ?>" <?php echo esc_attr( $default ) ?>
-													value="<?php echo esc_html( $value ); ?>" class="uacf7-addon-input-field"
-													name="<?php echo esc_attr( $id ) ?>" id="uacf7_enable_redirection">
+
+												<input type="checkbox"
+													data-child="<?php echo esc_attr( $child ) ?>"
+
+													<?php
+													if ( ! empty( $input_attributes ) ) {
+
+														foreach ( $input_attributes as $attribute => $attribute_value ) {
+
+															$attribute = sanitize_key( $attribute );
+
+															if ( empty( $attribute ) ) {
+																continue;
+															}
+
+															printf(
+																'%s="%s" ',
+																esc_attr( $attribute ),
+																esc_attr( $attribute_value )
+															);
+														}
+													}
+													?>
+
+													id="<?php echo esc_attr( $field['id'] ) ?>"
+													<?php echo esc_attr( $default ) ?>
+													value="<?php echo esc_html( $value ); ?>"
+													class="uacf7-addon-input-field"
+													name="<?php echo esc_attr( $id ) ?>">
 
 												<label class="uacf7-addon-toggle-inner <?php echo esc_attr( $label_class ) ?> "
 													for="<?php echo esc_attr( $field['id'] ) ?>">
-													<span class="uacf7-addon-toggle-track"><svg width="16" height="17" viewBox="0 0 16 17"
+
+													<span class="uacf7-addon-toggle-track">
+														<svg width="16" height="17" viewBox="0 0 16 17"
 															fill="none" xmlns="http://www.w3.org/2000/svg">
 															<rect y="0.5" width="16" height="16" rx="8" fill="#79757F" />
 														</svg>
 													</span>
+
 												</label>
+
 											</div>
 
 										</div>
+
 									</div>
 
 									<?php
 								endforeach;
 								?>
+
 							</div>
 							<?php wp_nonce_field( 'uacf7_option_nonce_action', 'uacf7_option_nonce' ); ?>
 						</form>
