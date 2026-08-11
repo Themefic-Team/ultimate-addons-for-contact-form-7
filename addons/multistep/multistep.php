@@ -965,10 +965,14 @@ class UACF7_MULTISTEP {
 			exit( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );
 		}
 
-		$current_step_fields = explode( ',', $_REQUEST['current_fields_to_check'] );
+		// Securely fetch, unslash, and sanitize 'current_fields_to_check' to satisfy WPCS requirements
+		$current_fields_raw  = isset( $_REQUEST['current_fields_to_check'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['current_fields_to_check'] ) ) : '';
+		$current_step_fields = explode( ',', sanitize_text_field( $current_fields_raw ) );
 		
-		// Validation with Repeater 
-		$validation_fields = explode( ',', $_REQUEST['validation_fields'] );
+		// Validation with Repeater - Fetch, unslash, and sanitize 'validation_fields'
+		$validation_fields_raw = isset( $_REQUEST['validation_fields'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['validation_fields'] ) ) : '';
+		$validation_fields     = explode( ',', sanitize_text_field( $validation_fields_raw ) );
+		
 		$tag_name = [];
 		$tag_validation = [];
 		$tag_type = [];
@@ -1006,7 +1010,7 @@ class UACF7_MULTISTEP {
 		foreach ( $tags as $tag ) {
 			$type = $tag->type;
 			if ( 'file' != $type && 'file*' != $type ) {
-				$result = apply_filters( "wpcf7_validate_{$type}", $result, $tag );
+				$result = apply_filters( "uacf7_wpcf7_validate_{$type}", $result, $tag );
 
 			} elseif ( 'file*' === $type || 'file' === $type ) {
 				$fdir = isset( $_REQUEST[ $tag->name ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ $tag->name ] ) ) : '';
@@ -1030,7 +1034,7 @@ class UACF7_MULTISTEP {
 				if ( is_wp_error( $new_files ) ) {
 					$result->invalidate( $tag, $new_files );
 				}
-				$result = apply_filters( "wpcf7_validate_{$type}", $result, $tag, array( 'uploaded_files' => $new_files, ) );
+				$result = apply_filters( "uacf7_wpcf7_validate_{$type}", $result, $tag, array( 'uploaded_files' => $new_files, ) );
 
 				if ( isset( $_REQUEST[ $tag->name . '_size' ] ) ) {
 					$file_size = isset( $_REQUEST[ $tag->name . '_size' ] ) ? absint( $_REQUEST[ $tag->name . '_size' ] ) : 0;
@@ -1046,7 +1050,7 @@ class UACF7_MULTISTEP {
 
 		}
 
-		// $result = apply_filters('wpcf7_validate', $result, $tags); 
+		// $result = apply_filters('uacf7_wpcf7_validate', $result, $tags); 
 		$is_valid = $result->is_valid();
 		if ( ! $is_valid ) {
 			$invalid_fields = $this->prepare_invalid_form_fields( $result, $tag_validation );

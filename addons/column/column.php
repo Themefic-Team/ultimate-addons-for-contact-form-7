@@ -10,12 +10,7 @@ class UACF7_COLUMN {
 	 * Construct function
 	 */
 	public function __construct() {
-		global $pagenow;
-		if ( isset( $_GET['page'] ) ) {
-			if ( ( $pagenow == 'admin.php' ) && ( $_GET['page'] == 'wpcf7' ) || ( $_GET['page'] == 'wpcf7-new' ) ) {
-				add_action( 'admin_enqueue_scripts', array( $this, 'admin_column_enqueue_script' ) );
-			}
-		}
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_column_enqueue_script' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_column_style' ) );
 		add_action( 'wpcf7_init', array( __CLASS__, 'add_shortcodes' ), 10, 0 );
 		add_action( 'admin_init', array( $this, 'tag_generator' ) );
@@ -24,8 +19,18 @@ class UACF7_COLUMN {
 	}
 
 	public function admin_column_enqueue_script() {
-		wp_enqueue_script( 'uacf7-column', UACF7_ADDONS . '/column/assets/js/column-admin.js', array( 'jquery' ), UACF7_VERSION, true );
-		wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/assets/css/column-admin.css', array(), UACF7_VERSION, 'all' );
+
+		$screen = get_current_screen();
+
+		$wpcf7_admin_pages = array(
+			'toplevel_page_wpcf7',
+			'contact_page_wpcf7-new',
+		);
+
+		if ( in_array( $screen->id, $wpcf7_admin_pages, true ) ) {
+			wp_enqueue_script( 'uacf7-column', UACF7_ADDONS . '/column/assets/js/column-admin.js', array( 'jquery' ), UACF7_VERSION, true );
+			wp_enqueue_style( 'uacf7-column', UACF7_ADDONS . '/column/assets/css/column-admin.css', array(), UACF7_VERSION, 'all' );
+		}
 	}
 
 	public function enqueue_column_style() {

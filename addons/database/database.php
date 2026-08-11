@@ -361,21 +361,35 @@ class UACF7_DATABASE {
 			}
 			
 			// Set the headers
-			ob_start();
-			header( 'Content-Type: text/csv' );
-			header( 'Content-Disposition: attachment; filename="' . $file_name . '"' );
-			$fp = fopen( 'php://output', 'w' );
+			$csv_rows = array();
 
 			foreach ( $list as $fields ) {
-				fputcsv( $fp, $fields );
+				$csv_fields = array();
+
+				foreach ( $fields as $field ) {
+					$field = is_scalar( $field ) ? (string) $field : '';
+
+					/*
+					* Escape double quotes according to CSV rules.
+					*/
+					$field = str_replace( '"', '""', $field );
+
+					/*
+					* Wrap every value in double quotes.
+					*/
+					$csv_fields[] = '"' . $field . '"';
+				}
+
+				$csv_rows[] = implode( ',', $csv_fields );
 			}
-			fclose( $fp );
-			$csv_data = ob_get_clean();
-			$data = [ 
-				'status' => true,
+
+			$csv_data = implode( "\r\n", $csv_rows ) . "\r\n";
+
+			$data = array(
+				'status'    => true,
 				'file_name' => $file_name,
-				'csv' => $csv_data,
-			];
+				'csv'       => $csv_data,
+			);
 		} else {
 			$data = [ 
 				'status' => false,
@@ -411,8 +425,6 @@ class UACF7_DATABASE {
 	public function uacf7_create_database_page() {
 		global $wpdb;
 		$uacf7_db = $wpdb;
-		$form_id = isset( $_GET['form_id'] ) ? sanitize_text_field( wp_unslash( $_GET['form_id'] ) ) : null;
-
 		$list_forms = get_posts(
 			array(
 				'post_type' => 'wpcf7_contact_form',

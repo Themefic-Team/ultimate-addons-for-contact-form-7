@@ -128,12 +128,22 @@ class UACF7_DYNAMIC_TEXT {
 	* Form tag validation.
 	*/
 	public function uacf7_dynamic_text_validation_filter( $result, $tag ) {
+		// nonce validation
+		if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'wpcf7' ) ) {
+			$result->invalidate(
+				$tag,
+				wpcf7_get_message( 'invalid_nonce' )
+			);
+			return $result;
+
+		}
+
 		$name = $tag->name;
 
 		$posted_value = null;
 
 		if ( isset( $_POST[ $name ] ) ) {
-			$posted_value = wp_unslash( $_POST[ $name ] );
+			$posted_value = map_deep( wp_unslash( $_POST[ $name ] ), 'sanitize_text_field' );
 
 			if ( is_array( $posted_value ) ) {
 				$posted_value = array_map(

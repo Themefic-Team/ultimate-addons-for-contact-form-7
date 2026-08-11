@@ -36,7 +36,16 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 			if ( ! is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
 				add_action( 'wp_ajax_contact_form_7_ajax_install_plugin', 'wp_ajax_install_plugin' );
 			}
-			self::$current_step = isset( $_GET['step'] ) ? sanitize_key( $_GET['step'] ) : 'welcome';
+
+			// Validate any wizard step requested from the URL before it is consumed.
+			// The wizard's step information is request-driven, so it must be checked for
+			// a nonce when a step is explicitly supplied.
+			$requested_step = isset( $_GET['step'] ) ? sanitize_key( wp_unslash( $_GET['step'] ) ) : 'welcome';
+			$wizard_nonce   = isset( $_GET['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) : '';
+			if ( 'welcome' !== $requested_step && ! wp_verify_nonce( $wizard_nonce, 'uacf7_setup_wizard_step' ) ) {
+				$requested_step = 'welcome';
+			}
+			self::$current_step = $requested_step;
 		}
 
 		public function uacf7_settings_options_wizard( $option ) {
@@ -65,7 +74,8 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 		 * Remove all notice in setup wizard page
 		 */
 		public function remove_notice() {
-			if ( isset( $_GET['page'] ) && $_GET['page'] == 'uacf7-setup-wizard' ) {
+			$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+			if ( $screen && is_string( $screen->id ) && false !== strpos( $screen->id, 'uacf7-setup-wizard' ) ) {
 				remove_all_actions( 'admin_notices' );
 				remove_all_actions( 'all_admin_notices' );
 			}
@@ -109,7 +119,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 
 			$vaue = '';
 			$uacf7_default[0] = 'form';
-			$uacf7_default[1] = isset( $_POST['searchValue'] ) ? wp_unslash( $_POST['searchValue'] ) : '';
+			$uacf7_default[1] = isset( $_POST['searchValue'] ) ? map_deep( wp_unslash( $_POST['searchValue'] ), 'sanitize_text_field' ) : '';
 
 
 			if ( count( $uacf7_default ) > 0 && $uacf7_default[0] == 'form' ) {
@@ -137,7 +147,8 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 
 			$vaue = '';
 			$form_name = isset( $_POST['form_name'] ) ? sanitize_text_field( wp_unslash( $_POST['form_name'] ) ) : '';
-			$form_value = str_replace( "\\", "", isset( $_POST['form_value'] ) ? wp_unslash( $_POST['form_value'] ) : '' );
+			$form_value = isset( $_POST['form_value'] ) ? sanitize_textarea_field( wp_unslash( $_POST['form_value'] ) ) : '';
+			$form_value = str_replace( "\\", "", $form_value );
 			$message = '';
 			$status = 'success';
 

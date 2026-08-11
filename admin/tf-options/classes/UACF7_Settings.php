@@ -1,5 +1,8 @@
 <?php
 // don't load directly
+
+use function PHPSTORM_META\map;
+
 defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'UACF7_Settings' ) ) {
@@ -1042,12 +1045,14 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			}
 
 			$option = get_option( $this->option_id );
-			$option_request = ( ! empty( $_POST[ $this->option_id ] ) ) ? $_POST[ $this->option_id ] : array();
+			$option_request = ( ! empty( $_POST[ $this->option_id ] ) ) ? map_deep( wp_unslash( $_POST[ $this->option_id ] ), 'sanitize_text_field' ) : array();
 			$uacf7_current_page = ( ! empty( $_POST['uacf7_current_page'] ) ) ? sanitize_text_field( wp_unslash( $_POST['uacf7_current_page'] ) ) : '';
 
-			if ( isset( $_POST['tf_import_option'] ) && ! empty( wp_unslash( trim( $_POST['tf_import_option'] ) ) ) ) {
+			$imported_data_json = isset( $_POST['tf_import_option'] ) ? sanitize_textarea_field( wp_unslash( $_POST['tf_import_option'] ) ) : '';
 
-				$tf_import_option = wp_unslash( json_decode( trim( $_POST['tf_import_option'] ) ), true );
+			if ( isset( $imported_data_json ) && ! empty( $imported_data_json ) ) {
+
+				$tf_import_option =  json_decode( trim( $imported_data_json ), true );
 
 				// $option_request = !empty($tf_import_option) && is_array($tf_import_option) ? $tf_import_option : $option_request;
 				update_option( $this->option_id, $tf_import_option );
@@ -1167,7 +1172,9 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 								
 											// Validate file extension and MIME type
 											if ( in_array( $extension, $allowed_extensions, true ) && $type === $allowed_mime_types[ $extension ] ) {
-												move_uploaded_file( $tmp_name, $tf_itinerary_fonts . '/' . $sanitized_name );
+												if ( is_uploaded_file( $tmp_name ) ) {
+													copy( $tmp_name, $tf_itinerary_fonts . '/' . $sanitized_name );
+												}
 											}
 										}
 									}
@@ -1201,9 +1208,10 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			];
 
 			if ( ! empty( $_POST['uacf7_option_nonce'] ) && wp_verify_nonce( sanitize_text_field(wp_unslash( $_POST['uacf7_option_nonce'] )), 'uacf7_option_nonce_action' ) ) {
-				if ( isset( $_POST['tf_import_option'] ) && ! empty( wp_unslash( trim( $_POST['tf_import_option'] ) ) ) ) {
+				$imported_data_json = isset( $_POST['tf_import_option'] ) ? sanitize_textarea_field( wp_unslash( $_POST['tf_import_option'] ) ) : '';
+				if ( isset( $imported_data_json ) && ! empty( $imported_data_json ) ) {
 
-					$tf_import_option = json_decode( wp_unslash( trim( $_POST['tf_import_option'] ) ), true );
+					$tf_import_option = json_decode( trim( $imported_data_json ), true ) ;
 					if ( empty( $tf_import_option ) || ! is_array( $tf_import_option ) ) {
 						$response = [ 
 							'status' => 'error',

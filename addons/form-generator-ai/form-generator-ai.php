@@ -96,7 +96,40 @@ class UACF7_FORM_GENERATOR {
 			</div>
 		</div>
 		<?php
-		echo ob_get_clean();
+		
+		$popup_markup = ob_get_clean();
+		$allowed_popup_html = array(
+			'div'      => array(
+				'class' => true,
+				'title' => true,
+			),
+			'h4'       => array(),
+			'span'     => array(
+				'class' => true,
+			),
+			'select'   => array(
+				'class'        => true,
+				'data-trigger' => true,
+				'name'         => true,
+				'id'           => true,
+				'placeholder'  => true,
+				'multiple'     => true,
+			),
+			'button'   => array(
+				'class' => true,
+			),
+			'textarea' => array(
+				'name' => true,
+				'id'   => true,
+			),
+			'a'        => array(
+				'href'   => true,
+				'target' => true,
+			),
+		);
+
+		// Output securely using wp_kses
+		echo wp_kses( $popup_markup, $allowed_popup_html );
 	}
 
 	public function uacf7_form_generator_ai_get_tag() {
@@ -185,7 +218,7 @@ class UACF7_FORM_GENERATOR {
 			exit( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );
 		}
 		$vaue = '';
-		$raw_uacf7_default = isset( $_POST['searchValue'] ) ? wp_unslash( $_POST['searchValue'] ) : '';
+		$raw_uacf7_default = isset( $_POST['searchValue'] ) ? map_deep( wp_unslash( $_POST['searchValue'] ), 'sanitize_text_field' ) : '';
 		if ( is_array( $raw_uacf7_default ) ) {
 			$uacf7_default = array_map( 'sanitize_text_field', $raw_uacf7_default );
 		} else {

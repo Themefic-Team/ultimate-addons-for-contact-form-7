@@ -868,11 +868,11 @@ class UACF7_PDF_GENERATOR {
 			}
 
 			// Repeater value
-			$uacf7_repeaters = isset( $_POST['_uacf7_repeaters'] ) ? wp_unslash( $_POST['_uacf7_repeaters'] ) : '';
+			$uacf7_repeaters = isset( $_POST['_uacf7_repeaters'] ) ? sanitize_text_field( wp_unslash( $_POST['_uacf7_repeaters'] ) ) : '';
 			if ( ! empty( $uacf7_repeaters ) ) {
 				$repeaters = json_decode( $uacf7_repeaters );
 
-				if ( isset( $repeaters ) || is_array( $repeaters ) ) {
+				if ( is_array( $repeaters ) || is_object( $repeaters ) ) {
 					$repeater_data = apply_filters( 'uacf7_pdf_generator_replace_data', $repeater_value, $repeaters, $customize_pdf );
 
 					$customize_pdf = str_replace( $repeater_data['replace_re_key'], $repeater_data['replace_re_value'], $customize_pdf );
