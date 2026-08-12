@@ -227,7 +227,7 @@ if ( ! class_exists( 'UACF7_Metabox' ) ) {
 			} else {
 				$tf_meta_box_value = array();
 			}
-			$metabox_request = ( ! empty( $_POST[ $this->metabox_id ] ) ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST[ $this->metabox_id ] ) ) : array();
+			$metabox_request = ( ! empty( $_POST[ $this->metabox_id ] ) ) ? map_deep( wp_unslash( $_POST[ $this->metabox_id ] ),  'sanitize_text_field' ) : array();
 
 			if ( ! empty( $metabox_request ) && ! empty( $this->metabox_sections ) ) {
 				// uacf7_print_r($metabox_request);
