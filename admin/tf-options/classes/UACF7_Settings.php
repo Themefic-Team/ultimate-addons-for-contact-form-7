@@ -628,29 +628,12 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 		public function tf_get_sidebar_plugin_list(){
 
 			$plugins = [
-				// [
-				// 	'name'       => 'UACF7',
-				// 	'slug'       => 'ultimate-addons-for-contact-form-7',
-				// 	'file_name'  => 'ultimate-addons-for-contact-form-7',
-				// 	'subtitle'   => '40+ Essential Addons for Contact Form 7',
-				// 	'image'      => 'https://ps.w.org/ultimate-addons-for-contact-form-7/assets/icon-128x128.png',
-				// 	// 'pro'        => [
-				// 	// 	'slug'      => 'ultimate-addons-for-contact-form-7-pro',
-				// 	// 	'file_name' => 'ultimate-addons-for-contact-form-7-pro',
-				// 	// 	'url'       => 'https://cf7addons.com/pricing/',
-				// 	// ],
-				// ],
 				[
 					'name'       => 'Hydra',
 					'slug'       => 'hydra-booking',
 					'file_name'  => 'hydra-booking',
 					'subtitle'   => 'All in One Appointment Booking System',
 					'image'      => 'https://ps.w.org/hydra-booking/assets/icon-128x128.jpg',
-					// 'pro'        => [
-					// 	'slug'      => 'hydra-booking-pro',
-					// 	'file_name' => 'hydra-booking-pro',
-					// 	'url'       => 'https://hydrabooking.com/',
-					// ],
 				],
 				[
 					'name'       => 'BEAF',
@@ -658,11 +641,6 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					'file_name'  => 'before-and-after-gallery',
 					'subtitle'   => 'Ultimate Before After Image Slider & Gallery',
 					'image'      => 'https://ps.w.org/beaf-before-and-after-gallery/assets/icon-128x128.png',
-					// 'pro'        => [
-					// 	'slug'      => 'beaf-before-and-after-gallery-pro',
-					// 	'file_name' => 'before-and-after-gallery-pro',
-					// 	'url'       => 'https://themefic.com/plugins/beaf/pro/',
-					// ],
 				],
 				[
 					'name'       => 'Tourfic',
@@ -670,11 +648,6 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					'file_name'  => 'tourfic',
 					'subtitle'   => 'Travel, Hotel Booking & Car Rental WP Plugin',
 					'image'      => 'https://ps.w.org/tourfic/assets/icon-128x128.gif',
-					// 'pro'        => [
-					// 	'slug'      => 'tourfic-pro',
-					// 	'file_name' => 'tourfic-pro',
-					// 	'url'       => 'https://themefic.com/tourfic/',
-					// ],
 				],
 				[
 					'name'       => 'Instantio',
@@ -682,24 +655,7 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					'file_name'  => 'instantio',
 					'subtitle'   => 'WooCommerce Quick & Direct Checkout',
 					'image'      => 'https://ps.w.org/instantio/assets/icon-128x128.png',
-					// 'pro'        => [
-					// 	'slug'      => 'wooinstant',
-					// 	'file_name' => 'wooinstant',
-					// 	'url'       => 'https://themefic.com/instantio/',
-					// ],
 				],
-				// [
-				// 	'name'       => 'Before After Slider for WooCommerce – eBEAF',
-				// 	'slug'       => 'before-after-for-woocommerce',
-				// 	'file_name'  => 'before-after-for-woocommerce',
-				// 	'image'      => 'https://ps.w.org/before-after-for-woocommerce/assets/icon-128x128.gif',
-				// 	'pro_url'    => '',
-				// 	'pro'        => [
-				// 		'slug'      => 'before-after-for-woocommerce-pro',
-				// 		'file_name' => 'before-after-for-woocommerce-pro',
-				// 		'url'       => 'https://themefic.com/plugins/ebeaf/pro/',
-				// 	],
-				// ],
 			];
 
 			?>
@@ -737,18 +693,6 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 										</button>
 									<?php else: ?>
 										<span class="uacf7-plugin-button plugin-status active">Activated</span>
-									<?php endif; ?>
-
-									<?php if (!empty($plugin['pro'])): ?>
-										<?php if (!$pro_installed): ?>
-											<a href="<?php echo esc_url($plugin['pro']['url']); ?>" class="uacf7-plugin-button pro" target="_blank">Get Pro</a>
-										<?php elseif (!$pro_activated): ?>
-											<button class="uacf7-plugin-button activate-pro" data-action="activate" data-plugin="<?php echo esc_attr($plugin['pro']['slug']); ?>" data-plugin_filename="<?php echo esc_attr($plugin['pro']['file_name']); ?>">
-												Activate Pro <span class="loader"></span>
-											</button>
-										<?php else: ?>
-											<span class="uacf7-plugin-button plugin-status active-pro">Pro Activated</span>
-										<?php endif; ?>
 									<?php endif; ?>
 								</div>
 							</div>

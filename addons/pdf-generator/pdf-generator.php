@@ -76,12 +76,7 @@ class UACF7_PDF_GENERATOR {
 
 	public function uacf7_post_meta_options_pdf_generator( $value, $post_id ) {
 
-
-		$pdf_generator = apply_filters( 'uacf7_post_meta_options_pdf_generator_pro', $data = array(
-			'title' => __( 'PDF Generator', 'ultimate-addons-for-contact-form-7' ),
-			'icon' => 'fa-solid fa-file-pdf',
-			'checked_field' => 'uacf7_enable_pdf_generator',
-			'fields' => array(
+		$fields = array(
 				'uacf7_pdf_label' => array(
 					'id' => 'uacf7_pdf_label',
 					'type' => 'heading',
@@ -290,21 +285,6 @@ class UACF7_PDF_GENERATOR {
 					'type' => 'editor',
 
 				),
-				'uacf7_pdf_form_download' => array(
-					'id' => 'uacf7_pdf_form_download',
-					'type' => 'heading',
-					'label' => __( 'Download Form After Submit', 'ultimate-addons-for-contact-form-7' ),
-				),
-				'uacf7_enable_pdf_form_download' => array(
-					'id' => 'uacf7_enable_pdf_form_download',
-					'type' => 'switch',
-					'label' => __( ' Enable PDF Download on Submission ', 'ultimate-addons-for-contact-form-7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
-					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
-					'default' => false,
-					'field_width' => 100,
-					'is_pro' => true
-				),
 				'uacf7_pdf_custom_css' => array(
 					'id' => 'uacf7_pdf_custom_css',
 					'type' => 'heading',
@@ -315,9 +295,22 @@ class UACF7_PDF_GENERATOR {
 					'type' => 'code_editor',
 
 				),
-			),
+			);
 
+		/**
+		 * Allow extensions to add/modify Webhook fields.
+		 */
+		$fields = apply_filters(
+			'uacf7_pdf_generator_fields',
+			$fields,
+			$post_id
+		);
 
+		$pdf_generator = apply_filters( 'uacf7_post_meta_options_pdf_generator_pro', $data = array(
+			'title' => __( 'PDF Generator', 'ultimate-addons-for-contact-form-7' ),
+			'icon' => 'fa-solid fa-file-pdf',
+			'checked_field' => 'uacf7_enable_pdf_generator',
+			'fields' => $fields
 		), $post_id );
 
 		$value['pdf_generator'] = $pdf_generator;

@@ -26,11 +26,7 @@ class UACF7_WEB_HOOK {
 	// Add Web Hook Options
 	public function uacf7_post_meta_options_webhook( $value, $post_id ) {
 
-		$WebHook = apply_filters( 'uacf7_post_meta_options_webhook', $data = array(
-			'title' => __( 'Webhook', 'ultimate-addons-for-contact-form-7' ),
-			'icon' => 'fa-solid fa-code-compare',
-			'checked_field'   => 'uacf7_enable_web_hook',
-			'fields' => [ 
+		$fields = array( 
 				'uacf7_Web_hook_heading' => [ 
 					'id' => 'uacf7_web_hook_heading',
 					'type' => 'heading',
@@ -60,114 +56,11 @@ class UACF7_WEB_HOOK {
 					'field_width' => 50,
 					'default' => false
 				],
-				'uacf7_enable_web_hook_condition' => [ 
-					'id' => 'uacf7_enable_web_hook_condition',
-					'type' => 'switch',
-					'label' => __( ' Enable Webhook Conditions', 'ultimate-addons-for-contact-form-7' ),
-					'label_on' => __( 'Yes', 'ultimate-addons-for-contact-form-7' ),
-					'label_off' => __( 'No', 'ultimate-addons-for-contact-form-7' ),
-					'field_width' => 50,
-					'default' => false,
-					'is_pro' => true
-				],
-
-				'uacf7_webhook_conditional_form_options_heading' => array(
-					'id' => 'uacf7_webhook_conditional_form_options_heading',
-					'type' => 'heading',
-					'label' => __( 'Conditional Option ', 'ultimate-addons-for-contact-form-7' ),
-					'dependency' => [ 'uacf7_enable_web_hook_condition', '==', 1 ],
-				),
-				'uacf7_webhook_conditional_repeater' => array(
-					'id' => 'uacf7_webhook_conditional_repeater',
-					'type' => 'repeater',
-					'label' => __( 'Setup your Conditional Logic', 'ultimate-addons-for-contact-form-7' ),
-					'subtitle' => __( "The webhook will send data to the endpoint only if the conditional logic matches. Select a field and determine whether the data should be sent when any or all specified conditions are met.", 'ultimate-addons-for-contact-form-7' ),
-					'class' => 'tf-field-class',
-					'fields' => array(
-						'uacf7_cf_hs' => array(
-							'id' => 'uacf7_cf_hs',
-							'type' => 'select',
-							'label' => __( 'Condition', 'ultimate-addons-for-contact-form-7' ),
-							'subtitle' => "Select whether this field's value should be sent to the webhook or not when the condition below is met.",
-							'class' => 'tf-field-class',
-							'options' => array(
-								'send' => 'Send to webhook',
-								'hide' => 'Skip sending to webhook',
-							),
-							'field_width' => '50',
-						),
-						'uacf7_cf_condition_for' => array(
-							'id' => 'uacf7_cf_condition_for',
-							'type' => 'select',
-							'label' => __( 'If', 'ultimate-addons-for-contact-form-7' ),
-							'subtitle' => "Choose the trigger for the condition: it should activate if 'any' one of the conditions is met or when 'all' conditions.",
-							'class' => 'tf-field-class',
-							'options' => array(
-								'any' => 'Any',
-								'all' => 'All',
-							),
-							'field_width' => '50',
-
-						),
-						'uacf7_cf_conditions' => array(
-							'id' => 'uacf7_cf_conditions',
-							'type' => 'repeater',
-							'label' => __( 'Add Condition', 'ultimate-addons-for-contact-form-7' ),
-							'class' => 'tf-field-class',
-							'fields' => array(
-
-								'uacf7_cf_tn' => array(
-									'id' => 'uacf7_cf_tn',
-									'type' => 'select',
-									'label' => __( 'Conditional Field', 'ultimate-addons-for-contact-form-7' ),
-									'class' => 'tf-field-class',
-									'options' => 'uacf7',
-									'query_args' => array(
-										'post_id' => $post_id,
-										'exclude_types' => [ 'submit', 'conditional' ],
-									),
-									'field_width' => '50',
-								),
-								'uacf7_cf_operator' => array(
-									'id' => 'uacf7_cf_operator',
-									'type' => 'select',
-									'label' => __( 'is', 'ultimate-addons-for-contact-form-7' ),
-									'class' => 'tf-field-class',
-									'options' => array(
-										'equal' => 'equal',
-										'not_equal' => 'Not Equal',
-										'greater_than' => 'Greater than',
-										'less_than' => 'Less than',
-										'greater_than_or_equal_to' => 'Greater than or equal to',
-										'less_than_or_equal_to' => 'Less than or equal to',
-										'starts_with' => 'Starts with',
-										'ends_with' => 'Ends With',
-										'contains' => 'Contains',
-										'does_not_contain' => 'Does not contain'
-									),
-									'field_width' => '50',
-								),
-								'uacf7_cf_val' => array(
-									'id' => 'uacf7_cf_val',
-									'type' => 'text',
-									'label' => 'Conditional Value',
-									'subtitle' => 'Input the specific value that will trigger the condition.',
-									'description' => '',
-									'class' => 'tf-field-class',
-								)
-							),
-						)
-					),
-					'dependency' => [ 'uacf7_enable_web_hook_condition', '==', 1 ],
-					'is_pro' => true
-				),
-
 				'web_hook_form_options_heading' => array(
 					'id'        => 'web_hook_form_options_heading',
 					'type'      => 'heading',
 					'label'     => __( 'Webhook Option ', 'ultimate-addons-for-contact-form-7' ),
 				),
-
 				'uacf7_web_hook_api' => [ 
 					'id' => 'uacf7_web_hook_api',
 					'type' => 'text',
@@ -175,7 +68,6 @@ class UACF7_WEB_HOOK {
 					'placeholder' => __( 'Enter a Request URL', 'ultimate-addons-for-contact-form-7' ),
 					'dependency' => [ 'uacf7_enable_web_hook', '==', 1 ],
 				],
-
 				'uacf7_web_hook_request_method' => [ 
 					'id' => 'uacf7_web_hook_request_method',
 					'type' => 'select',
@@ -190,7 +82,6 @@ class UACF7_WEB_HOOK {
 					'field_width' => 50,
 					'dependency' => [ 'uacf7_enable_web_hook', '==', 1 ],
 				],
-
 				'uacf7_web_hook_request_format' => [ 
 					'id' => 'uacf7_web_hook_request_format',
 					'type' => 'select',
@@ -202,7 +93,6 @@ class UACF7_WEB_HOOK {
 					'field_width' => 50,
 					'dependency' => [ 'uacf7_enable_web_hook', '==', 1 ],
 				],
-
 				'uacf7_web_hook_header_request' => [ 
 					'id' => 'uacf7_web_hook_header_request',
 					'type' => 'repeater',
@@ -257,7 +147,6 @@ class UACF7_WEB_HOOK {
 					]
 
 				],
-
 				'uacf7_web_hook_body_request' => [ 
 					'id' => 'uacf7_web_hook_body_request',
 					'type' => 'repeater',
@@ -284,11 +173,32 @@ class UACF7_WEB_HOOK {
 						],
 					]
 
-				]
-			],
-		), $post_id );
+				],
+			);
+
+
+		/**
+		 * Allow extensions to add/modify Webhook fields.
+		 */
+		$fields = apply_filters(
+			'uacf7_webhook_fields',
+			$fields,
+			$post_id
+		);
+
+		$WebHook = apply_filters(
+			'uacf7_post_meta_options_webhook',
+			array(
+				'title'         => __( 'Webhook', 'ultimate-addons-for-contact-form-7' ),
+				'icon'          => 'fa-solid fa-code-compare',
+				'checked_field' => 'uacf7_enable_web_hook',
+				'fields'        => $fields,
+			),
+			$post_id
+		);
 
 		$value['Web_hook'] = $WebHook;
+
 		return $value;
 	}
 
@@ -307,250 +217,6 @@ class UACF7_WEB_HOOK {
 		return in_array( strtolower( (string) $value ), array( '1', 'yes', 'true', 'on' ), true );
 	}
 
-	/**
-	 * Decide whether the current submission should be sent to the webhook.
-	 *
-	 * A matching "hide" rule always skips the webhook. When one or more
-	 * "send" rules exist, at least one of them must match. If the configuration
-	 * contains only "hide" rules, the webhook is sent unless one matches.
-	 *
-	 * @param array $rules       Conditional repeater rows.
-	 * @param array $posted_data Contact Form 7 submitted values.
-	 *
-	 * @return bool
-	 */
-	private function uacf7_should_send_webhook( $rules, $posted_data ) {
-		if ( ! is_array( $rules ) || empty( $rules ) ) {
-			return false;
-		}
-
-		$has_valid_rule   = false;
-		$has_send_rule    = false;
-		$matched_send_rule = false;
-
-		foreach ( $rules as $rule ) {
-			if ( ! is_array( $rule ) ) {
-				continue;
-			}
-
-			$action = isset( $rule['uacf7_cf_hs'] )
-				? strtolower( (string) $rule['uacf7_cf_hs'] )
-				: 'send';
-
-			if ( ! in_array( $action, array( 'send', 'hide' ), true ) ) {
-				continue;
-			}
-
-			$has_valid_rule = true;
-
-			if ( 'send' === $action ) {
-				$has_send_rule = true;
-			}
-
-			if ( ! $this->uacf7_webhook_rule_matches( $rule, $posted_data ) ) {
-				continue;
-			}
-
-			if ( 'hide' === $action ) {
-				return false;
-			}
-
-			$matched_send_rule = true;
-		}
-
-		if ( ! $has_valid_rule ) {
-			return false;
-		}
-
-		return $has_send_rule ? $matched_send_rule : true;
-	}
-
-	/**
-	 * Evaluate one conditional repeater row using its Any/All setting.
-	 *
-	 * @param array $rule        Conditional repeater row.
-	 * @param array $posted_data Contact Form 7 submitted values.
-	 *
-	 * @return bool
-	 */
-	private function uacf7_webhook_rule_matches( $rule, $posted_data ) {
-		$conditions = isset( $rule['uacf7_cf_conditions'] )
-			? $rule['uacf7_cf_conditions']
-			: array();
-
-		if ( ! is_array( $conditions ) || empty( $conditions ) ) {
-			return false;
-		}
-
-		$match_type = isset( $rule['uacf7_cf_condition_for'] )
-			? strtolower( (string) $rule['uacf7_cf_condition_for'] )
-			: 'any';
-
-		$match_type          = 'all' === $match_type ? 'all' : 'any';
-		$has_valid_condition = false;
-
-		foreach ( $conditions as $condition ) {
-			if ( ! is_array( $condition ) ) {
-				continue;
-			}
-
-			$field_name = isset( $condition['uacf7_cf_tn'] )
-				? rtrim( (string) $condition['uacf7_cf_tn'], '[]' )
-				: '';
-			$operator = isset( $condition['uacf7_cf_operator'] )
-				? strtolower( (string) $condition['uacf7_cf_operator'] )
-				: '';
-
-			$allowed_operators = array(
-				'equal',
-				'not_equal',
-				'greater_than',
-				'less_than',
-				'greater_than_or_equal_to',
-				'less_than_or_equal_to',
-				'starts_with',
-				'ends_with',
-				'contains',
-				'does_not_contain',
-			);
-
-			if ( '' === $field_name || ! in_array( $operator, $allowed_operators, true ) ) {
-				continue;
-			}
-
-			$has_valid_condition = true;
-			$expected_value      = isset( $condition['uacf7_cf_val'] )
-				? (string) $condition['uacf7_cf_val']
-				: '';
-			$posted_value        = array_key_exists( $field_name, $posted_data )
-				? $posted_data[ $field_name ]
-				: '';
-			$matches             = $this->uacf7_webhook_condition_matches(
-				$posted_value,
-				$operator,
-				$expected_value
-			);
-
-			if ( 'any' === $match_type && $matches ) {
-				return true;
-			}
-
-			if ( 'all' === $match_type && ! $matches ) {
-				return false;
-			}
-		}
-
-		return $has_valid_condition && 'all' === $match_type;
-	}
-
-	/**
-	 * Compare one submitted field against a configured condition.
-	 *
-	 * Checkbox and multi-select values are evaluated item by item. Negative
-	 * operators match only when none of the submitted items violate them.
-	 *
-	 * @param mixed  $posted_value  Submitted field value.
-	 * @param string $operator      Configured comparison operator.
-	 * @param string $expected_value Configured comparison value.
-	 *
-	 * @return bool
-	 */
-	private function uacf7_webhook_condition_matches( $posted_value, $operator, $expected_value ) {
-		$values = array();
-
-		if ( ! is_array( $posted_value ) ) {
-			$posted_value = array( $posted_value );
-		}
-
-		array_walk_recursive(
-			$posted_value,
-			static function ( $value ) use ( &$values ) {
-				if ( is_scalar( $value ) || null === $value ) {
-					$values[] = (string) $value;
-				}
-			}
-		);
-
-		if ( empty( $values ) ) {
-			$values[] = '';
-		}
-
-		if ( 'not_equal' === $operator ) {
-			foreach ( $values as $value ) {
-				if ( $value === $expected_value ) {
-					return false;
-				}
-			}
-
-			return true;
-		}
-
-		if ( 'does_not_contain' === $operator ) {
-			foreach ( $values as $value ) {
-				if ( false !== strpos( $value, $expected_value ) ) {
-					return false;
-				}
-			}
-
-			return true;
-		}
-
-		foreach ( $values as $value ) {
-			switch ( $operator ) {
-				case 'equal':
-					$matches = $value === $expected_value;
-					break;
-
-				case 'greater_than':
-					$matches = is_numeric( $value )
-						&& is_numeric( $expected_value )
-						&& (float) $value > (float) $expected_value;
-					break;
-
-				case 'less_than':
-					$matches = is_numeric( $value )
-						&& is_numeric( $expected_value )
-						&& (float) $value < (float) $expected_value;
-					break;
-
-				case 'greater_than_or_equal_to':
-					$matches = is_numeric( $value )
-						&& is_numeric( $expected_value )
-						&& (float) $value >= (float) $expected_value;
-					break;
-
-				case 'less_than_or_equal_to':
-					$matches = is_numeric( $value )
-						&& is_numeric( $expected_value )
-						&& (float) $value <= (float) $expected_value;
-					break;
-
-				case 'starts_with':
-					$matches = 0 === strpos( $value, $expected_value );
-					break;
-
-				case 'ends_with':
-					$matches = '' === $expected_value
-						|| substr( $value, -strlen( $expected_value ) ) === $expected_value;
-					break;
-
-				case 'contains':
-					$matches = false !== strpos( $value, $expected_value );
-					break;
-
-				default:
-					$matches = false;
-					break;
-			}
-
-			if ( $matches ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
 	public function uacf7_send_data_by_web_hook( $form ) {
 
 		$submission = WPCF7_Submission::get_instance();
@@ -567,8 +233,6 @@ class UACF7_WEB_HOOK {
 
 		//Admin Option
 		$web_hook_enable = isset( $Web_hook['uacf7_enable_web_hook'] ) ? $Web_hook['uacf7_enable_web_hook'] : false;
-		$web_hook_condition_enable = isset( $Web_hook['uacf7_enable_web_hook_condition'] ) ? $Web_hook['uacf7_enable_web_hook_condition'] : false;
-		$conditional_rules = isset( $Web_hook['uacf7_webhook_conditional_repeater'] ) ? $Web_hook['uacf7_webhook_conditional_repeater'] : array();
 		$request_api     = isset( $Web_hook['uacf7_web_hook_api'] ) ? $Web_hook['uacf7_web_hook_api'] : '';
 		$request_method  = isset( $Web_hook['uacf7_web_hook_request_method'] ) ? $Web_hook['uacf7_web_hook_request_method'] : '';
 		$request_format  = isset( $Web_hook['uacf7_web_hook_request_format'] ) ? $Web_hook['uacf7_web_hook_request_format'] : '';
@@ -583,13 +247,22 @@ class UACF7_WEB_HOOK {
 			return;
 		}
 
-		// When conditional logic is enabled, send only when its rules allow it.
-		if (
-			$this->uacf7_webhook_option_is_enabled( $web_hook_condition_enable )
-			&& ! $this->uacf7_should_send_webhook( $conditional_rules, $contact_form_data )
-		) {
+		/**
+		 * Allow extensions to determine whether
+		 * the webhook should be sent.
+		 */
+		$should_send = apply_filters(
+			'uacf7_webhook_should_send',
+			true,
+			$form,
+			$Web_hook,
+			$contact_form_data
+		);
+
+		if ( ! $should_send ) {
 			return;
 		}
+
 		// Return API Not Fill
 		if ( empty( $api_endpoint ) ) {
 			return;
