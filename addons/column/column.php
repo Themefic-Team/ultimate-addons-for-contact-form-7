@@ -186,32 +186,21 @@ class UACF7_COLUMN {
 [/uacf7-row]
 				</pre>
 			</fieldset>
-			
-			<fieldset class="column-pro-feature">
-				<legend>
-					<?php echo esc_html__( 'Custom Column Width', 'ultimate-addons-for-contact-form-7' ); ?> 
-					<span class="pro-link">
-						<a style="color:red" href="#">
-							(Pro)
-						</a>
-					</span>
-				</legend>		
-				<div style="display:inherit">
-					<div>
-						<span class="uacf7-custom-column"></span>
-						<span style="display:block">
-							<a class="add-custom-column button-primary">
-								<?php echo esc_html__( '+ Add Column', 'ultimate-addons-for-contact-form-7' ); ?>
-							</a>
-						</span>
-					</div>
-					<div class="column-1">
-						<a class="button uacf7-column-button uacf7-custom-column-insert">
-							<?php echo esc_html__( 'Insert tag', 'ultimate-addons-for-contact-form-7' ); ?>
-						</a>
-					</div>
-				</div>
-			</fieldset>
+			<?php
+				/**
+				 * Allow extensions to add additional Column generator controls.
+				 */
+				$extra_fields = apply_filters(
+					'uacf7_column_tag_generator_extra_fields',
+					'',
+					$contact_form,
+					$options
+				);
+
+				if ( ! empty( $extra_fields ) ) {
+					echo wp_kses_post( $extra_fields );
+				}
+			?>
 		</div>
 
 		<div class="insert-box uacf7-column-insert-box">
@@ -237,46 +226,56 @@ class UACF7_COLUMN {
 			ob_start();
 
 			foreach ( $form_parts as $form_part ) {
+
 				if ( substr( $form_part, 0, 11 ) == '[uacf7-col ' ) {
-					$tag_parts = explode( ' ', rtrim( $form_part, ']' ) );
+
+					$tag_parts = explode(
+						' ',
+						rtrim( $form_part, ']' )
+					);
 
 					array_shift( $tag_parts );
 
-					$tag_html_type = 'div';
 					$ucaf7_column_class = '';
-					$uacf7_column_custom_width = '';
-					$col = '';
 
-					foreach ( $tag_parts as $i => $tag_part ) {
+					foreach ( $tag_parts as $tag_part ) {
 
 						if ( $tag_part == 'col:12' ) {
-							$ucaf7_column_class = 'uacf7-col-12';
-						} elseif ( $tag_part == 'col:6' ) {
-							$ucaf7_column_class = 'uacf7-col-6';
-						} elseif ( $tag_part == 'col:4' ) {
-							$ucaf7_column_class = 'uacf7-col-4';
-						} elseif ( $tag_part == 'col:3' ) {
-							$ucaf7_column_class = 'uacf7-col-3';
-						} else {
-							$uacf7_column_custom_width = $tag_part;
-						}
 
+							$ucaf7_column_class = 'uacf7-col-12';
+
+						} elseif ( $tag_part == 'col:6' ) {
+
+							$ucaf7_column_class = 'uacf7-col-6';
+
+						} elseif ( $tag_part == 'col:4' ) {
+
+							$ucaf7_column_class = 'uacf7-col-4';
+
+						} elseif ( $tag_part == 'col:3' ) {
+
+							$ucaf7_column_class = 'uacf7-col-3';
+						}
 					}
 
 					$html = '<div class="' . esc_attr( $ucaf7_column_class ) . '">';
 
-					echo wp_kses_post(
-						apply_filters(
-							'uacf7_column_custom_width',
-							$html,
-							$ucaf7_column_class,
-							$uacf7_column_custom_width
-						)
+					$html = apply_filters(
+						'uacf7_column_opening_tag_html',
+						$html,
+						$tag_parts,
+						$ucaf7_column_class,
+						$form_part
 					);
 
-				} else if ( $form_part == '[/uacf7-col]' ) {
+					echo wp_kses_post( $html );
+
+				} elseif ( $form_part == '[/uacf7-col]' ) {
+
 					echo wp_kses_post( '</div>' );
+
 				} else {
+
 					echo wp_kses_post( $form_part );
 				}
 			}

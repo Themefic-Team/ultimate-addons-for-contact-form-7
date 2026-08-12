@@ -13,13 +13,8 @@ class UACF7_CF {
 	 * Construct function
 	 */
 	public function __construct() {
-		global $pagenow;
-		if ( isset( $_GET['page'] ) ) {
-			if ( ( $pagenow == 'admin.php' ) && ( $_GET['page'] == 'wpcf7' ) || ( $_GET['page'] == 'wpcf7-new' ) ) {
-				add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_cf_admin_script' ) );
-			}
-		}
 
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_cf_admin_script' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_cf_frontend_script' ) );
 		add_action( 'wpcf7_init', array( __CLASS__, 'add_shortcodes' ) );
 		add_action( 'admin_init', array( $this, 'tag_generator' ) );
@@ -49,7 +44,10 @@ class UACF7_CF {
 	}
 
 	public function enqueue_cf_admin_script() {
-		wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/cf-script.js', array( 'jquery' ), UACF7_VERSION, true );
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( $screen && is_string( $screen->id ) && false !== strpos( $screen->id, 'wpcf7' ) ) {
+			wp_enqueue_script( 'uacf7-cf-script', UACF7_ADDONS . '/conditional-field/js/cf-script.js', array( 'jquery' ), UACF7_VERSION, true );
+		}
 	}
 
 	public function enqueue_cf_frontend_script() {
