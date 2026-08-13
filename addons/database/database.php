@@ -245,20 +245,20 @@ class UACF7_DATABASE {
 				wp_enqueue_script( 'jquery-ui-sortable' );
 
 				// Enqueue DataTables CSS
-				wp_enqueue_style( 'database-pro-admin-style', UACF7_ADDONS . '/database/assets/css/database-pro-style.css', array(), UACF7_VERSION, 'all' );
+				wp_enqueue_style( 'database-modern-admin-style', UACF7_ADDONS . '/database/assets/css/database-modern-style.css', array(), UACF7_VERSION, 'all' );
 				wp_enqueue_style( 'database-table-style', UACF7_ADDONS . '/database/assets/css/datatables.min.css', array(), UACF7_VERSION, 'all' );
 
 				// Enqueue DataTables JS
 				wp_enqueue_script( 'database-table-script', UACF7_ADDONS . '/database/assets/js/datatables.min.js', array( 'jquery' ), UACF7_VERSION, true );
 
 				// Enqueue PDFMake
-				wp_enqueue_script( 'database-pro-pdfmake', UACF7_ADDONS . '/database/assets/js/pdfmake.min.js', array(), UACF7_VERSION, true );
+				wp_enqueue_script( 'database-modern-pdfmake', UACF7_ADDONS . '/database/assets/js/pdfmake.min.js', array(), UACF7_VERSION, true );
 				// Enqueue PDFMake Fonts
-				wp_enqueue_script( 'database-pro-pdfmake-font', UACF7_ADDONS . '/database/assets/js/vfs_fonts.js', array(), UACF7_VERSION, true );
+				wp_enqueue_script( 'database-modern-pdfmake-font', UACF7_ADDONS . '/database/assets/js/vfs_fonts.js', array(), UACF7_VERSION, true );
 				
 
 				wp_enqueue_script( 'uacf7dp-database-icons-script', UACF7_ADDONS . '/database/assets/js/icons.js', array(), UACF7_VERSION, true );
-				wp_enqueue_script( 'uacf7dp-database-table-script', UACF7_ADDONS . '/database/assets/js/database-pro-main.js', array(), UACF7_VERSION, true );
+				wp_enqueue_script( 'uacf7dp-database-table-script', UACF7_ADDONS . '/database/assets/js/database-modern-main.js', array(), UACF7_VERSION, true );
 				wp_localize_script( 'uacf7dp-database-table-script', 'uACF7DP_Pram', array(
 					'admin_url' => get_admin_url() . 'admin.php',
 					'ajaxurl'   => admin_url( 'admin-ajax.php' ),

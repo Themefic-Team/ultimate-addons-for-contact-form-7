@@ -688,6 +688,9 @@ div#uacf7dp_table_container_wrap div#uacf7dp_table_container #uacf7dp-database-t
   box-shadow: none;
   background-color: #f8f7fd;
 }
+div#uacf7dp_table_container_wrap div#uacf7dp_table_container #uacf7dp-database-tablePro tbody tr.selected input[type="checkbox"]:checked {
+  background-color: var(--wp-admin-theme-color);
+}
 div#uacf7dp_table_container_wrap div#uacf7dp_table_container #uacf7dp-database-tablePro tbody tr.selected td {
   color: #382673;
 }
