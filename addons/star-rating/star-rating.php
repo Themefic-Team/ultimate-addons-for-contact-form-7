@@ -89,7 +89,6 @@ class UACF7_STAR_RATING {
 		$atts = wpcf7_format_atts( $atts );
 
 		$selected = ! empty( $tag->get_option( 'selected', '', true ) ) ? $tag->get_option( 'selected', '', true ) : '5';
-		$selected = $tag->get_option( 'selected', '', true );
 
 		$star1 = ! empty( $tag->get_option( 'star1', '', true ) ) ? $tag->get_option( 'star1', '', true ) : '1';
 		$star2 = ! empty( $tag->get_option( 'star2', '', true ) ) ? $tag->get_option( 'star2', '', true ) : '2';
@@ -99,29 +98,32 @@ class UACF7_STAR_RATING {
 
 		$rating_icon = '<i class="fas fa-star"></i>';
 
-		if ( function_exists( 'uacf7_rating_icon' ) ) {
+		$get_icon = $tag->get_option( 'icon', '', true );
 
-			if ( ! empty( uacf7_rating_icon( $tag ) ) ) {
-				$rating_icon = uacf7_rating_icon( $tag );
-			}
+		switch ( $get_icon ) {
 
-		} else {
+			case 'star1':
+				$rating_icon = '<i class="far fa-star"></i>';
+				break;
 
-			$get_icon = $tag->get_option( 'icon', '', true );
-
-			switch ( $get_icon ) {
-				case 'star1':
-					$rating_icon = '<i class="far fa-star"></i>';
-					break;
-				case 'star2':
-					$rating_icon = '✪';
-					break;
-			}
+			case 'star2':
+				$rating_icon = '✪';
+				break;
 		}
+
+		/**
+		 * Allow extensions to customize the rating icon.
+		 */
+		$rating_icon = apply_filters(
+			'uacf7_star_rating_icon_html',
+			$rating_icon,
+			$tag
+		);
+		
 		?>
 		<span data-name="<?php echo esc_attr( $tag->name ); ?>"
 			class="wpcf7-form-control-wrap <?php echo esc_attr( $tag->name ); ?>">
-			<span <?php echo esc_attr( $atts ); ?>>
+			<span <?php echo wp_kses_post( $atts ); ?>>
 				<label>
 					<input type="radio" name="<?php echo esc_attr( $tag->name ); ?>" value="<?php echo esc_attr( $star1 ); ?>"
 						<?php checked( $selected, '1', true ); ?> />
@@ -168,9 +170,10 @@ class UACF7_STAR_RATING {
 
 		<?php
 		$default_star_style = ob_get_clean();
-		return apply_filters( 'uacf7_star_rating_style_pro_feature', $default_star_style, $tag );
+		return apply_filters( 'uacf7_star_rating_html', $default_star_style, $tag );
 
 	}
+
 	/*
 	 * Generate tag
 	 */
@@ -254,72 +257,20 @@ class UACF7_STAR_RATING {
 					<?php echo esc_html( 'Star 2' ); ?>
 				</label>
 
-				<?php ob_start(); ?>
-				<label>
-					<input data-tag-part="option" data-tag-option="icon:" type="radio" disabled />
-					<?php echo esc_html( 'Heart' ); ?>
-					<a href="https://cf7addons.com/preview/star-rating/pro" style="color:red">
-						(Pro)
-					</a>
-				</label>
-
-				<label>
-					<input data-tag-part="option" data-tag-option="icon:" type="radio" disabled />
-					<?php echo esc_html( 'Thumbs Up' ); ?>
-					<a href="https://cf7addons.com/preview/star-rating/pro" style="color:red">
-						(Pro)
-					</a>
-				</label>
-
-				<label>
-					<input data-tag-part="option" data-tag-option="icon:" type="radio" disabled />
-					<?php echo esc_html( 'Smile' ); ?>
-					<a href="https://cf7addons.com/preview/star-rating/pro" style="color:red">
-						(Pro)
-					</a>
-				</label>
-
-				<label>
-					<input data-tag-part="option" data-tag-option="icon:" type="radio" disabled />
-					<?php echo esc_html( 'Ok' ); ?>
-					<a href="https://cf7addons.com/preview/star-rating/pro" style="color:red">
-						(Pro)
-					</a>
-				</label>
-
-				<legend>
-					<?php esc_html_e( 'Icon Class', 'ultimate-addons-for-contact-form-7' ); ?>
-				</legend>
-
-				<input data-tag-part="option" data-tag-option="class:" id="tag-generator-panel-text-star-class" type="text"
-					placeholder="e.g: fa fa-star" disabled />
-				<a href="https://cf7addons.com/preview/star-rating/pro" style="color:red">
-					(Pro)
-				</a>
-
-				<?php $icon_field = ob_get_clean();
-				echo wp_kses_post( apply_filters( 'uacf7_star_rating_tg_field', $icon_field ) );
-				?>
-			</fieldset>
-
-			<fieldset>
-				<legend>
-					<?php esc_attr_e( 'Star Rating Style', 'ultimate-addons-for-contact-form-7' ); ?>
-				</legend>
-
-				<?php ob_start() ?>
-				<select data-tag-part="value" name="values" disabled id="tag-generator-panel-range-style">
-					<option value="default">
-						<?php esc_attr_e( 'Default', 'ultimate-addons-for-contact-form-7' ); ?>
-					</option>
-				</select>
-				<a href="https://cf7addons.com/preview/star-rating/pro" style="color:red">(Pro)</a>
-
+				
 				<?php
-				$rating_style = ob_get_clean();
-				echo wp_kses_post( apply_filters( 'uacf7_star_rating_style_field', $rating_style ) );
+					/**
+					 * Allow extensions to register
+					 * additional rating-icon controls.
+					 */
+					do_action( 'uacf7_star_rating_tag_generator_icon_fields', $tgg, $contact_form, $options );
 				?>
+
 			</fieldset>
+
+			<?php
+				do_action( 'uacf7_star_rating_tag_generator_fields', $tgg, $contact_form, $options );
+			?>
 
 			<fieldset>
 				<legend>
