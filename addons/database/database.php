@@ -447,8 +447,12 @@ class UACF7_DATABASE {
 						<?php echo esc_html__( 'Select form', 'ultimate-addons-for-contact-form-7' ); ?>
 					</h4>
 
+					<?php
+					$selected_form_id = filter_input( INPUT_GET, 'form_id', FILTER_VALIDATE_INT );
+					$selected_form_id = false === $selected_form_id || null === $selected_form_id ? 0 : absint( $selected_form_id );
+					?>
 					<select name="select_from_submit" id="select_from_submit">
-						<option value=" 0" <?php selected( isset( $_POST['form-id'] ) && $_POST['form-id'] == 0 ); ?>>
+						<option value="0" <?php selected( $selected_form_id, 0 ); ?>>
 							<?php echo esc_html__( 'Select form', 'ultimate-addons-for-contact-form-7' ); ?>
 						</option>
 						<?php
@@ -456,7 +460,7 @@ class UACF7_DATABASE {
 							// count number of data
 							$count = $uacf7_db->get_var( $uacf7_db->prepare( "SELECT COUNT(*) FROM " . $uacf7_db->prefix . "uacf7dp_data WHERE cf7_form_id = %d", $form->ID ) );
 
-							echo '<option value="' . esc_attr( $form->ID ) . '" ' . selected( isset( $_POST['form-id'] ) && $_POST['form-id'] == $form->ID, true ) . '>';
+							echo '<option value="' . esc_attr( $form->ID ) . '" ' . selected( $selected_form_id, $form->ID, false ) . '>';
 							echo esc_attr( $form->post_title ) . ' ( ' . esc_attr( $count ) . ' )';
 							echo '</option>';
 						}
@@ -507,12 +511,14 @@ class UACF7_DATABASE {
 			wp_send_json_error( 'You do not have permission to perform this action.' );
 		}
 
-		// nonce verify
-		uacf7dp_checkNonce();
+		// Nonce verify.
+		if ( ! check_ajax_referer( 'uacf7dp-nonce', 'nonce', false ) ) {
+			wp_send_json_error( array( 'mess' => 'Nonce is invalid' ) );
+		}
 
-		// Get from Table
-		$form_id = isset( $_POST['cf7_form_id'] ) && $_POST['cf7_form_id'] >= 0 ? intval( $_POST['cf7_form_id'] ) : 0;
-		$all_data = isset( $_POST['all_data'] ) && is_array( $_POST['all_data'] ) ? $_POST['all_data'] : null;
+		// Get from Table.
+		$form_id = isset( $_POST['cf7_form_id'] ) ? absint( wp_unslash( $_POST['cf7_form_id'] ) ) : 0;
+		$all_data = isset( $_POST['all_data'] ) && is_array( $_POST['all_data'] ) ? map_deep( wp_unslash( $_POST['all_data'] ), 'sanitize_text_field' ) : array();
 
 		$encryptionKey = 'AES-256-CBC';
 
@@ -618,11 +624,18 @@ class UACF7_DATABASE {
 
 
 	public function ajax_get_table_data() {
-		uacf7dp_checkNonce();
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'You do not have permission to perform this action.' );
+		}
+
+		if ( ! check_ajax_referer( 'uacf7dp-nonce', 'nonce', false ) ) {
+			wp_send_json_error( array( 'mess' => 'Nonce is invalid' ) );
+		}
+
 		global $wpdb;
 		$uacf7_db = $wpdb;
 		$cf7d_entry_order_by = '`data_id` DESC';
-		$form_id = isset( $_POST['form_id'] ) && $_POST['form_id'] >= 0 ? intval( $_POST['form_id'] ) : 0;
+		$form_id = isset( $_POST['form_id'] ) ? absint( wp_unslash( $_POST['form_id'] ) ) : 0;
 
 		$get_form_data = $uacf7_db->prepare(
 			"SELECT * 
@@ -799,17 +812,15 @@ class UACF7_DATABASE {
 			wp_mkdir_p( $uacf7_dirname );
 		}
 
-		foreach ( $_FILES as $file_key => $file ) {
-			array_push( $uploaded_files, $file_key );
-		}
-
-		// var_dump( $files );
+		// CF7 already validates and normalizes uploaded files for the current submission.
 		foreach ( $files as $file_key => $file ) {
+			if ( ! empty( $file ) ) {
+				$uploaded_files[] = $file_key;
+			}
 
 			// var_dump( $file_key );
 
-			if ( ! empty( $file ) ) {
-				if ( in_array( $file_key, $uploaded_files ) ) {
+			if ( ! empty( $file ) && in_array( $file_key, $uploaded_files, true ) ) {
 					$file = is_array( $file ) ? reset( $file ) : $file;
 
 					// var_dump( $file );
@@ -822,15 +833,14 @@ class UACF7_DATABASE {
 					} else {
 						copy( $file, $dir . $dir_link );
 					}
-					array_push( $data_file, [ $file_key => $dir_link ] );
-				}
+				array_push( $data_file, [ $file_key => $dir_link ] );
 			}
 
 		}
 
 		$key_count = 0;
 		foreach ( $contact_form_data as $key => $value ) {
-			if ( in_array( $key, $uploaded_files ) ) {
+			if ( in_array( $key, $uploaded_files, true ) ) {
 				if ( ! empty( $data_file ) && is_array( $data_file ) ) {
 					$contact_form_data[ $key ] = $data_file[ $key_count ][ $key ];
 				}
@@ -893,13 +903,20 @@ class UACF7_DATABASE {
 	}
 
 	public function uacf7dp_deleted_table_datas() {
-		uacf7dp_checkNonce();
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'You do not have permission to perform this action.' );
+		}
+
+		if ( ! check_ajax_referer( 'uacf7dp-nonce', 'nonce', false ) ) {
+			wp_send_json_error( array( 'mess' => 'Nonce is invalid' ) );
+		}
+
 		global $wpdb;
 
 		$uacf7_db = $wpdb;
 
-		$form_id = isset( $_POST['cf7_form_id'] ) && $_POST['cf7_form_id'] >= 0 ? intval( $_POST['cf7_form_id'] ) : 0;
-		$data_id = isset( $_POST['data_id'] ) && $_POST['data_id'] >= 0 ? intval( $_POST['data_id'] ) : 0;
+		$form_id = isset( $_POST['cf7_form_id'] ) ? absint( wp_unslash( $_POST['cf7_form_id'] ) ) : 0;
+		$data_id = isset( $_POST['data_id'] ) ? absint( wp_unslash( $_POST['data_id'] ) ) : 0;
 
 		// Check if the provided IDs are valid
 		if ( $form_id <= 0 || $data_id <= 0 ) {
@@ -917,12 +934,19 @@ class UACF7_DATABASE {
 
 	function uacf7_ajax_bulk_delete() {
 
-		uacf7dp_checkNonce();
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'You do not have permission to perform this action.' );
+		}
+
+		if ( ! check_ajax_referer( 'uacf7dp-nonce', 'nonce', false ) ) {
+			wp_send_json_error( array( 'mess' => 'Nonce is invalid' ) );
+		}
+
 		global $wpdb;
 		$uacf7_db = $wpdb;
 
-		$form_id = isset( $_POST['form_id'] ) && $_POST['form_id'] >= 0 ? intval( $_POST['form_id'] ) : 0;
-		$ids     = isset($_POST['ids']) ? array_map('intval', $_POST['ids']) : [];
+		$form_id = isset( $_POST['form_id'] ) ? absint( wp_unslash( $_POST['form_id'] ) ) : 0;
+		$ids = isset( $_POST['ids'] ) && is_array( $_POST['ids'] ) ? array_map( 'absint', wp_unslash( $_POST['ids'] ) ) : array();
 
 		if ( $form_id <= 0 ) {
 			wp_send_json_error( array( 'message' => 'Invalid form id.' ) );

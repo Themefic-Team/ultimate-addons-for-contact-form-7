@@ -131,46 +131,26 @@ class UACF7_PRODUCT_DROPDOWN {
 
 	public function wpcf7_product_dropdown_validation_filter( $result, $tag ) {
 
-		/* verify nonce */
-		if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'wpcf7' ) ) {
-			$result->invalidate(
-				$tag,
-				wpcf7_get_message( 'invalid_nonce' )
-			);
-			return $result;
-		}
-
 		$name = $tag->name;
-
-		$posted_value = isset( $_POST[ $name ] ) ? map_deep( wp_unslash( $_POST[ $name ] ), 'sanitize_text_field' ) : null;
+		$submission = WPCF7_Submission::get_instance();
+		$posted_data = $submission ? $submission->get_posted_data() : array();
+		$posted_value = isset( $posted_data[ $name ] ) ? $posted_data[ $name ] : null;
 
 		if ( isset( $posted_value ) ) {
 			if ( is_array( $posted_value ) ) {
-				$posted_value = array_map(
-					'sanitize_text_field',
-					$posted_value
-				);
-
-				$posted_value = array_filter(
-					$posted_value,
-					static function ( $value ) {
-						return '' !== $value;
-					}
-				);
+				$posted_value = array_map( 'sanitize_text_field', $posted_value );
+				$posted_value = array_filter( $posted_value, static function ( $value ) {
+					return '' !== $value;
+				} );
 			} else {
 				$posted_value = sanitize_text_field( $posted_value );
 			}
 		}
 
-		$empty = null === $posted_value
-			|| '' === $posted_value
-			|| array() === $posted_value;
+		$empty = null === $posted_value || '' === $posted_value || array() === $posted_value;
 
 		if ( $tag->is_required() && $empty ) {
-			$result->invalidate(
-				$tag,
-				wpcf7_get_message( 'invalid_required' )
-			);
+			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
 		}
 
 		return $result;

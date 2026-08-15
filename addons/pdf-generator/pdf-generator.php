@@ -637,8 +637,8 @@ class UACF7_PDF_GENERATOR {
 				wp_mkdir_p( $uacf7_dirname );
 			}
 
-			foreach ( $_FILES as $file_key => $file ) {
-				array_push( $uploaded_files, $file_key );
+			foreach ( array_keys( $files ) as $file_key ) {
+				$uploaded_files[] = $file_key;
 			}
 
 			//  
@@ -861,7 +861,9 @@ class UACF7_PDF_GENERATOR {
 			}
 
 			// Repeater value
-			$uacf7_repeaters = isset( $_POST['_uacf7_repeaters'] ) ? sanitize_text_field( wp_unslash( $_POST['_uacf7_repeaters'] ) ) : '';
+			$uacf7_repeaters = isset( $contact_form_data['_uacf7_repeaters'] ) ? $contact_form_data['_uacf7_repeaters'] : '';
+			$uacf7_repeaters = is_array( $uacf7_repeaters ) ? reset( $uacf7_repeaters ) : $uacf7_repeaters;
+			$uacf7_repeaters = is_string( $uacf7_repeaters ) ? sanitize_text_field( $uacf7_repeaters ) : '';
 			if ( ! empty( $uacf7_repeaters ) ) {
 				$repeaters = json_decode( $uacf7_repeaters );
 

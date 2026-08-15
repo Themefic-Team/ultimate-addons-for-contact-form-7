@@ -38,7 +38,8 @@ if ( ! class_exists( 'UACF7_code_editor' ) ) {
         
     public function enqueue() {
 
-        $page = ( ! empty( $_GET[ 'page' ] ) ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
+        $page = filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW );
+        $page = is_string( $page ) ? sanitize_key( $page ) : '';
   
         // Do not loads CodeMirror in revslider page.
         if ( in_array( $page, array( 'revslider' ) ) ) { return; }

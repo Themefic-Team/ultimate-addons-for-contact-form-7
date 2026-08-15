@@ -137,7 +137,8 @@ if ( ! function_exists( 'uacf7_print_r' ) ) {
 	function uacf7_print_r( ...$args ) {
 		echo '<pre style="padding-left: 180px;">';
 		foreach ( $args as $arg ) {
-			print_r( $arg );
+			$debug_output = wp_json_encode( $arg, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+			echo esc_html( false !== $debug_output ? $debug_output : '' );
 		}
 		echo '</pre>';
 		// exit;
@@ -343,6 +344,7 @@ if ( ! function_exists( 'uacf7_review_notice' ) ) {
 						data = {
 							action: 'uacf7_review_notice_callback',
 							status: status,
+							nonce: '<?php echo esc_js( wp_create_nonce( 'uacf7_review_notice_nonce' ) ); ?>',
 						};
 
 						$.ajax({
@@ -381,6 +383,8 @@ if ( ! function_exists( 'uacf7_review_notice' ) ) {
 if ( ! function_exists( 'uacf7_review_notice_callback' ) ) {
 
 	function uacf7_review_notice_callback() {
+		check_ajax_referer( 'uacf7_review_notice_nonce', 'nonce' );
+
 		$status = isset( $_POST['status'] ) ? sanitize_text_field( wp_unslash( $_POST['status'] ) ) : '';
 		if ( $status == 'already' ) {
 			update_option( 'uacf7_review_notice_status', '1' );
@@ -1409,7 +1413,7 @@ function uacf7_migration_notice() {
 			<p><strong>Ultra Addons for Contact Form 7 – Migrate Your Conditional Data:</strong> <br> We\'ve detected conditional data from <strong>Conditional Fields for Contact Form 7</strong>. Easily migrate it with our built-in tool and unlock 40+ powerful addons in one place. Would you like to proceed?</p>
 			<p>
 				<a href="' . esc_url(wp_nonce_url(admin_url('admin.php?action=uacf7_migrate_conditional_fields'), 'uacf7_migrate_conditional_fields_nonce')) . '" class="button button-primary">Migrate Now</a>
-				<a href="' . esc_url(add_query_arg('uacf7_dismiss_conditional_migration_notice', '1')) . '" class="button button-secondary">Not Now</a>
+				<a href="' . esc_url( wp_nonce_url( add_query_arg( 'uacf7_dismiss_conditional_migration_notice', '1' ), 'uacf7_dismiss_conditional_migration_notice' ) ) . '" class="button button-secondary">Not Now</a>
 			</p>
 		</div>';
 	}
@@ -1417,13 +1421,18 @@ function uacf7_migration_notice() {
 
 function uacf7_handle_conditional_notice_dismiss() {
 
-    if ( empty($_GET['uacf7_dismiss_conditional_migration_notice']) || $_GET['uacf7_dismiss_conditional_migration_notice'] !== '1' ) {
+    $dismiss_notice = filter_input( INPUT_GET, 'uacf7_dismiss_conditional_migration_notice', FILTER_UNSAFE_RAW );
+    $dismiss_notice = is_string( $dismiss_notice ) ? sanitize_text_field( $dismiss_notice ) : '';
+
+    if ( '1' !== $dismiss_notice ) {
         return;
     }
 
     if ( ! current_user_can('manage_options') ) {
         return;
     }
+
+    check_admin_referer( 'uacf7_dismiss_conditional_migration_notice' );
 
     update_option('uacf7_migration_done', time() + (15 * DAY_IN_SECONDS));
 
@@ -1434,7 +1443,9 @@ function uacf7_handle_conditional_notice_dismiss() {
 }
 
 function uacf7_migration_success_notice() {
-	if (isset($_GET['uacf7_migration_success']) && $_GET['uacf7_migration_success'] == 1) {
+	$migration_success = filter_input( INPUT_GET, 'uacf7_migration_success', FILTER_VALIDATE_INT );
+
+	if ( 1 === $migration_success ) {
 		echo '<div class="notice notice-success is-dismissible">
 			<p>Migration completed successfully.</p>
 		</div>';
@@ -1600,7 +1611,9 @@ add_action('admin_footer', 'uacf7_show_hydra_modal');
 
 function uacf7_show_hydra_modal() {
 
-    if (!isset($_GET['page']) || $_GET['page'] !== 'uacf7_addons') {
+    $current_screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+
+    if ( ! $current_screen || 'cf7-addons_page_uacf7_addons' !== $current_screen->id ) {
         return;
     }
 
@@ -1756,6 +1769,10 @@ add_action('wp_ajax_install_hydrabooking', 'uacf7_install_hydrabooking');
 function uacf7_activate_hydrabooking() {
     check_ajax_referer('activate_hydra_booking', 'nonce');
 
+	if( ! current_user_can('install_plugins')) {
+		wp_send_json_error(['message' => 'Permission denied']);
+	}
+
     include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
     $uacf7_plugin_file = 'hydra-booking/hydra-booking.php';
@@ -1804,7 +1821,7 @@ function uacf7_redirection_migration_notice() {
 			<p><strong>Ultra Addons for Contact Form 7 – Migrate Your Redirection Settings:</strong><br> We\'ve detected redirection settings from <strong>Redirection for Contact Form 7</strong>. Easily migrate them with our built-in tool—no need for multiple plugins! Plus, access 40+ powerful addons in one place. Would you like to proceed?</p>
 			<p>
 				<a href="' . esc_url(wp_nonce_url(admin_url('admin.php?action=uacf7_migrate_redirection'), 'uacf7_migrate_redirection_nonce')) . '" class="button button-primary">Migrate Now</a>
-				<a href="' . esc_url(add_query_arg('uacf7_dismiss_redirection_notice', '1')) . '" class="button button-secondary">Not Now</a>
+				<a href="' . esc_url( wp_nonce_url( add_query_arg( 'uacf7_dismiss_redirection_notice', '1' ), 'uacf7_dismiss_redirection_notice' ) ) . '" class="button button-secondary">Not Now</a>
 			</p>
 		</div>';
 	}
@@ -1812,13 +1829,18 @@ function uacf7_redirection_migration_notice() {
 
 function uacf7_handle_redirection_dismiss_notice() {
 
-    if ( empty($_GET['uacf7_dismiss_redirection_notice']) || $_GET['uacf7_dismiss_redirection_notice'] !== '1' ) {
+    $dismiss_notice = filter_input( INPUT_GET, 'uacf7_dismiss_redirection_notice', FILTER_UNSAFE_RAW );
+    $dismiss_notice = is_string( $dismiss_notice ) ? sanitize_text_field( $dismiss_notice ) : '';
+
+    if ( '1' !== $dismiss_notice ) {
         return;
     }
 
     if ( ! current_user_can('manage_options') ) {
         return;
     }
+
+    check_admin_referer( 'uacf7_dismiss_redirection_notice' );
 
     update_option('uacf7_redirection_migration_done', time() + (15 * DAY_IN_SECONDS));
 
@@ -1841,7 +1863,9 @@ function uacf7_enable_redirection_field() {
  * Show success notice after successful migration.
  */
 function uacf7_redirection_migration_success_notice() {
-	if (isset($_GET['uacf7_redirection_migration_success']) && $_GET['uacf7_redirection_migration_success'] == 1) {
+	$migration_success = filter_input( INPUT_GET, 'uacf7_redirection_migration_success', FILTER_VALIDATE_INT );
+
+	if ( 1 === $migration_success ) {
 		echo '<div class="notice notice-success is-dismissible">
 			<p>Redirection migration completed successfully.</p>
 		</div>';
@@ -1961,12 +1985,14 @@ function uacf7_duplicate_form_meta( $contact_form ) {
     // New form ID
     $new_form_id = $contact_form->id();
 
-    // Get source form ID from request when duplicating
-    if ( empty( $_REQUEST['post'] ) ) {
-        return;
+    // Get source form ID from request when duplicating.
+    $old_form_id = filter_input( INPUT_POST, 'post', FILTER_VALIDATE_INT );
+
+    if ( ! $old_form_id ) {
+        $old_form_id = filter_input( INPUT_GET, 'post', FILTER_VALIDATE_INT );
     }
 
-    $old_form_id = intval( $_REQUEST['post'] );
+    $old_form_id = absint( $old_form_id );
 
     if ( ! $old_form_id || $old_form_id === $new_form_id ) {
         return;

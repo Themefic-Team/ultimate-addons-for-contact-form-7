@@ -299,7 +299,15 @@ class UACF7_SIGNATURE {
 	/** Validation Callback */
 	public function uacf7_signature_validation_filter( $result, $tag ) {
 		$name = $tag->name;
-		$empty = ! isset( $_FILES[ $name ]['name'] ) || empty( $_FILES[ $name ]['name'] ) && '0' !== $_FILES[ $name ]['name'];
+		$submission = WPCF7_Submission::get_instance();
+		$uploaded_files = $submission ? $submission->uploaded_files() : array();
+		$signature_file = isset( $uploaded_files[ $name ] ) ? $uploaded_files[ $name ] : '';
+
+		if ( is_array( $signature_file ) ) {
+			$signature_file = array_filter( $signature_file );
+		}
+
+		$empty = empty( $signature_file );
 
 		if ( $tag->is_required() and $empty ) {
 			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );

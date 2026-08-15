@@ -398,9 +398,7 @@ class UACF7_CF {
 	
 
 	function skip_validation_for_hidden_fields( $result, $tags ) {
-		if ( isset( $_POST ) ) {
-			$this->set_hidden_fields_arrays( $_POST );
-		}
+		$this->set_hidden_fields_arrays();
 
 		$invalid_fields = $result->get_invalid_fields();
 		$return_result = new WPCF7_Validation();
@@ -463,8 +461,18 @@ class UACF7_CF {
 
 	public function set_hidden_fields_arrays( $posted_data = false ) {
 
-		if ( ! $posted_data ) {
-			$posted_data = WPCF7_Submission::get_instance()->get_posted_data();
+		if ( false === $posted_data ) {
+			$submission = WPCF7_Submission::get_instance();
+
+			if ( ! $submission ) {
+				return;
+			}
+
+			$posted_data = $submission->get_posted_data();
+		}
+
+		if ( ! is_array( $posted_data ) ) {
+			return;
 		}
 		if ( isset( $posted_data['_uacf7_hidden_conditional_fields'] ) ) {
 			$hidden_fields = json_decode( stripslashes( $posted_data['_uacf7_hidden_conditional_fields'] ) );
@@ -485,9 +493,7 @@ class UACF7_CF {
 		if ( ! count( $result->get_invalid_fields() ) ) {
 			return $result;
 		}
-		if ( isset( $_POST ) ) {
-			$this->set_hidden_fields_arrays( $_POST );
-		}
+		$this->set_hidden_fields_arrays();
 
 		$invalid_field_keys = array_keys( $result->get_invalid_fields() );
 		if ( isset( $this->hidden_fields ) && is_array( $this->hidden_fields ) && in_array( $tag->name. '[]', $this->hidden_fields ) ) {
@@ -505,9 +511,7 @@ class UACF7_CF {
 		if ( ! count( $result->get_invalid_fields() ) ) {
 			return $result;
 		}
-		if ( isset( $_POST ) ) {
-			$this->set_hidden_fields_arrays( $_POST );
-		}
+		$this->set_hidden_fields_arrays();
 
 		$invalid_field_keys = array_keys( $result->get_invalid_fields() );
 

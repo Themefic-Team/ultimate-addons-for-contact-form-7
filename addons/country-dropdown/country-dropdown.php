@@ -109,23 +109,24 @@ class UACF7_COUNTRY_DROPDOWN {
 
 	public function wpcf7_country_dropdown_validation_filter( $result, $tag ) {
 		$name = $tag->name;
+		$submission = WPCF7_Submission::get_instance();
 
-		if ( isset( $_POST[ $name ] ) ) {
-			$raw_post_value = wp_unslash( $_POST[ $name ] );
-			$post_value = is_array( $raw_post_value ) ? map_deep( $raw_post_value, 'sanitize_text_field' ) : sanitize_text_field( $raw_post_value );
-
-			if ( is_array( $post_value ) ) {
-				foreach ( $post_value as $key => $value ) {
-					if ( '' === $value ) {
-						unset( $post_value[ $key ] );
-					}
-				}
-			}
-
-			$_POST[ $name ] = $post_value;
+		if ( ! $submission ) {
+			return $result;
 		}
 
-		$empty = ! isset( $_POST[ $name ] ) || empty( $_POST[ $name ] ) && '0' !== $_POST[ $name ];
+		$post_value = $submission->get_posted_data( $name );
+
+		if ( is_array( $post_value ) ) {
+			$post_value = array_map( 'sanitize_text_field', $post_value );
+			$post_value = array_filter( $post_value, static function( $value ) {
+				return '' !== $value;
+			} );
+		} elseif ( null !== $post_value ) {
+			$post_value = sanitize_text_field( $post_value );
+		}
+
+		$empty = null === $post_value || '' === $post_value || array() === $post_value;
 
 		if ( $tag->is_required() and $empty ) {
 			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );

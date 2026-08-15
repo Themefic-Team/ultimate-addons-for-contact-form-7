@@ -10,6 +10,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: ultimate-addons-for-contact-form-7
  * Domain Path: /languages
+ * Requires Plugins: contact-form-7
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

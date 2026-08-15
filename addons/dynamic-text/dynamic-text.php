@@ -128,52 +128,30 @@ class UACF7_DYNAMIC_TEXT {
 	* Form tag validation.
 	*/
 	public function uacf7_dynamic_text_validation_filter( $result, $tag ) {
-		// nonce validation
-		if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'wpcf7' ) ) {
-			$result->invalidate(
-				$tag,
-				wpcf7_get_message( 'invalid_nonce' )
-			);
-			return $result;
-
-		}
 
 		$name = $tag->name;
-
 		$posted_value = null;
 
-		if ( isset( $_POST[ $name ] ) ) {
-			$posted_value = map_deep( wp_unslash( $_POST[ $name ] ), 'sanitize_text_field' );
+		$submission = WPCF7_Submission::get_instance();
 
-			if ( is_array( $posted_value ) ) {
-				$posted_value = array_map(
-					'sanitize_text_field',
-					$posted_value
-				);
+		if ( $submission ) {
+			$posted_data = $submission->get_posted_data();
 
-				/*
-				* Remove empty values but preserve "0".
-				*/
-				$posted_value = array_filter(
-					$posted_value,
-					static function ( $value ) {
+			if ( is_array( $posted_data ) && array_key_exists( $name, $posted_data ) ) {
+				$posted_value = map_deep( $posted_data[ $name ], 'sanitize_text_field' );
+
+				if ( is_array( $posted_value ) ) {
+					$posted_value = array_filter( $posted_value, static function ( $value ) {
 						return '' !== $value;
-					}
-				);
-			} else {
-				$posted_value = sanitize_text_field( $posted_value );
+					} );
+				}
 			}
 		}
 
-		$empty = null === $posted_value
-			|| '' === $posted_value
-			|| array() === $posted_value;
+		$empty = null === $posted_value || '' === $posted_value || array() === $posted_value;
 
 		if ( $tag->is_required() && $empty ) {
-			$result->invalidate(
-				$tag,
-				wpcf7_get_message( 'invalid_required' )
-			);
+			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
 		}
 
 		return $result;
