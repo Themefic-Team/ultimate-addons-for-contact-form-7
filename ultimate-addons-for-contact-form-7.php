@@ -64,8 +64,6 @@ class Ultimate_Addons_CF7 {
 	 * Ultimate addons loaded
 	 */
 	public function uacf7_plugin_loaded() {
-		//Register text domain
-		load_plugin_textdomain( 'ultimate-addons-for-contact-form-7', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 		//Enqueue admin scripts
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ), 2 );
