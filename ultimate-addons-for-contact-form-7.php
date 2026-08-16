@@ -33,10 +33,6 @@ class Ultimate_Addons_CF7 {
 
 		define( 'UACF7_VERSION', '3.5.47' );
 
-		if ( ! class_exists( 'Appsero\Client' ) ) {
-			require_once( __DIR__ . '/inc/app/src/Client.php' );
-		}
-
 		/*
 		 * ---------------------------------------------------------
 		 * Legacy text-domain migration
