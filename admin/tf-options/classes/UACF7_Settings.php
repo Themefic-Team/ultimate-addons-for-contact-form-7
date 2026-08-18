@@ -633,28 +633,28 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 					'slug'       => 'hydra-booking',
 					'file_name'  => 'hydra-booking',
 					'subtitle'   => 'All in One Appointment Booking System',
-					'image'      => 'https://ps.w.org/hydra-booking/assets/icon-128x128.jpg',
+					'image'      => UACF7_URL . 'assets/admin/images/icons/icon-hydra.jpg',
 				],
 				[
 					'name'       => 'BEAF',
 					'slug'       => 'beaf-before-and-after-gallery',
 					'file_name'  => 'before-and-after-gallery',
 					'subtitle'   => 'Ultimate Before After Image Slider & Gallery',
-					'image'      => 'https://ps.w.org/beaf-before-and-after-gallery/assets/icon-128x128.png',
+					'image'      => UACF7_URL . 'assets/admin/images/icons/icon-beaf.png',
 				],
 				[
 					'name'       => 'Tourfic',
 					'slug'       => 'tourfic',
 					'file_name'  => 'tourfic',
 					'subtitle'   => 'Travel, Hotel Booking & Car Rental WP Plugin',
-					'image'      => 'https://ps.w.org/tourfic/assets/icon-128x128.gif',
+					'image'      => UACF7_URL . 'assets/admin/images/icons/icon-tourfic.gif',
 				],
 				[
 					'name'       => 'Instantio',
 					'slug'       => 'instantio',
 					'file_name'  => 'instantio',
 					'subtitle'   => 'WooCommerce Quick & Direct Checkout',
-					'image'      => 'https://ps.w.org/instantio/assets/icon-128x128.png',
+					'image'      => UACF7_URL . 'assets/admin/images/icons/icon-instantio.png',
 				],
 			];
 
