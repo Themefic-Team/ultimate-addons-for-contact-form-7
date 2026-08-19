@@ -833,12 +833,12 @@ form.tag-generator-panel[data-version="2"] .control-box{
 }
 .uacf7-addons-settings-page .uacf7-addon-setting-content {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	gap: 32px;
 }
 .uacf7-addons-settings-page {
 	display: grid;
-	grid-template-columns: 4fr 2fr;
+	grid-template-columns: 1fr;
 	gap: 32px;
 }
 .uacf7-addons-settings-sidebar {
