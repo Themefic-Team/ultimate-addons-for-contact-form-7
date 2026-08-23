@@ -767,8 +767,6 @@ class UACF7_DATABASE {
 	 * Ultimate form save into the database
 	 */
 	public function uacf7_save_to_database( $form ) {
-		require_once( ABSPATH . 'wp-admin/includes/file.php' );
-
 		if ( ! is_plugin_active( 'ultimate-addons-for-contact-form-7-pro/ultimate-addons-for-contact-form-7-pro.php' ) ) {
 			if ( defined( 'UACF7_PRO_PATH_ADDONS' ) ) {
 				require_once( UACF7_PRO_PATH_ADDONS . '/database-pro/functions.php' );

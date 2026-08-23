@@ -89,14 +89,28 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 
 			check_ajax_referer( 'updates', '_ajax_nonce' );
 			// Check user capabilities
-			if ( ! current_user_can( 'install_plugins' ) ) {
+			if ( ! current_user_can( 'activate_plugins' ) ) {
 				wp_send_json_error( 'Permission denied' );
 			}
 
-			// activate the plugin
-			$plugin_slug = isset( $_POST['slug'] ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
-			$file_name = isset( $_POST['file_name'] ) ? sanitize_text_field( wp_unslash( $_POST['file_name'] ) ) : '';
-			$result = activate_plugin( $plugin_slug . '/' . $file_name . '.php' );
+			// Only plugins explicitly supported by this wizard may be activated.
+			$allowed_plugins = array(
+				'contact-form-7' => 'contact-form-7/contact-form-7.php',
+			);
+			$plugin_slug = isset( $_POST['slug'] ) ? sanitize_key( wp_unslash( $_POST['slug'] ) ) : '';
+			$file_name   = isset( $_POST['file_name'] ) ? sanitize_key( wp_unslash( $_POST['file_name'] ) ) : '';
+			$plugin_file = $plugin_slug . '/' . $file_name . '.php';
+
+			if ( ! isset( $allowed_plugins[ $plugin_slug ] ) || $allowed_plugins[ $plugin_slug ] !== $plugin_file ) {
+				wp_send_json_error( 'Invalid plugin.' );
+			}
+
+			$plugin_file = validate_plugin( $plugin_file );
+			if ( is_wp_error( $plugin_file ) ) {
+				wp_send_json_error( 'Invalid plugin.' );
+			}
+
+			$result = activate_plugin( $plugin_file );
 
 			if ( is_wp_error( $result ) ) {
 				wp_send_json_error( 'Error: ' . $result->get_error_message() );
@@ -113,7 +127,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 
 			check_ajax_referer( 'updates', '_ajax_nonce' );
 			// Check user capabilities
-			if ( ! current_user_can( 'install_plugins' ) ) {
+			if ( ! current_user_can( 'activate_plugins' ) ) {
 				wp_send_json_error( 'Permission denied' );
 			}
 
@@ -141,7 +155,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 		public function uacf7_form_quick_create_form() {
 			check_ajax_referer( 'updates', '_ajax_nonce' );
 			// Check user capabilities
-			if ( ! current_user_can( 'install_plugins' ) ) {
+			if ( ! current_user_can( 'activate_plugins' ) ) {
 				wp_send_json_error( 'Permission denied' );
 			}
 

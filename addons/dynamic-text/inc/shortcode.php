@@ -93,7 +93,7 @@ if(!function_exists('UACF7_BLOGINFO')){
         }else{
             $data = get_bloginfo('name');
         }
-        return $data;
+        return esc_html( $data );
     }
     add_shortcode('UACF7_BLOGINFO', 'UACF7_BLOGINFO');
 
@@ -112,7 +112,11 @@ if(!function_exists('UACF7_POSTINFO')){
         }else{
             $data = $post->post_title;
         }
-        return $data;
+        if ( $val['attr'] == 'post_permalink' ) {
+            return esc_url( $data );
+        }
+
+        return esc_html( $data );
     }
     add_shortcode('UACF7_POSTINFO', 'UACF7_POSTINFO');
 
@@ -131,7 +135,7 @@ if(!function_exists('UACF7_USERINFO')){
                 $data = $current_user->user_nicename;
             } 
         }
-        return $data;
+        return esc_html( $data );
     }
     add_shortcode('UACF7_USERINFO', 'UACF7_USERINFO');
 
