@@ -246,9 +246,7 @@ class UACF7_SPAM_PROTECTION {
 		/** Enable / Disable Spam Protection */
 		$wpcf7 = WPCF7_ContactForm::get_current();
 		$formid = $wpcf7->id();
-
 		$uacf7_spam_protection = uacf7_get_form_option( $formid, 'spam_protection' );
-
 		$uacf7_spam_protection_placeholder_text = isset( $uacf7_spam_protection['uacf7_spam_protection_placeholder_text'] ) ? $uacf7_spam_protection['uacf7_spam_protection_placeholder_text'] : '';
 
 		if ( isset( $uacf7_spam_protection['uacf7_spam_protection_enable'] ) && $uacf7_spam_protection['uacf7_spam_protection_enable'] != '1' ) {
@@ -256,34 +254,43 @@ class UACF7_SPAM_PROTECTION {
 		}
 
 		$validation_error = wpcf7_get_validation_error( $tag->name );
-
 		$class = wpcf7_form_controls_class( $tag->type );
 
-
 		if ( $validation_error ) {
-			$class .= 'wpcf7-not-valid';
+			$class .= ' wpcf7-not-valid';
 		}
 
 		$atts = array();
 
+		/**
+		 * Get visitor IP locally.
+		 *
+		 * No external API request is performed.
+		 */
+		$ip = isset( $_SERVER['REMOTE_ADDR'] )
+			? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) )
+			: '';
 
-		$ip = isset( $_SERVER['X_FORWARDED_FOR'] )
-			? sanitize_text_field( wp_unslash( $_SERVER['X_FORWARDED_FOR'] ) )
-			: (
-				isset( $_SERVER['REMOTE_ADDR'] )
-					? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) )
-					: ''
-			);
-			
-		$addr = wp_remote_get( 'http://ip-api.com/php/' . filter_var( $ip, FILTER_VALIDATE_IP ) );
-		$addr_body = wp_remote_retrieve_body( $addr );
-		$addr = unserialize( $addr_body );
+		$ip = filter_var( $ip, FILTER_VALIDATE_IP );
 
-		$atts['iso2'] = isset( $addr['countryCode'] );
+		if ( false === $ip ) {
+			$ip = '';
+		}
+
+		/**
+		 * Keep the country-related attribute available.
+		 *
+		 * Previously this value was determined from the ip-api.com
+		 * response. Since no external geolocation service is used now,
+		 * we don't have country information here.
+		 */
+		$atts['iso2'] = false;
+
 		$atts['id'] = $tag->get_id_option();
 
 		//Conditionally Loading Scripts
 		if ( is_array( $uacf7_spam_protection ) && isset( $uacf7_spam_protection['uacf7_spam_protection_type'] ) ) {
+
 			$atts['protection-method'] = $uacf7_spam_protection['uacf7_spam_protection_type'];
 
 			// Conditionally Loading Scripts
@@ -294,6 +301,7 @@ class UACF7_SPAM_PROTECTION {
 			if ( $uacf7_spam_protection['uacf7_spam_protection_type'] === 'image_recognation' ) {
 				wp_enqueue_script( 'uacf7-spam-protection-image' );
 			}
+
 		} else {
 			$atts['protection-method'] = 'none';
 		}
@@ -306,15 +314,14 @@ class UACF7_SPAM_PROTECTION {
 
 		$atts['aria-invalid'] = $validation_error ? 'true' : 'false';
 		$atts['name'] = $tag->name;
-		$atts['user-ip'] = filter_var( $ip, FILTER_VALIDATE_IP );
+		$atts['user-ip'] = $ip;
+
 		$value = $tag->values;
 		$default_value = $tag->get_default_option( $value );
 		$atts['value'] = $value;
 		$atts = wpcf7_format_atts( $atts );
 
-
 		ob_start();
-
 		?>
 		<span class="wpcf7-form-control-wrap <?php echo sanitize_html_class( $tag->name ); ?>"
 			data-name="<?php echo sanitize_html_class( $tag->name ); ?>">
@@ -332,14 +339,13 @@ class UACF7_SPAM_PROTECTION {
 								<svg xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
 									<path
-										d="M142.9 142.9c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5c0 0 0 0 0 0H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5c7.7-21.8 20.2-42.3 37.8-59.8zM16 312v7.6 .7V440c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2l41.6-41.6c87.6 86.5 228.7 86.2 315.8-1c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.2 62.2-162.7 62.5-225.3 1L185 329c6.9-6.9 8.9-17.2 5.2-26.2s-12.5-14.8-22.2-14.8H48.4h-.7H40c-13.3 0-24 10.7-24 24z" />
+										d="M142.9 142.9c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5c0 0 0 0 0 0H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5c7.7-21.8 20.2-42.3 37.8-59.8zM16 312v7.6 .7V440c0 9.7 5.8 18.5 14.8 22.2s19.3-1.7 26.2-5.2l41.6-41.6c87.6 86.5 228.7 86.2 315.8-1c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.2 62.2-162.7 62.5-225.3 1L185 329c6.9-6.9 8.9-17.2 5.2-26.2s-12.5-14.8-22.2-14.8H48.4h-.7H40c-13.3 0-24 10.7-24 24z" />
 								</svg>
 							</button>
 							<input type="number" min="0" id="rtn"
 								placeholder="<?php echo esc_attr( $uacf7_spam_protection_placeholder_text ); ?>" value="">
 						</div>
 						<div>
-
 						</div>
 						<div id="arithmathic_result"></div>
 					</div>
@@ -350,12 +356,11 @@ class UACF7_SPAM_PROTECTION {
 									<svg xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
 										<path
-											d="M142.9 142.9c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5c0 0 0 0 0 0H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5c7.7-21.8 20.2-42.3 37.8-59.8zM16 312v7.6 .7V440c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2l41.6-41.6c87.6 86.5 228.7 86.2 315.8-1c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.2 62.2-162.7 62.5-225.3 1L185 329c6.9-6.9 8.9-17.2 5.2-26.2s-12.5-14.8-22.2-14.8H48.4h-.7H40c-13.3 0-24 10.7-24 24z" />
+											d="M142.9 142.9c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5c0 0 0 0 0 0H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5c7.7-21.8 20.2-42.3 37.8-59.8zM16 312v7.6 .7V440c0 9.7 5.8 18.5 14.8 22.2s19.3-1.7 26.2-5.2l41.6-41.6c87.6 86.5 228.7 86.2 315.8-1c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9-2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.2 62.2-162.7 62.5-225.3 1L185 329c6.9-6.9 8.9-17.2 5.2-26.2s-12.5-14.8-22.2-14.8H48.4h-.7H40c-13.3 0-24-10.7-24-24z" />
 									</svg>
 								</button>
 								<input type="text" id="userInput"
 									placeholder="<?php echo esc_attr( $uacf7_spam_protection_placeholder_text ); ?>">
-
 							</div>
 							<div>
 							</div>
@@ -364,7 +369,6 @@ class UACF7_SPAM_PROTECTION {
 				<?php } else { ?>
 						<p>No Protection is applied</p>
 				<?php } ?>
-
 			</div>
 		</span>
 		<?php
@@ -372,9 +376,6 @@ class UACF7_SPAM_PROTECTION {
 		$spam_protection_buffer = ob_get_clean();
 
 		return $spam_protection_buffer;
-
-		// return apply_filters( 'uacf7_range_slider_style_pro_feature', $spam_protection_buffer, $tag); 
-
 	}
 }
 
