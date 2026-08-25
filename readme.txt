@@ -1,10 +1,10 @@
  === Ultra Addons for Contact Form 7 ===
 Contributors: themefic, hasanet, hemelhasan, mdrejon, raihan143
 Tags: contact form, contact form 7, forms, custom form, form builder
-Requires at least: 5.0
-Tested up to: 7.0
+Requires at least: 6.8
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.5.47
+Stable tag: 3.5.48
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -54,7 +54,7 @@ Equipped with over 50 essential features, **Ultra Addons For Contact Form 7** is
 * Column (Custom Width)
 * Conditional Field Pro
 * Conditional Redirect
-* Conversational form
+* Conversational Form
 * Form Styler (Global)
 * Frontend Post Submission (CF7 to Post Type / Blog)
 * IP Geo Fields (Autocomplete Country, City, State, Zip Fields)
@@ -217,7 +217,7 @@ Our [Conditional Field Pro](https://cf7addons.com/preview/conditional-field-pro/
 
 = Contact Form 7 Conditional Redirect =
 
-This option offers to [redirect users to different pages](https://cf7addons.com/preview/conditional-redirect-for-contact-form-7/) based on their form responses. For example, selecting “Yes” can redirect to one page, while “No” directs to another, providing a tailored user experience based on their choices.
+This option allows you to [redirect users to different pages](https://cf7addons.com/preview/conditional-redirect-for-contact-form-7/) based on their form responses. For example, selecting “Yes” can redirect to one page, while “No” directs to another, providing a tailored user experience based on their choices.
 
 = WordPress Conversational Form =
 
@@ -243,11 +243,11 @@ This feature enables the integration of [IP Geolocation](https://cf7addons.com/p
 
 The [Pro version of Multi-Step Forms](https://cf7addons.com/preview/multi-step-form/pro/) offers premium pre-built templates with attractive designs. Choose any design skin to auto-generate a styled form. It also supports button text editing and adding background images for enhanced customization.
 
-= Contact form 7 Range Slider Pro =
+= Contact Form 7 Range Slider Pro =
 
 The [Pro version of Range Slider](https://cf7addons.com/preview/range-slider-pro) features a variety of premium, pre-built layouts. 
 
-= Contact form 7 Repeatable Fields =
+= Contact Form 7 Repeatable Fields =
 
 Our [Contact Form 7 Repeater field](https://cf7addons.com/preview/repeater-field-for-contact-form-7/) addon enables the inclusion of repeatable fields within Contact Form 7, allowing for the duplication of various types of fields, including text, files, checkboxes, radio buttons, and textareas.
 
@@ -259,7 +259,7 @@ While the free version offers one Star Field icon, the Pro version enhances your
 
 Tag support for CF7 fields allows data to pass through the redirect URL. You can also enable [WhatsApp Contact Form 7 integration](https://cf7addons.com/preview/contact-form-7-whatsapp-integration/). To forward submitted data in the format https://yourdomain.com/?name=[your-name], the name field can be forwarded to WhatsApp or any desired destination.
 
-= Contact form 7 WooCommerce Checkout / Auto Add to Cart =
+= Contact Form 7 WooCommerce Checkout / Auto Add to Cart =
 
 Integrate [WooCommerce Checkout](https://cf7addons.com/preview/contact-form-7-woocommerce-checkout/) with Contact Form 7. Automatically add selected products to the cart after form submission and redirect customers to checkout for a seamless purchasing experience.
 
@@ -271,11 +271,11 @@ The Pro version lets you add [Specific WooCommerce Product](https://cf7addons.co
 
 Display products in [WooCommerce Grid View](https://cf7addons.com/preview/product-grid-view-with-thumbnails/), allowing addition based on ID, Category, or Tags. This feature enhances the visual appeal and organization of your product listings. 
 
-= Spam protection Contact form 7 (Pro) =
+= Spam protection Contact Form 7 (Pro) =
 
 With the [Anti Spam Contact form 7 (Pro)](https://cf7addons.com/preview/spam-protection-pro/) addon you can protect your website from frequent form submissions by adding a time limit. More protection on top of cf7 reCAPTCHA.
 
-= Contact form 7 DB plugin (Pro) =
+= Contact Form 7 DB plugin (Pro) =
 
 [Contact Form 7 Database plugin](https://cf7addons.com/preview/best-contact-form-7-database-addon/) Pro addon offers an advanced solution for managing and organizing form inquiries more efficiently.
 
@@ -283,11 +283,11 @@ With the [Anti Spam Contact form 7 (Pro)](https://cf7addons.com/preview/spam-pro
 
 Our [Contact Form 7 Extension for Mailchimp (Pro)](https://cf7addons.com/preview/mailchimp-pro-for-contact-form-7/) allows you to add an acceptance checkbox to your forms. 
 
-= Contact form 7 Preview before submit =
+= Contact Form 7 Preview before submit =
 
 The [Contact Form 7 preview](https://cf7addons.com/preview/form-preview-submission/) addon adds a submission preview feature to your forms, enabling users to review and confirm their information before submission.  
 
-= Contact form 7 Save progress and Continue Later =
+= Contact Form 7 Save Progress and Continue Later =
 
 The [Save and Continue Later](https://cf7addons.com/preview/save-and-continue/) addon allows users to save Contact Form 7 progress on a form and come back to later to finish it at their convenience.
 
@@ -340,9 +340,27 @@ Join our [Facebook group](https://www.facebook.com/groups/ultimate.cf7) to stay 
 
 We provide full support on the WordPress.org forums & [Our Website](https://portal.themefic.com/support/). Check our [Support Policy](https://themefic.com/support-policy/).
 
-### Privacy Policy
+== External services ==
 
-Ultra Addons for Contact Form 7 uses the [Appsero](https://appsero.com/) SDK to collect basic telemetry data only after user consent. This helps us improve product performance, fix issues, and provide a better user experience.
+This plugin integrates with and connects to third-party services to provide specific optional features when enabled by the site administrator:
+
+1. **Telegram Bot API (api.telegram.org)**
+* **What it is used for:** The Telegram Integration addon sends contact form submission notifications directly to a configured Telegram chat or channel, and validates bot credentials in the admin interface.
+* **What data is sent and when:** When an administrator enters a bot token in the settings, a request is made to validate the token. When a visitor submits a contact form that has Telegram integration enabled, the form submission field data is sent to `https://api.telegram.org/bot<token>/sendMessage`.
+* **Terms of Service:** [Telegram Terms of Service](https://telegram.org/tos)
+* **Privacy Policy:** [Telegram Privacy Policy](https://telegram.org/privacy)
+
+2. **Mailchimp API (api.mailchimp.com)**
+* **What it is used for:** The Mailchimp addon allows site administrators to connect Contact Form 7 with Mailchimp to subscribe form respondents to Mailchimp email lists/audiences.
+* **What data is sent and when:** When the administrator enters and saves their API key in settings, requests are made to validate the key and fetch audience lists. When a visitor submits a contact form with Mailchimp integration enabled, submitted field values (such as email, first name, last name, and custom mapped fields) are sent to the Mailchimp API.
+* **Terms of Service:** [Mailchimp Terms of Use](https://mailchimp.com/legal/terms/)
+* **Privacy Policy:** [Mailchimp Privacy Policy](https://mailchimp.com/legal/privacy/)
+
+3. **Webhook Endpoints (Custom / Zapier / Pabbly / Make / Third-party APIs)**
+* **What it is used for:** The Webhook addon transmits form submission data to external webhook endpoints configured by the site administrator (such as Zapier, Pabbly Connect, Make, or custom API endpoints).
+* **What data is sent and when:** Only when the administrator enables Webhooks for a specific form and provides an endpoint URL. Upon form submission, the submitted field data and custom headers defined by the admin are sent via HTTP request to the designated URL.
+* **Terms of Service & Privacy Policy:** Subject to the specific third-party service endpoint configured by the site administrator (e.g., [Zapier Privacy Policy](https://zapier.com/privacy), [Pabbly Privacy Policy](https://www.pabbly.com/privacy-policy/)).
+
 
 How can I report security bugs?
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage, and handle any security vulnerabilities. [Report a security vulnerability](https://patchstack.com/database/vdp/ultimate-addons-for-contact-form-7/).
@@ -369,7 +387,7 @@ Icons source [Iconfinder](https://www.iconfinder.com").
 1. Download and unzip the plugin. Upload the unzipped folder to the wp-contents/plugins folder of your WordPress installation.
 2. Activate the plugin from the WordPress Plugins administration page OR, Go to the WordPress admin panel, click 'Plugins' -> 'Add new'. In the search input box, type 'Ultra Addons for Contact form 7'.
 3. Install and activate the plugin.
-4. Go through the Quick setup wizard for the basic setup.
+4. Go through the Quick Setup Wizard for the basic setup.
 5. Check our Documentation & YouTube videos for further instructions.
 6. Go to Plugin Settings (Dashboard -> CF7 Addons) and enable the addon you need.
 
@@ -381,7 +399,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 = What is Contact Form 7 =
 Contact Form 7 is a popular and one of the oldest WordPress plugins that enables users to create and manage multiple contact forms on their website.
 
-= Why do we need a Contact form 7 add on plugin? =
+= Why do we need a Contact Form 7 add on plugin? =
 Addon plugins for Contact Form 7, like Ultra Addons for Contact Form 7, enhance the core functionalities of wpcf7 by introducing additional features such as multi-step forms, address autocomplete, country dropdowns, range sliders, and more. These addons improve user experience, extend the form's capabilities, and integrate seamlessly with other services, making your forms more powerful and versatile.
 
 = How to create multi-step forms using Contact Form 7 =
@@ -490,10 +508,12 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
-= 3.5.47 - 30/07/2026 =
+= 3.5.48 - 25/08/2026 =
 
-- New Addon.: Webhook Integration Pro with Contact Form 7.
-- Improved: System stability has been improved.
+- Security: Setup wizard authorization and escaped dynamic text shortcodes.
+- Security: Fixed reported authorization issues.
+- Updated: Addressed WordPress.org reported issues.
+
 
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 
