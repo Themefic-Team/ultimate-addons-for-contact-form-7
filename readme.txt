@@ -514,7 +514,6 @@ Just install our plugin, and you'll get access to a variety of free templates!
 - Security: Fixed reported authorization issues.
 - Updated: Addressed WordPress.org reported issues.
 
-
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 
 = 1.0.0 - 04/02/2021 =
