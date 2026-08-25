@@ -450,33 +450,74 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 											data-parent="<?php echo esc_attr( $section_key ) ?>"
 											data-filter="<?php echo esc_html( strtolower( $field['label'] ) ) ?>">
 											<?php
-											$label_class = '';
-											if ( isset( $field['is_pro'] ) ) {
-												$label_class .= $field['is_pro'] == true ? 'tf-field-disable tf-field-pro' : '';
-												$badge = '<span class="addon-status pro">' . esc_html( 'Pro' ) . '</span>';
-											} else {
-												$badge = '<span class="addon-status">' . esc_html( 'Free' ) . '</span>';
-											}
+											$addon_ui = apply_filters(
+												'uacf7_addon_ui',
+												array(
+													'status_label'     => __( 'Free', 'ultimate-addons-for-contact-form-7' ),
+													'status_class'     => 'free',
+													'label_class'      => '',
+													'input_attributes' => array(),
+												),
+												$field,
+												'uacf7_settings'
+											);
+
+											$label_class = isset( $addon_ui['label_class'] ) ? $addon_ui['label_class'] : '';
+
+											$status_label = isset( $addon_ui['status_label'] )
+												? $addon_ui['status_label']
+												: '';
+
+											$status_class = isset( $addon_ui['status_class'] )
+												? $addon_ui['status_class']
+												: '';
+
+											$input_attributes = isset( $addon_ui['input_attributes'] ) && is_array( $addon_ui['input_attributes'] )
+												? $addon_ui['input_attributes']
+												: array();
+
 											$child = isset( $field['child_field'] ) ? $field['child_field'] : '';
-											$is_pro = isset( $field['is_pro'] ) ? 'pro' : '';
+
 											$default = $field['default'] == true ? 'checked' : '';
+
 											$default = isset( $data[ $field['id'] ] ) && $data[ $field['id'] ] == 1 ? 'checked' : $default;
+
 											$value = isset( $data[ $field['id'] ] ) ? $data[ $field['id'] ] : 0;
+
 											$demo_link = isset( $field['demo_link'] ) ? $field['demo_link'] : '#';
+
 											$documentation_link = isset( $field['documentation_link'] ) ? $field['documentation_link'] : '#';
 
-											// echo $default; 
 											?>
 											<div class="uacf7-single-addons-wrap">
-												<?php echo wp_kses_post( $badge ); ?>
+												<?php if ( ! empty( $status_label ) ) : ?>
+													<span class="addon-status <?php echo esc_attr( $status_class ); ?>">
+														<?php echo esc_html( $status_label ); ?>
+													</span>
+												<?php endif; ?>
 												<h2 class="uacf7-single-addon-title"><?php echo esc_html( $field['label'] ) ?></h2>
 												<div class="uacf7-addon-toggle-wrap">
 													<input type="checkbox" id="<?php echo esc_attr( $field['id'] ) ?>"
 														data-child="<?php echo esc_attr( $child ) ?>"
-														data-is-pro="<?php echo esc_attr( $is_pro ) ?>" <?php echo esc_attr( $default ) ?>
+														<?php
+														if ( ! empty( $input_attributes ) ) {
+															foreach ( $input_attributes as $attribute => $attribute_value ) {
+																$attribute = sanitize_key( $attribute );
+																if ( empty( $attribute ) ) {
+																	continue;
+																}
+																printf(
+																	'%s="%s" ',
+																	esc_attr( $attribute ),
+																	esc_attr( $attribute_value )
+																);
+															}
+														}
+
+														?>
+														<?php echo esc_attr( $default ) ?>
 														value="<?php echo esc_html( $value ); ?>" class="uacf7-addon-input-field"
 														name="<?php echo esc_attr( $id ) ?>" id="uacf7_enable_redirection">
-
 													<label class="uacf7-addon-toggle-inner <?php echo esc_attr( $label_class ) ?> "
 														for="<?php echo esc_attr( $field['id'] ) ?>">
 														<span class="uacf7-addon-toggle-track"><svg width="16" height="17"
