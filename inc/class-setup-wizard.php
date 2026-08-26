@@ -95,7 +95,7 @@ if ( ! class_exists( 'UACF7_Setup_Wizard' ) ) {
 
 			// Only plugins explicitly supported by this wizard may be activated.
 			$allowed_plugins = array(
-				'contact-form-7' => 'contact-form-7/contact-form-7.php',
+				'contact-form-7' => 'contact-form-7/wp-contact-form-7.php',
 			);
 			$plugin_slug = isset( $_POST['slug'] ) ? sanitize_key( wp_unslash( $_POST['slug'] ) ) : '';
 			$file_name   = isset( $_POST['file_name'] ) ? sanitize_key( wp_unslash( $_POST['file_name'] ) ) : '';
