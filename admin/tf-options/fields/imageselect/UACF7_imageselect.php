@@ -45,8 +45,7 @@ if ( ! class_exists( 'UACF7_imageselect' ) ) {
                         $this->parent_field
                     );
 
-                    $class    = isset( $state['class'] ) ? $state['class'] : '';
-                    $disabled = ! empty( $state['disabled'] ) ? ' disabled' : '';
+                    $class = isset( $state['class'] ) ? $state['class'] : '';
 
                     /*
                      * Build badges provided by extensions.
@@ -72,7 +71,7 @@ if ( ! class_exists( 'UACF7_imageselect' ) ) {
                             }
 
                             $badges .= '<span class="tf-csf-badge ' . esc_attr( $badge_class ) . '">';
-                            $badges .= '<span class='. esc_attr( $badge_class ) .'>' . esc_html( $badge_label ) . '</span>';
+                            $badges .= '<span class="' . esc_attr( $badge_class ) . '">' . esc_html( $badge_label ) . '</span>';
                             $badges .= '</span>';
                         }
                     }
@@ -89,8 +88,8 @@ if ( ! class_exists( 'UACF7_imageselect' ) ) {
                                 . esc_attr( $this->field_name() )
                                 . '['
                                 . esc_attr( $key )
-                                . ']"'
-                                . $disabled
+                                . ']" '
+                                . disabled( ! empty( $state['disabled'] ), true, false )
                                 . ' name="'
                                 . esc_attr( $this->field_name() )
                                 . '"'
