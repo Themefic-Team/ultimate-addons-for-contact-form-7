@@ -508,7 +508,7 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
-= 3.5.48 - 25/08/2026 =
+= 3.5.48 - 26/08/2026 =
 
 - Security: Setup wizard authorization and escaped dynamic text shortcodes.
 - Security: Fixed reported authorization issues.
