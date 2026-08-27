@@ -211,7 +211,7 @@ Allow users to dynamically duplicate text fields, file uploads, checkboxes, and 
 = Contact Form 7 Star Rating Field Pro =
 Choose from 5 custom rating styles or integrate any Font Awesome icon with [Star Rating Pro](https://cf7addons.com/preview/star-rating-pro/).
 
-= Contact form 7 Whatsapp Integration + CF7 Tag Support  =
+= Contact form 7 Whatsapp Integration + CF7 Tag Support =
 Send submitted form values directly to WhatsApp chat threads and pass dynamic CF7 tag data with [WhatsApp for Contact Form 7](https://cf7addons.com/preview/contact-form-7-whatsapp-integration/).
 
 = Contact Form 7 WooCommerce Checkout / Auto Add to Cart =
@@ -244,28 +244,28 @@ Receive automatic weekly email digest reports summarizing submission counts with
 = Email Piping for Contact Form 7 =
 Capture email replies directly into your WordPress dashboard and send email responses using [Email Piping](https://cf7addons.com/preview/email-piping-for-contact-form-7/).
 
-= PDF Download on Submission for Contact Form 7=
+= PDF Download on Submission for Contact Form 7 =
 Enable visitors to download customized PDF receipts immediately upon form submission with [PDF Generate Pro](https://cf7addons.com/preview/pdf-generate-pro/).
 
-= Drag & Drop Multi-File Upload for Contact Form 7=
+= Drag & Drop Multi-File Upload for Contact Form 7 =
 Allow visitors to drag and drop multiple files simultaneously with the modern [Multi-File Upload](https://cf7addons.com/preview/drag-and-drop-multiple-file-upload/) field.
 
-= Google Sheets Integration for Contact Form 7=
+= Google Sheets Integration for Contact Form 7 =
 Automatically sync form submissions into Google Sheets spreadsheets in real-time with [Google Sheets Integration](https://cf7addons.com/preview/google-sheet/).
 
-= Slack Notifications Integration for Contact Form 7=
+= Slack Notifications Integration for Contact Form 7 =
 Receive instant form submission alerts and lead notifications inside Slack channels with [Slack Integration](https://cf7addons.com/preview/slack/).
 
-= Prevent Duplicate Submissions for Contact Form 7=
+= Prevent Duplicate Submissions for Contact Form 7 =
 Block accidental or spam duplicate form submissions based on specific fields or time windows with [Prevent Duplicate Entries](https://cf7addons.com/preview/prevent-duplicate-entries/).
 
-= Twilio SMS & WhatsApp Alerts for Contact Form 7=
+= Twilio SMS & WhatsApp Alerts for Contact Form 7 =
 Send instant SMS and WhatsApp text notifications to admins or customers on submission with [Twilio Integration](https://cf7addons.com/preview/twilio/).
 
-= Salesforce CRM Integration for Contact Form 7=
+= Salesforce CRM Integration for Contact Form 7 =
 Sync contact form submissions, leads, contacts, and cases directly into Salesforce in real-time with [Salesforce Integration](https://themefic.com/docs/uacf7/pro-addons/salesforce-integration/).
 
-= Webhook Integration Pro for Contact Form 7=
+= Webhook Integration Pro for Contact Form 7 =
 Send form data with conditional logic and custom payload headers to Zapier, Pabbly, Make, and external APIs with [Webhook Pro](https://cf7addons.com/preview/pabbly-zapier-webhook-pro/).
 
 **More Pro addons are in development and will be available soon.**
