@@ -90,7 +90,7 @@ if ( ! class_exists( 'UACF7_imageselect' ) ) {
                                 . '['
                                 . esc_attr( $key )
                                 . ']"'
-                                . $disabled
+                                . esc_attr($disabled)
                                 . ' name="'
                                 . esc_attr( $this->field_name() )
                                 . '"'
