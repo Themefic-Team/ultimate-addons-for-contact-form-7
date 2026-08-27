@@ -241,7 +241,7 @@ Allow visitors to save partial form progress and resume filling later from any d
 = Weekly Email Summary Reports =
 Receive automatic weekly email digest reports summarizing submission counts with [Weekly Email Summary](https://cf7addons.com/preview/weekly-email-summary/).
 
-= Email Piping for Contact Form 7=
+= Email Piping for Contact Form 7 =
 Capture email replies directly into your WordPress dashboard and send email responses using [Email Piping](https://cf7addons.com/preview/email-piping-for-contact-form-7/).
 
 = PDF Download on Submission for Contact Form 7=
