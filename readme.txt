@@ -403,7 +403,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-= 3.5.48 - 26/08/2026 =
+= 3.5.48 - 27/08/2026 =
 
 - Security: Setup wizard authorization and escaped dynamic text shortcodes.
 - Security: Fixed reported authorization issues.
