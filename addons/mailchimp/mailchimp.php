@@ -54,12 +54,12 @@ class UACF7_MAILCHIMP {
 		}
 
 		// Check if POST data is set and not empty
-		if ( empty( $_POST['inputKey'] ) ) {
+		$input_key = isset( $_POST['inputKey'] ) ? sanitize_text_field( wp_unslash( $_POST['inputKey'] ) ) : '';
+		if ( empty( $input_key ) ) {
 			wp_send_json_error( 'No API key provided.' );
 			wp_die(); // Terminate execution
 		}
 
-		$input_key = isset( $_POST['inputKey'] ) ? sanitize_text_field( wp_unslash( $_POST['inputKey'] ) ) : '';
 		$api_key = '';
 		if ( $input_key ) {
 			$api_key = $input_key;

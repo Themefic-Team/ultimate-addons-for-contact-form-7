@@ -330,8 +330,8 @@ class UACF7_PDF_GENERATOR {
 			wp_send_json_error( 'Unauthorized', 403 );
 		}
 
-		if ( empty( $_POST['ajax_nonce'] ) || 
-			! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ajax_nonce'] ) ), 'uacf7-pdf-generator' ) ) {
+		$ajax_nonce = isset( $_POST['ajax_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['ajax_nonce'] ) ) : '';
+		if ( empty( $ajax_nonce ) || ! wp_verify_nonce( $ajax_nonce, 'uacf7-pdf-generator' ) ) {
 
 			wp_send_json_error( 'Security check failed', 403 );
 		}

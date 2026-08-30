@@ -793,7 +793,7 @@ class UACF7_MULTISTEP {
 				$result = apply_filters( "uacf7_wpcf7_validate_{$type}", $result, $tag, array( 'uploaded_files' => $new_files, ) );
 
 				if ( isset( $_REQUEST[ $tag->name . '_size' ] ) ) {
-					$file_size = isset( $_REQUEST[ $tag->name . '_size' ] ) ? absint( $_REQUEST[ $tag->name . '_size' ] ) : 0;
+					$file_size = absint( wp_unslash( $_REQUEST[ $tag->name . '_size' ] ) );
 					if ( $file_size > $tag->get_limit_option() ) {
 						$file_error = array(
 							'into' => 'span.wpcf7-form-control-wrap[data-name = ' . esc_attr( $tag->name ) . ']',
