@@ -13,8 +13,8 @@ class UACF7_MULTISTEP {
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script' ) );
 		add_action( 'admin_init', array( $this, 'tag_generator' ) );
-		add_action( 'wp_ajax_check_fields_validation', array( $this, 'check_fields_validation' ) );
-		add_action( 'wp_ajax_nopriv_check_fields_validation', array( $this, 'check_fields_validation' ) );
+		add_action( 'wp_ajax_check_fields_validation', array( $this, 'uacf7_check_fields_validation' ) );
+		add_action( 'wp_ajax_nopriv_check_fields_validation', array( $this, 'uacf7_check_fields_validation' ) );
 		wpcf7_add_form_tag( 'uacf7_step_start', array( $this, 'step_start_tag_handler' ), true );
 		wpcf7_add_form_tag( 'uacf7_step_end', array( $this, 'step_end_tag_handler' ), false );
 		wpcf7_add_form_tag( 'uacf7_multistep_progressbar', array( $this, 'uacf7_multistep_progressbar' ), true );
@@ -715,7 +715,7 @@ class UACF7_MULTISTEP {
 		// return $properties;
 	}
 
-	public function check_fields_validation() {
+	public function uacf7_check_fields_validation() {
 		$nonce = isset( $_REQUEST['ajax_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['ajax_nonce'] ) ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'uacf7-multistep' ) ) {
 			exit( esc_html__( "Security error", 'ultimate-addons-for-contact-form-7' ) );

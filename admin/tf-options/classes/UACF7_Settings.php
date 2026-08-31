@@ -38,85 +38,8 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 			//ajax save options
 			add_action( 'wp_ajax_uacf7_options_save', array( $this, 'uacf7_ajax_save_options' ) );
 			
-			add_action('wp_ajax_uacf7_themefic_manage_plugin', array( $this, 'uacf7_themefic_manage_plugin' ) );
 		}
 
-
-		public function uacf7_themefic_manage_plugin() {
-			if ( ! check_ajax_referer( 'themefic_plugin_nonce', 'security', false ) ) {
-				wp_send_json_error( __( 'Security check failed.', 'ultimate-addons-for-contact-form-7' ), 403 );
-			}
-
-			if ( ! current_user_can( 'install_plugins' ) ) {
-				wp_send_json_error( __( 'You do not have permission to install plugins.', 'ultimate-addons-for-contact-form-7' ), 403 );
-			}
-
-			$plugin_slug = isset( $_POST['plugin_slug'] ) ? sanitize_key( wp_unslash( $_POST['plugin_slug'] ) ) : '';
-			$plugin_action = isset( $_POST['plugin_action'] ) ? sanitize_key( wp_unslash( $_POST['plugin_action'] ) ) : '';
-
-			if ( empty( $plugin_slug ) || ! in_array( $plugin_action, array( 'install', 'activate' ), true ) ) {
-				wp_send_json_error( __( 'Invalid plugin request.', 'ultimate-addons-for-contact-form-7' ), 400 );
-			}
-
-			include_once ABSPATH . 'wp-admin/includes/plugin.php';
-			include_once ABSPATH . 'wp-admin/includes/file.php';
-			include_once ABSPATH . 'wp-admin/includes/misc.php';
-			include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-			include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-
-			$plugin_file = '';
-
-			if ( 'install' === $plugin_action ) {
-				$api = plugins_api(
-					'plugin_information',
-					array(
-						'slug'   => $plugin_slug,
-						'fields' => array(
-							'sections' => false,
-						),
-					)
-				);
-
-				if ( is_wp_error( $api ) || empty( $api->download_link ) ) {
-					wp_send_json_error( __( 'Unable to find the requested plugin.', 'ultimate-addons-for-contact-form-7' ), 404 );
-				}
-
-				$skin = new Automatic_Upgrader_Skin();
-				$upgrader = new Plugin_Upgrader( $skin );
-				$result = $upgrader->install( $api->download_link );
-
-				if ( ! $result ) {
-					wp_send_json_error( __( 'Plugin installation failed.', 'ultimate-addons-for-contact-form-7' ), 500 );
-				}
-
-				$plugin_file = $upgrader->plugin_info();
-				if ( empty( $plugin_file ) ) {
-					wp_send_json_error( __( 'Plugin was installed, but its plugin file could not be detected.', 'ultimate-addons-for-contact-form-7' ), 500 );
-				}
-			} else {
-				if ( ! current_user_can( 'activate_plugins' ) ) {
-					wp_send_json_error( __( 'You do not have permission to activate plugins.', 'ultimate-addons-for-contact-form-7' ), 403 );
-				}
-
-				$plugin_file = isset( $_POST['plugin_filename'] ) ? sanitize_text_field( wp_unslash( $_POST['plugin_filename'] ) ) : '';
-				if ( empty( $plugin_file ) || false === strpos( $plugin_file, '/' ) || 0 !== strpos( $plugin_file, $plugin_slug . '/' ) || false !== strpos( $plugin_file, '..' ) ) {
-					wp_send_json_error( __( 'Invalid plugin file.', 'ultimate-addons-for-contact-form-7' ), 400 );
-				}
-
-				$plugin_file = validate_plugin( $plugin_file );
-				if ( is_wp_error( $plugin_file ) ) {
-					wp_send_json_error( __( 'Invalid plugin file.', 'ultimate-addons-for-contact-form-7' ), 400 );
-				}
-			}
-
-			$result = activate_plugin( $plugin_file );
-
-			if ( is_wp_error( $result ) ) {
-				wp_send_json_error( $result->get_error_message(), 500 );
-			}
-
-			wp_send_json_success( __( 'Plugin installed and activated successfully!', 'ultimate-addons-for-contact-form-7' ) );
-		}
 
 		public static function option( $key, $params = array() ) {
 			return new self( $key, $params );
@@ -844,12 +767,9 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 				return;
 			}
 
-			//  Checked Currenct can save option
-			$current_user = wp_get_current_user();
-			$current_user_role = $current_user->roles[0];
-
-			if ( $current_user_role !== 'administrator' && ! is_admin() ) {
-				wp_die( 'You do not have sufficient permissions to access this page.' );
+			// Check the capability required to save plugin settings.
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'ultimate-addons-for-contact-form-7' ) );
 			}
 
 			$option = get_option( $this->option_id );

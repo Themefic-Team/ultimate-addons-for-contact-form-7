@@ -43,7 +43,7 @@ if (!function_exists('UACF7_URL')) {
             case 'query':
                 // If a key is provided, return its value
                 if ( ! empty( $key ) && isset( $query_array[ $key ] ) ) {
-                    return sanitize_text_field( $query_array[ $key ] );
+                    return esc_html( sanitize_text_field( $query_array[ $key ] ) );
                 }
                 // Otherwise, return full query string
                 $query = http_build_query(
