@@ -26,10 +26,10 @@ class UACF7_MAILCHIMP {
 	 * Enqueue script Backend
 	 */
 	public function wp_enqueue_admin_script() {
-		wp_enqueue_script( 'mailchimp_admin', UACF7_ADDONS . '/mailchimp/assets/js/mailchimp_admin.js', array( 'jquery' ), UACF7_VERSION, true );
+		wp_enqueue_script( 'uacf7-mailchimp_admin', UACF7_ADDONS . '/mailchimp/assets/js/mailchimp_admin.js', array( 'jquery' ), UACF7_VERSION, true );
 		wp_localize_script(
-			'mailchimp_admin',
-			'mailchimp_peram',
+			'uacf7-mailchimp_admin',
+			'uacf7_mailchimp_peram',
 			array(
 				'admin_url' => get_admin_url() . 'admin.php',
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),

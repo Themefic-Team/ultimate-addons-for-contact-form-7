@@ -211,7 +211,7 @@ class UACF7_FORM_GENERATOR {
 		];
 
 		wp_send_json( $data );
-		die();
+		wp_die();
 
 	}
 
