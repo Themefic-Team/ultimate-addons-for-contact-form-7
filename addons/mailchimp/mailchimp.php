@@ -74,9 +74,6 @@ class UACF7_MAILCHIMP {
 			if ( $response !== null ) {
 				$status .= '<span class="status-title"><strong>' . esc_html__( 'Status: ', 'ultimate-addons-for-contact-form-7' ) . '</strong>';
 
-				if ( $this->is_internet_connected() == false ) { //Checking internet connection
-					$status .= '<span class="status-error">' . esc_html__( 'Can\'t connect to the server. Please check internet connection.', 'ultimate-addons-for-contact-form-7' ) . '</span>';
-				}
 
 				if ( isset( $response->health_status ) ) { //Display success message
 					$status .= '<span class="status-success">' . esc_html( $response->health_status, 'ultimate-addons-for-contact-form-7' ) . '</span>';
@@ -327,23 +324,6 @@ class UACF7_MAILCHIMP {
 		return $value;
 	}
 
-	/* Check Internet connection */
-	public static function is_internet_connected() {
-		$response = wp_remote_get(
-			'https://www.google.com/',
-			array(
-				'timeout' => 3,
-				'sslverify' => false,
-			)
-		);
-
-		if ( is_wp_error( $response ) ) {
-			return false;
-		}
-
-		$response_code = wp_remote_retrieve_response_code( $response );
-		return ( $response_code >= 200 && $response_code < 500 );
-	}
 
 	/* Get mailchimp api key */
 	public function get_api_key() {
@@ -419,10 +399,6 @@ class UACF7_MAILCHIMP {
 			$response = json_decode( $response );
 
 			$status .= '<span class="status-title"><strong>' . esc_html__( 'Status: ', 'ultimate-addons-for-contact-form-7' ) . '</strong>';
-
-			if ( $this->is_internet_connected() == false ) { //Checking internet connection
-				$status .= '<span class="status-error">' . esc_html__( 'Can\'t connect to the server. Please check internet connection.', 'ultimate-addons-for-contact-form-7' ) . '</span>';
-			}
 
 			if ( isset( $response->health_status ) ) { //Display success message
 				$status .= '<span class="status-success">' . esc_html( $response->health_status, 'ultimate-addons-for-contact-form-7' ) . '</span>';
