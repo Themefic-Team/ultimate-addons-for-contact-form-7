@@ -272,7 +272,7 @@ Send form data with conditional logic and custom payload headers to Zapier, Pabb
 
 ### Join our Community to stay updated
 
-Join our [Facebook group](https://www.facebook.com/groups/ultimate.cf7) to stay informed with the latest news and updates about Tourfic.
+Join our [Facebook group](https://www.facebook.com/groups/ultimate.cf7) to stay informed with the latest news and updates about Ultra Addons for Contact Form 7.
 
 ### Our Support
 
@@ -300,7 +300,7 @@ This plugin connects to external services when enabled by the site administrator
 
 = Credits =
 
-Icons source [Iconfinder](https://www.iconfinder.com").
+Icons source [Iconfinder](https://www.iconfinder.com).
 
 == Installation ==
 
