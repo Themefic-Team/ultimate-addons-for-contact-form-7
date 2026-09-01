@@ -780,11 +780,13 @@ if ( ! class_exists( 'UACF7_Settings' ) ) {
 
 			if ( isset( $imported_data_json ) && ! empty( $imported_data_json ) ) {
 
-				$tf_import_option =  json_decode( trim( $imported_data_json ), true );
+				$tf_import_option = json_decode( trim( $imported_data_json ), true );
 
-				// $option_request = !empty($tf_import_option) && is_array($tf_import_option) ? $tf_import_option : $option_request;
-				update_option( $this->option_id, $tf_import_option );
-				return;
+				if ( is_array( $tf_import_option ) ) {
+					$tf_import_option = map_deep( $tf_import_option, 'sanitize_text_field' );
+					update_option( $this->option_id, $tf_import_option );
+					return;
+				}
 			}
 
 			if ( $option && $option_request ) {
