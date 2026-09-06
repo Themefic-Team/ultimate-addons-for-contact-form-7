@@ -387,7 +387,8 @@ class UACF7_CF {
 				} else if ( $form_part == '[/conditional]' ) {
 					echo '</' . esc_attr(array_pop( $stack )) . '>';
 				} else {
-					echo wp_kses_post( $form_part );
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Preserve the CF7 form markup while rebuilding the conditional-field wrapper.
+					echo $form_part;
 				}
 			}
 
