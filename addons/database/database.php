@@ -886,7 +886,9 @@ class UACF7_DATABASE {
 			if ( ! empty( $file ) && in_array( $file_key, $uploaded_files, true ) ) {
 					$file = is_array( $file ) ? reset( $file ) : $file;
 
-					// var_dump( $file );
+					if ( ! uacf7_is_safe_uploaded_file( $file ) ) {
+						continue;
+					}
 
 					$dir_link = '/uacf7-uploads/' . $time_now . '-' . $file_key;
 
