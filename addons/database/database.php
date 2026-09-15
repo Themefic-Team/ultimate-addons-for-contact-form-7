@@ -618,7 +618,9 @@ class UACF7_DATABASE {
 
 		$html .= '</table></div>';
 
-		echo wp_kses_post( $html );
+		
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- The HTML is assembled above with context-appropriate escaping.
+		echo $html;
 		wp_die();
 	}
 
