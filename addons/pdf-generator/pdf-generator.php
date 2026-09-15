@@ -817,6 +817,10 @@ class UACF7_PDF_GENERATOR {
 					if ( in_array( $file_key, $uploaded_files ) ) {
 
 						$file = is_array( $file ) ? reset( $file ) : $file;
+						
+						if ( ! uacf7_is_safe_uploaded_file( $file ) ) {
+							continue;
+						}
 
 						$dir_link = '/uacf7-uploads/' . $time_now . '-' . $file_key . '-' . sanitize_file_name( basename( $file ) );
 						$destination_path = $dir . $dir_link;
@@ -852,7 +856,7 @@ class UACF7_PDF_GENERATOR {
 						// Detect extension
 						$ext = strtolower( pathinfo( $file_url, PATHINFO_EXTENSION ) );
 
-						$image_types = [ 'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg' ];
+						$image_types = [ 'jpg', 'jpeg', 'png', 'gif', 'webp' ];
 
 						if ( in_array( $ext, $image_types ) ) {
 
