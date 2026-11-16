@@ -156,11 +156,13 @@ class UACF7_DATABASE {
 		global $wpdb;
 		$uacf7_db = $wpdb;
 		$submission = WPCF7_Submission::get_instance();
+		$insert_data = is_array( $insert_data ) ? $insert_data : [];
+		$extra = is_array( $extra ) ? $extra : [];
 		$data = array_merge( $insert_data, $extra );
-		$submit_ip = $extra['submit_ip'];
+		$submit_ip = isset( $extra['submit_ip'] ) ? $extra['submit_ip'] : ( isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 0 );
 		$submit_time = current_time('mysql');
 
-		$submit_form_id = $submission->get_contact_form()->id();
+		$submit_form_id = ( $submission && method_exists( $submission, 'get_contact_form' ) && $submission->get_contact_form() ) ? $submission->get_contact_form()->id() : 0;
 
 		$uacf7_db->query( $uacf7_db->prepare( 'INSERT INTO ' . $uacf7_db->prefix . 'uacf7dp_data(`cf7_form_id`, `submit_ip`, `submit_time`) VALUES (%d, %d, %s)', $submit_form_id, $submit_ip, $submit_time ) );
 		$data_id = $uacf7_db->insert_id;
@@ -890,7 +892,10 @@ class UACF7_DATABASE {
 	 * Ultimate form save into the database
 	 */
 	public function uacf7_save_to_database( $form ) {
-		if ( ! is_plugin_active( 'ultimate-addons-for-contact-form-7-pro/ultimate-addons-for-contact-form-7-pro.php' ) ) {
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			include_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+		if ( ! function_exists( 'is_plugin_active' ) || ! is_plugin_active( 'ultimate-addons-for-contact-form-7-pro/ultimate-addons-for-contact-form-7-pro.php' ) ) {
 			if ( defined( 'UACF7_PRO_PATH_ADDONS' ) ) {
 				require_once( UACF7_PRO_PATH_ADDONS . '/database-pro/functions.php' );
 			} else {
@@ -1026,6 +1031,8 @@ class UACF7_DATABASE {
 		// Now, attempt to call the function if it exists
 		if ( function_exists( 'uacf7dp_add_more_fields' ) ) {
 			$extra_fields_data = uacf7dp_add_more_fields( $submission );
+		} else {
+			$extra_fields_data['submit_ip'] = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
 		}
 
 		apply_filters( 'uacf7dp_send_form_data_before_insert', $insert_data, $extra_fields_data );
