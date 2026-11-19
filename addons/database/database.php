@@ -296,12 +296,10 @@ class UACF7_DATABASE {
 			$upload_dir = wp_upload_dir();
 			$dir = $upload_dir['baseurl'];
 			$replace_dir = '/uacf7-uploads/';
-			$form_title = get_the_title( $form_id );
-			$form_title = str_replace( " ", "-", $form_title );
+			$form_title = sanitize_file_name( str_replace( " ", "-", get_the_title( $form_id ) ) );
 
-			$site_title = get_bloginfo( 'name' );
-			$site_title = str_replace( " ", "-", $site_title );
-			$file_name = $today . '-' . $form_title . '—' . $site_title;
+			$site_title = sanitize_file_name( str_replace( " ", "-", get_bloginfo( 'name' ) ) );
+			$file_name = sanitize_file_name( $today . '-' . $form_title . '—' . $site_title );
 
 			$field_rows = $uacf7_db->get_results( $uacf7_db->prepare(
 				'SELECT DISTINCT fields_name FROM ' . $uacf7_db->prefix . 'uacf7dp_data_entry WHERE cf7_form_id = %d',
@@ -531,7 +529,7 @@ class UACF7_DATABASE {
 		$form_id = isset( $_POST['cf7_form_id'] ) ? absint( wp_unslash( $_POST['cf7_form_id'] ) ) : 0;
 		$all_data = isset( $_POST['all_data'] ) && is_array( $_POST['all_data'] ) ? map_deep( wp_unslash( $_POST['all_data'] ), 'sanitize_text_field' ) : array();
 
-		$encryptionKey = 'AES-256-CBC';
+		$encryptionKey = function_exists( 'uacf7_get_signature_encryption_key' ) ? uacf7_get_signature_encryption_key() : 'AES-256-CBC';
 
 		// Get Form details 
 		$ContactForm = WPCF7_ContactForm::get_instance( $form_id );
@@ -553,9 +551,12 @@ class UACF7_DATABASE {
 			}
 		}
 
+		$form_title = get_the_title( $form_id );
+		$submit_time = isset( $all_data['submit_time'] ) ? $all_data['submit_time'] : '';
+
 		$html = '<div class="db-view-wrap"> 
-					<h3>' . get_the_title( $form_id ) . '</h3>
-					<span>' . esc_html( $all_data['submit_time'] ) . '</span>
+					<h3>' . esc_html( $form_title ) . '</h3>
+					<span>' . esc_html( $submit_time ) . '</span>
 					<table class="wp-list-table widefat fixed striped table-view-list">';
 		$html .= '<tr> <th><strong>Fields</strong></th><th><strong>Values</strong> </th> </tr>';
 		foreach ( $all_data as $key => $value ) {
@@ -576,21 +577,22 @@ class UACF7_DATABASE {
 				}
 
 				$pathInfo = pathinfo( $value );
-				$extension = strtolower( $pathInfo['extension'] );
+				$extension = strtolower( isset( $pathInfo['extension'] ) ? $pathInfo['extension'] : '' );
 				$fileNameWithoutExtension = pathinfo( $value, PATHINFO_FILENAME );
 
 				// Image Loaded
 				$token = md5( uniqid() );
 				$decryptedData = $this->decrypt_and_display( $signaturepath . $value, $encryptionKey );
+				$imageData = '';
 				if ( $decryptedData !== null ) {
-					$imageData = 'data:image/jpeg;base64,' . base64_encode( $decryptedData );
+					$imageData = 'data:image/png;base64,' . base64_encode( $decryptedData );
 				}
 
 				// Check old data
 				if ( $extension == 'enc' ) {
 					$srcAttribute = $imageData;  // Set to empty or another value if needed
 				} else {
-					$srcAttribute = $value;
+					$srcAttribute = esc_url( $value );
 				}
 
 				$html .= '
@@ -600,13 +602,13 @@ class UACF7_DATABASE {
 						</td> 
 						<td>
 							<button id="signature_view_btn">' . esc_html( 'View' ) . '</button>
-							<a class="" href="' . $srcAttribute . '" download="' . $fileNameWithoutExtension . '">
+							<a class="" href="' . esc_attr( $srcAttribute ) . '" download="' . esc_attr( $fileNameWithoutExtension ) . '.png">
 								<button class="signature_download_btn">Download</button>
 							</a>
 						</td>
 					</tr>
 					<div class="signature_view_pops">
-						<img class="signature_view_pops_img"  src="' . $srcAttribute . '"/>
+						<img class="signature_view_pops_img"  src="' . esc_attr( $srcAttribute ) . '"/>
 					</div>
 					';
 			} else {
@@ -840,18 +842,26 @@ class UACF7_DATABASE {
 		return copy( $source, $target );
 	}
 
-	public function encrypt_file( $inputFile, $outputFile, $key ) {
+	public function encrypt_file( $inputFile, $outputFile, $key = null ) {
+		if ( empty( $key ) ) {
+			$key = function_exists( 'uacf7_get_signature_encryption_key' ) ? uacf7_get_signature_encryption_key() : 'AES-256-CBC';
+		}
+
 		$inputData = $this->uacf7dp_get_file_contents( $inputFile );
 
 		if ( $inputData === false ) {
 			return false;
 		}
 
-		// Generate an Initialization Vector (IV)
-		$iv = openssl_random_pseudo_bytes( openssl_cipher_iv_length( 'aes-256-cbc' ) );
+		// Generate a cryptographically secure Initialization Vector (IV)
+		$iv = function_exists( 'random_bytes' ) ? random_bytes( 16 ) : openssl_random_pseudo_bytes( 16 );
 
 		// Encrypt the data
 		$encryptedData = openssl_encrypt( $inputData, 'aes-256-cbc', $key, 0, $iv );
+
+		if ( false === $encryptedData ) {
+			return false;
+		}
 
 		// Combine IV and encrypted data
 		$encryptedFileContent = $iv . $encryptedData;
@@ -860,17 +870,21 @@ class UACF7_DATABASE {
 		return $this->uacf7dp_put_file_contents( $outputFile, $encryptedFileContent );
 	}
 
-	public function decrypt_and_display( $inputFile, $key ) {
+	public function decrypt_and_display( $inputFile, $key = null ) {
 
 		if ( ! file_exists( $inputFile ) ) {
-			wp_die( "Error: The file does not exist." );
+			return null;
 		}
 
 		// Read the encrypted content
 		$encryptedFileContent = $this->uacf7dp_get_file_contents( $inputFile );
 
-		if ( $encryptedFileContent === false ) {
-			wp_die( "Error: Unable to read file content." );
+		if ( $encryptedFileContent === false || strlen( $encryptedFileContent ) < 16 ) {
+			return null;
+		}
+
+		if ( empty( $key ) ) {
+			$key = function_exists( 'uacf7_get_signature_encryption_key' ) ? uacf7_get_signature_encryption_key() : 'AES-256-CBC';
 		}
 
 		// Extract IV
@@ -883,8 +897,15 @@ class UACF7_DATABASE {
 		// Decrypt the data
 		$decryptedData = openssl_decrypt( $encryptedData, 'aes-256-cbc', $key, 0, $iv );
 
-		// Output the decrypted data directly
-		//header( 'Content-Type: image/jpg' ); // Adjust content type based on your file type
+		// Fallback to legacy key for backwards compatibility with existing submissions
+		if ( false === $decryptedData && $key !== 'AES-256-CBC' ) {
+			$decryptedData = openssl_decrypt( $encryptedData, 'aes-256-cbc', 'AES-256-CBC', 0, $iv );
+		}
+
+		if ( false === $decryptedData ) {
+			return null;
+		}
+
 		return $decryptedData;
 	}
 
@@ -906,7 +927,7 @@ class UACF7_DATABASE {
 		}
 		global $wpdb;
 		$uacf7_db = $wpdb;
-		$encryptionKey = 'AES-256-CBC';
+		$encryptionKey = function_exists( 'uacf7_get_signature_encryption_key' ) ? uacf7_get_signature_encryption_key() : 'AES-256-CBC';
 		$table_name = $uacf7_db->prefix . 'uacf7_form';
 
 		$submission = WPCF7_Submission::get_instance();
@@ -982,7 +1003,7 @@ class UACF7_DATABASE {
 				}
 
 				$ext_part    = '.' . sanitize_key( $ext );
-				$random_hash = wp_generate_password( 16, false, false );
+				$random_hash = wp_generate_password( 32, false, false );
 
 				if ( in_array( $file_key, $uacf7_signature_tag, true ) ) {
 					$dir_link = '/uacf7-uploads/' . $time_now . '-' . sanitize_key( $file_key ) . '-' . $random_hash . '.enc';
@@ -1254,6 +1275,32 @@ class UACF7_DATABASE {
 		$ext = strtolower( pathinfo( $real_target, PATHINFO_EXTENSION ) );
 		if ( empty( $ext ) && function_exists( 'uacf7_detect_file_extension' ) ) {
 			$ext = uacf7_detect_file_extension( $real_target );
+		}
+
+		// Handle encrypted signature files for authorized administrators
+		if ( 'enc' === $ext ) {
+			$decrypted = $this->decrypt_and_display( $real_target );
+			if ( null !== $decrypted ) {
+				$download_name = preg_replace( '/\.enc$/i', '.png', basename( $real_target ) );
+				$mode          = isset( $_GET['mode'] ) ? sanitize_key( $_GET['mode'] ) : 'download';
+				$disposition   = ( 'view' === $mode ) ? 'inline' : 'attachment';
+
+				while ( ob_get_level() > 0 ) {
+					ob_end_clean();
+				}
+
+				header( 'Content-Description: File Transfer' );
+				header( 'Content-Type: image/png' );
+				header( 'Content-Disposition: ' . $disposition . '; filename="' . esc_attr( $download_name ) . '"' );
+				header( 'Content-Length: ' . strlen( $decrypted ) );
+				header( 'X-Content-Type-Options: nosniff' );
+				header( 'Cache-Control: must-revalidate, post-check=0, pre-check=0' );
+				header( 'Pragma: public' );
+				header( 'Expires: 0' );
+
+				echo $decrypted;
+				exit;
+			}
 		}
 
 		$mime_types = array(

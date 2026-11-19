@@ -485,7 +485,7 @@ class UACF7_PDF_GENERATOR {
 		$ContactForm = WPCF7_ContactForm::get_instance( $form_id );
 		$form_fields = $ContactForm->scan_form_tags();
 
-		$encryptionKey = 'AES-256-CBC';
+		$encryptionKey = function_exists( 'uacf7_get_signature_encryption_key' ) ? uacf7_get_signature_encryption_key() : 'AES-256-CBC';
 		$uacf7_signature_tag = [];
 		$uacf7_file_tag = [];
 
@@ -524,14 +524,17 @@ class UACF7_PDF_GENERATOR {
 			// Signature Image Decrypt form Database Addon
 			if ( in_array( $key, $uacf7_signature_tag ) && $uacf7_DB != null ) {
 				$pathInfo = pathinfo( $value );
-				$extension = strtolower( $pathInfo['extension'] );
+				$extension = strtolower( isset( $pathInfo['extension'] ) ? $pathInfo['extension'] : '' );
 
-				ob_start();
-				echo wp_kses_post( $uacf7_DB->decrypt_and_display( $dir . $value, $encryptionKey ) );
-				$decryptedData = ob_get_clean();
+				$decryptedData = $uacf7_DB->decrypt_and_display( $dir . $value, $encryptionKey );
 
-				if ( $decryptedData !== null ) {
-					$value = 'data:image/png;base64,' . base64_encode( $decryptedData );
+				if ( ! empty( $decryptedData ) ) {
+					$base64_sig = 'data:image/png;base64,' . base64_encode( $decryptedData );
+					if ( ! empty( $customize_pdf ) && preg_match( '/<img[^>]*src=[\'"]\s*\[' . preg_quote( $key, '/' ) . '\]\s*[\'"][^>]*>/i', $customize_pdf ) ) {
+						$value = $base64_sig;
+					} else {
+						$value = '<img src="' . $base64_sig . '" style="max-width:200px;height:auto;" />';
+					}
 				}
 			}
 
@@ -649,8 +652,16 @@ class UACF7_PDF_GENERATOR {
 				$uploaded_files[] = $file_key;
 			}
 
+			// Scan form tags to detect signature fields
+			$uacf7_signature_tags = [];
+			foreach ( $wpcf7->scan_form_tags() as $form_tag ) {
+				if ( $form_tag->type === 'uacf7_signature' || $form_tag->type === 'uacf7_signature*' ) {
+					$uacf7_signature_tags[] = $form_tag->name;
+				}
+			}
+
 			//  
-			$uacf7_pdf_name = ! empty( $pdf['uacf7_pdf_name'] ) ? $pdf['uacf7_pdf_name'] : get_the_title( $wpcf7->id() );
+			$uacf7_pdf_name = ! empty( $pdf['uacf7_pdf_name'] ) ? $pdf['uacf7_pdf_name'] : sanitize_text_field( get_the_title( $wpcf7->id() ) );
 			$disable_header = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'header', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
 			$disable_footer = ! empty( $pdf['uacf7_pdf_disable_header_footer'] ) && in_array( 'footer', $pdf['uacf7_pdf_disable_header_footer'] ) ? true : false;
 			$customize_pdf = ! empty( $pdf['customize_pdf'] ) ? $pdf['customize_pdf'] : '';
@@ -804,6 +815,24 @@ class UACF7_PDF_GENERATOR {
 			foreach ( $files as $file_key => $file ) {
 
 				if ( ! empty( $file ) ) {
+
+					// Handle signature files securely: do NOT copy plaintext image to public uploads directory
+					if ( in_array( $file_key, $uacf7_signature_tags, true ) ) {
+						$sig_file = is_array( $file ) ? reset( $file ) : $file;
+						if ( is_string( $sig_file ) && file_exists( $sig_file ) && is_readable( $sig_file ) ) {
+							$sig_bytes = @file_get_contents( $sig_file );
+							if ( ! empty( $sig_bytes ) ) {
+								$base64_sig = 'data:image/png;base64,' . base64_encode( $sig_bytes );
+								$replace_key[] = '[' . $file_key . ']';
+								if ( ! empty( $customize_pdf ) && preg_match( '/<img[^>]*src=[\'"]\s*\[' . preg_quote( $file_key, '/' ) . '\]\s*[\'"][^>]*>/i', $customize_pdf ) ) {
+									$replace_value[] = $base64_sig;
+								} else {
+									$replace_value[] = '<img src="' . $base64_sig . '" style="max-width:200px;height:auto;" />';
+								}
+							}
+						}
+						continue;
+					}
 
 					if ( in_array( $file_key, $uploaded_files ) ) {
 

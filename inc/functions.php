@@ -1837,7 +1837,7 @@ if ( ! function_exists( 'uacf7_protect_uploads_directory' ) ) {
 		$rules = "# Disable directory browsing\n"
 			. "Options -Indexes\n\n"
 			. "# Deny direct execution of scripts\n"
-			. "<FilesMatch \"(?i)\\.(php[0-9]?|phtml|phar|pl|py|cgi|sh|exe|asp|aspx|shtml|js|htm|html|svg|xml)$\">\n"
+			. "<FilesMatch \"(?i)\\.(php[0-9]?|phtml|phar|pl|py|cgi|sh|exe|asp|aspx|shtml|js|htm|html|svg|xml|enc)$\">\n"
 			. "\t<IfModule mod_authz_core.c>\n"
 			. "\t\tRequire all denied\n"
 			. "\t</IfModule>\n"
@@ -1858,7 +1858,7 @@ if ( ! function_exists( 'uacf7_protect_uploads_directory' ) ) {
 			@file_put_contents( $htaccess_file, $rules );
 		} else {
 			$existing = @file_get_contents( $htaccess_file );
-			if ( false === $existing || strpos( $existing, '3gp' ) === false || strpos( $existing, 'Require all denied' ) === false ) {
+			if ( false === $existing || strpos( $existing, '3gp' ) === false || strpos( $existing, 'Require all denied' ) === false || strpos( $existing, 'enc' ) === false ) {
 				@file_put_contents( $htaccess_file, $rules );
 			}
 		}
@@ -1965,5 +1965,33 @@ if ( ! function_exists( 'uacf7_detect_file_extension' ) ) {
 		}
 
 		return '';
+	}
+}
+
+if ( ! function_exists( 'uacf7_get_signature_encryption_key' ) ) {
+	/**
+	 * Retrieve a secure per-site encryption key for sensitive uploads (e.g. signatures).
+	 *
+	 * Uses WordPress wp_salt() or site secret to ensure cryptographic uniqueness per installation.
+	 *
+	 * @return string 64-char sha256 hex key.
+	 */
+	function uacf7_get_signature_encryption_key() {
+		$salt = '';
+		if ( function_exists( 'wp_salt' ) ) {
+			$salt = wp_salt( 'auth' );
+		} elseif ( defined( 'AUTH_KEY' ) && AUTH_KEY !== '' ) {
+			$salt = AUTH_KEY;
+		}
+
+		if ( empty( $salt ) ) {
+			$salt = get_option( 'uacf7_signature_secret_key' );
+			if ( empty( $salt ) ) {
+				$salt = wp_generate_password( 64, true, true );
+				update_option( 'uacf7_signature_secret_key', $salt, false );
+			}
+		}
+
+		return hash( 'sha256', $salt . 'uacf7_signature_encryption_key' );
 	}
 }
