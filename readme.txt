@@ -404,13 +404,13 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 3.5.58 – 19/11/2026 =
 
-- Fixed: Missing array key handling in the `$extra` array.
-- Updated: Made the CAPTCHA validation message dynamic.
-- Fixed: Country dropdown required field validation.
 - Added: Option to set a custom validation message.
+- Updated: Submission ID handling.
+- Updated: Made the CAPTCHA validation message dynamic.
+- Fixed: Country dropdown required-field validation.
+- Fixed: Missing array key handling in the `$extra` array.
 - Fixed: PDF security vulnerability.
 - Fixed: Pre-population of form fields.
-- Updated: Submission ID handling.
 
 = 3.5.57 – 01/11/2026 =
 - Fixed: Resolved uploaded file 404 errors and missing file extensions.
