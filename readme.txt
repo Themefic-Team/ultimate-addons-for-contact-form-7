@@ -402,7 +402,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-= 3.5.58 – 19/11/2026 =
+= 3.5.58 – 20/11/2026 =
 
 - Added: Option to set a custom validation message.
 - Updated: Submission ID handling.
