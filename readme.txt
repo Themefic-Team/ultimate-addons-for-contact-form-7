@@ -4,7 +4,7 @@ Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 6.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.5.59
+Stable tag: 3.5.60
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -402,6 +402,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
+= 3.5.60 – 23/11/2026 =
+- Improved: Security checks in metabox rendering & backup exports.
+- Improved: Access control in dynamic text shortcodes.
+- Improved: Overall plugin security.
+- Updated: Documentation URL.
+
 = 3.5.59 – 20/11/2026 =
 - Fixed: The file upload issue in the multistep form.
 
@@ -413,10 +419,6 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Missing array key handling in the `$extra` array.
 - Fixed: PDF security vulnerability.
 - Fixed: Pre-population of form fields.
-
-= 3.5.57 – 01/11/2026 =
-- Fixed: Resolved uploaded file 404 errors and missing file extensions.
-- Improved: PDF filename sanitization and secure mPDF content handling.
 
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 
